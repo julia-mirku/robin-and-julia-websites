@@ -63,6 +63,8 @@ h2{font:800 clamp(40px,10vw,76px)/.92 var(--head);letter-spacing:.01em;text-tran
 
 /* ---------- Header ---------- */
 .top{position:fixed;inset:0 0 auto 0;height:calc(var(--hh) + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);z-index:50;color:var(--cream);background:rgba(20,23,27,.55);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,.06)}
+.top.solid{background:rgba(20,23,27,.93)}
+.top{transition:background-color .3s}
 .top .wrap{display:flex;align-items:center;height:var(--hh);gap:14px;max-width:none;padding:0 16px}
 .logo{display:block;width:112px;height:34px;background:currentColor;-webkit-mask:url(img/bodan_logo.svg) left center/contain no-repeat;mask:url(img/bodan_logo.svg) left center/contain no-repeat;flex:none}
 .top nav{display:none;gap:4px;margin-left:auto}
@@ -172,6 +174,11 @@ section{position:relative;padding:84px 0}
 @media (hover:hover){.it:hover .pr{background:var(--copper);color:#fff;box-shadow:0 0 0 4px rgba(192,112,63,.18)}}
 .it.tap .pr{background:var(--copper);color:#fff}
 .it.zu{display:none}
+.tip{font:600 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;font-style:normal;color:#fff;background:var(--copper);padding:4px 7px;border-radius:999px;vertical-align:3px;margin-left:6px;white-space:nowrap}
+.gtipp{margin:6px 0 4px;padding:14px 16px;border-radius:14px;background:#f6ead9;border-left:3px solid var(--copper);font-size:15px;line-height:1.45;font-style:italic;color:#4a3d33}
+.gtipp span{display:block;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--copper-d);margin-bottom:8px}
+.gtipp cite{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:6px}
+.panel.ohne .list .gtipp{column-span:all}
 .mehr{margin:14px 0 6px;color:var(--txt);border-color:rgba(27,30,34,.35)}
 .fuss{font-size:13px;color:var(--muted);margin:14px 2px 0}
 
@@ -240,6 +247,12 @@ section{position:relative;padding:84px 0}
 .kontakt .btn{color:var(--cream)}
 .kontakt .btn.fill{color:#fff}
 .kontakt .klein{font-size:14px;color:rgba(243,235,222,.65);margin:10px 0 0}
+.weg{list-style:none;margin:6px 0 16px;padding:0;display:grid;gap:10px}
+.weg li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;border:1px solid rgba(243,235,222,.12);transition:border-color .2s,background-color .2s}
+@media (hover:hover){.weg li:hover{border-color:var(--lake);background:rgba(109,155,176,.08)}}
+.weg svg{width:22px;height:22px;color:var(--lake);flex:none;margin-top:2px}
+.weg b{display:block;font-weight:600}
+.weg span{font-size:15px;color:rgba(243,235,222,.8)}
 .map{margin-top:8px;border-radius:18px;overflow:hidden;border:1px solid rgba(243,235,222,.12);aspect-ratio:4/3;background:var(--ink3)}
 .map iframe{width:100%;height:100%;border:0;display:block}
 footer{background:var(--ink);color:rgba(243,235,222,.6);font-size:14px;padding:26px 0 calc(26px + env(safe-area-inset-bottom));border-top:1px solid rgba(243,235,222,.08)}
@@ -363,7 +376,7 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
   </div>
   <div class="tafel">
     <div class="meta">
-      <h1>Bodan Restaurant • Lounge</h1>
+      <h1>Bodan Restaurant • Lounge · am Bodensee</h1>
       <a href="https://www.google.com/maps/dir/?api=1&destination=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn" target="_blank" rel="noopener">Bahnhofstrasse 1, gegenüber dem Bahnhof Romanshorn</a>
       <a href="tel:+41712223434">071 222 34 34</a>
     </div>
@@ -503,11 +516,13 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
     </div>
     <ol class="linie">
       <li class="halt rise"><div class="wer"><b>Nara</b><span>★★★★★</span><em>Google</em></div><q>Super Ort um beste Sushi Romanshorns zu probieren. Nette Service und direkt am Bahnhof. Gerne komme ich wieder.</q></li>
-      <li class="halt rise"><div class="wer"><b>Franziska</b><span>★★★★★</span><em>Google</em></div><q>Iced Matcha Latte (mit Hafermilch) war der beste, den ich je getrunken habe. 😍 ein weiteres Must-Try sind die Crispy Salmon Sushi! Die Pizzen sind ebenfalls hauchdünn und geschmacklich eine 10 von 10!</q></li>
+      <li class="halt rise"><div class="wer"><b>Victoria</b><span>★★★★★</span><em>Google</em></div><q>Wir waren mittlerweile schon mehrmals im Bodern Restaurant und sind wirklich jedes Mal aufs Neue begeistert. Das Essen ist einfach erstklassig – unglaublich lecker, qualitativ hochwertig und bisher hat uns wirklich jedes Gericht überzeugt.</q></li>
+      <li class="halt rise"><div class="wer"><b>Wasim A. Elburawi</b><span>★★★★★</span><em>Google</em></div><q>D’Atmosphäre im Restaurant isch no drüber: modern, stylisch und doch total gmüetlich. Me fühlt sich wohl und cha guet relaaxe …</q></li>
       <li class="halt rise"><div class="wer"><b>M. B.</b><span>★★★★★</span><em>Google</em></div><q>Sehr leckeres Abendessen genossen in großer Gruppe mit 10 Personen und als Abschluss einen sensationellen Espresso. Sehr zu empfehlen. Wir gehen gerne wieder, wenn wir mit dem Boot wieder in Romanshorn anlegen!</q></li>
-      <li class="halt rise"><div class="wer"><b>Dragana Stucki</b><span>★★★★★</span><em>Google</em></div><q>Wir waren mit unseren Kindern (2&amp;5) im Restaurant Bodan. Das Essen war super, der Servicefachmann war super freundlich sowie zuvorkommend. Auch konnten sich unsere Kinder zwischen den Wartezeiten im Indoorspielbereich beschäftigen.</q></li>
+      <li class="halt rise"><div class="wer"><b>Sandra Günther</b><span>★★★★★</span><em>Google</em></div><q>Eine sehr schöne Lounge, ein wunderbares Ambiente. Wir wurden von Claudia bedient. Eine lustige und sehr aufmerksame Serviceangestellte. Vielen Dank an Claudia, die unseren Abend perfekt gemacht hat.</q></li>
+      <li class="halt rise"><div class="wer"><b>Franziska</b><span>★★★★★</span><em>Google</em></div><q>Bin restlos begeistert von diesem Restaurant! … Die Pizzen sind ebenfalls hauchdünn und geschmacklich eine 10 von 10!</q></li>
+      <li class="halt rise"><div class="wer"><b>Alfa Beta</b><span>★★★★★</span><em>Google</em></div><q>Vielen Dank für die freundliche Bedienung und Hilfe mit meinen Krücken heute Morgen zum Frühstück. Komme gerne wieder mal aus dem Berner Oberland bei Euch vorbei.</q></li>
       <li class="halt rise"><div class="wer"><b>Una Pietra</b><span>★★★★☆</span><em>Google</em></div><q>Das Bodan liegt perfekt gelegen und gut sichtbar gegenüber dem Bahnhof. Die Anbindung am ÖV ist exzellent.</q></li>
-      <li class="halt rise"><div class="wer"><b>Orion Satin</b><span>★★★★★</span><em>Google</em></div><q>Tolles Personal, gute Küche. Superschön dekoriert, richtig festlich!</q></li>
     </ol>
   </div>
 </section>
@@ -537,6 +552,11 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
         <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn" target="_blank" rel="noopener">Route</a>
         <a class="btn" href="https://www.instagram.com/restaurant_bodan/" target="_blank" rel="noopener">Instagram</a>
       </div>
+      <ul class="weg">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/></svg><span><b>Zug</b>Bahnhof Romanshorn, gleich gegenüber</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/></svg><span><b>Schiff &amp; Boot</b>Hafen am Bodensee, ein paar Minuten zu Fuss</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16h14l-1.5-5.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5zM5 16v3M19 16v3"/><circle cx="8" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg><span><b>Auto</b>Kostenpflichtige Parkplätze in der Umgebung</span></li>
+      </ul>
       <div class="map"><iframe title="Karte: Bahnhofstrasse 1, Romanshorn" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn&z=16&output=embed"></iframe></div>
       <p class="klein">Bezahlen mit TWINT, Karte, bar oder WIR.</p>
     </div>
@@ -591,7 +611,7 @@ function loop(ts){
   if(p!==t){rafId=requestAnimationFrame(loop)}else{rafId=0;lastTs=0}
 }
 function kick(){if(!rafId)rafId=requestAnimationFrame(loop)}
-function ende(){if(fertig)return;fertig=true;lastBlock=performance.now();hero.classList.add('fertig');hintTx.textContent='Weiter: Zug, Karte, Haus';D.getElementById('skip').textContent='Zur Karte';D.getElementById('skip').dataset.z='karte'}
+function ende(){if(fertig)return;fertig=true;lastBlock=performance.now();hero.classList.add('fertig');hintTx.textContent='Gute Nacht, Romanshorn';D.getElementById('skip').textContent='Zur Karte';D.getElementById('skip').dataset.z='karte'}
 function locked(){return !fertig&&W.scrollY<=2}
 function vorspulen(){t=1;p=1;render();ende()}
 
@@ -636,6 +656,7 @@ D.addEventListener('click',function(e){
 });
 D.getElementById('skip').addEventListener('click',function(){geheZu(this.dataset.z||'zug')});
 W.addEventListener('resize',render);
+var topEl=D.querySelector('.top');function kopf(){topEl.classList.toggle('solid',W.scrollY>hero.offsetHeight-80)}W.addEventListener('scroll',kopf,{passive:true});kopf();
 if(reduce||location.hash.length>1){vorspulen();if(location.hash.length>1){var hid=location.hash.slice(1);setTimeout(function(){geheZu(hid)},50)}}
 else{W.scrollTo(0,0)}
 render();
@@ -699,8 +720,8 @@ tipp();
 /* ================= Karte ================= */
 // Quelle: Online-Karte Just Eat «Restaurant Bodan» und «Sushi Bodan», 24.11.2026; Beschreibungen gekürzt
 var KARTE=[
- {k:'A',n:'Sushi',img:'g11',alt:'Sushi-Rollen mit essbaren Blüten',note:'Rollen frisch geschnitten, auch zum Mitnehmen.',it:[
-  ['Crunchy Salmon','8 Stück · knusprige Rolle mit Lachs, Avocado, Teriyaki und Chili-Mayo','24.–'],
+ {k:'A',n:'Sushi',img:'g11',alt:'Sushi-Rollen mit essbaren Blüten',note:'Rollen frisch geschnitten, auch zum Mitnehmen.',q:['Sushi sind der Klassiker.','Laura Schwab'],it:[
+  ['Crunchy Salmon','8 Stück · knusprige Rolle mit Lachs, Avocado, Teriyaki und Chili-Mayo','24.–',1],
   ['Spicy Tuna','8 Stück · Crevetten knusprig, Avocado, Topping aus scharfem Thunfisch-Tatar','24.–'],
   ['Spicy Salmon','8 Stück','22.–'],['Flam Salmon','8 Stück','22.–'],
   ['Bodan Futu Maki','10 Stück','22.–'],['Vegi Mix Rolls','8 Stück, vegetarisch','18.–'],
@@ -710,21 +731,21 @@ var KARTE=[
   ['Alaska Maki','6 Stück','12.–'],['Avocado Maki','6 Stück','10.–'],['Shake Maki','6 Stück, Lachs','10.–'],
   ['Tekka Maki','6 Stück, Thunfisch','10.–'],['Kappa Maki','6 Stück, Gurke','8.–'],
   ['Goma Wakame','Algensalat mit Sesam','12.–'],['Poke Bowl Lachs','','18.–']]},
- {k:'B',n:'Pizza',img:'g08',alt:'Pizza mit Rucola und Cherrytomaten',note:'Hauchdünn aus dem Ofen, in zwei Grössen: Ø 32 cm oder Ø 50 cm für den ganzen Tisch.',it:[
+ {k:'B',n:'Pizza',img:'g08',alt:'Pizza mit Rucola und Cherrytomaten',note:'Hauchdünn aus dem Ofen, in zwei Grössen: Ø 32 cm oder Ø 50 cm für den ganzen Tisch.',q:['Take-away-Pizzas … sind frisch hausgemacht (lassen sich deshalb problemlos vegan bestellen) und sind super lecker.','Seraina Dübendorfer'],it:[
   ['Margherita','','Ø 32 / 50'],['Salame','','Ø 32 / 50'],['Regina','','Ø 32 / 50'],['Prosciutto','','Ø 32 / 50'],
   ['Tonno','','Ø 32 / 50'],['Capricciosa','','Ø 32 / 50'],['Hawaii','','Ø 32 / 50'],['Frutti di Mare','','Ø 32 / 50']]},
  {k:'C',n:'Pasta & Lasagne',note:'Alle Pasta-Gerichte mit einer Pastasorte nach Wahl.',it:[
   ['Pasta Bolognese','','ab 19.–'],['Bolognese überbacken','','ab 20.–'],['Lasagne Bolognese','','ab 18.–']]},
- {k:'D',n:'Burger & Bowls',note:'Preise ab, je nach Variante.',it:[
+ {k:'D',n:'Burger & Bowls',note:'Preise ab, je nach Variante.',q:['Die Bunds sind meeega (probiert mal den Creamy Bun)','Shine Bride'],it:[
   ['Cheeseburger','','ab 12.50'],['Chicken Burger','','ab 13.–'],['Chili Cheeseburger','scharf','ab 14.–'],
-  ['Creamy Burger','','ab 15.–'],['BBQ Burger','','ab 16.–'],['Trüffelburger','','ab 18.–'],
+  ['Creamy Burger','','ab 15.–',1],['BBQ Burger','','ab 16.–'],['Trüffelburger','','ab 18.–'],
   ['Poke Bowl Crispy-Poulet','','18.–'],['Süsskartoffel-Pommes','','10.–'],['Gemischter Salat','Cherrytomaten, Mais, Hausdressing','10.–']]},
- {k:'E',n:'Zmorge & Café',img:'g01',alt:'Holztresen mit Kuchenvitrine',note:'Ab 08:00, Samstag und Sonntag ab 10:00.',it:[
+ {k:'E',n:'Zmorge & Café',img:'g01',alt:'Holztresen mit Kuchenvitrine',note:'Ab 08:00, Samstag und Sonntag ab 10:00.',q:['Iced Matcha Latte (mit Hafermilch) war der beste, den ich je getrunken habe.','Franziska'],it:[
   ['Gipfeli &amp; Cappuccino','am Tresen oder zum Mitnehmen','Tresen'],['Frühstück','','ab 08:00'],
-  ['Iced Matcha Latte','auch mit Hafermilch','Bar'],['Tee','Auswahl aus den Dosen','Bar'],['Desserts','Früchte-Desserts, Kuchen aus der Vitrine','Vitrine']]},
- {k:'F',n:'Bar & Lounge',img:'g02',alt:'Cocktail mit Minze',note:'Bis 23:00, Freitag und Samstag bis 01:00.',it:[
+  ['Iced Matcha Latte','auch mit Hafermilch','Bar',1],['Tee','Auswahl aus den Dosen','Bar'],['Desserts','Früchte-Desserts, Kuchen aus der Vitrine','Vitrine']]},
+ {k:'F',n:'Bar & Lounge',img:'g02',alt:'Cocktail mit Minze',note:'Bis 23:00, Freitag und Samstag bis 01:00.',q:['Schön das es Abends Rotwein zum verkosten gibt.','Sebi Kurz'],it:[
   ['Cocktails','von der Bar, auch Hugo','Bar'],['Japanischer Whisky','und weitere Spirituosen','Bar'],
-  ['Bier vom Fass','','Zapfhahn'],['Wein','abends Rotwein zum Verkosten','Glas'],['Espresso','zum Abschluss','Bar']]}
+  ['Bier vom Fass','','Zapfhahn'],['Wein','abends Rotwein zum Verkosten','Glas',1],['Espresso','zum Abschluss','Bar',1]]}
 ];
 var sek=D.getElementById('sek'), panel=D.getElementById('panel'), aktiv='A', offen={};
 KARTE.forEach(function(c){var b=D.createElement('button');b.type='button';b.dataset.k=c.k;b.innerHTML='<b>'+c.k+'</b><span>'+c.n.replace('&','&amp;')+'</span>';sek.appendChild(b)});
@@ -733,8 +754,8 @@ function zeigSek(k){
   [].forEach.call(sek.children,function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});
   panel.className='panel shown'+(c.img?'':' ohne');
   panel.innerHTML=(c.img?'<figure><img src="img/'+c.img+'_m.webp" alt="'+c.alt+'" loading="lazy"></figure>':'')+
-   '<div class="list"><h3>Sektor '+c.k+' · '+c.n.replace('&','&amp;')+'</h3><p class="note">'+c.note+'</p>'+
-   c.it.map(function(i,n){return '<div class="it'+(n>=8&&!offen[k]?' zu':'')+'"><b>'+i[0]+'</b>'+(i[1]?'<small>'+i[1]+'</small>':'')+'<span class="pr">'+i[2]+'</span></div>'}).join('')+
+   '<div class="list"><h3>Sektor '+c.k+' · '+c.n.replace('&','&amp;')+'</h3><p class="note">'+c.note+'</p>'+(c.q?'<blockquote class="gtipp"><span>Gäste sagen</span>«'+c.q[0]+'»<cite>'+c.q[1]+', Google</cite></blockquote>':'')+
+   c.it.map(function(i,n){return '<div class="it'+(n>=8&&!offen[k]?' zu':'')+'"><b>'+i[0]+(i[3]?' <em class="tip">Gäste-Tipp</em>':'')+'</b>'+(i[1]?'<small>'+i[1]+'</small>':'')+'<span class="pr">'+i[2]+'</span></div>'}).join('')+
    (c.it.length>8&&!offen[k]?'<button type="button" class="btn mehr">Alle '+c.it.length+' zeigen</button>':'')+'</div>';
 }
 sek.addEventListener('click',function(e){var b=e.target.closest('button');if(b)zeigSek(b.dataset.k)});
