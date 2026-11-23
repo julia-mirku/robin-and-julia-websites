@@ -10,7 +10,7 @@
 <meta property="og:title" content="Leo · Sushi Bar St. Gallen">
 <meta property="og:description" content="Sushi, Ramen & Cocktails an der Engelgasse 2 – Good food. Good mood.">
 <meta property="og:image" content="img/hero_quer_1600.jpg">
-<meta name="theme-color" content="#08120d">
+<meta name="theme-color" content="#0d241a">
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
 </script>
 <style>
 :root{
-  --night:#08120d; --velvet:#0f2a1d; --green:#1c5e3d; --green2:#24734b;
+  --green-main:#0d241a; --night:#08120d; --velvet:#0d241a; --green:#1c5e3d; --green2:#24734b;
   --cream:#f4ecdc; --paper:#efe6d3; --ink:#15201a;
   --gold:#c9a45c; --gold2:#e8cf8f; --lamp:#ffc861;
   --neon:#ff5fa8; --neonG:#7dffb7; --tuna:#d8434a;
@@ -33,7 +33,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip;overflow-y:scroll;scrollbar-gutter:stable}
 html.locked,html.locked body{overscroll-behavior:none}
-body{background:var(--night);color:var(--cream);font:400 17px/1.55 var(--sans);-webkit-tap-highlight-color:transparent;overflow-x:clip;touch-action:manipulation}
+body{background:var(--green-main);color:var(--cream);font:400 17px/1.55 var(--sans);-webkit-tap-highlight-color:transparent;overflow-x:clip;touch-action:manipulation}
 img{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -58,7 +58,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 
 /* ---------- Header ---------- */
 .hdr{position:fixed;inset:0 0 auto;z-index:50;height:var(--hdr);display:flex;align-items:center;transition:background .4s,backdrop-filter .4s;background:linear-gradient(rgba(3,6,4,.7),rgba(3,6,4,0))}
-.hdr.solid{background:rgba(8,18,13,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(201,164,92,.18)}
+.hdr.solid{background:rgba(13,36,26,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(201,164,92,.18)}
 .hdr .wrap{display:flex;align-items:center;gap:18px}
 .hdr .logo{width:46px;height:46px;flex:none}
 .hdr .logo img{width:100%;height:100%}
@@ -115,7 +115,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 @media (max-width:760px){.post .txt{height:100%;display:flex;flex-direction:column;max-width:none}.post p{display:none}.post .btns{margin-top:auto}.post .chip{align-self:flex-start}}
 @media (min-width:761px) and (max-height:800px){.post p{display:none}.post .btns{margin-top:22px}.post .chip{margin-top:14px}}
 /* ---------- Lieblinge ---------- */
-.lieb{padding:clamp(80px,11vw,150px) 0 clamp(60px,8vw,110px);background:radial-gradient(120% 70% at 50% 0%,#12301f 0%,var(--night) 70%)}
+.lieb{padding:clamp(80px,11vw,150px) 0 clamp(60px,8vw,110px);background:var(--green-main)}
 .lieb .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px 40px;margin-bottom:clamp(34px,5vw,60px)}
 .dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px)}
 @media (max-width:860px){.dishes{grid-template-columns:1fr 1fr}}
@@ -130,7 +130,8 @@ h2 i{font-weight:400;color:var(--gold2)}
 .dish .pr{font:700 19px/1 var(--sans);color:var(--lamp);white-space:nowrap;padding:8px 12px;border-radius:999px;background:rgba(255,200,97,.1);border:1px solid rgba(255,200,97,.35);transition:background .2s,color .2s}
 .dish .hot{position:absolute;top:14px;left:14px;font-size:12px;font-weight:700;letter-spacing:.06em;padding:6px 10px;border-radius:999px;background:rgba(8,18,13,.72);color:var(--lamp);border:1px solid rgba(255,200,97,.3)}
 @media (hover:hover){
-  .dish.ready{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cpath d='M4 40 L30 6' stroke='%23e8cf8f' stroke-width='3.4' stroke-linecap='round'/%3E%3Cpath d='M10 42 L38 12' stroke='%23c9a45c' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E") 6 40,pointer}
+  .dish{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg stroke-linecap='round'%3E%3Cpath d='M52 4 L9 50' stroke='%2308120d' stroke-width='7'/%3E%3Cpath d='M55 13 L13 52' stroke='%2308120d' stroke-width='7'/%3E%3Cpath d='M52 4 L9 50' stroke='%23f3dc9a' stroke-width='3.6'/%3E%3Cpath d='M55 13 L13 52' stroke='%23d4ad5f' stroke-width='3.6'/%3E%3Cpath d='M47 9 L42 14 M50 16 L45 20' stroke='%2308120d' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") 10 51,pointer}
+.dish .zoom,.dish img{cursor:inherit}
   .dish.ready:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(232,207,143,.45),0 0 50px rgba(255,200,97,.12)}
   .dish.ready:hover img{transform:scale(1.06)}
   .dish.ready:hover .pr{background:var(--lamp);color:#1d1406}
@@ -138,12 +139,11 @@ h2 i{font-weight:400;color:var(--gold2)}
 
 
 /* ---------- Karte (dunkelgruen) ---------- */
-.karte{padding:clamp(70px,9vw,130px) 0;background:linear-gradient(180deg,#0c2318 0%,#0a1d14 100%);color:var(--cream);position:relative}
-.karte::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 85% 0%,rgba(255,200,97,.07),transparent 70%);pointer-events:none}
+.karte{padding:clamp(70px,9vw,130px) 0;background:var(--green-main);color:var(--cream);position:relative}
 .karte .wrap{position:relative}
 .karte h2 i{color:var(--gold2)}
 .karte .lead{color:#cfc6b3}
-.kbar{position:sticky;top:var(--hdr);z-index:5;background:rgba(11,31,21,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:18px 0 12px;margin-top:30px;box-shadow:0 14px 20px -16px rgba(0,0,0,.7)}
+.kbar{position:sticky;top:var(--hdr);z-index:5;background:rgba(13,36,26,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:18px 0 12px;margin-top:30px;box-shadow:0 14px 20px -16px rgba(0,0,0,.7)}
 .search{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1.5px solid rgba(201,164,92,.38);border-radius:14px;padding:0 14px;transition:border-color .2s,box-shadow .2s}
 .search:focus-within{border-color:var(--lamp);box-shadow:0 0 0 4px rgba(255,200,97,.14)}
 .search svg{width:20px;height:20px;color:var(--gold2);flex:none}
@@ -180,7 +180,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 .knote{margin-top:34px;padding-top:18px;border-top:1px solid rgba(201,164,92,.22);font-size:14px;color:#9c9583;display:flex;flex-wrap:wrap;gap:6px 22px}
 
 /* ---------- Plattenplaner ---------- */
-.plan{padding:clamp(80px,10vw,140px) 0;background:linear-gradient(180deg,var(--velvet),var(--night))}
+.plan{padding:clamp(80px,10vw,140px) 0;background:var(--green-main)}
 .plan .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(26px,4vw,60px);align-items:start;margin-top:clamp(30px,4vw,50px)}
 .plan .pic{position:sticky;top:calc(var(--hdr) + 24px);border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -30px #000}
 .plan .pic img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
@@ -213,10 +213,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 .plan .hint{font-size:14px;color:#aaa089;margin-top:10px}
 
 /* ---------- Salon ---------- */
-.salon{padding:clamp(90px,11vw,160px) 0;background:
-  radial-gradient(80% 60% at 80% 10%,rgba(255,200,97,.08),transparent 60%),
-  repeating-linear-gradient(90deg,#123323 0 2px,#10301f 2px 30px),#10301f;position:relative}
-.salon::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 50%,transparent 40%,rgba(5,12,8,.7));pointer-events:none}
+.salon{padding:clamp(90px,11vw,160px) 0;background:var(--green-main);position:relative}
 .salon .wrap{position:relative;z-index:1}
 .moved{font:500 clamp(19px,2vw,24px)/1.4 var(--serif);margin-top:20px;color:#e8dfcc}
 .moved s{text-decoration:none;position:relative;color:#9a9381;white-space:nowrap}
@@ -294,7 +291,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 @media (hover:hover){.arrow:hover{background:var(--neon);border-color:var(--neon);color:#fff;box-shadow:0 0 22px rgba(255,95,168,.45)}}
 
 /* ---------- Besuch ---------- */
-.visit{padding:clamp(90px,11vw,150px) 0 clamp(120px,12vw,150px);background:radial-gradient(70% 60% at 20% 10%,rgba(255,200,97,.1),transparent 60%),var(--night)}
+.visit{padding:clamp(90px,11vw,150px) 0 clamp(120px,12vw,150px);background:var(--green-main)}
 .visit .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,70px);margin-top:clamp(30px,4vw,50px);align-items:start}
 @media (max-width:900px){.visit .grid{grid-template-columns:1fr}}
 .days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
@@ -312,7 +309,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 @media (hover:hover){.contact a:hover{border-color:var(--lamp);background:rgba(255,200,97,.06);box-shadow:0 0 26px rgba(255,200,97,.12)}}
 .map .mat{aspect-ratio:4/3.4}
 .map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.35) contrast(1.05)}
-footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid rgba(201,164,92,.18);font-size:14px;color:#968f80}
+footer{background:var(--green-main);padding:28px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid rgba(201,164,92,.18);font-size:14px;color:#968f80}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 .drinks.two{grid-template-columns:1fr 1fr;margin-top:clamp(14px,2vw,24px)}
@@ -331,7 +328,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .moved.in .addr-u{background-size:100% 2px}
 @media (hover:hover){.addr-u:hover{color:var(--gold2)}}
 /* ---------- Karte (Zeichnung) ---------- */
-.map .mat{aspect-ratio:5/4;position:relative;background:#0b2016}
+.map .mat{aspect-ratio:5/4;position:relative;background:var(--green-main)}
 .map .mat>img{width:100%;height:100%;object-fit:cover;display:block}
 .pin{position:absolute;left:50%;top:50%;width:0;height:0}
 .pin .glow{position:absolute;left:-70px;top:-70px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,97,.55),rgba(255,200,97,.12) 45%,transparent 70%)}
@@ -342,9 +339,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 /* ---------- Telefon: leichter, nichts springt ---------- */
 @media (max-width:760px){
   .hdr.solid,.kbar,.pill,.dock{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-  .hdr.solid{background:#0a1710}
-  .kbar{background:#0b2016}
-  .dock{background:#0a1710}
+  .hdr.solid{background:var(--green-main)}
+  .kbar{background:var(--green-main)}
+  .dock{background:var(--green-main)}
   .pill{background:rgba(8,18,13,.9)}
   .reveal,.dish{transform:none!important}
   .dish,.drink,.plan .pic,.board{box-shadow:none}
