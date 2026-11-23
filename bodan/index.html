@@ -1,17 +1,753 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="de-CH" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="google" content="notranslate">
 <meta name="robots" content="noindex">
-<title>Bodan – Website-Entwurf</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+<title>Bodan Restaurant • Lounge – Romanshorn, gegenüber dem Bahnhof</title>
+<meta name="description" content="Bodan Restaurant • Lounge in Romanshorn, Bahnhofstrasse 1: Zmorge und Kaffee ab 8 Uhr, Mittagsmenü, abends Sushi, Steaks und Pizza, Lounge und Bar bis 01:00. Tisch reservieren: 071 222 34 34.">
+<meta property="og:title" content="Bodan Restaurant • Lounge, Romanshorn">
+<meta property="og:description" content="Von 8 Uhr bis 1 Uhr nachts, gegenüber dem Bahnhof Romanshorn.">
+<meta property="og:image" content="img/og.jpg">
+<meta name="theme-color" content="#14171b">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/g01_m.webp" media="(max-width: 899px)">
+<link rel="preload" as="image" href="img/g01_l.webp" media="(min-width: 900px)">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Bodan Restaurant • Lounge","servesCuisine":["Sushi","Pizza","Pasta","Burger","Steak"],"telephone":"+41712223434","email":"info@restaurant-bodan.ch","priceRange":"CHF 10–40","acceptsReservations":"True",
+"address":{"@type":"PostalAddress","streetAddress":"Bahnhofstrasse 1","postalCode":"8590","addressLocality":"Romanshorn","addressCountry":"CH"},
+"geo":{"@type":"GeoCoordinates","latitude":47.565913,"longitude":9.37891},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"23:00"}],
+"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.3","reviewCount":"215"}}
+</script>
 <style>
-*{box-sizing:border-box;margin:0}body{min-height:100svh;display:flex;align-items:center;justify-content:center;background:#FFFEFB;color:#1F2328;font-family:'Albert Sans',sans-serif;padding:24px;text-align:center}
-.c{max-width:520px}.m{width:64px;height:64px;border-radius:18px;background:#FFC81A;border:2.5px solid #1F2328;display:inline-flex;align-items:center;justify-content:center;font:800 22px Sora,sans-serif;margin-bottom:22px}.m span{color:#1E5E3F;font-size:17px}
-h1{font:800 clamp(26px,6vw,38px)/1.15 Sora,sans-serif;margin-bottom:14px}p{font-size:17px;line-height:1.55;color:#4a4f57;margin-bottom:22px}
-a.b{display:inline-block;background:#FFC81A;border:2px solid #1F2328;border-radius:999px;padding:12px 22px;font-weight:600;color:#1F2328;text-decoration:none;margin:4px}
-</style></head><body><div class="c">
-<div class="m">J<span>&amp;</span>R</div>
-<h1>Ihr Website-Entwurf für Bodan Restaurant&nbsp;&amp;&nbsp;Lounge</h1>
-<p>Wir legen gerade letzte Hand an. Schauen Sie bald wieder vorbei – oder rufen Sie uns direkt an.</p>
-<a class="b" href="tel:+41799325514">Anruf Robin</a><a class="b" href="https://wa.me/41774705928">WhatsApp Julia</a>
-<p style="margin-top:22px;font-size:15px"><a href="https://webstudio-mirku.ch/" style="color:#1F2328">webstudio-mirku.ch</a></p>
-</div></body></html>
+:root{
+  --ink:#14171b; --ink2:#1d2228; --ink3:#2a3038;
+  --paper:#fbf7f0; --cream:#f3ebde; --sand:#e8dac4; --dusk:#5b4a43;
+  --copper:#c0703f; --copper-d:#9c5530; --amber:#e9b46e; --lake:#6d9bb0;
+  --txt:#1b1e22; --muted:#6b645c; --line:rgba(27,30,34,.14);
+  --head:"Big Shoulders Display", "Arial Narrow", sans-serif;
+  --body:"Familjen Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"Martian Mono", ui-monospace, Menlo, monospace;
+  --hh:62px;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scrollbar-gutter:stable;overscroll-behavior-y:none}
+body{margin:0;background:var(--paper);color:var(--txt);font:17px/1.55 var(--body);overflow-x:clip;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid var(--copper);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h2{font:800 clamp(40px,10vw,76px)/.92 var(--head);letter-spacing:.01em;text-transform:uppercase;margin:0 0 14px}
+.lead{font-size:18px;max-width:40ch;color:var(--muted);margin:0 0 26px}
+.mono{font-family:var(--mono)}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid currentColor;background:transparent;text-decoration:none;font:600 16px/1 var(--body);cursor:pointer;transition:background-color .2s,box-shadow .2s,color .2s,border-color .2s,transform .2s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.fill{background:var(--copper);border-color:var(--copper);color:#fff}
+@media (hover:hover){
+  .btn:hover{box-shadow:0 0 0 5px rgba(192,112,63,.18),0 8px 22px rgba(192,112,63,.25);border-color:var(--copper)}
+  .btn.fill:hover{background:#cf7c49}
+}
+.btn:active{transform:scale(.97)}
+
+/* ---------- Header ---------- */
+.top{position:fixed;inset:0 0 auto 0;height:calc(var(--hh) + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);z-index:50;color:var(--cream);background:rgba(20,23,27,.55);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,.06)}
+.top .wrap{display:flex;align-items:center;height:var(--hh);gap:14px;max-width:none;padding:0 16px}
+.logo{display:block;width:112px;height:34px;background:currentColor;-webkit-mask:url(img/bodan_logo.svg) left center/contain no-repeat;mask:url(img/bodan_logo.svg) left center/contain no-repeat;flex:none}
+.top nav{display:none;gap:4px;margin-left:auto}
+.top nav a{padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;transition:background-color .2s,color .2s}
+@media (hover:hover){.top nav a:hover{background:rgba(233,180,110,.16);color:#fff}}
+.top .acts{margin-left:auto;display:flex;gap:8px;align-items:center}
+.top .btn{min-height:40px;padding:0 14px;font-size:15px;color:var(--cream)}
+.top .btn.fill{color:#fff}
+.top .tel span{display:none}
+.top .tel{width:40px;padding:0}
+
+/* ---------- Hero: Ein Tag im Bodan ---------- */
+.tag{--ph:calc(var(--hh) + env(safe-area-inset-top) + 40vh);position:relative;height:100vh;height:100svh;min-height:600px;background:var(--ink);color:var(--cream);overflow:hidden;isolation:isolate;display:flex;flex-direction:column}
+@supports (height:1svh){.tag{--ph:calc(var(--hh) + env(safe-area-inset-top) + 38svh)}}
+.pics{position:absolute;left:0;right:0;top:0;height:var(--ph);z-index:-2;background:var(--ink3)}
+.pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform}
+.pics img:first-child{opacity:1}
+.tag::after{content:"";position:absolute;left:0;right:0;top:0;height:var(--ph);z-index:-1;background:linear-gradient(180deg,rgba(20,23,27,.35) 0,rgba(20,23,27,0) 30%,rgba(20,23,27,0) 72%,var(--ink) 100%)}
+.tafel{flex:1;margin-top:var(--ph);display:grid;grid-template-columns:58px 1fr;grid-template-rows:auto 1fr auto;column-gap:10px;padding:2px 16px calc(8px + env(safe-area-inset-bottom));min-height:0}
+.meta{grid-column:1/-1;font-size:14px;line-height:1.3;display:flex;flex-wrap:wrap;gap:3px 12px;margin:0 0 14px}
+.meta a{text-decoration:none;border-bottom:1px solid rgba(233,180,110,.55);transition:color .2s,border-color .2s}
+@media (hover:hover){.meta a:hover{color:var(--amber);border-color:var(--amber)}}
+.meta h1{font:600 14px/1.3 var(--body);margin:0;width:100%;letter-spacing:.02em;color:var(--amber)}
+/* Zeitleiste */
+.rail{position:relative;grid-column:1;grid-row:2;margin:10px 0 12px}
+.rail .line{position:absolute;left:5px;top:0;bottom:0;width:2px;background:rgba(243,235,222,.22);border-radius:2px}
+.rail .done{position:absolute;left:5px;top:0;width:2px;height:0;background:var(--amber);border-radius:2px;box-shadow:0 0 10px rgba(233,180,110,.7)}
+.rail .tick{position:absolute;left:1px;transform:translateY(-50%);display:flex;align-items:center;gap:7px;font:500 10px/1 var(--mono);color:rgba(243,235,222,.5);transition:color .3s;white-space:nowrap}
+.rail .tick::before{content:"";width:10px;height:2px;background:currentColor}
+.rail .tick.on{color:var(--amber)}
+.rail .now{position:absolute;left:-1px;top:0;transform:translateY(-50%);will-change:transform}
+.rail .now i{display:block;width:14px;height:14px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px rgba(233,180,110,.22),0 0 16px rgba(233,180,110,.8)}
+.zeitwrap{grid-column:2;grid-row:2;display:flex;flex-direction:column;min-height:0;padding-top:4px}
+.clock{display:flex;align-items:baseline;gap:10px;font:500 12px/1 var(--mono);color:rgba(243,235,222,.6);margin:0 0 auto}
+.clock b{font:600 30px/1 var(--mono);color:var(--amber);letter-spacing:-.02em}
+.stages{display:grid;margin-top:14px}
+.st{grid-area:1/1;opacity:0;transform:translateY(-8px);transition:opacity .16s ease,transform .16s ease;pointer-events:none;align-self:end}
+.st.on{opacity:1;transform:none;pointer-events:auto;transition:opacity .4s ease .17s,transform .4s ease .17s}
+.st .when{font:500 11px/1.3 var(--mono);color:var(--amber);letter-spacing:.03em;margin:0 0 8px}
+.st h2{font-size:clamp(40px,12.4vw,96px);margin:0 0 8px;color:#fff}
+.st p{margin:0;max-width:34ch;font-size:16px;line-height:1.45;color:rgba(243,235,222,.86)}
+.hint{grid-column:1/-1;grid-row:3;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:rgba(243,235,222,.7);border-top:1px solid rgba(243,235,222,.1);padding-top:4px}
+.hint .go{display:flex;align-items:center;gap:10px}
+.hint .go svg{width:18px;height:18px;animation:nudge 1.8s ease-in-out 3}
+@keyframes nudge{50%{transform:translateY(5px)}}
+.hint button{background:none;border:0;padding:12px 0;cursor:pointer;color:var(--cream);text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(233,180,110,.6);font-size:14px;transition:color .2s}
+@media (hover:hover){.hint button:hover{color:var(--amber)}}
+@media (max-height:700px){.tag{--ph:calc(var(--hh) + env(safe-area-inset-top) + 27vh)}.st h2{font-size:36px}.st p{font-size:15px}.meta{margin-bottom:6px}.clock b{font-size:24px}.stages{margin-top:8px}}
+@media (max-height:700px) and (max-width:899px){@supports (height:1svh){.tag{--ph:calc(var(--hh) + env(safe-area-inset-top) + 27svh)}}}
+
+/* ---------- Abschnitte (der Tag wird Abend) ---------- */
+section{position:relative;padding:84px 0}
+.s-zug{background:var(--paper)}
+.s-karte{background:linear-gradient(180deg,var(--paper) 0,var(--cream) 140px,var(--cream) 100%)}
+.s-haus{background:linear-gradient(180deg,var(--cream) 0,var(--sand) 100%)}
+.s-feiern{background:linear-gradient(180deg,var(--sand) 0,#d8bfa0 100%)}
+.s-gaeste{background:linear-gradient(180deg,#d8bfa0 0,var(--dusk) 150px,#2c2a2c 70%,var(--ink2) 100%);color:var(--cream)}
+.s-besuch{background:linear-gradient(180deg,var(--ink2) 0,var(--ink) 100%);color:var(--cream)}
+.s-gaeste .lead,.s-besuch .lead{color:rgba(243,235,222,.75)}
+.kick{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--copper-d);margin:0 0 14px}
+.s-gaeste .kick,.s-besuch .kick{color:var(--amber)}
+.rise{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rise.shown{opacity:1;transform:none}
+
+/* ---------- Zug-Rechner ---------- */
+.mode{display:inline-flex;padding:4px;border-radius:999px;background:var(--cream);border:1px solid var(--line);margin-bottom:16px}
+.mode button{min-height:42px;padding:0 18px;border-radius:999px;border:0;background:transparent;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:8px;transition:background-color .2s,color .2s,box-shadow .2s}
+.mode button svg{width:18px;height:18px}
+.mode button[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
+@media (hover:hover){.mode button:not([aria-pressed="true"]):hover{background:rgba(192,112,63,.14)}}
+.mins{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:22px}
+.mins button{min-height:64px;border-radius:14px;border:1.5px solid var(--line);background:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px 2px;transition:border-color .2s,box-shadow .2s,background-color .2s}
+.mins b{font:800 26px/1 var(--head)}
+.mins small{font-size:12px;color:var(--muted)}
+.mins button[aria-pressed="true"]{border-color:var(--copper);background:#fff6ee;box-shadow:0 0 0 4px rgba(192,112,63,.16)}
+@media (hover:hover){.mins button:hover{border-color:var(--copper);box-shadow:0 0 0 4px rgba(192,112,63,.12)}}
+.tipp{display:grid;grid-template-columns:1fr;border-radius:22px;overflow:hidden;background:var(--ink);color:var(--cream);box-shadow:0 20px 50px rgba(20,23,27,.18)}
+.tipp figure{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--ink3)}
+.tipp figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease}
+.tipp .tx{padding:22px 20px 24px;display:flex;flex-direction:column;gap:10px;min-height:270px}
+.tipp .ab{font:500 13px/1.4 var(--mono);color:var(--amber)}
+.tipp h3{font:800 36px/.95 var(--head);text-transform:uppercase;margin:0}
+.tipp p{margin:0;color:rgba(243,235,222,.85)}
+.tipp .zu{font-size:14px;color:var(--amber)}
+.tipp .btn{align-self:flex-start;margin-top:auto;color:var(--cream)}
+.tipp .btn.fill{color:#fff}
+
+/* ---------- Karte: Sektoren ---------- */
+.sek{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 22px}
+.sek button{position:relative;min-height:74px;border-radius:12px;border:1.5px solid var(--ink);background:transparent;cursor:pointer;display:flex;align-items:center;gap:10px;padding:8px 10px;text-align:left;transition:background-color .2s,color .2s,box-shadow .2s}
+.sek button b{font:900 34px/1 var(--head);width:34px;height:40px;display:grid;place-items:center;border-radius:6px;background:var(--ink);color:var(--cream);flex:none;transition:background-color .2s,color .2s}
+.sek button span{font-weight:600;font-size:14px;line-height:1.15}
+.sek button[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
+.sek button[aria-pressed="true"] b{background:var(--copper);color:#fff}
+@media (hover:hover){.sek button:not([aria-pressed="true"]):hover{box-shadow:0 0 0 4px rgba(192,112,63,.18);border-color:var(--copper)}}
+.panel{display:grid;gap:0;background:var(--paper);border-radius:20px;border:1px solid var(--line);overflow:hidden}
+.panel figure{margin:0;aspect-ratio:16/9;overflow:hidden;position:relative}
+.panel figure img{width:100%;height:100%;object-fit:cover}
+.panel .list{padding:8px 18px 14px}
+.panel h3{font:800 30px/1 var(--head);text-transform:uppercase;margin:16px 0 4px}
+.panel .note{font-size:14px;color:var(--muted);margin:0 0 6px}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.it:last-child{border-bottom:0}
+.it b{font-weight:600}
+.it small{grid-column:1;color:var(--muted);font-size:14px;line-height:1.4}
+.it .pr{grid-row:1/span 2;grid-column:2;align-self:center;font:500 14px/1 var(--mono);padding:7px 9px;border-radius:7px;white-space:nowrap;transition:background-color .2s,color .2s,box-shadow .2s}
+@media (hover:hover){.it:hover .pr{background:var(--copper);color:#fff;box-shadow:0 0 0 4px rgba(192,112,63,.18)}}
+.it.tap .pr{background:var(--copper);color:#fff}
+.it.zu{display:none}
+.mehr{margin:14px 0 6px;color:var(--txt);border-color:rgba(27,30,34,.35)}
+.fuss{font-size:13px;color:var(--muted);margin:14px 2px 0}
+
+/* ---------- Haus ---------- */
+.haus{display:grid;gap:22px}
+.wand{margin:0;position:relative;border-radius:22px;overflow:hidden;cursor:zoom-in;aspect-ratio:3/2;background:var(--ink3)}
+.wand img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.wand figcaption{position:absolute;left:12px;bottom:12px;right:12px;font-size:13px;color:#fff;background:rgba(20,23,27,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:8px 12px;border-radius:10px;width:fit-content}
+@media (hover:hover){.wand:hover img{transform:scale(1.03)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.chips li{padding:9px 14px;border-radius:999px;border:1.5px solid rgba(27,30,34,.25);font-weight:500;font-size:15px;transition:border-color .2s,background-color .2s}
+@media (hover:hover){.chips li:hover{border-color:var(--copper);background:rgba(192,112,63,.1)}}
+.raum{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:26px}
+.raum button{position:relative;padding:0;border:0;border-radius:14px;overflow:hidden;cursor:zoom-in;aspect-ratio:1/1;background:var(--ink3)}
+.raum button.w{grid-column:span 2;aspect-ratio:2/1}
+.raum img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .3s}
+.raum span{position:absolute;left:10px;bottom:10px;font-size:13px;color:#fff;background:rgba(20,23,27,.55);padding:5px 9px;border-radius:8px}
+@media (hover:hover){.raum button:hover img{transform:scale(1.05)}}
+
+/* ---------- Familie & Feiern ---------- */
+.zwei{display:grid;gap:16px}
+.karte2{background:rgba(251,247,240,.75);border:1px solid rgba(27,30,34,.12);border-radius:22px;padding:26px 22px;display:flex;flex-direction:column;gap:12px;transition:box-shadow .25s,transform .25s}
+@media (hover:hover){.karte2:hover{box-shadow:0 14px 40px rgba(91,74,67,.2)}}
+.karte2 h3{font:800 34px/.95 var(--head);text-transform:uppercase;margin:0}
+.karte2 p{margin:0}
+.karte2 blockquote{margin:4px 0 0;padding:12px 0 0 16px;border-left:3px solid var(--copper);font-style:italic;color:#4a423b}
+.karte2 blockquote cite{display:block;font-style:normal;font-size:14px;color:var(--muted);margin-top:6px}
+.karte2 .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
+.ico{width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--amber);display:grid;place-items:center}
+.ico svg{width:24px;height:24px}
+
+/* ---------- Gäste: Linie mit Halten ---------- */
+.score{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 34px}
+.score a{display:flex;align-items:baseline;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(243,235,222,.2);text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.score b{font:800 34px/1 var(--head);color:var(--amber)}
+.score span{font-size:14px;color:rgba(243,235,222,.8)}
+@media (hover:hover){.score a:hover{border-color:var(--amber);box-shadow:0 0 0 4px rgba(233,180,110,.14)}}
+.linie{list-style:none;margin:0;padding:0 0 0 30px;position:relative}
+.linie::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--amber),var(--copper) 60%,var(--lake))}
+.halt{position:relative;padding:0 0 30px}
+.halt:last-child{padding-bottom:0}
+.halt::before{content:"";position:absolute;left:-29px;top:4px;width:17px;height:17px;border-radius:50%;background:var(--ink2);border:3px solid var(--amber);transition:background-color .2s,box-shadow .2s}
+@media (hover:hover){.halt:hover::before{background:var(--amber);box-shadow:0 0 0 6px rgba(233,180,110,.2)}}
+.halt .wer{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:6px}
+.halt .wer b{font-weight:700}
+.halt .wer span{font-size:14px;color:var(--amber);letter-spacing:.12em}
+.halt .wer em{font-style:normal;font-size:13px;color:rgba(243,235,222,.55)}
+.halt q{display:block;font-size:18px;line-height:1.5;color:rgba(243,235,222,.94);quotes:"«" "»"}
+
+/* ---------- Besuch ---------- */
+.besuch{display:grid;gap:30px}
+.tage{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:0 0 14px}
+.tage button{min-height:48px;border-radius:10px;border:1.5px solid rgba(243,235,222,.22);background:transparent;cursor:pointer;font-weight:600;color:var(--cream);transition:border-color .2s,background-color .2s,color .2s,box-shadow .2s}
+@media (hover:hover){.tage button:hover{border-color:var(--amber);box-shadow:0 0 0 3px rgba(233,180,110,.18)}}
+.tage button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.zeit{border-radius:18px;background:rgba(243,235,222,.06);border:1px solid rgba(243,235,222,.12);padding:20px}
+.zeit .tg{font-size:15px;color:rgba(243,235,222,.7);margin:0 0 4px}
+.zeit .h{font:800 54px/1 var(--head);margin:0 0 12px;color:#fff}
+.zeit ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px;color:rgba(243,235,222,.85)}
+.zeit li{display:flex;gap:10px}
+.zeit li b{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--amber);min-width:62px;padding-top:2px}
+.kontakt address{font-style:normal;font-size:20px;line-height:1.45;margin:0 0 16px}
+.kontakt address a{text-decoration:none;border-bottom:1px solid rgba(233,180,110,.5);transition:color .2s,border-color .2s}
+@media (hover:hover){.kontakt address a:hover{color:var(--amber);border-color:var(--amber)}}
+.kontakt .row{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px}
+.kontakt .btn{color:var(--cream)}
+.kontakt .btn.fill{color:#fff}
+.kontakt .klein{font-size:14px;color:rgba(243,235,222,.65);margin:10px 0 0}
+.map{margin-top:8px;border-radius:18px;overflow:hidden;border:1px solid rgba(243,235,222,.12);aspect-ratio:4/3;background:var(--ink3)}
+.map iframe{width:100%;height:100%;border:0;display:block}
+footer{background:var(--ink);color:rgba(243,235,222,.6);font-size:14px;padding:26px 0 calc(26px + env(safe-area-inset-bottom));border-top:1px solid rgba(243,235,222,.08)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
+footer .logo{width:90px;height:28px;color:var(--cream)}
+
+/* ---------- Lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:80;background:rgba(12,14,17,.94);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;touch-action:pinch-zoom}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(243,235,222,.4);background:rgba(20,23,27,.6);color:#fff;font-size:24px;cursor:pointer}
+
+/* ---------- Grössere Bildschirme ---------- */
+@media (min-width:600px){
+  .top .tel{width:auto;padding:0 14px}
+  .top .tel span{display:inline}
+  .raum{grid-template-columns:repeat(3,1fr)}
+  .raum button.w{grid-column:span 2;aspect-ratio:auto}
+}
+@media (min-width:900px){
+  :root{--hh:70px}
+  .wrap{padding:0 40px}
+  .top .wrap{padding:0 28px}
+  .logo{width:132px;height:40px}
+  .top nav{display:flex}
+  .top .acts{margin-left:10px}
+  section{padding:120px 0}
+  .lead{font-size:20px}
+  /* Hero: links die Tafel, rechts das Bild */
+  .tag{--ph:100%;flex-direction:row}
+  .pics{left:max(40%,440px);height:100%}
+  .tag::after{left:max(40%,440px);height:100%;background:linear-gradient(90deg,rgba(20,23,27,.5) 0,rgba(20,23,27,0) 18%)}
+  .tafel{margin-top:0;flex:none;width:max(40%,440px);grid-template-columns:86px 1fr;column-gap:18px;padding:calc(var(--hh) + 34px) 44px 28px}
+  .meta{font-size:15px;margin-bottom:26px}
+  .meta h1{font-size:15px}
+  .rail .tick{font-size:11px}
+  .clock b{font-size:46px}
+  .clock{font-size:13px}
+  .st .when{font-size:12px}
+  .st h2{font-size:clamp(64px,6.2vw,104px)}
+  .st p{font-size:18px}
+  /* Zug */
+  .zug{display:grid;grid-template-columns:5fr 6fr;gap:60px;align-items:center}
+  .tipp{grid-template-columns:1fr 1fr}
+  .tipp figure{aspect-ratio:auto;min-height:340px}
+  .tipp .tx{padding:30px 28px}
+  /* Karte */
+  .sek{grid-template-columns:repeat(6,1fr)}
+  .sek button{flex-direction:column;align-items:flex-start;min-height:104px;padding:12px}
+  .panel{grid-template-columns:2fr 3fr}
+  .panel figure{aspect-ratio:auto;min-height:100%}
+  .panel.ohne{grid-template-columns:1fr}
+  .panel .list{padding:14px 32px 20px}
+  .panel.ohne .list{columns:2;column-gap:44px}
+  .panel.ohne .list h3,.panel.ohne .list .note{column-span:all}
+  .it{break-inside:avoid}
+  /* Haus */
+  .haus{grid-template-columns:7fr 5fr;gap:56px;align-items:center}
+  .raum{grid-template-columns:repeat(4,1fr);gap:12px}
+  .raum button.w{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .zwei{grid-template-columns:1fr 1fr;gap:22px}
+  .karte2{padding:34px 32px}
+  /* Gäste: Linie in der Mitte */
+  .linie{padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:90px}
+  .linie::before{left:50%;margin-left:-1.5px}
+  .halt{padding:0 0 46px}
+  .halt:nth-child(odd){grid-column:1;text-align:right}
+  .halt:nth-child(even){grid-column:2;margin-top:110px}
+  .halt:nth-child(odd)::before{left:auto;right:-54px}
+  .halt:nth-child(even)::before{left:-54px}
+  .halt:nth-child(odd) .wer{justify-content:flex-end}
+  .halt q{font-size:19px}
+  .besuch{grid-template-columns:5fr 6fr;gap:60px}
+  .map{aspect-ratio:16/10}
+}
+@media (min-width:900px) and (max-height:760px){
+  .st h2{font-size:60px}
+  .tafel{padding-top:calc(var(--hh) + 20px)}
+}
+@media (max-width:370px){
+  .sek button{flex-direction:column;align-items:flex-start;gap:6px;min-height:92px}
+  .sek button b{font-size:26px;width:28px;height:32px}
+  .mins b{font-size:22px}
+  .sek button span{font-size:13px}
+  .st h2{font-size:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rise{opacity:1;transform:none;transition:none}
+  .hint .go svg{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#tag" class="logo" aria-label="Bodan Restaurant • Lounge – zum Anfang"></a>
+    <nav aria-label="Seiten">
+      <a href="#zug">Zug</a>
+      <a href="#karte">Karte</a>
+      <a href="#haus">Haus</a>
+      <a href="#feiern">Feiern</a>
+      <a href="#gaeste">Gäste</a>
+      <a href="#besuch">Besuch</a>
+    </nav>
+    <div class="acts">
+      <a class="btn tel" href="tel:+41712223434" aria-label="Anrufen: 071 222 34 34"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg><span>071 222 34 34</span></a>
+      <a class="btn fill" href="https://www.local.ch/de/d/romanshorn/8590/lounge/restaurant-lounge-bodan-romanshorn-o8p-9_UDoLK8gJtnWI5J8Q" target="_blank" rel="noopener">Reservieren</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="tag" id="tag" aria-label="Ein Tag im Bodan" style="padding:0">
+  <div class="pics" aria-hidden="true">
+    <img src="img/g01_m.webp" srcset="img/g01_m.webp 820w, img/g01_l.webp 1360w" sizes="(min-width:900px) 60vw, 200vw" alt="" fetchpriority="high" style="object-position:50% 50%">
+    <img src="img/g17_m.webp" srcset="img/g17_m.webp 750w" sizes="(min-width:900px) 60vw, 200vw" alt="" style="object-position:40% 50%">
+    <img src="img/g06_m.webp" srcset="img/g06_m.webp 750w" sizes="(min-width:900px) 60vw, 200vw" alt="" style="object-position:60% 40%">
+    <img src="img/g13_m.webp" srcset="img/g13_m.webp 820w, img/g13_l.webp 1600w" sizes="(min-width:900px) 60vw, 200vw" alt="" style="object-position:38% 40%">
+    <img src="img/g05_m.webp" srcset="img/g05_m.webp 820w, img/g05_l.webp 1600w" sizes="(min-width:900px) 60vw, 200vw" alt="" style="object-position:55% 50%">
+  </div>
+  <div class="tafel">
+    <div class="meta">
+      <h1>Bodan Restaurant • Lounge</h1>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn" target="_blank" rel="noopener">Bahnhofstrasse 1, gegenüber dem Bahnhof Romanshorn</a>
+      <a href="tel:+41712223434">071 222 34 34</a>
+    </div>
+    <div class="rail" aria-hidden="true">
+      <div class="line"></div><div class="done" id="railDone"></div>
+      <div class="tick" data-h="8">08:00</div>
+      <div class="tick" data-h="11.5">11:30</div>
+      <div class="tick" data-h="17">17:00</div>
+      <div class="tick" data-h="19">19:00</div>
+      <div class="tick" data-h="22">22:00</div>
+      <div class="tick" data-h="25">01:00</div>
+      <div class="now" id="railNow"><i></i></div>
+    </div>
+    <div class="zeitwrap">
+      <div class="clock" aria-hidden="true"><b id="uhr">08:00</b><span>Uhr im Bodan</span></div>
+      <div class="stages">
+    <div class="st on"><p class="when">Ab 08:00 · Sa &amp; So ab 10:00</p><h2>Zmorge &amp; Kaffee</h2><p>Cappuccino, Gipfeli und Frühstück am Holztresen, bevor der Zug fährt.</p></div>
+    <div class="st"><p class="when">Ab 11:30</p><h2>Mittag</h2><p>Mittagsmenü mit Salat oder Suppe, dazu ein Kaffee. Im hellen Saal mit Blick auf die Bahnhofstrasse.</p></div>
+    <div class="st"><p class="when">Ab 17:00</p><h2>Sushi &amp; Steaks</h2><p>Abends steht im Bodan alles im Zeichen von Sushi und Steaks. Die Rollen werden frisch geschnitten.</p></div>
+    <div class="st"><p class="when">Den ganzen Abend</p><h2>Pizza aus dem Ofen</h2><p>Hauchdünn, auf Wunsch vegan, und für den grossen Tisch gibt es sie mit 50 cm Durchmesser.</p></div>
+    <div class="st"><p class="when">Bis 23:00 · Fr &amp; Sa bis 01:00</p><h2>Lounge &amp; Bar</h2><p>Cocktails, Whisky und Bier vom Fass in den Lederpolstern. Dart gibt es auch.</p></div>
+      </div>
+    </div>
+    <div class="hint">
+      <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M5 13l7 7 7-7"/></svg><span id="hintTx">Scrollen: ein Tag im Bodan</span></span>
+      <button type="button" id="skip">Überspringen</button>
+    </div>
+  </div>
+</section>
+
+<section class="s-zug" id="zug">
+  <div class="wrap zug">
+    <div class="rise">
+      <p class="kick">Zug oder Schiff</p>
+      <h2>Wie viel Zeit bis zum Zug?</h2>
+      <p class="lead">Der Bahnhof ist gleich gegenüber, das Schiff nach Friedrichshafen ein paar Minuten zu Fuss. Wählen Sie, wie viel Zeit Sie haben.</p>
+      <div class="mode" role="group" aria-label="Verkehrsmittel">
+        <button type="button" data-m="zug" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/><circle cx="9" cy="14" r=".8" fill="currentColor"/><circle cx="15" cy="14" r=".8" fill="currentColor"/></svg>Zug</button>
+        <button type="button" data-m="schiff" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/></svg>Schiff</button>
+      </div>
+      <div class="mins" role="group" aria-label="Zeit bis zur Abfahrt">
+        <button type="button" data-t="10"><b>10</b><small>Min.</small></button>
+        <button type="button" data-t="20"><b>20</b><small>Min.</small></button>
+        <button type="button" data-t="45" aria-pressed="true"><b>45</b><small>Min.</small></button>
+        <button type="button" data-t="90"><b>1½</b><small>Std.</small></button>
+        <button type="button" data-t="0"><b>∞</b><small>bleibe</small></button>
+      </div>
+    </div>
+    <article class="tipp rise" aria-live="polite">
+      <figure><img id="tImg" src="img/g17_m.webp" alt="Speisesaal im Bodan" loading="lazy"></figure>
+      <div class="tx">
+        <div class="ab mono" id="tAb">Abfahrt um 13:05</div>
+        <h3 id="tH">Mittagsmenü</h3>
+        <p id="tP"></p>
+        <p class="zu" id="tZu" hidden></p>
+        <a class="btn fill" id="tBtn" href="#karte">Zur Karte</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="s-karte" id="karte">
+  <div class="wrap">
+    <div class="rise">
+      <p class="kick">Sektor A bis F</p>
+      <h2>Die Karte</h2>
+      <p class="lead">Von Sushi bis Pizza für den ganzen Tisch: wählen Sie einen Sektor.</p>
+    </div>
+    <div class="sek rise" role="group" aria-label="Sektoren der Karte" id="sek"></div>
+    <div class="panel rise" id="panel"></div>
+    <p class="fuss">Preise in CHF wie auf der Online-Bestellkarte (Just Eat); im Restaurant können sie abweichen.</p>
+  </div>
+</section>
+
+<section class="s-haus" id="haus">
+  <div class="wrap">
+    <div class="haus">
+      <figure class="wand rise" data-big="img/g03_l.webp">
+        <img src="img/g03_m.webp" srcset="img/g03_m.webp 820w, img/g03_l.webp 1600w" sizes="(min-width:900px) 58vw, 100vw" alt="Wandbild im Bodan: das alte Hotel Bodan mit Billard-Restaurant" loading="lazy">
+        <figcaption>Das Wandbild im Saal: das alte Hotel Bodan</figcaption>
+      </figure>
+      <div class="rise">
+        <p class="kick">Restaurant · Lounge · Bar</p>
+        <h2>Ein Haus mit Geschichte</h2>
+        <p class="lead" style="margin-bottom:0">An der Wand fahren noch die Kutschen vor dem alten Hotel Bodan vor. Davor: Holz, Kupferlampen und viel Platz, komplett renoviert.</p>
+        <ul class="chips">
+          <li>Spielraum für Kinder</li><li>Lounge &amp; Bar</li><li>Raucherlounge</li><li>Dart</li><li>Terrasse</li><li>TWINT &amp; Karte</li>
+        </ul>
+      </div>
+    </div>
+    <div class="raum rise" id="raum">
+      <button type="button" class="w" data-big="img/g05_l.webp"><img src="img/g05_m.webp" alt="Lounge mit Lederpolstern" loading="lazy"><span>Lounge</span></button>
+      <button type="button" data-big="img/g04_l.webp"><img src="img/g04_m.webp" alt="Saal mit Holzdecke" loading="lazy"><span>Saal</span></button>
+      <button type="button" data-big="img/g12_l.webp"><img src="img/g12_m.webp" alt="Wein wird eingeschenkt" loading="lazy"><span>Wein</span></button>
+      <button type="button" data-big="img/g07_l.webp"><img src="img/g07_m.webp" alt="Terrasse an der Bahnhofstrasse" loading="lazy"><span>Terrasse</span></button>
+      <button type="button" data-big="img/g10_l.webp"><img src="img/g10_m.webp" alt="Bier vom Fass" loading="lazy"><span>Vom Fass</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="s-feiern" id="feiern">
+  <div class="wrap">
+    <div class="rise">
+      <p class="kick">Familien und Gruppen</p>
+      <h2>Platz für alle</h2>
+    </div>
+    <div class="zwei">
+      <article class="karte2 rise">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="3"/><path d="M12 9v7M8 21l4-5 4 5M7 12h10"/></svg></div>
+        <h3>Mit Kindern</h3>
+        <p>Während die Grossen essen, spielen die Kleinen im eigenen Spielraum gleich nebenan.</p>
+        <blockquote>Besonders toll fanden wir den liebevoll eingerichteten Spielraum für Kinder – perfekt für Familien.<cite>Dascha Seibel, Google</cite></blockquote>
+      </article>
+      <article class="karte2 rise">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/></svg></div>
+        <h3>Gruppen &amp; Feiern</h3>
+        <p>Firmenfeier, Geburtstag oder Hochzeit: grosse Gruppen sind willkommen. Für den langen Tisch gibt es Pizza mit 50 cm Durchmesser.</p>
+        <blockquote>Wir waren mit 10 verwöhnten Leuten da, alle sehr zufrieden!<cite>Markus Bihler, Google</cite></blockquote>
+        <div class="row">
+          <a class="btn fill" href="mailto:info@restaurant-bodan.ch?subject=Anfrage%20Feier%20im%20Bodan">Anfrage senden</a>
+          <a class="btn" href="tel:+41712223434">Anrufen</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="s-gaeste" id="gaeste">
+  <div class="wrap">
+    <div class="rise">
+      <p class="kick">Stimmen</p>
+      <h2>Was Gäste sagen</h2>
+    </div>
+    <div class="score rise">
+      <a href="https://www.google.com/maps?cid=6969817241493487356" target="_blank" rel="noopener"><b>4,3</b><span>Google · 215 Bewertungen</span></a>
+      <a href="https://www.just-eat.ch/speisekarte/restaurant-bodan" target="_blank" rel="noopener"><b>4,5</b><span>Just Eat · über 300 Bewertungen</span></a>
+    </div>
+    <ol class="linie">
+      <li class="halt rise"><div class="wer"><b>Nara</b><span>★★★★★</span><em>Google</em></div><q>Super Ort um beste Sushi Romanshorns zu probieren. Nette Service und direkt am Bahnhof. Gerne komme ich wieder.</q></li>
+      <li class="halt rise"><div class="wer"><b>Franziska</b><span>★★★★★</span><em>Google</em></div><q>Iced Matcha Latte (mit Hafermilch) war der beste, den ich je getrunken habe. 😍 ein weiteres Must-Try sind die Crispy Salmon Sushi! Die Pizzen sind ebenfalls hauchdünn und geschmacklich eine 10 von 10!</q></li>
+      <li class="halt rise"><div class="wer"><b>M. B.</b><span>★★★★★</span><em>Google</em></div><q>Sehr leckeres Abendessen genossen in großer Gruppe mit 10 Personen und als Abschluss einen sensationellen Espresso. Sehr zu empfehlen. Wir gehen gerne wieder, wenn wir mit dem Boot wieder in Romanshorn anlegen!</q></li>
+      <li class="halt rise"><div class="wer"><b>Dragana Stucki</b><span>★★★★★</span><em>Google</em></div><q>Wir waren mit unseren Kindern (2&amp;5) im Restaurant Bodan. Das Essen war super, der Servicefachmann war super freundlich sowie zuvorkommend. Auch konnten sich unsere Kinder zwischen den Wartezeiten im Indoorspielbereich beschäftigen.</q></li>
+      <li class="halt rise"><div class="wer"><b>Una Pietra</b><span>★★★★☆</span><em>Google</em></div><q>Das Bodan liegt perfekt gelegen und gut sichtbar gegenüber dem Bahnhof. Die Anbindung am ÖV ist exzellent.</q></li>
+      <li class="halt rise"><div class="wer"><b>Orion Satin</b><span>★★★★★</span><em>Google</em></div><q>Tolles Personal, gute Küche. Superschön dekoriert, richtig festlich!</q></li>
+    </ol>
+  </div>
+</section>
+
+<section class="s-besuch" id="besuch">
+  <div class="wrap besuch">
+    <div class="rise">
+      <p class="kick">Öffnungszeiten</p>
+      <h2>Wann wir da sind</h2>
+      <div class="tage" role="group" aria-label="Wochentag wählen" id="tage"></div>
+      <div class="zeit">
+        <p class="tg" id="zTag">Heute</p>
+        <p class="h mono" id="zH" style="font-family:var(--head)">08:00 – 23:00</p>
+        <ul>
+          <li><b>Abholung</b><span>ab 11:30</span></li>
+          <li><b>Lieferung</b><span>ab 17:00 über Just Eat</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="kontakt rise">
+      <p class="kick">Besuch</p>
+      <address>Bodan Restaurant • Lounge<br>Bahnhofstrasse 1, 8590 Romanshorn<br><a href="tel:+41712223434">071 222 34 34</a><br><a href="mailto:info@restaurant-bodan.ch">info@restaurant-bodan.ch</a></address>
+      <div class="row">
+        <a class="btn fill" href="https://www.local.ch/de/d/romanshorn/8590/lounge/restaurant-lounge-bodan-romanshorn-o8p-9_UDoLK8gJtnWI5J8Q" target="_blank" rel="noopener">Tisch reservieren</a>
+        <a class="btn" href="tel:+41712223434">Anrufen</a>
+        <a class="btn" href="https://www.just-eat.ch/speisekarte/restaurant-bodan" target="_blank" rel="noopener">Liefern lassen</a>
+        <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn" target="_blank" rel="noopener">Route</a>
+        <a class="btn" href="https://www.instagram.com/restaurant_bodan/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="map"><iframe title="Karte: Bahnhofstrasse 1, Romanshorn" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn&z=16&output=embed"></iframe></div>
+      <p class="klein">Bezahlen mit TWINT, Karte, bar oder WIR.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span class="logo" aria-hidden="true"></span><span>Bahnhofstrasse 1 · 8590 Romanshorn</span><span>Entwurf · nur zur Ansicht</span></div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bild gross"><img id="lbImg" alt=""><button type="button" aria-label="Schliessen">×</button></div>
+
+<script>
+(function(){
+"use strict";
+var D=document, W=window;
+var reduce=W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+try{history.scrollRestoration='manual'}catch(e){}
+
+/* ================= Ein Tag im Bodan ================= */
+var hero=D.getElementById('tag'), imgs=[].slice.call(hero.querySelectorAll('.pics img')),
+    sts=[].slice.call(hero.querySelectorAll('.st')), ticks=[].slice.call(hero.querySelectorAll('.tick')),
+    rail=hero.querySelector('.rail'), now=D.getElementById('railNow'), doneBar=D.getElementById('railDone'),
+    uhr=D.getElementById('uhr'), hintTx=D.getElementById('hintTx');
+var START=8, END=25, STAGE=[8,11.5,17,19,22];
+var p=0, t=0, fertig=false, lastBlock=0, rafId=0, lastTs=0, cur=-1;
+function clamp(v,a,b){return v<a?a:v>b?b:v}
+function hh(h){h=((h%24)+24)%24;var m=Math.round(h*6)*10;var H=Math.floor(m/60)%24,M=m%60;return (H<10?'0':'')+H+':'+(M<10?'0':'')+M}
+function railH(){return rail.clientHeight}
+function render(){
+  var h=START+p*(END-START), R=railH();
+  now.style.transform='translateY('+(p*R).toFixed(1)+'px)';
+  doneBar.style.height=(p*R).toFixed(1)+'px';
+  uhr.textContent=hh(h);
+  ticks.forEach(function(k){var kh=+k.dataset.h;k.style.top=((kh-START)/(END-START)*100)+'%';k.classList.toggle('on',h>=kh-0.01)});
+  for(var i=1;i<imgs.length;i++){
+    var o=clamp((h-(STAGE[i]-0.9))/0.9,0,1);
+    imgs[i].style.opacity=o.toFixed(3);
+    imgs[i].style.transform='scale('+(1.06-0.06*o).toFixed(4)+')';
+  }
+  var s=0;for(var j=0;j<STAGE.length;j++){if(h>=STAGE[j]-0.45)s=j}
+  if(s!==cur){cur=s;sts.forEach(function(el,k){el.classList.toggle('on',k===s)})}
+}
+function loop(ts){
+  var dt=lastTs?Math.min(0.05,(ts-lastTs)/1000):0.016; lastTs=ts;
+  var d=t-p;
+  if(Math.abs(d)<0.0008){p=t}else{
+    var step=Math.max(Math.abs(d)*5*dt,0.12*dt); step=Math.min(step,0.75*dt,Math.abs(d));
+    p+=d>0?step:-step;
+  }
+  render();
+  if(p>=1&&t>=1){p=1;render();ende();rafId=0;lastTs=0;return}
+  if(p!==t){rafId=requestAnimationFrame(loop)}else{rafId=0;lastTs=0}
+}
+function kick(){if(!rafId)rafId=requestAnimationFrame(loop)}
+function ende(){if(fertig)return;fertig=true;lastBlock=performance.now();hero.classList.add('fertig');hintTx.textContent='Weiter: Zug, Karte, Haus';D.getElementById('skip').textContent='Zur Karte';D.getElementById('skip').dataset.z='karte'}
+function locked(){return !fertig&&W.scrollY<=2}
+function vorspulen(){t=1;p=1;render();ende()}
+
+W.addEventListener('wheel',function(e){
+  var n=performance.now();
+  if(locked()){
+    e.preventDefault(); lastBlock=n;
+    var d=e.deltaY*(e.deltaMode===1?40:e.deltaMode===2?W.innerHeight:1);
+    t=clamp(t+d/1500,0,1); kick(); return;
+  }
+  if(fertig&&n-lastBlock<140&&W.scrollY<=2&&e.deltaY>0){e.preventDefault();lastBlock=n}
+},{passive:false});
+
+var ty=null,tt=0,tv=0,gLock=false;
+W.addEventListener('touchstart',function(e){if(e.touches.length!==1){ty=null;return}ty=e.touches[0].clientY;tt=performance.now();tv=0;gLock=locked()},{passive:true});
+W.addEventListener('touchmove',function(e){
+  if(ty===null||!gLock)return;
+  e.preventDefault();
+  var y=e.touches[0].clientY,d=ty-y,n=performance.now();
+  if(!fertig){t=clamp(t+d/(W.innerHeight*1.4),0,1);kick()}
+  tv=d/Math.max(8,n-tt);ty=y;tt=n;
+},{passive:false});
+W.addEventListener('touchend',function(){
+  if(gLock&&!fertig&&tv>0.5){t=clamp(t+tv*0.2,0,1);kick()}
+  ty=null;gLock=false;
+},{passive:true});
+W.addEventListener('keydown',function(e){
+  if(!locked())return;
+  var k=e.key;
+  if(k==='ArrowDown'||k==='PageDown'||k===' '||k==='Spacebar'){e.preventDefault();t=clamp(t+0.22,0,1);kick()}
+  else if(k==='ArrowUp'||k==='PageUp'){e.preventDefault();t=clamp(t-0.22,0,1);kick()}
+  else if(k==='End'){vorspulen()}
+});
+W.addEventListener('scroll',function(){if(!fertig&&W.scrollY>2&&!sprung){W.scrollTo(0,0)}},{passive:true});
+var sprung=false;
+function geheZu(id){var el=D.getElementById(id);if(!el)return;sprung=true;vorspulen();el.scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(function(){sprung=false},1200)}
+D.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;
+  var id=a.getAttribute('href').slice(1);if(!id)return;
+  if(id==='tag'){e.preventDefault();W.scrollTo({top:0,behavior:reduce?'auto':'smooth'});return}
+  e.preventDefault();geheZu(id);
+});
+D.getElementById('skip').addEventListener('click',function(){geheZu(this.dataset.z||'zug')});
+W.addEventListener('resize',render);
+if(reduce||location.hash.length>1){vorspulen();if(location.hash.length>1){var hid=location.hash.slice(1);setTimeout(function(){geheZu(hid)},50)}}
+else{W.scrollTo(0,0)}
+render();
+
+/* ================= Einblenden ================= */
+var rs=[].slice.call(D.querySelectorAll('.rise'));
+if('IntersectionObserver' in W&&!reduce){
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('shown');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.01});
+  rs.forEach(function(el){io.observe(el)});
+}else rs.forEach(function(el){el.classList.add('shown')});
+
+/* ================= Öffnungszeiten ================= */
+var ZEIT={1:[8,23],2:[8,23],3:[8,23],4:[8,23],5:[8,25],6:[10,25],0:[10,23]};
+var TN=['So','Mo','Di','Mi','Do','Fr','Sa'], TL=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+function zuerich(){var s=new Date().toLocaleString('en-US',{timeZone:'Europe/Zurich'});return new Date(s)}
+var heute=zuerich().getDay(), tage=D.getElementById('tage');
+[1,2,3,4,5,6,0].forEach(function(d){var b=D.createElement('button');b.type='button';b.textContent=TN[d];b.dataset.d=d;b.setAttribute('aria-pressed',d===heute?'true':'false');b.setAttribute('aria-label',TL[d]);tage.appendChild(b)});
+function zeigTag(d){
+  [].forEach.call(tage.children,function(b){b.setAttribute('aria-pressed',+b.dataset.d===d?'true':'false')});
+  D.getElementById('zTag').textContent=(d===heute?'Heute, ':'')+TL[d];
+  var z=ZEIT[d];D.getElementById('zH').textContent=hh(z[0])+' – '+hh(z[1]);
+}
+tage.addEventListener('click',function(e){var b=e.target.closest('button');if(b)zeigTag(+b.dataset.d)});
+zeigTag(heute);
+function offenUm(date){
+  var d=date.getDay(),h=date.getHours()+date.getMinutes()/60;
+  var z=ZEIT[d];if(h>=z[0]&&h<z[1])return true;
+  var y=ZEIT[(d+6)%7];if(y[1]>24&&h<y[1]-24)return true;return false;
+}
+
+/* ================= Zug-Rechner ================= */
+var JE='https://www.just-eat.ch/speisekarte/restaurant-bodan', LOCAL='https://www.local.ch/de/d/romanshorn/8590/lounge/restaurant-lounge-bodan-romanshorn-o8p-9_UDoLK8gJtnWI5J8Q';
+var TIPP={
+  10:{img:'g01',alt:'Tresen mit Kuchenvitrine',h:'Kaffee &amp; Gipfeli to go',p:'Am Tresen bestellen, mitnehmen und rüber {zum}.',b:['Zur Karte: Zmorge','#karte','E']},
+  20:{img:'g16',alt:'Pizzaiolo mit Pizzateig',h:'Pizza zum Mitnehmen',p:'Kurz anrufen, Pizza abholen und {im} essen. Hauchdünn, auf Wunsch vegan.',b:['071 222 34 34 anrufen','tel:+41712223434']},
+  45:{img:'g17',alt:'Speisesaal im Bodan',h:'Mittagsmenü oder Bowl',p:'Hinsetzen, essen, ein Kaffee, und dann ganz entspannt {weg}.',b:['Zur Karte','#karte','D']},
+  90:{img:'g11',alt:'Sushi-Rollen auf einer Platte',h:'Sushi und ein Glas Wein',p:'Eine Crunchy Salmon, danach noch ein Glas. {Naechste} fährt ja auch noch.',b:['Tisch reservieren',LOCAL]},
+  0:{img:'g05',alt:'Lounge mit Lederpolstern',h:'{Lassen} fahren',p:'Lounge, Cocktails und Dart. Freitag und Samstag bis 01:00.',b:['Tisch reservieren',LOCAL]}
+};
+var WORT={zug:{zum:'zum Gleis',im:'im Zug',weg:'aufs Gleis',Naechste:'Der nächste Zug',Lassen:'Den Zug',ab:'Ihr Zug fährt um'},
+          schiff:{zum:'zum Hafen',im:'auf dem Schiff',weg:'an Bord',Naechste:'Das nächste Schiff',Lassen:'Das Schiff',ab:'Ihr Schiff legt ab um'}};
+var modus='zug', minuten=45;
+function fill(s){return s.replace(/\{(\w+)\}/g,function(_,k){return WORT[modus][k]})}
+function tipp(){
+  var T=TIPP[minuten], n=zuerich(), img=D.getElementById('tImg');
+  if(img.getAttribute('src')!=='img/'+T.img+'_m.webp'){img.style.opacity=0;setTimeout(function(){img.src='img/'+T.img+'_m.webp';img.alt=T.alt;img.onload=function(){img.style.opacity=1}},180)}
+  var ab=D.getElementById('tAb');
+  if(minuten){var a=new Date(n.getTime()+minuten*60000);ab.textContent=WORT[modus].ab+' '+hh(a.getHours()+a.getMinutes()/60)}
+  else ab.textContent='Kein Fahrplan heute Abend';
+  D.getElementById('tH').innerHTML=fill(T.h);D.getElementById('tP').innerHTML=fill(T.p);
+  var zu=D.getElementById('tZu');
+  if(!offenUm(n)){zu.hidden=false;var d=n.getDay(),hn=n.getHours()+n.getMinutes()/60,morgen=hn<ZEIT[d][0]?d:(d+1)%7;zu.textContent='Gerade geschlossen. Wieder offen ab '+hh(ZEIT[morgen][0])+' Uhr.'}else zu.hidden=true;
+  var b=D.getElementById('tBtn');b.textContent=T.b[0];b.href=T.b[1];b.dataset.sek=T.b[2]||'';
+  if(/^http/.test(T.b[1])){b.target='_blank';b.rel='noopener'}else{b.removeAttribute('target')}
+}
+D.querySelector('.mode').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;modus=b.dataset.m;[].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});tipp()});
+D.querySelector('.mins').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;minuten=+b.dataset.t;[].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});tipp()});
+D.getElementById('tBtn').addEventListener('click',function(){if(this.dataset.sek)zeigSek(this.dataset.sek)});
+tipp();
+
+/* ================= Karte ================= */
+// Quelle: Online-Karte Just Eat «Restaurant Bodan» und «Sushi Bodan», 24.11.2026; Beschreibungen gekürzt
+var KARTE=[
+ {k:'A',n:'Sushi',img:'g11',alt:'Sushi-Rollen mit essbaren Blüten',note:'Rollen frisch geschnitten, auch zum Mitnehmen.',it:[
+  ['Crunchy Salmon','8 Stück · knusprige Rolle mit Lachs, Avocado, Teriyaki und Chili-Mayo','24.–'],
+  ['Spicy Tuna','8 Stück · Crevetten knusprig, Avocado, Topping aus scharfem Thunfisch-Tatar','24.–'],
+  ['Spicy Salmon','8 Stück','22.–'],['Flam Salmon','8 Stück','22.–'],
+  ['Bodan Futu Maki','10 Stück','22.–'],['Vegi Mix Rolls','8 Stück, vegetarisch','18.–'],
+  ['Vegi Mix Futu Maki','10 Stück, vegetarisch','18.–'],['Mango Rolls','8 Stück','17.–'],
+  ['Tropical Rolls','8 Stück','17.–'],['California Salmon','8 Stück','17.–'],
+  ['California Tuna','8 Stück','15.–'],['Kappa Rolls','8 Stück, Gurke','15.–'],
+  ['Alaska Maki','6 Stück','12.–'],['Avocado Maki','6 Stück','10.–'],['Shake Maki','6 Stück, Lachs','10.–'],
+  ['Tekka Maki','6 Stück, Thunfisch','10.–'],['Kappa Maki','6 Stück, Gurke','8.–'],
+  ['Goma Wakame','Algensalat mit Sesam','12.–'],['Poke Bowl Lachs','','18.–']]},
+ {k:'B',n:'Pizza',img:'g08',alt:'Pizza mit Rucola und Cherrytomaten',note:'Hauchdünn aus dem Ofen, in zwei Grössen: Ø 32 cm oder Ø 50 cm für den ganzen Tisch.',it:[
+  ['Margherita','','Ø 32 / 50'],['Salame','','Ø 32 / 50'],['Regina','','Ø 32 / 50'],['Prosciutto','','Ø 32 / 50'],
+  ['Tonno','','Ø 32 / 50'],['Capricciosa','','Ø 32 / 50'],['Hawaii','','Ø 32 / 50'],['Frutti di Mare','','Ø 32 / 50']]},
+ {k:'C',n:'Pasta & Lasagne',note:'Alle Pasta-Gerichte mit einer Pastasorte nach Wahl.',it:[
+  ['Pasta Bolognese','','ab 19.–'],['Bolognese überbacken','','ab 20.–'],['Lasagne Bolognese','','ab 18.–']]},
+ {k:'D',n:'Burger & Bowls',note:'Preise ab, je nach Variante.',it:[
+  ['Cheeseburger','','ab 12.50'],['Chicken Burger','','ab 13.–'],['Chili Cheeseburger','scharf','ab 14.–'],
+  ['Creamy Burger','','ab 15.–'],['BBQ Burger','','ab 16.–'],['Trüffelburger','','ab 18.–'],
+  ['Poke Bowl Crispy-Poulet','','18.–'],['Süsskartoffel-Pommes','','10.–'],['Gemischter Salat','Cherrytomaten, Mais, Hausdressing','10.–']]},
+ {k:'E',n:'Zmorge & Café',img:'g01',alt:'Holztresen mit Kuchenvitrine',note:'Ab 08:00, Samstag und Sonntag ab 10:00.',it:[
+  ['Gipfeli &amp; Cappuccino','am Tresen oder zum Mitnehmen','Tresen'],['Frühstück','','ab 08:00'],
+  ['Iced Matcha Latte','auch mit Hafermilch','Bar'],['Tee','Auswahl aus den Dosen','Bar'],['Desserts','Früchte-Desserts, Kuchen aus der Vitrine','Vitrine']]},
+ {k:'F',n:'Bar & Lounge',img:'g02',alt:'Cocktail mit Minze',note:'Bis 23:00, Freitag und Samstag bis 01:00.',it:[
+  ['Cocktails','von der Bar, auch Hugo','Bar'],['Japanischer Whisky','und weitere Spirituosen','Bar'],
+  ['Bier vom Fass','','Zapfhahn'],['Wein','abends Rotwein zum Verkosten','Glas'],['Espresso','zum Abschluss','Bar']]}
+];
+var sek=D.getElementById('sek'), panel=D.getElementById('panel'), aktiv='A', offen={};
+KARTE.forEach(function(c){var b=D.createElement('button');b.type='button';b.dataset.k=c.k;b.innerHTML='<b>'+c.k+'</b><span>'+c.n.replace('&','&amp;')+'</span>';sek.appendChild(b)});
+function zeigSek(k){
+  aktiv=k;var c=KARTE.filter(function(x){return x.k===k})[0];
+  [].forEach.call(sek.children,function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});
+  panel.className='panel shown'+(c.img?'':' ohne');
+  panel.innerHTML=(c.img?'<figure><img src="img/'+c.img+'_m.webp" alt="'+c.alt+'" loading="lazy"></figure>':'')+
+   '<div class="list"><h3>Sektor '+c.k+' · '+c.n.replace('&','&amp;')+'</h3><p class="note">'+c.note+'</p>'+
+   c.it.map(function(i,n){return '<div class="it'+(n>=8&&!offen[k]?' zu':'')+'"><b>'+i[0]+'</b>'+(i[1]?'<small>'+i[1]+'</small>':'')+'<span class="pr">'+i[2]+'</span></div>'}).join('')+
+   (c.it.length>8&&!offen[k]?'<button type="button" class="btn mehr">Alle '+c.it.length+' zeigen</button>':'')+'</div>';
+}
+sek.addEventListener('click',function(e){var b=e.target.closest('button');if(b)zeigSek(b.dataset.k)});
+panel.addEventListener('click',function(e){if(e.target.closest('.mehr')){offen[aktiv]=true;zeigSek(aktiv);return}var it=e.target.closest('.it');if(!it)return;[].forEach.call(panel.querySelectorAll('.it.tap'),function(x){if(x!==it)x.classList.remove('tap')});it.classList.toggle('tap')});
+zeigSek('A');
+
+/* ================= Lightbox ================= */
+var lb=D.getElementById('lb'), lbImg=D.getElementById('lbImg');
+D.addEventListener('click',function(e){var el=e.target.closest('[data-big]');if(!el)return;var im=el.querySelector('img');lbImg.src=el.dataset.big;lbImg.alt=im?im.alt:'';lb.classList.add('open')});
+lb.addEventListener('click',function(e){if(e.target===lbImg)return;lb.classList.remove('open')});
+lb.querySelector('button').addEventListener('click',function(){lb.classList.remove('open')});
+D.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+})();
+</script>
+</body>
+</html>
