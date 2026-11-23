@@ -321,6 +321,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 @media (max-width:520px){.filters{gap:5px}.f{padding:7px 9px;font-size:12.5px;border-width:1.2px}}
 @media (max-width:370px){.f{padding:6px 7px;font-size:12px}}
 @media (max-width:520px){.dishes{grid-template-columns:1fr;gap:16px}.dish img{aspect-ratio:4/3;height:auto}.dish.in{transition-delay:0s!important}}
+.seg.one{flex-wrap:nowrap}
+@media (max-width:760px){.tabs{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:24px}}
+@media (max-width:520px){.seg.one{gap:6px}.seg.one button{flex:1 1 0;min-width:0;padding:11px 4px;font-size:14px;text-align:center;white-space:nowrap}}
+@media (max-width:370px){.seg.one button{font-size:13px;padding:10px 2px}}
+@media (max-width:520px){.seg.one button small{font-size:11.5px}}
 /* ---------- Adresse unterstrichen ---------- */
 .addr-u{color:var(--lamp);font-weight:700;text-decoration:none;background:linear-gradient(90deg,var(--gold),var(--gold2)) 0 100%/0% 2px no-repeat;padding-bottom:3px;transition:background-size 1.1s cubic-bezier(.6,0,.2,1) .4s,color .2s}
 .moved.in .addr-u{background-size:100% 2px}
@@ -462,18 +467,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
           <div class="stepper"><button type="button" id="pm" aria-label="Eine Person weniger">−</button><output id="pers">4 Personen</output><button type="button" id="pp" aria-label="Eine Person mehr">+</button></div>
         </div>
         <div><span class="lb">Hunger</span>
-          <div class="seg" id="hunger">
+          <div class="seg one" id="hunger">
             <button data-v="10" aria-pressed="false">Klein<small>≈ 10 Stück p. P.</small></button>
             <button data-v="14" aria-pressed="true">Normal<small>≈ 14 Stück p. P.</small></button>
             <button data-v="18" aria-pressed="false">Gross<small>≈ 18 Stück p. P.</small></button>
           </div>
         </div>
         <div><span class="lb">Stil</span>
-          <div class="seg" id="stil">
+          <div class="seg one" id="stil">
             <button data-v="mix" aria-pressed="true">Gemischt</button>
             <button data-v="crunchy" aria-pressed="false">Crunchy</button>
             <button data-v="vegi" aria-pressed="false">Vegi</button>
-            <button data-v="cooked" aria-pressed="false">Gegart<small>gegart, flambiert, frittiert</small></button>
+            <button data-v="cooked" aria-pressed="false" title="Fisch &amp; Meeresfrüchte gegart, flambiert oder frittiert">Gegart</button>
           </div>
         </div>
         <div class="board"><ol id="boardList"></ol><div class="sum"><span>Ihre Platte</span><span>Fr. <span id="bFr">0</span></span></div></div>
