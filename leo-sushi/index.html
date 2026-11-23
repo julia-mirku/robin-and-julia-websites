@@ -385,23 +385,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .zb-hint{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:13px;color:#a79f8d;pointer-events:none}
 
 @media (max-width:520px){.dayinfo .hh{font-size:21px}}
-/* ---------- Seitennavigation (nur zum Vergleich, ab 1280 px) ---------- */
-.sidenav{display:none}
-@media (min-width:1280px){
-  html.sn .sidenav{display:flex;flex-direction:column;gap:4px;position:fixed;left:28px;top:50%;transform:translateY(-50%);z-index:40;opacity:0;pointer-events:none;transition:opacity .5s}
-  html.sn .sidenav.show{opacity:1;pointer-events:auto}
-  html.sn .wrap{width:min(1180px,100% - 300px)}
-  .sidenav a{position:relative;display:flex;align-items:center;gap:10px;padding:7px 10px 7px 4px;text-decoration:none;font:600 14px var(--sans);letter-spacing:.06em;color:rgba(232,207,143,.62);transition:color .25s}
-  .sidenav a::before{content:"";width:7px;height:7px;border-radius:50%;background:rgba(232,207,143,.28);transition:background .3s,box-shadow .3s}
-  .sidenav a.on{color:var(--gold2)}
-  .sidenav a.on::before{background:var(--lamp);box-shadow:0 0 0 3px rgba(255,200,97,.18),0 0 14px 4px rgba(255,200,97,.55)}
-  .sidenav a:hover{color:var(--lamp)}
-}
-.vgl{position:fixed;left:14px;bottom:14px;z-index:300;display:none;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;background:rgba(8,18,13,.85);border:1px solid rgba(201,164,92,.4);font:600 12.5px var(--sans);color:#cfc6b3}
-html.vergleich .vgl{display:flex}
-.vgl button{padding:5px 10px;border-radius:999px;font-weight:700;color:#cfc6b3}
-.vgl button[aria-pressed="true"]{background:var(--lamp);color:#1d1406}
-
 /* ---------- Phone action bar ---------- */
 .dock{display:none}
 @media (max-width:760px){
@@ -606,10 +589,6 @@ html.vergleich .vgl{display:flex}
 
 <footer><div class="wrap"><span>Leo · Sushi Bar St. Gallen · Engelgasse 2</span><span>Entwurf · nur zur Ansicht</span></div></footer>
 
-<nav class="sidenav" id="sidenav" aria-label="Abschnitte">
-  <a href="#lieblinge" data-s="lieblinge">Lieblinge</a><a href="#karte" data-s="karte">Karte</a><a href="#platte" data-s="platte">Platte</a><a href="#salon" data-s="salon">Salon</a><a href="#bar" data-s="bar">Bar</a><a href="#stimmen" data-s="stimmen">Gäste</a><a href="#besuch" data-s="besuch">Besuch</a>
-</nav>
-<div class="vgl" id="vgl">Navigation: <button type="button" data-v="1" aria-pressed="false">mit</button><button type="button" data-v="0" aria-pressed="true">ohne</button></div>
 <nav class="dock" id="dock" aria-label="Schnellzugriff">
   <a class="main" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Anrufen</a>
   <a href="#karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg>Karte</a>
@@ -886,16 +865,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
     else if(start){ const dx=e.clientX-start.x, dy=e.clientY-start.y; if(sc>1){ tx=start.tx+dx; ty=start.ty+dy; } else { dragY=Math.max(0,dy); lb.style.background=`rgba(3,6,4,${Math.max(.4,.96-dragY/500)})`; } apply(); } });
   const up=e=>{ pts.delete(e.pointerId); if(pts.size<2) base=null; if(pts.size===0){ if(sc<=1&&dragY>110){ close(); return; } if(sc<=1){ tx=ty=0; } dragY=0; lb.style.background=""; im.style.transition="transform .2s"; apply(); setTimeout(()=>im.style.transition="",220); start=null; } };
   lb.addEventListener("pointerup",up); lb.addEventListener("pointercancel",up);
-})();
-
-/* ================= Seitennavigation (Vergleich: ?vergleich) ================= */
-(function(){ const H=document.documentElement, sn=$("#sidenav"), v=$("#vgl");
-  if(location.search.includes("vergleich")){ H.classList.add("vergleich"); let on=false; try{ on=localStorage.getItem("leo_sn")==="1"; }catch(_){}
-    const set=x=>{ H.classList.toggle("sn",x); $$("#vgl button").forEach(b=>b.setAttribute("aria-pressed",(b.dataset.v==="1")===x)); try{ localStorage.setItem("leo_sn",x?"1":"0"); }catch(_){} };
-    v.addEventListener("click",e=>{ const b=e.target.closest("button"); if(b) set(b.dataset.v==="1"); }); set(on); }
-  const show=()=>sn.classList.toggle("show",scrollY>innerHeight*.75); addEventListener("scroll",show,{passive:true}); show();
-  const links=$$("#sidenav a"); const io2=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.dataset.s===e.target.id)); } }),{rootMargin:"-45% 0px -50% 0px"});
-  links.forEach(a=>{ const s=document.getElementById(a.dataset.s); if(s) io2.observe(s); });
 })();
 
 $$(".reveal,#moved").forEach(el=>io.observe(el));
