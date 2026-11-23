@@ -385,6 +385,27 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .zb-hint{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:13px;color:#a79f8d;pointer-events:none}
 
 @media (max-width:520px){.dayinfo .hh{font-size:21px}}
+/* ---------- Menue-Blatt: helles Papier (beige-gruen), alles drumherum bleibt dunkelgruen ---------- */
+.board2{background:linear-gradient(180deg,#eee8d4,#e6e2cc);border:1px solid #cfc6a6;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 34px -18px rgba(0,0,0,.7),0 2px 6px rgba(0,0,0,.25)}
+.board2::after{content:"";position:absolute;inset:6px;border:1px solid rgba(122,96,40,.22);border-radius:11px;pointer-events:none}
+.bhead{border-bottom-color:rgba(60,50,20,.18)}
+.bhead h3{color:#16251c}
+.bhead small{color:#6e6a58}
+.bhead .pg{color:#4f5245}
+.bhead .stripe{background:color-mix(in srgb,var(--acc) 70%,#3a2a10)}
+.sheet .row{border-bottom-color:rgba(40,40,20,.16)}
+.sheet .rn{color:color-mix(in srgb,var(--acc) 55%,#3a2410)}
+.sheet .rt{color:#16251c}
+.sheet .rp{color:#6b4c14}
+.sheet .rd{color:#55594c}
+.tg .v{background:#d6ead2;color:#25602f}.tg .s{background:#f6d6cf;color:#9a2f27}.tg .fl{background:#f3dfbd;color:#83500f}.tg .t{background:#ebe1bd;color:#6a5a17}
+@media (hover:hover){.sheet .row:hover{background:rgba(28,94,61,.07)}.sheet .row:hover .rp{color:#1c5e3d}}
+.bnav button{border-color:rgba(60,50,20,.32);color:#3b3d32}
+@media (hover:hover){.bnav button:not(:disabled):hover{border-color:#1c5e3d;color:#1c5e3d;background:rgba(28,94,61,.06)}}
+.dots i{background:rgba(40,40,20,.2)}.dots i.on{background:color-mix(in srgb,var(--acc) 70%,#3a2a10)}
+.board2 .empty{color:#55594c}
+.board2:focus-visible{outline-color:var(--gold)}
+
 /* ---------- Phone action bar ---------- */
 .dock{display:none}
 @media (max-width:760px){
