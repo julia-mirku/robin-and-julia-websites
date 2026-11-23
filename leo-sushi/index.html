@@ -826,20 +826,23 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   $$(".frame").forEach(f=>fo.observe(f));
   /* Neon «Sake & Cocktails»: beim Herunterscrollen haelt die Seite, bis die Schrift ganz leuchtet (1,7 s).
      Die Schrift steht dabei mittig im sichtbaren Bereich unter der Kopfzeile. Danach sofort frei. */
-  const neon=$("#neon"), hdrEl=$("#hdr"); let nDone=false, nLock=false, nUntil=0, lockY=0, lastY=scrollY;
+  const neon=$("#neon"), hdrEl=$("#hdr"), H=document.documentElement; let nDone=false, nUntil=0, lockY=0, lastY=scrollY, nT=0;
   window.__jumpAt=0; $$('a[href^="#"]').forEach(a=>a.addEventListener("click",()=>window.__jumpAt=performance.now()));
   const T=()=>{ const h=hdrEl.getBoundingClientRect().height; return h+(innerHeight-h)/2; };
-  const release=()=>{ nLock=false; nDone=true; };
-  const live=()=>{ if(nLock&&performance.now()>nUntil) release(); return nLock; };
+  /* Sperre haengt NUR an der Uhr: max. 1,7 s ab Start, nie verlaengert, nur ein einziges Mal pro Besuch. */
+  const live=()=>nUntil>0 && performance.now()<nUntil;
+  const release=()=>{ nUntil=0; clearTimeout(nT); H.style.scrollBehavior=""; };
+  const pin=()=>{ H.style.scrollBehavior="auto"; window.scrollTo(0,lockY); };
   addEventListener("scroll",()=>{ const y=scrollY, down=y>lastY; lastY=y;
-    if(nLock){ if(live()) scrollTo({top:lockY,behavior:"instant"}); return; }
+    if(nUntil){ if(live()) pin(); else release(); return; }
     if(nDone) return;
     const r=neon.getBoundingClientRect(), c=r.top+r.height/2, t=T();
     if(c>t) return;
-    if(!down || document.documentElement.classList.contains("locked") || performance.now()-window.__jumpAt<2500 || reduce){ neon.classList.add("on"); nDone=true; return; }
-    lockY=Math.round(y+(c-t)); nLock=true; nUntil=performance.now()+1700; scrollTo({top:lockY,behavior:"instant"}); neon.classList.add("on");
-    setTimeout(()=>{ if(nLock) release(); },1750); },{passive:true});
-  const stop=e=>{ if(live()) e.preventDefault(); };
+    nDone=true; neon.classList.add("on");
+    if(!down || H.classList.contains("locked") || performance.now()-window.__jumpAt<2500 || reduce || document.hidden) return;
+    lockY=Math.round(y+(c-t)); nUntil=performance.now()+1700; nT=setTimeout(release,1700); pin(); },{passive:true});
+  document.addEventListener("visibilitychange",release); addEventListener("blur",release); addEventListener("pagehide",release);
+  const stop=e=>{ if(live()) e.preventDefault(); else if(nUntil) release(); };
   addEventListener("wheel",stop,{passive:false}); addEventListener("touchmove",stop,{passive:false});
   addEventListener("keydown",e=>{ if(live()&&["ArrowDown","ArrowUp","PageDown","PageUp"," ","End","Home"].includes(e.key)) e.preventDefault(); });
 })();
