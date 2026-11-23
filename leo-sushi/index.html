@@ -15,8 +15,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Karla:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero_hoch_1200.jpg" media="(max-width: 760px)">
-<link rel="preload" as="image" href="img/hero_quer_2400.jpg" media="(min-width: 761px)">
+<link rel="preload" as="image" href="img/s/hero_hoch_m.jpg" media="(max-width: 760px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/s/hero_quer_1600.jpg" imagesrcset="img/s/hero_quer_1600.jpg 1600w, img/s/hero_quer_2400.jpg 2400w" imagesizes="100vw" media="(min-width: 761px)" fetchpriority="high">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Leo · Sushi Bar St. Gallen","servesCuisine":["Sushi","Japanisch","Ramen"],"telephone":"+41767661747","email":"sushibarleo@gmx.ch","priceRange":"CHF 20–60","address":{"@type":"PostalAddress","streetAddress":"Engelgasse 2","postalCode":"9000","addressLocality":"St. Gallen","addressCountry":"CH"},"geo":{"@type":"GeoCoordinates","latitude":47.4261466,"longitude":9.3749961},"sameAs":["https://www.instagram.com/sushibarleo/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.4","reviewCount":"302"},
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"12:00","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"17:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"12:00","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"17:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"12:00","closes":"23:00"}]}
@@ -31,9 +31,9 @@
   --hdr:64px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
 html.locked,html.locked body{overflow:hidden;overscroll-behavior:none}
-body{background:var(--night);color:var(--cream);font:400 17px/1.55 var(--sans);-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+body{background:var(--night);color:var(--cream);font:400 17px/1.55 var(--sans);-webkit-tap-highlight-color:transparent;overflow-x:clip;touch-action:manipulation}
 img{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -119,7 +119,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 .lieb .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px 40px;margin-bottom:clamp(34px,5vw,60px)}
 .dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,26px)}
 @media (max-width:860px){.dishes{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.dishes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-16px;padding:6px 16px 14px;scroll-padding-inline:16px}.dishes::-webkit-scrollbar{display:none}.dish{flex:0 0 84%;scroll-snap-align:start}.dish.in{transition-delay:0s!important}}
+
 .dish{position:relative;border-radius:22px;overflow:hidden;background:#0b1711;isolation:isolate;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s;opacity:0;transform:translateY(36px)}
 .dish.in{opacity:1;transform:none;transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
 .dish img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
@@ -135,7 +135,7 @@ h2 i{font-weight:400;color:var(--gold2)}
   .dish.ready:hover img{transform:scale(1.06)}
   .dish.ready:hover .pr{background:var(--lamp);color:#1d1406}
 }
-.dish.ready:active{transform:scale(.985)}
+
 
 /* ---------- Karte (dunkelgruen) ---------- */
 .karte{padding:clamp(70px,9vw,130px) 0;background:linear-gradient(180deg,#0c2318 0%,#0a1d14 100%);color:var(--cream);position:relative}
@@ -149,7 +149,9 @@ h2 i{font-weight:400;color:var(--gold2)}
 .search svg{width:20px;height:20px;color:var(--gold2);flex:none}
 .search input{flex:1;border:0;outline:0;background:none;font:500 17px var(--sans);padding:13px 0;color:var(--cream);min-width:0}
 .search input::placeholder{color:#9c9583}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.filters{display:flex;gap:8px;flex-wrap:nowrap;margin-top:12px;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.filters::-webkit-scrollbar{display:none}
+.f{flex:none}
 .f{padding:8px 14px;border-radius:999px;border:1.5px solid rgba(244,236,220,.24);font-size:14.5px;font-weight:600;color:#e2d9c6;transition:background .2s,border-color .2s,color .2s,box-shadow .2s}
 .f[aria-pressed="true"]{background:var(--lamp);border-color:var(--lamp);color:#1d1406}
 @media (hover:hover){.f:hover{border-color:var(--gold2);box-shadow:0 0 18px rgba(255,200,97,.18)}}
@@ -180,9 +182,9 @@ h2 i{font-weight:400;color:var(--gold2)}
 /* ---------- Plattenplaner ---------- */
 .plan{padding:clamp(80px,10vw,140px) 0;background:linear-gradient(180deg,var(--velvet),var(--night))}
 .plan .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(26px,4vw,60px);align-items:start;margin-top:clamp(30px,4vw,50px)}
-@media (max-width:900px){.plan .grid{grid-template-columns:1fr}.plan .pic{position:relative;top:0}}
 .plan .pic{position:sticky;top:calc(var(--hdr) + 24px);border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -30px #000}
-.plan .pic img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.plan .pic img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+@media (max-width:900px){.plan .grid{grid-template-columns:1fr}.plan .pic{position:relative;top:auto;z-index:0}}
 .plan .pic .tot{position:absolute;left:16px;bottom:16px;right:16px;display:flex;flex-wrap:wrap;gap:8px}
 .pill{padding:9px 14px;border-radius:999px;background:rgba(8,18,13,.8);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-weight:700;font-size:15px;border:1px solid rgba(201,164,92,.35)}
 .pill b{color:var(--lamp);font-variant-numeric:tabular-nums}
@@ -313,6 +315,48 @@ h2 i{font-weight:400;color:var(--gold2)}
 footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid rgba(201,164,92,.18);font-size:14px;color:#968f80}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
+.drinks.two{grid-template-columns:1fr 1fr;margin-top:clamp(14px,2vw,24px)}
+@media (max-width:700px){.drinks.two{grid-template-columns:1fr}}
+.li span:first-child{min-width:0}
+@media (max-width:520px){.filters{gap:5px}.f{padding:7px 9px;font-size:12.5px;border-width:1.2px}}
+@media (max-width:370px){.f{padding:6px 7px;font-size:12px}}
+@media (max-width:520px){.dishes{grid-template-columns:1fr;gap:16px}.dish img{aspect-ratio:4/3;height:auto}.dish.in{transition-delay:0s!important}}
+/* ---------- Adresse unterstrichen ---------- */
+.addr-u{color:var(--lamp);font-weight:700;text-decoration:none;background:linear-gradient(90deg,var(--gold),var(--gold2)) 0 100%/0% 2px no-repeat;padding-bottom:3px;transition:background-size 1.1s cubic-bezier(.6,0,.2,1) .4s,color .2s}
+.moved.in .addr-u{background-size:100% 2px}
+@media (hover:hover){.addr-u:hover{color:var(--gold2)}}
+/* ---------- Karte (Zeichnung) ---------- */
+.map .mat{aspect-ratio:5/4;position:relative;background:#0b2016}
+.map .mat>img{width:100%;height:100%;object-fit:cover;display:block}
+.pin{position:absolute;left:50%;top:50%;width:0;height:0}
+.pin .glow{position:absolute;left:-70px;top:-70px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,97,.55),rgba(255,200,97,.12) 45%,transparent 70%)}
+.pin .dot{position:absolute;left:-9px;top:-9px;width:18px;height:18px;border-radius:50%;background:var(--lamp);box-shadow:0 0 0 4px rgba(8,18,13,.9),0 0 0 6px var(--lamp),0 0 26px 6px rgba(255,200,97,.7)}
+.pin .tag{position:absolute;left:18px;top:-38px;white-space:nowrap;font:700 14px var(--sans);color:#1d1406;background:var(--lamp);padding:6px 11px;border-radius:999px;box-shadow:0 6px 16px rgba(0,0,0,.45)}
+.map .route{position:absolute;right:14px;bottom:14px;padding:11px 16px;font-size:14.5px}
+.osm{position:absolute;left:8px;bottom:6px;font-size:10px;color:#a79f8d;background:rgba(11,32,22,.7);padding:1px 6px;border-radius:4px}
+/* ---------- Telefon: leichter, nichts springt ---------- */
+@media (max-width:760px){
+  .hdr.solid,.kbar,.pill,.dock{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .hdr.solid{background:#0a1710}
+  .kbar{background:#0b2016}
+  .dock{background:#0a1710}
+  .pill{background:rgba(8,18,13,.9)}
+  .reveal,.dish{transform:none!important}
+  .dish,.drink,.plan .pic,.board{box-shadow:none}
+  .frame{box-shadow:0 10px 20px -10px rgba(0,0,0,.8)}
+  .neon{text-shadow:0 0 6px #ff9fcb,0 0 18px var(--neon),0 0 36px rgba(255,95,168,.55)}
+  .sleeve:nth-child(odd),.sleeve:nth-child(even){transform:none}
+  .pin .tag{font-size:13px}
+}
+/* ---------- Foto gross ansehen ---------- */
+.zoom{cursor:zoom-in}
+.zb{position:fixed;inset:0;z-index:200;background:rgba(3,6,4,.96);display:none;align-items:center;justify-content:center;touch-action:none;overscroll-behavior:contain}
+.zb.open{display:flex}
+.zb img{max-width:100vw;max-height:100vh;max-height:100dvh;object-fit:contain;transform-origin:0 0;will-change:transform;user-select:none;-webkit-user-drag:none}
+.zb-x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;border-radius:50%;background:rgba(244,236,220,.12);color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;z-index:2;transition:background .2s}
+@media (hover:hover){.zb-x:hover{background:var(--lamp);color:#1d1406}}
+.zb-hint{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:13px;color:#a79f8d;pointer-events:none}
+
 /* ---------- Phone action bar ---------- */
 .dock{display:none}
 @media (max-width:760px){
@@ -332,7 +376,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 <header class="hdr" id="hdr">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Leo – nach oben"><img src="img/leo_logo_weiss.png" alt="Leo"></a>
+    <a class="logo" href="#top" aria-label="Leo – nach oben"><img src="img/s/leo_logo.png" alt="Leo" width="46" height="46" fetchpriority="high"></a>
     <a class="addr" href="#besuch"><b>Engelgasse 2</b>9000 St. Gallen</a>
     <nav aria-label="Hauptmenü">
       <a href="#lieblinge">Lieblinge</a><a href="#karte">Karte</a><a href="#platte">Platten</a><a href="#salon">Salon</a><a href="#bar">Bar</a>
@@ -345,15 +389,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 <!-- ===== Licht an ===== -->
 <section class="hero off" id="hero" aria-label="Leo Sushi Bar">
   <picture>
-    <source media="(max-width:760px)" srcset="img/hero_hoch_1200.jpg">
-    <img class="photo" src="img/hero_quer_2400.jpg" srcset="img/hero_quer_1600.jpg 1600w, img/hero_quer_2400.jpg 2400w" sizes="100vw" alt="Sushi-Platte auf Schiefer im warmen Licht einer Tischlampe bei Leo" fetchpriority="high">
+    <source media="(max-width:760px)" srcset="img/s/hero_hoch_m.jpg">
+    <img class="photo" src="img/s/hero_quer_1600.jpg" srcset="img/s/hero_quer_1600.jpg 1600w, img/s/hero_quer_2400.jpg 2400w" width="1600" height="893" sizes="100vw" alt="Sushi-Platte auf Schiefer im warmen Licht einer Tischlampe bei Leo" fetchpriority="high">
   </picture>
   <div class="warm"></div>
   <div class="dark"></div>
   <div class="shade"></div>
   <span class="bulb" aria-hidden="true"></span>
   <div class="pre" aria-hidden="true">
-    <div class="inner"><img src="img/leo_logo_weiss.png" alt=""><span class="sub">Sushi · Ramen · Cocktails</span></div>
+    <div class="inner"><img src="img/s/leo_logo.png" alt="" width="230" height="230"><span class="sub">Sushi · Ramen · Cocktails</span></div>
   </div>
   <button class="cord" id="cord" type="button" aria-label="Licht einschalten"><span class="knob"></span><small>Scrollen – das Licht geht an</small></button>
   <div class="post">
@@ -410,7 +454,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <p class="lead reveal" style="margin-top:14px">Wie viele sind Sie, wie hungrig? Wir legen die Platte aus unserer Karte zusammen.</p>
     <div class="grid">
       <div class="pic reveal">
-        <img src="img/platte_4_personen.jpg" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy">
+        <img class="zoom" src="img/s/platte_4_personen.jpg" srcset="img/s/platte_4_personen_m.jpg 760w, img/s/platte_4_personen.jpg 1100w" sizes="(max-width:900px) 100vw, 50vw" width="1100" height="821" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy" decoding="async">
         <div class="tot"><span class="pill"><b id="tStk">0</b> Stück</span><span class="pill">Fr. <b id="tFr">0</b></span><span class="pill">≈ Fr. <b id="tPP">0</b> pro Person</span></div>
       </div>
       <div class="ctrl reveal">
@@ -446,12 +490,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 <!-- ===== Salon ===== -->
 <section class="salon" id="salon">
   <div class="wrap">
-    <h2 class="reveal">Neu an der <i>Engelgasse</i></h2>
-    <p class="moved reveal" id="moved">Nicht mehr an der <s>Langgasse 7a</s> – Sie finden uns jetzt an der <b>Engelgasse 2</b>, mitten in der Altstadt. Grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.</p>
+    <h2 class="reveal">Der Salon an der <i>Engelgasse</i></h2>
+    <p class="moved reveal" id="moved">Sie finden uns an der <a class="addr-u" href="https://www.google.com/maps/search/?api=1&amp;query=Engelgasse+2,+9000+St.+Gallen" target="_blank" rel="noopener">Engelgasse 2</a>, mitten in der Altstadt. Grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.</p>
     <div class="wall">
-      <figure class="frame f1 reveal"><span class="lamp"></span><div class="mat"><img src="img/salon_quer.jpg" alt="Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen" loading="lazy" style="aspect-ratio:16/8.4"><span class="lit"></span></div></figure>
-      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/salon_hoch.jpg" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
-      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/hosomaki.jpg" alt="Hosomaki mit Lachs und Gurke auf Schiefer" loading="lazy" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
+      <figure class="frame f1 reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/salon_quer.jpg" srcset="img/s/salon_quer_m.jpg 900w, img/s/salon_quer.jpg 1500w" sizes="(max-width:760px) 100vw, 1180px" width="1500" height="837" alt="Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen" loading="lazy" decoding="async" style="aspect-ratio:16/8.4"><span class="lit"></span></div></figure>
+      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/salon_hoch.jpg" srcset="img/s/salon_hoch_m.jpg 720w, img/s/salon_hoch.jpg 900w" sizes="(max-width:760px) 100vw, 580px" width="900" height="1125" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
+      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/hosomaki.jpg" width="700" height="700" alt="Hosomaki mit Lachs und Gurke auf Schiefer" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
     </div>
     <span class="plate reveal">Leo · Engelgasse 2 · St. Gallen</span>
   </div>
@@ -463,11 +507,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <h2 class="neon" id="neon">Sake <span class="g">&amp;</span> Cocktails</h2>
     <p class="lead reveal">Hausgemachte Sake-Kreationen, passend zu Sushi – und unser eigenes Bier, das Leo Lager.</p>
     <div class="drinks">
-      <article class="drink big reveal"><img src="img/bar_neon.jpg" alt="Die Bar von Leo im Neonlicht" loading="lazy"><div class="cap"><h3>Die Bar</h3><p>Aperitif vor dem Sushi oder der letzte Drink um elf.</p></div></article>
-      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/yuzu_sakura.jpg" alt="Cocktail Yuzu Sakura" loading="lazy"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
-      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/matcha_sour.jpg" alt="Cocktail Matcha Sake Sour" loading="lazy"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
+      <article class="drink big reveal"><img class="zoom" src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Aperitif vor dem Sushi oder der letzte Drink um elf.</p></div></article>
+      <article class="drink reveal"><span class="pr">Fr. 18</span><img class="zoom" src="img/s/yuzu_sakura.jpg" width="700" height="700" alt="Cocktail Yuzu Sakura" loading="lazy" decoding="async"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
+      <article class="drink reveal"><span class="pr">Fr. 18</span><img class="zoom" src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
     </div>
-    <div class="drinks" style="grid-template-columns:1fr 1fr;margin-top:clamp(14px,2vw,24px)">
+    <div class="drinks two">
       <div class="list reveal"><h3>Signature Sake</h3>
         <div class="li"><span>Sake Blossom<small>Sake, Holunder, Tonic, Limettenzeste</small></span><b>Fr. 17</b></div>
         <div class="li"><span>Yuzu Fizz<small>Sake, Yuzu, Soda – Zitrus &amp; Spritz</small></span><b>Fr. 17</b></div>
@@ -509,7 +553,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
           <a href="https://www.instagram.com/sushibarleo/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@sushibarleo<small>7’840 Follower auf Instagram</small></span></a>
         </div>
       </div>
-      <figure class="frame map reveal"><span class="lamp"></span><div class="mat"><iframe title="Karte: Leo, Engelgasse 2, St. Gallen" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Engelgasse+2,+9000+St.+Gallen&z=17&output=embed"></iframe></div></figure>
+      <figure class="frame map reveal"><span class="lamp"></span><div class="mat"><img src="img/karte.svg" width="1000" height="800" alt="Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl" loading="lazy" decoding="async"><span class="pin" aria-hidden="true"><span class="glow"></span><span class="dot"></span><span class="tag">Leo · Engelgasse 2</span></span><a class="btn btn-lamp route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Engelgasse+2,+9000+St.+Gallen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Route in Google Maps</a><span class="osm">© OpenStreetMap</span></div></figure>
     </div>
   </div>
 </section>
@@ -648,7 +692,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 
 /* ================= Lieblinge ================= */
 (function(){ const box=$("#dishes");
-  box.innerHTML=LIEB.map((d,i)=>`<article class="dish" style="transition-delay:${(i%3)*.12}s"><img src="img/${d.img}.jpg" alt="${esc(d.n)}" loading="lazy">${d.hot?`<span class="hot">${d.hot}</span>`:""}<div class="cap"><div>${d.nr?`<div class="nr">Nr. ${d.nr}</div>`:""}<h3>${esc(d.n)}</h3><div class="d">${esc(d.d)}</div></div><span class="pr">Fr. ${d.p}</span></div></article>`).join("");
+  box.innerHTML=LIEB.map((d,i)=>`<article class="dish" style="transition-delay:${(i%3)*.12}s"><img class="zoom" src="img/s/${d.img}.jpg" width="700" height="700" alt="${esc(d.n)}" loading="lazy" decoding="async">${d.hot?`<span class="hot">${d.hot}</span>`:""}<div class="cap"><div>${d.nr?`<div class="nr">Nr. ${d.nr}</div>`:""}<h3>${esc(d.n)}</h3><div class="d">${esc(d.d)}</div></div><span class="pr">Fr. ${d.p}</span></div></article>`).join("");
   $$(".dish").forEach(el=>{ io.observe(el); el.addEventListener("transitionend",()=>{ if(el.classList.contains("in")){ el.style.transitionDelay="0s"; el.classList.add("ready"); } },{once:true}); });
 })();
 
@@ -711,7 +755,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 
 /* ================= Bewertungen ================= */
 (function(){ const box=$("#sleeves");
-  box.innerHTML=REV.map(r=>`<article class="sleeve"><div class="band"><img src="img/leo_logo_weiss.png" alt=""></div><blockquote>«${esc(r.q)}»</blockquote><div class="who"><b>${esc(r.n)}</b><span>Google · ${r.t}</span></div></article>`).join("");
+  box.innerHTML=REV.map(r=>`<article class="sleeve"><div class="band"><img src="img/s/leo_logo.png" alt="" width="46" height="46" loading="lazy"></div><blockquote>«${esc(r.q)}»</blockquote><div class="who"><b>${esc(r.n)}</b><span>Google · ${r.t}</span></div></article>`).join("");
   const step=()=>box.querySelector(".sleeve").getBoundingClientRect().width+24;
   const next=()=>{ if(box.scrollLeft+box.clientWidth>=box.scrollWidth-8) box.scrollTo({left:0}); else box.scrollBy({left:step()}); };
   $("#rNext").onclick=next; $("#rPrev").onclick=()=>{ if(box.scrollLeft<8) box.scrollTo({left:box.scrollWidth}); else box.scrollBy({left:-step()}); };
@@ -727,6 +771,33 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   const show=i=>{ $("#dn").textContent=(i===today?"Heute · ":"")+DAYS[i][1]; $("#hh").textContent=DAYS[i][2]||"Geschlossen"; };
   box.addEventListener("click",e=>{ const b=e.target.closest(".day"); if(!b) return; $$(".day").forEach(d=>d.setAttribute("aria-pressed",d===b)); show(+b.dataset.i); });
   show(today);
+})();
+
+/* ================= Foto gross: Tippen öffnet, zwei Finger zoomen, Kreuz/Wischen schliesst ================= */
+(function(){
+  const lb=document.createElement("div"); lb.className="zb"; lb.setAttribute("role","dialog"); lb.setAttribute("aria-label","Foto");
+  lb.innerHTML='<button class="zb-x" type="button" aria-label="Schliessen">×</button><img alt=""><div class="zb-hint">Mit zwei Fingern vergrössern · nach unten wischen zum Schliessen</div>';
+  document.body.appendChild(lb);
+  const im=lb.querySelector("img"), x=lb.querySelector(".zb-x");
+  let sc=1,tx=0,ty=0,base=null,pts=new Map(),start=null,lastTap=0,dragY=0;
+  const apply=()=>{ const r=im.getBoundingClientRect(); im.style.transform=`translate(${tx}px,${ty+dragY}px) scale(${sc})`; };
+  const reset=()=>{ sc=1;tx=0;ty=0;dragY=0; im.style.transform=""; lb.style.background=""; };
+  function open(src,alt){ im.src=src; im.alt=alt||""; reset(); lb.classList.add("open"); document.documentElement.style.overflow="hidden"; x.focus({preventScroll:true}); }
+  function close(){ lb.classList.remove("open"); document.documentElement.style.overflow=""; reset(); }
+  document.addEventListener("click",e=>{ const z=e.target.closest(".zoom, .dish, .drink, .frame:not(.map)"); if(!z||lb.contains(e.target)) return;
+    const img=z.matches("img")?z:z.querySelector("img"); if(!img) return; e.preventDefault(); open(img.currentSrc||img.src,img.alt); });
+  x.addEventListener("click",close);
+  addEventListener("keydown",e=>{ if(e.key==="Escape"&&lb.classList.contains("open")) close(); });
+  lb.addEventListener("click",e=>{ if(e.target===lb) close(); });
+  im.style.transformOrigin="50% 50%";
+  lb.addEventListener("pointerdown",e=>{ if(e.target===x) return; lb.setPointerCapture(e.pointerId); pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size===2){ const [a,b]=[...pts.values()]; base={d:Math.hypot(a.x-b.x,a.y-b.y),sc}; }
+    else { start={x:e.clientX,y:e.clientY,tx,ty}; const t=performance.now(); if(t-lastTap<300){ sc=sc>1?1:2.5; tx=ty=0; im.style.transition="transform .25s"; apply(); setTimeout(()=>im.style.transition="",260); } lastTap=t; } });
+  lb.addEventListener("pointermove",e=>{ if(!pts.has(e.pointerId)) return; pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size>=2&&base){ const [a,b]=[...pts.values()]; sc=Math.max(1,Math.min(5,base.sc*Math.hypot(a.x-b.x,a.y-b.y)/base.d)); apply(); }
+    else if(start){ const dx=e.clientX-start.x, dy=e.clientY-start.y; if(sc>1){ tx=start.tx+dx; ty=start.ty+dy; } else { dragY=Math.max(0,dy); lb.style.background=`rgba(3,6,4,${Math.max(.4,.96-dragY/500)})`; } apply(); } });
+  const up=e=>{ pts.delete(e.pointerId); if(pts.size<2) base=null; if(pts.size===0){ if(sc<=1&&dragY>110){ close(); return; } if(sc<=1){ tx=ty=0; } dragY=0; lb.style.background=""; im.style.transition="transform .2s"; apply(); setTimeout(()=>im.style.transition="",220); start=null; } };
+  lb.addEventListener("pointerup",up); lb.addEventListener("pointercancel",up);
 })();
 
 $$(".reveal,#moved").forEach(el=>io.observe(el));
