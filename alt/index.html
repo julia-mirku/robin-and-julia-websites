@@ -2030,6 +2030,13 @@ html .steps.pin ol>li.thud::before{animation-delay:.5s}
 @media (prefers-reduced-motion:reduce){ .muster .mgrid.mband{scroll-behavior:auto} }
 </style>
 <style>
+/* ===== 24.11: Tablet ===== */
+.gform .gf-g{align-items:end}
+@media (min-width:600px) and (max-width:900px){
+  .muster .mgrid.mband>li{flex:0 0 44%}
+}
+</style>
+<style>
 /* ===== /alt/: Muster und Branchen als waagrechtes Band ===== */
 .aband{display:flex !important;grid-template-columns:none !important;gap:20px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;padding:8px 4px 16px;margin-left:-4px;margin-right:-4px;scroll-padding:0 4px}
 .aband::-webkit-scrollbar{display:none}
@@ -2057,6 +2064,7 @@ html .steps.pin ol>li.thud::before{animation-delay:.5s}
   .actl button.aa{display:none}
   .ahint{display:inline}
 }
+@media (min-width:600px) and (max-width:900px){ .aband>*,.trades .tlay .cards.aband>*{flex:0 0 44%} }
 </style>
 </head>
 <body>
