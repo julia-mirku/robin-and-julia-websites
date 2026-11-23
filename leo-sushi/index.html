@@ -16,7 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Karla:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/s/hero_hoch_m.jpg" media="(max-width: 760px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/s/hero_quer_1600.jpg" imagesrcset="img/s/hero_quer_1600.jpg 1600w, img/s/hero_quer_2400.jpg 2400w" imagesizes="100vw" media="(min-width: 761px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero_hoch_1200.jpg" media="(orientation: portrait) and (min-width: 761px) and (max-width: 1100px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/s/hero_quer_1600.jpg" imagesrcset="img/s/hero_quer_1600.jpg 1600w, img/s/hero_quer_2400.jpg 2400w" imagesizes="100vw" media="(min-width: 761px) and (orientation: landscape), (min-width: 1101px)" fetchpriority="high">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Leo · Sushi Bar St. Gallen","servesCuisine":["Sushi","Japanisch","Ramen"],"telephone":"+41767661747","email":"sushibarleo@gmx.ch","priceRange":"CHF 20–60","address":{"@type":"PostalAddress","streetAddress":"Engelgasse 2","postalCode":"9000","addressLocality":"St. Gallen","addressCountry":"CH"},"geo":{"@type":"GeoCoordinates","latitude":47.4261466,"longitude":9.3749961},"sameAs":["https://www.instagram.com/sushibarleo/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.4","reviewCount":"302"},
 "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"12:00","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"17:00","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"12:00","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"17:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"12:00","closes":"23:00"}]}
@@ -77,31 +78,33 @@ h2 i{font-weight:400;color:var(--gold2)}
 .hero picture,.hero .photo{position:absolute;inset:0;width:100%;height:100%}
 .hero .photo{object-fit:cover;object-position:var(--px,50%) var(--py,50%)}
 .hero{--lx:19%;--ly:17%;--r:0;--px:50%;--py:30%}
-@media (max-width:760px){.hero{--lx:16%;--ly:30%;--px:16%;--py:50%}}
+@media (max-width:760px), (orientation:portrait) and (max-width:1100px){.hero{--lx:16%;--ly:30%;--px:16%;--py:50%}}
 .hero .dark{position:absolute;inset:0;background:#030604;
   -webkit-mask-image:radial-gradient(circle at var(--lx) var(--ly),rgba(0,0,0,calc(.42 - var(--p,0)*.42)) calc(var(--r)*1.35%),rgba(0,0,0,calc(.86 - var(--p,0)*.3)) calc(var(--r)*1.35% + 9%),#000 calc(var(--r)*1.35% + 24%));
           mask-image:radial-gradient(circle at var(--lx) var(--ly),rgba(0,0,0,calc(.42 - var(--p,0)*.42)) calc(var(--r)*1.35%),rgba(0,0,0,calc(.86 - var(--p,0)*.3)) calc(var(--r)*1.35% + 9%),#000 calc(var(--r)*1.35% + 24%));
   opacity:calc(1 - var(--p,0)*.0)}
 .hero .warm{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--lx) var(--ly),rgba(255,196,96,.30),rgba(255,196,96,0) 55%);mix-blend-mode:soft-light;opacity:var(--p,0)}
 .hero .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(3,6,4,.7) 0%,rgba(3,6,4,.35) 20%,rgba(3,6,4,0) 30%,rgba(3,6,4,0) 76%,rgba(3,6,4,.88) 100%);opacity:var(--p,0)}
-@media (min-width:761px){.hero .shade{background:linear-gradient(90deg,rgba(3,6,4,0) 40%,rgba(3,6,4,.55) 75%),linear-gradient(180deg,rgba(3,6,4,.45),rgba(3,6,4,0) 20%)}}
+@media (min-width:761px) and (orientation:landscape), (min-width:1101px){.hero .shade{background:linear-gradient(90deg,rgba(3,6,4,0) 40%,rgba(3,6,4,.55) 75%),linear-gradient(180deg,rgba(3,6,4,.45),rgba(3,6,4,0) 20%)}}
 .bulb{position:absolute;left:var(--lx);top:var(--ly);width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#ffe2a3;box-shadow:0 0 18px 6px rgba(255,200,97,.55),0 0 60px 20px rgba(255,200,97,.18);opacity:calc(1 - var(--p,0));animation:glim 2.6s ease-in-out infinite}
 @keyframes glim{50%{box-shadow:0 0 24px 9px rgba(255,200,97,.7),0 0 80px 28px rgba(255,200,97,.22)}}
 
 .pre{position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none;opacity:calc(1 - var(--p,0)*2.2)}
 .pre .inner{display:grid;justify-items:center;gap:18px;transform:translateY(calc(var(--p,0)*-40px))}
-.pre img{width:min(46vw,230px);filter:drop-shadow(0 0 22px rgba(255,200,97,.35))}
+.pre img{width:min(46vw,230px);height:auto;filter:drop-shadow(0 0 22px rgba(255,200,97,.35))}
 .pre .sub{font:500 13px/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:#cdbf9f;padding-left:.42em}
 .cord{position:absolute;left:50%;bottom:0;width:120px;margin-left:-60px;height:30vh;max-height:240px;display:flex;flex-direction:column;align-items:center;pointer-events:auto;cursor:pointer;opacity:calc(1 - var(--p,0)*2)}
 .cord::before{content:"";width:1.5px;flex:1;background:linear-gradient(#0000,#b99a5c 30%,#d9bd7f)}
 .cord .knob{width:16px;height:26px;border-radius:8px 8px 9px 9px;background:linear-gradient(160deg,#f4dc9c,#a9853f);box-shadow:0 0 14px rgba(255,200,97,.4);transition:transform .25s}
 .cord small{margin:12px 0 22px;font-size:13px;color:#bfb29a;white-space:nowrap}
 @media (hover:hover){.cord:hover .knob{transform:translateY(8px)}}
-.cord.pull .knob{transform:translateY(18px)}
+.cord.pull .knob{transform:translateY(22px)}
+.cord.pull::before{transform:scaleY(1.06);transform-origin:top}
+@media (hover:none){.cord{width:150px;margin-left:-75px}.cord .knob{width:22px;height:34px;border-radius:11px}}
 
 .post{position:absolute;inset:0;display:flex;padding:calc(var(--hdr) + 6px) 0 26px}
 
-@media (min-width:761px){.post{align-items:flex-start;padding-top:calc(var(--hdr) + 5vh)}}
+@media (min-width:761px) and (orientation:landscape), (min-width:1101px){.post{align-items:flex-start;padding-top:calc(var(--hdr) + 5vh)}}
 .post .wrap{display:flex;justify-content:flex-end}
 .post .txt{max-width:560px;opacity:clamp(0,(var(--p,0) - .62)*3.2,1);transform:translateY(calc((1 - var(--p,0))*30px))}
 .post h1{text-shadow:0 2px 30px rgba(0,0,0,.45);font-family:var(--serif);font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;font-weight:700;font-size:clamp(48px,min(7.6vw,12vh),118px);line-height:.9;letter-spacing:-.03em}
@@ -111,10 +114,11 @@ h2 i{font-weight:400;color:var(--gold2)}
 .chip{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14px;color:#d7cdb8;text-decoration:none;padding:7px 12px;border-radius:999px;background:rgba(8,18,13,.5);border:1px solid rgba(201,164,92,.3);transition:border-color .2s,box-shadow .2s}
 .chip b{color:var(--lamp)}
 @media (hover:hover){.chip:hover{border-color:var(--lamp);box-shadow:0 0 20px rgba(255,200,97,.25)}}
+.post{pointer-events:none}.hero:not(.off) .post .txt{pointer-events:auto}.cord{z-index:3}
 .hero.off .post .txt *{pointer-events:none}
 
-@media (max-width:760px){.post .txt{height:100%;display:flex;flex-direction:column;max-width:none}.post p{display:none}.post .btns{margin-top:auto}.post .chip{align-self:flex-start}}
-@media (min-width:761px) and (max-height:800px){.post p{display:none}.post .btns{margin-top:22px}.post .chip{margin-top:14px}}
+@media (max-width:760px), (orientation:portrait) and (max-width:1100px){.post .txt{height:100%;display:flex;flex-direction:column;max-width:none}.post p{display:none}.post .btns{margin-top:auto}.post .chip{align-self:flex-start}}
+@media (min-width:761px) and (orientation:landscape) and (max-height:800px), (min-width:1101px) and (max-height:800px){.post p{display:none}.post .btns{margin-top:22px}.post .chip{margin-top:14px}}
 /* ---------- Lieblinge ---------- */
 .lieb{padding:clamp(80px,11vw,150px) 0 clamp(60px,8vw,110px);background:var(--green-main)}
 .lieb .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px 40px;margin-bottom:clamp(34px,5vw,60px)}
@@ -438,6 +442,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 <!-- ===== Licht an ===== -->
 <section class="hero off" id="hero" aria-label="Leo Sushi Bar">
   <picture>
+    <source media="(orientation:portrait) and (min-width:761px) and (max-width:1100px)" srcset="img/hero_hoch_1200.jpg">
     <source media="(max-width:760px)" srcset="img/s/hero_hoch_m.jpg">
     <img class="photo" src="img/s/hero_quer_1600.jpg" srcset="img/s/hero_quer_1600.jpg 1600w, img/s/hero_quer_2400.jpg 2400w" width="1600" height="893" sizes="100vw" alt="Sushi-Platte auf Schiefer im warmen Licht einer Tischlampe bei Leo" fetchpriority="high">
   </picture>
@@ -458,7 +463,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
           <a class="btn btn-lamp" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Tisch reservieren</a>
           <a class="btn btn-line" href="#karte">Zur Karte</a>
         </div>
-        <a class="chip" href="#stimmen"><span class="stars">★</span><b>4,4</b> · 302 Google-Bewertungen</a>
       </div>
     </div>
   </div>
