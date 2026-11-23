@@ -139,46 +139,69 @@ h2 i{font-weight:400;color:var(--gold2)}
 }
 
 
-/* ---------- Karte (dunkelgruen) ---------- */
-.karte{padding:clamp(70px,9vw,130px) 0;background:var(--green-main);color:var(--cream);position:relative}
-.karte .wrap{position:relative}
+/* ---------- Karte (Variante) ---------- */
+.karte{position:relative;background:var(--green-main);color:var(--cream);padding:46px 0 52px;min-height:calc(100svh - var(--hdr))}
+.karte::before,.karte::after{content:"";position:absolute;left:0;right:0;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cg fill='none' stroke='%23c9a45c' stroke-width='1.1'%3E%3Cpath d='M0 20a20 20 0 0 1 40 0M6 20a14 14 0 0 1 28 0M12 20a8 8 0 0 1 16 0M17 20a3 3 0 0 1 6 0'/%3E%3Cpath d='M-20 10a20 20 0 0 1 40 0M20 10a20 20 0 0 1 40 0' opacity='.55'/%3E%3C/g%3E%3C/svg%3E") repeat-x;background-size:40px 20px;opacity:.75}
+.karte::before{top:0;border-bottom:1px solid rgba(201,164,92,.45)}
+.karte::after{bottom:0;transform:scaleY(-1);border-bottom:1px solid rgba(201,164,92,.45)}
+.karte h2{font-size:clamp(34px,4.4vw,56px)}
 .karte h2 i{color:var(--gold2)}
-.karte .lead{color:#cfc6b3}
-.kbar{position:sticky;top:var(--hdr);z-index:5;background:rgba(13,36,26,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:18px 0 12px;margin-top:30px;box-shadow:0 14px 20px -16px rgba(0,0,0,.7)}
-.search{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1.5px solid rgba(201,164,92,.38);border-radius:14px;padding:0 14px;transition:border-color .2s,box-shadow .2s}
+.khead{display:grid;grid-template-columns:auto 1fr;gap:10px 40px;align-items:end;margin-top:14px}
+.khead .sub{grid-column:1;font-size:15px;color:#bfb6a2}
+.khead .search{grid-column:2;grid-row:1/3;align-self:center}
+@media (max-width:760px){.khead{grid-template-columns:1fr;gap:6px}.khead .search{grid-column:1;grid-row:auto;margin-top:8px}}
+.search{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1.5px solid rgba(201,164,92,.42);border-radius:14px;padding:0 14px;transition:border-color .2s,box-shadow .2s}
 .search:focus-within{border-color:var(--lamp);box-shadow:0 0 0 4px rgba(255,200,97,.14)}
 .search svg{width:20px;height:20px;color:var(--gold2);flex:none}
-.search input{flex:1;border:0;outline:0;background:none;font:500 17px var(--sans);padding:13px 0;color:var(--cream);min-width:0}
+.search input{flex:1;border:0;outline:0;background:none;font:500 17px var(--sans);padding:12px 0;color:var(--cream);min-width:0}
 .search input::placeholder{color:#9c9583}
-.filters{display:flex;gap:8px;flex-wrap:nowrap;margin-top:12px;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
-.filters::-webkit-scrollbar{display:none}
-.f{flex:none}
-.f{padding:8px 14px;border-radius:999px;border:1.5px solid rgba(244,236,220,.24);font-size:14.5px;font-weight:600;color:#e2d9c6;transition:background .2s,border-color .2s,color .2s,box-shadow .2s}
+.f{padding:7px 13px;border-radius:999px;border:1.5px solid rgba(244,236,220,.24);font-size:14px;font-weight:600;color:#e2d9c6;transition:background .2s,border-color .2s,color .2s,box-shadow .2s}
 .f[aria-pressed="true"]{background:var(--lamp);border-color:var(--lamp);color:#1d1406}
 @media (hover:hover){.f:hover{border-color:var(--gold2);box-shadow:0 0 18px rgba(255,200,97,.18)}}
-.tabs{display:flex;gap:4px;overflow-x:auto;margin-top:12px;scrollbar-width:none;padding-bottom:2px}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex:none;padding:9px 14px;border-radius:10px;font-weight:700;font-size:15px;color:#b9b09c;transition:color .2s,background .2s}
-.tab[aria-selected="true"]{color:var(--lamp);background:rgba(255,200,97,.11)}
-@media (hover:hover){.tab:hover{color:var(--lamp)}}
-.klist{margin-top:18px;min-height:300px}
-.kcat{margin-top:26px}
-.kcat h3{font:600 26px/1.1 var(--serif);font-variation-settings:"SOFT" 100;color:var(--gold2);display:flex;align-items:baseline;gap:12px}
-.kcat h3 small{font:600 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#9c9583}
-.rows{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:10px}
-@media (max-width:760px){.rows{grid-template-columns:1fr}}
-.row{display:grid;grid-template-columns:44px 1fr auto;gap:2px 12px;align-items:baseline;padding:14px 10px;border-bottom:1px dashed rgba(244,236,220,.14);border-radius:10px;transition:background .2s;animation:rowin .45s both}
-@keyframes rowin{from{opacity:0;transform:translateY(8px)}}
-@media (hover:hover){.row:hover{background:rgba(255,200,97,.07)}.row:hover .rp{color:var(--lamp);transform:scale(1.08)}}
-.rn{font:700 13px var(--sans);color:var(--gold);letter-spacing:.04em}
-.rt{font-weight:700;font-size:17px;color:var(--cream)}
-.rt .tg{display:inline-flex;gap:4px;margin-left:6px;vertical-align:2px}
-.tg i{font-style:normal;font-size:11px;font-weight:800;padding:2px 6px;border-radius:6px;letter-spacing:.03em}
+.kfilters{margin-top:12px}
+/* Blatt mit Seiten */
+.board2{position:relative;margin-top:16px;border:1px solid rgba(201,164,92,.35);border-radius:16px;padding:14px 18px 10px;--acc:var(--gold2)}
+.bhead{display:flex;align-items:center;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(201,164,92,.22)}
+.bhead .stripe{width:28px;height:4px;border-radius:2px;background:var(--acc)}
+.bhead h3{font:600 24px/1 var(--serif);font-variation-settings:"SOFT" 100;color:var(--cream)}
+.bhead small{font:600 12.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#a79f8d}
+.bhead .pg{margin-left:auto;font:600 14px var(--sans);color:#bfb6a2;font-variant-numeric:tabular-nums}
+.sheetwrap{position:relative;overflow:hidden;touch-action:pan-y}
+.sheet{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:74px;gap:0 34px;height:calc(5 * 74px);padding-top:4px}
+@media (max-width:760px){.sheet{grid-template-columns:1fr;grid-auto-rows:62px;height:calc(5 * 62px)}.karte{padding:34px 0 40px}.karte h2{font-size:32px}.khead .sub{font-size:13.5px}.board2{padding:10px 12px 8px}.bhead h3{font-size:21px}.sheet .row .rd{-webkit-line-clamp:1}.bhead small{display:none}.bhead .pg{font-size:13px}.back{padding:5px 9px;font-size:12.5px;white-space:nowrap}}
+.dock.off{transform:translateY(140%)!important}
+.sheet .row{display:grid;grid-template-columns:44px 1fr auto;gap:0 12px;align-content:center;align-items:baseline;padding:6px 8px;border-bottom:1px dashed rgba(244,236,220,.12);border-radius:10px;transition:background .2s}
+@media (hover:hover){.sheet .row:hover{background:rgba(255,255,255,.04)}.sheet .row:hover .rp{color:var(--lamp)}}
+.sheet .rn{font:800 13px var(--sans);color:var(--acc);letter-spacing:.03em}
+.sheet .rt{font-weight:700;font-size:16.5px;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet .rp{grid-row:1;grid-column:3;font-weight:800;font-size:16.5px;color:var(--cream);white-space:nowrap;transition:color .2s}
+.sheet .rd{grid-column:2/4;font-size:13.5px;color:#aaa18e;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sheet .tg{display:inline-flex;gap:4px;margin-left:6px;vertical-align:2px}
+.tg i{font-style:normal;font-size:10.5px;font-weight:800;padding:2px 5px;border-radius:5px;letter-spacing:.03em}
 .tg .v{background:rgba(125,230,160,.14);color:#a6e8bd}.tg .s{background:rgba(255,110,100,.16);color:#ffa89f}.tg .fl{background:rgba(255,170,80,.16);color:#ffc98a}.tg .t{background:rgba(232,207,143,.15);color:#ecd69c}
-.rd{grid-column:2/3;font-size:14px;color:#aaa18e;line-height:1.4}
-.rp{grid-row:1;grid-column:3;font-weight:800;font-size:17px;color:var(--cream);white-space:nowrap;transition:color .2s,transform .2s;display:inline-block}
-.empty{padding:40px 0;color:#aaa18e;font-size:17px}
-.knote{margin-top:34px;padding-top:18px;border-top:1px solid rgba(201,164,92,.22);font-size:14px;color:#9c9583;display:flex;flex-wrap:wrap;gap:6px 22px}
+.sheet.in-r{animation:inR .38s cubic-bezier(.2,.8,.2,1)}.sheet.in-l{animation:inL .38s cubic-bezier(.2,.8,.2,1)}
+@keyframes inR{from{opacity:0;transform:translateX(40px)}}@keyframes inL{from{opacity:0;transform:translateX(-40px)}}
+.bnav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px}
+.bnav button{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;border:1.5px solid rgba(201,164,92,.4);font-weight:700;font-size:14px;color:#e2d9c6;transition:border-color .2s,color .2s,background .2s,opacity .2s}
+.bnav button:disabled{opacity:.3;cursor:default}
+@media (hover:hover){.bnav button:not(:disabled):hover{border-color:var(--acc);color:var(--acc)}}
+.dots{display:flex;gap:6px}.dots i{width:7px;height:7px;border-radius:50%;background:rgba(244,236,220,.25);transition:background .2s,transform .2s}.dots i.on{background:var(--acc);transform:scale(1.25)}
+.knote{margin-top:12px;font-size:12.5px;color:#8f887a;display:flex;flex-wrap:wrap;gap:4px 18px}
+.empty{padding:30px 8px;color:#aaa18e}
+
+/* Noren-Vorhaenge als Kategorien */
+.noren{position:relative;display:flex;gap:5px;margin-top:16px;padding-top:8px;overflow-x:auto;scrollbar-width:none;touch-action:pan-x pan-y}
+.noren::-webkit-scrollbar{display:none}
+.noren::before{content:"";position:absolute;left:0;right:0;top:2px;height:5px;border-radius:3px;background:linear-gradient(#f0d792,#9b7a37);box-shadow:0 2px 4px rgba(0,0,0,.4);min-width:100%}
+.nren{flex:1 0 auto;position:relative;padding:16px 14px 14px;min-width:96px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(201,164,92,.22);border-top:0;border-radius:0 0 10px 10px;color:#d9d0bd;font:600 15px/1.15 var(--serif);transform-origin:top center;transition:transform .35s cubic-bezier(.2,.8,.2,1),color .2s,background .2s,box-shadow .2s}
+.nren::after{content:"";position:absolute;left:12px;right:12px;bottom:7px;height:3px;border-radius:2px;background:var(--acc);opacity:.75}
+.nren small{display:block;font:600 11px var(--sans);color:#9c9583;margin-top:4px;letter-spacing:.04em}
+.nren[aria-selected="true"]{color:var(--cream);background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.03));box-shadow:0 10px 22px -12px var(--acc);transform:scaleY(1.06)}
+.nren[aria-selected="true"]::after{opacity:1;box-shadow:0 0 10px var(--acc)}
+@media (hover:hover){.nren:hover{transform:rotate(-1.2deg);color:var(--cream)}.nren[aria-selected="true"]:hover{transform:scaleY(1.06)}}
+.sheet.drop{animation:drop .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes drop{from{clip-path:inset(0 0 100% 0);transform:translateY(-10px)}to{clip-path:inset(0 0 0 0);transform:none}}
+@media (max-width:760px){.nren{min-width:86px;padding:14px 10px 13px;font-size:14px}}
 
 /* ---------- Plattenplaner ---------- */
 .plan{padding:clamp(80px,10vw,140px) 0;background:var(--green-main)}
@@ -451,21 +474,21 @@ html.vergleich .vgl{display:flex}
 <!-- ===== Karte ===== -->
 <section class="karte" id="karte">
   <div class="wrap">
-    <h2 class="reveal">Die ganze <i>Karte</i></h2>
-    <p class="lead reveal" style="margin-top:14px">Sagen Sie am Telefon einfach die Nummer – «einmal Nr. 73, bitte».</p>
-    <div class="kbar">
+    <div class="khead">
+      <h2>Die <i>Karte</i></h2>
+      <p class="sub">Mit unseren Küchennummern – am Telefon einfach «Nr. 73» sagen.</p>
       <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Suchen: Lachs, Avocado, Ramen, 73 …" autocomplete="off" aria-label="Karte durchsuchen"></label>
-      <div class="filters" id="filters">
-        <button class="f" data-f="v" aria-pressed="false">Vegi</button>
-        <button class="f" data-f="nr" aria-pressed="false" title="Fisch &amp; Meeresfrüchte gegart, flambiert oder frittiert">Gegart</button>
-        <button class="f" data-f="s" aria-pressed="false">Scharf</button>
-        <button class="f" data-f="fl" aria-pressed="false">Geflämmt</button>
-        <button class="f" data-f="t" aria-pressed="false">Tempura</button>
-      </div>
-      <div class="tabs" id="tabs" role="tablist"></div>
     </div>
-    <div class="klist" id="klist" aria-live="polite"></div>
-    <div class="knote"><span>Alle Preise in Fr. inkl. 8,1 % MwSt.</span><span>Lachs: Schottland (Zucht)</span><span>Thunfisch: Pazifik (Wildfang)</span><span>Aal: Neuseeland (Wildfang)</span><span>Allergien? Bitte beim Bestellen sagen.</span></div>
+    <div class="filters kfilters" id="filters">
+      <button class="f" data-f="v" aria-pressed="false">Vegi</button>
+      <button class="f" data-f="nr" aria-pressed="false" title="Fisch &amp; Meeresfrüchte gegart, flambiert oder frittiert">Gegart</button>
+      <button class="f" data-f="s" aria-pressed="false">Scharf</button>
+      <button class="f" data-f="fl" aria-pressed="false">Geflämmt</button>
+      <button class="f" data-f="t" aria-pressed="false">Tempura</button>
+    </div>
+    <div class="noren" id="tabs" role="tablist"></div>
+    <div class="board2" id="board"><div class="bhead"><span class="stripe"></span><h3 id="bt"></h3><small id="bu"></small><span class="pg" id="pg"></span></div><div class="sheetwrap" id="sw"><div class="sheet" id="sheet"></div></div><div class="bnav"><button type="button" id="prev" aria-label="Vorherige Seite"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>Zurück</button><span class="dots" id="dots"></span><button type="button" id="next" aria-label="Nächste Seite">Weiter<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+    <div class="knote"><span>Alle Preise in Fr. inkl. 8,1 % MwSt.</span><span>Lachs: Schottland (Zucht) · Thunfisch: Pazifik (Wildfang) · Aal: Neuseeland (Wildfang)</span><span>Allergien? Bitte beim Bestellen sagen.</span></div>
   </div>
 </section>
 
@@ -724,26 +747,46 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   $$(".dish").forEach(el=>{ io.observe(el); el.addEventListener("transitionend",()=>{ if(el.classList.contains("in")){ el.style.transitionDelay="0s"; el.classList.add("ready"); } },{once:true}); });
 })();
 
-/* ================= Karte ================= */
+/* ================= Karte (Variante Noren) ================= */
 (function(){
-  const tabs=$("#tabs"), list=$("#klist"), q=$("#q"); let cur="nigiri"; const act=new Set();
-  tabs.innerHTML=KARTE.map(c=>`<button class="tab" role="tab" data-id="${c.id}" aria-selected="${c.id===cur}">${c.t}</button>`).join("");
+  const ACC={"nigiri": "#ff8f70", "maki": "#9ed36a", "futo": "#f4e3b5", "ura": "#ff6f91", "crunchy": "#e8cf8f", "sashimi": "#ff5e5e", "vor": "#c9a0ff", "ramen": "#ffb347"}; KARTE.forEach(c=>c.acc=ACC[c.id]||"#e8cf8f");
+  const q=$("#q"), sheet=$("#sheet"), sw=$("#sw"), board=$("#board"), act=new Set();
+  let cat=KARTE[0], page=0, pages=[[]], mode="cat";
+  const per=()=>matchMedia("(max-width:760px)").matches?5:10;
   const TG={v:'<i class="v">VEGI</i>',s:'<i class="s">SCHARF</i>',fl:'<i class="fl">GEFLÄMMT</i>',t:'<i class="t">TEMPURA</i>'};
-  const row=it=>{ const [nr,n,d,p,tg]=it; const tags=tg.split(" ").filter(x=>TG[x]).map(x=>TG[x]).join("");
-    return `<div class="row"><span class="rn">${nr?("Nr. "+nr):""}</span><span class="rt">${esc(n)}${tags?`<span class="tg">${tags}</span>`:""}</span><span class="rp">Fr. ${fr(p)}</span>${d?`<span class="rd">${esc(d)}</span>`:""}</div>`; };
+  const row=(it,acc)=>{ const [nr,n,d,p,tg]=it; const tags=tg.split(" ").filter(x=>TG[x]).map(x=>TG[x]).join("");
+    return `<div class="row" style="--acc:${acc}"><span class="rn">${nr?("Nr. "+nr):"·"}</span><span class="rt" title="${esc(n)}">${esc(n)}${tags?`<span class="tg">${tags}</span>`:""}</span><span class="rp">Fr. ${fr(p)}</span>${d?`<span class="rd">${esc(d)}</span>`:""}</div>`; };
   const match=(it,s)=>{ const [nr,n,d,,tg]=it; const T=tg.split(" ");
     for(const f of act){ if(f==="nr"){ if(T.includes("r")) return false; } else if(!T.includes(f)) return false; }
     if(!s) return true; s=s.toLowerCase(); return String(nr)===s || (n+" "+d).toLowerCase().includes(s); };
-  function render(){ const s=q.value.trim(); const all=s||act.size; let html="", cnt=0;
-    tabs.style.opacity=all?.45:1;
-    KARTE.forEach(c=>{ if(!all && c.id!==cur) return; const its=c.items.filter(it=>match(it,s)); if(!its.length) return; cnt+=its.length;
-      html+=`<div class="kcat"><h3>${c.t}${c.u?`<small>${c.u}</small>`:""}</h3><div class="rows">${its.map(row).join("")}</div></div>`; });
-    list.innerHTML=html||`<p class="empty">Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.</p>`;
-    $$(".row").forEach((r,i)=>r.style.animationDelay=Math.min(i*22,400)+"ms"); }
-  tabs.addEventListener("click",e=>{ const b=e.target.closest(".tab"); if(!b) return; cur=b.dataset.id; q.value=""; act.clear(); $$(".f").forEach(f=>f.setAttribute("aria-pressed","false"));
-    $$(".tab").forEach(t=>t.setAttribute("aria-selected",t===b)); render(); });
-  $("#filters").addEventListener("click",e=>{ const b=e.target.closest(".f"); if(!b) return; const f=b.dataset.f; act.has(f)?act.delete(f):act.add(f); b.setAttribute("aria-pressed",act.has(f)); render(); });
-  q.addEventListener("input",render); render();
+  function build(){ const s=q.value.trim(); let list;
+    if(s||act.size){ mode="search"; list=[]; KARTE.forEach(c=>c.items.forEach(it=>{ if(match(it,s)) list.push([it,c.acc]); })); }
+    else { mode="cat"; list=cat.items.map(it=>[it,cat.acc]); }
+    const n=per(); pages=[]; for(let i=0;i<list.length;i+=n) pages.push(list.slice(i,i+n)); if(!pages.length) pages=[[]]; if(page>=pages.length) page=pages.length-1; }
+  function paint(dir){ const p=pages[page]; board.style.setProperty("--acc",mode==="cat"?cat.acc:"#e8cf8f");
+    $("#bt").textContent=mode==="cat"?cat.t:"Suchergebnis"; $("#bu").textContent=mode==="cat"?cat.u:(pages.flat().length+" Gerichte");
+    $("#pg").textContent=pages.length>1?`Seite ${page+1} / ${pages.length}`:"";
+    sheet.innerHTML=p.length?p.map(([it,acc])=>row(it,acc)).join(""):`<p class="empty">Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.</p>`;
+    sheet.classList.remove("in-r","in-l","drop"); void sheet.offsetWidth; if(dir) sheet.classList.add(dir);
+    $("#prev").disabled=page===0; $("#next").disabled=page>=pages.length-1;
+    $("#dots").innerHTML=pages.length>1?pages.map((_,i)=>`<i class="${i===page?"on":""}"></i>`).join(""):""; }
+  const go=d=>{ const np=page+d; if(np<0||np>=pages.length) return; page=np; paint(d>0?"in-r":"in-l"); };
+  $("#prev").onclick=()=>go(-1); $("#next").onclick=()=>go(1);
+  /* Wischen: nur waagrecht blaettert, senkrecht scrollt die Seite */
+  let sx=null,sy=0; sw.addEventListener("pointerdown",e=>{ sx=e.clientX; sy=e.clientY; },{passive:true});
+  sw.addEventListener("pointerup",e=>{ if(sx==null) return; const dx=e.clientX-sx, dy=e.clientY-sy; sx=null; if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4) go(dx<0?1:-1); },{passive:true});
+  sw.addEventListener("pointercancel",()=>sx=null);
+  board.tabIndex=0; board.addEventListener("keydown",e=>{ if(e.key==="ArrowRight"){e.preventDefault();go(1);} if(e.key==="ArrowLeft"){e.preventDefault();go(-1);} });
+  const refresh=dir=>{ page=0; build(); paint(dir); };
+  q.addEventListener("input",()=>{  refresh(); });
+  $("#filters").addEventListener("click",e=>{ const b=e.target.closest(".f"); if(!b) return; const f=b.dataset.f; act.has(f)?act.delete(f):act.add(f); b.setAttribute("aria-pressed",act.has(f));  refresh(); });
+  let lastPer=per(); addEventListener("resize",()=>{ if(per()!==lastPer){ lastPer=per(); build(); paint(); } });
+  const pick=c=>{ cat=c; q.value=""; act.clear(); $$(".f").forEach(f=>f.setAttribute("aria-pressed","false")); refresh("drop"); };
+  const tabs=$("#tabs");
+  tabs.innerHTML=KARTE.map((c,i)=>`<button class="nren" role="tab" style="--acc:${c.acc}" data-i="${i}" aria-selected="${i===0}">${c.t}<small>${c.items.length} Gerichte</small></button>`).join("");
+  tabs.addEventListener("click",e=>{ const b=e.target.closest(".nren"); if(!b) return; $$(".nren").forEach(t=>t.setAttribute("aria-selected",t===b)); pick(KARTE[+b.dataset.i]); });
+  refresh();
+  const dk=$("#dock"); if(dk) new IntersectionObserver(es=>dk.classList.toggle("off",es[0].isIntersecting),{threshold:.35}).observe($("#karte"));
 })();
 
 /* ================= Plattenplaner ================= */
