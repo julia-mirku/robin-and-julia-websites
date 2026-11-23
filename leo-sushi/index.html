@@ -31,8 +31,8 @@
   --hdr:64px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
-html.locked,html.locked body{overflow:hidden;overscroll-behavior:none}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip;overflow-y:scroll;scrollbar-gutter:stable}
+html.locked,html.locked body{overscroll-behavior:none}
 body{background:var(--night);color:var(--cream);font:400 17px/1.55 var(--sans);-webkit-tap-highlight-color:transparent;overflow-x:clip;touch-action:manipulation}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -677,6 +677,8 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const swallow=e=>{ if(done){ if(now()-doneAt<650) e.preventDefault(); return true; } e.preventDefault(); return false; };
   if(reduce || scrollY>10 || location.hash){ target=1; p=1; set(1); done=true; hero.classList.remove("off"); return; }
   html.classList.add("locked"); scrollTo(0,0);
+  /* Ohne overflow:hidden – Bildlaufleiste bleibt sichtbar, Breite aendert sich nie. Ziehen an der Leiste wird zurueckgesetzt. */
+  addEventListener("scroll",()=>{ if(!done && scrollY>0) scrollTo(0,0); },{passive:true});
   addEventListener("wheel",e=>{ if(swallow(e)) return;
     const dy=e.deltaMode===1?e.deltaY*32:e.deltaMode===2?e.deltaY*600:e.deltaY; push(Math.max(-.34,Math.min(.34,dy/700))); },{passive:false});
   let ty=null;
@@ -787,8 +789,9 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   let sc=1,tx=0,ty=0,base=null,pts=new Map(),start=null,lastTap=0,dragY=0;
   const apply=()=>{ const r=im.getBoundingClientRect(); im.style.transform=`translate(${tx}px,${ty+dragY}px) scale(${sc})`; };
   const reset=()=>{ sc=1;tx=0;ty=0;dragY=0; im.style.transform=""; lb.style.background=""; };
-  function open(src,alt){ im.src=src; im.alt=alt||""; reset(); lb.classList.add("open"); document.documentElement.style.overflow="hidden"; x.focus({preventScroll:true}); }
-  function close(){ lb.classList.remove("open"); document.documentElement.style.overflow=""; reset(); }
+  function open(src,alt){ im.src=src; im.alt=alt||""; reset(); lb.classList.add("open"); x.focus({preventScroll:true}); }
+  function close(){ lb.classList.remove("open"); reset(); }
+  lb.addEventListener("wheel",e=>e.preventDefault(),{passive:false}); lb.addEventListener("touchmove",e=>e.preventDefault(),{passive:false});
   document.addEventListener("click",e=>{ const z=e.target.closest(".zoom, .dish, .drink, .frame:not(.map)"); if(!z||lb.contains(e.target)) return;
     const img=z.matches("img")?z:z.querySelector("img"); if(!img) return; e.preventDefault(); open(img.currentSrc||img.src,img.alt); });
   x.addEventListener("click",close);
