@@ -490,7 +490,8 @@ body.lb-open{overflow:hidden}
 /* Julia 24.11 ~17:00: weiche Übergänge zwischen den Blöcken – Farbflächen laufen an den Rändern aus, keine Kanten */
 main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 76%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 76%,transparent 100%)}
 .hero .aura-bg{-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 55%,transparent 100%)}
-.fenster .bg{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 28%,#000 72%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 28%,#000 72%,transparent 100%)}
+.fenster .bg{-webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent 9%,#000 42%,#000 64%,transparent 92%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,transparent 9%,#000 42%,#000 64%,transparent 92%,transparent 100%)}
+.fenster{background:linear-gradient(180deg,var(--pearl) 0,#EDE7DF 260px,#EDE7DF calc(100% - 200px),var(--pearl) 100%)}
 #bewertungen.sec{background:transparent!important}
 /* Julia 24.11: goldene Rahmenlinie im letzten Block etwas grösser – mehr Luft zum Inhalt, Linie gleich */
 .pane{padding:clamp(30px,4.6svh,70px) clamp(30px,5.2vw,76px)}
@@ -500,6 +501,8 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
 .top.scrolled::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px;background:linear-gradient(var(--pearl),rgba(250,248,248,0));pointer-events:none}
 /* Julia 23.11 23:40: Tablet mit Touch wie Telefon – keine Pfeile, Wischen + Punkte (18f) */
 @media (hover:none) and (pointer:coarse){.carousel{padding-inline:0}.carousel .car-btn{display:none}}
+/* Reestr V6: Farbwand passt auch auf 1470×659 – Breite folgt der Bildschirmhöhe */
+@media (min-width:901px){.fw-grid{max-width:min(100%,calc((100svh - 260px) * 1.6 / 0.64))}}
 /* Julia 22.11 21:46: Logo im untersten Block etwas schneller */
 .oval .ring{transition-duration:.9s}.oval .ring2{transition-delay:.08s}.oval .word{transition:opacity .5s .3s}
 @media (max-width:900px){.fw-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'wall' 'chips' 'set';gap:14px}.fw-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-inline:-16px;padding-inline:16px}.fw-chips::-webkit-scrollbar{display:none}.fw-chip{flex:0 0 auto}.fw-set{aspect-ratio:4/5;width:min(100%,460px);justify-self:center}}
@@ -571,7 +574,7 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
           <defs><mask id="fwMask"><rect width="1280" height="800" fill="#fff"/><path id="fwHole" d="M864,252 L992,500 L745,500 Z" fill="#000"/></mask></defs>
           <rect class="fw-dim" width="1280" height="800" mask="url(#fwMask)"/>
           <path class="fw-ring" id="fwRing" d="M864,252 L992,500 L745,500 Z"/>
-          <path class="fw-p" data-i="0" d="M80,220 L345,220 L222,510 Z"><title>Pastell</title></path><path class="fw-p" data-i="1" d="M436,252 L556,505 L305,505 Z M528,228 L772,228 L650,508 Z"><title>Bunt &amp; Rot</title></path><path class="fw-p" data-i="2" d="M864,252 L992,500 L745,500 Z"><title>Türkis &amp; Grün</title></path><path class="fw-p" data-i="3" d="M952,226 L1206,226 L1075,508 Z"><title>Nude &amp; Dunkel</title></path>
+          <path class="fw-p" data-i="0" d="M80,220 L345,220 L222,510 Z M952,226 L1206,226 L1075,508 Z"><title>Pastell &amp; Nude</title></path><path class="fw-p" data-i="1" d="M436,252 L556,505 L305,505 Z M528,228 L772,228 L650,508 Z"><title>Bunt &amp; Rot</title></path><path class="fw-p" data-i="2" d="M864,252 L992,500 L745,500 Z"><title>Türkis &amp; Grün</title></path>
         </svg>
         <span class="fw-lbl" id="fwLbl">Türkis &amp; Grün</span>
       </div>
@@ -580,7 +583,7 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
         <img id="fwImgB" alt="" aria-hidden="true">
         <figcaption><b id="fwName">Türkis &amp; Grün</b><span id="fwText">Ein Stück Meer an den Fingerspitzen.</span></figcaption>
       </figure>
-      <div class="fw-chips" id="fwChips" role="tablist" aria-label="Farbgruppen"><button type="button" class="fw-chip" data-i="0">Pastell</button><button type="button" class="fw-chip" data-i="1">Bunt &amp; Rot</button><button type="button" class="fw-chip" data-i="2">Türkis &amp; Grün</button><button type="button" class="fw-chip" data-i="3">Nude &amp; Dunkel</button></div>
+      <div class="fw-chips" id="fwChips" role="tablist" aria-label="Farbgruppen"><button type="button" class="fw-chip" data-i="0">Pastell &amp; Nude</button><button type="button" class="fw-chip" data-i="1">Bunt &amp; Rot</button><button type="button" class="fw-chip" data-i="2">Türkis &amp; Grün</button></div>
     </div>
   </div>
 </section>
@@ -685,6 +688,7 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
       <figure data-lb="4"><img loading="lazy" src="https://julia-mirku.github.io/aura-nails-muster/img/work_silver_leopard.webp" alt="Milky White mit Silber und Leopard"><figcaption>Ice cold, but make it classy.</figcaption></figure>
       <figure data-lb="5"><img loading="lazy" src="https://julia-mirku.github.io/aura-nails-muster/img/work_french_square.webp" alt="Eckige Nägel mit weissem French"><figcaption>Some classics don’t need an introduction.</figcaption></figure>
       <figure data-lb="0"><img loading="lazy" src="https://julia-mirku.github.io/aura-nails-muster/img/work_french_almond.webp" alt="French-Manicure auf Mandelnägeln"><figcaption>A French manicure never goes out of style.</figcaption></figure>
+      <figure data-lb="7"><img loading="lazy" src="https://julia-mirku.github.io/aura-nails-muster/img/work_halloween_lace.webp" alt="Schwarze Spitze auf Nude"><figcaption>Halloween, but make it elegant.</figcaption></figure>
       <figure data-lb="2"><img loading="lazy" src="https://julia-mirku.github.io/aura-nails-muster/img/work_tortoise_gold.webp" alt="Schildpatt, Schokobraun und Gold"><figcaption>Tortoiseshell, chocolate brown &amp; gold.</figcaption></figure>
     </div>
       <div class="car-nav">
@@ -735,9 +739,9 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
     </div>
     <div class="scores reveal" id="scores">
       <div class="score"><b>5,0</b><span>Google · 198 Bewertungen</span></div>
-      <div class="score"><b>4,95</b><span>Ambiente · Treatwell</span></div>
-      <div class="score"><b>4,96</b><span>Sauberkeit · Treatwell</span></div>
-      <div class="score"><b>4,96</b><span>Service · Treatwell</span></div>
+      <div class="score"><b>Top Rated</b><span>Treatwell 2026</span></div>
+      <div class="score"><b>3</b><span>Nail Designerinnen im Team</span></div>
+      <div class="score"><b>6</b><span>Tage pro Woche geöffnet</span></div>
     </div>
     <div class="carousel reveal" id="carousel">
       <div class="track" id="track">
@@ -872,7 +876,7 @@ setTimeout(()=>$$('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(
 
 
 /* ---------- Farbwand: Regal → echtes Set ---------- */
-(()=>{const G=[["pastell", "Pastell", "M80,220 L345,220 L222,510 Z", "work_french_floral_soft", "Zarte Töne, feiner French mit Blüten."], ["bunt", "Bunt & Rot", "M436,252 L556,505 L305,505 Z M528,228 L772,228 L650,508 Z", "work_halloween_cute", "Kräftig und verspielt – jeder Nagel anders."], ["tuerkis", "Türkis & Grün", "M864,252 L992,500 L745,500 Z", "work_ocean_aqua", "Ein Stück Meer an den Fingerspitzen."], ["dunkel", "Nude & Dunkel", "M952,226 L1206,226 L1075,508 Z", "work_halloween_lace", "Schwarze Spitze auf Nude."]];const wall=$('#fwWall');if(!wall)return;
+(()=>{const G=[["pastell", "Pastell & Nude", "M80,220 L345,220 L222,510 Z M952,226 L1206,226 L1075,508 Z", "work_french_floral_soft", "Zarte Töne, feiner French mit Blüten."], ["bunt", "Bunt & Rot", "M436,252 L556,505 L305,505 Z M528,228 L772,228 L650,508 Z", "work_halloween_cute", "Kräftig und verspielt – jeder Nagel anders."], ["tuerkis", "Türkis & Grün", "M864,252 L992,500 L745,500 Z", "work_ocean_aqua", "Ein Stück Meer an den Fingerspitzen."]];const wall=$('#fwWall');if(!wall)return;
   const hole=$('#fwHole'),ring=$('#fwRing'),lbl=$('#fwLbl'),A=$('#fwImgA'),B=$('#fwImgB'),chips=$$('.fw-chip'),polys=$$('.fw-p');
   let cur=-1,front=A,back=B,auto=0,touched=false,vis=false;
   const cen=p=>{const q=p.replace(/[MLZ]/g,' ').trim().split(/\s+/).map(x=>x.split(',').map(Number));return [q.reduce((a,b)=>a+b[0],0)/q.length,q.reduce((a,b)=>a+b[1],0)/q.length]};
@@ -884,13 +888,13 @@ setTimeout(()=>$$('.reveal').forEach(el=>{const r=el.getBoundingClientRect();if(
     const src='https://julia-mirku.github.io/aura-nails-muster/img/'+g[3]+'.webp';if(front.getAttribute('src')===src)return;
     back.onload=()=>{back.style.opacity=1;front.style.opacity=0;back.alt=g[4];back.removeAttribute('aria-hidden');front.setAttribute('aria-hidden','true');[front,back]=[back,front]};back.src=src}
   const user=i=>{touched=true;clearInterval(auto);show(i)};
-  polys.forEach(p=>{const i=+p.dataset.i;p.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')user(i)});p.addEventListener('click',()=>user(i))});
-  chips.forEach(c=>{const i=+c.dataset.i;c.addEventListener('click',()=>user(i));c.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')user(i)})});
+  /* Hover zählt nur nach echter Mausbewegung – beim Scrollen mit ruhender Maus wechselt nichts (Reestr V6) */
+  let moved=0;addEventListener('mousemove',()=>{moved=Date.now()},{passive:true});const hov=(e,i)=>{if(e.pointerType==='mouse'&&Date.now()-moved<120)user(i)};
+  polys.forEach(p=>{const i=+p.dataset.i;p.addEventListener('pointerenter',e=>hov(e,i));p.addEventListener('pointermove',e=>{if(cur!==i)hov(e,i)});p.addEventListener('click',()=>user(i))});
+  chips.forEach(c=>{const i=+c.dataset.i;c.addEventListener('click',()=>user(i));c.addEventListener('pointerenter',e=>hov(e,i))});
   addEventListener('resize',place);
-  /* Vorschau: einmal langsam durch die Regale, bis jemand selbst wählt */
-  const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(!vis){clearInterval(auto);return}
-    if(cur<0)setTimeout(()=>{if(cur<0)show(2)},700);if(!touched&&!calm){clearInterval(auto);auto=setInterval(()=>{if(!touched&&vis)show((cur+1)%G.length)},3200)}}),{threshold:.4}).observe(wall);
+  /* Startbild fest, kein automatisches Durchblättern */
+  new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&cur<0)show(2)}),{threshold:.2}).observe(wall);
 })();
 /* ---------- Karussells (Bewertungen, Galerie) ---------- */
 function carousel(root){const tr=root.querySelector('.track'),qs=[...tr.children],dots=root.querySelector('.dots'),prev=root.querySelector('.car-btn:first-child,.prev'),next=root.querySelector('.car-btn:last-child,.next');
