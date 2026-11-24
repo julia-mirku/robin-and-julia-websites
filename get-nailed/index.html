@@ -353,7 +353,7 @@ html.nb-off .top{top:0}
 /* ---------- Galerie ---------- */
 #galerie{background:var(--papier)}
 .strip-wrap{position:relative}
-.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px 2px 10px;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:10px 2px 34px;margin-bottom:-24px;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
 .strip::-webkit-scrollbar{display:none}
 .strip figure{flex:0 0 calc((100% - 48px)/4);scroll-snap-align:start;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--puder);cursor:zoom-in}
 .strip figure img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
@@ -471,6 +471,88 @@ html.nb-off .top{top:0}
 @media (max-width:700px){.bookbar{display:flex;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:70;gap:8px;padding:8px;border-radius:99px;background:rgba(42,14,23,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 14px 34px -12px rgba(0,0,0,.6);transform:translateY(140%);transition:transform .45s var(--ease)}
  .bookbar.show{transform:none}.bookbar .btn{flex:1;height:44px;font-size:12px;padding:0 10px}
  .mini{bottom:84px!important}}
+
+/* ===== 24.11 Bewegungen ===== */
+:root{--pick:#6E1A2E;--pick-hi:#A84A60}
+/* 1 Lackwand-Regal */
+.hero.b{padding-bottom:150px}
+.hero.b .hero-grid{min-height:calc(100svh - var(--hdr) - var(--nb) - 200px)}
+@media (min-width:901px){.hero.b{padding-top:calc(var(--hdr) + var(--nb) + 4px);padding-bottom:170px}.hero.b .buehne{width:min(100%,calc((100svh - 340px)*.8),520px)}.hero.b .ticket{bottom:4%}}
+.regal{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:9;width:min(1107px,94vw);opacity:0;transition:opacity 1s .9s var(--ease)}
+.hero.open .regal{opacity:1}
+.regal-k{display:block;font-family:"Josefin Sans";font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-2);margin:0 0 8px 4px}
+.regal-in{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px rgba(217,189,132,.45),0 24px 50px -24px rgba(0,0,0,.8);background:#cfc8c0;touch-action:pan-y;cursor:crosshair}
+.regal-in img{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none;pointer-events:none}
+.regal-in:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 40%,rgba(0,0,0,.12));pointer-events:none}
+.needle{display:none}
+.regal-tip{position:absolute;left:0;top:0;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;transform:translate(-50%,-100%) scale(.6);transition:opacity .18s,transform .18s}
+.regal-tip.on{opacity:1;transform:translate(-50%,-112%) scale(1)}
+.regal-tip i{width:46px;height:46px;border-radius:50% 50% 50% 50%/58% 58% 42% 42%;background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.75) 0 9%,rgba(255,255,255,0) 26%),var(--tip,#6E1A2E);box-shadow:0 10px 24px -8px rgba(0,0,0,.6),inset 0 -6px 10px rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.85)}
+.regal-tip b{font:400 10.5px "Josefin Sans";letter-spacing:.18em;text-transform:uppercase;color:var(--papier);background:rgba(28,9,16,.75);padding:4px 8px;border-radius:99px;white-space:nowrap}
+.fall{position:fixed;z-index:60;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.7) 0 10%,rgba(255,255,255,0) 28%),var(--pick);pointer-events:none;transition:transform .7s cubic-bezier(.55,0,.85,.4),opacity .7s}
+.rk-m{display:none}
+@media (max-width:900px){
+  .hero.b{padding-bottom:70px}
+  .regal{position:relative;bottom:auto;width:auto;left:auto;transform:none;margin:30px 0 0;padding:0 4vw;z-index:9}
+  .rk-d{display:none}.rk-m{display:inline}
+  .needle{top:auto!important;bottom:0;height:92px}
+  .regal-k{font-size:10px;letter-spacing:.18em}
+  .regal-in{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:default;scroll-snap-type:none}
+  .regal-in::-webkit-scrollbar{display:none}
+  .regal-in img{width:auto;height:92px;max-width:none}
+  .regal-in:after{position:sticky;left:0;display:none}
+  .needle{display:block;position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--gold-3);box-shadow:0 0 0 1px rgba(42,14,23,.4);pointer-events:none}
+  .regal-wrap{position:relative}
+  .regal-tip{position:absolute}
+}
+/* 2 Lack fliesst in den Salon-Block */
+.drips{position:absolute;left:0;right:0;top:-6px;height:clamp(70px,8vw,120px);pointer-events:none;z-index:2}
+.drips svg{width:100%;height:100%;overflow:visible}
+.drips .band,.drips .dr{fill:url(#lackG)}
+.drips .band{transform-origin:top;transform:scaleY(0);transition:transform .5s var(--ease)}
+.drips .dr{transform-box:fill-box;transform-origin:top;transform:scaleY(0);transition:transform .35s ease-in}
+.drips.flow .band{transform:scaleY(1)}
+.drips.flow .dr{transform:scaleY(1);transition:transform 1.5s cubic-bezier(.3,.6,.25,1) calc(var(--d) + .2s)}
+#salons{padding-top:clamp(110px,13svh,150px)}
+/* 3 Szenenwechsel Salons: Lackstrich */
+.salon-info{position:relative}
+.wipe{position:absolute;inset:-8px -14px;z-index:5;pointer-events:none;border-radius:26px;background:linear-gradient(100deg,transparent 0 6%,var(--pick) 14% 62%,var(--pick-hi) 70%,transparent 80%);transform:translateX(-120%) skewX(-12deg);opacity:0}
+.salon-info.wiping .wipe{animation:wipe .8s cubic-bezier(.65,0,.3,1) both}
+@keyframes wipe{0%{transform:translateX(-120%) skewX(-12deg);opacity:1}50%{transform:translateX(0) skewX(-12deg);opacity:1}100%{transform:translateX(130%) skewX(-12deg);opacity:1}}
+.stagecard.on img{animation:scene 1.1s var(--ease) both}
+@keyframes scene{from{transform:scale(1.12)}to{transform:none}}
+/* 4 Fünf Akte: Vorhang zwischen den Akten */
+.akt-stage{position:relative;overflow:hidden;border-radius:24px}
+.akt-stage .vh{position:absolute;top:0;bottom:0;width:51%;z-index:6;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.32) 0 2px,rgba(0,0,0,0) 18px,rgba(255,255,255,.06) 28px,rgba(0,0,0,0) 38px,rgba(0,0,0,.36) 52px),linear-gradient(180deg,#5A1A2C,#3A0F1C 60%,#260A13);
+  box-shadow:inset 0 -14px 0 -9px var(--gold);transition:transform .38s cubic-bezier(.6,0,.3,1)}
+.akt-stage .vh.l{left:0;transform:translateX(-102%)}.akt-stage .vh.r{right:0;transform:translateX(102%)}
+.akt-stage.zu .vh{transform:none}
+.akt-stage.auf .vh{transition-duration:.6s}
+.akt-no{position:absolute;right:22px;top:6px;z-index:1;font-family:"Playfair Display";font-style:italic;font-size:clamp(70px,8vw,120px);line-height:1;color:rgba(110,26,46,.08);pointer-events:none;transition:opacity .3s}
+.akt{position:relative;z-index:2}
+/* 5 Galerie als Lackband */
+.strip-wrap:before{content:"";position:absolute;left:calc(50% - 50vw);right:calc(50% - 50vw);top:32%;height:34%;z-index:0;border-radius:6px;
+  background:linear-gradient(90deg,var(--pick),var(--pick-hi) 25%,var(--pick) 50%,var(--pick-hi) 75%,var(--pick));background-size:200% 100%;background-position:var(--rp,0%) 0;opacity:.9;
+  box-shadow:inset 0 10px 18px -10px rgba(255,255,255,.5),inset 0 -12px 20px -12px rgba(0,0,0,.35);transition:background-color .6s}
+.strip{position:relative;z-index:1}
+.strip figure{transition:transform .5s var(--ease),box-shadow .5s;box-shadow:0 18px 40px -22px rgba(42,14,23,.7)}
+.strip figure:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.34) 46%,transparent 60%);transform:translateX(-120%);pointer-events:none}
+@media (hover:hover){.live .strip figure:hover:after{transform:translateX(120%);transition:transform .9s var(--ease)}}
+@media (max-width:700px){.strip figure{transform:scale(.92)}.strip figure.f{transform:none}}
+/* 6 Tipp-Glanz + Knöpfe */
+.splash{position:fixed;z-index:96;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;pointer-events:none;border:2px solid var(--pick-hi);animation:splash .55s ease-out forwards}
+.splash:after{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--pick);animation:splashd .55s ease-out forwards}
+@keyframes splash{from{transform:scale(.2);opacity:1}to{transform:scale(1.5);opacity:0}}
+@keyframes splashd{from{transform:scale(1.4)}to{transform:scale(0)}}
+.btn{position:relative;overflow:hidden}
+.btn:after{content:"";position:absolute;top:-20%;bottom:-20%;left:0;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:translateX(-160%) skewX(-18deg);pointer-events:none}
+@media (hover:hover){.btn:hover:after{transform:translateX(320%) skewX(-18deg);transition:transform .75s var(--ease)}}
+.wandchip{display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:8px 14px 8px 8px;border-radius:99px;border:1px solid var(--linie);background:rgba(255,255,255,.7);font-size:13.5px;transition:border-color .2s,box-shadow .2s}
+.wandchip i{width:22px;height:22px;border-radius:50%;background:var(--pick);box-shadow:inset 0 -3px 5px rgba(0,0,0,.25),0 0 0 2px #fff}
+.wandchip[hidden]{display:none}
+@media (hover:hover){.wandchip:hover{border-color:var(--gold-2);box-shadow:0 0 0 5px rgba(241,223,182,.45)}}
+@media (prefers-reduced-motion:reduce){.drips .dr,.drips .band{transform:none!important}}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01s!important;animation-duration:.01s!important}}
 </style>
 </head>
@@ -529,6 +611,11 @@ html.nb-off .top{top:0}
       </div>
     </div>
   </div>
+<div class="regal" id="regal">
+    <span class="regal-k"><span class="rk-d" data-en="The wall of polish · Seefeld — glide over it and pick your colour">Die Lackwand · Seefeld — fahren Sie darüber und wählen Sie Ihre Farbe</span><span class="rk-m" data-en="The wall of polish · swipe to pick your colour">Die Lackwand · wischen und Farbe wählen</span></span>
+    <div class="regal-in" id="regalIn"><img src="img/lackwand_regal.webp" alt="Regal mit Nagellacken im Salon Seefeld" draggable="false" width="1107" height="104"></div><span class="needle" aria-hidden="true"></span>
+    <div class="regal-tip" id="regalTip" aria-hidden="true"><i></i><b data-en="Tap to take">Klick = übernehmen</b></div>
+  </div>
 </section>
 <template id="heroB"><section class="hero" id="hero">
   <div class="spot" aria-hidden="true"></div>
@@ -557,6 +644,7 @@ html.nb-off .top{top:0}
 
 <!-- SPIELSTÄTTEN -->
 <section class="sec grain" id="salons">
+  <div class="drips" id="drips" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><defs><linearGradient id="lackG" x1="0" x2="1"><stop offset="0" style="stop-color:var(--pick)"/><stop offset=".42" style="stop-color:var(--pick-hi)"/><stop offset="1" style="stop-color:var(--pick)"/></linearGradient></defs><rect class="band" x="0" y="0" width="1440" height="7"/><path class="dr" style="--d:0.24s" d="M-3.1,0 C3.5,10 4.5,11.9 4.5,24.5 A9.5,9.5 0 0 0 23.5,24.5 C23.5,11.9 24.5,10 31.1,0 Z"/><path class="dr" style="--d:0.32s" d="M48.1,0 C52.0,10 52.5,38.5 52.5,104.5 A5.5,5.5 0 0 0 63.5,104.5 C63.5,38.5 64.0,10 67.9,0 Z"/><path class="dr" style="--d:0.13s" d="M133.0,0 C136.5,10 137.0,25.2 137.0,67.0 A5.0,5.0 0 0 0 147.0,67.0 C147.0,25.2 147.5,10 151.0,0 Z"/><path class="dr" style="--d:0.04s" d="M171.2,0 C178.9,10 180.0,20.3 180.0,47.0 A11.0,11.0 0 0 0 202.0,47.0 C202.0,20.3 203.1,10 210.8,0 Z"/><path class="dr" style="--d:0.50s" d="M220.2,0 C227.9,10 229.0,9.1 229.0,15.0 A11.0,11.0 0 0 0 251.0,15.0 C251.0,9.1 252.1,10 259.8,0 Z"/><path class="dr" style="--d:0.38s" d="M278.6,0 C284.2,10 285.0,31.5 285.0,82.0 A8.0,8.0 0 0 0 301.0,82.0 C301.0,31.5 301.8,10 307.4,0 Z"/><path class="dr" style="--d:0.59s" d="M319.1,0 C326.4,10 327.5,9.1 327.5,15.5 A10.5,10.5 0 0 0 348.5,15.5 C348.5,9.1 349.6,10 356.9,0 Z"/><path class="dr" style="--d:0.25s" d="M369.3,0 C373.9,10 374.5,15.4 374.5,37.5 A6.5,6.5 0 0 0 387.5,37.5 C387.5,15.4 388.1,10 392.7,0 Z"/><path class="dr" style="--d:0.19s" d="M477.2,0 C481.4,10 482.0,25.2 482.0,66.0 A6.0,6.0 0 0 0 494.0,66.0 C494.0,25.2 494.6,10 498.8,0 Z"/><path class="dr" style="--d:0.34s" d="M538.2,0 C542.4,10 543.0,25.2 543.0,66.0 A6.0,6.0 0 0 0 555.0,66.0 C555.0,25.2 555.6,10 559.8,0 Z"/><path class="dr" style="--d:0.33s" d="M593.0,0 C600.0,10 601.0,9.1 601.0,16.0 A10.0,10.0 0 0 0 621.0,16.0 C621.0,9.1 622.0,10 629.0,0 Z"/><path class="dr" style="--d:0.12s" d="M648.0,0 C651.5,10 652.0,25.2 652.0,67.0 A5.0,5.0 0 0 0 662.0,67.0 C662.0,25.2 662.5,10 666.0,0 Z"/><path class="dr" style="--d:0.19s" d="M743.2,0 C750.9,10 752.0,38.5 752.0,99.0 A11.0,11.0 0 0 0 774.0,99.0 C774.0,38.5 775.1,10 782.8,0 Z"/><path class="dr" style="--d:0.18s" d="M854.3,0 C862.4,10 863.5,15.4 863.5,32.5 A11.5,11.5 0 0 0 886.5,32.5 C886.5,15.4 887.6,10 895.7,0 Z"/><path class="dr" style="--d:0.34s" d="M921.6,0 C927.2,10 928.0,9.1 928.0,18.0 A8.0,8.0 0 0 0 944.0,18.0 C944.0,9.1 944.8,10 950.4,0 Z"/><path class="dr" style="--d:0.44s" d="M1019.4,0 C1027.8,10 1029.0,15.4 1029.0,32.0 A12.0,12.0 0 0 0 1053.0,32.0 C1053.0,15.4 1054.2,10 1062.6,0 Z"/><path class="dr" style="--d:0.31s" d="M1105.1,0 C1109.0,10 1109.5,9.1 1109.5,20.5 A5.5,5.5 0 0 0 1120.5,20.5 C1120.5,9.1 1121.0,10 1124.9,0 Z"/><path class="dr" style="--d:0.56s" d="M1156.9,0 C1163.5,10 1164.5,11.9 1164.5,24.5 A9.5,9.5 0 0 0 1183.5,24.5 C1183.5,11.9 1184.5,10 1191.1,0 Z"/><path class="dr" style="--d:0.05s" d="M1256.0,0 C1259.5,10 1260.0,31.5 1260.0,85.0 A5.0,5.0 0 0 0 1270.0,85.0 C1270.0,31.5 1270.5,10 1274.0,0 Z"/><path class="dr" style="--d:0.42s" d="M1356.9,0 C1363.5,10 1364.5,15.4 1364.5,34.5 A9.5,9.5 0 0 0 1383.5,34.5 C1383.5,15.4 1384.5,10 1391.1,0 Z"/></svg></div>
   <div class="wrap">
     <div class="sec-head reveal">
       <div><span class="kicker" data-en="Two salons · one signature">Zwei Salons · eine Handschrift</span>
@@ -586,7 +674,7 @@ html.nb-off .top{top:0}
         <p data-en="No time to come in? We come to you – for the salon standard at home, for shoots or weddings.">Keine Zeit für den Salon? Wir kommen zu Ihnen – für zu Hause, Shootings oder Hochzeiten.</p>
       </button>
     </div>
-    <div class="salon-info reveal" id="salonInfo">
+    <div class="salon-info reveal" id="salonInfo"><span class="wipe" aria-hidden="true"></span>
       <div class="infocard" id="infoMain">
         <h4 id="siName">Get Nailed! Seefeld</h4>
         <p class="addr" id="siAddr">Seefeldstrasse 7, 8008 Zürich</p>
@@ -609,6 +697,7 @@ html.nb-off .top{top:0}
       <div><span class="kicker" data-en="Set Studio · try before you book">Set-Studio · erst ansehen, dann buchen</span>
       <h2 class="t" data-en="Your set, <em>before the curtain rises.</em>">Ihr Set, <em>bevor der Vorhang aufgeht.</em></h2></div>
       <p class="lead" data-en="Length, shape, design and finish – the hand shows it, the price follows the Get Nailed menu. Bring it along or show it at the desk.">Länge, Form, Design und Effekt – die Hand zeigt es, der Preis folgt der Get-Nailed-Preisliste. Zeigen Sie Ihr Set einfach am Empfang.</p>
+      <button class="wandchip" id="wandChip" hidden><i></i><span data-en="Use your colour from the polish wall">Ihre Farbe von der Lackwand übernehmen</span></button>
     </div>
 <div class="set-grid" id="setgrid">
       <div class="stage reveal" id="stage">
@@ -671,7 +760,7 @@ html.nb-off .top{top:0}
         <button data-a="4"><span>Akt IV</span><b>Pedicure</b></button>
         <button data-a="5"><span>Zugabe</span><b data-en="Lashes &amp; Brows">Lashes &amp; Brows</b></button>
       </div>
-      <div>
+      <div class="akt-stage" id="aktStage"><span class="vh l"></span><span class="vh r"></span><span class="akt-no" id="aktNo">I</span>
         <div class="akt on" data-a="1">
           <h3>Manicure</h3><p class="sub" data-en="Russian manicure with the e-file: precise cuticle work, without harsh cutting.">Russian Manicure mit E-File: präzise Nagelhautpflege, ohne grobes Schneiden.</p>
           <div class="akt-cols">
@@ -944,7 +1033,7 @@ function renderSalon(){const s=SAL[cur];
   $('#siActs').innerHTML=(cur==='zuhause'?'<a class="btn btn-ink" href="tel:+41435118008">'+tt('Hausbesuch anfragen','Request a house call')+'</a>':'<a class="btn btn-ink" href="'+s.book+'" target="_blank" rel="noopener">'+tt('Termin in ','Book at ')+s.short.replace('Seefeldstrasse 7','Seefeld').replace('Schaffhauserstr. 30','Schaffhauserplatz')+'</a>')+
     '<a class="btn btn-ghost" href="tel:+41435118008">043 511 80 08</a>'+(s.map?'<a class="btn btn-ghost" href="'+s.map+'" target="_blank" rel="noopener">'+tt('Route','Directions')+'</a>':'');
   renderDays();renderTicket()}
-$$('.stagecard').forEach(c=>c.addEventListener('click',()=>{cur=c.dataset.s;renderSalon()}));
+$$('.stagecard').forEach(c=>c.addEventListener('click',()=>{if(cur===c.dataset.s)return;cur=c.dataset.s;const si=$('#salonInfo');si.classList.remove('wiping');void si.offsetWidth;si.classList.add('wiping');$$('.stagecard').forEach(x=>x.classList.toggle('on',x===c));setTimeout(renderSalon,380);setTimeout(()=>si.classList.remove('wiping'),850)}));
 /* Ticket im Hero */
 function renderTicket(){const t=$('#ticket');if(!t)return;const s=SAL[cur==='zuhause'?'seefeld':cur];const k=cur==='zuhause'?'seefeld':cur;
   $$('#ticket .tsal button').forEach(b=>b.classList.toggle('on',b.dataset.s===k));
@@ -956,7 +1045,10 @@ const bb=$('#bookbar');new IntersectionObserver(es=>es.forEach(e=>bb.classList.t
 /* Galerie: Foto aus dem Hero nicht doppelt zeigen */
 {const hs=hero.querySelector('.portal img').getAttribute('src');$$('#strip figure').forEach(f=>{if(f.querySelector('img').getAttribute('src')===hs)f.parentNode.removeChild(f)})}
 /* ---------- Programm ---------- */
-$$('.akte button').forEach(b=>b.addEventListener('click',()=>{$$('.akte button').forEach(x=>x.classList.toggle('on',x===b));$$('.akt').forEach(a=>a.classList.toggle('on',a.dataset.a===b.dataset.a))}));
+{const RN=['','I','II','III','IV','Zugabe'],stg=$('#aktStage');let busy=0;
+$$('.akte button').forEach(b=>b.addEventListener('click',()=>{if(b.classList.contains('on')||busy)return;busy=1;$$('.akte button').forEach(x=>x.classList.toggle('on',x===b));
+  stg.style.minHeight=stg.offsetHeight+'px';stg.classList.remove('auf');stg.classList.add('zu');
+  setTimeout(()=>{$$('.akt').forEach(a=>a.classList.toggle('on',a.dataset.a===b.dataset.a));$('#aktNo').textContent=RN[+b.dataset.a];stg.style.minHeight='';stg.classList.add('auf');stg.classList.remove('zu');setTimeout(()=>{busy=0;stg.classList.remove('auf')},620)},420)}))}
 
 /* ---------- Galerie: eine Karte pro Pfeil, Pfeile seitlich ---------- */
 const strip=$('#strip'),fig=$$('#strip figure'),dots=$('#dots');
@@ -976,6 +1068,50 @@ function setLang(l){lang=l;H.lang=l;$$('.lang button').forEach(b=>b.classList.to
 $$('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
 if(/[?&]lang=en/.test(location.search))setLang('en');
 renderSalon();
+
+
+/* ===== 24.11 Bewegungen ===== */
+const LW={"w": 1107, "h": 104, "bin": 3, "cols": ["ded7c5", "dcd4c1", "dad2bf", "dbccb5", "c4b5a2", "b39c7d", "5f3124", "ca786a", "d35966", "b34232", "d3a8a1", "e1e1df", "c1b6b0", "9e9188", "dad5d2", "978d84", "72655c", "d3d3cb", "8f7463", "937261", "453221", "5b4023", "5f4836", "896e5b", "5a4226", "fad7ad", "d3b488", "524b41", "40545d", "b74d5b", "be1333", "f56e8c", "514a30", "6b6146", "4d4520", "e1e2d0", "c1c19f", "a2a383", "bdc9bd", "eeeff1", "d5dfd7", "acaca4", "8e8d78", "aba78c", "4a2803", "764c22", "7c4e3f", "674e49", "d7b08f", "dec7a8", "d6b9b1", "6f3d26", "985936", "5a181c", "7a3f45", "e7284a", "820d28", "44000a", "4a3c3c", "2d2d45", "344364", "807573", "563d38", "403434", "737657", "96aaa9", "5e6a5c", "666b64", "515556", "566568", "586c6a", "475059", "9b9b99", "6b675e", "757c82", "9eacb5", "b9b6ad", "948c81", "676153", "a6867b", "ee6e51", "fb6d63", "a7111d", "850617", "7e352c", "ea5d3f", "822110", "41464c", "3e4442", "6b404a", "492d29", "4a4c41", "763c31", "db5d4e", "87403c", "715a54", "6e3521", "a5583a", "9f4d28", "5c381e", "525254", "2f4d55", "2a4244", "5f2e34", "772333", "895561", "58272d", "41231b", "53352a", "48342b", "5c6c85", "263548", "30383a", "4d3a34", "8b310c", "f45710", "ae3600", "966230", "50290c", "e6ad90", "543e31", "b6a89f", "7f675d", "6f4642", "d5adae", "9a8982", "634d42", "7e3f36", "b9423c", "9c9ba0", "7d818c", "7a623e", "947010", "c08960", "ca917e", "884a3f", "6e202d", "905d6c", "682f3e", "43181f", "a61f19", "dc3934", "ca7976", "8b908a", "babfc2", "4f3a37", "5b2c1a", "4c6b49", "4d8757", "4f7c5f", "4f6572", "a4aff1", "91a7f3", "375794", "2e3545", "5e5f5a", "686157", "76716b", "798281", "878785", "93807a", "6f645e", "464742", "4d2830", "55443a", "8d8f8e", "857868", "713d27", "ac0a17", "472c23", "63605b", "575956", "4d4f4c", "6a6b6f", "565a5b", "424a4d", "4b3d34", "671021", "b02a45", "5a3137", "714e54", "472a2f", "505455", "444e4f", "b56449", "750416", "d2453e", "412b20", "7c827e", "635b59", "948888", "9f9188", "655f51", "65666b", "4e555d", "452c0e", "5d4640", "cc552a", "fd4c18", "4f2e0f", "60251f", "40769c", "336e90", "694825", "1f3d59", "275a8f", "7a592c", "73777a", "a59796", "4d3a1c", "6c5418", "ddb91b", "f8ce06", "564a32", "7f5e3b", "5f6670", "282f39", "5d401e", "694b25", "c99b67", "d19c68", "dda572", "dba674", "94704c", "e7b787", "bd925d", "442b15", "d8b78e", "856647", "876645", "886641", "5d666f", "987f60", "48576a", "273746", "765832", "7a5a33", "8f6a40", "977144", "e3bf9b", "a68457", "d6a980", "cf9f79", "c2906d", "bb8966", "462d30", "b3825a", "4a252c", "570a12", "ba0411", "ed5468", "e83f56", "ce2e52", "9f0730", "a7774f", "9c6f46", "b48655", "af8054", "a7784c", "775c41", "aa7c4b", "bd966d", "384568", "4c5880", "394a78", "855a2d", "a57851", "ad8057", "432219", "c36d5c", "ec928a", "e87465", "ef796d", "906538", "dc747f", "9f6b44", "572019", "a0744d", "aa505c", "ac505d", "c96f78", "875c31", "b23545", "ec445e", "db0026", "ff6783", "d90029", "e6002f", "be0622", "6c3224", "410801", "692019", "570e05", "431300", "db8514", "f7a416", "fdb127", "f3c35f", "ffc433", "ffb804", "ebc354", "5199a8", "4395ad", "79aab8", "24404e", "1c3b58", "be9265", "b18659", "b9966e", "916e44", "7d5927", "795835", "af7c47", "8c6641", "88613a", "5a698a", "7c90b3", "c0884d", "a2754c", "bb8a50", "1c2641", "9d2457", "db2168", "ea1d68", "f44681", "fb4188", "f72b80", "e8437b", "b78955", "895f37", "8d6937", "b5894c", "cf9b52", "d19f64", "8a6642", "8e6539", "76542f", "896741", "896742", "546984", "486793", "382845", "730014", "bb3c4d", "e1042d", "cd2846", "bd0e2b", "e56983", "8e3143", "b04654", "ef929d", "806345", "856141", "8b6b52", "795940", "76543b", "896952", "7b5b44", "8e6e57", "83634c", "8b684c", "8b6d55", "a8546e", "cb0447", "e60354", "e80d61", "fd1e79", "fc2686", "f20067"]};
+const hx=h=>[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
+const lighten=(c,k)=>'#'+c.map(v=>Math.round(v+(255-v)*k).toString(16).padStart(2,'0')).join('');
+function setPick(hex){const c=hx(hex);H.style.setProperty('--pick','#'+hex);H.style.setProperty('--pick-hi',lighten(c,.38))}
+/* 1 Regal: Farbe unter Cursor / unter der Nadel */
+const regal=$('#regal'),rin=$('#regalIn'),tip=$('#regalTip');
+let picked=null;
+if(regal){
+  const img=rin.querySelector('img');
+  const colAt=fx=>LW.cols[Math.max(0,Math.min(LW.cols.length-1,Math.floor(fx*LW.w/LW.bin)))];
+  const mobile=()=>matchMedia('(max-width:900px)').matches;
+  const showTip=(x,y,hex)=>{if(mobile())tip.querySelector('b').textContent=lang==='en'?'Your colour':'Ihre Farbe';tip.style.setProperty('--tip','#'+hex);tip.style.left=x+'px';tip.style.top=y+'px';tip.classList.add('on')};
+  const fromPointer=e=>{const r=img.getBoundingClientRect();const fx=(e.clientX-r.left)/r.width;if(fx<0||fx>1)return null;return colAt(fx)};
+  rin.addEventListener('pointermove',e=>{if(mobile()||!hero.classList.contains('live'))return;const hex=fromPointer(e);if(!hex)return;const rr=regal.getBoundingClientRect();showTip(e.clientX-rr.left,rin.offsetTop+ (e.clientY-rin.getBoundingClientRect().top),hex)});
+  rin.addEventListener('pointerleave',()=>{if(!mobile())tip.classList.remove('on')});
+  /* Telefon: wischen, Farbe unter der Nadel in der Mitte */
+  let mt=0,touched=false;['touchstart','pointerdown','wheel'].forEach(ev=>rin.addEventListener(ev,()=>{touched=true},{passive:true}));
+  rin.addEventListener('scroll',()=>{if(!mobile()||!touched)return;const r=img.getBoundingClientRect(),ri=rin.getBoundingClientRect();const fx=(ri.left+ri.width/2-r.left)/r.width;const hex=colAt(fx);const rr=regal.getBoundingClientRect();showTip(ri.left+ri.width/2-rr.left,rin.offsetTop,hex);clearTimeout(mt);mt=setTimeout(()=>{choose(hex,ri.left+ri.width/2,ri.top)},420)},{passive:true});
+  rin.addEventListener('click',e=>{if(mobile())return;const hex=fromPointer(e);if(hex)choose(hex,e.clientX,e.clientY)});
+  if(matchMedia('(max-width:900px)').matches)requestAnimationFrame(()=>{rin.scrollLeft=(img.offsetWidth-rin.clientWidth)*.62});
+}
+function choose(hex,x,y){if(picked===hex)return;picked=hex;
+  const d=document.createElement('span');d.className='fall';d.style.left=x+'px';d.style.top=y+'px';d.style.background=`radial-gradient(circle at 34% 30%,rgba(255,255,255,.7) 0 10%,rgba(255,255,255,0) 28%),#${hex}`;document.body.appendChild(d);
+  const dr=$('#drips').getBoundingClientRect();const dy=Math.max(60,Math.min(innerHeight-y,dr.top-y+20));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{d.style.transform=`translateY(${dy}px) scale(.7)`;d.style.opacity='0'}));
+  setTimeout(()=>d.parentNode&&d.parentNode.removeChild(d),800);
+  const dz=$('#drips');dz.classList.remove('flow');setTimeout(()=>{setPick(hex);void dz.offsetWidth;dz.classList.add('flow')},380);
+  const ch=$('#wandChip');if(ch)ch.hidden=false;
+}
+/* 2 Tropfen: einmal beim Erscheinen */
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){$('#drips').classList.add('flow');o.disconnect()}}),{threshold:.2}).observe($('#drips'));
+/* Chip: Wandfarbe ins Set-Studio */
+{const ch=$('#wandChip');if(ch)ch.addEventListener('click',()=>{if(!picked)return;const c=hx(picked);let best=null,bd=1e9;
+  $$('#segCol button').forEach(b=>{if(b.hidden||b.disabled)return;const m=(b.getAttribute('style')||'').match(/--c:#([0-9a-fA-F]{6})/);if(!m)return;const q=hx(m[1]);const dd=(q[0]-c[0])**2+(q[1]-c[1])**2+(q[2]-c[2])**2;if(dd<bd){bd=dd;best=b}});
+  if(best&&!best.classList.contains('on')){const pal=$('#palBtn');if(best.offsetParent===null&&pal&&!$('#colCtrl').classList.contains('pal'))pal.click();best.click()}})}
+/* 6 Tipp-Glanz */
+addEventListener('pointerdown',e=>{if(!hero.classList.contains('live')||e.button>0)return;if(e.target.closest('input,.regal-in'))return;const s=document.createElement('span');s.className='splash';s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';document.body.appendChild(s);setTimeout(()=>s.parentNode&&s.parentNode.removeChild(s),600)},{passive:true});
+/* 5 Lackband läuft mit der Galerie */
+{const st=$('#strip');if(st){const up=()=>{const max=st.scrollWidth-st.clientWidth||1;st.parentNode.style.setProperty('--rp',(st.scrollLeft/max*100)+'%');
+  if(matchMedia('(max-width:700px)').matches){const c=st.getBoundingClientRect();let best=null,bd=1e9;$$('#strip figure').forEach(f=>{const r=f.getBoundingClientRect();const d=Math.abs(r.left+r.width/2-(c.left+c.width/2));f.classList.remove('f');if(d<bd){bd=d;best=f}});best&&best.classList.add('f')}};
+  st.addEventListener('scroll',up,{passive:true});addEventListener('resize',up);setTimeout(up,50)}}
 
 /* ---------- Atelier ---------- */
 /* Preise Get Nailed! (Fresha, 24.11.2026): [CHF, Min.]. Kurz = BIAB S bis 2 mm, Medium = X-Build BIAB M bis 4 mm, Lang = X-Press neues Set, Extra lang = Gel neues Set; French +15/10 Min., Baby Boomer +25/25 Min. */
