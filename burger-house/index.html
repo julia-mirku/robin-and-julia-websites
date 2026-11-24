@@ -369,7 +369,7 @@ h2.mit-umlaut{padding-top:.36em}
 @media (hover:hover){.gericht .minus:hover{background:var(--senf-blass);box-shadow:0 0 0 5px rgba(var(--senf-hell-rgb),.4)}}
 .plus{position:relative}
 .plus[data-n]::after{content:attr(data-n);position:absolute;left:50%;bottom:calc(100% + 1px);transform:translateX(-50%);min-width:24px;height:22px;padding:0 6px;border-radius:11px;background:var(--ketchup);color:#fff;border:2px solid var(--grill);font:800 12px/18px Figtree,sans-serif;text-align:center}
-.gericht.hat-minus .g-text{padding-right:40px}
+.gericht .g-text{padding-right:40px}
 .g-text p{overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
 .gericht{min-height:136px}
 .dazu-gruppe{display:inline-flex;align-items:center;gap:6px}
@@ -695,6 +695,13 @@ html body .abschnitt{padding:44px 0}
 /* 24.11 (2) Abstände: grosse Lücken verkleinert */
 @media (min-width:761px){html body .held .wrap{padding-bottom:22px}html body .band .wrap{padding-top:16px}}
 @media (max-width:600px){html body .bau-buehne{height:236px}html body #karte{padding-bottom:10px}html body #bauen{padding-top:10px}}
+
+/* Regel 130: «+» und «−» nebeneinander, nichts wird breiter oder rückt (Platz für «−» ist immer da) */
+.dazu-minus[hidden],.bau-raus[hidden]{display:inline-flex!important;opacity:.22;pointer-events:none;animation:none;box-shadow:none}
+.dazu-minus{display:inline-flex;align-items:center;justify-content:center}
+.bau-raus{display:inline-flex;align-items:center}
+.dazu-btn{position:relative}
+.dazu-btn[data-n]::after{content:attr(data-n);position:absolute;right:-6px;top:-9px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ketchup);color:#fff;border:2px solid var(--grill);font:800 11px/16px Figtree,sans-serif;text-align:center}
 </style>
 </head>
 <body>
@@ -1522,7 +1529,7 @@ function abgleichen(){
   });
   [].forEach.call(document.querySelectorAll(".dazu-btn"),function(b){
     var n=menge(schluessel(DAZU[b.dataset.art])),mi=b.parentNode.querySelector(".dazu-minus");
-    if(n>0){b.setAttribute("data-n",n);b.textContent="+ "+DAZU[b.dataset.art]+" · "+n;}else{b.removeAttribute("data-n");b.textContent="+ "+DAZU[b.dataset.art];}
+    if(n>0)b.setAttribute("data-n",n);else b.removeAttribute("data-n");
     if(mi)mi.hidden=n<1;
   });
   var br=document.getElementById("bauRaus");if(br&&typeof bb!=="undefined"){var n2=menge(schluessel("Dein Burger",bauSchichten()));br.hidden=n2<1;}
