@@ -144,6 +144,8 @@ nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;
 .stepper button,.kidchip{appearance:none;border:0;width:38px;height:38px;border-radius:50%;background:var(--rosa2);color:var(--magenta);font:600 20px/1 "Public Sans";cursor:pointer;transition:background .2s,box-shadow .2s}
 @media (hover:hover){.stepper button:hover{background:var(--rosa);box-shadow:0 0 0 4px rgba(180,0,90,.1)}}
 .stepper output{min-width:28px;text-align:center;font-weight:700;font-size:18px}
+/* Julia №124: nach «+» erscheint «−» (Platz bleibt reserviert, «+» springt nicht) */
+.stepper .weg{visibility:hidden;opacity:0}.stepper #kidSub,.stepper #kidN{transition:opacity .25s}
 .kids{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .kidchip{width:auto;height:auto;border-radius:999px;padding:6px 10px 6px 12px;font-size:14px;display:inline-flex;gap:6px;align-items:center}
 .kidchip select{appearance:none;border:0;background:transparent;font:600 14px "Public Sans";color:var(--magenta);cursor:pointer;padding:0}
@@ -428,7 +430,7 @@ footer img{width:90px}
         <div class="reihe"><div class="l">Erwachsene<small>Genuss-Preis CHF 36.00</small></div>
           <div class="stepper"><button type="button" data-d="-1" aria-label="weniger">−</button><output id="erw">2</output><button type="button" data-d="1" aria-label="mehr">+</button></div></div>
         <div class="reihe"><div class="l">Kinder bis 12 Jahre<small>CHF 2.00 pro Altersjahr</small><div class="kids" id="kids"></div></div>
-          <div class="stepper"><button type="button" id="kidAdd" aria-label="Kind hinzufügen">+</button></div></div>
+          <div class="stepper"><button type="button" id="kidSub" aria-label="Kind entfernen" class="weg">−</button><output id="kidN" class="weg">0</output><button type="button" id="kidAdd" aria-label="Kind hinzufügen">+</button></div></div>
         <div class="total"><span>Ihr Zmorge</span><b id="summe">CHF 72.00</b></div>
       </div>
       <ul class="info rv"><li>Reservation sehr empfohlen</li><li>Für Firmen &amp; Vereine auch unter der Woche</li><li>Als Geschenkgutschein</li></ul>
@@ -671,9 +673,11 @@ function rechne(){document.getElementById('erw').textContent=erw;
  kE.innerHTML='';kids.forEach((a,i)=>{const c=document.createElement('span');c.className='kidchip';
   c.innerHTML='<select aria-label="Alter">'+Array.from({length:13},(_,k)=>'<option value="'+k+'"'+(k===a?' selected':'')+'>'+k+' J.</option>').join('')+'</select><button type="button" class="x" aria-label="entfernen" style="border:0;background:none;color:inherit;cursor:pointer;font-size:16px">×</button>';
   c.querySelector('select').onchange=e=>{kids[i]=+e.target.value;rechne()};c.querySelector('.x').onclick=()=>{kids.splice(i,1);rechne()};kE.appendChild(c)});
+ const kS=document.getElementById('kidSub'),kN=document.getElementById('kidN');kN.textContent=kids.length;[kS,kN].forEach(e=>e.classList.toggle('weg',!kids.length));kS.disabled=!kids.length;
  const s=erw*36+kids.reduce((a,b)=>a+2*b,0);document.getElementById('summe').textContent=chf(s)}
 document.querySelectorAll('#rechner .stepper button[data-d]').forEach(b=>b.onclick=()=>{erw=Math.max(0,Math.min(30,erw+ +b.dataset.d));rechne()});
 document.getElementById('kidAdd').onclick=()=>{if(kids.length<8){kids.push(6);rechne()}};
+document.getElementById('kidSub').onclick=()=>{if(kids.length){kids.pop();rechne()}};
 rechne();
 
 /* Das orange Haus */
