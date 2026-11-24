@@ -22,18 +22,18 @@
 {"@context":"https://schema.org","@type":"Restaurant","name":"Bodan Restaurant • Lounge","servesCuisine":["Sushi","Pizza","Pasta","Burger","Steak"],"telephone":"+41712223434","email":"info@restaurant-bodan.ch","priceRange":"CHF 10–40","acceptsReservations":"True",
 "address":{"@type":"PostalAddress","streetAddress":"Bahnhofstrasse 1","postalCode":"8590","addressLocality":"Romanshorn","addressCountry":"CH"},
 "geo":{"@type":"GeoCoordinates","latitude":47.565913,"longitude":9.37891},
-"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"23:00"}],
-"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.3","reviewCount":"215"}}
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"23:00"}]}
 </script>
 <style>
 :root{
-  --putz:#ece7de; --putz2:#e2d9cc; --putz3:#d8cbb8; --tinte:#2a211c; --sepia:#6e655b;
+  --putz:#aab6c1; --putz2:#bcc6cf; --putz3:#909fac; --tinte:#2a211c; --sepia:#45413d; --bronze:#55400f;
   --gold:#b8913f; --gold-d:#94712a; --gold-l:#dcbb73; --eiche:#c68a4a; --eiche-d:#8f5a2b; --glut:#f4c66e;
-  --nacht:#141110; --nacht2:#1d1814; --rosa:#ebc6b4; --creme:#f7f1e7; --blau:#3b4f6b;
+  --nacht:#25303a; --nacht2:#1f2831; --rosa:#ebc6b4; --creme:#f7f1e7; --blau:#3b4f6b;
   --serif:"Gloock", Georgia, serif; --text:"Commissioner", system-ui, -apple-system, sans-serif; --hand:"Homemade Apple", cursive;
   --hh:64px; color-scheme:light;
-  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .5 0 0 0 0 .44 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --wolken:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .52 0 0 0 0 .44 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  --papier:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .4 0 0 0 0 .35 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .44 0 0 0 0 .49 0 0 0 0 .54 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --wolken:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .56 0 0 0 0 .62 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;overflow-x:clip;scrollbar-gutter:stable;overscroll-behavior-y:none}
@@ -44,15 +44,17 @@ button{font:inherit;color:inherit}
 :focus:not(:focus-visible){outline:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
 .wrap{width:100%;max-width:1220px;margin:0 auto;padding:0 20px}
-.kick{font:600 12px/1 var(--text);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d);margin:0 0 14px}
+.kick{font:600 12px/1 var(--text);letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);margin:0 0 14px}
 h2{font:400 clamp(38px,9.5vw,74px)/1 var(--serif);letter-spacing:-.01em;margin:0 0 16px}
-.lead{font-size:18px;line-height:1.6;color:#4f443b;max-width:46ch;margin:0 0 24px}
+.lead{font-size:18px;line-height:1.6;color:#36302b;max-width:46ch;margin:0 0 24px}
 .hand{font-family:var(--hand);font-weight:400}
 section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset-top) - 1px)}
 .putz{background:var(--putz)}
 .putz::before,.putz::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply}
-.putz::before{background-image:var(--noise);opacity:.42}
-.putz::after{background-image:var(--wolken);opacity:.3}
+.putz::before{background-image:var(--noise);opacity:.5}
+.putz::after{background-image:var(--wolken);opacity:.55}
+.putz.tief::before{mix-blend-mode:soft-light;opacity:.7}
+.putz.tief::after{mix-blend-mode:soft-light;opacity:.8}
 .putz>*{position:relative;z-index:1}
 .rise{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 .rise.shown{opacity:1;transform:none}
@@ -65,13 +67,13 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .knopf:active{transform:scale(.97)}
 
 /* Plashka «Entwurf» */
-.mk-hinweis{position:fixed;left:0;right:0;top:0;z-index:45;display:flex;align-items:center;justify-content:center;padding:7px 16px;padding-top:calc(7px + env(safe-area-inset-top));text-align:center;font:500 12.5px/1.35 var(--text);letter-spacing:.02em;color:rgba(247,241,231,.92);background:#2a211c;border-bottom:1px solid rgba(220,187,115,.4);transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.mk-hinweis{position:fixed;left:0;right:0;top:0;z-index:45;display:flex;align-items:center;justify-content:center;padding:7px 16px;padding-top:calc(7px + env(safe-area-inset-top));text-align:center;font:500 12.5px/1.35 var(--text);letter-spacing:.02em;color:rgba(247,241,231,.92);background:#26303a;border-bottom:1px solid rgba(220,187,115,.4);transition:transform .5s cubic-bezier(.22,.61,.36,1)}
 .mk-hinweis span::before{content:"";display:inline-block;width:6px;height:6px;margin:0 9px 1px 0;border-radius:50%;background:var(--gold-l);vertical-align:middle}
 .mk-hinweis.weg{transform:translateY(-100%)}
 .kopf{transition:background-color .35s,color .35s,box-shadow .35s,transform .5s cubic-bezier(.22,.61,.36,1)}
 /* Kopf */
 .kopf{position:fixed;inset:0 0 auto;z-index:40;height:calc(var(--hh) + env(safe-area-inset-top));padding:env(safe-area-inset-top) 16px 0;display:flex;align-items:center;gap:12px;color:var(--creme);transition:background-color .35s,color .35s,box-shadow .35s}
-.kopf.hell{background:rgba(236,231,222,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--tinte);box-shadow:0 1px 0 rgba(42,33,28,.08)}
+.kopf.hell{background:rgba(172,184,195,.93);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--tinte);box-shadow:0 1px 0 rgba(42,33,28,.08)}
 .kopf.dunkel{color:var(--tinte)}
 .logo{display:block;width:112px;height:34px;background:currentColor;-webkit-mask:url(img/bodan_logo.svg) left center/contain no-repeat;mask:url(img/bodan_logo.svg) left center/contain no-repeat;flex:none}
 .kopf nav{display:none;margin-left:auto;gap:2px}
@@ -86,7 +88,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .buehne{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:var(--nacht);color:var(--creme);isolation:isolate}
 .buehne .szene{position:absolute;inset:0;will-change:transform}
 .buehne .bild{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.schleier{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(28,18,12,.42) 0,rgba(28,18,12,0) 16%,rgba(28,18,12,0) 50%,rgba(28,18,12,.72) 84%,rgba(28,18,12,.86) 100%);opacity:0;z-index:1}
+.schleier{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(24,30,36,.42) 0,rgba(24,30,36,0) 16%,rgba(24,30,36,0) 50%,rgba(24,30,36,.74) 84%,rgba(24,30,36,.92) 100%);opacity:0;z-index:1}
 .nachher{position:absolute;left:20px;right:20px;bottom:calc(74px + env(safe-area-inset-bottom));z-index:2;opacity:0;transform:translateY(16px);pointer-events:none}
 .nachher .kick{color:var(--gold-l)}
 .nachher h1{font:400 clamp(46px,12vw,104px)/.95 var(--serif);margin:0 0 14px;letter-spacing:-.01em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
@@ -99,9 +101,9 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .hinweis{position:absolute;left:50%;bottom:calc(54px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;font:500 12px/1 var(--text);letter-spacing:.18em;text-transform:uppercase;color:var(--creme);transition:opacity .3s}
 .hinweis i{width:1px;height:34px;background:linear-gradient(var(--gold-l),transparent);animation:tropfen 1.8s ease-in-out 3}
 @keyframes tropfen{0%{transform:scaleY(.2);transform-origin:top}60%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(1);opacity:0}}
-.fertig .hinweis{opacity:0;pointer-events:none}
-.fertig .nachher{opacity:1;transform:none;pointer-events:auto;transition:opacity .7s ease .1s,transform .7s ease .1s}
-.fertig .schleier{opacity:1;transition:opacity .8s ease}
+.auf .hinweis,.fertig .hinweis{opacity:0;pointer-events:none}
+.auf .nachher,.fertig .nachher{opacity:1;transform:none;pointer-events:auto;transition:opacity .7s ease .1s,transform .7s ease .1s}
+.auf .schleier,.fertig .schleier{opacity:1;transition:opacity .8s ease}
 /* A */
 .va .b1,.va .b2{will-change:transform,opacity}
 .va .b2{transform:scale(1.14)}
@@ -113,12 +115,12 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .s-wand .wand-inhalt{order:1}
 .s-wand .wandfoto{order:2;display:block;margin-top:30px}
 .s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 78%}
-.uebergang{position:absolute;left:0;right:0;top:0;height:60px;z-index:2;pointer-events:none;background:linear-gradient(180deg,#1c140f 0,rgba(28,20,15,.55) 35%,rgba(236,231,222,0) 100%)}
+.uebergang{position:absolute;left:0;right:0;top:0;height:72px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(24,30,36,.92) 0,rgba(24,30,36,.42) 32%,rgba(24,30,36,.1) 68%,rgba(24,30,36,0) 100%)}
 .wand-text p{margin:0 0 16px;max-width:44ch;color:#3f362f}
 .zeiten{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;max-width:520px}
 .zeiten li{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid rgba(42,33,28,.18);transition:border-color .2s}
 .zeiten b{font:400 22px/1.2 var(--serif)}
-.zeiten span{font-size:14px;color:#55493f}
+.zeiten span{font-size:14px;color:#38332e}
 @media (hover:hover){.zeiten li:hover{border-color:var(--gold)}}
 .details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;max-width:520px}
 .detail{position:relative;margin:0;cursor:zoom-in;border-radius:4px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 14px 30px rgba(40,30,22,.28);background:var(--putz3)}
@@ -161,6 +163,11 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .zimmer figure{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--putz3);cursor:zoom-in}
 .zimmer figure img{width:100%;height:100%;object-fit:cover}
 .zimmer figure figcaption{position:absolute;left:12px;bottom:10px;font:400 15px/1.3 var(--hand);color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.zimmer figure.schild{cursor:default;display:grid;place-items:center;background-color:var(--putz);background-image:var(--noise),var(--wolken);background-blend-mode:multiply}
+.schild div{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:138px;height:176px;border-radius:69px/88px;background:radial-gradient(120% 80% at 30% 20%,#f6e2a6 0,#d8b25a 38%,#a9822f 70%,#7c5d1c 100%);box-shadow:0 16px 30px rgba(30,40,50,.35),inset 0 0 0 3px rgba(255,240,200,.35),inset 0 -6px 12px rgba(80,50,10,.35)}
+.schild i{font:normal 400 60px/1 var(--serif);color:#5a4012;text-shadow:0 1px 0 rgba(255,240,200,.65),0 -1px 0 rgba(60,40,5,.45)}
+.schild b{font:600 11px/1.25 var(--text);letter-spacing:.14em;text-transform:uppercase;color:#5a4012;text-align:center;max-width:110px}
+.schild em{font:normal 600 8px/1 var(--text);letter-spacing:.2em;text-transform:uppercase;color:#5a4012;opacity:.8}
 .zimmer .liste{padding:14px 20px 18px}
 .zimmer h3{font:400 30px/1.05 var(--serif);margin:10px 0 4px}
 .zimmer .nr{font:600 11px/1 var(--text);letter-spacing:.2em;color:var(--gold-d);text-transform:uppercase}
@@ -185,7 +192,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .fuss{font-size:13px;color:var(--sepia);margin:12px 2px 0}
 
 /* ===== Lounge ===== */
-.s-lounge{padding:44px 0 28px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 20px,var(--nacht) 44px,var(--nacht) 100%);color:var(--creme)}
+.s-lounge{padding:44px 0 28px;background:linear-gradient(180deg,#596671 0,#36424c 24px,var(--nacht) 48px,var(--nacht) 100%);color:var(--creme)}
 .s-lounge .kick{color:var(--gold-l)}
 .s-lounge .lead{color:rgba(247,241,231,.78)}
 .lounge-grid{display:grid;gap:26px}
@@ -210,8 +217,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.mini button:hover img{transform:scale(1.06)}}
 
 /* ===== Gäste: Postkarten ===== */
-.s-gaeste{padding:36px 0 28px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 10px,#a89a88 24px,var(--putz) 36px,var(--putz) 100%)}
-.s-gaeste::before,.s-gaeste::after{top:36px}
+.s-gaeste{padding:36px 0 28px}
 .streifen-wrap{position:relative;margin-top:20px}
 .karten{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:14px 6px 26px;scrollbar-width:none}
 .karten::-webkit-scrollbar{display:none}
@@ -241,8 +247,11 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.score a:hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(220,187,115,.18)}}
 
 /* ===== Feiern ===== */
-.s-feiern{padding:28px 0 20px}
+.s-feiern{padding:28px 0 20px;background:linear-gradient(180deg,var(--putz) 0,var(--putz) calc(100% - 76px),#8896a3 calc(100% - 34px),#667582 100%)}
 .feiern-grid{display:grid;gap:16px;margin-top:22px}
+.fbild{margin:0;position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--putz3);box-shadow:0 18px 40px rgba(30,40,50,.2);cursor:zoom-in}
+.fbild img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.fkarten{display:grid;gap:16px}
 .fk{position:relative;display:grid;background:var(--creme);border-radius:6px;overflow:hidden;box-shadow:0 18px 40px rgba(60,45,35,.14);transition:box-shadow .3s,transform .3s}
 @media (hover:hover){.fk:hover{box-shadow:0 24px 50px rgba(60,45,35,.22);transform:translateY(-3px)}}
 .fk figure{margin:0;aspect-ratio:16/9;overflow:hidden;background:var(--putz3);cursor:zoom-in}
@@ -254,8 +263,10 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .fk blockquote cite{display:block;font-style:normal;font-size:12.5px;color:var(--sepia);margin-top:4px}
 .fk .reihe{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 
+.zimmer,.fk,.pk,.pk-vorn,.pk-hinten{background-image:var(--papier)}
+
 /* ===== Besuch: Postkarte zum Abschied ===== */
-.s-besuch{padding:44px 0 40px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 20px,var(--nacht2) 44px,var(--nacht2) 100%);color:var(--creme)}
+.s-besuch{padding:28px 0 40px;background:linear-gradient(180deg,var(--nacht) 0,var(--nacht2) 100%);color:var(--creme)}
 .s-besuch .kick{color:var(--gold-l)}
 .abschied{display:grid;gap:16px;margin-top:20px}
 .pk-vorn{position:relative;margin:0;padding:12px 12px 44px;background:#fbf7ef;border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,.25),0 24px 50px rgba(0,0,0,.45);transform:rotate(-1.2deg);cursor:zoom-in;transition:transform .35s ease}
@@ -307,7 +318,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .va .eintritt{left:20px;right:20px;bottom:calc(122px + env(safe-area-inset-bottom));color:var(--creme)}
   .va .eintritt b{font-size:clamp(44px,13vw,64px);text-shadow:0 2px 24px rgba(0,0,0,.45)}
   .va .eintritt span{color:rgba(247,241,231,.85)}
-  .va .vorhang{position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(180deg,rgba(20,17,16,0),rgba(20,17,16,.75));z-index:1}
+  .va .vorhang{position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(180deg,rgba(24,30,36,0),rgba(24,30,36,.78));z-index:1}
 }
 @media (min-width:600px){
   .tag-reihe{grid-template-columns:repeat(4,1fr)}
@@ -330,11 +341,10 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 @media (min-width:600px) and (max-width:899px){
   .s-tag{padding:64px 0 36px}
   .s-karte{padding:36px 0 28px}
-  .s-lounge{padding:56px 0 36px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 24px,var(--nacht) 56px,var(--nacht) 100%)}
-  .s-gaeste{padding:48px 0 36px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 13px,#a89a88 31px,var(--putz) 48px,var(--putz) 100%)}
-  .s-gaeste::before,.s-gaeste::after{top:48px}
-  .s-feiern{padding:36px 0 28px}
-  .s-besuch{padding:56px 0 44px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 24px,var(--nacht2) 56px,var(--nacht2) 100%)}
+  .s-lounge{padding:56px 0 36px;background:linear-gradient(180deg,#596671 0,#36424c 30px,var(--nacht) 60px,var(--nacht) 100%)}
+  .s-gaeste{padding:44px 0 36px}
+  .s-feiern{padding:36px 0 28px;background:linear-gradient(180deg,var(--putz) 0,var(--putz) calc(100% - 90px),#8896a3 calc(100% - 40px),#667582 100%)}
+  .s-besuch{padding:36px 0 44px}
 }
 /* ===== Tablet hoch ===== */
 @media (min-width:700px) and (max-width:899px){
@@ -343,7 +353,8 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .schluessel{grid-template-columns:repeat(6,minmax(0,1fr))}
   .zimmer{grid-template-columns:2fr 3fr}
   .zimmer figure{aspect-ratio:auto;min-height:100%}
-  .feiern-grid{grid-template-columns:1fr 1fr}
+  .fbild{aspect-ratio:16/9}
+  .fkarten{grid-template-columns:1fr 1fr;align-items:start}
   .abschied{grid-template-columns:1fr 1fr;gap:22px;align-items:start}
   .weg{grid-template-columns:repeat(3,1fr)}
 }
@@ -360,10 +371,10 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .nachher{left:56px;right:auto;bottom:96px;max-width:640px}
   .nachher p{font-size:19px}
   .fusszeile{left:56px;right:56px;bottom:30px;font-size:14px}
-  .schleier{background:linear-gradient(180deg,rgba(28,18,12,.45) 0,rgba(28,18,12,0) 14%),radial-gradient(70% 75% at 0% 100%,rgba(28,18,12,.86) 0,rgba(28,18,12,.62) 38%,rgba(28,18,12,0) 72%)}
+  .schleier{background:linear-gradient(180deg,rgba(24,30,36,.45) 0,rgba(24,30,36,0) 14%,rgba(24,30,36,0) 78%,rgba(24,30,36,.9) 100%),radial-gradient(70% 75% at 0% 100%,rgba(24,30,36,.82) 0,rgba(24,30,36,.6) 38%,rgba(24,30,36,0) 72%)}
   .va .eintritt{left:3.4%;top:20%;width:18%}
   .s-wand{min-height:max(620px,calc(100vh - var(--hh)));justify-content:center;padding:64px 0 44px;background:#aab7bf}
-  .s-wand .uebergang{height:64px}
+  .s-wand .uebergang{height:96px}
   .s-wand.putz::before,.s-wand.putz::after{display:none}
   .s-wand .wandfoto{position:absolute;inset:0;margin:0;z-index:0}
   .s-wand .wandfoto img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:72% 50%}
@@ -381,17 +392,18 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .zimmer figure{aspect-ratio:auto;min-height:100%}
   .zimmer .liste{padding:12px 26px 16px}
   .pos{padding:7px 0}
-  .s-lounge{padding:80px 0 44px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 34px,var(--nacht) 80px,var(--nacht) 100%)}
+  .s-lounge{padding:76px 0 44px;background:linear-gradient(180deg,#596671 0,#36424c 40px,var(--nacht) 80px,var(--nacht) 100%)}
   .lounge-grid{grid-template-columns:7fr 4fr;gap:44px;align-items:center}
-  .s-gaeste{padding:72px 0 48px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 18px,#a89a88 44px,var(--putz) 72px,var(--putz) 100%)}
-  .s-gaeste::before,.s-gaeste::after{top:72px}
+  .s-gaeste{padding:64px 0 48px}
   .gaeste-kopf{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
   .gaeste-kopf h2{margin:0}
-  .s-feiern{padding:52px 0 40px}
-  .feiern-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .s-feiern{padding:52px 0 40px;background:linear-gradient(180deg,var(--putz) 0,var(--putz) calc(100% - 110px),#8896a3 calc(100% - 48px),#667582 100%)}
+  .feiern-grid{grid-template-columns:5fr 7fr;gap:24px;align-items:stretch}
+  .fbild{aspect-ratio:auto;min-height:100%}
+  .fkarten{gap:20px}
   .fk{grid-template-columns:1fr}
   .fk figure{aspect-ratio:21/9}
-  .s-besuch{padding:76px 0 50px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 32px,var(--nacht2) 76px,var(--nacht2) 100%)}
+  .s-besuch{padding:52px 0 50px}
   .abschied{grid-template-columns:1fr 1fr;gap:34px;align-items:center}
   .pk-hinten{grid-template-columns:1.25fr 1fr;gap:22px;padding:26px 28px 26px}
   .ph-rechts{border-top:0;border-left:1px solid rgba(42,33,28,.15);padding:0 0 0 22px;justify-content:space-between}
@@ -412,14 +424,14 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .fk figure{aspect-ratio:3/1}
   .s-karte{padding:44px 0 32px}
   .s-feiern{padding:44px 0 36px}
-  .s-besuch{padding:76px 0 24px}
+  .s-besuch{padding:48px 0 24px}
   .pk-vorn img{aspect-ratio:2/1}
   .pk-hinten{padding:18px 24px}
   .pk-hinten .h{font-size:38px}
   .knoepfe{margin:18px 0 12px}
   .weg li{padding:8px 12px}
   .s-besuch .klein{display:none}
-  .s-lounge{padding:80px 0 40px}
+  .s-lounge{padding:76px 0 40px}
 }
 @media (max-height:520px) and (orientation:landscape){
   .buehne{min-height:0}
@@ -448,7 +460,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 <header class="kopf" id="kopf">
   <a href="#start" class="logo" aria-label="Bodan Restaurant • Lounge – zum Anfang"></a>
   <nav aria-label="Seiten">
-    <a href="#wand">Die Wand</a><a href="#karte">Karte</a><a href="#lounge">Lounge</a><a href="#gaeste">Gäste</a><a href="#feiern">Feiern</a><a href="#besuch">Besuch</a>
+    <a href="#wand">Die Wand</a><a href="#karte">Karte</a><a href="#gaeste">Gäste</a><a href="#feiern">Feiern</a><a href="#lounge">Lounge</a><a href="#besuch">Besuch</a>
   </nav>
   <div class="rechts">
     <a class="knopf tel" href="tel:+41712223434" aria-label="Anrufen 071 222 34 34"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg><span>071 222 34 34</span></a>
@@ -494,7 +506,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
     <div class="tag-reihe">
       <figure class="stunde rise" style="margin:0"><img src="img/zmorge.webp" alt="Holztresen mit Kuchenvitrine" loading="lazy"><div><small>AB 08:00</small><b>Zmorge</b><p>Cappuccino und Gipfeli am Holztresen.</p></div></figure>
       <figure class="stunde rise" style="margin:0"><img src="img/saal.webp" alt="Heller Saal mit Holzdecke" loading="lazy" style="object-position:30% 50%"><div><small>AB 11:30</small><b>Mittag</b><p>Ein Teller, ein Kaffee, Licht von der Bahnhofstrasse.</p></div></figure>
-      <figure class="stunde rise" style="margin:0"><img src="img/pizzaiolo.webp" alt="Der Pizzaiolo wirft den Teig in die Luft" loading="lazy" style="object-position:62% 40%"><div><small>AB 17:00</small><b>Abend</b><p>Sushi, Steaks und Pizza aus dem Ofen.</p></div></figure>
+      <figure class="stunde rise" style="margin:0"><img src="img/sushi.webp" alt="Sushi-Rollen mit essbaren Blüten" loading="lazy" style="object-position:50% 45%"><div><small>AB 17:00</small><b>Abend</b><p>Sushi, Steaks und Pizza aus dem Ofen.</p></div></figure>
       <figure class="stunde rise" style="margin:0"><img src="img/bar.webp" alt="Barkeeper mixt einen Cocktail" loading="lazy" style="object-position:50% 35%"><div><small>BIS 01:00</small><b>Lounge</b><p>Cocktails, Whisky, Dart. Fr &amp; Sa bis 1 Uhr.</p></div></figure>
     </div>
   </div>
@@ -517,7 +529,53 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   </div>
 </section>
 
-<section class="s-lounge" id="lounge">
+<section class="s-gaeste putz" id="gaeste">
+  <div class="wrap">
+    <div class="gaeste-kopf rise">
+      <div>
+        <p class="kick">Post von Gästen</p>
+        <h2>Grüsse aus dem Bodan</h2>
+      </div>
+    </div>
+    <div class="streifen-wrap rise">
+      <button type="button" class="pfeil zurueck" id="pfZ" aria-label="Vorherige Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="karten" id="karten" aria-label="Postkarten von Gästen"></div>
+      <button type="button" class="pfeil vor" id="pfV" aria-label="Nächste Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="punkte" id="punkte"></div>
+  </div>
+</section>
+
+<section class="s-feiern putz" id="feiern">
+  <div class="wrap">
+    <div class="rise">
+      <p class="kick">Familien und Gruppen</p>
+      <h2>Platz für alle</h2>
+    </div>
+    <div class="feiern-grid">
+      <figure class="fbild rise" data-big="img/pizza.webp"><img src="img/pizza.webp" alt="Pizza mit Rucola und Cherrytomaten, dazu Rotwein, für den ganzen Tisch" loading="lazy"></figure>
+      <div class="fkarten">
+        <article class="fk rise">
+          <div class="in">
+            <h3>Mit Kindern</h3>
+            <p>Während die Grossen essen, spielen die Kleinen im eigenen Spielraum gleich nebenan.</p>
+            <blockquote>Auch konnten sich unsere Kinder zwischen den Wartezeiten im Indoorspielbereich beschäftigen. Sehr empfehlenswert!<cite>Dragana Stucki, Google</cite></blockquote>
+          </div>
+        </article>
+        <article class="fk rise">
+          <div class="in">
+            <h3>Gruppen &amp; Feiern</h3>
+            <p>Firmenfeier, Geburtstag oder Hochzeit: grosse Gruppen sind willkommen. Für den langen Tisch gibt es Pizza mit 50 cm Durchmesser.</p>
+            <blockquote>Wir waren mit 10 verwöhnten Leuten da, alle sehr zufrieden!<cite>Markus Bihler, Google</cite></blockquote>
+            <div class="reihe"><a class="knopf gold" href="mailto:info@restaurant-bodan.ch?subject=Anfrage%20Feier%20im%20Bodan">Anfrage senden</a><a class="knopf" href="tel:+41712223434">Anrufen</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-lounge putz tief" id="lounge">
   <div class="wrap lounge-grid">
     <div class="raumbild rise" id="raumbild">
       <img src="img/lounge.webp" srcset="img/lounge_m.webp 1200w, img/lounge.webp 2400w" sizes="(min-width:900px) 62vw, 100vw" alt="Die Lounge im Bodan: Chesterfield-Sofas, Lampen aus Bernsteinglas, Holzdecke" loading="lazy">
@@ -542,56 +600,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   </div>
 </section>
 
-<section class="s-gaeste putz" id="gaeste">
-  <div class="wrap">
-    <div class="gaeste-kopf rise">
-      <div>
-        <p class="kick">Post von Gästen</p>
-        <h2>Grüsse aus dem Bodan</h2>
-      </div>
-      <div class="score">
-        <a href="https://www.google.com/maps?cid=6969817241493487356" target="_blank" rel="noopener"><b>4,3</b><span>Google · 215 Bewertungen</span></a>
-        <a href="https://www.just-eat.ch/speisekarte/restaurant-bodan" target="_blank" rel="noopener"><b>4,5</b><span>Just Eat · über 300</span></a>
-      </div>
-    </div>
-    <div class="streifen-wrap rise">
-      <button type="button" class="pfeil zurueck" id="pfZ" aria-label="Vorherige Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <div class="karten" id="karten" aria-label="Postkarten von Gästen"></div>
-      <button type="button" class="pfeil vor" id="pfV" aria-label="Nächste Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
-    </div>
-    <div class="punkte" id="punkte"></div>
-  </div>
-</section>
-
-<section class="s-feiern putz" id="feiern">
-  <div class="wrap">
-    <div class="rise">
-      <p class="kick">Familien und Gruppen</p>
-      <h2>Platz für alle</h2>
-    </div>
-    <div class="feiern-grid">
-      <article class="fk rise">
-        <figure data-big="img/saal.webp"><img src="img/saal.webp" alt="Der helle Saal im Bodan" loading="lazy" style="object-position:40% 60%"></figure>
-        <div class="in">
-          <h3>Mit Kindern</h3>
-          <p>Während die Grossen essen, spielen die Kleinen im eigenen Spielraum gleich nebenan.</p>
-          <blockquote>Auch konnten sich unsere Kinder zwischen den Wartezeiten im Indoorspielbereich beschäftigen. Sehr empfehlenswert!<cite>Dragana Stucki, Google</cite></blockquote>
-        </div>
-      </article>
-      <article class="fk rise">
-        <figure data-big="img/pizzaiolo.webp"><img src="img/pizzaiolo.webp" alt="Der Pizzaiolo im Bodan" loading="lazy" style="object-position:60% 35%"></figure>
-        <div class="in">
-          <h3>Gruppen &amp; Feiern</h3>
-          <p>Firmenfeier, Geburtstag oder Hochzeit: grosse Gruppen sind willkommen. Für den langen Tisch gibt es Pizza mit 50 cm Durchmesser.</p>
-          <blockquote>Wir waren mit 10 verwöhnten Leuten da, alle sehr zufrieden!<cite>Markus Bihler, Google</cite></blockquote>
-          <div class="reihe"><a class="knopf gold" href="mailto:info@restaurant-bodan.ch?subject=Anfrage%20Feier%20im%20Bodan">Anfrage senden</a><a class="knopf" href="tel:+41712223434">Anrufen</a></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="s-besuch" id="besuch">
+<section class="s-besuch putz tief" id="besuch">
   <div class="wrap">
     <div class="besuch-kopf rise">
       <p class="kick">Besuch</p>
@@ -678,7 +687,7 @@ var B=$('start'), kopf=$('kopf');
 B.classList.add('va');
 B.appendChild($('tA').content.cloneNode(true));
 B.appendChild($('tGemeinsam').content.cloneNode(true));
-function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+function ease(t){return 1-(1-t)*(1-t)}
 var state='ruhe', raf=0;
 function lauf(dauer,frame,done){var t0=performance.now();function step(ts){var t=Math.min(1,(ts-t0)/dauer);frame(ease(t));if(t<1)raf=requestAnimationFrame(step);else done()}raf=requestAnimationFrame(step)}
 function frameA(e){
@@ -689,12 +698,13 @@ function frameA(e){
   b2.style.transform='scale('+(1.14-0.14*e).toFixed(4)+')';
   var et=B.querySelector('.eintritt');et.style.opacity=Math.max(0,1-e*2.4).toFixed(3);
   var vh=B.querySelector('.vorhang');if(vh)vh.style.opacity=Math.max(0,1-e*1.6).toFixed(3);
+  if(e>=.7)B.classList.add('auf');
 }
 function start(){
   hinweisWeg();
   if(state!=='ruhe')return;state='lauf';B.classList.add('lauf');
   var fr=frameA;
-  lauf(reduce?1:1300,fr,function(){state='fertig';B.classList.remove('lauf');B.classList.add('fertig');fr(1)});
+  lauf(reduce?1:850,fr,function(){state='fertig';B.classList.remove('lauf');B.classList.add('fertig');fr(1)});
 }
 function sofort(){if(state==='fertig')return;cancelAnimationFrame(raf);state='fertig';B.classList.remove('lauf');B.classList.add('fertig');frameA(1)}
 function oben(){return W.scrollY<=2}
@@ -729,22 +739,22 @@ if('IntersectionObserver' in W&&!reduce){
 /* ================= Karte: Schlüsselbrett ================= */
 // Quelle Preise: Online-Bestellkarte Just Eat «Restaurant Bodan» und «Sushi Bodan», 24.11.2026
 var KARTE=[
- {n:'Zmorge & Café',img:'zmorge',alt:'Holztresen mit Kuchenvitrine',note:'Ab 08:00, Samstag und Sonntag ab 10:00.',q:['Den Tee konnte ich mir von verschiedenen Teesorten aus Dosen aussuchen.','Angelica Koller'],it:[
+ {n:'Zmorge & Café',img:'fenster',alt:'Tische am Fenster im Morgenlicht',note:'Ab 08:00, Samstag und Sonntag ab 10:00.',q:['Sehr feiner Kaffee, flotte Bedienung.','Hannes Hofstetter'],it:[
   ['Gipfeli & Cappuccino','am Tresen oder zum Mitnehmen','Tresen'],['Frühstück','','ab 08:00'],['Iced Matcha Latte','auch mit Hafermilch','Bar',1],['Tee','Auswahl aus den Dosen','Bar'],['Desserts','Früchte-Desserts, Kuchen aus der Vitrine','Vitrine']]},
- {n:'Sushi',img:'sushi',alt:'Sushi-Rollen mit essbaren Blüten',note:'Rollen frisch geschnitten, auch zum Mitnehmen.',q:['Sushi sind der Klassiker.','Laura Schwab'],it:[
+ {n:'Sushi',img:'sushi_koch',alt:'Der Sushi-Koch schneidet eine Rolle',note:'Rollen frisch geschnitten, auch zum Mitnehmen.',q:['… das Sushi ist besonders gut. Ich kann es wärmstens empfehlen.','Hülya Çavundurluoğlu'],it:[
   ['Crunchy Salmon','8 Stück · knusprige Rolle mit Lachs, Avocado, Teriyaki und Chili-Mayo','24.–',1],['Spicy Tuna','8 Stück · Crevetten knusprig, Avocado, scharfes Thunfisch-Tatar','24.–'],
   ['Spicy Salmon','8 Stück','22.–'],['Flam Salmon','8 Stück','22.–'],['Bodan Futu Maki','10 Stück','22.–'],['Vegi Mix Rolls','8 Stück, vegetarisch','18.–'],
   ['Vegi Mix Futu Maki','10 Stück, vegetarisch','18.–'],['Mango Rolls','8 Stück','17.–'],['Tropical Rolls','8 Stück','17.–'],['California Salmon','8 Stück','17.–'],
   ['California Tuna','8 Stück','15.–'],['Kappa Rolls','8 Stück, Gurke','15.–'],['Alaska Maki','6 Stück','12.–'],['Avocado Maki','6 Stück','10.–'],
   ['Shake Maki','6 Stück, Lachs','10.–'],['Tekka Maki','6 Stück, Thunfisch','10.–'],['Kappa Maki','6 Stück, Gurke','8.–'],['Goma Wakame','Algensalat mit Sesam','12.–'],['Poke Bowl Lachs','','18.–']]},
- {n:'Pizza',img:'pizza',alt:'Pizza mit Rucola und Cherrytomaten, dazu Rotwein',note:'Hauchdünn aus dem Ofen, Ø 32 cm oder Ø 50 cm für den ganzen Tisch.',q:['Take-away-Pizzas … sind frisch hausgemacht (lassen sich deshalb problemlos vegan bestellen) und sind super lecker.','Seraina Dübendorfer'],it:[
+ {n:'Pizza',img:'pizzaiolo',alt:'Der Pizzaiolo wirft den Teig in die Luft',note:'Hauchdünn aus dem Ofen, Ø 32 cm oder Ø 50 cm für den ganzen Tisch.',q:['Take-away-Pizzas … sind frisch hausgemacht (lassen sich deshalb problemlos vegan bestellen) und sind super lecker.','Seraina Dübendorfer'],it:[
   ['Margherita','','Ø 32 / 50',2],['Salame','','Ø 32 / 50',2],['Regina','','Ø 32 / 50',2],['Prosciutto','','Ø 32 / 50',2],['Tonno','','Ø 32 / 50',2],['Capricciosa','','Ø 32 / 50',2],['Hawaii','','Ø 32 / 50',2],['Frutti di Mare','','Ø 32 / 50',2]]},
- {n:'Pasta',img:'teig',alt:'Der Pizzaiolo wirft den Teig',note:'Alle Pasta-Gerichte mit einer Pastasorte nach Wahl.',it:[
+ {n:'Pasta',img:'',note:'Alle Pasta-Gerichte mit einer Pastasorte nach Wahl.',q:['Sehr feine Pasta… Sushi so wiso perfekt!!!','Bonequinha Linda'],it:[
   ['Pasta Bolognese','','ab 19.–'],['Bolognese überbacken','','ab 20.–'],['Lasagne Bolognese','','ab 18.–']]},
- {n:'Burger & Bowls',img:'saal',alt:'Der helle Saal im Bodan',note:'Preise ab, je nach Variante.',q:['Die Bunds sind meeega (probiert mal den Creamy Bun)','Shine Bride'],it:[
+ {n:'Burger & Bowls',img:'',note:'Preise ab, je nach Variante.',q:['Die Bunds sind meeega (probiert mal den Creamy Bun)','Shine Bride'],it:[
   ['Cheeseburger','','ab 12.50'],['Chicken Burger','','ab 13.–'],['Chili Cheeseburger','scharf','ab 14.–'],['Creamy Burger','','ab 15.–',1],['BBQ Burger','','ab 16.–'],['Trüffelburger','','ab 18.–'],
   ['Poke Bowl Crispy-Poulet','','18.–'],['Süsskartoffel-Pommes','','10.–'],['Gemischter Salat','Cherrytomaten, Mais, Hausdressing','10.–']]},
- {n:'Bar',img:'bar',alt:'Barkeeper mixt einen Cocktail',note:'Bis 23:00, Freitag und Samstag bis 01:00.',q:['Gutes Essen, gutes Bier, sehr aufmerksame und freundliche Bedienung und dann auch noch Dart.','Thomas Hellmich'],it:[
+ {n:'Bar',img:'wein',alt:'Rotwein wird am Tisch eingeschenkt',note:'Bis 23:00, Freitag und Samstag bis 01:00.',q:['Gutes Essen, gutes Bier, sehr aufmerksame und freundliche Bedienung und dann auch noch Dart.','Thomas Hellmich'],it:[
   ['Cocktails','von der Bar, auch Hugo','Bar'],['Japanischer Whisky','und weitere Spirituosen','Bar'],['Bier vom Fass','','Zapfhahn'],['Wein','abends Rotwein zum Verkosten','Glas',1],['Espresso','zum Abschluss','Bar']]}
 ];
 var brett=$('schluessel'),zimmer=$('zimmer'),aktiv=1,seite=0,PRO=W.innerWidth>=900?6:8;
@@ -758,7 +768,7 @@ function zeig(i,pg){
   if(i!==aktiv||pg===undefined)seite=0;if(pg!==undefined)seite=pg;aktiv=i;var c=KARTE[i];
   [].forEach.call(brett.children,function(b){b.setAttribute('aria-pressed',+b.dataset.i===i?'true':'false')});
   var seiten=Math.ceil(c.it.length/PRO);
-  zimmer.innerHTML='<figure data-big="img/'+c.img+'.webp"><img src="img/'+c.img+'.webp" alt="'+c.alt+'" loading="lazy"><figcaption>Zimmer '+(i+1)+'</figcaption></figure>'+
+  zimmer.innerHTML=(c.img?'<figure data-big="img/'+c.img+'.webp"><img src="img/'+c.img+'.webp" alt="'+c.alt+'" loading="lazy"><figcaption>Zimmer '+(i+1)+'</figcaption></figure>':'<figure class="schild" aria-hidden="true"><div><i>'+(i+1)+'</i><b>'+esc(c.n)+'</b><em>Bodan</em></div></figure>')+
    '<div class="liste"><div class="kopfz"><span class="nr">Zimmer '+(i+1)+'</span><h3>'+esc(c.n)+'</h3><p class="note">'+c.note+'</p></div>'+
    (seiten>1?'<div class="seiten" role="group" aria-label="Seiten">'+Array.apply(null,{length:seiten}).map(function(_,n){return '<button type="button" data-pg="'+n+'" aria-pressed="'+(n===seite)+'">'+(n*PRO+1)+(Math.min(c.it.length,n*PRO+PRO)>n*PRO+1?'–'+Math.min(c.it.length,n*PRO+PRO):'')+'</button>'}).join('')+'<span>von '+c.it.length+'</span></div>':'')+
    (c.q?'<div class="tipp"><span>Gäste schreiben</span>«'+c.q[0]+'»<cite>'+c.q[1]+', Google</cite></div>':'')+
@@ -794,7 +804,7 @@ if('IntersectionObserver' in W&&!reduce){var io3=new IntersectionObserver(functi
 
 /* ================= Gäste: Postkarten ================= */
 var POST=[
- ['Victoria','vor 3 Monaten',5,'Wir waren mittlerweile schon mehrmals im Bodern Restaurant und sind wirklich jedes Mal aufs Neue begeistert. Das Essen ist einfach erstklassig – unglaublich lecker, qualitativ hochwertig und bisher hat uns wirklich jedes Gericht überzeugt.'],
+ ['Victoria','vor 3 Monaten',5,'Wir waren mittlerweile schon mehrmals … und sind wirklich jedes Mal aufs Neue begeistert. Das Essen ist einfach erstklassig – unglaublich lecker, qualitativ hochwertig und bisher hat uns wirklich jedes Gericht überzeugt.'],
  ['M. B.','vor 2 Jahren',5,'Sehr leckeres Abendessen genossen in großer Gruppe mit 10 Personen und als Abschluss einen sensationellen Espresso. Sehr zu empfehlen. Wir gehen gerne wieder, wenn wir mit dem Boot wieder in Romanshorn anlegen!'],
  ['Sandra Günther','vor 3 Jahren',5,'Eine sehr schöne Lounge, ein wunderbares Ambiente. Wir wurden von Claudia bedient. Eine lustige und sehr aufmerksame Serviceangestellte. Vielen Dank an Claudia, die unseren Abend perfekt gemacht hat.'],
  ['Dascha Seibel','vor 6 Monaten',5,'Das Ambiente ist wunderschön und sehr gemütlich gestaltet. Besonders toll fanden wir den liebevoll eingerichteten Spielraum für Kinder – perfekt für Familien. Das Essen war sehr lecker und frisch zubereitet.'],
