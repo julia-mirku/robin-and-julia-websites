@@ -454,11 +454,15 @@ body.menu .mmenu{transform:none}
 .stimmen .punkte i{background:rgba(255,255,255,.25)}.stimmen .punkte i.on{background:var(--gold)}
 
 /* 18h: eine Atmosphäre – nach dem Foto nur noch helle Töne, ein langer weicher Übergang */
-body{background:var(--creme)}
+/* Krume (Julia 25.11): ein nahtloses Kachelbild Brotkrume, hell, für die ganze Seite */
+:root{--ks:600px}
+@media (max-width:767px){:root{--ks:420px}}
+body{background:var(--creme) url(img/krume.webp) 0 0/var(--ks) var(--ks) repeat}
 .shop,.gfsec,.cafes,.cat,.chronik,.stimmen,.kontakt{background:transparent}
-.heroA::after{content:"";position:absolute;left:0;right:0;bottom:0;height:170px;background:linear-gradient(180deg,rgba(248,240,226,0) 0%,rgba(248,240,226,.55) 55%,var(--creme) 100%);pointer-events:none;z-index:1}
+.heroA{background:var(--creme)}
+.heroA::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:171px;background:var(--creme) url(img/krume.webp) 0 var(--ky,0px)/var(--ks) var(--ks) repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 48%,#000 82%);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 48%,#000 82%);pointer-events:none;z-index:1}
 .heroA .in{z-index:2;padding-bottom:150px}
-.tage,body.hb .tage{background:var(--creme);color:var(--text);padding:8px 0 10px;margin-top:-2px;position:relative;z-index:3}
+.tage,body.hb .tage{background:transparent;color:var(--text);padding:8px 0 10px;margin-top:-2px;position:relative;z-index:3}
 .tage h2{color:var(--kruste)}.tage h2 small{color:var(--muted)}
 .tag{box-shadow:inset 0 0 0 1px rgba(58,35,23,.16);background:#fff}.tag span{color:var(--muted)}
 .tag.sel{background:var(--kruste);color:#fff}.tag.sel span{color:var(--kraft2)}
@@ -478,9 +482,11 @@ body{background:var(--creme)}
 .kk ul li{border-bottom:1px dashed rgba(58,35,23,.14)}
 .kk .btn.glas{background:var(--mehl);color:var(--kruste);box-shadow:inset 0 0 0 1.5px rgba(58,35,23,.18);backdrop-filter:none}
 @media (hover:hover){.kk:hover{background:#fff;box-shadow:0 0 0 2px rgba(232,170,0,.5)}.kk .btn.glas:hover{background:#fff;box-shadow:inset 0 0 0 1.5px var(--gold),0 0 0 6px rgba(232,170,0,.18)}}
-footer{background:transparent;color:var(--muted);border-top:1px solid rgba(58,35,23,.1)}
+footer{background:transparent;color:var(--muted);border-top:0}
 .fakt{background:#fff;box-shadow:0 10px 24px -20px rgba(58,35,23,.45)}
 .pfeil.weg{display:none}
+.mini>div{min-width:0;flex:1 1 auto}.mini .nm{hyphens:auto;-webkit-hyphens:auto}.mini .plus,.mini img{flex:none}.mini .pr{margin-left:0}
+.karte .unt>div{min-width:0}.karte .nm{hyphens:auto;-webkit-hyphens:auto}.karte .unt .plus{flex:none}
 .jahre{grid-auto-columns:calc((100% - 3*18px)/4)}
 @media (max-width:1100px){.jahre{grid-auto-columns:calc((100% - 2*18px)/3)}}
 @media (max-width:767px){
@@ -858,5 +864,6 @@ const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.t
 if(urlv.has('shot'))$$('.fade').forEach(el=>{el.style.transition='none';el.classList.add('in')});else $$('.fade').forEach(el=>io.observe(el));
 addEventListener('scroll',()=>{$('.paketfab').classList.toggle('zeig',Object.values(korb).some(v=>v>0)||scrollY>innerHeight*.8)},{passive:true});
 </script>
+<script>(function(){const h=document.getElementById('heroA');if(!h)return;const f=()=>{const a=parseFloat(getComputedStyle(h,'::after').height)||0;const top=h.getBoundingClientRect().top+scrollY+h.offsetHeight+1-a;h.style.setProperty('--ky',(-top)+'px')};f();addEventListener('resize',f);addEventListener('load',f);if(document.fonts)document.fonts.ready.then(f)})();</script>
 </body>
 </html>
