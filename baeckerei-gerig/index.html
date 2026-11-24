@@ -203,6 +203,7 @@ section{position:relative}
 .pfeil.l{left:-26px}.pfeil.r{right:-26px}
 .pfeil[disabled]{opacity:.35;pointer-events:none}
 @media (min-width:1380px){.pfeil.l{left:-70px}.pfeil.r{right:-70px}}
+@media (min-width:1101px) and (max-width:1379px){.pfeil.l{left:-16px}.pfeil.r{right:-16px}}
 @media (hover:hover){.pfeil:hover{box-shadow:0 0 0 5px rgba(232,170,0,.3),0 14px 30px -14px rgba(58,35,23,.55)}}
 .leer{padding:40px;text-align:center;color:var(--muted);grid-row:1/-1}
 .versand{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:20px;font-size:14.5px;color:var(--kruste2)}
@@ -454,12 +455,12 @@ body.menu .mmenu{transform:none}
 .stimmen .punkte i{background:rgba(255,255,255,.25)}.stimmen .punkte i.on{background:var(--gold)}
 
 /* 18h: eine Atmosphäre – nach dem Foto nur noch helle Töne, ein langer weicher Übergang */
-/* Brotkruste (Julia 25.11: «трипофобия» – keine Poren): ein breites Bild Kruste mit Mehl, nur senkrecht wiederholt */
+/* Krume (Julia 25.11): ein nahtloses Kachelbild Brotkrume, hell, für die ganze Seite */
 :root{--ks:600px;--kw:max(100vw,1100px)}
 @media (max-width:767px){:root{--ks:420px;--kw:900px}}
-body{background:var(--creme) url(img/kruste_b.webp) center 0/var(--kw) auto repeat-y}
+body{background:var(--creme) url(img/krume.webp) 0 0/var(--ks) var(--ks) repeat}
 .shop,.gfsec,.cafes,.cat,.chronik,.stimmen,.kontakt{background:transparent}
-.heroA::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:171px;background:var(--creme) url(img/kruste_b.webp) center var(--ky,0px)/var(--kw) auto repeat-y;-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));pointer-events:none;z-index:1}
+.heroA::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:171px;background:var(--creme) url(img/krume.webp) 0 var(--ky,0px)/var(--ks) var(--ks) repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));pointer-events:none;z-index:1}
 .heroA .in{z-index:2;padding-bottom:150px}
 .tage,body.hb .tage{background:transparent;color:var(--text);padding:8px 0 10px;margin-top:-2px;position:relative;z-index:3}
 .tage h2{color:var(--kruste)}.tage h2 small{color:var(--muted)}
@@ -518,6 +519,8 @@ footer{background:transparent;color:var(--muted);border-top:0}
 /* Sprungmarken: Überschrift nicht unter der Kopfzeile (Prüfer 25.11) */
 main>section[id],body>section[id]{scroll-margin-top:84px}
 @media (max-width:767px){main>section[id],body>section[id]{scroll-margin-top:70px}}
+/* Kopfzeile dicht: nichts scheint durch (Holly 25.11) */
+header.top{background:var(--mehl);backdrop-filter:none;-webkit-backdrop-filter:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .fade{opacity:1;transform:none}.mini{opacity:1;transform:none}}
 </style>
 </head>
