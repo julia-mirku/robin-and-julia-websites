@@ -26,8 +26,8 @@
 </script>
 <style>
 :root{
-  --putz:#aab6c1; --putz2:#bcc6cf; --putz3:#909fac; --tinte:#2a211c; --sepia:#45413d; --bronze:#55400f;
-  --gold:#b8913f; --gold-d:#94712a; --gold-l:#dcbb73; --eiche:#c68a4a; --eiche-d:#8f5a2b; --glut:#f4c66e;
+  --putz:#aab6c1; --putz2:#bcc6cf; --putz3:#909fac; --tinte:#2a211c; --sepia:#45413d; --bronze:#5a281d;
+  --gold:#6e3224; --gold-d:#5a281d; --gold-l:#e3b3a2; --eiche:#c68a4a; --eiche-d:#8f5a2b; --glut:#f4c66e;
   --nacht:#25303a; --nacht2:#1f2831; --rosa:#ebc6b4; --creme:#f7f1e7; --blau:#3b4f6b;
   --serif:"Gloock", Georgia, serif; --text:"Commissioner", system-ui, -apple-system, sans-serif; --hand:"Homemade Apple", cursive;
   --hh:64px; color-scheme:light;
@@ -63,11 +63,11 @@ body{position:relative}
 .knopf{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;border:1.5px solid currentColor;background:transparent;color:inherit;text-decoration:none;font:600 15px/1 var(--text);cursor:pointer;transition:background-color .2s,box-shadow .2s,color .2s,border-color .2s,transform .2s}
 .knopf svg{width:17px;height:17px;flex:none}
 .knopf.gold{background:var(--gold);border-color:var(--gold);color:#fff}
-@media (hover:hover){.knopf:hover{box-shadow:0 0 0 5px rgba(220,187,115,.22),0 8px 24px rgba(184,145,63,.3);border-color:var(--gold-l)}.knopf.gold:hover{background:#c69c48}}
+@media (hover:hover){.knopf:hover{box-shadow:0 0 0 5px rgba(227,179,162,.22),0 8px 24px rgba(110,50,36,.3);border-color:var(--gold-l)}.knopf.gold:hover{background:#823c2c}}
 .knopf:active{transform:scale(.97)}
 
 /* Plashka «Entwurf» */
-.mk-hinweis{position:fixed;left:0;right:0;top:0;z-index:45;display:flex;align-items:center;justify-content:center;padding:7px 16px;padding-top:calc(7px + env(safe-area-inset-top));text-align:center;font:500 12.5px/1.35 var(--text);letter-spacing:.02em;color:rgba(247,241,231,.92);background:#26303a;border-bottom:1px solid rgba(220,187,115,.4);transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.mk-hinweis{position:fixed;left:0;right:0;top:0;z-index:45;display:flex;align-items:center;justify-content:center;padding:7px 16px;padding-top:calc(7px + env(safe-area-inset-top));text-align:center;font:500 12.5px/1.35 var(--text);letter-spacing:.02em;color:rgba(247,241,231,.92);background:#26303a;border-bottom:1px solid rgba(227,179,162,.4);transition:transform .5s cubic-bezier(.22,.61,.36,1)}
 .mk-hinweis span::before{content:"";display:inline-block;width:6px;height:6px;margin:0 9px 1px 0;border-radius:50%;background:var(--gold-l);vertical-align:middle}
 .mk-hinweis.weg{transform:translateY(-100%)}
 .kopf{transition:background-color .35s,color .35s,box-shadow .35s,transform .5s cubic-bezier(.22,.61,.36,1)}
@@ -78,7 +78,7 @@ body{position:relative}
 .logo{display:block;width:112px;height:34px;background:currentColor;-webkit-mask:url(img/bodan_logo.svg) left center/contain no-repeat;mask:url(img/bodan_logo.svg) left center/contain no-repeat;flex:none}
 .kopf nav{display:none;margin-left:auto;gap:2px}
 .kopf nav a{padding:9px 12px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;transition:background-color .2s,color .2s}
-@media (hover:hover){.kopf nav a:hover{background:rgba(184,145,63,.16)}}
+@media (hover:hover){.kopf nav a:hover{background:rgba(110,50,36,.16)}}
 .kopf .rechts{margin-left:auto;display:flex;gap:8px}
 .kopf .knopf{min-height:42px;padding:0 16px}
 .kopf .tel span{display:none}
@@ -95,7 +95,7 @@ body{position:relative}
 .nachher p{margin:0 0 22px;max-width:34ch;font-size:17px;color:rgba(247,241,231,.92)}
 .nachher .reihe{display:flex;flex-wrap:wrap;gap:10px}
 .fusszeile{position:absolute;left:20px;right:20px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:2;display:flex;justify-content:space-between;gap:12px;font-size:13px;color:rgba(247,241,231,.82)}
-.fusszeile a{text-decoration:none;border-bottom:1px solid rgba(220,187,115,.5);white-space:nowrap}
+.fusszeile a{text-decoration:none;border-bottom:1px solid rgba(227,179,162,.5);white-space:nowrap}
 .fusszeile .lang{display:none}
 @media (min-width:600px){.fusszeile .lang{display:inline}}
 .hinweis{position:absolute;left:50%;bottom:calc(54px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;font:500 12px/1 var(--text);letter-spacing:.18em;text-transform:uppercase;color:var(--creme);transition:opacity .3s}
@@ -150,11 +150,11 @@ body{position:relative}
 .rt[aria-selected="true"]{background:var(--tinte);border-color:var(--tinte);color:var(--creme);box-shadow:0 8px 18px rgba(30,40,50,.22)}
 .rt[aria-selected="true"] .zahl{color:rgba(247,241,231,.7)}
 .rt:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-@media (hover:hover){.rt:not([aria-selected="true"]):hover{border-color:var(--gold);background:rgba(247,241,231,.9);box-shadow:0 0 0 4px rgba(220,187,115,.2)}}
+@media (hover:hover){.rt:not([aria-selected="true"]):hover{border-color:var(--gold);background:rgba(247,241,231,.9);box-shadow:0 0 0 4px rgba(227,179,162,.2)}}
 .weiter{display:flex;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(42,33,28,.15)}
 .weiter button{min-height:42px;padding:0 14px;border-radius:999px;border:1.5px solid rgba(42,33,28,.3);background:transparent;cursor:pointer;font:600 14px/1 var(--text);color:var(--tinte)}
 .weiter button.vor{margin-left:auto;background:var(--tinte);border-color:var(--tinte);color:var(--creme)}
-@media (hover:hover){.weiter button:hover{box-shadow:0 0 0 4px rgba(220,187,115,.25)}}
+@media (hover:hover){.weiter button:hover{box-shadow:0 0 0 4px rgba(227,179,162,.25)}}
 .zimmer.wisch.shown{transition:opacity .18s}.zimmer.wisch.weg{opacity:.35}
 .zimmer{display:grid;gap:0;background:var(--creme);border-radius:6px;overflow:hidden;box-shadow:0 18px 40px rgba(60,45,35,.16)}
 .zimmer figure{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--putz3);cursor:zoom-in}
@@ -169,7 +169,7 @@ body{position:relative}
 .zimmer h3{font:400 30px/1.05 var(--serif);margin:10px 0 4px}
 .zimmer .nr{font:600 11px/1 var(--text);letter-spacing:.2em;color:var(--gold-d);text-transform:uppercase}
 .zimmer .note{font-size:14px;color:var(--sepia);margin:0 0 8px}
-.tipp{margin:8px 0 6px;padding:10px 14px;border-left:3px solid var(--gold);background:rgba(220,187,115,.14);border-radius:0 6px 6px 0;font-size:15px;line-height:1.45;color:#4a3d33}
+.tipp{margin:8px 0 6px;padding:10px 14px;border-left:3px solid var(--gold);background:rgba(227,179,162,.14);border-radius:0 6px 6px 0;font-size:15px;line-height:1.45;color:#4a3d33}
 .tipp span{display:block;font:400 13px/1.2 var(--hand);color:var(--blau);margin-bottom:6px}
 .tipp cite{display:block;font-style:normal;font-size:12px;color:var(--sepia);margin-top:4px}
 .pos{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:9px 0;border-bottom:1px dotted rgba(42,33,28,.25)}
@@ -178,13 +178,13 @@ body{position:relative}
 .pos small{grid-column:1;color:var(--sepia);font-size:13.5px;line-height:1.35}
 .pos .pr{grid-row:1/span 2;grid-column:2;align-self:center;font:400 18px/1 var(--serif);padding:7px 10px;border-radius:6px;white-space:nowrap;transition:background-color .2s,color .2s,box-shadow .2s}
 .pos .pr.s{font:600 12px/1 var(--text);letter-spacing:.06em}
-@media (hover:hover){.pos:hover .pr{background:var(--gold);color:#fff;box-shadow:0 0 0 4px rgba(220,187,115,.25)}}
+@media (hover:hover){.pos:hover .pr{background:var(--gold);color:#fff;box-shadow:0 0 0 4px rgba(227,179,162,.25)}}
 .pos.tap .pr{background:var(--gold);color:#fff}
 .pos em.gt{font:normal 600 9px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--eiche);padding:4px 7px;border-radius:999px;margin-left:6px;vertical-align:2px;white-space:nowrap}
 .seiten{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 10px}
 .seiten button{min-height:38px;padding:0 13px;border-radius:999px;border:1.5px solid rgba(42,33,28,.3);background:transparent;cursor:pointer;font:500 13px/1 var(--text);transition:background-color .2s,color .2s,border-color .2s,box-shadow .2s}
 .seiten button[aria-pressed="true"]{background:var(--tinte);border-color:var(--tinte);color:var(--creme)}
-@media (hover:hover){.seiten button:not([aria-pressed="true"]):hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(220,187,115,.2)}}
+@media (hover:hover){.seiten button:not([aria-pressed="true"]):hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(227,179,162,.2)}}
 .seiten span{font-size:13px;color:var(--sepia)}
 .fuss{font-size:13px;color:var(--sepia);margin:12px 2px 0}
 
@@ -226,7 +226,7 @@ body{position:relative}
 .pk{position:relative;display:grid;grid-template-columns:1fr;gap:12px;padding:20px 20px 18px;background:#fbf7ef;border-radius:3px;box-shadow:0 2px 3px rgba(60,45,35,.12),0 18px 34px rgba(60,45,35,.18);transition:transform .35s ease,box-shadow .35s ease}
 .pk:nth-child(odd){transform:rotate(-.9deg)}
 .pk:nth-child(even){transform:rotate(.8deg)}
-@media (hover:hover){.pfeil:not(:disabled):hover{border-color:var(--gold);box-shadow:0 0 0 5px rgba(220,187,115,.22)}.pk:hover{transform:rotate(0) translateY(-4px);box-shadow:0 4px 6px rgba(60,45,35,.12),0 26px 46px rgba(60,45,35,.24)}}
+@media (hover:hover){.pfeil:not(:disabled):hover{border-color:var(--gold);box-shadow:0 0 0 5px rgba(227,179,162,.22)}.pk:hover{transform:rotate(0) translateY(-4px);box-shadow:0 4px 6px rgba(60,45,35,.12),0 26px 46px rgba(60,45,35,.24)}}
 .pk .text{font-size:15.5px;line-height:1.55;color:#3c322b}
 .pk .anrede{font:400 15px/1.3 var(--hand);color:var(--blau);margin:0 0 8px}
 .pk .gez{font:400 16px/1.3 var(--hand);color:var(--blau);margin:10px 0 0}
@@ -241,7 +241,7 @@ body{position:relative}
 .score a{display:flex;align-items:baseline;gap:10px;padding:10px 14px;border-radius:10px;border:1px solid rgba(42,33,28,.18);text-decoration:none;transition:border-color .2s,box-shadow .2s;background:rgba(251,247,239,.6)}
 .score b{font:400 30px/1 var(--serif);color:var(--gold-d)}
 .score span{font-size:13px;color:var(--sepia)}
-@media (hover:hover){.score a:hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(220,187,115,.18)}}
+@media (hover:hover){.score a:hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(227,179,162,.18)}}
 
 /* ===== Feiern ===== */
 .s-feiern{padding:28px 0 20px}
@@ -274,7 +274,7 @@ body{position:relative}
 .ph-gruss{font:400 19px/1.3 var(--hand);color:var(--blau);margin:0 0 12px}
 .tage{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:0 0 12px}
 .tage button{min-height:40px;border-radius:7px;border:1.5px solid rgba(42,33,28,.22);background:transparent;cursor:pointer;font-weight:600;font-size:14px;color:var(--tinte);transition:border-color .2s,background-color .2s,color .2s,box-shadow .2s}
-@media (hover:hover){.tage button:hover{border-color:var(--gold);box-shadow:0 0 0 3px rgba(220,187,115,.22)}}
+@media (hover:hover){.tage button:hover{border-color:var(--gold);box-shadow:0 0 0 3px rgba(227,179,162,.22)}}
 .tage button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fff}
 .pk-hinten .tg{font-size:13.5px;color:var(--sepia);margin:0 0 2px}
 .pk-hinten .h{font:400 clamp(34px,9vw,46px)/1 var(--serif);margin:0 0 10px;white-space:nowrap}
@@ -295,7 +295,7 @@ body{position:relative}
 .knoepfe .knopf.gold{color:#fff}
 .weg{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
 .weg li{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;border-radius:10px;border:1px solid rgba(247,241,231,.12);transition:border-color .2s,background-color .2s}
-@media (hover:hover){.weg li:hover{border-color:var(--gold-l);background:rgba(220,187,115,.07)}}
+@media (hover:hover){.weg li:hover{border-color:var(--gold-l);background:rgba(227,179,162,.07)}}
 .weg svg{width:21px;height:21px;color:var(--gold-l);flex:none;margin-top:2px}
 .weg b{display:block;font-weight:600}
 .weg span{font-size:14px;color:rgba(247,241,231,.78)}
@@ -450,6 +450,9 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .rise{opacity:1;transform:none;transition:none}
   .punkt.puls,.hinweis i{animation:none}
 }
+
+.tief .knopf.gold,.s-besuch .knopf.gold,.knoepfe .knopf.gold{background:#a04a35;border-color:#a04a35;color:#fff}
+.rt[aria-selected="true"],.weiter button.vor,.seiten button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fff}
 </style>
 </head>
 <body>
