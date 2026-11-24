@@ -376,7 +376,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 .kaese:before,.kaese:after,.familie:before{display:none}
 .kaese .kick{color:var(--red)}
 .kaese .head p{color:var(--mute)}
-.kpic{background:#e9dcc2;box-shadow:0 26px 50px rgba(74,46,22,.22)}
+.kpic{background:#e9dcc2;box-shadow:0 14px 28px rgba(74,46,22,.18)}
 .ktxt .num{color:var(--rind)}
 .ktxt .sub{color:var(--mute)}
 .ktxt .taste{color:var(--ink)}
@@ -408,7 +408,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 .ptxt p{color:var(--ink);opacity:.82;font-size:18px;max-width:26em}
 .medal p{color:var(--ink);opacity:.75}
 @media (max-width:1020px){.pgrid{grid-template-columns:1fr}.pgrid .ptxt{order:0}}
-@media (max-width:640px){.medals{gap:12px}.preise{min-height:0}}
+@media (max-width:640px){.medals{gap:12px}.preise{min-height:0;padding-bottom:44px}.kbg{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 72%,transparent 96%);mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 72%,transparent 96%)}}
 /* Kopfleiste hell, wenn gescrollt */
 .hdr.solid{background:rgba(251,245,232,.95);color:var(--ink);box-shadow:0 8px 24px rgba(74,46,22,.12)}
 .hdr.solid .brand span{color:var(--red)}
@@ -419,6 +419,36 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 @media (hover:hover){.hero-bar a:hover{color:var(--red)}}
 .weg:after{background:linear-gradient(180deg,rgba(251,245,232,1) 0,rgba(251,245,232,0) 22%,rgba(20,16,11,0) 42%,rgba(20,16,11,.8) 100%)}
 .weg.noimg{background:transparent;color:var(--ink);min-height:0;padding-top:40px}.weg.noimg:after{display:none}.weg.noimg p{color:var(--mute)}.weg.noimg .btn-line{color:var(--ink)}.weg.noimg .kick{color:var(--red)!important}
+
+/* ===== Runde 5 (Юля): Käsetextur, Karte, Tag, Blasen, Keller sichtbarer ===== */
+body:before{background:url(img/kaesetextur.webp) 0 0/720px 380px repeat;opacity:.15}
+.tag:empty{display:none}
+.fig .bub{margin-bottom:20px}
+.kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.22),rgba(251,245,232,.12) 50%,rgba(251,245,232,.22)),linear-gradient(90deg,rgba(251,245,232,.86) 0%,rgba(251,245,232,.6) 34%,rgba(251,245,232,.1) 58%,rgba(251,245,232,.18) 100%)!important}
+.preise .medal h3,.preise .medal p{text-shadow:0 0 12px rgba(251,245,232,.95),0 0 3px rgba(251,245,232,.9)}
+@media (max-width:1020px){.kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.75) 0%,rgba(251,245,232,.55) 40%,rgba(251,245,232,.2) 70%,rgba(251,245,232,.3) 100%)!important}}
+.day.sel{background:var(--rind2)!important;border-color:var(--rind2)!important;color:#fff!important;box-shadow:0 6px 16px rgba(74,46,22,.28)}
+.day.sel small{color:#F6D88A!important}
+@media (hover:hover){.day:not(.sel):hover{border-color:var(--rind);box-shadow:0 0 0 3px rgba(122,78,37,.25)}}
+.day:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.laden-grid{align-items:stretch}
+.mapbox{min-height:0;height:100%;background:#F6E6B4;border:3px solid #E3C27A;box-shadow:0 8px 18px rgba(74,46,22,.12)!important}
+.karte{position:absolute;inset:0;display:block;cursor:pointer}
+.karte img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+@media (hover:hover){.karte:hover img{transform:scale(1.04)}}
+.pin{position:absolute;left:50%;top:50%;width:64px;height:64px;transform:translate(-30%,-68%);filter:drop-shadow(0 6px 6px rgba(74,46,22,.35));transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+@media (hover:hover){.karte:hover .pin{transform:translate(-30%,-78%) rotate(-6deg)}}
+.mapcard{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
+.mapcard .btn{height:42px;padding:0 16px;font-size:15px;margin-top:10px;color:#fff!important}
+@media (max-width:1020px){.mapbox{height:auto;min-height:380px}}
+@media (max-width:1020px){.fgrid .pot{order:2;max-width:min(360px,80vw);margin-top:-10px}}
+@media (max-width:380px){.fig .bub{margin-bottom:8px}}
+.pot .potimg{box-shadow:0 12px 26px rgba(74,46,22,.22)!important}
+
+/* Regel 18j: Übergänge ohne Farbsprung – gleiche Käsetextur wie body:before */
+.hero-bar{background:linear-gradient(rgba(251,245,232,.85),rgba(251,245,232,.85)),url(img/kaesetextur.webp) 0 0/720px 380px fixed,var(--milk)!important;backdrop-filter:none;-webkit-backdrop-filter:none}
+.weg:before{content:"";position:absolute;left:0;right:0;top:0;height:34%;z-index:1;pointer-events:none;background:linear-gradient(rgba(251,245,232,.85),rgba(251,245,232,.85)),url(img/kaesetextur.webp) 0 0/720px 380px fixed,var(--milk);-webkit-mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%)}
+.weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 </style>
 </head>
@@ -566,12 +596,12 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
       <div class="dayinfo" id="dayinfo"></div>
       <div class="contact-row">
         <a class="btn btn-dark" href="tel:+41713711116"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>071 371 11 16</a>
-        <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener">Route planen</a>
       </div>
     </div>
     <div class="mapbox rv">
-      <iframe title="Karte Käserei Kreuzstrasse" loading="lazy" src="https://maps.google.com/maps?q=47.391402,9.194627&z=15&hl=de&output=embed"></iframe>
-      <div class="mapcard"><b>Käserei Kreuzstrasse</b><span>Chrüzstrasse 781 · 9113 Degersheim</span><br><a href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener">Wegbeschreibung →</a></div>
+      <a class="karte" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener" aria-label="Route zur Käserei Kreuzstrasse planen"><img src="img/karte.svg" alt="Karte: Käserei Kreuzstrasse, Chrüzstrasse 781, Degersheim" loading="lazy">
+        <span class="pin" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M6 44 L56 22 L56 44 Z" fill="#F2C766" stroke="#7A4E25" stroke-width="3" stroke-linejoin="round"/><path d="M6 44 L56 22 L50 18 L4 39 Z" fill="#E3A72F" stroke="#7A4E25" stroke-width="3" stroke-linejoin="round"/><circle cx="40" cy="35" r="3.5" fill="#d39b2c"/><circle cx="48" cy="39" r="2.5" fill="#d39b2c"/><circle cx="30" cy="40" r="2.2" fill="#d39b2c"/></svg></span></a>
+      <div class="mapcard"><b>Käserei Kreuzstrasse</b><span>Chrüzstrasse 781 · 9113 Degersheim</span><a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>Route planen</a></div>
     </div>
   </div>
 </section>
@@ -659,7 +689,7 @@ QA('.rv').forEach(e=>io.observe(e));
 
 /* --- Käse / Reife-Regler (Texte von kaeserei-kreuzstrasse.ch, Archiv 2025) --- */
 const K=[
- {n:'Wolfensberg-Mutschli',s:'Symphonie aus frischer Milch, klarer Luft und Käsermeisterkunst',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer',tag:'5 Sorten',img:'mutschli_kraeuter',
+ {n:'Wolfensberg-Mutschli',s:'Symphonie aus frischer Milch, klarer Luft und Käsermeisterkunst',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer',tag:'',img:'mutschli_kraeuter',
   herbs:[['Nature','Symphonie aus frischer Milch, klarer Luft und Käsermeisterkunst.'],['Basilikum','Kombiniert mit dem Aroma des Basilikums, der einen sehr eigenwilligen pfeffrig-süssen Geschmack mit einem Hauch Gewürznelken aufweist.'],['Thymian','Kombiniert mit dem Geschmack des Thymians, der stark würzig riecht und herb-aromatisch schmeckt, mit einer milden, pfeffrigen Schärfe.'],['Bärlauch','Vereint mit dem Geschmack des Bärlauchs, dessen ätherisches Öl das charakteristische knoblauchähnliche Aroma entfaltet.'],['Orangenblüten','Kombiniert mit dem zartblumigen Geschmack der Orangenblüte und einer leichten Zitrusnote.']]},
  {n:'Magdenauer Klosterkäse',s:'Rahmkäse nach altem Rezept der Klosterkäserei',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer, sauber im Abgang',tag:'Rahmkäse',img:'magdenauer'},
  {n:'Roter Pfeffer Käse',s:'Frische Milch, klare Luft, Käsermeisterkunst und die blumige Schärfe des Pfeffers',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer – mit der blumigen Schärfe des roten Pfeffers',tag:'mit rotem Pfeffer',img:'roter_pfeffer'},
