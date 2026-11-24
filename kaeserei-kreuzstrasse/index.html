@@ -369,16 +369,44 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 .plank:after{background:linear-gradient(180deg,#b88a55,#7a5530);box-shadow:0 6px 10px rgba(74,46,22,.18)}
 @media (hover:hover){.plank:hover{background:rgba(227,167,47,.12)}}
 .dayinfo,.result,.calc .mode,.guests button,.day:not(.zu){background:rgba(255,255,255,.72)}
-/* Keller-Akzent: weiche lange Übergänge */
-.kaese{background:var(--cellar);margin:110px 0}
-.kaese:before,.kaese:after{content:"";position:absolute;left:0;right:0;height:110px;pointer-events:none;display:block}
-.kaese:before{top:-110px;background:linear-gradient(180deg,rgba(27,23,18,0),var(--cellar))}
-.kaese:after{bottom:-110px;background:linear-gradient(180deg,var(--cellar),rgba(27,23,18,0))}
-.familie:before{display:none}
-/* Anschnitt im Käse-Bild */
-.kpic .whole{position:absolute;inset:0;z-index:3}
-.kpic .whole img{opacity:1;transform:none}
-.kwire{position:absolute;left:0;right:0;top:0;height:2px;z-index:4;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 15%,#fff 85%,rgba(255,255,255,0));box-shadow:0 0 14px 2px rgba(255,236,190,.85);opacity:0;pointer-events:none}
+/* Käse-Block hell (kein dunkler Block mehr) */
+.kaese{background:transparent;color:var(--ink)}
+.kaese:before,.kaese:after,.familie:before{display:none}
+.kaese .kick{color:var(--red)}
+.kaese .head p{color:var(--mute)}
+.kpic{background:#e9dcc2;box-shadow:0 26px 50px rgba(74,46,22,.22)}
+.ktxt .num{color:var(--rind)}
+.ktxt .sub{color:var(--mute)}
+.ktxt .taste{color:var(--ink)}
+.ktxt .taste b{color:var(--rind)}
+.tag{background:rgba(227,167,47,.2);color:var(--rind2)}
+@media (hover:hover){.tag:hover{background:rgba(227,167,47,.32)}}
+.herb{border-color:rgba(122,78,37,.3)}
+.herb.on{background:var(--green);border-color:var(--green);color:#fff}
+.scale .ends{color:var(--mute)}
+.stop{background:var(--milk);border-color:rgba(122,78,37,.45)}
+.stop span{color:var(--mute)}
+.stop.on{border-color:var(--rind2)}.stop.on span{color:var(--rind2);font-weight:700}
+@media (hover:hover){.stop:hover span{color:var(--ink)}}
+/* Block 2: Medaillen über dem durchscheinenden Käsekeller */
+.preise{position:relative;overflow:hidden;padding:clamp(56px,7vw,110px) 0;min-height:min(86vh,760px);display:flex;align-items:center}
+.kbg{position:absolute;inset:0;z-index:0}
+.kbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%}
+.kbg .whole{position:absolute;inset:0}
+.kbg picture{position:absolute;inset:0}
+.kbg{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 20%,#000 80%,transparent 100%)}
+.kbg:after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(251,245,232,.55),rgba(251,245,232,.45) 50%,rgba(251,245,232,.55)),
+  linear-gradient(90deg,rgba(251,245,232,.88) 0%,rgba(251,245,232,.55) 42%,rgba(251,245,232,.25) 70%,rgba(251,245,232,.45) 100%)}
+.kbg .kwire{position:absolute;left:0;right:0;top:0;height:2px;z-index:2;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 15%,#fff 85%,rgba(255,255,255,0));box-shadow:0 0 16px 3px rgba(255,226,160,.9);opacity:0}
+.preise .wrap{position:relative;z-index:1}
+.pgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,64px);align-items:center}
+.medals{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,40px)}
+.ptxt h2{font-size:clamp(36px,4.2vw,62px)}
+.ptxt p{color:var(--ink);opacity:.82;font-size:18px;max-width:26em}
+.medal p{color:var(--ink);opacity:.75}
+@media (max-width:1020px){.pgrid{grid-template-columns:1fr}.pgrid .ptxt{order:0}}
+@media (max-width:640px){.medals{gap:12px}.preise{min-height:0}}
 /* Kopfleiste hell, wenn gescrollt */
 .hdr.solid{background:rgba(251,245,232,.95);color:var(--ink);box-shadow:0 8px 24px rgba(74,46,22,.12)}
 .hdr.solid .brand span{color:var(--red)}
@@ -388,7 +416,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 .hero-bar{background:rgba(251,245,232,.94);color:var(--ink);border-top:0}
 @media (hover:hover){.hero-bar a:hover{color:var(--red)}}
 .weg:after{background:linear-gradient(180deg,rgba(251,245,232,1) 0,rgba(251,245,232,0) 22%,rgba(20,16,11,0) 42%,rgba(20,16,11,.8) 100%)}
-.weg.noimg{color:var(--ink);min-height:0;padding-top:40px}.weg.noimg:after{display:none}.weg.noimg p{color:var(--mute)}.weg.noimg .btn-line{color:var(--ink)}.weg.noimg .kick{color:var(--red)!important}
+.weg.noimg{background:transparent;color:var(--ink);min-height:0;padding-top:40px}.weg.noimg:after{display:none}.weg.noimg p{color:var(--mute)}.weg.noimg .btn-line{color:var(--ink)}.weg.noimg .kick{color:var(--red)!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 </style>
 </head>
@@ -427,12 +455,19 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 </section>
 
 
-<!-- MEDAILLEN -->
-<section class="preise sec" id="preise">
+<!-- MEDAILLEN über dem Käsekeller -->
+<section class="preise" id="preise">
+  <div class="kbg" aria-hidden="true">
+    <picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_anschnitt_m.webp"><img class="cut" src="img/keller_anschnitt_l.webp" alt="" loading="lazy"></picture>
+    <div class="whole"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_laib_m.webp"><img src="img/keller_laib_l.webp" alt="" loading="lazy"></picture></div>
+    <i class="kwire"></i>
+  </div>
   <div class="wrap pgrid">
-    <div class="medal rv" data-swing><div class="disc g"><div class="in"><small>Gold</small><b>2008</b><small>Appenzeller</small></div></div><h3>Swiss Cheese Award</h3><p>Goldmedaille für unseren Appenzeller Käse</p></div>
-    <div class="medal rv" data-swing><div class="disc b"><div class="in"><small>Bronze</small><b>2010</b><small>World Champ.</small></div></div><h3>World Championship Cheese Contest</h3><p>Bronzemedaille 2010</p></div>
-    <div class="ptxt rv"><span class="kick">Ausgezeichnet</span><h2>Gold und Bronze für unseren Käse</h2><p>Gemacht in unserer Käserei an der Chrüzstrasse in Degersheim – und gereift im eigenen Käsekeller.</p></div>
+    <div class="ptxt rv"><span class="kick">Aus unserem Käsekeller</span><h2>Gold und Bronze für unseren Käse</h2><p>Gemacht in der Käserei an der Chrüzstrasse – und gereift im eigenen Keller, Laib für Laib.</p></div>
+    <div class="medals">
+      <div class="medal rv" data-swing><div class="disc g"><div class="in"><small>Gold</small><b>2008</b><small>Appenzeller</small></div></div><h3>Swiss Cheese Award</h3><p>Goldmedaille für unseren Appenzeller</p></div>
+      <div class="medal rv" data-swing><div class="disc b"><div class="in"><small>Bronze</small><b>2010</b><small>World Champ.</small></div></div><h3>World Championship Cheese Contest</h3><p>Bronzemedaille 2010</p></div>
+    </div>
   </div>
 </section>
 
@@ -440,11 +475,11 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 <section class="kaese sec fade-top" id="kaese">
   <div class="wrap">
     <div class="head rv">
-      <div><span class="kick">Aus dem eigenen Käsekeller</span><h2>Wie kräftig darf’s sein?</h2></div>
+      <div><span class="kick">Unsere Käse</span><h2>Wie kräftig darf’s sein?</h2></div>
       <p>8 Käse machen wir das ganze Jahr, dazu saisonale Spezialitäten. Ziehen Sie die Käseharfe – von jung &amp; mild bis extra reif.</p>
     </div>
     <div class="stage rv">
-      <div class="kpic" id="kpic" role="button" tabindex="0" aria-label="Foto gross anzeigen"><div class="whole" id="kwhole"><img src="img/keller_laib_k.webp" alt="Käselaib im Keller"></div><i class="kwire" id="kwire"></i></div>
+      <div class="kpic" id="kpic" role="button" tabindex="0" aria-label="Foto gross anzeigen"></div>
       <div class="ktxt">
         <span class="num" id="knum"></span>
         <h3 id="kname"></h3>
@@ -622,11 +657,11 @@ const K=[
   herbs:[['Nature','Symphonie aus frischer Milch, klarer Luft und Käsermeisterkunst.'],['Basilikum','Kombiniert mit dem Aroma des Basilikums, der einen sehr eigenwilligen pfeffrig-süssen Geschmack mit einem Hauch Gewürznelken aufweist.'],['Thymian','Kombiniert mit dem Geschmack des Thymians, der stark würzig riecht und herb-aromatisch schmeckt, mit einer milden, pfeffrigen Schärfe.'],['Bärlauch','Vereint mit dem Geschmack des Bärlauchs, dessen ätherisches Öl das charakteristische knoblauchähnliche Aroma entfaltet.'],['Orangenblüten','Kombiniert mit dem zartblumigen Geschmack der Orangenblüte und einer leichten Zitrusnote.']]},
  {n:'Magdenauer Klosterkäse',s:'Rahmkäse nach altem Rezept der Klosterkäserei',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer, sauber im Abgang',tag:'Rahmkäse',img:'magdenauer'},
  {n:'Roter Pfeffer Käse',s:'Frische Milch, klare Luft, Käsermeisterkunst und die blumige Schärfe des Pfeffers',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer – mit der blumigen Schärfe des roten Pfeffers',tag:'mit rotem Pfeffer',img:'roter_pfeffer'},
- {n:'Appenzeller',s:'Würzig – unser ausgezeichneter Klassiker',t:'Vom würzigen Appenzeller bis zum milden Wolfensberger: bei uns finden Sie alles, was das Käseherz begehrt.',tag:'★ Gold · Swiss Cheese Award 2008',img:'keller_anschnitt'},
+ {n:'Appenzeller',s:'Würzig – unser ausgezeichneter Klassiker',t:'Vom würzigen Appenzeller bis zum milden Wolfensberger: bei uns finden Sie alles, was das Käseherz begehrt.',tag:'★ Gold · Swiss Cheese Award 2008',img:'appenzeller_stueck'},
  {n:'Schwarzer Wolf',s:'Wolfensberg Chäs extra reif – Vollmilchkäse aus dem Luftkurort Degersheim',t:'zeichnet sich aus durch sein würzig-fruchtiges Aroma, brennt nicht auf der Zunge, cremig',tag:'extra reif',img:'schwarzer_wolf'}
 ];
 const kpic=Q('#kpic'), stops=Q('#stops'), harp=Q('#harp'), track=Q('#track'); let cur=-1, herbI=0;
-K.forEach((k,i)=>{ const im=document.createElement('img'); im.src='img/'+k.img+'_k.webp'; im.alt=k.n; im.loading='lazy'; kpic.appendChild(im);
+K.forEach((k,i)=>{ const im=document.createElement('img'); im.src='img/'+k.img+'_k.webp'; im.alt=k.n; im.loading='lazy'; im.addEventListener('error',()=>{im.style.visibility='hidden'}); kpic.appendChild(im);
   const s=document.createElement('button'); s.className='stop'; s.setAttribute('aria-label',k.n); s.innerHTML='<span>'+k.n.replace('Wolfensberg-','').replace(' Klosterkäse','').replace(' Käse','')+'</span>'; s.addEventListener('click',e=>{e.stopPropagation(); go(i,true);}); stops.appendChild(s); });
 const pos=i=>{ const r=track.getBoundingClientRect(); const pad=11; return pad+(r.width-2*pad)*i/(K.length-1); };
 function show(i){ if(i===cur) return; cur=i; const k=K[i];
@@ -644,15 +679,13 @@ harp.addEventListener('pointermove',e=>{ if(drag) xTo(e.clientX); });
 const end=()=>{ if(drag){drag=false; go(cur,true);} }; harp.addEventListener('pointerup',end); harp.addEventListener('pointercancel',end);
 track.addEventListener('click',e=>{ if(e.target===track||e.target.classList.contains('bar')||e.target===stops){ const r=track.getBoundingClientRect(); go(Math.round((e.clientX-r.left)/r.width*(K.length-1)),true);} });
 harp.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'){go(cur+1,true);e.preventDefault();} if(e.key==='ArrowLeft'){go(cur-1,true);e.preventDefault();} });
-go(3); addEventListener('resize',()=>go(cur));
-/* Anschnitt im Käsekeller: einmal, wenn der Block sichtbar wird (Appenzeller) */
-{ const whole=Q('#kwhole'), w=Q('#kwire'); let done=false;
-  const play=()=>{ if(done) return; done=true; if(cur!==3){ whole.style.display='none'; return; } const t0=performance.now(), D=1100, H=kpic.offsetHeight;
-    const st=t=>{ const p=Math.min(1,(t-t0)/D), e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; whole.style.clipPath='inset('+(e*100)+'% 0 0 0)'; w.style.opacity=p<.97?1:0; w.style.transform='translateY('+(e*H)+'px)';
-      if(p<1) requestAnimationFrame(st); else whole.style.display='none'; }; requestAnimationFrame(st); };
-  new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ o.disconnect(); setTimeout(play,700); } }),{threshold:.55}).observe(kpic);
-  QA('.stop').forEach(b=>b.addEventListener('click',()=>{ if(!done){ done=true; whole.style.display='none'; } }));
-  harp.addEventListener('pointerdown',()=>{ if(!done){ done=true; whole.style.display='none'; } });
+go(0); addEventListener('resize',()=>go(cur));
+/* Anschnitt im durchscheinenden Keller (Block 2): einmal beim Sichtbarwerden */
+{ const bg=Q('#preise .kbg'), whole=bg.querySelector('.whole'), w=bg.querySelector('.kwire'); let done=false;
+  const play=()=>{ if(done) return; done=true; const t0=performance.now(), D=1300, H=bg.offsetHeight;
+    const st=t=>{ const p=Math.min(1,(t-t0)/D), e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; whole.style.clipPath='inset('+(e*100)+'% 0 0 0)'; w.style.opacity=p<.97?.9:0; w.style.transform='translateY('+(e*H)+'px)';
+      if(p<1) requestAnimationFrame(st); else whole.style.visibility='hidden'; }; requestAnimationFrame(st); };
+  new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ o.disconnect(); setTimeout(play,500); } }),{threshold:.45}).observe(bg);
 }
 kpic.addEventListener('click',()=>openLb('img/'+K[cur].img+'_l.webp'));
 
