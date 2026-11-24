@@ -73,7 +73,7 @@ body{position:relative}
 .kopf{transition:background-color .35s,color .35s,box-shadow .35s,transform .5s cubic-bezier(.22,.61,.36,1)}
 /* Kopf */
 .kopf{position:fixed;inset:0 0 auto;z-index:40;height:calc(var(--hh) + env(safe-area-inset-top));padding:env(safe-area-inset-top) 16px 0;display:flex;align-items:center;gap:12px;color:var(--creme);transition:background-color .35s,color .35s,box-shadow .35s}
-.kopf.hell{background:rgba(172,184,195,.93);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--tinte);box-shadow:0 1px 0 rgba(42,33,28,.08)}
+.kopf.hell{background:rgba(172,184,195,.55);-webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);color:var(--tinte);box-shadow:0 1px 0 rgba(42,33,28,.08)}
 .kopf.dunkel{color:var(--tinte)}
 .logo{display:block;width:112px;height:34px;background:currentColor;-webkit-mask:url(img/bodan_logo.svg) left center/contain no-repeat;mask:url(img/bodan_logo.svg) left center/contain no-repeat;flex:none}
 .kopf nav{display:none;margin-left:auto;gap:2px}
@@ -89,7 +89,7 @@ body{position:relative}
 /* Bühne folgt dem Scrollen: die Szene klebt oben, der Fortschritt kommt aus der Scrollposition (kein Timer, kein Blockieren) */
 .klebe{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden;isolation:isolate}
 .buehne.still{height:auto}.buehne.still .klebe{position:relative}
-.ausgang{position:absolute;left:0;right:0;bottom:0;height:var(--af,160px);z-index:1;pointer-events:none;opacity:0;background:var(--putz) var(--putzbild) 0 var(--ay,0px)/var(--kachel) repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.1) 25%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.85) 75%,#000 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.1) 25%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.85) 75%,#000 100%)}
+.ausgang{position:absolute;left:0;right:0;bottom:0;height:var(--af,160px);z-index:1;pointer-events:none;opacity:0;background:var(--putz) var(--putzbild) 0 var(--ay,0px)/var(--kachel) repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.04) 18%,rgba(0,0,0,.14) 34%,rgba(0,0,0,.32) 50%,rgba(0,0,0,.56) 65%,rgba(0,0,0,.8) 80%,rgba(0,0,0,.95) 92%,#000 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.04) 18%,rgba(0,0,0,.14) 34%,rgba(0,0,0,.32) 50%,rgba(0,0,0,.56) 65%,rgba(0,0,0,.8) 80%,rgba(0,0,0,.95) 92%,#000 100%)}
 .s-wand .uebergang{display:none}
 .buehne .szene{position:absolute;inset:0;will-change:transform}
 .buehne .bild{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -416,12 +416,13 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .s-gaeste{padding:64px 0 48px}
   .gaeste-kopf{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
   .gaeste-kopf h2{margin:0}
-  .s-feiern{padding:42px 0 40px}
+  .s-feiern{padding:34px 0 28px}
   .feiern-grid{grid-template-columns:5fr 7fr;gap:24px;align-items:stretch}
   .fbild{aspect-ratio:auto;min-height:100%}
   .fkarten{gap:20px}
   .fk{grid-template-columns:1fr}
-  .fk figure{aspect-ratio:21/9}
+  .fk figure{aspect-ratio:4/1}
+  .fk .in{padding:16px 22px 18px;gap:8px}
   .s-besuch{padding:52px 0 36px}
   .abschied{grid-template-columns:1fr 1fr;gap:34px;align-items:center}
   .pk-hinten{grid-template-columns:1.25fr 1fr;gap:22px;padding:26px 28px 26px}
@@ -597,6 +598,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
           </div>
         </article>
         <article class="fk rise">
+          <figure data-big="img/pizzaiolo.webp"><img src="img/pizzaiolo.webp" alt="Der Pizzaiolo wirft den Teig für die grosse Tischpizza in die Luft" loading="lazy" style="object-position:50% 24%"></figure>
           <div class="in">
             <h3>Gruppen &amp; Feiern</h3>
             <p>Firmenfeier, Geburtstag oder Hochzeit: grosse Gruppen sind willkommen. Für den langen Tisch gibt es Pizza mit 50 cm Durchmesser.</p>
@@ -729,7 +731,7 @@ function cl(x){return x<0?0:x>1?1:x}
 function eo(t){return 1-Math.pow(1-t,3)}
 var mob=false,F=160,maxS=1,p=0,pZiel=0,tk=0;
 function mass(){
-  mob=W.innerWidth<900;F=mob?120:160;
+  mob=W.innerWidth<900;F=mob?240:340;
   if(reduce)B.classList.add('still');
   maxS=Math.max(0,B.offsetHeight-klebe.offsetHeight);
   var unten=B.offsetTop+B.offsetHeight;
@@ -746,7 +748,7 @@ function render(q){
   sl.style.opacity=cl((q-0.12)/0.33).toFixed(3);
   var r=na.getBoundingClientRect(),kh=kopf.offsetHeight,frei=r.top>kh+40;
   var da=q>=0.32&&frei;na.style.opacity=da?'1':'0';na.style.pointerEvents=da?'auto':'none';
-  na.style.transform='translateY('+(-F*0.45*cl((q-0.78)/0.22)).toFixed(1)+'px)';
+  na.style.transform='translateY('+(-F*0.3*cl((q-0.78)/0.22)).toFixed(1)+'px)';
   ag.style.opacity=cl((q-0.78)/0.22).toFixed(3);
   var fv=q<0.75;fz.style.opacity=fv?'1':'0';fz.style.pointerEvents=fv?'auto':'none';
 }
@@ -789,7 +791,7 @@ var KARTE=[
   ['Vegi Mix Futu Maki','10 Stück, vegetarisch','18.–'],['Mango Rolls','8 Stück','17.–'],['Tropical Rolls','8 Stück','17.–'],['California Salmon','8 Stück','17.–'],
   ['California Tuna','8 Stück','15.–'],['Kappa Rolls','8 Stück, Gurke','15.–'],['Alaska Maki','6 Stück','12.–'],['Avocado Maki','6 Stück','10.–'],
   ['Shake Maki','6 Stück, Lachs','10.–'],['Tekka Maki','6 Stück, Thunfisch','10.–'],['Kappa Maki','6 Stück, Gurke','8.–'],['Goma Wakame','Algensalat mit Sesam','12.–'],['Poke Bowl Lachs','','18.–']]},
- {n:'Pizza',img:'pizzaiolo',alt:'Der Pizzaiolo wirft den Teig in die Luft',note:'Hauchdünn aus dem Ofen, Ø 32 cm oder Ø 50 cm für den ganzen Tisch.',q:['Take-away-Pizzas … sind frisch hausgemacht (lassen sich deshalb problemlos vegan bestellen) und sind super lecker.','Seraina Dübendorfer'],it:[
+ {n:'Pizza',img:'pizza',alt:'Pizza mit Rucola und Cherrytomaten, dahinter Rotwein',note:'Hauchdünn aus dem Ofen, Ø 32 cm oder Ø 50 cm für den ganzen Tisch.',q:['Take-away-Pizzas … sind frisch hausgemacht (lassen sich deshalb problemlos vegan bestellen) und sind super lecker.','Seraina Dübendorfer'],it:[
   ['Margherita','','Ø 32 / 50',2],['Salame','','Ø 32 / 50',2],['Regina','','Ø 32 / 50',2],['Prosciutto','','Ø 32 / 50',2],['Tonno','','Ø 32 / 50',2],['Capricciosa','','Ø 32 / 50',2],['Hawaii','','Ø 32 / 50',2],['Frutti di Mare','','Ø 32 / 50',2]]},
  {n:'Pasta',img:'',note:'Alle Pasta-Gerichte mit einer Pastasorte nach Wahl.',q:['Sehr feine Pasta… Sushi so wiso perfekt!!!','Bonequinha Linda'],it:[
   ['Pasta Bolognese','','ab 19.–'],['Bolognese überbacken','','ab 20.–'],['Lasagne Bolognese','','ab 18.–']]},
