@@ -1710,16 +1710,36 @@ body{background:transparent!important}
 </style>
 <style id="buch-bordeaux-css">
 /* Julia 25.11: Buchdeckel bordeaux (Leder, Goldprägung) – nur Deckel und Rücken, Seiten unverändert */
-.bk-front,.bk-board{background:radial-gradient(120% 70% at 50% 0%,rgba(255,235,200,.10),rgba(0,0,0,0) 60%),radial-gradient(140% 100% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.32) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='turbulence' baseFrequency='.045' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .85  0 0 0 .9 -.32'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.35'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 .78'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.55'/%3E%3C/svg%3E"),linear-gradient(165deg,#8E2A36 0%,#74202B 50%,#561520 100%)!important}
-.bk-front{box-shadow:inset 0 1px 0 rgba(255,220,170,.18),inset 0 0 0 1px rgba(0,0,0,.35),inset 0 -40px 70px -30px rgba(0,0,0,.35),1px 2px 0 #3E0F17,2px 3px 0 #3E0F17!important}
+.bk-front,.bk-board{background:radial-gradient(120% 75% at 28% 0%,rgba(255,228,196,.13),rgba(0,0,0,0) 58%),radial-gradient(150% 110% at 50% 45%,rgba(0,0,0,0) 62%,rgba(0,0,0,.22) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.35' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.9 .62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.30'/%3E%3C/svg%3E"),linear-gradient(165deg,#76302C 0%,#5E2422 50%,#44181A 100%)!important}
+.bk-front{box-shadow:inset 0 1px 0 rgba(255,220,170,.18),inset 0 0 0 1px rgba(0,0,0,.35),inset 0 -40px 70px -30px rgba(0,0,0,.35),1px 2px 0 #2E0F10,2px 3px 0 #2E0F10!important}
 .bk-spineband{background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(0,0,0,.15) 40%,rgba(255,225,180,.16) 72%,rgba(0,0,0,.30) 92%,rgba(0,0,0,0))!important}
-.bk-herr{opacity:.55;filter:brightness(1.4)}
+.bk-herr{opacity:.28;filter:brightness(1.3)}
 .bk-frame{border-color:rgba(226,184,104,.85)!important;box-shadow:inset 0 0 0 1px rgba(226,184,104,.35),0 0 0 1px rgba(0,0,0,.18)!important}
 .bk-cv-k{color:#E2BE78!important;text-shadow:0 -1px 0 rgba(0,0,0,.45)}
 .bk-cv-t{background:linear-gradient(180deg,#F6DDA0 0%,#D9A94E 55%,#A9762A 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;filter:drop-shadow(0 -1px 0 rgba(0,0,0,.5)) drop-shadow(0 1px 0 rgba(255,225,170,.18))!important}
 .bk-cv .bk-plate img{filter:invert(1) sepia(1) saturate(1.6) hue-rotate(-8deg) brightness(.95) drop-shadow(0 -1px 0 rgba(0,0,0,.45))!important;mix-blend-mode:normal!important}
 .bk-cv-btn,.bk[data-state="closed"] .bk-cover:hover .bk-cv-btn{background:linear-gradient(180deg,#F1CF86,#D29C3E)!important;color:#2A1608!important;box-shadow:0 10px 22px -10px rgba(0,0,0,.8)!important}
 .bk-cv-btn svg{color:#2A1608}
+/* Julia 25.11: keine Hinweise «… geht auf der nächsten Seite weiter» */
+.bk-more{display:none!important}
+/* Prüfer 25.11: geschlossenes Buch mit Überschrift und einer Taste ganz in 1470×659; zweite Taste (Online bestellen) unter dem Buch weg – steht im ersten Bildschirm */
+@media (min-width:700px){
+  #karte{padding-top:12px!important;padding-bottom:12px!important}
+  #karte .sec-head{margin-bottom:6px!important}
+  #karte .sec-head > p:not(.kicker){display:none!important}
+  #karte .menu-foot{display:none!important}
+  #buch.bk{--bkh:clamp(320px,calc(100svh - 284px),760px)!important}
+  #karte{scroll-margin-top:63px}
+}
+/* kleineres Buch auf niedrigen Bildschirmen: Deckel-Inhalt luftig, Zierlinie berührt die Taste nicht */
+@media (min-width:700px) and (max-height:820px){
+  .bk-cv .bk-plate{width:150px!important;height:104px!important}
+  .bk-cv-k{margin-top:12px!important}
+  .bk-cv-t{font-size:2.9rem!important}
+  .bk-cv-o{margin-top:6px!important}
+}
+/* Prüfer 25.11: Naht Э3→Э4 – rötlicher Lichtfleck oben rechts in «Was Gäste schreiben» wurde an der Blockkante abgeschnitten */
+#stimmen{background-image:none!important}
 </style>
 </head>
 <body>
@@ -2374,7 +2394,7 @@ body{background:transparent!important}
     return '<div class="bk-run"><span>' + esc(name) + '</span><span>' + tr('Seite') + ' ' + num + '</span></div>';
   }
   function tocHTML(from, to, sub, tip, num){
-    var h = (num ? runLine(tr('Inhalt'), num) : '') + '<h3 class="bk-h" tabindex="-1">' + tr('Inhalt') + (from > 0 ? ' <small>' + tr('Fortsetzung') + '</small>' : '') + '</h3>' +
+    var h = (num ? runLine(tr('Inhalt'), num) : '') + '<h3 class="bk-h" tabindex="-1">' + tr('Inhalt') + '' + '</h3>' +
         (sub ? '<p class="bk-sub">' + MENU.length + ' ' + tr('Kategorien') + ' · ' + total + ' ' + tr('Gerichte und Getränke') + '</p>' : '') + '<ol class="bk-toc">';
     for(var i = from; i < to; i++){
       var c = MENU[i];
@@ -2392,7 +2412,7 @@ body{background:transparent!important}
     var c = MENU[ci];
     return (num ? runLine(catT(c), num) : '') + '<h3 class="bk-h" tabindex="-1">' + esc(catT(c)) + (c.n ? ' <small>' + esc(c.n) + '</small>' : '') + extra +
       '</h3>' + hintHTML(true) + '<ul class="bk-list">' + rows + '</ul>' +
-      (more ? '<p class="bk-more">' + esc(catT(c)) + ' ' + tr('geht auf der nächsten Seite weiter') + '</p>' : '');
+      '';
   }
   /* Zutaten: fehlt die Beschreibung, gibt es keinen Block «Zutaten». Die Stücke erscheinen beim Öffnen nacheinander. */
   function zuHTML(x, tag){
@@ -2440,11 +2460,11 @@ body{background:transparent!important}
     var c = MENU[p.c];
     h = runHead(idx) + '<h3 class="bk-h" tabindex="-1">' + esc(catT(c)) +
         (c.n ? ' <small>' + esc(c.n) + '</small>' : '') +
-        (p.parts > 1 ? ' <small>' + (p.part > 1 ? tr('Fortsetzung') + ' · ' : '') + tr('Teil') + ' ' + p.part + ' ' + tr('von') + ' ' + p.parts + '</small>' : '') +
+        '' +
         '</h3>' + hintHTML(!wide || idx % 2 === 0 || !pages[idx-1] || pages[idx-1].k !== 'cat' || pages[idx-1].c !== p.c) + '<ul class="bk-list">';
     for(j = p.from; j < p.to; j++) h += dishHTML(p.c, j, pfx);
     h += '</ul>';
-    if(p.parts > 1 && p.part < p.parts) h += '<p class="bk-more">' + esc(catT(c)) + ' ' + tr('geht auf der nächsten Seite weiter') + '</p>';
+    
     return h;
   }
 
