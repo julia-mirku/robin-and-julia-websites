@@ -87,6 +87,13 @@ nav.main a{text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px;
 .pill .dot.zu{background:#E9897F;box-shadow:0 0 0 3px rgba(233,137,127,.25)}
 .pill b{font-weight:700}
 @media (hover:hover){.pill:hover{background:rgba(20,11,6,.62);box-shadow:inset 0 0 0 1px var(--gold),0 0 18px rgba(232,170,0,.25)}}
+.adr{margin-top:12px;font-size:13.5px;color:#EADCC9;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.adr a{text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.35);transition:color .2s,border-color .2s}
+.adr span{opacity:.4}
+.heroB .adr{color:var(--kruste2)}.heroB .adr a{border-color:rgba(58,35,23,.3)}
+@media (hover:hover){.adr a:hover{color:var(--goldhell);border-color:var(--gold)}.heroB .adr a:hover{color:var(--rot)}}
+.gfbild img,.catbild img{transition:transform .6s var(--ease)}
+@media (hover:hover){.gfbild:hover img,.catbild:hover img{transform:scale(1.04)}.gfbild{cursor:zoom-in}}
 /* Theke: 3 Produkte im Hero */
 .theke{display:flex;flex-direction:column;gap:12px;justify-self:end;width:min(330px,100%)}
 .theke .t{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--goldhell);display:flex;justify-content:space-between}
@@ -397,6 +404,7 @@ body.menu .mmenu{transform:none}
   .heroA p.lead{font-size:15.5px}
   .heroA .cta{margin:16px 0 14px;gap:10px}
   .heroA .cta .btn{flex:1;justify-content:center;padding:13px 14px;font-size:15px}
+  .adr{font-size:12.5px;margin-top:8px}.adr span{display:none}
   .heute{gap:8px}.pill{font-size:13px;padding:7px 11px}
   .theke{justify-self:stretch;width:auto;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 4px;scroll-padding:0 16px;scrollbar-width:none;flex-wrap:nowrap}
   .theke::-webkit-scrollbar{display:none}
@@ -483,6 +491,7 @@ body.menu .mmenu{transform:none}
         <a class="btn glas" href="#cafes">Cafés &amp; Läden</a>
       </div>
       <div class="heute" data-heute></div>
+      <div class="adr"><a href="https://maps.google.com/?q=Dorfstrasse+26,+9104+Waldstatt" target="_blank" rel="noopener">Dorfstrasse 26, Waldstatt</a> · <a href="tel:+41713512126">071 351 21 26</a><span>|</span><a href="https://maps.google.com/?q=T%C3%BCfenbergstrasse+2,+9107+Urn%C3%A4sch" target="_blank" rel="noopener">Tüfenbergstrasse 2, Urnäsch</a> · <a href="tel:+41713641804">071 364 18 04</a></div>
     </div>
     <div class="theke" data-theke><div class="t"><span>Heute beliebt</span><span>glutenfrei</span></div></div>
   </div>
@@ -500,6 +509,7 @@ body.menu .mmenu{transform:none}
         <a class="btn hell" href="#cafes">Cafés &amp; Läden</a>
       </div>
       <div class="heute" data-heute></div>
+      <div class="adr"><a href="https://maps.google.com/?q=Dorfstrasse+26,+9104+Waldstatt" target="_blank" rel="noopener">Dorfstrasse 26, Waldstatt</a> · <a href="tel:+41713512126">071 351 21 26</a><span>|</span><a href="https://maps.google.com/?q=T%C3%BCfenbergstrasse+2,+9107+Urn%C3%A4sch" target="_blank" rel="noopener">Tüfenbergstrasse 2, Urnäsch</a> · <a href="tel:+41713641804">071 364 18 04</a></div>
     </div>
     <div class="teller" id="teller">
       <div class="ring"></div>
@@ -640,13 +650,13 @@ body.menu .mmenu{transform:none}
 <!-- STIMMEN -->
 <section class="sec stimmen" id="stimmen">
   <div class="wrap">
-    <div class="sh fade"><h2>«Für mich <em>ein Paradies.</em>»</h2><div class="sterne"><b>4,6</b><span><span style="color:var(--gold);letter-spacing:2px">★★★★★</span><br>114 Bewertungen auf Google</span></div></div>
+    <div class="sh fade"><h2>«Hier stimmt <em>einfach alles.</em>»</h2><div class="sterne"><b>4,6</b><span><span style="color:var(--gold);letter-spacing:2px">★★★★★</span><br>114 Bewertungen auf Google</span></div></div>
     <div class="regalwrap fade">
       <button class="pfeil l" data-l="zitate" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="zitate" id="zitate">
         <div class="zitat"><span class="s">★★★★★</span><q>Da ich Glutenfrei essen muss, für mich ein Paradies. Das Brot schmeckt sehr gut, wie auch das Konfekt ein Traum.</q><span class="w"><b>Nicole S</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Die glutenfreie Produkte sind Weltklasse – allen voran das Pastetli. Einfach jedes Jahr zu Weihnachten eine super Freude.</q><span class="w"><b>Dani Stutz</b> · Google</span></div>
-        <div class="zitat"><span class="s">★★★★★</span><q>Ob klassisches Brot oder die genialen glutenfreien Alternativen, hier stimmt einfach alles.</q><span class="w"><b>Karin S.</b> · Google</span></div>
+        <div class="zitat"><span class="s">★★★★★</span><q>Echte Backkunst, fantastischer Service und stets frische Ware!</q><span class="w"><b>Karin S.</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Es ist mit Abstand beste Bäckerei was die Qualität der Produkte angeht! Mehrmals seit Monaten getestet.</q><span class="w"><b>Marco Rieder</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Für von Zöliakie betroffene Personen ist dies sowas wie ein Schlaraffenland.</q><span class="w"><b>Andrew</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Das Biberbacken als Gruppenevent ist eine tolle Angelegenheit.</q><span class="w"><b>sotrue</b> · Google</span></div>
