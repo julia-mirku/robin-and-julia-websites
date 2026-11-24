@@ -1083,6 +1083,21 @@ html body .contact>.wrap{padding-top:16px;padding-bottom:40px}
 /* 24.11 drei Stimmen: die dritte über die ganze Breite */
 html body .quotes li:last-child:nth-child(odd){grid-column:1/-1}
 html body .quotes li:nth-last-child(2):nth-child(even){border-bottom:0}
+
+/* 24.11 (2) Abstände: Fotostreifen über der Preisliste kürzer, Lücken enger */
+html body .about>.wrap{padding-bottom:16px}
+html body .prices{background:radial-gradient(ellipse 70% 38% at 50% 55%,rgba(222,186,112,.22),rgba(222,186,112,0) 72%),linear-gradient(to bottom,var(--bg) 0,#14120E 24px,#3A332A 40px,#8E8066 50px,#CFC2A4 58px,#F2EADA 64px,#F2EADA calc(100% - 60px),#CFC2A4 calc(100% - 44px),#6E614B calc(100% - 26px),#1E1A15 calc(100% - 9px),var(--bg) 100%)}
+html body .prices::before{height:64px}
+html body .prices>.wrap{padding-top:70px}
+@media (max-width:899px){html body .contact>.wrap{padding-bottom:22px}}
+@media (min-width:900px){
+ html body .about>.wrap{padding-bottom:20px}
+ html body .prices{background:radial-gradient(ellipse 70% 38% at 50% 55%,rgba(222,186,112,.22),rgba(222,186,112,0) 72%),linear-gradient(to bottom,var(--bg) 0,#14120E 38px,#3A332A 58px,#8E8066 70px,#CFC2A4 78px,#F2EADA 84px,#F2EADA calc(100% - 64px),#CFC2A4 calc(100% - 46px),#6E614B calc(100% - 28px),#1E1A15 calc(100% - 10px),var(--bg) 100%)}
+ html body .prices::before{height:84px}
+ html body .prices>.wrap{padding-top:92px;padding-bottom:52px}
+ html body .hours>.wrap{padding-top:36px}
+ html body .contact>.wrap{padding-top:36px;padding-bottom:50px}
+}
 </style>
 </head>
 <body>
