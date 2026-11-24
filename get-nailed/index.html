@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de" translate="no">
+<html lang="de" translate="no" class="sv">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -572,6 +572,10 @@ html.sv .akt-stage .vh.l{transform-origin:left center}
 html.sv .akt-stage .vh.r{transform-origin:right center}
 html.sv .akt-stage .vh:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--fold,0);
   background:repeating-linear-gradient(90deg,rgba(0,0,0,.38) 0 3px,rgba(0,0,0,0) 9px,rgba(255,220,200,.07) 14px,rgba(0,0,0,0) 20px)}
+/* 24.11 Julia: Punkte der Hautton-Skala höher, «Länge» fährt nicht mehr darauf */
+#toneCtrl .tone{height:auto;padding-top:4px;padding-bottom:2px}
+#toneCtrl .tone-ticks{padding-top:2px;line-height:0}
+#toneCtrl{margin-bottom:20px!important}
 </style>
 </head>
 <body>
@@ -3461,7 +3465,7 @@ let pBase=$('#phA'),pTop=$('#phB'),curSrc=pBase.getAttribute('src'),tok=0,fadeT=
 pBase.style.opacity=1;pBase.style.zIndex=1;pTop.style.opacity=0;pTop.style.zIndex=2;
 function settle(){clearTimeout(fadeT);pTop.style.transition='none';pTop.style.opacity=1;pBase.style.opacity=0;[pBase,pTop]=[pTop,pBase];pBase.style.zIndex=1;pTop.style.zIndex=2;pTop.style.opacity=0}
 function showPhoto(){
-  const f=frame();if(!f)return;curF=f;const src=SRC(f.n);if(src===curSrc)return;curSrc=src;const my=++tok;
+  const f=frame();if(!f)return;curF=f;clearTimeout(window.__wT);window.__wT=setTimeout(()=>window.__warm&&window.__warm(),500);const src=SRC(f.n);if(src===curSrc)return;curSrc=src;const my=++tok;
   if(fadeT){settle();fadeT=0}
   const img=new Image();img.src=src;(img.decode?img.decode():Promise.resolve()).catch(()=>{}).then(()=>{
     if(my!==tok)return;
@@ -3481,8 +3485,8 @@ new IntersectionObserver(es=>es.forEach(e=>{setVis=e.isIntersecting;upMini()}),{
 // alle Fotos vorladen und dekodieren, damit beim Wechsel nichts aufblitzt
 /* sofort nur helle Haut vorladen; Hautton-Fotos beim ersten Griff zum Schieber */
 const preload=f=>Object.entries(FR).forEach(([k,n])=>{if(f(k)){const i=new Image();i.src=SRC(n);i.decode&&i.decode().catch(()=>{})}});
-preload(k=>!/\|T[2-9]$/.test(k));
-let tonesLoaded=false;['pointerdown','focus','input'].forEach(e=>toneR.addEventListener(e,()=>{if(!tonesLoaded){tonesLoaded=true;preload(k=>/\|T[2-9]$/.test(k))}},{once:false}));
+const WQ=[],WS=new Set();let WA=0;const wPump=()=>{while(WA<4&&WQ.length){const n=WQ.shift();WA++;const i=new Image();const d=()=>{WA--;setTimeout(wPump,60)};i.onload=d;i.onerror=d;i.src=SRC(n)}};
+window.__warm=()=>{if(!curF)return;const ck=Object.keys(FR).find(k=>FR[k]===curF.n);if(!ck)return;const cp=ck.split('|');WQ.length=0;for(const [k,n] of Object.entries(FR)){if(WS.has(n))continue;const q=k.split('|');let d=0;for(let j=0,L=Math.max(q.length,cp.length);j<L&&d<2;j++)if((q[j]||'')!==(cp[j]||''))d++;if(d===1){WS.add(n);WQ.push(n)}}wPump()};
 update();
 const setIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){setTimeout(()=>{$('#setgrid').classList.add('set-live');upMini()},900);setIO.disconnect()}}),{threshold:.05});
 setIO.observe($('#setgrid'));
