@@ -61,63 +61,47 @@ body.scrolled .hdr{top:0;background:rgba(251,248,243,.86);backdrop-filter:blur(1
 .btn:active{transform:scale(.98)}
 .btn-sm{min-height:40px;padding:0 18px;font-size:14px}
 
-/* ---------- Hero A (Olivera) ---------- */
-.hero{position:relative;overflow-x:clip;min-height:min(100svh,880px);display:flex;align-items:center;padding:140px 0 56px;background:radial-gradient(120% 90% at 85% 20%,#F2E7D6 0%,var(--cream) 55%)}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
-.hero h1{font-size:clamp(42px,5.2vw,76px);line-height:1.02;margin:18px 0 22px}
-.hero .lead,.hero-b .lead{margin-bottom:30px}
-.hero > .wrap > *,.idx>*,.rhy>*,.team>*,.know>*,.kon>*,.tat>*,.rev>*,.dev>*,.gift>*{min-width:0}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
-.facts{display:flex;gap:0;border-top:1px solid var(--line);padding-top:22px;max-width:560px}
-.fact{flex:1;padding-right:18px;cursor:default;transition:transform .25s var(--ease)}
-.fact+.fact{padding-left:18px;border-left:1px solid var(--line)}
-.fact b{display:block;font:300 34px/1 var(--serif);color:var(--ink);margin-bottom:6px;transition:color .25s}
-.fact b small{color:var(--gold);font-size:.8em}
-.fact span{font-size:13px;color:var(--muted);line-height:1.35;display:block}
-@media (hover:hover){.fact:hover{transform:translateY(-2px)}.fact:hover b{color:var(--gold)}}
-.addr{margin-top:20px;font:400 13px/1.5 var(--mono);color:var(--muted)}
+/* ---------- Hero (Lichtpuls / Goldmosaik) ---------- */
+.hx{position:relative;height:100svh;min-height:620px;max-height:980px;overflow:hidden;background:var(--sand);display:flex;align-items:center}
+.hx-a,.hx-b{position:absolute;inset:0}
+.hx-soft{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 50%}
+.hx-cv{position:absolute;inset:0;width:100%;height:100%}
+.spot{position:absolute;left:0;top:0;width:150px;height:98px;margin:-49px 0 0 -75px;border:2px solid var(--gold2);border-radius:6px;box-shadow:0 0 0 1px rgba(255,255,255,.5) inset,0 0 26px 6px rgba(232,206,150,.55);opacity:0;transition:opacity .4s;pointer-events:none;will-change:transform}
+.spot.on{opacity:1}
+.hx-b{display:none;left:auto;width:56%;display:none;grid-template-columns:repeat(var(--c),1fr);grid-auto-rows:1fr;gap:0;perspective:1400px}
+.tile{position:relative;transform-style:preserve-3d;transition:transform .7s var(--ease)}
+.tile.f{transform:rotateY(180deg)}
+.tile i,.tile b{position:absolute;inset:-.5px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.tile i{background:var(--g,#C8A971)}
+.tile i::after{content:"";position:absolute;inset:22%;border:1px solid rgba(255,255,255,.35);border-radius:var(--rr,0)}
+.tile b{transform:rotateY(180deg);background-image:var(--img);background-repeat:no-repeat}
+@media (hover:hover){body.ready .tile.f:hover{transform:rotateY(180deg) scale(.94)}}
+.hx-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,rgba(247,242,235,.97) 0%,rgba(247,242,235,.9) 34%,rgba(247,242,235,.3) 52%,rgba(247,242,235,0) 64%),linear-gradient(0deg,var(--cream) 0%,rgba(247,242,235,0) 16%)}
+body:not(.kb) .hx-txt{margin-left:auto}
+body:not(.kb) .hx-hint{right:auto;left:48px}
+body.kb .hx-veil{background:linear-gradient(0deg,var(--cream) 0%,rgba(247,242,235,0) 14%)}
+body.kb .hx{background:var(--cream)}
+body.kb .hx-a{display:none}
+body.kb .hx-b{display:grid}
+.hx-in{position:relative;z-index:2;pointer-events:none;display:flex;flex-direction:column;justify-content:center;height:100%;padding-top:110px;padding-bottom:40px}
+.hx-txt{max-width:520px;pointer-events:auto}
+.hx h1{font-size:clamp(42px,5.2vw,78px);line-height:1.02;margin:18px 0 22px}
+.hx .lead{margin-bottom:28px}
+.hx-txt>*{opacity:0;animation:fadeUp .9s var(--ease) forwards}
+.hx-txt>*:nth-child(1){animation-delay:.1s}.hx-txt>*:nth-child(2){animation-delay:.25s}.hx-txt>*:nth-child(3){animation-delay:.4s}.hx-txt>*:nth-child(4){animation-delay:.55s}.hx-txt>*:nth-child(5){animation-delay:.7s}
+.hx-hint{position:absolute;right:48px;bottom:34px;font:500 11.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);background:rgba(251,248,243,.82);border:1px solid var(--line);border-radius:99px;padding:10px 14px;opacity:0;transition:opacity .6s}
+.hx-hint.on{opacity:1}
+.hint-b{display:none}body.kb .hint-a{display:none}body.kb .hint-b{display:inline}
+.stars-s{color:var(--gold)}
+.addr{margin-top:6px;font:400 13px/1.6 var(--mono);color:var(--muted)}
 .addr a{white-space:nowrap;text-decoration:none;color:var(--ink2);border-bottom:1px solid var(--line);transition:color .2s,border-color .2s}
 @media (hover:hover){.addr a:hover{color:var(--gold);border-color:var(--gold)}}
-.portrait{position:relative;justify-self:end;width:min(440px,100%);aspect-ratio:800/1066}
-.portrait .frame{position:absolute;inset:0;border-radius:220px 220px 22px 22px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(74,56,38,.45);clip-path:inset(0 0 100% 0 round 220px 220px 22px 22px);animation:reveal 1.7s .3s var(--ease) forwards}
-.portrait img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.portrait .beam{position:absolute;left:-8%;right:-8%;height:2px;top:0;background:linear-gradient(90deg,transparent,#fff 20%,var(--gold2) 50%,#fff 80%,transparent);box-shadow:0 0 18px 4px rgba(232,206,150,.75);opacity:0;animation:beam 1.7s .3s var(--ease) forwards;pointer-events:none}
-.portrait .cap{position:absolute;left:-36px;bottom:42px;background:rgba(251,248,243,.94);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:14px 18px;box-shadow:0 18px 40px -24px rgba(74,56,38,.5);opacity:0;animation:fadeUp .8s 1.9s var(--ease) forwards;transition:box-shadow .25s,transform .25s}
-.portrait .cap b{display:block;font:400 20px/1.1 var(--serif)}
-.portrait .cap span{font-size:12.5px;color:var(--muted)}
-body.ready .portrait:hover img{transform:scale(1.03)}
-body.ready .portrait .cap:hover{transform:translateY(-2px);box-shadow:0 22px 44px -22px rgba(74,56,38,.6)}
-@keyframes reveal{to{clip-path:inset(0 0 0 0 round 220px 220px 22px 22px)}}
-@keyframes beam{0%{top:0;opacity:1}88%{opacity:1}100%{top:100%;opacity:0}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.hero-a .reveal-txt>*{opacity:0;animation:fadeUp .9s var(--ease) forwards}
-.hero-a .reveal-txt>*:nth-child(1){animation-delay:.15s}.hero-a .reveal-txt>*:nth-child(2){animation-delay:.3s}.hero-a .reveal-txt>*:nth-child(3){animation-delay:.45s}.hero-a .reveal-txt>*:nth-child(4){animation-delay:.6s}.hero-a .reveal-txt>*:nth-child(5){animation-delay:.75s}.hero-a .reveal-txt>*:nth-child(6){animation-delay:.9s}
-
-/* ---------- Hero B (Licht) ---------- */
-.hero-b{display:none}
-body.vb .hero-a{display:none}
-body.vb .hero-b{display:flex}
-.hero-b{position:relative;min-height:100svh;align-items:flex-end;padding:0 0 64px;overflow:hidden;background:#EDE4D8}
-.hero-b .bg{position:absolute;inset:0}
-.hero-b .bg img{width:100%;height:100%;object-fit:cover;object-position:30% 45%}
-.hero-b .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,242,235,.97) 0%,rgba(247,242,235,.88) 34%,rgba(247,242,235,.15) 62%,rgba(247,242,235,0) 80%),linear-gradient(0deg,rgba(247,242,235,.9),rgba(247,242,235,0) 35%)}
-.hero-b .scan{position:absolute;top:0;bottom:0;width:2px;left:0;background:linear-gradient(180deg,transparent,#fff 25%,var(--gold2) 50%,#fff 75%,transparent);box-shadow:0 0 22px 6px rgba(232,206,150,.7);opacity:0;animation:scanX 2.2s .2s var(--ease) forwards;pointer-events:none}
-@keyframes scanX{0%{left:0;opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
-.hero-b .wrap{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
-.hero-b h1{font-size:clamp(44px,6vw,92px);line-height:.98;margin:18px 0 22px}
-.hero-b .reveal-txt>*{opacity:0;animation:fadeUp .9s var(--ease) forwards}
-.hero-b .reveal-txt>*:nth-child(1){animation-delay:1.1s}.hero-b .reveal-txt>*:nth-child(2){animation-delay:1.25s}.hero-b .reveal-txt>*:nth-child(3){animation-delay:1.4s}.hero-b .reveal-txt>*:nth-child(4){animation-delay:1.55s}.hero-b .reveal-txt>*:nth-child(5){animation-delay:1.7s}
-.hero-b .card{width:300px;background:rgba(251,248,243,.92);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:20px;padding:22px;opacity:0;animation:fadeUp .9s 1.9s var(--ease) forwards;transition:transform .25s,box-shadow .25s}
-.hero-b .card .who{display:flex;gap:14px;align-items:center;margin-bottom:12px}
-.hero-b .card .who img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:50% 18%}
-.hero-b .card b{font:400 19px/1.1 var(--serif);display:block}
-.hero-b .card small{color:var(--muted);font-size:12.5px}
-.hero-b .card p{font-size:14px;color:var(--ink2)}
-body.ready .hero-b .card:hover{transform:translateY(-3px);box-shadow:0 24px 50px -28px rgba(74,56,38,.6)}
 
 /* ---------- Section common ---------- */
+.idx>*,.rhy>*,.team>*,.know>*,.kon>*,.tat>*,.rev>*,.dev>*,.gift>*,.proof>*{min-width:0}
 section{position:relative}
-.sec{padding:88px 0}
+.sec{padding:50px 0}
 .sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:44px}
 .sec-head .lead{max-width:440px;font-size:16px}
 .fade{background:linear-gradient(180deg,var(--cream),var(--paper) 18%,var(--paper) 82%,var(--cream))}
@@ -147,41 +131,41 @@ section{position:relative}
 .row .thumb{display:none}
 
 /* ---------- Technologie: Lichtskala ---------- */
-.tech{color:#F3EBDD;background:linear-gradient(180deg,var(--cream) 0,#E6DACB 40px,#9A8A7A 100px,#4A3E36 150px,#2A2420 200px,#231D19 calc(100% - 200px),#4A3E36 calc(100% - 150px),#9A8A7A calc(100% - 100px),#E6DACB calc(100% - 40px),var(--cream) 100%);padding:230px 0 220px}
-.tech h2{color:#F7F0E4}
-.tech .eyebrow{color:var(--gold2)}
-.tech .lead{color:#CDBFAE}
+.tech{background:linear-gradient(180deg,var(--cream),var(--sand) 18%,var(--sand) 82%,var(--cream));padding:64px 0}
+
+
+
 .scale{position:relative;margin:34px 0 26px;padding:58px 0 34px}
 .scale .bar{position:relative;height:10px;border-radius:10px;background:linear-gradient(90deg,#4B3B7A 0%,#3567B7 7%,#3FA37A 15%,#D7C64A 22%,#E08A3A 27%,#C83F3A 31%,#7A3030 34%,rgba(200,169,113,.35) 40%,rgba(200,169,113,.18) 100%)}
-.scale .ticks{display:flex;justify-content:space-between;margin-top:12px;padding-bottom:22px;font:400 11.5px/1 var(--mono);color:#9C8E7E}
+.scale .ticks{display:flex;justify-content:space-between;margin-top:12px;padding-bottom:22px;font:400 11.5px/1 var(--mono);color:var(--muted)}
 .scale .lbl{position:absolute;top:96px;font:400 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#9C8E7E}
-.mk{position:absolute;top:30px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;cursor:pointer;padding:0 6px;color:#E9DECB}
+.mk{position:absolute;top:30px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;cursor:pointer;padding:0 6px;color:var(--ink2)}
 .mk .pin{width:2px;height:46px;background:linear-gradient(180deg,var(--gold2),rgba(200,169,113,.15));transition:height .3s,box-shadow .3s}
-.mk .dot{position:absolute;top:22px;width:14px;height:14px;border-radius:50%;background:#231D19;border:2px solid var(--gold2);transition:background .25s,box-shadow .25s,transform .25s}
-.mk .nm{position:absolute;top:-12px;white-space:nowrap;font:500 12px/1 var(--mono);letter-spacing:.04em;padding:6px 10px;border-radius:99px;border:1px solid rgba(200,169,113,.35);background:rgba(35,29,25,.9);transition:background .25s,color .25s,border-color .25s}
+.mk .dot{position:absolute;top:22px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:2px solid var(--gold2);transition:background .25s,box-shadow .25s,transform .25s}
+.mk .nm{position:absolute;top:-12px;white-space:nowrap;font:500 12px/1 var(--mono);letter-spacing:.04em;padding:6px 10px;border-radius:99px;border:1px solid var(--line);background:var(--paper);transition:background .25s,color .25s,border-color .25s}
 .mk.dn .nm{top:76px}.mk.dn .pin{height:46px}
 .mk.on .dot{background:var(--gold2);box-shadow:0 0 0 6px rgba(200,169,113,.18),0 0 22px rgba(232,206,150,.8)}
-.mk.on .nm{background:var(--gold2);color:#231D19;border-color:var(--gold2)}
+.mk.on .nm{background:var(--ink);color:#FBF6EC;border-color:var(--ink)}
 @media (hover:hover){.mk:hover .dot{transform:scale(1.2);box-shadow:0 0 16px rgba(232,206,150,.7)}.mk:hover .nm{border-color:var(--gold2)}}
-.band{position:absolute;top:58px;height:10px;border-radius:10px;border:1.5px solid rgba(255,255,255,.85);box-shadow:0 0 12px rgba(255,255,255,.35);pointer-events:none;opacity:0;transition:opacity .3s}
+.band{position:absolute;top:58px;height:10px;border-radius:10px;border:1.5px solid var(--ink);pointer-events:none;opacity:0;transition:opacity .3s}
 .band.on{opacity:1}
 .chips{display:none;flex-wrap:wrap;gap:8px;margin-top:6px}
-.chips button{border:1px solid rgba(200,169,113,.4);background:transparent;color:#E9DECB;border-radius:99px;padding:9px 14px;font:500 12.5px/1 var(--mono);cursor:pointer;transition:background .25s,color .25s}
-.chips button.on{background:var(--gold2);color:#231D19;border-color:var(--gold2)}
+.chips button{border:1px solid var(--line);background:var(--paper);color:var(--ink2);border-radius:99px;padding:9px 14px;font:500 12.5px/1 var(--mono);cursor:pointer;transition:background .25s,color .25s}
+.chips button.on{background:var(--ink);color:#FBF6EC;border-color:var(--ink)}
 .dev{display:grid;grid-template-columns:360px 1fr;gap:40px;align-items:center;margin-top:30px;min-height:300px}
-.dev .ph{aspect-ratio:4/3;border-radius:18px;overflow:hidden;position:relative;background:#3A302A}
+.dev .ph{aspect-ratio:4/3;border-radius:18px;overflow:hidden;position:relative;background:var(--stone);box-shadow:0 30px 60px -40px rgba(74,56,38,.5)}
 .dev .ph img{width:100%;height:100%;object-fit:cover;transition:opacity .4s,transform 1s var(--ease)}
 @media (hover:hover){.dev .ph:hover img{transform:scale(1.04)}}
-.dev .nmk{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
-.dev h3{color:#F7F0E4;font-size:clamp(28px,3vw,40px);margin:10px 0 12px}
-.dev p{color:#D2C5B4;max-width:620px}
+.dev .nmk{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.dev h3{font-size:clamp(28px,3vw,40px);margin:10px 0 12px}
+.dev p{color:var(--ink2);max-width:620px}
 .dev ul{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;max-width:640px}
-.dev li{font-size:14.5px;color:#E7DCCB;padding-left:20px;position:relative}
+.dev li{font-size:14.5px;color:var(--ink2);padding-left:20px;position:relative}
 .dev li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1px;background:var(--gold2)}
 .dev-body{transition:opacity .35s}
 .dev-body.sw{opacity:0}
-.tech-note{margin-top:34px;padding-top:22px;border-top:1px solid rgba(200,169,113,.22);display:flex;gap:28px;flex-wrap:wrap;font-size:14px;color:#BBAE9D}
-.tech-note b{color:#F3EBDD;font-weight:500}
+.tech-note{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.tech-note b{color:var(--ink);font-weight:500}
 
 /* ---------- Rhythmus ---------- */
 .rhy{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
@@ -247,9 +231,11 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 6px rgba(200,169,
 @media (hover:hover){.slot:hover{border-color:var(--gold);transform:translateY(-3px);background:linear-gradient(135deg,#fff,rgba(230,213,181,.4))}}
 
 /* ---------- Team ---------- */
-.team{display:grid;grid-template-columns:400px 1fr;gap:64px;align-items:center}
-.ol{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/11;box-shadow:0 30px 70px -40px rgba(74,56,38,.55)}
-.ol img{width:100%;height:100%;object-fit:cover;object-position:30% 30%;transition:transform 1.2s var(--ease)}
+.team{display:grid;grid-template-columns:380px 1fr;gap:64px;align-items:center}
+.ol{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:800/1066;box-shadow:0 30px 70px -40px rgba(74,56,38,.55)}
+.ol-cap{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(251,248,243,.92);border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--muted)}
+.ol-cap b{display:block;font:400 19px/1.2 var(--serif);color:var(--ink)}
+.ol img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:transform 1.2s var(--ease)}
 @media (hover:hover){.ol:hover img{transform:scale(1.03)}}
 .ol-col .sig{font:italic 300 30px/1.2 var(--serif);color:var(--gold);margin-top:22px}
 .quote-ol{font:300 20px/1.45 var(--serif);color:var(--ink);margin:18px 0}
@@ -281,6 +267,26 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .topic b{font:500 12px var(--mono);color:var(--gold);margin-left:6px}
 @media (hover:hover){.topic:hover{background:var(--paper);border-color:var(--gold2)}}
 
+.proof{display:grid;grid-template-columns:220px 1fr;grid-template-rows:auto auto;gap:22px 40px;align-items:start}
+.proof .score{grid-row:1/3;padding:28px 20px}
+.proof .score b{font-size:72px}
+.claims{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.claim{position:relative;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:16px;padding:16px 18px;cursor:pointer;font:400 19px/1.25 var(--serif);color:var(--ink);transition:border-color .25s,box-shadow .25s,background .25s,transform .25s}
+.claim small{display:block;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.claim[aria-selected="true"]{background:var(--ink);color:#FBF6EC;border-color:var(--ink)}
+.claim[aria-selected="true"] small{color:var(--gold2)}
+@media (hover:hover){.claim:not([aria-selected="true"]):hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(230,213,181,.45);transform:translateY(-2px)}}
+.qbox{margin:0;position:relative;padding:24px 28px;border-radius:18px;background:linear-gradient(135deg,#FFFDF9,var(--sand));border:1px solid var(--line);min-height:128px}
+.qbox blockquote{font:400 clamp(20px,2vw,26px)/1.4 var(--serif);transition:opacity .3s}
+.qbox blockquote::before{display:inline;font-size:1em;line-height:0;margin:0 .1em 0 0;color:var(--gold)}
+.qbox figcaption{margin-top:10px;font:400 12.5px var(--mono);color:var(--muted);transition:opacity .3s}
+.qbox.sw blockquote,.qbox.sw figcaption{opacity:0}
+/* Mosaik-Variante: Themen als Kacheln */
+body.kb .claim{border-radius:4px;background:linear-gradient(135deg,#E9D6AE,#C8A971);border-color:transparent;color:#3A2C1C}
+body.kb .claim small{color:#6B5230}
+body.kb .claim[aria-selected="true"]{background:var(--paper);color:var(--ink);border-color:var(--gold)}
+body.kb .qbox{border-radius:4px}
+
 /* ---------- Gut zu wissen ---------- */
 .know{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .acc{border-top:1px solid var(--line)}
@@ -299,16 +305,16 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 @media (hover:hover){.care li:hover{background:rgba(230,213,181,.35)}}
 
 /* ---------- Gutschein ---------- */
-.gift{display:grid;grid-template-columns:1.1fr .9fr;border-radius:26px;overflow:hidden;background:var(--ink);color:#F3EBDD;box-shadow:0 40px 80px -50px rgba(42,36,32,.8)}
+.gift{display:grid;grid-template-columns:1.1fr .9fr;border-radius:26px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(74,56,38,.5)}
 .gift .t{padding:52px}
-.gift h2{color:#F7F0E4;margin:14px 0 14px}
-.gift p{color:#CDBFAE;max-width:440px;margin-bottom:28px}
-.gift .eyebrow{color:var(--gold2)}
-.gift .btn-gold{background:var(--gold2);color:#231D19}
-.gift .btn-gold i{background:#231D19;box-shadow:none}
-@media (hover:hover){.gift .btn-gold:hover{background:#D6BB88}}
-.gcard{position:relative;display:grid;place-items:center;background:radial-gradient(90% 90% at 50% 40%,#3A302A,#231D19)}
-.voucher{width:min(320px,80%);aspect-ratio:1.6;border-radius:16px;background:linear-gradient(135deg,#F1E3C6,#D9BD87 45%,#F4E8D0 60%,#C9A86C);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:#3A2C1C;transform:rotate(-5deg);transition:transform .6s var(--ease)}
+.gift h2{margin:14px 0 14px}
+.gift p{color:var(--ink2);max-width:440px;margin-bottom:28px}
+
+
+
+
+.gcard{position:relative;display:grid;place-items:center;background:radial-gradient(90% 90% at 50% 40%,#F4EAD8,var(--sand))}
+.voucher{width:min(320px,80%);aspect-ratio:1.6;border-radius:16px;background:linear-gradient(135deg,#F1E3C6,#D9BD87 45%,#F4E8D0 60%,#C9A86C);box-shadow:0 30px 60px -24px rgba(74,56,38,.55);padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:#3A2C1C;transform:rotate(-5deg);transition:transform .6s var(--ease)}
 .voucher img{width:150px;mix-blend-mode:multiply}
 .voucher b{display:block;font:400 24px/1.1 var(--serif);margin-top:6px}
 .voucher small{display:block}
@@ -337,7 +343,7 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .mapcard .over span{font-size:13px;color:var(--muted)}
 
 /* ---------- Footer ---------- */
-footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(--sand))}
+footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(--sand))}
 .ft{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:start}
 .ft img{width:190px}
 .ft p{font-size:13.5px;color:var(--muted);margin-top:14px;max-width:420px}
@@ -346,13 +352,32 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 @media (hover:hover){.ft nav a:hover{color:var(--gold)}}
 .credit{margin-top:30px;font:400 12px var(--mono);color:var(--muted)}
 
+@media (max-width:900px){
+  .hx{height:auto;min-height:0;max-height:none;flex-direction:column;align-items:stretch}
+  .hx-a,.hx-b{position:relative;inset:auto;height:56vw;min-height:300px;width:100%;order:-1}
+  .hx-veil{display:none}
+  .hx{background:var(--cream)}
+  .hx-in{height:auto;padding-top:28px;padding-bottom:30px}
+  .hx-hint{display:none}
+  body.kb .hx-b{width:100%}
+}
+@media (max-width:900px) and (min-width:641px){.hx-a,.hx-b{margin-top:74px}}
+@media (max-width:640px){.hx-a,.hx-b{margin-top:62px;height:70vw}.hx h1{font-size:38px;margin:12px 0 14px}.hx .lead{margin-bottom:16px;font-size:15.5px}.hx-in{padding-top:20px}}
+
+@media (max-width:900px){.proof{grid-template-columns:1fr}.proof .score{grid-row:auto;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;text-align:left;padding:18px 20px}.proof .score a{margin-top:0}.proof .score b{font-size:52px}.proof .stars{margin:0}.claims{grid-template-columns:1fr 1fr}.claim{font-size:16px;padding:14px}}
+
+body.plain .tile b{background:var(--paper)!important;box-shadow:inset 0 0 0 1px var(--line)}
+body.plain .tile b::after{content:"";position:absolute;inset:30%;border:1px solid var(--gold2);border-radius:var(--rr,0);opacity:.6}
+.hx-word{display:none;position:absolute;right:4%;top:50%;transform:translateY(-50%);z-index:1;pointer-events:none;text-align:right;font:300 clamp(90px,12vw,200px)/.9 var(--serif);color:var(--ink);letter-spacing:-.02em;opacity:0;animation:fadeUp 1.2s 1.4s var(--ease) forwards}
+.hx-word em{font-style:italic;color:var(--gold);display:block}
+body.plain .hx-word{display:block}
+@media (max-width:900px){.hx-word{right:6%;font-size:22vw}}
 /* Mobile CTA */
 .mcta{display:none}
 
 /* ---------- Responsive ---------- */
 @media (max-width:1180px){.nav{gap:18px}.hdr-tel{display:none}}
 @media (max-width:1024px){
-  .hero .wrap{grid-template-columns:1fr 360px;gap:36px}
   .idx{grid-template-columns:1fr 340px;gap:36px}
   .team{grid-template-columns:320px 1fr;gap:36px}
   .rhy{gap:36px}
@@ -360,10 +385,6 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 }
 @media (max-width:900px){
   .nav{display:none}
-  .hero{padding:124px 0 48px;min-height:auto}
-  .hero .wrap{grid-template-columns:1fr;gap:34px}
-  .portrait{justify-self:center;width:min(380px,82%)}
-  .portrait .cap{left:-14px}
   .idx{grid-template-columns:1fr}
   .stage{display:none}
   .row{grid-template-columns:1fr auto;padding:20px 4px}
@@ -373,47 +394,26 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
   .row.act{padding-left:4px}
   .rhy,.know,.kon,.tat,.rev{grid-template-columns:1fr;gap:34px}
   .team{grid-template-columns:1fr}
-  .ol{max-width:520px}
+  .ol{max-width:420px}
   .dev{grid-template-columns:1fr}
   .dev .ph{max-width:520px}
   .gift{grid-template-columns:1fr}
   .gcard{min-height:240px}
   .res{grid-template-columns:1fr 1fr 1fr;gap:10px}
   .sec-head{flex-direction:column;align-items:flex-start;gap:14px}
-  .hero-b .wrap{grid-template-columns:1fr}
-  .hero-b .card{display:none}
 }
 @media (max-width:640px){
   .wrap{width:calc(100% - 32px)}
   .hdr .wrap{height:62px}
   .logo{width:160px}
   .hdr .btn-sm{display:none}
-  .sec{padding:70px 0}
-  .tech{padding:130px 0 120px}
-  .hero{padding:112px 0 40px}
-  .hero h1{font-size:40px}
-  .hero .lead{font-size:16px}
-  .hero-cta{display:none}
-  .hero-b .wrap{padding-bottom:70px}
+  .sec{padding:30px 0}
+  .tech{padding:56px 0 50px}
+  .hx .hero-cta{display:none}
   .facts{max-width:none}
   .fact{padding-right:10px}.fact+.fact{padding-left:10px}
   .fact b{font-size:26px}
   .fact span{font-size:12px}
-  .hero .wrap{gap:22px}
-  .portrait{order:-1;width:50%;justify-self:start}
-  .portrait .cap{left:auto;right:-62%;bottom:18px;padding:10px 12px}
-  .portrait .cap b{font-size:16px}.portrait .cap span{font-size:11px;display:block;max-width:150px}
-  .hero h1{margin:12px 0 16px}
-  .hero-b .bg{bottom:auto;height:50%}
-  .hero-b{background:var(--cream)}
-  .hero-a .reveal-txt{display:flex;flex-direction:column}
-  .hero-a .addr{order:4;margin:0 0 18px}
-  .hero-a .facts{order:5}
-  .hero-b .bg img{object-position:52% 78%}
-  .hero-b{align-items:flex-end;padding-top:0}
-  .hero-b{min-height:92svh;padding-bottom:40px}
-  .hero-b h1{font-size:44px}
-  .hero-b .bg::after{background:linear-gradient(0deg,rgba(247,242,235,1) 0%,rgba(247,242,235,.6) 22%,rgba(247,242,235,0) 50%)}
   .plist{grid-template-columns:1fr}
   .res{grid-template-columns:1fr;gap:10px}
   .slot{aspect-ratio:auto;padding:22px}
@@ -430,7 +430,6 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
   .scale .bar{margin-top:0}
   .scale .band{top:34px}
   .chips{display:flex!important}
-  .tech{background:linear-gradient(180deg,var(--cream) 0,#9A8A7A 60px,#2A2420 110px,#231D19 calc(100% - 110px),#9A8A7A calc(100% - 60px),var(--cream) 100%)}
   .gift .t{padding:34px 24px}
   .days{gap:4px}
   .day{padding:11px 0;font-size:12px}
@@ -457,7 +456,7 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 
 <header class="hdr">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Laser Kosmetik – Startseite"><img src="img/logo.png" alt="Laser-Kosmetik Professional" width="1800" height="240"></a>
+    <a class="logo" href="#top" aria-label="Laser Kosmetik – Startseite"><img src="img/logo_900.png" alt="Laser-Kosmetik Professional" width="900" height="120"></a>
     <nav class="nav" aria-label="Hauptnavigation">
       <a href="#behandlungen">Behandlungen</a>
       <a href="#technologie">Technologie</a>
@@ -472,29 +471,30 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 
 <main id="top">
 
-<!-- HERO A · Olivera -->
-<section class="hero hero-a" aria-label="Willkommen">
-  <div class="wrap">
-    <div class="reveal-txt">
+<!-- HERO -->
+<section class="hx" id="hx" aria-label="Willkommen">
+  <!-- A · Lichtpuls -->
+  <div class="hx-a">
+    <img class="hx-soft" src="img/beine_soft_1920.webp" srcset="img/beine_soft_960.webp 960w, img/beine_soft_1920.webp 1920w" sizes="100vw" alt="" aria-hidden="true">
+    <canvas class="hx-cv" id="hxCv" aria-hidden="true"></canvas>
+    <div class="spot" id="spot" aria-hidden="true"></div>
+  </div>
+  <!-- B · Goldmosaik -->
+  <div class="hx-b" id="mosaic" aria-hidden="true"></div>
+  <div class="hx-veil" aria-hidden="true"></div>
+  <div class="hx-word" aria-hidden="true">Licht<em>puls.</em></div>
+  <div class="wrap hx-in">
+    <div class="hx-txt">
       <div class="eyebrow">Laser-Studio in St. Gallen · seit 2011</div>
-      <h1>Klinische Laser&shy;technologie. <em>Persönlich</em> betreut.</h1>
+      <h1>Glatte Haut,<br><em>Lichtpuls</em> für Lichtpuls.</h1>
       <p class="lead">Dauerhafte Haarentfernung, Tattooentfernung und Hautbehandlungen mit Cynosure-Systemen – wie sie weltweit auch in Arztpraxen und Kliniken eingesetzt werden.</p>
       <div class="hero-cta">
         <a class="btn btn-gold" href="https://connect.shore.com/bookings/laser-kosmetik-gmbh/services?locale=de-CH" target="_blank" rel="noopener"><i></i>Termin buchen</a>
         <a class="btn btn-line" href="#preise">Kostenlose Beratung &amp; Preise</a>
       </div>
-      <div class="facts">
-        <div class="fact"><b>5,0 <small>★</small></b><span>493 Google-Bewertungen</span></div>
-        <div class="fact"><b>15+</b><span>Jahre Erfahrung</span></div>
-        <div class="fact"><b>50'000+</b><span>Behandlungen</span></div>
-      </div>
-      <p class="addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Laser+Kosmetik+GmbH+Ullmannstrasse+18a+9014+St.+Gallen" target="_blank" rel="noopener">Ullmannstrasse 18a, 9014 St. Gallen</a> · <a href="tel:+41793415244">+41 79 341 52 44</a></p>
+      <p class="addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Laser+Kosmetik+GmbH+Ullmannstrasse+18a+9014+St.+Gallen" target="_blank" rel="noopener">Ullmannstrasse 18a, 9014 St. Gallen</a> · <a href="tel:+41793415244">+41 79 341 52 44</a> · <span class="stars-s">★</span> 5,0 · 493 Google-Bewertungen</p>
     </div>
-    <div class="portrait">
-      <div class="frame"><img src="img/olivera_sofa.jpg" alt="Olivera Ivkovic, Inhaberin von Laser Kosmetik, im Studio" width="800" height="1066"></div>
-      <div class="beam" aria-hidden="true"></div>
-      <div class="cap"><b>Olivera Ivkovic</b><span>Inhaberin · Spezialistin für ästhetische Laserbehandlungen</span></div>
-    </div>
+    <p class="hx-hint" id="hxHint"><span class="hint-a">Fahren Sie mit dem Licht über das Bild</span><span class="hint-b">Jede Kachel ein Lichtpuls</span></p>
   </div>
 </section>
 
@@ -511,32 +511,32 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
           <span class="no">01</span>
           <div><h3>Dauerhafte Haarentfernung</h3><p>Diodenlaser Palomar Vectus mit Skintel-Melaninmessung. Behandlungen nur alle 2–4 Monate.</p></div>
           <span class="pr">z. B. Achseln<b>CHF 66</b></span>
-          <div class="thumb"><img src="img/vectus_arm.jpg" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/vectus_arm_900.webp" alt="" loading="lazy"></div>
         </a>
         <a class="row" href="#preise" data-img="1" data-tab="tattoo">
           <span class="no">02</span>
           <div><h3>Tattooentfernung</h3><p>Pikosekundenlaser Cynosure PicoSure – auch für Permanent Make-up und schwierige Farben wie Blau und Grün.</p></div>
           <span class="pr">ab<b>CHF 80</b></span>
-          <div class="thumb"><img src="img/sq_tattoo.jpg" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/sq_tattoo_600.webp" alt="" loading="lazy"></div>
         </a>
         <a class="row" href="#preise" data-img="2" data-tab="haut">
           <span class="no">03</span>
           <div><h3>Haut &amp; Gesicht</h3><p>Falten, Poren, Narben, Pigmentflecken, Couperose – mit Palomar Icon 1540, PicoSure und IPL. Dazu Peelings und Tiefenreinigung.</p></div>
           <span class="pr">ab<b>CHF 60</b></span>
-          <div class="thumb"><img src="img/pico_gesicht.jpg" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/pico_gesicht_1400.webp" alt="" loading="lazy"></div>
         </a>
         <a class="row" href="#preise" data-img="3" data-tab="kryo">
           <span class="no">04</span>
           <div><h3>Kryolipolyse</h3><p>Lokale Fettpölsterchen sanft durch Kälte reduzieren – ohne Nadeln, ohne Einschnitte.</p></div>
           <span class="pr">ab<b>CHF 120</b></span>
-          <div class="thumb"><img src="img/sq_kryo.jpg" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/sq_kryo_600.webp" alt="" loading="lazy"></div>
         </a>
       </div>
       <div class="stage inview" aria-hidden="true">
-        <img class="on" src="img/vectus_arm.jpg" alt="">
-        <img src="img/sq_tattoo.jpg" alt="" loading="lazy">
-        <img src="img/pico_gesicht.jpg" alt="" loading="lazy">
-        <img src="img/sq_kryo.jpg" alt="" loading="lazy">
+        <img class="on" src="img/vectus_arm_900.webp" alt="" loading="lazy">
+        <img src="img/sq_tattoo_600.webp" alt="" loading="lazy">
+        <img src="img/pico_gesicht_1400.webp" alt="" loading="lazy">
+        <img src="img/sq_kryo_600.webp" alt="" loading="lazy">
         <div class="tag"><span id="stageTxt">Haarentfernung · Vectus</span><a href="#preise">Preise ansehen</a></div>
       </div>
     </div>
@@ -566,7 +566,7 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
     </div>
     <div class="chips" id="chips"><button type="button" data-d="0">IPL</button><button type="button" data-d="1" class="on">PicoSure · 755 nm</button><button type="button" data-d="2">Vectus · Diode</button><button type="button" data-d="3">Icon · 1540 nm</button></div>
     <div class="dev inview">
-      <div class="ph"><img id="devImg" src="img/pico_gesicht.jpg" alt="Behandlung mit dem PicoSure-Laser" width="2000" height="1125"></div>
+      <div class="ph"><img id="devImg" loading="lazy" src="img/pico_gesicht_1400.webp" alt="Behandlung mit dem PicoSure-Laser" width="2000" height="1125"></div>
       <div class="dev-body" id="devBody"></div>
     </div>
     <div class="tech-note inview">
@@ -693,8 +693,9 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 <!-- Team -->
 <section class="sec fade-sand" id="team">
   <div class="wrap team">
-    <div class="ol inview" style="aspect-ratio:auto">
-      <img src="img/olivera_kundin.jpg" alt="Olivera Ivkovic im Gespräch mit einer Kundin" width="2000" height="1125" style="aspect-ratio:1/1;object-position:22% 20%">
+    <div class="ol inview">
+      <img src="img/olivera_sofa_800.webp" alt="Olivera Ivkovic, Inhaberin von Laser Kosmetik, im Studio" width="800" height="1066" loading="lazy">
+      <span class="ol-cap"><b>Olivera Ivkovic</b>Inhaberin · seit 2011</span>
     </div>
     <div class="ol-col inview">
       <div class="eyebrow">Über uns</div>
@@ -714,24 +715,27 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 
 <!-- Bewertungen -->
 <section class="sec" id="bewertungen">
-  <div class="wrap rev">
-    <div class="score inview">
-      <b>5,0</b>
-      <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
-      <span>493 Google-Bewertungen<br>auf zwei Profilen</span>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Laser+Kosmetik+GmbH+Ullmannstrasse+18a+9014+St.+Gallen" target="_blank" rel="noopener">Alle Bewertungen lesen</a>
+  <div class="wrap">
+    <div class="sec-head inview">
+      <div><div class="eyebrow">Bewertungen</div><h2>Gesagt. <em>Bestätigt.</em></h2></div>
+      <p class="lead">Was wir versprechen – und was unsere Kundinnen auf Google darüber schreiben. Tippen Sie auf ein Thema.</p>
     </div>
-    <div class="inview">
-      <blockquote>Sie nimmt sich Zeit, berät ehrlich und verständlich und vermittelt einem jederzeit ein gutes und sicheres Gefühl.</blockquote>
-      <p class="qby">Cindy T. über Olivera · Google-Bewertung, 2026</p>
-      <div class="topics" aria-label="Am häufigsten erwähnt">
-        <span class="topic">Beratung<b>40</b></span>
-        <span class="topic">Betreuung<b>20</b></span>
-        <span class="topic">Atmosphäre<b>20</b></span>
-        <span class="topic">Laserbehandlung<b>15</b></span>
-        <span class="topic">Team<b>13</b></span>
-        <span class="topic">hygienisch<b>5</b></span>
+    <div class="proof inview">
+      <div class="score">
+        <b>5,0</b>
+        <div class="stars" aria-label="5 von 5 Sternen">★★★★★</div>
+        <span>493 Google-Bewertungen</span>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Laser+Kosmetik+GmbH+Ullmannstrasse+18a+9014+St.+Gallen" target="_blank" rel="noopener">Alle lesen</a>
       </div>
+      <div class="claims" id="claims" role="tablist" aria-label="Themen">
+        <button class="claim" role="tab" data-q="0"><small>Rhythmus</small>Nur alle 2–4 Monate</button>
+        <button class="claim" role="tab" data-q="1"><small>Beratung</small>Ehrlich, ohne Verkaufsdruck</button>
+        <button class="claim" role="tab" data-q="2"><small>Gefühl</small>Kaum spürbar</button>
+        <button class="claim" role="tab" data-q="3"><small>Resultat</small>Sichtbare Ergebnisse</button>
+        <button class="claim" role="tab" data-q="4"><small>Team</small>Herzliche Betreuung</button>
+        <button class="claim" role="tab" data-q="5"><small>Technik</small>Moderne Geräte</button>
+      </div>
+      <figure class="qbox" id="qbox" aria-live="polite"><blockquote id="qtx"></blockquote><figcaption id="qby"></figcaption></figure>
     </div>
   </div>
 </section>
@@ -763,7 +767,7 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 </section>
 
 <!-- Gutschein -->
-<section class="sec" id="gutschein" style="padding-top:40px">
+<section class="sec" id="gutschein">
   <div class="wrap">
     <div class="gift inview">
       <div class="t">
@@ -772,7 +776,7 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
         <p>Gutscheine für alle Behandlungen – bequem online kaufen.</p>
         <a class="btn btn-gold" href="https://www.felizzio.com/de/laser-kosmetik/shop" target="_blank" rel="noopener"><i></i>Gutschein online kaufen</a>
       </div>
-      <div class="gcard"><div class="voucher"><img src="img/logo.png" alt=""><div><small>Gutschein</small><b>für alle Behandlungen</b></div></div></div>
+      <div class="gcard"><div class="voucher"><img src="img/logo_900.png" alt=""><div><small>Gutschein</small><b>für alle Behandlungen</b></div></div></div>
     </div>
   </div>
 </section>
@@ -793,7 +797,7 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
       </div>
     </div>
     <a class="mapcard inview" href="https://www.google.com/maps/search/?api=1&amp;query=Laser+Kosmetik+GmbH+Ullmannstrasse+18a+9014+St.+Gallen" target="_blank" rel="noopener" style="text-decoration:none">
-      <img src="img/laser_detail.jpg" alt="Handstück des Vectus-Lasers bei Laser Kosmetik" width="2000" height="2000" loading="lazy" style="object-position:40% 45%">
+      <img src="img/laser_detail_900.webp" alt="Handstück des Vectus-Lasers bei Laser Kosmetik" width="2000" height="2000" loading="lazy" style="object-position:40% 45%">
       <div class="over"><div><b>Ullmannstrasse 18a</b><span>9014 St. Gallen · Besucherparkplätze</span></div><span class="btn btn-gold btn-sm"><i></i>Route</span></div>
     </a>
   </div>
@@ -803,7 +807,7 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 <footer>
   <div class="wrap ft">
     <div>
-      <img src="img/logo.png" alt="Laser-Kosmetik Professional">
+      <img src="img/logo_900.png" alt="Laser-Kosmetik Professional">
       <p>Laser Kosmetik GmbH &amp; SHR Haarentfernung GmbH – ein Studio, eine Adresse, ein Team. Ullmannstrasse 18a, 9014 St. Gallen.</p>
     </div>
     <nav aria-label="Fusszeile"><a href="#behandlungen">Behandlungen</a><a href="#preise">Preise</a><a href="#gutschein">Gutscheine</a><a href="#kontakt">Kontakt</a><a href="#top">Impressum</a><a href="#top">Datenschutz</a></nav>
@@ -821,7 +825,8 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 (function(){
   var B=document.body;
   // Interaktion erst nach Hero-Animation
-  setTimeout(function(){B.classList.add('ready')},2200);
+  if(!/[?&]k=a/.test(location.search))B.classList.add('kb');
+  setTimeout(function(){B.classList.add('ready')},2400);
   // Band + Header
   var band=document.getElementById('band');
   function setBand(){document.documentElement.style.setProperty('--bandH',band.offsetHeight+'px')}
@@ -845,10 +850,10 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 
   // Technologie
   var D=[
-    {n:'Cynosure Palomar Icon · IPL',t:'Couperose, Rosazea & Äderchen',img:'img/gesicht_ruhe.jpg',alt:'Gesichtsbehandlung',p:'Intensive Lichtimpulse werden vom Blutfarbstoff in erweiterten Gefässen aufgenommen. Die Wärme verödet die Gefässe gezielt – das umliegende Gewebe bleibt geschont, der Körper baut sie natürlich ab.',l:['Couperose & Rosazea im Anfangsstadium','Blutschwämme & Spinnennävi','Diffuse Rötungen an Wangen und Nase','Meist 2–4 Sitzungen im Abstand von ca. 4 Wochen'],b:1},
-    {n:'Cynosure PicoSure · Pikosekundenlaser',t:'Tattoos, Pigment & frische Haut',img:'img/pico_gesicht.jpg',alt:'Behandlung mit dem PicoSure-Laser',p:'Ultrakurze Lichtimpulse im Pikosekundenbereich zertrümmern Farbpigmente in winzige Teilchen, die der Körper abtransportiert. Das schont die umliegende Haut und braucht weniger Sitzungen als herkömmliche Laser.',l:['Tattoos & Permanent Make-up','Auch Blau und Grün','Postinflammatorische Pigmentflecken','Hautverjüngung & Narben']},
-    {n:'Cynosure Palomar Vectus · Diodenlaser',t:'Dauerhafte Haarentfernung',img:'img/vectus_achsel.jpg',alt:'Haarentfernung mit dem Palomar Vectus',p:'Der Diodenlaser zerstört gezielt die Zellen, die für das Haarwachstum verantwortlich sind – ohne die umgebende Haut zu schädigen. Vor jeder Behandlung misst das Skintel-Gerät den Melaningehalt der Haut und überträgt ihn an den Laser.',l:['Grosser Spot 23 × 38 mm für schnelle Behandlungen','Zweiter Spot 12 × 12 mm für feine Zonen','Contact Cooling für mehr Komfort','Wirksam auch bei helleren Haaren']},
-    {n:'Cynosure Palomar Icon 1540 · fraktioniert',t:'Falten, Poren & Narben',img:'img/needling.jpg',alt:'Hautbehandlung im Gesicht',p:'Fraktionierte, nicht-ablative Laserenergie dringt in feinen Säulen in die Haut ein und regt die körpereigene Kollagenbildung an – ganz ohne Operation, mit kurzer Erholungszeit.',l:['Feine Linien & tiefere Falten','Aknenarben & Narben, auch Kaiserschnitt','Poren & erschlaffte Haut','Empfohlen: 4 Behandlungen im Abstand von 4 Wochen']}
+    {n:'Cynosure Palomar Icon · IPL',t:'Couperose, Rosazea & Äderchen',img:'img/gesicht_ruhe_900.webp',alt:'Gesichtsbehandlung',p:'Intensive Lichtimpulse werden vom Blutfarbstoff in erweiterten Gefässen aufgenommen. Die Wärme verödet die Gefässe gezielt – das umliegende Gewebe bleibt geschont, der Körper baut sie natürlich ab.',l:['Couperose & Rosazea im Anfangsstadium','Blutschwämme & Spinnennävi','Diffuse Rötungen an Wangen und Nase','Meist 2–4 Sitzungen im Abstand von ca. 4 Wochen'],b:1},
+    {n:'Cynosure PicoSure · Pikosekundenlaser',t:'Tattoos, Pigment & frische Haut',img:'img/pico_gesicht_1400.webp',alt:'Behandlung mit dem PicoSure-Laser',p:'Ultrakurze Lichtimpulse im Pikosekundenbereich zertrümmern Farbpigmente in winzige Teilchen, die der Körper abtransportiert. Das schont die umliegende Haut und braucht weniger Sitzungen als herkömmliche Laser.',l:['Tattoos & Permanent Make-up','Auch Blau und Grün','Postinflammatorische Pigmentflecken','Hautverjüngung & Narben']},
+    {n:'Cynosure Palomar Vectus · Diodenlaser',t:'Dauerhafte Haarentfernung',img:'img/vectus_arm_900.webp',alt:'Haarentfernung mit dem Palomar Vectus',p:'Der Diodenlaser zerstört gezielt die Zellen, die für das Haarwachstum verantwortlich sind – ohne die umgebende Haut zu schädigen. Vor jeder Behandlung misst das Skintel-Gerät den Melaningehalt der Haut und überträgt ihn an den Laser.',l:['Grosser Spot 23 × 38 mm für schnelle Behandlungen','Zweiter Spot 12 × 12 mm für feine Zonen','Contact Cooling für mehr Komfort','Wirksam auch bei helleren Haaren']},
+    {n:'Cynosure Palomar Icon 1540 · fraktioniert',t:'Falten, Poren & Narben',img:'img/needling_900.webp',alt:'Hautbehandlung im Gesicht',p:'Fraktionierte, nicht-ablative Laserenergie dringt in feinen Säulen in die Haut ein und regt die körpereigene Kollagenbildung an – ganz ohne Operation, mit kurzer Erholungszeit.',l:['Feine Linien & tiefere Falten','Aknenarben & Narben, auch Kaiserschnitt','Poren & erschlaffte Haut','Empfohlen: 4 Behandlungen im Abstand von 4 Wochen']}
   ];
   var mks=[].slice.call(document.querySelectorAll('.mk')),body=document.getElementById('devBody'),dimg=document.getElementById('devImg'),b1=document.getElementById('band1');
   function dev(i,first){
@@ -903,9 +908,70 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
     out.innerHTML=(h[2]?h[2]+' Uhr':'Geschlossen')+'<small>'+h[1]+(i==today?' · heute':'')+(h[2]?' · Termine nach Vereinbarung':' · Online-Buchung jederzeit möglich')+'</small>'}
   sel(today);
 
+  // ===== Hero A · Lichtpuls (Canvas: scharfe Stellen bleiben) =====
+  var hint=document.getElementById('hxHint');
+  if(!B.classList.contains('kb')){
+    var mob=innerWidth<=900,cv=document.getElementById('hxCv'),ctx=cv.getContext('2d'),spot=document.getElementById('spot'),hx=document.getElementById('hx').querySelector('.hx-a');
+    var sharp=new Image(),W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,1.5),geo=null,last=null;
+    sharp.src=(innerWidth>900?'img/beine_1920.webp':'img/beine_960.webp');
+    function size(){var r=hx.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+      if(!sharp.naturalWidth)return;var iw=sharp.naturalWidth,ih=sharp.naturalHeight,sc=Math.max(W/iw,H/ih),dw=iw*sc,dh=ih*sc;
+      geo={sc:sc,ox:(W-dw)*.35,oy:(H-dh)*.50};}
+    var PW=210,PH=150,st=document.createElement('canvas'),sx2=st.getContext('2d'),tmp=document.createElement('canvas'),tx=tmp.getContext('2d');
+    st.width=tmp.width=PW;st.height=tmp.height=PH;
+    (function(){var g=sx2.createRadialGradient(PW/2,PH/2,10,PW/2,PH/2,PW/2);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(.62,'rgba(0,0,0,.9)');g.addColorStop(1,'rgba(0,0,0,0)');sx2.save();sx2.scale(1,PH/PW);sx2.fillStyle=g;sx2.fillRect(0,0,PW,PW);sx2.restore();
+      var g2=sx2.createRadialGradient(PW/2,PH/2,10,PW/2,PH/2,PW*.5);})();
+    function pulse(x,y){if(!geo)return;var sx=(x-PW/2-geo.ox)/geo.sc,sy=(y-PH/2-geo.oy)/geo.sc;
+      tx.globalCompositeOperation='source-over';tx.clearRect(0,0,PW,PH);tx.drawImage(sharp,sx,sy,PW/geo.sc,PH/geo.sc,0,0,PW,PH);
+      tx.globalCompositeOperation='destination-in';tx.drawImage(st,0,0);ctx.drawImage(tmp,x-PW/2,y-PH/2);}
+    function stroke(x,y){if(last){var dx=x-last[0],dy=y-last[1],d=Math.hypot(dx,dy),n=Math.ceil(d/26);for(var i=1;i<=n;i++)pulse(last[0]+dx*i/n,last[1]+dy*i/n)}else pulse(x,y);last=[x,y];}
+    function moveSpot(x,y){spot.style.transform='translate('+x+'px,'+y+'px)';}
+    sharp.onload=function(){size();
+      // automatischer Durchgang wie ein Handstück: drei Bahnen
+      var t0=performance.now(),D=2800,paths=mob?[[0,.12,1,.12],[1,.30,0,.30],[0,.48,1,.48],[1,.66,0,.66],[0,.84,1,.84]]:[[.02,.16,.56,.16],[.56,.27,.02,.27],[.02,.38,.56,.38],[.56,.49,.02,.49],[.02,.60,.56,.60],[.56,.71,.02,.71],[.02,.82,.56,.82]];spot.classList.add('on');
+      (function step(t){var p=Math.max(0,Math.min(1,(t-t0)/D)),N=paths.length,seg=Math.min(N-1,Math.floor(p*N)),q=(p*N)-seg,a=paths[seg];
+        if(q<0.02)last=null;var x=W*(a[0]+(a[2]-a[0])*q),y=H*(a[1]+(a[3]-a[1])*q);stroke(x,y);moveSpot(x,y);
+        if(p<1)requestAnimationFrame(step);else{last=null;spot.classList.remove('on');hint.classList.add('on');}})(t0);
+    };
+    addEventListener('resize',function(){var img=ctx.getImageData?null:null;size();});
+    function pt(e){var r=hx.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];}
+    var raf=0,pend=null;
+    hx.parentNode.addEventListener('pointermove',function(e){if(!B.classList.contains('ready'))return;var p=pt(e);if(p[1]<0||p[1]>H)return;pend=p;if(!raf)raf=requestAnimationFrame(function(){raf=0;spot.classList.add('on');moveSpot(pend[0],pend[1]);stroke(pend[0],pend[1]);hint.classList.remove('on');});});
+    hx.parentNode.addEventListener('pointerleave',function(){last=null;spot.classList.remove('on')});
+  }
+  // ===== Hero B · Goldmosaik =====
+  else{
+    var mo=document.getElementById('mosaic'),mob=innerWidth<=900,C=mob?6:9,R=mob?6:8;mo.style.setProperty('--c',C);
+    var G=['#C8A971','#B89156','#D9BE8C','#A9844E','#E3CDA0','#BF9C62'],tiles=[];
+    var HI={g13:[1400,2100,.5,.45],g07:[1400,2100,.45,.45],g16:[1400,2100,.5,.55],g23:[1400,2100,.5,.42],g11:[1400,2100,.5,.5]};
+    var hn=(location.search.match(/[?&]hero=(\d)/)||[])[1],hk=({1:'g13',2:'g07',3:'g16',4:'g23',5:'none'})[hn]||(location.search.match(/[?&]img=(\w+)/)||[])[1]||'g13',plain=hk==='none';if(!HI[hk]&&!plain)hk='g13';
+    if(plain)B.classList.add('plain');
+    var src=plain?'':'img/'+hk+'_'+(innerWidth>900?1400:700)+'.webp',HD=HI[hk]||[1,1,.5,.5];
+    for(var r=0;r<R;r++)for(var c=0;c<C;c++){var t=document.createElement('div');t.className='tile';
+      var g=G[(r*7+c*3)%G.length];t.innerHTML='<i style="--g:'+g+(((r+c)%3==0)?';--rr:50%':'')+'"></i><b></b>';t.dataset.r=r;t.dataset.c=c;if(r>0&&(c==0&&r%2==1||c==1&&r%3==2||(r==R-1&&c%4==1)))t.dataset.keep=1;mo.appendChild(t);tiles.push(t);}
+    function bg(){if(plain)return;var w=mo.clientWidth,h=mo.clientHeight,iw=HD[0],ih=HD[1],sc=Math.max(w/iw,h/ih),dw=iw*sc,dh=ih*sc,ox=(w-dw)*HD[2],oy=(h-dh)*HD[3];
+      tiles.forEach(function(t){var x=t.offsetLeft,y=t.offsetTop,b=t.querySelector('b');b.style.backgroundImage='url('+src+')';b.style.backgroundSize=dw+'px '+dh+'px';b.style.backgroundPosition=(ox-x)+'px '+(oy-y)+'px';});}
+    bg();addEventListener('resize',bg);
+    var im=new Image();if(plain)setTimeout(function(){im.onload()},50);im.onload=function(){tiles.forEach(function(t){var r=+t.dataset.r,c=+t.dataset.c;if(t.dataset.keep)return;var d=(r+c)*70+200;setTimeout(function(){t.classList.add('f')},d)});setTimeout(function(){hint.classList.add('on')},(R+C)*70+700)};if(!plain)im.src=src;
+    tiles.forEach(function(t){t.addEventListener('click',function(){if(!B.classList.contains('ready'))return;t.classList.remove('f');setTimeout(function(){t.classList.add('f')},900)})});
+  }
+
+  // ===== Bewertungen: Beleg zu jedem Versprechen =====
+  var Q=[['Auch finde ich es super, dass ich nur alle 3 Monate zur Haarentfernung muss.','Z. · Google, vor einem Monat'],
+    ['Es wird ganz klar kommuniziert, was machbar ist und was nicht.','Z. · Google, vor einem Monat'],
+    ['Gar nicht schmerzhaft und würde ich auf jeden Fall weiter empfehlen.','Evelina B. · Google, vor 4 Monaten'],
+    ['Die bisherigen Ergebnisse sind super und ich frage mich, warum ich das Ganze nicht eher gemacht habe.','Claudia W. · Google, vor einer Woche'],
+    ['Vielen Dank an das gesamte Team für die tolle Betreuung und die herzliche Art!','Sandra · Google, vor einem Monat'],
+    ['Die Geräte sind modern, auf dem neuesten Stand und machen einen sehr hochwertigen Eindruck.','Cindy T. · Google, vor 4 Wochen']];
+  var cl=[].slice.call(document.querySelectorAll('.claim')),qb=document.getElementById('qbox'),qt=document.getElementById('qtx'),qy=document.getElementById('qby');
+  function q(i,first){cl.forEach(function(c,k){c.setAttribute('aria-selected',k==i?'true':'false')});
+    function f(){qt.textContent=Q[i][0];qy.textContent=Q[i][1];qb.classList.remove('sw')}
+    if(first){f();return}qb.classList.add('sw');setTimeout(f,220);}
+  cl.forEach(function(c,i){c.addEventListener('click',function(){q(i)})});q(0,true);
+
   // Fotos gross
   var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
-  [].forEach.call(document.querySelectorAll('.portrait img,.ol img,.dev .ph img,.stage img'),function(im){
+  [].forEach.call(document.querySelectorAll('.ol img,.dev .ph img,.stage img'),function(im){
     var t=im.closest('.stage')||im;t.classList.add('zoomable');
     t.addEventListener('click',function(e){if(e.target.closest('a'))return;var src=im.closest('.stage')?document.querySelector('.stage img.on').src:im.src;lbi.src=src;lbi.alt=im.alt;lb.classList.add('on')});
   });
