@@ -1904,9 +1904,18 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
 .vw-n{flex:1 1 260px;max-width:520px;font-size:13px;color:#4a443d}
 @media (max-width:560px){.vw-n{flex-basis:100%}}
 @media (max-width:699px){.vw-n{display:none}.vw-bar{padding:5px 10px;gap:6px 12px}.vw-a{min-height:36px;padding:4px 16px}}
+
+/* 24.11 Plaschke «Entwurf» über der Kopfzeile (Regel 22) */
+.mk-hinweis{position:relative;z-index:60;display:block;background:#2A1C14;color:#F2E6D0;border-bottom:1px solid rgba(181,135,43,.45);font-family:'DM Sans',system-ui,sans-serif;font-weight:500;font-size:13px;line-height:1.4;text-align:center;padding:7px 16px;max-height:90px;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1),padding .5s cubic-bezier(.2,.7,.2,1),opacity .35s}
+.mk-hinweis i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#B5872B;margin-right:8px;vertical-align:1px}
+.mk-hinweis.weg{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-width:0}
+@media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
+@media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
+
 </style>
 </head>
 <body>
+<div class="mk-hinweis" id="mk-hinweis" role="note" lang="de"><i aria-hidden="true"></i>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
 <span class="vw-l">Variante wählen</span>
 <span class="vw-b"><a class="vw-a" href="keyff_hell.html" aria-current="true">Hell</a><a class="vw-a" href="keyff_dunkel.html">Dunkel</a></span>
