@@ -333,7 +333,7 @@ footer a{text-decoration:none}
   .mapbox{min-height:360px}
   .pgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
   .disc{width:min(170px,40vw)}
-  .medal h3{hyphens:auto;-webkit-hyphens:auto}
+  .medal h3{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal;word-break:normal}
   .disc b{font-size:40px}
   .disc:before{width:40px;height:60px;margin-left:-20px}
   .medal{padding-top:56px}
@@ -454,6 +454,10 @@ body:before{background-size:450px 450px}
 .weg:before{background-size:auto,450px 450px}
 }
 .weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
+.day small{line-height:1.25;text-align:center;display:flex;flex-direction:column;align-items:center}
+.day small span{white-space:nowrap;letter-spacing:-.01em}
+@media (max-width:400px){.day small{font-size:8.6px!important}.days{gap:5px!important}}
+@media (max-width:440px){.medal h3{font-size:16.5px!important;line-height:1.2}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 </style>
 </head>
@@ -660,7 +664,7 @@ function paintStatus(){ const s=state();
 const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
 [1,2,3,4,5,6,0].forEach(d=>{ const b=document.createElement('button'); const zu=!HOURS[d].length;
   b.className='day'+(zu?' zu':''); b.dataset.d=d;
-  b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+SH[d]+'<small>'+(zu?'zu':fmt(HOURS[d][0][0])+'–'+fmt(HOURS[d][HOURS[d].length-1][1]))+'</small>';
+  b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+SH[d]+'<small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt(x)+'–'+fmt(y)+'</span>').join(''))+'</small>';
   b.addEventListener('click',()=>sel(d)); daysEl.appendChild(b); });
 function sel(d){ QA('.day').forEach(x=>x.classList.toggle('sel',+x.dataset.d===d)); const sl=HOURS[d];
   info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<div class="slots">'+sl.map(([a,b])=>'<span class="slot">'+fmt(a)+'–'+fmt(b)+'</span>').join('')+'</div><p>'+(sl.length>1?'Mittags geschlossen.':'Nachmittags geschlossen.')+'</p>':'<p style="margin:0;font-size:17px">Heute ist der Laden geschlossen. '+(()=>{for(let i=1;i<=7;i++){const dd=(d+i)%7;if(HOURS[dd].length)return 'Nächster Verkauf: '+NAMES[dd]+' ab '+fmt(HOURS[dd][0][0])+' Uhr.';}})()+'</p>'); }
