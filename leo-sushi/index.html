@@ -70,7 +70,13 @@ h2 i{font-weight:400;color:var(--gold2)}
 .hdr nav a{text-decoration:none;font-size:15px;padding:8px 12px;border-radius:999px;color:#e2d9c6;transition:color .2s,background .2s}
 @media (hover:hover){.hdr nav a:hover{color:var(--lamp);background:rgba(255,200,97,.08)}}
 .hdr .tel{padding:10px 16px;font-size:15px}
-@media (max-width:980px){.hdr nav{display:none}.hdr .tel{margin-left:auto}}
+.lang{display:inline-flex;flex:none;gap:2px;padding:3px;border-radius:999px;border:1px solid rgba(201,164,92,.5);background:rgba(8,18,13,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lang button{min-width:38px;height:32px;padding:0 9px;border-radius:999px;font:700 12.5px/1 var(--sans);letter-spacing:.1em;color:#d9cfb8;transition:background .25s,color .25s}
+.lang button[aria-pressed="true"]{background:linear-gradient(#ffd27a,#e9b04a);color:#1d1406;box-shadow:0 0 14px rgba(255,200,97,.35)}
+@media (hover:hover){.lang button[aria-pressed="false"]:hover{color:var(--lamp)}}
+.lang button:focus-visible{outline:2px solid var(--lamp);outline-offset:1px}
+@media (max-width:980px){.hdr nav{display:none}.hdr .tel{margin-left:0}.hdr .lang{margin-left:auto}}
+@media (max-width:560px){.hdr .wrap{gap:10px}.lang button{min-width:34px;height:30px;padding:0 7px;font-size:12px}}
 @media (max-width:560px){.hdr .tel span{display:none}.hdr .tel{padding:11px}.hdr .addr{font-size:12.5px}}
 
 /* ---------- Hero: Licht an ---------- */
@@ -95,11 +101,12 @@ h2 i{font-weight:400;color:var(--gold2)}
 .pre .sub{font:500 13px/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:#cdbf9f;padding-left:.42em}
 .cord{position:absolute;left:50%;bottom:0;width:120px;margin-left:-60px;height:30vh;max-height:240px;display:flex;flex-direction:column;align-items:center;pointer-events:auto;cursor:pointer;opacity:calc(1 - var(--p,0)*2)}
 .cord::before{content:"";width:1.5px;flex:1;background:linear-gradient(#0000,#b99a5c 30%,#d9bd7f)}
-.cord .knob{width:16px;height:26px;border-radius:8px 8px 9px 9px;background:linear-gradient(160deg,#f4dc9c,#a9853f);box-shadow:0 0 14px rgba(255,200,97,.4);transition:transform .25s}
+.cord .knob{width:16px;height:26px;border-radius:8px 8px 9px 9px;background:linear-gradient(160deg,#f4dc9c,#a9853f);box-shadow:0 0 14px rgba(255,200,97,.4);margin-top:-1px}
+.cord{transition:transform .22s cubic-bezier(.3,.7,.4,1)}
+@keyframes knobGlow{0%,100%{box-shadow:0 0 12px 1px rgba(255,200,97,.38)}50%{box-shadow:0 0 22px 6px rgba(255,200,97,.55),0 0 40px 10px rgba(255,190,90,.18)}}
 .cord small{margin:12px 0 22px;font-size:13px;color:#bfb29a;white-space:nowrap}
-@media (hover:hover){.cord:hover .knob{transform:translateY(8px)}}
-.cord.pull .knob{transform:translateY(22px)}
-.cord.pull::before{transform:scaleY(1.06);transform-origin:top}
+@media (hover:hover){.cord:hover .knob{animation:knobGlow 2.4s ease-in-out infinite}}
+.cord.pull{transform:translateY(18px);transition-duration:.12s}
 @media (hover:none){.cord{width:150px;margin-left:-75px}.cord .knob{width:22px;height:34px;border-radius:11px}}
 
 .post{position:absolute;inset:0;display:flex;padding:calc(var(--hdr) + 6px) 0 26px}
@@ -137,6 +144,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 @media (hover:hover){
   .dish{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg stroke-linecap='round'%3E%3Cpath d='M52 4 L9 50' stroke='%2308120d' stroke-width='7'/%3E%3Cpath d='M55 13 L13 52' stroke='%2308120d' stroke-width='7'/%3E%3Cpath d='M52 4 L9 50' stroke='%23f3dc9a' stroke-width='3.6'/%3E%3Cpath d='M55 13 L13 52' stroke='%23d4ad5f' stroke-width='3.6'/%3E%3Cpath d='M47 9 L42 14 M50 16 L45 20' stroke='%2308120d' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") 10 51,pointer}
 .dish .zoom,.dish img{cursor:inherit}
+  html.chop .dish,html.chop .dish *{cursor:none!important}
   .dish.ready:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(232,207,143,.45),0 0 50px rgba(255,200,97,.12)}
   .dish.ready:hover img{transform:scale(1.06)}
   .dish.ready:hover .pr{background:var(--lamp);color:#1d1406}
@@ -239,6 +247,24 @@ h2 i{font-weight:400;color:var(--gold2)}
 .board .sum span:last-child{color:var(--lamp);font-variant-numeric:tabular-nums}
 .plan .act{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .plan .hint{font-size:14px;color:#aaa089;margin-top:10px}
+.h2sub{display:block;font:500 clamp(15px,1.5vw,19px)/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-top:12px;font-style:normal}
+.steps{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px 6px;margin-top:22px;font-weight:600;font-size:14px;color:#cfc6b2}
+.steps li{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;border:1px solid rgba(201,164,92,.3);transition:border-color .3s,color .3s,background .3s}
+.steps li:not(:last-child)::after{content:"→";margin-left:10px;margin-right:-4px;color:#7d7564}
+.steps li b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(201,164,92,.18);color:var(--gold2);font-size:13px;transition:background .3s,color .3s}
+.steps li.done{border-color:var(--lamp);color:var(--lamp)}
+.steps li.done b{background:var(--lamp);color:#1a1306}
+.ctrl .lb .no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(201,164,92,.2);color:var(--lamp);font-size:12px;letter-spacing:0;margin-right:8px;vertical-align:1px}
+.board.empty ol,.board.empty .sum{display:none}
+.board .wait{display:none;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:30px 12px 32px;color:#b7ae98;font-size:16px}
+.board .wait svg{width:72px;height:45px;color:var(--gold2);opacity:.8}
+.board.empty .wait{display:flex}
+.plan .pic .tot{transition:opacity .4s}
+.plan .pic .tot.off{opacity:0}
+.plan .act .btn.idle{opacity:.55}
+/* Muster-Hinweis fuer den Inhaber (nur im Macket) */
+.muster{margin-top:18px;padding:12px 14px 13px;border:1px dashed rgba(201,164,92,.55);border-radius:12px;background:rgba(201,164,92,.07);font-size:14px;line-height:1.45;color:#d9cfb8}
+.muster span{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:4px}
 
 /* ---------- Salon ---------- */
 .salon{padding:clamp(90px,11vw,160px) 0;background:var(--green-main);position:relative}
@@ -250,7 +276,12 @@ h2 i{font-weight:400;color:var(--gold2)}
 .moved b{color:var(--lamp);font-weight:700}
 .wall{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,4vw,56px) clamp(22px,3.4vw,46px);margin-top:clamp(50px,6vw,90px);align-items:start}
 .wall .f1{grid-column:1/-1}
-@media (max-width:760px){.wall{grid-template-columns:1fr}}
+.wall{align-items:stretch}
+.wall .stack{display:grid;grid-template-rows:1fr 1fr;gap:clamp(34px,4vw,56px)}
+.wall .stack .frame{display:flex;flex-direction:column;min-height:0}
+.wall .stack .mat{flex:1;min-height:0}
+.wall .stack img{position:absolute;left:4px;top:4px;width:calc(100% - 8px);height:calc(100% - 8px);object-fit:cover}
+@media (max-width:760px){.wall{grid-template-columns:1fr}.wall .stack .mat{flex:none}.wall .stack img{position:static;width:100%;height:auto;aspect-ratio:1/1}}
 .frame{position:relative;padding:clamp(12px,1.4vw,18px);background:linear-gradient(135deg,#8a6a2c,#e9cf88 22%,#a8823a 40%,#f3dc9a 58%,#8c6a2b 78%,#d7b56c);border-radius:4px;box-shadow:0 26px 50px -18px rgba(0,0,0,.85),inset 0 0 0 2px rgba(60,40,10,.35)}
 .frame::before{content:"";position:absolute;inset:clamp(6px,.7vw,9px);border:1px solid rgba(70,48,12,.55);pointer-events:none}
 .frame .mat{background:#0b0f0c;padding:4px;overflow:hidden;position:relative}
@@ -293,7 +324,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 }
 
 /* ---------- Bewertungen: Staebchen-Huellen (purpur wie die Bar) ---------- */
-.rev{margin-top:-1px;padding:clamp(90px,11vw,150px) 0 calc(clamp(90px,11vw,150px) + 60px);background:linear-gradient(180deg,var(--fast-schwarz) 0,var(--fast-schwarz) calc(100% - var(--fade)),var(--green-main) 100%);color:var(--cream);overflow:hidden}
+.rev{margin-top:-1px;padding:clamp(90px,11vw,150px) 0 calc(clamp(50px,6vw,90px) + 60px);background:linear-gradient(180deg,var(--fast-schwarz) 0,var(--fast-schwarz) calc(100% - var(--fade)),var(--green-main) 100%);color:var(--cream);overflow:hidden}
 .rev h2 i{color:#ffc2dc}
 .rev .top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px}
 .score{display:flex;align-items:center;gap:14px;text-decoration:none;padding:10px 16px 10px 10px;border-radius:16px;border:1.5px solid rgba(255,95,168,.38);transition:border-color .2s,box-shadow .2s}
@@ -320,7 +351,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 @media (hover:hover){.arrow:hover{background:var(--neon);border-color:var(--neon);color:#fff;box-shadow:0 0 22px rgba(255,95,168,.45)}}
 
 /* ---------- Besuch ---------- */
-.visit{padding:clamp(90px,11vw,150px) 0 clamp(120px,12vw,150px);background:var(--green-main)}
+.visit{padding:clamp(30px,4vw,60px) 0 clamp(120px,12vw,150px);background:var(--green-main)}
 .visit .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,70px);margin-top:clamp(30px,4vw,50px);align-items:start}
 @media (max-width:900px){.visit .grid{grid-template-columns:1fr}}
 .days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
@@ -381,6 +412,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 }
 /* ---------- Foto gross ansehen ---------- */
 .zoom{cursor:zoom-in}
+.chopc{position:fixed;left:0;top:0;width:66px;height:66px;pointer-events:none;z-index:300;opacity:0;transition:opacity .12s;will-change:transform}
+.chopc.show{opacity:1}
+.chopc svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.chopc .s1,.chopc .s2{transform-box:view-box}
+.chopc .s1{transform-origin:52px 4px}.chopc .s2{transform-origin:55px 13px}
+.chopc.pick .s1{animation:pick1 .3s ease-in-out}.chopc.pick .s2{animation:pick2 .3s ease-in-out}
+@keyframes pick1{0%{transform:none}40%{transform:rotate(9deg)}80%{transform:rotate(-1.5deg)}100%{transform:none}}
+@keyframes pick2{0%{transform:none}40%{transform:rotate(-9deg)}80%{transform:rotate(1.5deg)}100%{transform:none}}
 .zb{position:fixed;inset:0;z-index:200;background:rgba(3,6,4,.96);display:none;align-items:center;justify-content:center;touch-action:none;overscroll-behavior:contain}
 .zb.open{display:flex}
 .zb img{max-width:100vw;max-height:100vh;max-height:100dvh;object-fit:contain;transform-origin:0 0;will-change:transform;user-select:none;-webkit-user-drag:none}
@@ -434,6 +473,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <nav aria-label="Hauptmenü">
       <a href="#lieblinge">Lieblinge</a><a href="#karte">Karte</a><a href="#platte">Platten</a><a href="#salon">Salon</a><a href="#bar">Bar</a>
     </nav>
+    <div class="lang" role="group" aria-label="Sprache / Language"><button type="button" data-l="de" aria-pressed="true" lang="de">DE</button><button type="button" data-l="en" aria-pressed="false" lang="en">EN</button></div>
     <a class="btn btn-lamp tel" href="tel:+41767661747" aria-label="Anrufen: 076 766 17 47"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg><span>076 766 17 47</span></a>
   </div>
 </header>
@@ -503,38 +543,41 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 <!-- ===== Plattenplaner ===== -->
 <section class="plan" id="platte">
   <div class="wrap">
-    <h2 class="reveal">Die Platte für <i>Ihren Tisch</i></h2>
-    <p class="lead reveal" style="margin-top:14px">Wie viele sind Sie, wie hungrig? Wir legen die Platte aus unserer Karte zusammen.</p>
+    <h2 class="reveal">Sushi-Platte für <i>Ihre Gruppe</i><span class="h2sub">in 10 Sekunden zusammengestellt</span></h2>
+    <p class="lead reveal" style="margin-top:14px">Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.</p>
+    <ol class="steps reveal" id="pSteps" aria-label="So funktioniert es"><li data-s="1"><b>1</b>Personen</li><li data-s="2"><b>2</b>Hunger</li><li data-s="3"><b>3</b>Stil</li><li data-s="4" class="goal"><b>✓</b>Ihre Platte</li></ol>
     <div class="grid">
       <div class="pic reveal">
         <img class="zoom" src="img/s/platte_4_personen.jpg" srcset="img/s/platte_4_personen_m.jpg 760w, img/s/platte_4_personen.jpg 1100w" sizes="(max-width:900px) 100vw, 50vw" width="1100" height="821" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy" decoding="async">
-        <div class="tot"><span class="pill"><b id="tStk">0</b> Stück</span><span class="pill">Fr. <b id="tFr">0</b></span><span class="pill">≈ Fr. <b id="tPP">0</b> pro Person</span></div>
+        <div class="tot" id="pTot"><span class="pill"><b id="tStk">0</b> Stück</span><span class="pill">Fr. <b id="tFr">0</b></span><span class="pill">≈ Fr. <b id="tPP">0</b> pro Person</span></div>
       </div>
       <div class="ctrl reveal">
-        <div><span class="lb">Personen</span>
+        <div><span class="lb"><b class="no">1</b>Personen</span>
           <div class="stepper"><button type="button" id="pm" aria-label="Eine Person weniger">−</button><output id="pers">4 Personen</output><button type="button" id="pp" aria-label="Eine Person mehr">+</button></div>
         </div>
-        <div><span class="lb">Hunger</span>
+        <div><span class="lb"><b class="no">2</b>Hunger</span>
           <div class="seg one" id="hunger">
             <button data-v="10" aria-pressed="false">Klein<small>≈ 10 Stück p. P.</small></button>
-            <button data-v="14" aria-pressed="true">Normal<small>≈ 14 Stück p. P.</small></button>
+            <button data-v="14" aria-pressed="false">Normal<small>≈ 14 Stück p. P.</small></button>
             <button data-v="18" aria-pressed="false">Gross<small>≈ 18 Stück p. P.</small></button>
           </div>
         </div>
-        <div><span class="lb">Stil</span>
+        <div><span class="lb"><b class="no">3</b>Stil</span>
           <div class="seg one" id="stil">
-            <button data-v="mix" aria-pressed="true">Gemischt</button>
+            <button data-v="mix" aria-pressed="false">Gemischt</button>
             <button data-v="crunchy" aria-pressed="false">Crunchy</button>
             <button data-v="vegi" aria-pressed="false">Vegi</button>
             <button data-v="cooked" aria-pressed="false" title="Fisch &amp; Meeresfrüchte gegart, flambiert oder frittiert">Gegart</button>
           </div>
         </div>
-        <div class="board"><ol id="boardList"></ol><div class="sum"><span>Ihre Platte</span><span>Fr. <span id="bFr">0</span></span></div></div>
+        <div class="board empty" id="pBoard"><p class="wait" id="bWait"><svg viewBox="0 0 64 40" aria-hidden="true"><ellipse cx="32" cy="22" rx="29" ry="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="4 4"/><path d="M32 2v10M27 7l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Wählen Sie oben – die Platte füllt sich.</p><ol id="boardList"></ol><div class="sum"><span>Ihre Platte</span><span>Fr. <span id="bFr">0</span></span></div></div>
         <div class="act">
-          <a class="btn btn-lamp" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Platte bestellen</a>
+          <a class="btn btn-lamp" id="pOrder" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Diese Platte telefonisch bestellen</a>
           <button class="btn btn-line" type="button" id="copy">Liste kopieren</button>
         </div>
-        <p class="hint">Zum Abholen oder für Ihren Tisch – anrufen und die Nummern durchgeben.</p>
+        <p class="hint">Ideal für Geburtstage, Feste und Take-away. Am Telefon einfach die Nummern durchgeben.</p>
+        <!-- MUSTER-HINWEIS fuer den Inhaber: zum Entfernen diesen <aside> loeschen -->
+        <aside class="muster" data-muster><span>Musterentwurf · Hinweis für Leo</span>Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.</aside>
       </div>
     </div>
   </div>
@@ -548,9 +591,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     <div class="wall">
       <figure class="frame f1 reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/salon_quer.jpg" srcset="img/s/salon_quer_m.jpg 900w, img/s/salon_quer.jpg 1500w" sizes="(max-width:760px) 100vw, 1180px" width="1500" height="837" alt="Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen" loading="lazy" decoding="async" style="aspect-ratio:16/8.4"><span class="lit"></span></div></figure>
       <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/salon_hoch.jpg" srcset="img/s/salon_hoch_m.jpg 720w, img/s/salon_hoch.jpg 900w" sizes="(max-width:760px) 100vw, 580px" width="900" height="1125" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
-      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/hosomaki.jpg" width="700" height="700" alt="Hosomaki mit Lachs und Gurke auf Schiefer" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
+      <div class="stack">
+        <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/hosomaki.jpg" width="700" height="700" alt="Hosomaki mit Lachs und Gurke auf Schiefer" loading="lazy" decoding="async"><span class="lit"></span></div></figure>
+        <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/sashimi.jpg" width="700" height="700" alt="Sashimi von Lachs und Thunfisch auf Eis" loading="lazy" decoding="async"><span class="lit"></span></div></figure>
+      </div>
     </div>
-    <span class="plate reveal">Leo · Engelgasse 2 · St. Gallen</span>
   </div>
 </section>
 
@@ -762,7 +807,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
     return `<div class="row" style="--acc:${acc}"><span class="rn">${nr?("Nr. "+nr):"·"}</span><span class="rt" title="${esc(n)}">${esc(n)}${tags?`<span class="tg">${tags}</span>`:""}</span><span class="rp">Fr. ${fr(p)}</span>${d?`<span class="rd">${esc(d)}</span>`:""}</div>`; };
   const match=(it,s)=>{ const [nr,n,d,,tg]=it; const T=tg.split(" ");
     for(const f of act){ if(f==="nr"){ if(T.includes("r")) return false; } else if(!T.includes(f)) return false; }
-    if(!s) return true; s=s.toLowerCase(); return String(nr)===s || (n+" "+d).toLowerCase().includes(s); };
+    if(!s) return true; s=s.toLowerCase(); return String(nr)===s || (n+" "+d+" "+(window.LANG==="en"?window.__trDesc(d):"")).toLowerCase().includes(s); };
   function build(){ const s=q.value.trim(); let list;
     if(s||act.size){ mode="search"; list=[]; KARTE.forEach(c=>c.items.forEach(it=>{ if(match(it,s)) list.push([it,c.acc]); })); }
     else { mode="cat"; list=cat.items.map(it=>[it,cat.acc]); }
@@ -802,8 +847,11 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
     vegi:[63,54,25,31,45,80,15,14,17,76,16,79],
     cooked:[69,72,71,62,55,46,50,8,57,29,63,24]
   };
-  let pers=4,hung=14,stil="mix",lines=[];
-  const out=$("#pers"), ol=$("#boardList");
+  let pers=4,hung=14,stil="mix",lines=[],started=false;
+  const out=$("#pers"), ol=$("#boardList"), board=$("#pBoard"), touched=new Set();
+  const mark=n=>{ touched.add(n); $$("#pSteps li").forEach(li=>li.classList.toggle("done", touched.has(+li.dataset.s) || (li.dataset.s==="4"&&started))); };
+  const start=()=>{ if(started) return; started=true; board.classList.remove("empty"); $("#pTot").classList.remove("off"); $("#pOrder").classList.remove("idle");
+    [["#hunger",hung],["#stil",stil]].forEach(([id,v])=>$$(id+" button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v==String(v)))); };
   const roll=(el,to)=>{ const from=+el.dataset.v||0; el.dataset.v=to; if(reduce){el.textContent=to;return;} const t0=performance.now();
     const st=t=>{ const k=Math.min(1,(t-t0)/600); el.textContent=Math.round(from+(to-from)*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(st); }; requestAnimationFrame(st); };
   function calc(){ const goal=pers*hung, pool=POOLS[stil].map(find); const cnt=new Map(); let stk=0,i=0;
@@ -811,13 +859,14 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
     lines=[...cnt].map(([it,k])=>({...it,k})); const sum=lines.reduce((a,l)=>a+l.p*l.k,0);
     ol.innerHTML=lines.map((l,j)=>`<li style="animation-delay:${j*60}ms"><span class="q">${l.k}×</span><span class="n">Nr. ${l.nr} ${esc(l.n)}<small>${l.k*l.stk} Stück</small></span><span class="pp">Fr. ${l.p*l.k}</span></li>`).join("");
     out.textContent=pers+(pers===1?" Person":" Personen");
+    if(!started) return;
     roll($("#tStk"),stk); roll($("#tFr"),sum); roll($("#bFr"),sum); roll($("#tPP"),Math.round(sum/pers)); }
-  $("#pm").onclick=()=>{ if(pers>1){pers--;calc();} }; $("#pp").onclick=()=>{ if(pers<20){pers++;calc();} };
+  $("#pm").onclick=()=>{ if(pers>1){pers--;} start(); mark(1); calc(); }; $("#pp").onclick=()=>{ if(pers<20){pers++;} start(); mark(1); calc(); };
   const seg=(id,fn)=>$(id).addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; $$(id+" button").forEach(x=>x.setAttribute("aria-pressed",x===b)); fn(b.dataset.v); calc(); });
-  seg("#hunger",v=>hung=+v); seg("#stil",v=>stil=v);
-  $("#copy").onclick=async e=>{ const txt="Platte für "+pers+" Personen – Leo Sushi Bar\n"+lines.map(l=>`${l.k}× Nr. ${l.nr} ${l.n}`).join("\n");
+  seg("#hunger",v=>{hung=+v; start(); mark(2);}); seg("#stil",v=>{stil=v; start(); mark(3);});
+  $("#copy").onclick=async e=>{ const en=window.LANG==="en"; const txt=(en?"Platter for "+pers+(pers===1?" person":" people"):"Platte für "+pers+(pers===1?" Person":" Personen"))+" – Leo Sushi Bar\n"+lines.map(l=>`${l.k}× ${en?"No.":"Nr."} ${l.nr} ${l.n}`).join("\n");
     try{ await navigator.clipboard.writeText(txt); e.target.textContent="Kopiert ✓"; }catch(_){ e.target.textContent="Bitte markieren"; } setTimeout(()=>e.target.textContent="Liste kopieren",1800); };
-  calc();
+  $("#pTot").classList.add("off"); $("#pOrder").classList.add("idle"); calc();
 })();
 
 /* ================= Salon / Neon ================= */
@@ -867,6 +916,21 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   show(today);
 })();
 
+/* ================= Staebchen ueber den Gerichten (nur Maus): kurz oeffnen und zugreifen, dann Foto ================= */
+(function(){ const CHOP=true; /* false = alter Cursor (Bild) */
+  if(!CHOP||reduce||!matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+  const H=document.documentElement, c=document.createElement("div"); c.className="chopc"; c.setAttribute("aria-hidden","true");
+  c.innerHTML='<svg viewBox="0 0 56 56"><g stroke-linecap="round"><g class="s1"><path d="M52 4 L9 50" stroke="#08120d" stroke-width="7"/><path d="M52 4 L9 50" stroke="#f3dc9a" stroke-width="3.6"/><path d="M47 9 L42 14" stroke="#08120d" stroke-width="1.6"/></g><g class="s2"><path d="M55 13 L13 52" stroke="#08120d" stroke-width="7"/><path d="M55 13 L13 52" stroke="#d4ad5f" stroke-width="3.6"/><path d="M50 16 L45 20" stroke="#08120d" stroke-width="1.6"/></g></g></svg>';
+  document.body.appendChild(c); H.classList.add("chop");
+  const K=66/56; let lx=-99, ly=-99;
+  const place=()=>{ c.style.transform=`translate(${lx-10*K}px,${ly-51*K}px)`; };
+  const test=()=>{ const el=document.elementFromPoint(lx,ly); c.classList.toggle("show",!!(el&&el.closest(".dish")&&!el.closest(".zb"))); };
+  addEventListener("pointermove",e=>{ if(e.pointerType!=="mouse") return; lx=e.clientX; ly=e.clientY; place(); test(); },{passive:true});
+  addEventListener("scroll",()=>{ if(lx>0) test(); },{passive:true});
+  document.addEventListener("mouseleave",()=>c.classList.remove("show"));
+  window.__chopPick=()=>{ c.classList.remove("pick"); void c.offsetWidth; c.classList.add("pick"); setTimeout(()=>{ c.classList.remove("pick"); test(); },320); };
+})();
+
 /* ================= Foto gross: Tippen öffnet, zwei Finger zoomen, Kreuz/Wischen schliesst ================= */
 (function(){
   const lb=document.createElement("div"); lb.className="zb"; lb.setAttribute("role","dialog"); lb.setAttribute("aria-label","Foto");
@@ -880,7 +944,9 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   function close(){ lb.classList.remove("open"); reset(); }
   lb.addEventListener("wheel",e=>e.preventDefault(),{passive:false}); lb.addEventListener("touchmove",e=>e.preventDefault(),{passive:false});
   document.addEventListener("click",e=>{ const z=e.target.closest(".zoom, .dish, .drink, .frame:not(.map)"); if(!z||lb.contains(e.target)) return;
-    const img=z.matches("img")?z:z.querySelector("img"); if(!img) return; e.preventDefault(); open(img.currentSrc||img.src,img.alt); });
+    const img=z.matches("img")?z:z.querySelector("img"); if(!img) return; e.preventDefault();
+    const go=()=>open(img.currentSrc||img.src,img.alt);
+    if(window.__chopPick && e.target.closest(".dish")){ window.__chopPick(); setTimeout(go,300); } else go(); });
   x.addEventListener("click",close);
   addEventListener("keydown",e=>{ if(e.key==="Escape"&&lb.classList.contains("open")) close(); });
   lb.addEventListener("click",e=>{ if(e.target===lb) close(); });
@@ -896,6 +962,148 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 })();
 
 $$(".reveal,#moved").forEach(el=>io.observe(el));
+
+/* ================= Sprache DE / EN (British English) =================
+   Uebersetzt nur Texte im DOM (Textknoten + alt/aria-label/title/placeholder), nichts wird neu aufgebaut:
+   Lampe, Neon, Menue-Seite und Platte bleiben, wie sie sind. Gerichtnamen und Gaestestimmen bleiben im Original. */
+(function(){
+  const D={
+"Leo – nach oben":"Leo – back to top","Hauptmenü":"Main menu","Lieblinge":"Favourites","Karte":"Menu","Platten":"Platters",
+"Sushi-Platte auf Schiefer im warmen Licht einer Tischlampe bei Leo":"Sushi platter on slate in the warm light of a table lamp at Leo",
+"Licht einschalten":"Switch the light on","Scrollen – das Licht geht an":"Scroll – the light comes on",
+"Frisches Sushi, Ramen und Sake-Cocktails in unserem Salon an der Engelgasse 2 – mitten in der St. Galler Altstadt.":"Fresh sushi, ramen and sake cocktails in our salon on Engelgasse 2 – right in the heart of St. Gallen’s old town.",
+"Tisch reservieren":"Book a table","Zur Karte":"See the menu","Leos":"Leo’s",
+"Auf schwarzem Schiefer serviert – mit den Nummern unserer Küche.":"Served on black slate – with our kitchen numbers.",
+"Beliebt auf Google":"Popular on Google","Die":"The",
+"Mit unseren Küchennummern – am Telefon einfach «Nr. 73» sagen.":"With our kitchen numbers – on the phone, just say “No. 73”.",
+"Suchen: Lachs, Avocado, Ramen, 73 …":"Search: salmon, avocado, ramen, 73 …","Karte durchsuchen":"Search the menu",
+"Vegi":"Veggie","Fisch & Meeresfrüchte gegart, flambiert oder frittiert":"Fish & seafood cooked, flambéed or fried","Gegart":"Cooked","Scharf":"Spicy","Geflämmt":"Flamed",
+"Ohne Rohes":"Nothing raw","Ohne roh":"Nothing raw",
+"VEGI":"VEGGIE","SCHARF":"SPICY","GEFLÄMMT":"FLAMED",
+"Vorherige Seite":"Previous page","Zurück":"Back","Nächste Seite":"Next page","Weiter":"Next",
+"Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in CHF incl. 8.1% VAT.",
+"Lachs: Schottland (Zucht) · Thunfisch: Pazifik (Wildfang) · Aal: Neuseeland (Wildfang)":"Salmon: Scotland (farmed) · Tuna: Pacific (wild-caught) · Eel: New Zealand (wild-caught)",
+"Allergien? Bitte beim Bestellen sagen.":"Allergies? Please tell us when you order.",
+"Suchergebnis":"Search results","Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.":"Nothing found – try “salmon”, “avocado” or a number.",
+"Crunchy Rollen":"Crunchy Rolls","Vorspeisen & Bao":"Starters & Bao","Ramen & Suppen":"Ramen & Soups",
+"Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
+"Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose people, appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
+"So funktioniert es":"How it works","Personen":"People","Hunger":"Appetite","Stil":"Style","Ihre Platte":"Your platter",
+"Grosse Sushi-Platte auf Schiefer, von oben":"Large sushi platter on slate, seen from above",
+"Stück":"pieces","pro Person":"per person","Eine Person weniger":"One person fewer","Eine Person mehr":"One more person",
+"Klein":"Light","Normal":"Regular","Gross":"Hearty","Gemischt":"Mixed",
+"Wählen Sie oben – die Platte füllt sich.":"Choose above – the platter fills up.",
+"Diese Platte telefonisch bestellen":"Order this platter by phone","Platte bestellen":"Order the platter","Liste kopieren":"Copy list","Kopiert ✓":"Copied ✓","Bitte markieren":"Please select the text",
+"Ideal für Geburtstage, Feste und Take-away. Am Telefon einfach die Nummern durchgeben.":"Ideal for birthdays, parties and takeaway. Just read out the numbers on the phone.",
+"Musterentwurf · Hinweis für Leo":"Draft design · note for Leo",
+"Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.":"Guests put their platter together themselves and ring with their order ready – fewer questions on the phone.",
+"Der Salon an der":"The salon on","Sie finden uns an der":"You’ll find us on",
+", mitten in der Altstadt. Grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.":", right in the old town. Green velvet, paintings in gilt frames and a little lamp on every table.",
+"Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen":"Leo’s salon in the evening: green velvet banquettes, paintings in gilt frames",
+"Der lange Salon mit roten Teppichen und Tischlampen":"The long salon with red rugs and table lamps",
+"Hosomaki mit Lachs und Gurke auf Schiefer":"Hosomaki with salmon and cucumber on slate","Sashimi von Lachs und Thunfisch auf Eis":"Salmon and tuna sashimi on ice",
+"Hausgemachte Sake-Kreationen, passend zu Sushi – und unser eigenes Bier, das Leo Lager.":"Home-made sake creations to go with sushi – and our own beer, Leo Lager.",
+"Die Bar von Leo im Neonlicht":"Leo’s bar in neon light","Die Bar":"The bar","Aperitif vor dem Sushi oder der letzte Drink um elf.":"An aperitif before the sushi, or a last drink at eleven.",
+"Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral & frisch":"Sake, yuzu, lemon juice, sakura syrup – floral & fresh",
+"Sake, Matcha, Zitrone, Zucker – umami & erfrischend":"Sake, matcha, lemon, sugar – umami & refreshing",
+"Sake, Holunder, Tonic, Limettenzeste":"Sake, elderflower, tonic, lime zest","Sake, Yuzu, Soda – Zitrus & Spritz":"Sake, yuzu, soda – citrus & spritz",
+"Bier & Bläschen":"Beer & bubbles","Thailand · 5,0 % · 3,3 dl":"Thailand · 5.0% · 33 cl","Japan · 5,0 % · 3,3 dl":"Japan · 5.0% · 33 cl","7,5 dl":"75 cl",
+"Was Gäste":"What guests","sagen":"say","302 Bewertungen auf Google":"302 reviews on Google",
+"Vorherige Bewertung":"Previous review","Nächste Bewertung":"Next review",
+"Bis":"See you","heute Abend?":"tonight?","Tisch reservieren & Bestellungen":"Table bookings & orders","Route planen":"Get directions",
+"Anfragen für Gruppen & Feste":"Enquiries for groups & parties","7’840 Follower auf Instagram":"7,840 followers on Instagram",
+"Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl":"Map of St. Gallen’s old town: Leo on Engelgasse 2, near Marktplatz and Bohl",
+"Route in Google Maps":"Directions in Google Maps","Entwurf · nur zur Ansicht":"Draft · preview only",
+"Schnellzugriff":"Quick access","Anrufen":"Call","Platte":"Platter","Route":"Directions",
+"Foto":"Photo","Schliessen":"Close","Mit zwei Fingern vergrössern · nach unten wischen zum Schliessen":"Pinch to zoom · swipe down to close",
+"Geschlossen":"Closed","Mo":"Mo","Di":"Tu","Mi":"We","Do":"Th","Fr":"Fr","Sa":"Sa","So":"Su",
+"Geflämmter Lachs, Avocado, Teriyaki · 2 Stück":"Flamed salmon, avocado, teriyaki · 2 pieces",
+"Crevette in Tempura, aussen Thunfisch & Tobiko · 8 Stück":"Tempura prawn, topped with tuna & tobiko · 8 pieces",
+"Crevette in Tempura, aussen Avocado, Teriyaki · 8 Stück":"Tempura prawn, topped with avocado & teriyaki · 8 pieces",
+"In Tempura, Spicy Mayo, Lauch · 6 Stück":"In tempura, spicy mayo, leek · 6 pieces",
+"Chashu, Ajitama-Ei, Narutomaki, Hühnerbrühe":"Chashu, ajitama egg, narutomaki, chicken broth",
+"Teriyaki, Gurke, Koriander, Gochujang-Mayo":"Teriyaki, cucumber, coriander, gochujang mayo",
+"Lachs, Thunfisch oder Crevetten · je 4 Stück":"Salmon, tuna or prawns · 4 pieces each",
+"8 vegetarische Teigtaschen, Sweet-Soja-Dip":"8 vegetarian dumplings, sweet soy dip","In der Schale mit Meersalz":"In the pod with sea salt"
+  };
+  const ING={
+"1 Stück":"1 piece","5 Stück":"5 pieces","5 Calamari":"5 calamari","5 Crevetten":"5 prawns","8 Teigtaschen":"8 dumplings","Aal in Tempura":"tempura eel","Ajitama-Ei":"ajitama egg",
+"Avocado":"avocado","Avocado in Tempura":"tempura avocado","Babymais":"baby corn","Chashu":"chashu","Chili-Mayo":"chilli mayo","Chiliöl":"chilli oil","Crevette":"prawn",
+"Crevette in Tempura":"tempura prawn","Crunchy Maki in Tempura":"crunchy maki in tempura","Erbsen":"peas","Frischkäse":"cream cheese","Frühlingszwiebel":"spring onion",
+"Fuku Jin Zuke":"fukujinzuke pickle","Gebratener Tofu":"fried tofu","Geflämmter Lachs":"flamed salmon","Geflämmter Thunfisch":"flamed tuna","Geflämmter Thunfisch mit Togarashi":"flamed tuna with togarashi",
+"Gegrillter Aal":"grilled eel","Gegrillter Lachs":"grilled salmon","Gochujang-Mayo":"gochujang mayo","Goma Wakame":"goma wakame","Gurke":"cucumber","Haus-Dressing":"house dressing",
+"Home Style Fries mit Spicy Mayo":"home-style chips with spicy mayo","Honig-Knoblauch-Crevette":"honey-garlic prawn","Hühnerbrühe":"chicken broth","Ingwer":"ginger","Jalapeños":"jalapeños",
+"Kalmar in Tempura":"tempura squid","Kanpyo":"kanpyo","Karotten":"carrots","Kimchi":"kimchi","Koriander":"coriander","Kürbis":"pumpkin","Lachs":"salmon","Lachs in Ponzu":"salmon in ponzu",
+"Lachs in Tempura":"tempura salmon","Lachs mariniert in Ponzu":"salmon marinated in ponzu","Lachstatar":"salmon tartare","Lachstatar in Tempura":"salmon tartare in tempura","Lauch":"leek",
+"Leicht pikantes Crispy Chicken":"mildly spicy crispy chicken","Mango":"mango","Mango-Sauce":"mango sauce","Mayonnaise":"mayonnaise","Meeresfrüchte":"seafood","Menma":"menma",
+"Narutomaki":"narutomaki","Nori":"nori","Nüsse":"nuts","Oshinko":"oshinko","Pak Choi":"pak choi","Paprika":"peppers","Ramen-Nudeln":"ramen noodles","Rettich":"radish","Rindfleisch":"beef",
+"Salat":"lettuce","Schnittlauch":"chives","Schweine- oder Rindfleisch":"pork or beef","Sesam":"sesame","Sesamöl":"sesame oil","Sojabohnenflocke":"soybean flakes","Sojasauce":"soy sauce",
+"Sojasprossen":"bean sprouts","Spicy Mayo":"spicy mayo","Sriracha":"sriracha","Surimi":"surimi","Teriyaki":"teriyaki","Thunfisch":"tuna","Thunfischtatar in Tempura":"tuna tartare in tempura",
+"Toasts":"toasts","Tobiko":"tobiko","Tofu":"tofu","Trüffel":"truffle","Trüffel-Mayo":"truffle mayo","Trüffel-Mayo oder Sweet Chili":"truffle mayo or sweet chilli","Tunamusse":"tuna mousse",
+"Tunamusse in Tempura":"tuna mousse in tempura","Udon":"udon","Wakame":"wakame","Wasabi-Mayo":"wasabi mayo","Zucchini in Tempurateig":"courgette in tempura batter","Zwiebel":"onion",
+"eingelegte Gurken":"pickled cucumber","eingelegter Kürbis":"pickled pumpkin","eingelegter Rettich":"pickled radish","eingelegtes Gemüse":"pickled vegetables",
+"gebratene vegetarische Gyoza":"fried vegetarian gyoza","geflämmter Lachs":"flamed salmon","geflämmter Thunfisch mit Togarashi":"flamed tuna with togarashi","gegrillter Aal":"grilled eel",
+"in der Schale mit Meersalz":"in the pod with sea salt","marinierte Karotte":"marinated carrot","mit Sweet-Soja- oder Sesam-Dip":"with sweet soy or sesame dip","rote Zwiebeln":"red onions","vegetarisch":"vegetarian"
+  };
+  const DAY={Sonntag:"Sunday",Montag:"Monday",Dienstag:"Tuesday",Mittwoch:"Wednesday",Donnerstag:"Thursday",Freitag:"Friday",Samstag:"Saturday"};
+  const UNIT={Monaten:"months",Monat:"month",Jahren:"years",Jahr:"year",Wochen:"weeks",Woche:"week",Tagen:"days",Tag:"day"};
+  const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+  const ing=t=>{ let pre=""; if(t.startsWith("aussen ")){ pre="topped with "; t=t.slice(7); }
+    const parts=t.split(", ").map(u=>ING[u]); if(parts.some(x=>x==null)) return null; return pre+parts.join(", "); };
+  const desc=d=>{ const parts=d.split(" – ").map(ing); if(parts.some(x=>x==null)) return null; return parts.map(cap).join(" – "); };
+  window.__trDesc=d=>d?(desc(d)||""):"";
+  const R=[
+    [/^(\d+) Stück$/, (m,n)=>n+(n==="1"?" piece":" pieces")],
+    [/^≈ (\d+) Stück p\. P\.$/, (m,n)=>"≈ "+n+" pieces pp"],
+    [/^(\d+) Personen?$/, (m,n)=>n+(n==="1"?" person":" people")],
+    [/^(\d+) Gerichte$/, (m,n)=>n+(n==="1"?" dish":" dishes")],
+    [/^Seite (\d+) \/ (\d+)$/, (m,a,b)=>"Page "+a+" / "+b],
+    [/^Nr\. (.+)$/, (m,a)=>"No. "+a],
+    [/^Heute · (\S+)$/, (m,a)=>"Today · "+(DAY[a]||a)],
+    [/^(Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag)$/, (m,a)=>DAY[a]],
+    [/^Google · vor (\d+) (\S+)$/, (m,n,u)=>"Google · "+n+" "+(UNIT[u]||u)+" ago"],
+    [/^Anrufen: (.+)$/, (m,a)=>"Call: "+a]
+  ];
+  const tr=s=>{ if(D[s]!=null) return D[s]; if(s.includes(" – ")||ING[s]){ const x=desc(s); if(x) return x; }
+    for(const [re,f] of R){ const m=s.match(re); if(m) return f(...m); } return null; };
+
+  const SKIP=".dish h3,.sleeve blockquote,.who b,.neon,.lang,script,style,svg";
+  const ATTR=["alt","aria-label","title","placeholder"];
+  const TX=new WeakMap(), AT=new WeakMap();
+  let lang="de";
+  function doText(n){ const v=n.nodeValue; if(!v||!/[A-Za-zÄÖÜäöü]/.test(v)) return; const p=n.parentElement; if(!p||p.classList.contains("rt")||p.closest(SKIP)) return;
+    const rec=TX.get(n);
+    if(lang==="en"){ if(rec&&v===rec.en) return; const core=v.trim(), t=tr(core); if(t==null||t===core) return;
+      const en=v.replace(core,t); TX.set(n,{de:v,en}); n.nodeValue=en; }
+    else if(rec){ if(v===rec.en) n.nodeValue=rec.de; TX.delete(n); } }
+  function doEl(el){ if(el.closest&&el.closest(".lang")) return; let rec=AT.get(el);
+    for(const a of ATTR){ const v=el.getAttribute(a); if(!v) continue;
+      if(lang==="en"){ if(rec&&rec[a]&&rec[a].en===v) continue; const t=tr(v); if(t==null||t===v) continue; rec=rec||{}; rec[a]={de:v,en:t}; AT.set(el,rec); el.setAttribute(a,t); }
+      else if(rec&&rec[a]){ if(rec[a].en===v) el.setAttribute(a,rec[a].de); delete rec[a]; } } }
+  function walk(root){ if(root.nodeType===3){ doText(root); return; } if(root.nodeType!==1) return;
+    doEl(root); const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT,{acceptNode:n=>n.nodeType===1&&n.matches(SKIP)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+    let n; while((n=w.nextNode())){ if(n.nodeType===3) doText(n); else doEl(n); } }
+  const mo=new MutationObserver(list=>{ if(lang!=="en") return; for(const m of list){
+      if(m.type==="childList") m.addedNodes.forEach(walk); else if(m.type==="characterData") doText(m.target); else if(m.type==="attributes") doEl(m.target); } });
+  mo.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:ATTR});
+
+  const H=document.documentElement, TITLE={de:document.title,en:"Leo · Sushi Bar St. Gallen – Sushi, Ramen & Cocktails on Engelgasse 2"};
+  const btns=[...document.querySelectorAll(".lang button")];
+  function set(l,keep){
+    if(l!=="en") l="de"; if(l===lang&&keep!=="init") return;
+    /* Ankerpunkt merken, damit nach dem Umschalten nichts springt */
+    let anc=null, top0=0; const hh=($("#hdr")||{}).offsetHeight||0;
+    if(keep!=="init" && scrollY>0){ anc=document.elementFromPoint(innerWidth/2, hh+Math.min(140,(innerHeight-hh)/3)); if(anc) top0=anc.getBoundingClientRect().top; }
+    lang=l; walk(document.body); H.lang=l==="en"?"en-GB":"de-CH"; document.title=TITLE[l];
+    btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
+    if(anc&&anc.isConnected){ const d=anc.getBoundingClientRect().top-top0; if(Math.abs(d)>0.5){ H.style.scrollBehavior="auto"; window.scrollBy(0,d); H.style.scrollBehavior=""; } }
+    try{ localStorage.setItem("leo-lang",l); }catch(_){}
+    window.LANG=l; }
+  btns.forEach(b=>b.addEventListener("click",()=>{ set(b.dataset.l);
+    try{ const u=new URL(location.href); if(u.searchParams.has("lang")){ u.searchParams.set("lang",lang); history.replaceState(null,"",u); } }catch(_){} }));
+  let start="de"; try{ const q=new URLSearchParams(location.search).get("lang"); if(q==="en"||q==="de") start=q; else start=localStorage.getItem("leo-lang")||"de"; }catch(_){}
+  window.LANG="de"; if(start==="en") set("en","init");
+})();
 </script>
 </body>
 </html>
