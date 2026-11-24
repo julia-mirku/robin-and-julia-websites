@@ -113,8 +113,8 @@ body{position:relative}
 .s-wand{display:flex;flex-direction:column;padding:64px 0 0}
 .s-wand .wand-inhalt{order:1}
 .s-wand .wandfoto{order:2;display:block;margin-top:30px}
-.s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;transform:scale(1.12);transform-origin:28% 40%}
-.s-wand .wandfoto{overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 86%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 86%,transparent 100%)}
+.s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 78%}
+.s-wand .wandfoto{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 56px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 56px),transparent 100%)}
 .uebergang{position:absolute;left:0;right:0;top:0;height:72px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(24,30,36,.92) 0,rgba(24,30,36,.42) 32%,rgba(24,30,36,.1) 68%,rgba(24,30,36,0) 100%)}
 .wand-text p{margin:0 0 16px;max-width:44ch;color:#3f362f}
 .zeiten{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;max-width:520px}
@@ -372,7 +372,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .s-wand{min-height:max(620px,calc(100vh - var(--hh)));justify-content:center;padding:64px 0 44px}
   .s-wand .uebergang{height:96px}
   .s-wand.putz::before,.s-wand.putz::after{display:none}
-  .s-wand .wandfoto{position:absolute;inset:0;margin:0;z-index:0;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 290px),rgba(0,0,0,.5) calc(100% - 175px),transparent calc(100% - 70px));mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 290px),rgba(0,0,0,.5) calc(100% - 175px),transparent calc(100% - 70px))}
+  .s-wand .wandfoto{position:absolute;inset:0;margin:0;z-index:0;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 96px),transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 96px),transparent 100%)}
   .s-wand .wandfoto img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:72% 50%;transform:none}
   .wand-inhalt{position:relative;z-index:1}
   .wand-text,.details{max-width:540px}
@@ -553,7 +553,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
       <h2>Platz für alle</h2>
     </div>
     <div class="feiern-grid">
-      <figure class="fbild rise" data-big="img/wandbild_abend_2752.webp"><img src="img/wandbild_abend_1600.webp" srcset="img/wandbild_abend_1600.webp 1600w, img/wandbild_abend_2752.webp 2752w" sizes="(min-width:900px) 40vw, 100vw" alt="Am Abend im Bodan: gedeckte Tische mit Kerzen unter dem Wandbild mit dem alten Hotel Bodan" loading="lazy" style="object-position:50% 58%"></figure>
+      <figure class="fbild rise" data-big="img/wandbild_abend_neutral_2752.webp"><img src="img/wandbild_abend_neutral_1600.webp" srcset="img/wandbild_abend_neutral_1600.webp 1600w, img/wandbild_abend_neutral_2752.webp 2752w" sizes="(min-width:900px) 40vw, 100vw" alt="Am Abend im Bodan: gedeckte Tische mit Kerzen unter dem Wandbild mit dem alten Hotel Bodan" loading="lazy" style="object-position:50% 58%"></figure>
       <div class="fkarten">
         <article class="fk rise">
           <div class="in">
