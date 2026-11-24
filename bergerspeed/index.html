@@ -1080,7 +1080,7 @@ function torSetz(){
   torDias.style.filter='brightness('+(.45+.55*e).toFixed(3)+') saturate('+(.8+.2*e).toFixed(3)+')';
   tor.classList.toggle('auf',p>=1); lam.classList.toggle('offen',p>=1);
 }
-function torAuf(){ torG=1; torZu=false; offenZeit=jetzt(); torSetz(); }
+function torAuf(){ torG=1; torZu=false; offenZeit=jetzt(); nachlauf=true; wLetzt=offenZeit; torSetz(); }   /* jede Öffnung (auch Einrasten) schluckt den Rest derselben Geste */
 function torNach(d){ if(!torZu) return; cancelAnimationFrame(animT); torG=Math.min(1,Math.max(0,torG+d)); if(torG>=1){ torAuf(); nachlauf=true; wLetzt=jetzt(); } else torSetz(); }
 function torZiel(){ /* Geste zu Ende: ab einem Drittel fährt das Tor von selbst ganz auf */
   if(!torZu || torG<.3) return; var von=torG, t0=jetzt();
@@ -1099,7 +1099,7 @@ window.addEventListener('wheel',function(e){
     return;
   }
   if(nachlauf){
-    if(t-wLetzt<240 && t-offenZeit<3000){ e.preventDefault(); wLetzt=t; return; }
+    if(t-wLetzt<400 && t-offenZeit<3000){ e.preventDefault(); wLetzt=t; return; }
     nachlauf=false;
   }
 },{passive:false});
