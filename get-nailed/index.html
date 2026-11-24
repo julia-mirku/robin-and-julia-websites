@@ -2991,13 +2991,13 @@ setIO.observe($('#setgrid'));
 
 
 /* ---------- Konfigurator auf Englisch ---------- */
-const KEN=[['Wählen Sie die Länge – der Preis erscheint sofort.','Choose a length – the price appears instantly.'],['Für den Preis noch: Länge','For the price: choose a length'],
+const KEN=[['Beispiele – weitere Farben im Salon.','Examples – more colours in the salon.'],['Wählen Sie die Länge – der Preis erscheint sofort.','Choose a length – the price appears instantly.'],['Für den Preis noch: Länge','For the price: choose a length'],
  ['Wählen Sie rechts Ihr Set','Choose your set on the right'],['Wählen Sie unten Ihr Set','Choose your set below'],['genauer Preis mit Design','exact price with design'],
  ['Kurz natur (Russian Mani + Gellack)','Short natural (Russian mani + Gellack)'],['Russian Mani mit Gellack','Russian mani with Gellack'],['Auffüllen ab CHF','Infill from CHF'],['Preis im Salon','price in the salon'],
  ['Neues Set','New set'],['Kurz natur','Short natural'],['Extra lang','Extra long'],['einfarbig','one colour'],['Einfarbig','One colour'],['mit Baby Boomer','with baby boomer'],
  ['mit French','with French'],['mit Gold-Linien','with gold lines'],['Gold-Linien','Gold lines'],['Glitzer','Glitter'],['Mandel','Almond'],['Eckig','Square'],['Strass','Rhinestones'],
  ['Hautton','Skin tone'],['Länge','Length'],['Form','Shape'],['Farbe','Colour'],['Effekt','Finish'],['Ohne','None'],['Spitze','tip'],['Basis','base'],['Ihr Set','Your set'],['Vorschau','Preview'],
- ['Schliessen','Close'],['Palette','Palette'],['ab CHF','from CHF'],['Kurz','Short'],['Lang','Long'],['Min.','min'],[' nur bei ',' only with '],[' – nur ',' – only '],['kein ','no '],['bei ','with '],
+ ['Schliessen','Close'],['Palette','Palette'],['ab CHF','from CHF'],['Kurz','Short'],['Lang','Long'],['Min.','min'],[' nur bei ',' only with '],[' – nur ',' – only '],[': nur ',': only '],['kein ','no '],['bei ','with '],
  ['Weiss','White'],['Rot','Red'],['Rosa','Pink'],['Schwarz','Black'],['Flieder','Lilac']];
 let kLang='de';
 function trK(){const root=$('#atelier');const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
@@ -3005,6 +3005,7 @@ function trK(){const root=$('#atelier');const w=document.createTreeWalker(root,N
     if(kLang==='en'){let t=n.__de;KEN.forEach(([d,e])=>{t=t.split(d).join(e)});n.__en=t;if(n.nodeValue!==t)n.nodeValue=t}else if(n.nodeValue!==n.__de){n.nodeValue=n.__de}}}
 const _upd=update;update=function(u){_upd(u);if(kLang==='en')trK()};
 window.__konfLang=l=>{kLang=l;update();trK()};
+if(document.documentElement.lang==='en')window.__konfLang('en');
 
 })();
 </script>
