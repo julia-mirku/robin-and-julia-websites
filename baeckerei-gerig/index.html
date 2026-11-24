@@ -451,6 +451,44 @@ body.menu .mmenu{transform:none}
 .punkte i{width:7px;height:7px;border-radius:50%;background:rgba(58,35,23,.2);transition:background .2s,width .2s}
 .punkte i.on{background:var(--rot);width:18px;border-radius:4px}
 .stimmen .punkte i{background:rgba(255,255,255,.25)}.stimmen .punkte i.on{background:var(--gold)}
+
+/* 18h: eine Atmosphäre – nach dem Foto nur noch helle Töne, ein langer weicher Übergang */
+body{background:var(--creme)}
+.shop,.gfsec,.cafes,.cat,.chronik,.stimmen,.kontakt{background:transparent}
+.heroA::after{content:"";position:absolute;left:0;right:0;bottom:0;height:170px;background:linear-gradient(180deg,rgba(248,240,226,0) 0%,rgba(248,240,226,.55) 55%,var(--creme) 100%);pointer-events:none;z-index:1}
+.heroA .in{z-index:2;padding-bottom:150px}
+.tage,body.hb .tage{background:var(--creme);color:var(--text);padding:8px 0 10px;margin-top:-2px;position:relative;z-index:3}
+.tage h2{color:var(--kruste)}.tage h2 small{color:var(--muted)}
+.tag{box-shadow:inset 0 0 0 1px rgba(58,35,23,.16);background:#fff}.tag span{color:var(--muted)}
+.tag.sel{background:var(--kruste);color:#fff}.tag.sel span{color:var(--kraft2)}
+.ort{background:#fff;box-shadow:0 10px 24px -20px rgba(58,35,23,.5)}.ort .o{color:var(--muted)}.ort .h{color:var(--kruste)}.ort .x{color:var(--rot)}
+.bthint{color:var(--muted)}.bthint b{color:var(--kruste)}
+@media (hover:hover){.ort:hover{background:#fff;box-shadow:0 0 0 2px rgba(232,170,0,.5)}}
+.shop{padding-top:40px}
+.stimmen{color:var(--text);padding-top:46px}
+.stimmen .sh h2{color:var(--kruste)}.stimmen .sh h2 em{color:var(--rot)}.stimmen .sh p{color:var(--muted)}
+.sterne b{color:var(--rot)}
+.zitat{background:#fff;box-shadow:0 16px 36px -28px rgba(58,35,23,.55)}.zitat q{color:var(--kruste)}.zitat .w{color:var(--muted)}.zitat .w b{color:var(--kruste)}
+@media (hover:hover){.zitat:hover{background:#fff;box-shadow:0 0 0 2px rgba(232,170,0,.5),0 16px 36px -28px rgba(58,35,23,.55)}}
+.stimmen .punkte i{background:rgba(58,35,23,.2)}.stimmen .punkte i.on{background:var(--rot)}
+.stimmen .pfeil{background:#fff}
+.kontakt{color:var(--text);padding:10px 0 46px}
+.kk{background:#fff;box-shadow:0 16px 36px -28px rgba(58,35,23,.55)}.kk h3{color:var(--kruste)}.kk .o{color:var(--rot)}.kk a.tel{color:var(--kruste)}
+.kk ul li{border-bottom:1px dashed rgba(58,35,23,.14)}
+.kk .btn.glas{background:var(--mehl);color:var(--kruste);box-shadow:inset 0 0 0 1.5px rgba(58,35,23,.18);backdrop-filter:none}
+@media (hover:hover){.kk:hover{background:#fff;box-shadow:0 0 0 2px rgba(232,170,0,.5)}.kk .btn.glas:hover{background:#fff;box-shadow:inset 0 0 0 1.5px var(--gold),0 0 0 6px rgba(232,170,0,.18)}}
+footer{background:transparent;color:var(--muted);border-top:1px solid rgba(58,35,23,.1)}
+.fakt{background:#fff;box-shadow:0 10px 24px -20px rgba(58,35,23,.45)}
+.pfeil.weg{display:none}
+.jahre{grid-auto-columns:calc((100% - 3*18px)/4)}
+@media (max-width:1100px){.jahre{grid-auto-columns:calc((100% - 2*18px)/3)}}
+@media (max-width:767px){
+  .heroA::after{height:110px}
+  .heroA .in{padding-bottom:84px}
+  .shop{padding-top:22px}
+  .stimmen{padding-top:28px}
+  .jahre{grid-auto-columns:78%}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .fade{opacity:1;transform:none}.mini{opacity:1;transform:none}}
 </style>
 </head>
@@ -636,10 +674,9 @@ body.menu .mmenu{transform:none}
       <button class="pfeil l" data-l="jahre" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="jahre" id="jahre">
         <article class="jahr"><div class="jb" data-zoom="img/alois_erika.webp"><img src="img/alois_erika.webp" alt="Alois und Erika Gerig" loading="lazy" style="object-position:50% 20%"></div><div class="jt"><span class="z">1987</span><h3>Alois &amp; Erika Gerig</h3><p>Am 1. Mai übernehmen sie die Bäckerei in Waldstatt von Josef Thoma – samt glutenfreier Backstube.</p></div></article>
-        <article class="jahr"><div class="jb" data-zoom="img/urnaesch.webp"><img src="img/urnaesch.webp" alt="Bäckerei Gerig in Urnäsch" loading="lazy"></div><div class="jt"><span class="z">2014</span><h3>Urnäsch kommt dazu</h3><p>Die Bäckerei Vetsch wird übernommen, vergrössert und neu gestaltet – mehr Konditorei und Confiserie.</p></div></article>
+        <article class="jahr"><div class="jb" data-zoom="img/urnaesch_nah.webp"><img src="img/urnaesch_nah.webp" alt="Eingang der Bäckerei Gerig in Urnäsch" loading="lazy"></div><div class="jt"><span class="z">2014</span><h3>Urnäsch kommt dazu</h3><p>Die Bäckerei Vetsch wird übernommen, vergrössert und neu gestaltet – mehr Konditorei und Confiserie.</p></div></article>
         <article class="jahr"><div class="jb" data-zoom="img/daniel.webp"><img src="img/daniel.webp" alt="Daniel Gerig" loading="lazy" style="object-position:50% 25%"></div><div class="jt"><span class="z">2017</span><h3>Die zweite Generation</h3><p>Nach 30 Jahren übergeben Erika und Alois an Daniel Gerig und Isabelle Diem.</p></div></article>
-        <article class="jahr"><div class="jb" data-zoom="img/cafe_waldstatt.webp"><img src="img/cafe_waldstatt.webp" alt="Isa und Danis BäckerCafé" loading="lazy"></div><div class="jt"><span class="z">2019</span><h3>Isa und Danis BäckerCafé</h3><p>Seit dem 28. Oktober 2019 hat Waldstatt sein Bäckercafé – modern und gemütlich.</p></div></article>
-        <article class="jahr"><div class="jb" data-zoom="img/urnaesch.webp"><img src="img/urnaesch.webp" alt="Bäckerei Gerig in Urnäsch" loading="lazy"></div><div class="jt"><span class="z">2023</span><h3>Bäcker-Kaffe Urnäsch</h3><p>Am 16. Dezember öffnet auch in Urnäsch ein Café mit 14 Plätzen.</p></div></article>
+        <article class="jahr"><div class="jb" data-zoom="img/waldstatt.webp"><img src="img/waldstatt.webp" alt="Bäckerei Gerig in Waldstatt" loading="lazy"></div><div class="jt"><span class="z">2019 · 2023</span><h3>Zwei Bäckercafés</h3><p>Im Oktober 2019 öffnet Isa und Danis BäckerCafé in Waldstatt, im Dezember 2023 das Bäcker-Kaffe in Urnäsch.</p></div></article>
       </div>
       <button class="pfeil r" data-r="jahre" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
@@ -786,7 +823,7 @@ shop();
 /* Ribbons: Pfeile (1 Karte), Punkte */
 function step(el){const c=el.querySelector(':scope > *');if(!c)return el.clientWidth;const g=parseFloat(getComputedStyle(el).columnGap)||16;return c.getBoundingClientRect().width+g}
 function upd(id){const el=document.getElementById(id);if(!el)return;const max=el.scrollWidth-el.clientWidth-2;
-  $$(`[data-l="${id}"]`).forEach(b=>b.disabled=el.scrollLeft<=2);$$(`[data-r="${id}"]`).forEach(b=>b.disabled=el.scrollLeft>=max);
+  $$(`[data-l="${id}"]`).forEach(b=>b.disabled=el.scrollLeft<=2);$$(`[data-l="${id}"],[data-r="${id}"]`).forEach(b=>b.classList.toggle('weg',max<=2));$$(`[data-r="${id}"]`).forEach(b=>b.disabled=el.scrollLeft>=max);
   const pk=$(`[data-p="${id}"]`);if(pk){const s=step(el),n=Math.max(1,Math.round(max/s)+1),cur=Math.round(el.scrollLeft/s);const cap=Math.min(n,12);pk.innerHTML=Array.from({length:cap},(_,i)=>`<i class="${i===Math.min(cur,cap-1)?'on':''}"></i>`).join('')}}
 ['regal','jahre','zitate'].forEach(id=>{const el=document.getElementById(id);let t;el.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(()=>upd(id),60)},{passive:true});upd(id)});
 document.addEventListener('click',e=>{const l=e.target.closest('[data-l]'),r=e.target.closest('[data-r]');const b=l||r;if(!b)return;const el=document.getElementById(b.dataset.l||b.dataset.r);el.scrollBy({left:(l?-1:1)*step(el),behavior:'smooth'})});
