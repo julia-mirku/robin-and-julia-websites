@@ -614,6 +614,16 @@ footer.foot{padding-top:clamp(30px,3vw,40px)}
 
 /* ---------- Fusszeile: das Gruen der Seite laeuft langsam in die Dunkelheit (kein Umfaerben), ohne Linie oben ---------- */
 footer.foot{border-top:0;background:linear-gradient(180deg,#0d241a 0%,#0b1f16 22%,#091912 45%,#07130e 70%,#050a07 100%)}
+
+/* ---------- Ohne Wellen-Baender (Seigaiha) ueber/unter der Karte; Scroll-Leistung: kein Backdrop-Blur, keine Dauer-Animation nach dem Licht ---------- */
+.karte::before,.karte::after{display:none}
+.hdr.solid{background:rgba(13,36,26,.94);-webkit-backdrop-filter:none;backdrop-filter:none}
+.lang,.pill,.sidewrap>.arrow,.dock{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.lang{background:rgba(8,18,13,.72)}
+.pill{background:rgba(8,18,13,.88)}
+.sidewrap>.arrow{background:rgba(8,18,13,.94)}
+.dock{background:rgba(8,18,13,.97)}
+.hero:not(.off) .bulb{animation:none;visibility:hidden}
 </style>
 </head>
 <body>
