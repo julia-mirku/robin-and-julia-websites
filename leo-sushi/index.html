@@ -638,6 +638,10 @@ footer.foot{border-top:0;background:linear-gradient(180deg,#0d241a 0%,#0b1f16 22
 /* ---------- Textur: dunkles Leinen auf den gruenen Bloecken (eine Kachel, ohne Animation) ---------- */
 .lieb,.karte,.plan,.salon,.visit{background-image:url(img/leinen.png);background-size:256px 256px}
 footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180deg,#0d241a 0%,#0b1f16 22%,#091912 45%,#07130e 70%,#050a07 100%)}
+
+/* ---------- Gaeste-Karten: guenstige Schatten (gedreht + grosse Unschaerfe war teuer), Ansicht gleich ---------- */
+.sleeve{box-shadow:0 0 0 1px rgba(232,207,143,.25),0 12px 12px -8px rgba(0,0,0,.75)}
+@media (hover:hover){.sleeve:hover{box-shadow:0 0 0 1px rgba(232,207,143,.45),0 16px 14px -8px rgba(0,0,0,.8)}}
 </style>
 </head>
 <body>
@@ -834,7 +838,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
           <a href="https://www.instagram.com/sushibarleo/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@sushibarleo<small>7’840 Follower auf Instagram</small></span></a>
         </div>
       </div>
-      <figure class="frame map reveal"><span class="lamp"></span><div class="mat"><img src="img/karte.svg" width="1000" height="800" alt="Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl" loading="lazy" decoding="async"><span class="pin" aria-hidden="true"><span class="glow"></span><span class="dot"></span><span class="tag">Leo · Engelgasse 2</span></span><a class="btn btn-lamp route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Engelgasse+2,+9000+St.+Gallen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Route in Google Maps</a><span class="osm">© OpenStreetMap</span></div></figure>
+      <figure class="frame map reveal"><span class="lamp"></span><div class="mat"><img src="img/karte.webp" width="1200" height="960" alt="Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl" loading="lazy" decoding="async"><span class="pin" aria-hidden="true"><span class="glow"></span><span class="dot"></span><span class="tag">Leo · Engelgasse 2</span></span><a class="btn btn-lamp route" href="https://www.google.com/maps/dir/?api=1&amp;destination=Engelgasse+2,+9000+St.+Gallen" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Route in Google Maps</a><span class="osm">© OpenStreetMap</span></div></figure>
     </div>
   </div>
 </section>
