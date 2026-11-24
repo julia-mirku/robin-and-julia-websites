@@ -1719,7 +1719,11 @@ body{background:transparent!important}
   #karte .menu-foot{display:none!important}
   #buch.bk{--bkh:clamp(320px,calc(100svh - 284px),760px)!important}
   #karte{scroll-margin-top:63px}
+  /* Julia 25.11 «открытую на компе книжку – она меньше чем была»: offenes Buch wieder so gross wie vor dem 25.11 (527 px bei 659) */
+  #buch.bk[data-state="open"]{--bkh:clamp(380px,calc(100svh - 132px),760px)!important}
 }
+/* Julia 25.11 «full menu внизу надо убрать»: Knopf «Ganze Karte als Liste» weg */
+.bk-listrow{display:none!important}
 /* kleineres Buch auf niedrigen Bildschirmen: Deckel-Inhalt luftig, Zierlinie berührt die Taste nicht */
 @media (min-width:700px) and (max-height:820px){
   .bk-cv .bk-plate{width:150px!important;height:104px!important}
