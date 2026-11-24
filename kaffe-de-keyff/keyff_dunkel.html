@@ -1734,6 +1734,22 @@ body{background:transparent!important}
 /* Prüfer 25.11: Naht Э3→Э4 – rötlicher Lichtfleck oben rechts in «Was Gäste schreiben» wurde an der Blockkante abgeschnitten */
 #stimmen{background-image:none!important}
 </style>
+<style id="rvl-css">
+/* Julia 25.11 «В тёмной больше ламп»: drei Hängelampen über den Gäste-Zitaten rechts */
+.rvl{display:none}
+@media (min-width:1100px){
+  .rvl{display:flex;position:absolute;left:0;right:0;bottom:calc(100% + 6px);justify-content:space-around;align-items:flex-end;pointer-events:none}
+  .rvl-l{position:relative;display:flex;flex-direction:column;align-items:center;transform-origin:50% 0}
+  .rvl-l i{display:block;width:1.5px;background:linear-gradient(180deg,rgba(255,210,138,0),rgba(255,210,138,.8))}
+  .rvl-l:nth-child(1) i{height:96px}.rvl-l:nth-child(2) i{height:70px}.rvl-l:nth-child(3) i{height:86px}
+  .rvl-l svg{display:block;width:20px;height:32px;overflow:visible}
+  .rvl-l circle{filter:drop-shadow(0 0 6px rgba(255,214,150,1))}
+  .rvl-l::before{content:"";position:absolute;left:50%;bottom:-44px;width:120px;height:120px;margin-left:-60px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,186,104,.32),rgba(255,160,80,.08) 55%,transparent)}
+  .rvl-l::after{content:"";position:absolute;top:calc(100% - 12px);left:50%;width:240px;height:300px;margin-left:-120px;background:linear-gradient(180deg,rgba(255,210,150,.14),rgba(255,190,110,.04) 70%,rgba(255,190,110,0));-webkit-clip-path:polygon(46% 0,54% 0,100% 100%,0 100%);clip-path:polygon(46% 0,54% 0,100% 100%,0 100%);mix-blend-mode:screen;filter:blur(4px)}
+  .quote:not(:first-child){position:relative;z-index:1}
+}
+@media (min-width:1100px) and (prefers-reduced-motion:no-preference){.rvl-l{animation:sway 7s ease-in-out infinite alternate}.rvl-l:nth-child(2){animation-delay:-2.3s}.rvl-l:nth-child(3){animation-delay:-4.6s}}
+</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
@@ -3460,7 +3476,7 @@ body{background:transparent!important}
           <p>«Essen immer frisch, immer warm. Service freundlich, aufmerksam. Cooler Laden, gemütliches Ambiente. Immer wieder gerne»</p>
           <footer><b>Christian</b></footer>
         </blockquote>
-        <blockquote class="quote">
+        <blockquote class="quote"><div class="rvl" aria-hidden="true"><span class="rvl-l"><i></i><svg viewBox="0 0 26 42" focusable="false"><g fill="none" stroke="#ffd28a" stroke-width="1.2" stroke-linejoin="round"><path d="M13 1 25 17 13 41 1 17z"/><path d="M13 1 8.5 17 13 41 17.5 17z"/><path d="M1 17h24"/></g><circle cx="13" cy="19" r="4.2" fill="#ffe7b8"/></svg></span><span class="rvl-l"><i></i><svg viewBox="0 0 26 42" focusable="false"><g fill="none" stroke="#ffd28a" stroke-width="1.2" stroke-linejoin="round"><path d="M13 1 25 17 13 41 1 17z"/><path d="M13 1 8.5 17 13 41 17.5 17z"/><path d="M1 17h24"/></g><circle cx="13" cy="19" r="4.2" fill="#ffe7b8"/></svg></span><span class="rvl-l"><i></i><svg viewBox="0 0 26 42" focusable="false"><g fill="none" stroke="#ffd28a" stroke-width="1.2" stroke-linejoin="round"><path d="M13 1 25 17 13 41 1 17z"/><path d="M13 1 8.5 17 13 41 17.5 17z"/><path d="M1 17h24"/></g><circle cx="13" cy="19" r="4.2" fill="#ffe7b8"/></svg></span></div>
           <p>«Top Essen, Top Service, sehr freundliches Personal.»</p>
           <footer><b>Marcel</b></footer>
         </blockquote>
