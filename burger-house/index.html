@@ -415,6 +415,12 @@ h2.mit-umlaut{padding-top:.36em}
 @media (hover:hover){.sv-pfeil:hover{background:rgba(var(--senf-rgb),.18);box-shadow:0 0 0 5px rgba(var(--senf-rgb),.18)}}
 @media (max-width:1060px){.serviette{width:calc((100% - var(--sp))/2)}}
 @media (max-width:640px){.serviette{width:100%}.servietten-rahmen{padding:0 26px}.sv-pfeil{width:36px;height:36px}}
+/* Telefon: keine Pfeile, nur Wischen und Punkte (Regel 18f) */
+.sv-punkte{display:none}
+@media (max-width:600px){.sv-pfeile{display:none}.servietten-rahmen{padding:0}.serviette{width:calc(100% - 34px)}
+  .sv-punkte{display:flex;justify-content:center;gap:8px;margin-top:2px}
+  .sv-punkte i{width:8px;height:8px;border-radius:50%;background:rgba(var(--senf-rgb),.32);transition:background-color .2s ease,transform .2s ease}
+  .sv-punkte i.an{background:var(--senf);transform:scale(1.25)}}
 
 /* ---------- IDEE 3: Zisch ---------- */
 .zisch-wort{position:absolute;left:58%;top:14%;z-index:4;pointer-events:none;font-family:"Bowlby One SC",sans-serif;font-size:34px;color:#FFFDF8;-webkit-text-stroke:0;text-shadow:2px 2px 0 var(--grill),3px 3px 0 var(--grill),-1px -1px 0 var(--grill),1px -1px 0 var(--grill),-1px 1px 0 var(--grill);transform-origin:50% 100%;animation:zischWort 1.3s cubic-bezier(.3,1.4,.5,1) both}
@@ -1391,7 +1397,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     var lastT=performance.now();(function loop(t){if(!drag)return;var dt=Math.min(32,Math.max(1,t-lastT));lastT=t;
       var r2=feld.getBoundingClientRect();
       var tx=Math.max(-30,Math.min(280,(px-r2.left)/k-drag.ox)),ty=Math.max(10,Math.min(240,(py-r2.top)/k-drag.oy));
-      var c=zwang(tx,ty),a=ruhig?1:1-Math.exp(-dt/26);
+      drag.tx=(px-r2.left)/k-drag.ox0;drag.ty=(py-r2.top)/k-drag.oy0;var c=zwang(tx,ty),a=ruhig?1:1-Math.exp(-dt/26);
       if(c.x!==tx||c.y!==ty){drag.ox=Math.max(-30,Math.min(30,drag.ox+(tx-c.x)));drag.oy=Math.max(-108,Math.min(10,drag.oy+(ty-c.y)));}
       else{var rb=1-Math.exp(-dt/240);drag.ox+=(drag.ox0-drag.ox)*rb;drag.oy+=(drag.oy0-drag.oy)*rb;}st.x+=(c.x-st.x)*a;st.y+=(c.y-st.y)*a;
       vx*=Math.exp(-dt/120);
@@ -1412,9 +1418,13 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     if(!drag||(e&&e.pointerId!==drag.id))return;
     try{fry.releasePointerCapture(drag.id);}catch(x){}
     if(abbruch===undefined)abbruch=false;
+    var zx=drag.tx,zy=drag.ty;
     drag=null;fry.classList.remove("zieht");document.documentElement.classList.remove("fry-zieht");
     var schon=drin;drin=null;
-    if(!abbruch&&schon&&st.y>POT[schon].sy-2){abschliessen(schon);}
+    /* seitlich zu einer anderen Sauce gezogen: hinueber heben und dort tunken (nie durch die Schale) */
+    var andere=null;if(!abbruch&&zx!==undefined){var bd=1e9;Object.keys(POT).forEach(function(n){var P=POT[n],dx=Math.abs(zx-(P.cx+VX));if(dx<P.rimRx&&zy>P.rimY-40&&zy<P.rimY+90&&dx<bd){bd=dx;andere=n;}});if(andere===schon)andere=null;}
+    if(andere){eintunken(andere);}
+    else if(!abbruch&&schon&&st.y>POT[schon].sy-2){abschliessen(schon);}
     else{var t=abbruch?null:treffer();
       if(t)eintunken(t);else{busy=true;reise(heimPos(home),function(){busy=false;fry.style.willChange="";},true);}}
     zeichnen();
@@ -1756,6 +1766,10 @@ korbZeigen();
   pf.forEach(function(b){b.addEventListener("click",function(){sv.scrollBy({left:(+b.dataset.r)*schritt(),behavior:ruhig?"auto":"smooth"});});});
   function pfeile(){pf[0].disabled=sv.scrollLeft<4;pf[1].disabled=sv.scrollLeft+sv.clientWidth>=sv.scrollWidth-4;}
   sv.addEventListener("scroll",pfeile,{passive:true});window.addEventListener("resize",pfeile);pfeile();
+  var karten=[].slice.call(sv.querySelectorAll(".serviette")),pk=document.createElement("div");pk.className="sv-punkte";pk.setAttribute("aria-hidden","true");
+  karten.forEach(function(){pk.appendChild(document.createElement("i"));});sv.parentNode.appendChild(pk);
+  function punkte(){var n=0,bd=1e9,l=sv.getBoundingClientRect().left;karten.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-l);if(d<bd){bd=d;n=i;}});if(sv.scrollLeft+sv.clientWidth>=sv.scrollWidth-4)n=karten.length-1;[].forEach.call(pk.children,function(p,i){p.classList.toggle("an",i===n);});}
+  sv.addEventListener("scroll",punkte,{passive:true});window.addEventListener("resize",punkte);punkte();
   sv.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){sv.scrollBy({left:schritt(),behavior:"smooth"});e.preventDefault();}if(e.key==="ArrowLeft"){sv.scrollBy({left:-schritt(),behavior:"smooth"});e.preventDefault();}});
 })();
 })();
