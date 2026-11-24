@@ -1287,9 +1287,9 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
   var schatten=document.createElement("div");schatten.className="fry-schatten";feld.appendChild(schatten);
   /* Fritte: 22 breit, 108 lang; Spitze (unten Mitte) bei 11/108, im SVG +2 Rand */
   var FW=26,FH=112,TX=13,TY=110,VX=10;/* sichtbare Spitze liegt VX links/oben von st */
-  var POT={ketchup:{cx:78,sy:133,rx:45,ry:9.5,rimY:132,rimRx:54,tief:14,vorn:true,fill:"#C8261A",welle:"wellenK",sauce:"sauceK",lean:-12},
-           mayo:{cx:190,sy:151,rx:34,ry:7,rimY:150,rimRx:42,tief:13,vorn:true,fill:"#F1E2A6",welle:"wellenM",sauce:"sauceM",lean:11},
-           bbq:{cx:143,sy:101,rx:27,ry:6,rimY:100,rimRx:34,tief:11,vorn:false,fill:"#6B2B14",welle:"wellenB",sauce:"sauceB",lean:-4}};
+  var POT={ketchup:{cx:78,sy:133,rx:45,ry:9.5,rimY:132,rimRx:54,tief:34,vorn:true,fill:"#C8261A",welle:"wellenK",sauce:"sauceK",lean:-12},
+           mayo:{cx:190,sy:151,rx:34,ry:7,rimY:150,rimRx:42,tief:30,vorn:true,fill:"#F1E2A6",welle:"wellenM",sauce:"sauceM",lean:11},
+           bbq:{cx:143,sy:101,rx:27,ry:6,rimY:100,rimRx:34,tief:26,vorn:false,fill:"#6B2B14",welle:"wellenB",sauce:"sauceB",lean:-4}};
   var REIHE=["mayo","ketchup","bbq"],FOLGE={ketchup:"mayo",mayo:"bbq",bbq:"ketchup"};
   var home="ketchup",st={x:0,y:0,rot:0,sc:1},k=1,busy=false,drag=null,raf=0,drin=null,ziel3=null;
   var alt={f:"#C8261A",l:0},neu={f:"#C8261A",l:14};
@@ -1375,7 +1375,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     }
     for(var i=0;i<REIHE.length;i++){var n=REIHE[i];P=POT[n];m=P.cx+VX;var dx=Math.abs(tx-m);
       var w2=Math.max(3,P.rx-14);
-      if(dx<=P.rx*.82&&ty>=P.sy-1&&(P.vorn||ty<=P.sy+P.tief+22||st.y<P.sy)){drin=n;welle(P);return {x:Math.max(m-w2,Math.min(m+w2,tx)),y:Math.min(ty,P.sy+P.tief)};}
+      if(dx<=P.rx*.82&&ty>=P.sy-1&&(P.vorn||ty<=P.sy+33||st.y<P.sy)){drin=n;welle(P);return {x:Math.max(m-w2,Math.min(m+w2,tx)),y:Math.min(ty,P.sy+P.tief)};}
       if(dx<=P.rimRx+3&&ty>P.rimY-5&&(P.vorn||(st.y<=P.rimY-3&&ty<P.rimY+40)))return {x:tx,y:P.rimY-5};
     }
     return {x:tx,y:ty};
