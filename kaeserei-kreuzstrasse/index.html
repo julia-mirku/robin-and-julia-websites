@@ -120,7 +120,7 @@ html.bar-off .entwurf{transform:translateY(-102%)}
 
 /* ===== Sektionen allgemein ===== */
 section{position:relative}
-.sec{padding:clamp(28px,3.7vw,54px) 0}
+.sec{padding:clamp(22px,3.1vw,44px) 0}
 .fade-top:before{content:"";position:absolute;left:0;right:0;top:-80px;height:80px;pointer-events:none}
 .rv{opacity:0;transform:translateY(30px)}
 .rv.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -389,7 +389,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 .stop.on{border-color:var(--rind2)}.stop.on span{color:var(--rind2);font-weight:700}
 @media (hover:hover){.stop:hover span{color:var(--ink)}}
 /* Block 2: Medaillen über dem durchscheinenden Käsekeller */
-.preise{position:relative;overflow:hidden;padding:clamp(56px,7vw,110px) 0;min-height:min(86vh,760px);display:flex;align-items:center}
+.preise{position:relative;overflow:hidden;padding:clamp(30px,2.6vw,40px) 0;display:flex;align-items:center}
 .kbg{position:absolute;inset:0;z-index:0}
 .kbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%}
 .kbg .whole{position:absolute;inset:0}
@@ -594,7 +594,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;background:url(img/putz
 const html=document.documentElement, Q=s=>document.querySelector(s), QA=s=>[...document.querySelectorAll(s)];
 const params=new URLSearchParams(location.search);
 const heroEl=Q('#hero');
-QA('img').forEach(i=>{ const h=()=>{i.style.visibility='hidden'; const w=i.closest('.weg'); if(w) w.classList.add('noimg')}; if(i.complete&&!i.naturalWidth&&i.getAttribute('src')) h(); i.addEventListener('error',h); });
+QA('img').forEach(i=>{ const h=()=>{i.style.visibility='hidden'; const w=i.closest('.weg'); if(w) w.classList.add('noimg'); const bx=i.closest('.famimg,.pot'); if(bx&&!bx.querySelector('img:not([style*=hidden])')) bx.style.display='none'}; if(i.complete&&!i.naturalWidth&&i.getAttribute('src')) h(); i.addEventListener('error',h); });
 
 /* --- Entwurf-Leiste (Regel 22) --- */
 const bar=Q('#entwurf'), hdr=Q('#hdr');
