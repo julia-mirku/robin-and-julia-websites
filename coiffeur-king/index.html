@@ -1061,6 +1061,24 @@ html .strip-x{overflow-y:hidden!important;padding-top:10px!important;padding-bot
 @media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
 @media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
 @media (min-width:601px){.mk-hinweis{font-size:12px;letter-spacing:.02em}} @media (max-width:600px){.mk-hinweis{font-family:'Archivo',system-ui,sans-serif}}
+
+/* 24.11 Abstände enger; Salon-Fotostreifen über der Preisliste kürzer */
+html body .prices{background:radial-gradient(ellipse 70% 38% at 50% 55%,rgba(222,186,112,.22),rgba(222,186,112,0) 72%),linear-gradient(to bottom,var(--bg) 0,#14120E 54px,#3A332A 90px,#8E8066 111px,#CFC2A4 126px,#F2EADA 140px,#F2EADA calc(100% - 60px),#CFC2A4 calc(100% - 44px),#6E614B calc(100% - 26px),#1E1A15 calc(100% - 9px),var(--bg) 100%)}
+html body .prices::before{height:140px}
+html body .prices>.wrap{padding-top:150px;padding-bottom:44px}
+html body .crops{padding:8px 0 0}
+html body .reviews>.wrap{padding-top:56px;padding-bottom:32px}
+html body .hours>.wrap{padding-top:16px;padding-bottom:28px}
+html body .contact>.wrap{padding-top:16px;padding-bottom:40px}
+@media (min-width:900px){
+ html body .prices{background:radial-gradient(ellipse 70% 38% at 50% 55%,rgba(222,186,112,.22),rgba(222,186,112,0) 72%),linear-gradient(to bottom,var(--bg) 0,#14120E 70px,#3A332A 105px,#8E8066 124px,#CFC2A4 138px,#F2EADA 150px,#F2EADA calc(100% - 64px),#CFC2A4 calc(100% - 46px),#6E614B calc(100% - 28px),#1E1A15 calc(100% - 10px),var(--bg) 100%)}
+ html body .prices::before{height:150px}
+ html body .prices>.wrap{padding-top:166px;padding-bottom:60px}
+ html body .crops{padding:16px 0 0}
+ html body .reviews>.wrap{padding-top:72px;padding-bottom:52px}
+ html body .hours>.wrap{padding-top:44px;padding-bottom:52px}
+ html body .contact>.wrap{padding-top:44px;padding-bottom:60px}
+}
 </style>
 </head>
 <body>
