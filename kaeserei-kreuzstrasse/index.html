@@ -482,6 +482,9 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 .preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.62),rgba(251,245,232,.52) 50%,rgba(251,245,232,.62)),linear-gradient(90deg,rgba(251,245,232,.9) 0%,rgba(251,245,232,.66) 34%,rgba(251,245,232,.3) 58%,rgba(251,245,232,.36) 100%)!important}
 @media (max-width:1020px){.preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.84) 0%,rgba(251,245,232,.72) 40%,rgba(251,245,232,.5) 70%,rgba(251,245,232,.56) 100%)!important}}
 /*MEDWEICH-END*/
+/* Юля 24.11: Textebene liess Klicks nicht zu den Figuren durch */
+.hero-in,.hero-in .wrap{pointer-events:none}.hero-in .wrap>*{pointer-events:auto}
+
 
 .weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
 .day small{line-height:1.25;text-align:center;display:flex;flex-direction:column;align-items:center}
@@ -728,9 +731,18 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
   setTimeout(()=>heroEl.classList.add('ready'),150);
   figs.forEach((f,i)=>setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700));
   setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); heroEl.classList.add('done');
-    figs.forEach(f=>{ f.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches){ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); } });
+    /* Юля 24.11: jeder Klick/Tap/Hover = nächster neuer Satz, keine Wiederholung bis alle durch */
+    const SAY=[
+      [['Offen?','Mittwoch bis Samstag ab acht – unter der Woche auch abends ab fünf.'],['Wo?','Chrüzstrasse 781 in Degersheim – grad bi de Käserei.'],['Lüüt aa!','071 371 11 16 – Stefan und Franziska säged der gärn, was grad reif isch.'],['Sit 2006','Stefan und Franziska Jud füehred d’Käserei sit em 1. November 2006.'],['S’Lädeli','Sit 2008 gits s’Chäsilädeli diräkt i de Käserei.']],
+      [['Gold!','Unser Appenzeller hat 2008 Gold geholt.'],['Bronze!','2010 hämmer Bronze am World Championship Cheese Contest gholt.'],['Im Chäller','Jede Laib reift bi üs im eigene Chäller.'],['Acht Sorte','8 Chäs s’ganze Jahr – und no saisonali Spezialitäte.'],['Schwarze Wolf','Hesch de Schwarzi Wolf scho probiert?']],
+      [['Grüezi!','Chömed verbii – probiere isch erlaubt!'],['Fondue?','Üsi hausgmachti Fondue-Mischig gits im Lädeli – rund 200 g pro Person.'],['Raclette!','Rächned mit 200 bis 250 g Chäs pro Person.'],['Klosterchäs','De Magdenauer isch en Rahmchäs nach altem Rezept.'],['Mutschli','S’Wolfensberg-Mutschli gits au mit Bärlauch, Thymian oder Basilikum.']]];
+    const idx=[0,0,0], last=[0,0,0];
+    const say=(f,i,klick)=>{ if(klick&&matchMedia('(hover:hover)').matches&&f.classList.contains('show')&&Date.now()-last[i]<450) return; last[i]=Date.now(); idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]]; const b=f.querySelector('.bub');
+      figs.forEach(x=>x.classList.remove('show')); b.innerHTML='<b>'+h+'</b>'+t; void f.offsetWidth; f.classList.add('show'); };
+    figs.forEach((f,i)=>{ f.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches) say(f,i); });
       f.addEventListener('mouseleave',()=>{ if(matchMedia('(hover:hover)').matches) f.classList.remove('show'); });
-      f.addEventListener('click',()=>{ const on=f.classList.contains('show'); figs.forEach(x=>x.classList.remove('show')); if(!on) f.classList.add('show'); }); }); },1300+3*1700+300);
+      f.addEventListener('click',()=>say(f,i,1)); });
+    document.addEventListener('click',e=>{ if(!e.target.closest('.fig')) figs.forEach(x=>x.classList.remove('show')); }); },1300+3*1700+300);
 }
 
 /* --- Reveal --- */
