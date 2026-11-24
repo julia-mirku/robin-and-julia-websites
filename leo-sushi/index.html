@@ -301,7 +301,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 .bar{padding:clamp(90px,11vw,160px) 0;background:radial-gradient(min(60vw,820px) 260px at 50% 250px,rgba(255,95,168,.16),rgba(255,95,168,0) 100%),linear-gradient(180deg,var(--green-main) 0,var(--lila) var(--fade),var(--lila) calc(100% - var(--fade)),var(--fast-schwarz) 100%);position:relative;overflow:hidden}
 .neon{font-family:var(--serif);font-style:italic;font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;font-size:clamp(54px,10vw,150px);line-height:.95;text-align:center;color:#ffd9ea;text-shadow:0 0 6px #ff9fcb,0 0 18px var(--neon),0 0 44px var(--neon),0 0 90px rgba(255,95,168,.6);opacity:.12;letter-spacing:-.01em}
 .neon .g{color:#d9ffe9;text-shadow:0 0 6px #b8ffd8,0 0 18px #33e08a,0 0 44px #33e08a,0 0 90px rgba(51,224,138,.5)}
-.neon.on{animation:flick 1.6s steps(1) forwards}
+.neon.on{animation:flick .8s steps(1) forwards}
 @keyframes flick{0%{opacity:.12}8%{opacity:1}12%{opacity:.2}20%{opacity:1}24%{opacity:.35}30%,100%{opacity:1}}
 .bar .lead{margin:22px auto 0;text-align:center}
 .drinks{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:clamp(40px,6vw,70px)}
@@ -492,7 +492,7 @@ html.g-b .sleeve .band{background:
 
 /* Neon-Ueberzeile (Wortlaut wie bei Leo: Signature Sake Cocktails) */
 .neon-kick{text-align:center;font:600 clamp(13px,1.3vw,16px)/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:#d9ffe9;text-shadow:0 0 6px #33e08a,0 0 16px rgba(51,224,138,.6);margin:0 0 clamp(10px,1.4vw,18px);padding-left:.42em}
-@supports selector(:has(a)){.neon-kick{opacity:.2;transition:opacity .5s 1s}.neon-kick:has(+ .neon.on){opacity:1}}
+@supports selector(:has(a)){.neon-kick{opacity:.2;transition:opacity .4s .3s}.neon-kick:has(+ .neon.on){opacity:1}}
 </style>
 </head>
 <body>
@@ -916,25 +916,11 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   $$(".frame").forEach(f=>fo.observe(f));
   /* Neon «Sake & Cocktails»: beim Herunterscrollen haelt die Seite, bis die Schrift ganz leuchtet (1,7 s).
      Die Schrift steht dabei mittig im sichtbaren Bereich unter der Kopfzeile. Danach sofort frei. */
-  const neon=$("#neon"), hdrEl=$("#hdr"), H=document.documentElement; let nDone=false, nUntil=0, lockY=0, lastY=scrollY, nT=0;
-  window.__jumpAt=0; $$('a[href^="#"]').forEach(a=>a.addEventListener("click",()=>window.__jumpAt=performance.now()));
-  const T=()=>{ const h=hdrEl.getBoundingClientRect().height; return h+(innerHeight-h)/2; };
-  /* Sperre haengt NUR an der Uhr: max. 1,7 s ab Start, nie verlaengert, nur ein einziges Mal pro Besuch. */
-  const live=()=>nUntil>0 && performance.now()<nUntil;
-  const release=()=>{ nUntil=0; clearTimeout(nT); H.style.scrollBehavior=""; };
-  const pin=()=>{ H.style.scrollBehavior="auto"; window.scrollTo(0,lockY); };
-  addEventListener("scroll",()=>{ const y=scrollY, down=y>lastY; lastY=y;
-    if(nUntil){ if(live()) pin(); else release(); return; }
-    if(nDone) return;
-    const r=neon.getBoundingClientRect(), c=r.top+r.height/2, t=T();
-    if(c>t) return;
-    nDone=true; neon.classList.add("on");
-    if(!down || H.classList.contains("locked") || performance.now()-window.__jumpAt<2500 || reduce || document.hidden) return;
-    lockY=Math.round(y+(c-t)); nUntil=performance.now()+1700; nT=setTimeout(release,1700); pin(); },{passive:true});
-  document.addEventListener("visibilitychange",release); addEventListener("blur",release); addEventListener("pagehide",release);
-  const stop=e=>{ if(live()) e.preventDefault(); else if(nUntil) release(); };
-  addEventListener("wheel",stop,{passive:false}); addEventListener("touchmove",stop,{passive:false});
-  addEventListener("keydown",e=>{ if(live()&&["ArrowDown","ArrowUp","PageDown","PageUp"," ","End","Home"].includes(e.key)) e.preventDefault(); });
+  /* Neon «Sake Cocktails»: KEINE Sperre mehr. Es zuendet schnell (0,8 s), sobald es ins untere Drittel kommt –
+     die Seite scrollt mit demselben Wisch einfach weiter (Safari/Trackpad sicher). */
+  const neon=$("#neon"); let lit=false; window.__jumpAt=0;
+  const chk=()=>{ if(lit) return; const r=neon.getBoundingClientRect(); if(r.top+r.height/2 < innerHeight*0.8){ lit=true; neon.classList.add("on"); removeEventListener("scroll",chk); } };
+  addEventListener("scroll",chk,{passive:true}); chk();
 })();
 
 /* ================= Bewertungen ================= */
