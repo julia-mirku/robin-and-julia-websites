@@ -424,13 +424,13 @@ button.rb{cursor:pointer}
 .tb:disabled{opacity:0;pointer-events:none}
 .tb:active:not(:disabled){background:#F8EBDD}
 @media (hover:hover){.tb:not(:disabled):hover{background:#FFF4DC;transform:translateY(-2px);box-shadow:3px 3px 0 var(--soot)}}
-.tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:stretch;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 18px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:flex-start;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 18px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tueten::-webkit-scrollbar{display:none}
 .tuete{flex:0 0 clamp(260px,24vw,304px);display:flex;margin:0;scroll-snap-align:start;opacity:0;transform:translateY(28px) rotate(calc(var(--r)*3));filter:drop-shadow(0 2px 0 rgba(42,29,23,.3)) drop-shadow(0 12px 11px rgba(42,29,23,.15));transition:opacity .5s ease calc(var(--i)*80ms),transform .75s cubic-bezier(.2,.9,.3,1.25) calc(var(--i)*80ms)}
 .tueten.in .tuete{opacity:1;transform:rotate(var(--r))}
 .tueten.settled .tuete{transition:transform .28s ease}
 @media (hover:hover){.tueten.settled .tuete:hover{transform:translateY(-7px) rotate(0deg)}}
-.tp{position:relative;flex:1;display:flex;flex-direction:column;min-height:318px;padding:14px 20px 16px;color:var(--soot);
+.tp{position:relative;flex:1;display:flex;flex-direction:column;padding:14px 20px 14px;color:var(--soot);
   background:linear-gradient(90deg,rgba(96,58,22,.17),rgba(96,58,22,0) 7%,rgba(96,58,22,0) 93%,rgba(96,58,22,.17)),repeating-linear-gradient(91deg,rgba(110,70,30,.055) 0 1px,rgba(110,70,30,0) 1px 6px),linear-gradient(178deg,#ECD6AE,#E1C596 55%,#D8B884);
   -webkit-mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 100%;mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 100%}
 .tp::before{content:"";position:absolute;left:0;right:0;top:0;height:40px;background:linear-gradient(180deg,rgba(96,58,22,.08),rgba(96,58,22,.17));border-bottom:1px solid rgba(96,58,22,.4);box-shadow:0 4px 5px -3px rgba(60,35,10,.5)}
@@ -441,7 +441,7 @@ button.rb{cursor:pointer}
 .stempel .s-rund{font-size:12.5px;font-weight:700}
 .stempel .s-zahl{font-family:var(--f-d);font-size:31px}
 .stempel .s-sterne{font-size:10.5px;letter-spacing:.5px}
-.tp blockquote{position:relative;margin:16px 0 18px;font-size:15.5px;line-height:1.5;font-weight:500}
+.tp blockquote{position:relative;margin:14px 0 12px;font-size:15.5px;line-height:1.5;font-weight:500}
 .tp blockquote.kurz{font-family:var(--f-d);font-weight:400;font-size:21px;line-height:1.24}
 /* englische Stimmen: Original und deutsche Übersetzung liegen übereinander, der Knopf schaltet um (nichts verschiebt sich) */
 .tp blockquote.zwei{display:grid;font-size:15px;line-height:1.46;margin-top:14px}
@@ -451,7 +451,7 @@ button.rb{cursor:pointer}
 .umsch>span{grid-area:1/1;text-decoration:underline;text-underline-offset:3px}
 .tuete:not(.ueb) .u1,.tuete.ueb .u0{visibility:hidden}
 @media (hover:hover){.tueten.settled .umsch:hover{color:var(--terra)}}
-.tlogo{display:block;width:92px;height:auto;margin:auto auto 0;opacity:.5;filter:brightness(.5) saturate(.7);mix-blend-mode:multiply}
+.tlogo{display:block;width:84px;height:auto;margin:4px auto 0;opacity:.5;filter:brightness(.5) saturate(.7);mix-blend-mode:multiply}
 .leer{margin:18px 0}.leer i{display:block;height:10px;border-radius:5px;background:rgba(96,58,22,.17);margin:0 0 12px}.leer i.k{width:56%}
 .leer-n{display:block;width:96px;height:13px;border-radius:6px;background:rgba(96,58,22,.24)}
 .tprog{width:132px;height:3px;border-radius:2px;background:rgba(42,29,23,.15);overflow:hidden}
