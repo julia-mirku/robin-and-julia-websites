@@ -196,6 +196,8 @@ h2 i{font-weight:400;color:var(--gold2)}
 .bnav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px}
 .bnav button{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;border:1.5px solid rgba(201,164,92,.4);font-weight:700;font-size:14px;color:#e2d9c6;transition:border-color .2s,color .2s,background .2s,opacity .2s}
 .bnav button:disabled{opacity:.3;cursor:default}
+.bnav button{white-space:nowrap}
+@media (max-width:560px){.bnav.end .dots{display:none}.bnav button{padding:9px 12px}}
 @media (hover:hover){.bnav button:not(:disabled):hover{border-color:var(--acc);color:var(--acc)}}
 .dots{display:flex;gap:6px}.dots i{width:7px;height:7px;border-radius:50%;background:rgba(244,236,220,.25);transition:background .2s,transform .2s}.dots i.on{background:var(--acc);transform:scale(1.25)}
 .knote{margin-top:12px;font-size:12.5px;color:#8f887a;display:flex;flex-wrap:wrap;gap:4px 18px}
@@ -295,7 +297,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 
 /* ---------- Bar ---------- */
 :root{--fade:clamp(120px,15vw,220px);--lila:#2a0f2b;--fast-schwarz:#0b070b}
-.bar{padding:clamp(90px,11vw,160px) 0;background:radial-gradient(min(60vw,820px) 260px at 50% 330px,rgba(255,95,168,.16),rgba(255,95,168,0) 100%),linear-gradient(180deg,var(--green-main) 0,var(--lila) var(--fade),var(--lila) calc(100% - var(--fade)),var(--fast-schwarz) 100%);position:relative;overflow:hidden}
+.bar{padding:clamp(90px,11vw,160px) 0;background:radial-gradient(min(60vw,820px) 260px at 50% 250px,rgba(255,95,168,.16),rgba(255,95,168,0) 100%),linear-gradient(180deg,var(--green-main) 0,var(--lila) var(--fade),var(--lila) calc(100% - var(--fade)),var(--fast-schwarz) 100%);position:relative;overflow:hidden}
 .neon{font-family:var(--serif);font-style:italic;font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 144;font-size:clamp(54px,10vw,150px);line-height:.95;text-align:center;color:#ffd9ea;text-shadow:0 0 6px #ff9fcb,0 0 18px var(--neon),0 0 44px var(--neon),0 0 90px rgba(255,95,168,.6);opacity:.12;letter-spacing:-.01em}
 .neon .g{color:#d9ffe9;text-shadow:0 0 6px #b8ffd8,0 0 18px #33e08a,0 0 44px #33e08a,0 0 90px rgba(51,224,138,.5)}
 .neon.on{animation:flick 1.6s steps(1) forwards}
@@ -462,6 +464,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s,transform 1s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.dish{opacity:1;transform:none}}
+
+/* ---------- Abstaende zwischen den Bloecken etwa halbiert (Farbuebergaenge bleiben, liegen jetzt unter dem Titel) ---------- */
+.lieb{padding-top:clamp(48px,6vw,84px);padding-bottom:clamp(30px,4vw,56px)}
+.plan{padding-top:clamp(44px,5vw,72px);padding-bottom:clamp(44px,5vw,72px)}
+.salon{padding-top:clamp(46px,5.5vw,80px);padding-bottom:clamp(46px,5.5vw,80px)}
+.bar{padding-top:clamp(50px,6vw,84px);padding-bottom:clamp(50px,6vw,84px)}
+.rev{padding-top:clamp(46px,5.5vw,78px);padding-bottom:calc(clamp(30px,3vw,46px) + 40px)}
+.visit{padding-top:clamp(20px,2.5vw,36px)}
 </style>
 </head>
 <body>
@@ -535,7 +545,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       <button class="f" data-f="t" aria-pressed="false">Tempura</button>
     </div>
     <div class="noren" id="tabs" role="tablist"></div>
-    <div class="board2" id="board"><div class="bhead"><span class="stripe"></span><h3 id="bt"></h3><small id="bu"></small><span class="pg" id="pg"></span></div><div class="sheetwrap" id="sw"><div class="sheet" id="sheet"></div></div><div class="bnav"><button type="button" id="prev" aria-label="Vorherige Seite"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>Zurück</button><span class="dots" id="dots"></span><button type="button" id="next" aria-label="Nächste Seite">Weiter<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
+    <div class="board2" id="board"><div class="bhead"><span class="stripe"></span><h3 id="bt"></h3><small id="bu"></small><span class="pg" id="pg"></span></div><div class="sheetwrap" id="sw"><div class="sheet" id="sheet"></div></div><div class="bnav"><button type="button" id="prev" aria-label="Vorherige Seite"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>Zurück</button><span class="dots" id="dots"></span><button type="button" id="next" aria-label="Nächste Seite"><span id="nxl">Weiter</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m9 18 6-6-6-6"/></svg></button></div></div>
     <div class="knote"><span>Alle Preise in Fr. inkl. 8,1 % MwSt.</span><span>Lachs: Schottland (Zucht) · Thunfisch: Pazifik (Wildfang) · Aal: Neuseeland (Wildfang)</span><span>Allergien? Bitte beim Bestellen sagen.</span></div>
   </div>
 </section>
@@ -817,9 +827,18 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
     $("#pg").textContent=pages.length>1?`Seite ${page+1} / ${pages.length}`:"";
     sheet.innerHTML=p.length?p.map(([it,acc])=>row(it,acc)).join(""):`<p class="empty">Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.</p>`;
     sheet.classList.remove("in-r","in-l","drop"); void sheet.offsetWidth; if(dir) sheet.classList.add(dir);
-    $("#prev").disabled=page===0; $("#next").disabled=page>=pages.length-1;
+    /* Blaettern laeuft durch die ganze Karte: am Ende einer Kategorie geht es in die naechste */
+    const one=mode==="search"&&pages.length<2; $("#prev").disabled=one; $("#next").disabled=one;
+    const nc=KARTE[(KARTE.indexOf(cat)+1)%KARTE.length];
+    const end=mode==="cat"&&page>=pages.length-1; $("#nxl").textContent=end?"Weiter: "+nc.t:"Weiter"; $(".bnav").classList.toggle("end",end);
     $("#dots").innerHTML=pages.length>1?pages.map((_,i)=>`<i class="${i===page?"on":""}"></i>`).join(""):""; }
-  const go=d=>{ const np=page+d; if(np<0||np>=pages.length) return; page=np; paint(d>0?"in-r":"in-l"); };
+  const go=d=>{ const np=page+d, dir=d>0?"in-r":"in-l";
+    if(np>=0&&np<pages.length){ page=np; paint(dir); return; }
+    if(mode==="search"){ if(pages.length<2) return; page=(np+pages.length)%pages.length; paint(dir); return; }
+    const i=(KARTE.indexOf(cat)+d+KARTE.length)%KARTE.length; cat=KARTE[i];
+    const tb=$$(".nren"); tb.forEach(t=>t.setAttribute("aria-selected",+t.dataset.i===i));
+    const b=tb[i], tw=$("#tabs"); if(b&&tw.scrollWidth>tw.clientWidth) tw.scrollTo({left:b.offsetLeft-(tw.clientWidth-b.offsetWidth)/2,behavior:"smooth"});
+    page=0; build(); page=d>0?0:pages.length-1; paint(dir); };
   $("#prev").onclick=()=>go(-1); $("#next").onclick=()=>go(1);
   /* Wischen: nur waagrecht blaettert, senkrecht scrollt die Seite */
   let sx=null,sy=0; sw.addEventListener("pointerdown",e=>{ sx=e.clientX; sy=e.clientY; },{passive:true});
@@ -970,7 +989,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
   const D={
 "Leo – nach oben":"Leo – back to top","Hauptmenü":"Main menu","Lieblinge":"Favourites","Karte":"Menu","Platten":"Platters",
 "Sushi-Platte auf Schiefer im warmen Licht einer Tischlampe bei Leo":"Sushi platter on slate in the warm light of a table lamp at Leo",
-"Licht einschalten":"Switch the light on","Scrollen – das Licht geht an":"Scroll – the light comes on",
+"Licht einschalten":"Switch the light on",
 "Frisches Sushi, Ramen und Sake-Cocktails in unserem Salon an der Engelgasse 2 – mitten in der St. Galler Altstadt.":"Fresh sushi, ramen and sake cocktails in our salon on Engelgasse 2 – right in the heart of St. Gallen’s old town.",
 "Tisch reservieren":"Book a table","Zur Karte":"See the menu","Leos":"Leo’s",
 "Auf schwarzem Schiefer serviert – mit den Nummern unserer Küche.":"Served on black slate – with our kitchen numbers.",
@@ -1062,7 +1081,8 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     [/^Heute · (\S+)$/, (m,a)=>"Today · "+(DAY[a]||a)],
     [/^(Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag)$/, (m,a)=>DAY[a]],
     [/^Google · vor (\d+) (\S+)$/, (m,n,u)=>"Google · "+n+" "+(UNIT[u]||u)+" ago"],
-    [/^Anrufen: (.+)$/, (m,a)=>"Call: "+a]
+    [/^Anrufen: (.+)$/, (m,a)=>"Call: "+a],
+    [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)]
   ];
   const tr=s=>{ if(D[s]!=null) return D[s]; if(s.includes(" – ")||ING[s]){ const x=desc(s); if(x) return x; }
     for(const [re,f] of R){ const m=s.match(re); if(m) return f(...m); } return null; };
