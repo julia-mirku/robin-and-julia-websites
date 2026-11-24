@@ -494,6 +494,10 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
 #bewertungen.sec{background:transparent!important}
 /* Julia 24.11: goldene Rahmenlinie im letzten Block etwas grösser – mehr Luft zum Inhalt, Linie gleich */
 .pane{padding:clamp(30px,4.6svh,70px) clamp(30px,5.2vw,76px)}
+/* Holly 24.11: Kopfzeile beim Scrollen dicht, über allen Ebenen; darunter weicher Auslauf statt harter Kante */
+.top{z-index:60}
+.top.scrolled{background:var(--pearl);backdrop-filter:none;-webkit-backdrop-filter:none}
+.top.scrolled::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px;background:linear-gradient(var(--pearl),rgba(250,248,248,0));pointer-events:none}
 /* Julia 23.11 23:40: Tablet mit Touch wie Telefon – keine Pfeile, Wischen + Punkte (18f) */
 @media (hover:none) and (pointer:coarse){.carousel{padding-inline:0}.carousel .car-btn{display:none}}
 /* Julia 22.11 21:46: Logo im untersten Block etwas schneller */
