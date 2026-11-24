@@ -802,9 +802,18 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,.v-mapimg:focus-vi
 .wk-info svg{transition:filter .25s ease,transform .25s ease}
 @media (hover:hover) and (pointer:fine){.wk-info li:hover svg{filter:drop-shadow(0 0 6px rgba(207,169,92,.7));transform:scale(1.08)}}
 @media (prefers-reduced-motion:reduce){.wk-bar,.wk-zu::before{transform:none!important;transition:none!important}}
+
+/* 24.11 Plaschke «Entwurf» über der Kopfzeile (Regel 22) */
+.mk-hinweis{position:relative;z-index:60;display:block;background:var(--housing,#26303B);color:#F4F6F8;border-bottom:1px solid var(--slit,#0B0F13);font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:13px;line-height:1.4;text-align:center;padding:7px 16px;max-height:90px;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1),padding .5s cubic-bezier(.2,.7,.2,1),opacity .35s}
+.mk-hinweis i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--housing-text,#AFC0D6);margin-right:8px;vertical-align:1px}
+.mk-hinweis.weg{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-width:0}
+@media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
+@media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
+@media (min-width:601px){.mk-hinweis{font-size:12px;letter-spacing:.01em}} @media (max-width:600px){.mk-hinweis{font-family:'Plus Jakarta Sans',system-ui,sans-serif}} html body .top{top:auto}
 </style>
 </head>
 <body>
+<div class="mk-hinweis" id="mk-hinweis" role="note" lang="de"><i aria-hidden="true"></i>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <div class="draft" aria-hidden="true">Entwurf – nur zur Ansicht</div>
 
 <header class="top">
