@@ -436,8 +436,8 @@ body:before{background:url(img/kaesetextur.webp) 0 0/720px 380px repeat;opacity:
 .karte{position:absolute;inset:0;display:block;cursor:pointer}
 .karte img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 @media (hover:hover){.karte:hover img{transform:scale(1.04)}}
-.pin{position:absolute;left:50%;top:50%;width:64px;height:64px;transform:translate(-30%,-68%);filter:drop-shadow(0 6px 6px rgba(74,46,22,.35));transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
-@media (hover:hover){.karte:hover .pin{transform:translate(-30%,-78%) rotate(-6deg)}}
+.pin{position:absolute;left:50%;top:50%;width:46px;height:61px;transform:translate(-50%,-100%);filter:drop-shadow(0 6px 6px rgba(74,46,22,.35));transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+@media (hover:hover){.karte:hover .pin{transform:translate(-50%,-112%)}}
 .mapcard{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
 .mapcard .btn{height:42px;padding:0 16px;font-size:15px;margin-top:10px;color:#fff!important}
 @media (max-width:1020px){.mapbox{height:auto;min-height:380px}}
@@ -600,7 +600,7 @@ body:before{background:url(img/kaesetextur.webp) 0 0/720px 380px repeat;opacity:
     </div>
     <div class="mapbox rv">
       <a class="karte" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener" aria-label="Route zur Käserei Kreuzstrasse planen"><img src="img/karte.svg" alt="Karte: Käserei Kreuzstrasse, Chrüzstrasse 781, Degersheim" loading="lazy">
-        <span class="pin" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M6 44 L56 22 L56 44 Z" fill="#F2C766" stroke="#7A4E25" stroke-width="3" stroke-linejoin="round"/><path d="M6 44 L56 22 L50 18 L4 39 Z" fill="#E3A72F" stroke="#7A4E25" stroke-width="3" stroke-linejoin="round"/><circle cx="40" cy="35" r="3.5" fill="#d39b2c"/><circle cx="48" cy="39" r="2.5" fill="#d39b2c"/><circle cx="30" cy="40" r="2.2" fill="#d39b2c"/></svg></span></a>
+        <span class="pin" aria-hidden="true"><svg viewBox="0 0 48 64"><defs><radialGradient id="pinK" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FBDD8A"/><stop offset=".6" stop-color="#F2C766"/><stop offset="1" stop-color="#E3A72F"/></radialGradient><radialGradient id="pinL" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#B97F1E"/><stop offset="1" stop-color="#D9A33A"/></radialGradient></defs><path d="M24 61C24 61 5 37.5 5 23.5A19 19 0 1 1 43 23.5C43 37.5 24 61 24 61Z" fill="url(#pinK)" stroke="#7A4E25" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="23" r="7.2" fill="url(#pinL)" stroke="#C48A26" stroke-width="1"/><circle cx="12.5" cy="17" r="2.6" fill="url(#pinL)"/><circle cx="35" cy="14" r="2" fill="url(#pinL)"/><circle cx="35.5" cy="31" r="2.8" fill="url(#pinL)"/><circle cx="15" cy="33" r="1.8" fill="url(#pinL)"/><circle cx="24" cy="44" r="2.1" fill="url(#pinL)"/><circle cx="21" cy="9" r="1.5" fill="url(#pinL)"/></svg></span></a>
       <div class="mapcard"><b>Käserei Kreuzstrasse</b><span>Chrüzstrasse 781 · 9113 Degersheim</span><a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>Route planen</a></div>
     </div>
   </div>
