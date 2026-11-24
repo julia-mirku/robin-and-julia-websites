@@ -709,7 +709,7 @@ const zr=document.getElementById('zeit'),jE=document.getElementById('jahr'),jT=d
 const fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
 const hp=document.getElementById('hPrev'),hn=document.getElementById('hNext');
 /* Kreuzblende statt Hineinschieben (Julia №121): alle Jahre/Texte/Schilder liegen übereinander, nur Deckkraft wechselt */
-const FADE=600,DAUER=1500;/* ms: Blende; Fahrzeit pro Jahr, durchgehend ohne Halt (Julia №131) */
+const FADE=600,DAUER=1100;/* ms: Blende; Fahrzeit pro Jahr, durchgehend ohne Halt (Julia №131; «noch etwas schneller» → 1,1 s) */
 document.getElementById('haus').style.setProperty('--fade',FADE+'ms');
 jE.classList.add('blende');jT.classList.add('blende');jE.innerHTML=J.map(r=>'<span class="'+(r[0]>=2005?'y5':'y0')+'">'+r[0]+'</span>').join('');jT.innerHTML=J.map(r=>'<span>'+r[2]+'</span>').join('');
 const SN=[...new Set(J.map(r=>r[1]))];sch.innerHTML=SN.map(n=>'<text class="schildtxt" x="240" y="203" text-anchor="middle" font-size="'+(n.length>15?15:17)+'" fill="#3A2522" opacity="0">'+n+'</text>').join('');
