@@ -665,9 +665,18 @@ main{background:var(--nacht)}
   .tor-lauf .tor-leiste .schild span{font-size:15px}
   .hero.hero-text .text{padding:22px 0 30px}
 }
+
+/* 24.11 Plaschke «Entwurf» über der Kopfzeile (Regel 22) */
+.mk-hinweis{position:relative;z-index:60;display:block;background:#1C1E21;color:#F2F1EE;border-bottom:1px solid #2A2D31;font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:500;font-size:13px;line-height:1.4;text-align:center;padding:7px 16px;max-height:90px;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1),padding .5s cubic-bezier(.2,.7,.2,1),opacity .35s}
+.mk-hinweis i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--orange,#EA5D2E);margin-right:8px;vertical-align:1px}
+.mk-hinweis.weg{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-width:0}
+@media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
+@media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
+
 </style>
 </head>
 <body>
+<div class="mk-hinweis" id="mk-hinweis" role="note" lang="de"><i aria-hidden="true"></i>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <script>document.documentElement.classList.replace('no-js','js')</script>
 
 <header class="kopf">
@@ -1422,5 +1431,8 @@ waehleOrt(navi.querySelector('.ort-k'));
 setInterval(zeigen,30000);
 })();
 </script>
+<script>/* Plaschke: beim ersten Scrollversuch fährt sie weg (die Seite steht hier, bis das Tor offen ist) */
+(function(){var h=document.getElementById('mk-hinweis');if(!h)return;var fertig=false;function weg(){if(fertig)return;fertig=true;h.classList.add('weg');setTimeout(function(){window.dispatchEvent(new Event('resize'));},560);}
+['wheel','touchmove','keydown'].forEach(function(t){window.addEventListener(t,weg,{passive:true});});window.addEventListener('scroll',function(){if((window.scrollY||0)>2)weg();},{passive:true});})();</script>
 </body>
 </html>
