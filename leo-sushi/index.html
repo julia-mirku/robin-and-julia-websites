@@ -706,6 +706,13 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
    radial-gradient(circle at 0 100%,transparent 12px,rgba(232,207,143,.24) 13px,transparent 14px) 0 0/28px 14px,
    radial-gradient(circle at 14px 100%,transparent 12px,rgba(232,207,143,.24) 13px,transparent 14px) 0 7px/28px 14px,
    linear-gradient(115deg,#0f2a1d 0%,#1d4a34 36%,#2c5a3c 50%,#8a6a2c 74%,#d8b866 100%) 55% 0/280% 100%}
+/* Register 24.11: Sprung ueber «Karte» setzt den ganzen Block in den Bildschirm (Titel knapp unter der Kopfzeile) */
+#karte{scroll-margin-top:calc(var(--hdr) - 52px)}
+/* Adresse in der durchsichtigen Kopfzeile auch ueber hellen Flaechen lesbar */
+.hdr .brand, .hdr .brand *, .hdr .addr, .hdr .addr *{text-shadow:0 1px 8px rgba(0,0,0,.8),0 0 2px rgba(0,0,0,.6)}
+/* dreistellige Kuechennummern auf einer Zeile */
+.sheet .row{grid-template-columns:58px 1fr auto}.sheet .rn{white-space:nowrap}
+@media (max-width:760px){.sheet .row{grid-template-columns:52px 1fr auto}}
 </style>
 </head>
 <body>
@@ -1394,13 +1401,18 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 
   const H=document.documentElement, TITLE={de:document.title,en:"Leo · Sushi Bar St. Gallen – Sushi, Ramen & Cocktails on Engelgasse 2"};
   const btns=[...document.querySelectorAll(".lang button")];
+  const held=[]; addEventListener("resize",()=>{ held.forEach(e=>e.style.minHeight=""); held.length=0; });
   function set(l,keep){
     if(l!=="en") l="de"; if(l===lang&&keep!=="init") return;
     /* Ankerpunkt merken, damit nach dem Umschalten nichts springt */
     let anc=null, top0=0; const hh=($("#hdr")||{}).offsetHeight||0;
-    if(keep!=="init" && scrollY>0){ anc=[...document.querySelectorAll("main img, main h2, main h3, main .frame, main .board2, main .day, main .dish, main .sleeve, footer h4")].find(e=>{ const r=e.getBoundingClientRect(); return r.width>0 && r.top>=hh && r.top<innerHeight; })
+    if(keep!=="init" && scrollY>0){ anc=[...document.querySelectorAll("main *, footer *")].find(e=>{ if(e.children.length && !e.matches("img,button,p,h2,h3,h4,li,.row,.ph,output")) return false; const r=e.getBoundingClientRect(); return r.width>0 && r.height>0 && r.top>=hh && r.top<innerHeight; })
       || document.elementFromPoint(innerWidth/2, hh+Math.min(140,(innerHeight-hh)/3)); if(anc) top0=anc.getBoundingClientRect().top; }
+    /* Texte, die in der anderen Sprache kuerzer werden, behalten ihre Hoehe – so rutscht darunter nichts */
+    held.forEach(e=>e.style.minHeight=""); held.length=0;
+    const tx=keep==="init"?[]:[...document.querySelectorAll("main *, footer *")].filter(e=>!e.closest("#sheet,.sheet")&&getComputedStyle(e).display!=="inline").map(e=>[e,e.getBoundingClientRect().height]);
     lang=l; walk(document.body); H.lang=l==="en"?"en-GB":"de-CH"; document.title=TITLE[l];
+    tx.forEach(([e,h0])=>{ if(e.getBoundingClientRect().height<h0-1){ e.style.minHeight=h0+"px"; held.push(e); } });
     btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
     if(anc&&anc.isConnected){ const d=anc.getBoundingClientRect().top-top0; if(Math.abs(d)>0.5){ H.style.scrollBehavior="auto"; window.scrollBy(0,d); H.style.scrollBehavior=""; } }
     try{ localStorage.setItem("leo-lang",l); }catch(_){}
