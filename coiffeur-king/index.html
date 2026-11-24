@@ -1053,9 +1053,18 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
 html .name .one{filter:drop-shadow(0 0 6px var(--stage-glow)) drop-shadow(0 0 14px var(--stage-glow)) drop-shadow(0 2px 4px rgba(0,0,0,.7)) drop-shadow(0 6px 18px rgba(0,0,0,.55))}
 /* Juli 23.11: Galerie scrollt nicht nach oben/unten, Rahmen immer ganz sichtbar; Mausrad blaettert die Seite */
 html .strip-x{overflow-y:hidden!important;padding-top:10px!important;padding-bottom:14px!important;overscroll-behavior-y:auto}
+
+/* 24.11 Plaschke «Entwurf» über der Kopfzeile (Regel 22) */
+.mk-hinweis{position:relative;z-index:60;display:block;background:var(--band,#1F3A2E);color:var(--band-ink,#F1ECE2);border-bottom:1px solid var(--band-line,rgba(241,236,226,.28));font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;font-size:13px;line-height:1.4;text-align:center;padding:7px 16px;max-height:90px;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1),padding .5s cubic-bezier(.2,.7,.2,1),opacity .35s}
+.mk-hinweis i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc,#C8A15A);margin-right:8px;vertical-align:1px}
+.mk-hinweis.weg{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-width:0}
+@media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
+@media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
+@media (min-width:601px){.mk-hinweis{font-size:12px;letter-spacing:.02em}} @media (max-width:600px){.mk-hinweis{font-family:'Archivo',system-ui,sans-serif}}
 </style>
 </head>
 <body>
+<div class="mk-hinweis" id="mk-hinweis" role="note" lang="de"><i aria-hidden="true"></i>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <div class="page" id="top">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="gold-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A6828"/><stop offset=".22" stop-color="#EBCB82"/><stop offset=".42" stop-color="#A97F36"/><stop offset=".58" stop-color="#F7E4AA"/><stop offset=".78" stop-color="#B98F45"/><stop offset="1" stop-color="#E5C57C"/></linearGradient></defs></svg>
 
