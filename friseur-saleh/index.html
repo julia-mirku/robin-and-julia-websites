@@ -65,7 +65,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero{padding:34px 0 30px}
 .hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:44px;align-items:center;min-height:calc(100svh - 68px - 34px - 64px);max-height:760px}
 .kicker{font-family:"Monsieur La Doulaise",cursive;font-size:44px;line-height:1;color:var(--kupfer2);margin-bottom:6px}
-.bam{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(46px,6.4vw,92px);line-height:.92;letter-spacing:-.02em;display:flex;flex-direction:column;cursor:default}
+.bam{font-family:Syne,sans-serif;font-weight:800;font-size:clamp(44px,5.6vw,84px);line-height:.92;letter-spacing:-.02em;display:flex;flex-direction:column;cursor:default}
 .bam .ln{display:flex;white-space:nowrap}
 .hero .wrap>div{min-width:0}
 .bam .s{display:inline-block;opacity:0;transform:translateY(.5em) scale(.9);color:var(--wand)}
@@ -95,10 +95,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* hero B */
 .heroB{display:none;position:relative;height:calc(100svh - 68px - 34px);min-height:560px;max-height:860px;overflow:hidden}
-.heroB img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 45%}
-.heroB::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,21,20,.95) 0%,rgba(22,21,20,.82) 34%,rgba(22,21,20,.15) 70%,rgba(22,21,20,0)),linear-gradient(0deg,var(--granit) 0%,rgba(22,21,20,0) 22%)}
+.heroB img{position:absolute;top:0;bottom:0;right:0;left:34%;width:66%;height:100%;object-fit:cover;object-position:50% 45%}
+.heroB::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--granit) 0%,var(--granit) 34%,rgba(22,21,20,.55) 44%,rgba(22,21,20,0) 58%),linear-gradient(0deg,var(--granit) 0%,rgba(22,21,20,0) 22%)}
 .heroB .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center}
-.heroB .bam{font-size:clamp(46px,6vw,88px);max-width:640px}
+.heroB .bam{font-size:clamp(40px,4.6vw,74px)}
 body.b .hero{display:none} body.b .heroB{display:block}
 
 /* sections */
@@ -260,7 +260,7 @@ footer button{color:var(--wand2);text-decoration:underline;text-underline-offset
   .facts .fact:last-child{grid-column:1/-1}
   .heroimg{aspect-ratio:4/3.4;border-radius:22px}
   .heroB{height:auto;min-height:0;padding:0 0 30px}
-  .heroB img{position:relative;height:300px}
+  .heroB img{position:relative;left:0;width:100%;height:300px}
   .heroB::after{background:linear-gradient(0deg,var(--granit) 45%,rgba(22,21,20,0) 62%)}
   .heroB .wrap{margin-top:-40px}.heroB .kicker{text-shadow:0 2px 14px rgba(0,0,0,.8)}
   section{padding:46px 0}
@@ -327,12 +327,13 @@ footer button{color:var(--wand2);text-decoration:underline;text-underline-offset
     <div class="wrap">
       <div class="kicker">Friseursalon Saleh</div>
       <h1 class="bam"><span class="ln"><span class="s h">#BA</span><span class="s">BA</span><span class="s">BA</span></span><span class="ln"><span class="s boom">BAAAM</span></span></h1>
-      <p class="lead">Damensalon, Barbershop „The Saleh Brothers“, Balayage und Extensions – in der <b>Gartenstraße 77, Ravensburg</b>.</p>
+      <p class="lead">Damensalon, Barbershop „The Saleh Brothers“, Balayage und Extensions – alles unter einem Dach in Ravensburg.</p>
       <div class="cta">
         <a class="call" href="tel:+4975156886645">0751 56 88 66 45</a>
         <a class="ghost" href="#beratung">Kostenlose Beratung</a>
       </div>
       <div class="facts">
+        <a class="fact" href="https://maps.google.com/?q=Gartenstra%C3%9Fe+77,+88212+Ravensburg" target="_blank" rel="noopener"><strong>Gartenstraße 77</strong>88212 Ravensburg</a>
         <div class="fact js-today"><strong><span class="dot"></span><span class="st">Heute geöffnet</span></strong><span class="hrs">Di – Fr 9–18 · Sa 8–14</span></div>
         <a class="fact" href="#stimmen"><strong><span class="stars">★★★★★</span> 4,8</strong>414 Google-Bewertungen</a>
       </div>
