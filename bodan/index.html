@@ -109,11 +109,11 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .va .eintritt b{display:block;font:400 clamp(40px,4.4vw,72px)/.98 var(--serif);letter-spacing:-.01em}
 .va .eintritt span{display:block;margin-top:14px;font:500 13px/1.4 var(--text);letter-spacing:.16em;text-transform:uppercase;color:#5b5047}
 /* ===== Die Wand ===== */
-.s-wand{display:flex;flex-direction:column;padding:120px 0 0}
+.s-wand{display:flex;flex-direction:column;padding:64px 0 0}
 .s-wand .wand-inhalt{order:1}
 .s-wand .wandfoto{order:2;display:block;margin-top:30px}
 .s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 78%}
-.uebergang{position:absolute;left:0;right:0;top:0;height:110px;z-index:2;pointer-events:none;background:linear-gradient(180deg,#1c140f 0,rgba(28,20,15,.55) 35%,rgba(236,231,222,0) 100%)}
+.uebergang{position:absolute;left:0;right:0;top:0;height:60px;z-index:2;pointer-events:none;background:linear-gradient(180deg,#1c140f 0,rgba(28,20,15,.55) 35%,rgba(236,231,222,0) 100%)}
 .wand-text p{margin:0 0 16px;max-width:44ch;color:#3f362f}
 .zeiten{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;max-width:520px}
 .zeiten li{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid rgba(42,33,28,.18);transition:border-color .2s}
@@ -127,7 +127,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.detail:hover img{transform:scale(1.05)}}
 
 /* ===== Der Tag ===== */
-.s-tag{padding:70px 0 80px}
+.s-tag{padding:56px 0 28px}
 .tag-reihe{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
 .stunde{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:3/4;background:var(--putz3);box-shadow:0 14px 34px rgba(60,45,35,.16);transition:transform .3s ease,box-shadow .3s ease}
 .stunde img{width:100%;height:100%;object-fit:cover}
@@ -139,7 +139,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.stunde:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(60,45,35,.24)}}
 
 /* ===== Karte: Schlüsselbrett ===== */
-.s-karte{padding:80px 0 70px}
+.s-karte{padding:28px 0 20px}
 .brett{position:relative;margin:26px 0 22px;padding:28px 10px 6px;border-radius:6px;background:linear-gradient(180deg,#b27a40 0,#9c652f 100%);box-shadow:inset 0 1px 0 rgba(255,235,200,.35),inset 0 -2px 0 rgba(60,35,15,.35),0 18px 36px rgba(60,45,35,.22)}
 .brett::before{content:"";position:absolute;inset:0;border-radius:6px;opacity:.35;mix-blend-mode:multiply;background:repeating-linear-gradient(90deg,rgba(80,45,15,.0) 0 7px,rgba(80,45,15,.25) 7px 8px,rgba(80,45,15,0) 8px 19px,rgba(80,45,15,.18) 19px 20px)}
 .schluessel{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 6px}
@@ -185,7 +185,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .fuss{font-size:13px;color:var(--sepia);margin:12px 2px 0}
 
 /* ===== Lounge ===== */
-.s-lounge{padding:110px 0 80px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 60px,var(--nacht) 150px,var(--nacht) 100%);color:var(--creme)}
+.s-lounge{padding:44px 0 28px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 20px,var(--nacht) 44px,var(--nacht) 100%);color:var(--creme)}
 .s-lounge .kick{color:var(--gold-l)}
 .s-lounge .lead{color:rgba(247,241,231,.78)}
 .lounge-grid{display:grid;gap:26px}
@@ -210,8 +210,8 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.mini button:hover img{transform:scale(1.06)}}
 
 /* ===== Gäste: Postkarten ===== */
-.s-gaeste{padding:110px 0 80px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 26px,#a89a88 62px,var(--putz) 100px,var(--putz) 100%)}
-.s-gaeste::before,.s-gaeste::after{top:100px}
+.s-gaeste{padding:36px 0 28px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 10px,#a89a88 24px,var(--putz) 36px,var(--putz) 100%)}
+.s-gaeste::before,.s-gaeste::after{top:36px}
 .streifen-wrap{position:relative;margin-top:20px}
 .karten{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:14px 6px 26px;scrollbar-width:none}
 .karten::-webkit-scrollbar{display:none}
@@ -241,7 +241,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.score a:hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(220,187,115,.18)}}
 
 /* ===== Feiern ===== */
-.s-feiern{padding:80px 0}
+.s-feiern{padding:28px 0 20px}
 .feiern-grid{display:grid;gap:16px;margin-top:22px}
 .fk{position:relative;display:grid;background:var(--creme);border-radius:6px;overflow:hidden;box-shadow:0 18px 40px rgba(60,45,35,.14);transition:box-shadow .3s,transform .3s}
 @media (hover:hover){.fk:hover{box-shadow:0 24px 50px rgba(60,45,35,.22);transform:translateY(-3px)}}
@@ -255,7 +255,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .fk .reihe{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 
 /* ===== Besuch: Postkarte zum Abschied ===== */
-.s-besuch{padding:110px 0 60px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 60px,var(--nacht2) 150px,var(--nacht2) 100%);color:var(--creme)}
+.s-besuch{padding:44px 0 40px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 20px,var(--nacht2) 44px,var(--nacht2) 100%);color:var(--creme)}
 .s-besuch .kick{color:var(--gold-l)}
 .abschied{display:grid;gap:16px;margin-top:20px}
 .pk-vorn{position:relative;margin:0;padding:12px 12px 44px;background:#fbf7ef;border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,.25),0 24px 50px rgba(0,0,0,.45);transform:rotate(-1.2deg);cursor:zoom-in;transition:transform .35s ease}
@@ -326,6 +326,16 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .pk .pm{margin:-34px 34px 0 0}
   .pk .adr{align-self:flex-start;margin:auto 0 0 0}
 }
+/* ===== Tablet: Abstände ===== */
+@media (min-width:600px) and (max-width:899px){
+  .s-tag{padding:64px 0 36px}
+  .s-karte{padding:36px 0 28px}
+  .s-lounge{padding:56px 0 36px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 24px,var(--nacht) 56px,var(--nacht) 100%)}
+  .s-gaeste{padding:48px 0 36px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 13px,#a89a88 31px,var(--putz) 48px,var(--putz) 100%)}
+  .s-gaeste::before,.s-gaeste::after{top:48px}
+  .s-feiern{padding:36px 0 28px}
+  .s-besuch{padding:56px 0 44px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 24px,var(--nacht2) 56px,var(--nacht2) 100%)}
+}
 /* ===== Tablet hoch ===== */
 @media (min-width:700px) and (max-width:899px){
   .wrap{padding:0 32px}
@@ -360,10 +370,10 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .wand-inhalt{position:relative;z-index:1}
   .wand-text,.details{max-width:540px}
   .wand-text h2{font-size:clamp(44px,4.2vw,64px)}
-  .s-tag{padding:60px 0 70px}
+  .s-tag{padding:52px 0 48px}
   .tag-reihe{gap:16px}
   .stunde{aspect-ratio:4/5}
-  .s-karte{padding:76px 0 56px}
+  .s-karte{padding:52px 0 36px}
   .karte-grid{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start}
   .karte-links .lead{margin-bottom:0}
   .brett{margin:24px 0 0;padding:24px 14px 4px}
@@ -371,16 +381,17 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .zimmer figure{aspect-ratio:auto;min-height:100%}
   .zimmer .liste{padding:12px 26px 16px}
   .pos{padding:7px 0}
-  .s-lounge{padding:140px 0 70px}
+  .s-lounge{padding:80px 0 44px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 34px,var(--nacht) 80px,var(--nacht) 100%)}
   .lounge-grid{grid-template-columns:7fr 4fr;gap:44px;align-items:center}
-  .s-gaeste{padding:130px 0 70px}
+  .s-gaeste{padding:72px 0 48px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 18px,#a89a88 44px,var(--putz) 72px,var(--putz) 100%)}
+  .s-gaeste::before,.s-gaeste::after{top:72px}
   .gaeste-kopf{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
   .gaeste-kopf h2{margin:0}
-  .s-feiern{padding:70px 0}
+  .s-feiern{padding:52px 0 40px}
   .feiern-grid{grid-template-columns:1fr 1fr;gap:24px}
   .fk{grid-template-columns:1fr}
   .fk figure{aspect-ratio:21/9}
-  .s-besuch{padding:130px 0 50px}
+  .s-besuch{padding:76px 0 50px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 32px,var(--nacht2) 76px,var(--nacht2) 100%)}
   .abschied{grid-template-columns:1fr 1fr;gap:34px;align-items:center}
   .pk-hinten{grid-template-columns:1.25fr 1fr;gap:22px;padding:26px 28px 26px}
   .ph-rechts{border-top:0;border-left:1px solid rgba(42,33,28,.15);padding:0 0 0 22px;justify-content:space-between}
@@ -399,16 +410,16 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .zimmer{min-height:500px}
   .pos{padding:5px 0}
   .fk figure{aspect-ratio:3/1}
-  .s-karte{padding:60px 0 40px}
-  .s-feiern{padding:56px 0}
-  .s-besuch{padding:96px 0 24px}
+  .s-karte{padding:44px 0 32px}
+  .s-feiern{padding:44px 0 36px}
+  .s-besuch{padding:76px 0 24px}
   .pk-vorn img{aspect-ratio:2/1}
   .pk-hinten{padding:18px 24px}
   .pk-hinten .h{font-size:38px}
   .knoepfe{margin:18px 0 12px}
   .weg li{padding:8px 12px}
   .s-besuch .klein{display:none}
-  .s-lounge{padding:120px 0 50px}
+  .s-lounge{padding:80px 0 40px}
 }
 @media (max-height:520px) and (orientation:landscape){
   .buehne{min-height:0}
