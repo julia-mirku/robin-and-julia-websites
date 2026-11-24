@@ -642,6 +642,18 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 /* ---------- Gaeste-Karten: guenstige Schatten (gedreht + grosse Unschaerfe war teuer), Ansicht gleich ---------- */
 .sleeve{box-shadow:0 0 0 1px rgba(232,207,143,.25),0 12px 12px -8px rgba(0,0,0,.75)}
 @media (hover:hover){.sleeve:hover{box-shadow:0 0 0 1px rgba(232,207,143,.45),0 16px 14px -8px rgba(0,0,0,.8)}}
+
+/* ---------- Pruefung 24.11: Kopfzeile wieder deutlich durchsichtiger (ohne Blur) ---------- */
+.hdr.solid{background:rgba(10,26,19,.42)}
+/* ---------- Pfeile immer seitlich: genug Rand -> aussen; sonst Platz neben dem Band freihalten ---------- */
+@media (min-width:1284px) and (max-width:1360px){.sidewrap>.sa-prev{left:-50px}.sidewrap>.sa-next{right:-50px}}
+@media (min-width:601px) and (max-width:1283px){.sidewrap{padding-inline:54px}.sidewrap>.sa-prev{left:0}.sidewrap>.sa-next{right:0}
+  .sidewrap:has(> #board){padding-inline:0}#kPrev,#kNext{display:none!important}}
+/* ---------- Karte passt auf niedrige Bildschirme (1280x720, 1366x768, 1024x768): kompaktere Zeilen ---------- */
+@media (min-width:761px) and (max-height:820px){
+  .sheet{height:calc(5 * 62px)}.sheet .half{grid-auto-rows:62px}.sheet .row{padding:4px 8px}.sheet .row .rd{-webkit-line-clamp:1}
+  .karte h2{font-size:clamp(30px,3.4vw,44px)}.khead{gap:8px 24px}.kfilters{margin-top:8px}.board2{margin-top:10px;padding-top:10px}.bhead{padding-bottom:6px}.bnav{padding-top:6px}
+}
 </style>
 </head>
 <body>
@@ -1327,7 +1339,8 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     if(l!=="en") l="de"; if(l===lang&&keep!=="init") return;
     /* Ankerpunkt merken, damit nach dem Umschalten nichts springt */
     let anc=null, top0=0; const hh=($("#hdr")||{}).offsetHeight||0;
-    if(keep!=="init" && scrollY>0){ anc=document.elementFromPoint(innerWidth/2, hh+Math.min(140,(innerHeight-hh)/3)); if(anc) top0=anc.getBoundingClientRect().top; }
+    if(keep!=="init" && scrollY>0){ anc=[...document.querySelectorAll("main img, main h2, main h3, main .frame, main .board2, main .day, main .dish, main .sleeve, footer h4")].find(e=>{ const r=e.getBoundingClientRect(); return r.width>0 && r.top>=hh && r.top<innerHeight; })
+      || document.elementFromPoint(innerWidth/2, hh+Math.min(140,(innerHeight-hh)/3)); if(anc) top0=anc.getBoundingClientRect().top; }
     lang=l; walk(document.body); H.lang=l==="en"?"en-GB":"de-CH"; document.title=TITLE[l];
     btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
     if(anc&&anc.isConnected){ const d=anc.getBoundingClientRect().top-top0; if(Math.abs(d)>0.5){ H.style.scrollBehavior="auto"; window.scrollBy(0,d); H.style.scrollBehavior=""; } }
