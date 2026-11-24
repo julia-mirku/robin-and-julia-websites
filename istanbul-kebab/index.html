@@ -420,7 +420,7 @@ button.rb{cursor:pointer}
 @media (hover:hover){.tb:not(:disabled):hover{background:#FFF4DC;transform:translateY(-2px);box-shadow:3px 3px 0 var(--soot)}}
 .tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:stretch;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 36px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tueten::-webkit-scrollbar{display:none}
-.tuete{flex:0 0 clamp(250px,23vw,284px);display:flex;margin:0;scroll-snap-align:start;opacity:0;transform:translateY(28px) rotate(calc(var(--r)*3));filter:drop-shadow(0 2px 0 rgba(42,29,23,.3)) drop-shadow(0 12px 11px rgba(42,29,23,.15));transition:opacity .5s ease calc(var(--i)*80ms),transform .75s cubic-bezier(.2,.9,.3,1.25) calc(var(--i)*80ms)}
+.tuete{flex:0 0 clamp(260px,24vw,304px);display:flex;margin:0;scroll-snap-align:start;opacity:0;transform:translateY(28px) rotate(calc(var(--r)*3));filter:drop-shadow(0 2px 0 rgba(42,29,23,.3)) drop-shadow(0 12px 11px rgba(42,29,23,.15));transition:opacity .5s ease calc(var(--i)*80ms),transform .75s cubic-bezier(.2,.9,.3,1.25) calc(var(--i)*80ms)}
 .tueten.in .tuete{opacity:1;transform:rotate(var(--r))}
 .tueten.settled .tuete{transition:transform .28s ease}
 @media (hover:hover){.tueten.settled .tuete:hover{transform:translateY(-7px) rotate(0deg)}}
@@ -437,36 +437,21 @@ button.rb{cursor:pointer}
 .stempel .s-sterne{font-size:10.5px;letter-spacing:.5px}
 .tp blockquote{position:relative;margin:16px 0 18px;font-size:15.5px;line-height:1.5;font-weight:500}
 .tp blockquote.kurz{font-family:var(--f-d);font-weight:400;font-size:21px;line-height:1.24}
+/* englische Stimmen: Original und deutsche Übersetzung liegen übereinander, der Knopf schaltet um (nichts verschiebt sich) */
+.tp blockquote.zwei{display:grid;font-size:15px;line-height:1.46;margin-top:14px}
+.tp blockquote.zwei>span{grid-area:1/1;white-space:pre-line}
+.tuete:not(.ueb) .t-de,.tuete.ueb .t-or{visibility:hidden}
+.umsch{align-self:flex-start;display:grid;margin:-8px 0 14px;padding:6px 0;border:0;background:none;font:inherit;font-size:13.5px;font-weight:700;color:var(--terra-dk);text-align:left;cursor:pointer;-webkit-user-select:none;user-select:none}
+.umsch>span{grid-area:1/1;text-decoration:underline;text-underline-offset:3px}
+.tuete:not(.ueb) .u1,.tuete.ueb .u0{visibility:hidden}
+@media (hover:hover){.tueten.settled .umsch:hover{color:var(--terra)}}
 .tlogo{display:block;width:92px;height:auto;margin:auto auto 0;opacity:.5;filter:brightness(.5) saturate(.7);mix-blend-mode:multiply}
 .leer{margin:18px 0}.leer i{display:block;height:10px;border-radius:5px;background:rgba(96,58,22,.17);margin:0 0 12px}.leer i.k{width:56%}
 .leer-n{display:block;width:96px;height:13px;border-radius:6px;background:rgba(96,58,22,.24)}
-/* Live-Tüten (Google Maps Platform, Klasse Place): Name nah am Text, Verweis «Google Maps» im selben Behälter, Text unverändert */
-.tuete.live{animation:tuein .7s cubic-bezier(.2,.9,.3,1.2) backwards;animation-delay:calc(var(--i)*80ms)}
-@keyframes tuein{from{opacity:0;transform:translateY(24px) rotate(calc(var(--r)*3))}to{opacity:1;transform:rotate(var(--r))}}
-.tuete{min-width:0;max-width:100%}.tuete .tp{min-width:0}.tp figcaption{min-width:0}.tuete.live{width:clamp(250px,23vw,284px)}
-.wer{display:inline-flex;align-items:center;gap:7px;color:inherit;text-decoration:none;max-width:100%}
-.wer b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.wer[href] b{text-decoration:underline;text-decoration-color:rgba(42,29,23,.3);text-underline-offset:3px}
-.bild{flex:none;width:26px;height:26px;border-radius:50%;object-fit:cover;border:1px solid rgba(42,29,23,.35)}
-.tuete.live blockquote{white-space:pre-line;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden;margin-bottom:10px}
-.tuete.live.auf blockquote{display:block;-webkit-line-clamp:unset}
-.mehr{align-self:flex-start;margin:0 0 12px;padding:6px 0;border:0;background:none;font:inherit;font-size:14px;font-weight:700;color:var(--terra-dk);cursor:pointer;text-decoration:underline;text-underline-offset:3px;-webkit-user-select:none;user-select:none}
-.gattr{margin-top:auto;align-self:flex-start;font-family:Roboto,var(--f-t),sans-serif;font-weight:400;font-style:normal;font-size:13px;letter-spacing:normal;line-height:1.3;color:#1F1F1F;white-space:nowrap}
-@media (hover:hover){.tueten.settled .wer[href]:hover b{text-decoration-color:var(--terra)}.mehr:hover{color:var(--terra)}}
-/* wartende Tüten: solange keine Live-Daten da sind – ruhig, ohne Dauerbewegung */
-.tuete.warte .tp{min-height:318px}
-.stempel-leer{position:absolute;left:14px;top:10px;width:96px;height:96px;border-radius:50%;border:3px solid rgba(150,63,28,.28)}
-.wlabel{margin:auto 0 2px;font-size:14px;font-weight:700;color:#5A4636}
-.tueten.fehler .tuete.warte{display:none}
-.tfuss{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap}
-.tfuss .glink{margin-top:0}
-.quelle{flex-basis:100%;margin:0;font-size:12.5px;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){.tuete.live{animation:none}}
-.still .tuete.live{animation:none}
 .tprog{width:132px;height:3px;border-radius:2px;background:rgba(42,29,23,.15);overflow:hidden}
 .tprog i{display:block;height:100%;width:40%;border-radius:2px;background:var(--terra)}
 .tprog.aus{visibility:hidden}.tnav.aus{visibility:hidden}
-@media (max-width:620px){.tbar{margin-top:36px}.tnav{display:none}.tueten{gap:14px;padding-top:20px;padding-bottom:30px;scroll-snap-type:x mandatory}.tuete{flex-basis:min(78vw,300px)}.tuete.live{width:min(78vw,300px)}.tfuss{justify-content:flex-start}.tprog{order:-1;flex-basis:100%;width:132px;margin:0 auto 6px;flex:none}}
+@media (max-width:620px){.tbar{margin-top:36px}.tnav{display:none}.tueten{gap:14px;padding-top:20px;padding-bottom:30px;scroll-snap-type:x mandatory}.tuete{flex-basis:min(78vw,300px)}.tprog{margin:0 auto}}
 .still .tueten .tuete{opacity:1;transform:rotate(var(--r))}
 @media (prefers-reduced-motion:reduce){.tueten .tuete{transition:none}}
 .glink{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--soot);font-weight:700;text-decoration:none;border-bottom:2px solid rgba(180,83,42,.45);padding-bottom:2px;transition:border-color .25s ease}
@@ -695,6 +680,7 @@ html :focus:not(:focus-visible){outline:none}
           <div class="cnt"><b data-count="1283" class="dual-i">1 283</b> <span data-i18n="cnt">Bewertungen auf Google</span></div>
         </div>
       </div>
+      <a class="glink" href="https://www.google.com/maps/search/?api=1&query=Istanbul+Kebap+Halsgasse+28+Rapperswil" target="_blank" rel="noopener"><span data-i18n="glink">Alle Bewertungen ansehen</span> <span aria-hidden="true">→</span></a>
     </div>
     <div>
       <p class="gloss" data-i18n="gloss">Das loben Gäste am häufigsten:</p>
@@ -714,12 +700,10 @@ html :focus:not(:focus-visible){outline:none}
       <button type="button" class="tb tnext" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </div>
   </div>
-  <div class="tueten" id="tueten" data-settle="1500" tabindex="0" role="group" aria-label="Google-Bewertungen"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="stp" d="M60 60 m-42 0 a42 42 0 1 1 84 0 a42 42 0 1 1 -84 0"/></defs></svg><figure class="tuete fest" style="--r:-1.6deg;--i:0"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:-12deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GÄSTESTIMME ✦ GÄSTESTIMME ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote lang="de" class="kurz">«Super Kebab mit selbst gemachtem Taschenbrot – einfach lecker!»</blockquote><figcaption><b>Milena G.</b></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete warte" style="--r:1.1deg;--i:1"><div class="tp"><span class="stempel-leer" aria-hidden="true"></span><figcaption aria-hidden="true"><b class="leer-n"></b></figcaption><div class="leer" aria-hidden="true"><i></i><i></i><i></i><i class="k"></i></div><p class="wlabel" data-i18n="laden">Bewertungen werden geladen</p></div></figure><figure class="tuete warte" style="--r:-0.7deg;--i:2"><div class="tp"><span class="stempel-leer" aria-hidden="true"></span><figcaption aria-hidden="true"><b class="leer-n"></b></figcaption><div class="leer" aria-hidden="true"><i></i><i></i><i></i><i class="k"></i></div><p class="wlabel" data-i18n="laden">Bewertungen werden geladen</p></div></figure><template id="tuete-vorlage"><figure class="tuete live"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GÄSTESTIMME ✦ GÄSTESTIMME ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><figcaption><a class="wer" target="_blank" rel="noopener"><img class="bild" alt="" width="26" height="26" loading="lazy" referrerpolicy="no-referrer"><b></b></a><span class="wann"></span></figcaption><blockquote></blockquote><button type="button" class="mehr" hidden><span class="dual-i"><span class="l" data-l="de" lang="de">Weiterlesen</span><span class="l" data-l="en" lang="en">Read more</span></span></button><span class="gattr" translate="no">Google Maps</span></div></figure></template></div>
-  <div class="wrap tfuss">
-    <a class="glink" id="galle" href="https://www.google.com/maps/search/?api=1&query=Istanbul+Kebap+Halsgasse+28+Rapperswil" target="_blank" rel="noopener"><span data-i18n="glink">Alle Bewertungen auf Google</span> <span aria-hidden="true">→</span></a>
-    <div class="tprog" aria-hidden="true"><i></i></div>
-    <p class="quelle" id="gquelle" hidden></p>
-  </div>
+  <div class="tueten" id="tueten" data-settle="1500" tabindex="0" role="group" aria-label="Google-Bewertungen"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="stp" d="M60 60 m-42 0 a42 42 0 1 1 84 0 a42 42 0 1 1 -84 0"/></defs></svg><figure class="tuete" style="--r:-1.6deg;--i:0"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:-12deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote lang="de" class="kurz">«Super Kebab mit selbst gemachtem Taschenbrot – einfach lecker!»</blockquote><figcaption><b>Milena G.</b></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete" style="--r:1.1deg;--i:1"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:9deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote class="zwei"><span class="t-or" lang="en">One of the tastiest kebab I have ever eaten in my life. They make their own bread and have a unique way of roasting it. Highly recommended. …</span><span class="t-de" lang="de">Einer der leckersten Kebabs, die ich in meinem Leben gegessen habe. Sie backen ihr eigenes Brot und rösten es auf ihre ganz eigene Art. Sehr zu empfehlen. …</span></blockquote><button type="button" class="umsch" aria-pressed="false"><span class="u0 dual-i"><span class="l" data-l="de" lang="de">Auf Deutsch</span><span class="l" data-l="en" lang="en">In German</span></span><span class="u1 dual-i"><span class="l" data-l="de" lang="de">Übersetzt · Original zeigen</span><span class="l" data-l="en" lang="en">Translated · show original</span></span></button><figcaption><b>Sanjay Gupta</b><span class="dual-i"><span class="l" data-l="de" lang="de">Google · vor 2 Jahren</span><span class="l" data-l="en" lang="en">Google · 2 years ago</span></span></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete" style="--r:-0.7deg;--i:2"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:-7deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote class="zwei"><span class="t-or" lang="en">Food is delicious, we tried the standard sandwich and were pleasantly impressed! Came out quickly and the staff were helpful and friendly! 10/10 recommend! …</span><span class="t-de" lang="de">Das Essen ist köstlich. Wir haben das normale Sandwich probiert und waren angenehm überrascht! Es kam schnell, und das Personal war hilfsbereit und freundlich! 10/10, klare Empfehlung! …</span></blockquote><button type="button" class="umsch" aria-pressed="false"><span class="u0 dual-i"><span class="l" data-l="de" lang="de">Auf Deutsch</span><span class="l" data-l="en" lang="en">In German</span></span><span class="u1 dual-i"><span class="l" data-l="de" lang="de">Übersetzt · Original zeigen</span><span class="l" data-l="en" lang="en">Translated · show original</span></span></button><figcaption><b>Charles Seals</b><span class="dual-i"><span class="l" data-l="de" lang="de">Google · vor 7 Monaten</span><span class="l" data-l="en" lang="en">Google · 7 months ago</span></span></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete" style="--r:1.8deg;--i:3"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:14deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote class="zwei"><span class="t-or" lang="en">The food is absolutely incredible. I highly recommend the pita with egg and mozzarella. It’s the first place I stopped at after returning from the states. 11/10!! …</span><span class="t-de" lang="de">Das Essen ist absolut unglaublich. Ich empfehle sehr die Pita mit Ei und Mozzarella. Es war der erste Ort, an dem ich nach meiner Rückkehr aus den USA angehalten habe. 11/10!! …</span></blockquote><button type="button" class="umsch" aria-pressed="false"><span class="u0 dual-i"><span class="l" data-l="de" lang="de">Auf Deutsch</span><span class="l" data-l="en" lang="en">In German</span></span><span class="u1 dual-i"><span class="l" data-l="de" lang="de">Übersetzt · Original zeigen</span><span class="l" data-l="en" lang="en">Translated · show original</span></span></button><figcaption><b>Nicole Manzella</b><span class="dual-i"><span class="l" data-l="de" lang="de">Google · vor einem Jahr</span><span class="l" data-l="en" lang="en">Google · a year ago</span></span></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete" style="--r:-1.2deg;--i:4"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:-10deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote class="zwei"><span class="t-or" lang="en">Best kebab place in town. Ingredients are high quality (meat has way less fat than other places) and the dough is crafted made. The service and location are also unbeatable. Highly recommended! …</span><span class="t-de" lang="de">Der beste Kebab-Laden der Stadt. Die Zutaten sind von hoher Qualität (das Fleisch hat deutlich weniger Fett als anderswo), und der Teig ist handgemacht. Auch Service und Lage sind unschlagbar. Sehr zu empfehlen! …</span></blockquote><button type="button" class="umsch" aria-pressed="false"><span class="u0 dual-i"><span class="l" data-l="de" lang="de">Auf Deutsch</span><span class="l" data-l="en" lang="en">In German</span></span><span class="u1 dual-i"><span class="l" data-l="de" lang="de">Übersetzt · Original zeigen</span><span class="l" data-l="en" lang="en">Translated · show original</span></span></button><figcaption><b>Susana García</b><span class="dual-i"><span class="l" data-l="de" lang="de">Google · vor 3 Jahren</span><span class="l" data-l="en" lang="en">Google · 3 years ago</span></span></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete" style="--r:0.6deg;--i:5"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:6deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote class="zwei"><span class="t-or" lang="en">Freshly made delicious kebabs. So impressive the guy remembered all our individual unique orders off the top of his head perfectly. The pides were freshly cooked too. So delicious.</span><span class="t-de" lang="de">Frisch zubereitete, köstliche Kebabs. Beeindruckend: Der Mann hatte all unsere einzelnen Sonderwünsche perfekt im Kopf. Auch die Pides waren frisch gebacken. So lecker.</span></blockquote><button type="button" class="umsch" aria-pressed="false"><span class="u0 dual-i"><span class="l" data-l="de" lang="de">Auf Deutsch</span><span class="l" data-l="en" lang="en">In German</span></span><span class="u1 dual-i"><span class="l" data-l="de" lang="de">Übersetzt · Original zeigen</span><span class="l" data-l="en" lang="en">Translated · show original</span></span></button><figcaption><b>Toni McMorris</b><span class="dual-i"><span class="l" data-l="de" lang="de">Google · vor 3 Jahren</span><span class="l" data-l="en" lang="en">Google · 3 years ago</span></span></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete" style="--r:-1.9deg;--i:6"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:-15deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote class="zwei"><span class="t-or" lang="en">After hundreds kebabs in Switzerland I finally found the best one!
+Perfect price, size, taste, freshness!</span><span class="t-de" lang="de">Nach Hunderten Kebabs in der Schweiz habe ich endlich den besten gefunden!
+Preis, Grösse, Geschmack, Frische – alles perfekt!</span></blockquote><button type="button" class="umsch" aria-pressed="false"><span class="u0 dual-i"><span class="l" data-l="de" lang="de">Auf Deutsch</span><span class="l" data-l="en" lang="en">In German</span></span><span class="u1 dual-i"><span class="l" data-l="de" lang="de">Übersetzt · Original zeigen</span><span class="l" data-l="en" lang="en">Translated · show original</span></span></button><figcaption><b>Josef Vlk</b><span class="dual-i"><span class="l" data-l="de" lang="de">Google · vor 5 Jahren</span><span class="l" data-l="en" lang="en">Google · 5 years ago</span></span></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete" style="--r:1.3deg;--i:7"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:11deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote class="zwei"><span class="t-or" lang="en">Really tasty! And so many kebabs to choose from, not just regular ones but ones with feta, egg, pineapple, etc., so many options to try. I would definitely recommend. The owner is also very friendly!</span><span class="t-de" lang="de">Richtig lecker! Und so viele Kebabs zur Auswahl – nicht nur die üblichen, sondern auch mit Feta, Ei, Ananas usw., so viel zum Ausprobieren. Ich kann es auf jeden Fall empfehlen. Der Inhaber ist ausserdem sehr freundlich!</span></blockquote><button type="button" class="umsch" aria-pressed="false"><span class="u0 dual-i"><span class="l" data-l="de" lang="de">Auf Deutsch</span><span class="l" data-l="en" lang="en">In German</span></span><span class="u1 dual-i"><span class="l" data-l="de" lang="de">Übersetzt · Original zeigen</span><span class="l" data-l="en" lang="en">Translated · show original</span></span></button><figcaption><b>Dominika Zakrzewska</b><span class="dual-i"><span class="l" data-l="de" lang="de">Google · vor 5 Jahren</span><span class="l" data-l="en" lang="en">Google · 5 years ago</span></span></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure></div>
+  <div class="wrap"><div class="tprog" aria-hidden="true"><i></i></div></div>
 </section>
 
 <!-- ===== Anfahrt ===== -->
@@ -776,7 +760,6 @@ html :focus:not(:focus-visible){outline:none}
   </div></div>
 </footer>
 
-<script src="gkey.js"></script>
 <script>
 (function(){
   var T = {
@@ -793,7 +776,7 @@ html :focus:not(:focus-visible){outline:none}
       e3:"Öffnungszeiten",h2c:"Jeden Tag für Sie da",subc:"Unter der Woche Mittag und Abend, am Wochenende durchgehend.",
       hint:"Tag wählen – die Karte zeigt die Zeiten.",hnote:"Feiertage können abweichen – im Zweifel kurz anrufen.",
       gloss:"Das loben Gäste am häufigsten:",
-      cnt:"Bewertungen auf Google",glink:"Alle Bewertungen auf Google",laden:"Bewertungen werden geladen",p1:"Döner",p2:"hausgemachtes Brot",p3:"Taschenbrot",p4:"Pide",
+      cnt:"Bewertungen auf Google",glink:"Alle Bewertungen ansehen",p1:"Döner",p2:"hausgemachtes Brot",p3:"Taschenbrot",p4:"Pide",
       src:"So oft nennen Gäste diese Stichworte in Google-Bewertungen (Stand November 2026).",
       e5:"So finden Sie uns",h2d:"Mitten in der Altstadt",walk:"Wenige Schritte vom Hauptplatz.",
       kBar:"Zum Abholen",kTitle:"Bestellung zum Abholen",kTotal:"Total",kNote:"Bestellt wird am Telefon – die Liste bleibt hier stehen, zum Vorlesen.",kCall:"Anrufen und bestellen",kCopy:"Liste kopieren",kCopied:"Liste kopiert ✓",kClear:"Liste leeren",copy:"Adresse kopieren",copied:"Adresse kopiert ✓",walkmin:"Ca. 5 Minuten zu Fuss vom Bahnhof Rapperswil",todayIs:"Heute ",karteAria:"Karte der Altstadt Rapperswil – Route öffnen",
@@ -815,7 +798,7 @@ html :focus:not(:focus-visible){outline:none}
       e3:"Opening hours",h2c:"Open every day",subc:"Lunch and evening on weekdays, all day at the weekend.",
       hint:"Pick a day – the card shows the hours.",hnote:"Hours may differ on public holidays – if in doubt, give us a quick call.",
       gloss:"What guests praise most often:",
-      cnt:"reviews on Google",glink:"All reviews on Google",laden:"Loading reviews",p1:"döner",p2:"homemade bread",p3:"pocket bread",p4:"pide",
+      cnt:"reviews on Google",glink:"See all reviews",p1:"döner",p2:"homemade bread",p3:"pocket bread",p4:"pide",
       src:"How often guests mention these words in Google reviews (as of November 2026).",
       e5:"How to find us",h2d:"Right in the Old Town",walk:"A few steps from Hauptplatz.",
       kBar:"For pick-up",kTitle:"Order for pick-up",kTotal:"Total",kNote:"You order by phone – the list stays here for you to read out.",kCall:"Call and order",kCopy:"Copy list",kCopied:"List copied ✓",kClear:"Clear list",copy:"Copy address",copied:"Address copied ✓",walkmin:"About 5 minutes on foot from Rapperswil station",todayIs:"Today ",karteAria:"Map of Rapperswil Old Town – open directions",
@@ -956,69 +939,8 @@ html :focus:not(:focus-visible){outline:none}
       if(bar){bar.classList.toggle('aus',max<4); pg.style.width=(f*100)+'%'; pg.style.transform='translateX('+(max>0?(x/max)*(1/f-1)*100:0)+'%)';}
     }
     if(pv){pv.addEventListener('click',function(){hop(-1)}); nx.addEventListener('click',function(){hop(1)});}
+    tr.addEventListener('click',function(e){var b=e.target.closest('.umsch'); if(!b) return; var on=b.closest('.tuete').classList.toggle('ueb'); b.setAttribute('aria-pressed',on?'true':'false');});
     tr.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); window.addEventListener('load',upd); upd();
-  })();
-
-  // ---- Gästestimmen live: echte Bewertungen direkt von Google (Maps JavaScript API, Klasse Place, höchstens 5).
-  // Nichts wird kopiert oder gespeichert; geladen wird erst, wenn der Block näher kommt. Ohne Schlüssel (gkey.js) bleibt der Wartezustand.
-  (function(){
-    var tr=document.getElementById('tueten'),vor=document.getElementById('tuete-vorlage'); if(!tr||!vor) return;
-    var KEY=String(window.IST_GKEY||'').replace(/\s+/g,''),PID='ChIJCYC6Ih63mkcR4NliH5C8z9s';
-    var ROT=[-1.6,1.1,-.7,1.8,-1.2],SROT=[-12,9,-7,14,-10],los=false,fertig=false;
-    function neu(){ tr.dispatchEvent(new Event('scroll')); }
-    function fehler(){ if(fertig) return; fertig=true; tr.classList.add('fehler'); neu(); }
-    function wann(d){
-      try{
-        var t=(Date.now()-d.getTime())/864e5,u=t<1?['day',0]:t<7?['day',Math.round(t)]:t<30?['week',Math.round(t/7)]:t<365?['month',Math.max(1,Math.round(t/30.44))]:['year',Math.max(1,Math.round(t/365.25))];
-        return new Intl.RelativeTimeFormat('en',{numeric:'auto'}).format(-u[1],u[0]);
-      }catch(e){return ''}
-    }
-    function zeigen(p,rs){
-      if(fertig) return; fertig=true;
-      [].slice.call(tr.querySelectorAll('.tuete')).forEach(function(b){b.parentNode.removeChild(b)});
-      rs.slice(0,5).forEach(function(r,i){
-        var f=vor.content.firstElementChild.cloneNode(true),a=r.authorAttribution||{},st=Math.max(1,Math.min(5,Math.round(r.rating||0)))||5;
-        f.style.setProperty('--r',ROT[i%5]+'deg'); f.style.setProperty('--i',i);
-        var sv=f.querySelector('.stempel'); sv.style.setProperty('--sr',SROT[i%5]+'deg'); sv.setAttribute('aria-label',st+' von 5 Sternen');
-        sv.querySelector('.s-zahl').textContent=st; sv.querySelector('.s-sterne').textContent='★★★★★'.slice(0,st)+'☆☆☆☆☆'.slice(0,5-st);
-        var w=f.querySelector('.wer'),im=f.querySelector('.bild');
-        w.querySelector('b').textContent=a.displayName||'Google';
-        if(a.uri&&/^https:\/\//.test(a.uri)) w.href=a.uri;
-        if(a.photoURI&&/^https:\/\//.test(a.photoURI)){ im.addEventListener('error',function(){im.parentNode&&im.parentNode.removeChild(im)}); im.src=a.photoURI; } else im.parentNode.removeChild(im);
-        var de=r.relativePublishTimeDescription||'',en=r.publishTime?wann(r.publishTime):'',wn=f.querySelector('.wann');
-        if(de){ wn.className='wann dual-i'; var s1=document.createElement('span'),s2=document.createElement('span'); s1.className=s2.className='l'; s1.setAttribute('data-l','de'); s1.lang='de'; s2.setAttribute('data-l','en'); s2.lang='en'; s1.textContent=de; s2.textContent=en||de; wn.appendChild(s1); wn.appendChild(s2); }
-        var q=f.querySelector('blockquote'),tx=String(r.originalText||r.text||'').trim(),lc=r.originalText?r.originalTextLanguageCode:r.textLanguageCode;
-        q.textContent=tx; if(lc) q.lang=lc; if(tx.length<90) q.className='kurz';
-        tr.appendChild(f);
-        var m=f.querySelector('.mehr');
-        if(q.scrollHeight>q.clientHeight+4){ m.hidden=false; m.addEventListener('click',function(){f.classList.add('auf'); m.hidden=true; neu();}); }
-      });
-      if(p.googleMapsURI&&/^https:\/\//.test(p.googleMapsURI)) document.getElementById('galle').href=p.googleMapsURI;
-      var at=(p.attributions||[]).map(function(x){return x&&x.provider}).filter(Boolean),qu=document.getElementById('gquelle');
-      if(at.length&&qu){ qu.textContent=at.join(' · '); qu.hidden=false; }
-      tr.classList.add('live'); tr.scrollLeft=0; neu();
-    }
-    function holen(){
-      google.maps.importLibrary('places').then(function(lib){
-        var p=new lib.Place({id:PID,requestedLanguage:'de'});
-        return p.fetchFields({fields:['displayName','rating','userRatingCount','googleMapsURI','reviews']}).then(function(){
-          // gezeigt werden Stimmen mit 4 oder 5 Sternen und mit Text; die Gesamtnote oben und der Verweis «Alle Bewertungen» bleiben vollständig
-          var rs=(p.reviews||[]).filter(function(r){return r&&(r.originalText||r.text)&&Math.round(r.rating||0)>=4});
-          if(rs.length) zeigen(p,rs); else fehler();
-        });
-      }).catch(fehler);
-    }
-    function start(){
-      if(los) return; los=true;
-      if(window.google&&google.maps&&google.maps.importLibrary){ holen(); return; }
-      window.gm_authFailure=fehler; window.__istG=holen;
-      var sc=document.createElement('script'); sc.async=true; sc.onerror=fehler;
-      sc.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(KEY)+'&v=weekly&loading=async&libraries=places&language=de&region=CH&callback=__istG';
-      document.head.appendChild(sc); setTimeout(fehler,15000);
-    }
-    if(!KEY) return;
-    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(e){ if(e.some(function(x){return x.isIntersecting})){ io.disconnect(); start(); } },{rootMargin:'900px 0px'}); io.observe(tr); }
-    else start();
   })();
 
   // ---- Einblenden: einmal, auch bei schnellem Scrollen; Hover erst danach
