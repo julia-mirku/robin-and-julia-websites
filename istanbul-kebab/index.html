@@ -1002,7 +1002,8 @@ html :focus:not(:focus-visible){outline:none}
       google.maps.importLibrary('places').then(function(lib){
         var p=new lib.Place({id:PID,requestedLanguage:'de'});
         return p.fetchFields({fields:['displayName','rating','userRatingCount','googleMapsURI','reviews']}).then(function(){
-          var rs=(p.reviews||[]).filter(function(r){return r&&(r.originalText||r.text)});
+          // gezeigt werden Stimmen mit 4 oder 5 Sternen und mit Text; die Gesamtnote oben und der Verweis «Alle Bewertungen» bleiben vollständig
+          var rs=(p.reviews||[]).filter(function(r){return r&&(r.originalText||r.text)&&Math.round(r.rating||0)>=4});
           if(rs.length) zeigen(p,rs); else fehler();
         });
       }).catch(fehler);
