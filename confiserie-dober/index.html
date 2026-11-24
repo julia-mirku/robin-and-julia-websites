@@ -195,14 +195,20 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .punkte label{display:flex;justify-content:space-between;font-weight:600;font-size:15.5px}
 .punkte label output{color:var(--magenta)}
 .geschenke{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;padding:0;list-style:none}
-.geschenke li{border-radius:12px;padding:10px 10px;background:var(--creme);font-size:13px;line-height:1.3;transition:background .3s,box-shadow .3s,transform .2s;cursor:default}
+.geschenke li{border-radius:12px;padding:10px 10px;background:var(--creme);font-size:13px;line-height:1.3;transition:background .3s,box-shadow .3s,transform .2s;cursor:pointer;-webkit-user-select:none;user-select:none}
+/* Julia: Karten anklickbar – gewählte Prämie = Ziel, Regler springt auf den Wochenbetrag für 3 Monate */
+.geschenke li:focus-visible{outline:2px solid var(--magenta);outline-offset:2px}.geschenke li:focus:not(:focus-visible){outline:none}
 .geschenke li b{display:block;font-size:15px;color:var(--kakao)}
 .geschenke li.ja{background:var(--rosa);box-shadow:inset 0 0 0 1.5px var(--magenta)}
+.geschenke li.ziel{background:var(--magenta);color:#fff;box-shadow:0 8px 18px -6px rgba(180,0,90,.45)}.geschenke li.ziel b,.geschenke li.ziel em{color:#fff}
 .geschenke li em{display:block;font-style:normal;color:var(--magenta);font-weight:600;font-size:12px;margin-top:3px}
 @media (hover:hover){.geschenke li:hover{transform:translateY(-2px);box-shadow:0 0 0 2px var(--rosa),0 6px 14px rgba(58,37,34,.12)}}
 .plus{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--kakao2)}
-.plus span{background:var(--rosa2);border-radius:999px;padding:5px 11px;transition:background .2s}
-@media (hover:hover){.plus span:hover{background:var(--rosa)}}
+.plus button{appearance:none;border:0;font:inherit;color:inherit;background:var(--rosa2);border-radius:999px;padding:5px 11px;transition:background .2s,box-shadow .2s;cursor:pointer}
+.plus button.an{background:var(--rosa);box-shadow:inset 0 0 0 1.5px var(--magenta);color:var(--kakao)}
+.plus button:focus:not(:focus-visible){outline:none}
+@media (hover:hover){.plus button:hover{background:var(--rosa)}}
+.plusTxt{font-size:14px;color:var(--kakao2);margin-top:6px;min-height:1.4em}
 
 /* Feste */
 .feste{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:28px}
@@ -515,10 +521,11 @@ footer img{width:90px}
       <p class="lead rv">Beim Vorzeigen der DoberCard erhalten Sie mit jedem Einkauf pro Fr. 2.00 Warenwert 1 Dober-Punkt. Danach wählen Sie selber, wie Sie Ihre gesammelten Punkte einlösen möchten.</p>
       <div class="punkte rv">
         <label for="woche">Ihr Einkauf pro Woche <output id="wocheOut">CHF 30</output></label>
-        <input type="range" id="woche" min="10" max="150" step="5" value="30">
+        <input type="range" id="woche" min="10" max="170" step="5" value="30">
         <div id="punkteTxt" style="font-size:15.5px;margin-top:4px"></div>
         <ul class="geschenke" id="geschenke"></ul>
-        <div class="plus"><b style="color:var(--kakao)">GuthabenPlus</b><span>bis CHF 200: 2%</span><span>bis CHF 500: 4%</span><span>über CHF 500: 5%</span></div>
+        <div class="plus"><b style="color:var(--kakao)">GuthabenPlus</b><button type="button" data-b="200" data-p="2">bis CHF 200: 2%</button><button type="button" data-b="500" data-p="4">bis CHF 500: 4%</button><button type="button" data-b="1000" data-p="5">über CHF 500: 5%</button></div>
+        <div id="plusTxt" class="plusTxt" aria-live="polite"></div>
       </div>
     </div>
   </div>
@@ -736,11 +743,17 @@ else if('IntersectionObserver' in window){const hio=new IntersectionObserver(es=
 /* DoberCard */
 const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
 const gE=document.getElementById('geschenke'),wo=document.getElementById('woche');
-G.forEach(g=>{const li=document.createElement('li');li.innerHTML='<b>'+g[0]+' Punkte</b>'+g[1]+'<em></em>';gE.appendChild(li)});
+let ziel=-1;
+G.forEach((g,i)=>{const li=document.createElement('li');li.innerHTML='<b>'+g[0]+' Punkte</b>'+g[1]+'<em></em>';li.tabIndex=0;li.setAttribute('role','button');li.setAttribute('aria-label',g[1]+' als Ziel wählen');
+ const wahl=()=>{ziel=i;const chf=Math.ceil(g[0]/12)*2;wo.value=Math.min(+wo.max,Math.max(+wo.min,Math.ceil(chf/5)*5));karte()};
+ li.addEventListener('click',wahl);li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();wahl()}});gE.appendChild(li)});
+document.querySelectorAll('.plus button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.plus button').forEach(x=>x.classList.toggle('an',x===b));
+ const betrag=+b.dataset.b,pz=+b.dataset.p,bonus=betrag*pz/100;document.getElementById('plusTxt').innerHTML='Beispiel: Sie laden CHF '+betrag+' auf – Ihr Guthaben: <b>CHF '+(betrag+bonus).toFixed(2)+'</b> (+'+pz+'%).'}));
 function karte(){const chfW=+wo.value,pw=Math.floor(chfW/2),p12=pw*12;
  document.getElementById('wocheOut').textContent='CHF '+chfW;
  document.getElementById('punkteTxt').innerHTML='= <b>'+pw+' Punkte</b> pro Woche · nach 3 Monaten rund <b style="color:var(--magenta)">'+p12+' Punkte</b>';
- gE.querySelectorAll('li').forEach((li,i)=>{const w=Math.ceil(G[i][0]/pw);li.classList.toggle('ja',G[i][0]<=p12);li.querySelector('em').textContent='nach '+w+' Woche'+(w>1?'n':'')})}
+ gE.querySelectorAll('li').forEach((li,i)=>{const w=Math.ceil(G[i][0]/pw);li.classList.toggle('ja',G[i][0]<=p12);li.classList.toggle('ziel',i===ziel);li.setAttribute('aria-pressed',i===ziel);li.querySelector('em').textContent='nach '+w+' Woche'+(w>1?'n':'')});
+ if(ziel>=0){const w=Math.ceil(G[ziel][0]/pw);document.getElementById('punkteTxt').innerHTML+='<br>Ihr Ziel: <b>'+G[ziel][1]+'</b> ('+G[ziel][0]+' Punkte) – erreicht nach <b>'+w+' Woche'+(w>1?'n':'')+'</b>'}}
 wo.addEventListener('input',karte);karte();
 
 /* Dessertbuffet */
