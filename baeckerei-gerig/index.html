@@ -229,7 +229,8 @@ body.paketauf .paket{transform:none;visibility:visible;box-shadow:-30px 0 60px -
 @media (hover:hover){.menge button:hover{box-shadow:inset 0 0 0 1.5px var(--gold),0 0 0 3px rgba(232,170,0,.18)}}
 .menge b{min-width:20px;text-align:center}
 .pos .sum{width:70px;text-align:right;font-family:Alegreya,serif;font-weight:700}
-.paket .leerpaket{padding:40px 10px;text-align:center;color:var(--muted)}
+.paket .leerpaket{padding:18px 0 30px;text-align:center;color:var(--muted)}
+.paket .leerpaket img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;margin-bottom:16px}
 .paket .leerpaket b{display:block;font-family:Alegreya,serif;font-size:22px;color:var(--kruste);margin-bottom:6px}
 .paket .fuss{padding:16px 22px 22px;background:var(--creme);border-top:1px solid rgba(58,35,23,.08)}
 .zeile{display:flex;justify-content:space-between;font-size:15px;padding:3px 0}
@@ -629,7 +630,7 @@ footer{background:transparent;color:var(--muted);border-top:1px solid rgba(58,35
         </div>
       </article>
       <article class="cafe fade">
-        <div class="cb" data-zoom="img/urnaesch.webp"><img src="img/urnaesch.webp" alt="Bäckerei Gerig in Urnäsch" loading="lazy"></div>
+        <div class="cb" data-zoom="img/tom_cafe.webp"><img src="img/tom_cafe.webp" alt="Kaffee und Patisserie im Bäcker-Kaffe" loading="lazy" style="object-position:70% 50%"></div>
         <div class="ci">
           <span class="ort2">Urnäsch · Tüfenbergstrasse 2</span>
           <h3>Bäcker-Kaffe Urnäsch</h3>
@@ -647,7 +648,7 @@ footer{background:transparent;color:var(--muted);border-top:1px solid rgba(58,35
 <section class="sec cat" id="catering">
   <div class="wrap">
     <div class="catgrid">
-      <div class="catbild fade" data-zoom="img/catering.webp"><img src="img/catering.webp" alt="Gefülltes Meterbrot und Spiessli von Gerig Catering" loading="lazy"><span class="lab">Meterbrot &amp; Spiessli</span></div>
+      <div class="catbild fade" data-zoom="img/tom_catering.webp"><picture><source media="(max-width:767px)" srcset="img/tom_catering_m.webp"><img src="img/tom_catering.webp" alt="Apéro-Buffet mit gefüllten Brötli und Patisserie" loading="lazy" style="object-position:45% 60%"></picture><span class="lab">Apéro &amp; Buffet</span></div>
       <div class="planer fade">
         <h2 class="cath">Gerig Catering. <em>Auch glutenfrei.</em></h2>
         <p class="catp">Gefüllte Meterbrote, Brote als Herz, Schlüssel oder Zahl, Spiessli, Chüechli und Patisserie – für Firma, Familie und Fest. Wählen Sie, wir melden uns mit einem Angebot.</p>
@@ -777,7 +778,7 @@ let korb={};try{korb=JSON.parse(localStorage.getItem('gerigPaket')||'{}')}catch(
 const byId=id=>P.find(p=>p[0]===id);
 function save(){try{localStorage.setItem('gerigPaket',JSON.stringify(korb))}catch(e){}}
 function render(){const ids=Object.keys(korb).filter(k=>korb[k]>0);let n=0,zw=0;
-  $('#liste').innerHTML=ids.length?ids.map(k=>{const p=byId(+k),q=korb[k];n+=q;zw+=q*p[2];return `<div class="pos"><img src="img/p/${String(p[0]).padStart(3,'0')}.webp" alt=""><div><div class="nm">${p[1]}</div><div class="ep">${chf(p[2])}</div></div><div class="menge"><button data-m="${k}" aria-label="weniger">−</button><b>${q}</b><button data-pl="${k}" aria-label="mehr">+</button></div><div class="sum">${q*p[2]>0?(q*p[2]).toFixed(2):''}</div></div>`}).join(''):'<div class="leerpaket"><b>Noch nichts im Paket</b>Tippen Sie bei einem Produkt auf +</div>';
+  $('#liste').innerHTML=ids.length?ids.map(k=>{const p=byId(+k),q=korb[k];n+=q;zw+=q*p[2];return `<div class="pos"><img src="img/p/${String(p[0]).padStart(3,'0')}.webp" alt=""><div><div class="nm">${p[1]}</div><div class="ep">${chf(p[2])}</div></div><div class="menge"><button data-m="${k}" aria-label="weniger">−</button><b>${q}</b><button data-pl="${k}" aria-label="mehr">+</button></div><div class="sum">${q*p[2]>0?(q*p[2]).toFixed(2):''}</div></div>`}).join(''):'<div class="leerpaket"><img src="img/tom_versand.webp" alt="Paket mit Zopf und Guetzli, bereit für den Versand" loading="lazy"><b>Noch nichts im Paket</b>Tippen Sie bei einem Produkt auf +</div>';
   $$('[data-cnt]').forEach(c=>c.textContent=n);
   $('[data-anz]').textContent=n?n+(n===1?' Artikel':' Artikel')+' · glutenfrei gebacken':'noch leer';
   const vs=n?15:0;$('[data-zw]').textContent=chf(zw);$('[data-vs]').textContent=n?chf(vs):'–';$('[data-tot]').textContent=chf(zw+vs);
