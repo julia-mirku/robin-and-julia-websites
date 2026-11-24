@@ -222,7 +222,7 @@ section{position:relative}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,60px);align-items:center}
 .pot{position:relative;aspect-ratio:1;border-radius:50%;max-width:min(520px,66vh);width:100%;margin:0 auto}
 .pot .potimg{position:absolute;inset:9%;border-radius:50%;overflow:hidden;box-shadow:0 30px 60px rgba(74,46,22,.35)}
-.pot .potimg img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.pot .potimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
 .pot .potimg img.on{opacity:1}
 .fork{position:absolute;left:50%;top:50%;width:6px;height:46%;margin-left:-3px;transform-origin:50% 0;pointer-events:none}
 .fork i{position:absolute;left:0;right:0;top:63%;bottom:0;border-radius:3px;background:linear-gradient(90deg,#7b5a3a,#b98a5b,#7b5a3a);transform:translateY(40px);opacity:0;transition:transform .45s cubic-bezier(.3,1.4,.5,1),opacity .3s}
@@ -497,7 +497,7 @@ body:before{background-size:450px 450px}
   <div class="kbg" aria-hidden="true">
     <picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_anschnitt_m.webp"><img class="cut" src="img/keller_anschnitt_l.webp" alt="" loading="lazy"></picture>
     <div class="whole"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_laib_m.webp"><img src="img/keller_laib_l.webp" alt="" loading="lazy"></picture></div>
-    <i class="kwire"></i>
+    
   </div>
   <div class="wrap pgrid">
     <div class="ptxt rv"><span class="kick">Aus unserem Käsekeller</span><h2>Gold und Bronze für unseren Käse</h2><p>Gemacht in der Käserei an der Chrüzstrasse – und gereift im eigenen Keller, Laib für Laib.</p></div>
@@ -552,7 +552,7 @@ body:before{background-size:450px 450px}
 <!-- FAMILIE -->
 <section class="familie sec fade-top" id="familie">
   <div class="wrap famgrid">
-    <div class="famimg rv" data-lb="img/kaeser_haende_l.webp"><img src="img/kaeser_haende_m.webp" alt="Hände des Käsers wenden einen jungen Käselaib"></div>
+    <div class="famimg rv" data-lb="img/familie_stefan.webp"><img src="img/familie_stefan.webp" alt="Stefan Jud mit einem Magdenauer Klosterkäse" style="object-position:28% 30%"></div>
     <div class="rv">
       <span class="kick">Familie Jud</span>
       <h2>In langer Familientradition</h2>
@@ -722,10 +722,8 @@ track.addEventListener('click',e=>{ if(e.target===track||e.target.classList.cont
 harp.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'){go(cur+1,true);e.preventDefault();} if(e.key==='ArrowLeft'){go(cur-1,true);e.preventDefault();} });
 go(0); addEventListener('resize',()=>go(cur));
 /* Anschnitt im durchscheinenden Keller (Block 2): einmal beim Sichtbarwerden */
-{ const bg=Q('#preise .kbg'), whole=bg.querySelector('.whole'), w=bg.querySelector('.kwire'); let done=false;
-  const play=()=>{ if(done) return; done=true; const t0=performance.now(), D=1300, H=bg.offsetHeight;
-    const st=t=>{ const p=Math.min(1,(t-t0)/D), e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2; whole.style.clipPath='inset('+(e*100)+'% 0 0 0)'; w.style.opacity=p<.97?.9:0; w.style.transform='translateY('+(e*H)+'px)';
-      if(p<1) requestAnimationFrame(st); else whole.style.visibility='hidden'; }; requestAnimationFrame(st); };
+{ const bg=Q('#preise .kbg'), whole=bg.querySelector('.whole'), w=bg.querySelector('.kwire'); let done=false; if(w) w.remove(); /* ohne Draht-Linie (Holly 25.11: Linie über Bildunterschriften) */
+  const play=()=>{ if(done) return; done=true; whole.style.transition='opacity 1.6s ease'; whole.style.opacity='0'; setTimeout(()=>{whole.style.visibility='hidden'},1700); };
   new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ o.disconnect(); setTimeout(play,500); } }),{threshold:.45}).observe(bg);
 }
 kpic.addEventListener('click',()=>openLb('img/'+K[cur].img+'_l.webp'));
