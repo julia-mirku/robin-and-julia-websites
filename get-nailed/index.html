@@ -135,7 +135,7 @@ html.nb-off .top{top:0}
 .hero.b .bgwall:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,9,16,.94) 0,rgba(28,9,16,.72) 45%,rgba(28,9,16,.25) 100%)}
 .hero.b .velvet{display:none}
 .hero.b .hero-grid{grid-template-columns:1.1fr .9fr}
-.hero.b h1{font-size:clamp(52px,7.4vw,120px)}
+.hero.b h1{font-size:clamp(44px,5.4vw,88px)}
 .hero.b .buehne .portal{border-radius:14px}
 .lackstrich{position:absolute;left:-2%;right:-2%;height:2px;top:0;background:linear-gradient(90deg,transparent,var(--gold-2),transparent);opacity:0}
 .hero.b.open .lackstrich{animation:strich 2.2s .4s var(--ease) both}
@@ -505,19 +505,20 @@ html.nb-off .top{top:0}
 </div>
 
 <main>
-<section class="hero" id="hero">
+<section class="hero b" id="hero">
+  <div class="bgwall" aria-hidden="true"><img src="img/seefeld_farbwand.webp" alt=""></div>
   <div class="spot" aria-hidden="true"></div>
-  <div class="velvet l" aria-hidden="true"></div><div class="velvet r" aria-hidden="true"></div>
+  <div class="lackstrich" aria-hidden="true"></div>
   <div class="hero-grid">
     <div>
-      <span class="kicker rise" data-en="Nail studio Zurich · since 2016">Nail Studio Zürich · seit 2016</span>
-      <h1 class="rise d1">Our reputation is <em>on your hands.</em></h1>
-      <p class="sub rise d2" data-en="Russian manicure, X-Build BIAB, X-Press Nails and nail art – in Seefeld by the Opera House and at Schaffhauserplatz.">Russian Manicure, X-Build BIAB, X-Press Nails und Nail Art – im Seefeld am Opernhaus und am Schaffhauserplatz.</p>
+      <span class="kicker rise" data-en="Since 2016 · Seefeld &amp; Schaffhauserplatz">Seit 2016 · Seefeld &amp; Schaffhauserplatz</span>
+      <h1 class="rise d1">Our reputation is<br><em>on your hands.</em></h1>
+      <p class="sub rise d2" data-en="Hundreds of colours on the wall, one standard on every hand: careful prep, clean work and nails that last.">Hunderte Farben an der Wand, ein Standard an jeder Hand: sorgfältige Vorbereitung, saubere Arbeit, Nägel, die halten.</p>
       <div class="hero-cta rise d3"><a class="btn btn-gold" href="#salons" data-en="Book an appointment">Termin buchen</a><a class="btn btn-line" href="#atelier" data-en="Design your set">Set entwerfen</a></div>
       <div class="facts rise d4"><div><b>5,0</b>Fresha · 1000+</div><div><b>23</b><span data-en="years of Kali">Jahre Erfahrung</span></div><div><b>2</b><span data-en="salons + academy">Salons + Academy</span></div></div>
     </div>
     <div class="buehne rise d2">
-      <div class="portal"><img src="img/hand_nude.webp" alt="Nude Mandelnägel aus dem Salon Get Nailed!" fetchpriority="high"></div>
+      <div class="portal"><img src="img/hand_dunkel_leder.webp" alt="Dunkle Nägel aus dem Salon Get Nailed!" fetchpriority="high"></div>
       <div class="ticket" id="ticket">
         <span class="tk" data-en="Your seat">Ihr Platz</span>
         <div class="tsal"><button data-s="seefeld" class="on">Seefeld</button><button data-s="schaffhauserplatz">Schaffhauserplatz</button></div>
@@ -529,20 +530,19 @@ html.nb-off .top{top:0}
     </div>
   </div>
 </section>
-<template id="heroB"><section class="hero b" id="hero">
-  <div class="bgwall" aria-hidden="true"><img src="img/seefeld_farbwand.webp" alt=""></div>
+<template id="heroB"><section class="hero" id="hero">
   <div class="spot" aria-hidden="true"></div>
-  <div class="lackstrich" aria-hidden="true"></div>
+  <div class="velvet l" aria-hidden="true"></div><div class="velvet r" aria-hidden="true"></div>
   <div class="hero-grid">
     <div>
-      <span class="kicker rise" data-en="Since 2016 · Seefeld &amp; Schaffhauserplatz">Seit 2016 · Seefeld &amp; Schaffhauserplatz</span>
-      <h1 class="rise d1">Nailing <em>Zürich.</em></h1>
-      <p class="sub rise d2" data-en="Hundreds of colours on the wall, one standard on every hand: careful prep, clean work and nails that last.">Hunderte Farben an der Wand, ein Standard an jeder Hand: sorgfältige Vorbereitung, saubere Arbeit, Nägel, die halten.</p>
+      <span class="kicker rise" data-en="Nail studio Zurich · since 2016">Nail Studio Zürich · seit 2016</span>
+      <h1 class="rise d1">Our reputation is<br><em>on your hands.</em></h1>
+      <p class="sub rise d2" data-en="Russian manicure, X-Build BIAB, X-Press Nails and nail art – in Seefeld by the Opera House and at Schaffhauserplatz.">Russian Manicure, X-Build BIAB, X-Press Nails und Nail Art – im Seefeld am Opernhaus und am Schaffhauserplatz.</p>
       <div class="hero-cta rise d3"><a class="btn btn-gold" href="#salons" data-en="Book an appointment">Termin buchen</a><a class="btn btn-line" href="#atelier" data-en="Design your set">Set entwerfen</a></div>
       <div class="facts rise d4"><div><b>5,0</b>Fresha · 1000+</div><div><b>23</b><span data-en="years of Kali">Jahre Erfahrung</span></div><div><b>2</b><span data-en="salons + academy">Salons + Academy</span></div></div>
     </div>
     <div class="buehne rise d2">
-      <div class="portal"><img src="img/hand_dunkel_leder.webp" alt="Dunkle Nägel aus dem Salon Get Nailed!" fetchpriority="high"></div>
+      <div class="portal"><img src="img/hand_nude.webp" alt="Nude Mandelnägel aus dem Salon Get Nailed!" fetchpriority="high"></div>
       <div class="ticket" id="ticket">
         <span class="tk" data-en="Your seat">Ihr Platz</span>
         <div class="tsal"><button data-s="seefeld" class="on">Seefeld</button><button data-s="schaffhauserplatz">Schaffhauserplatz</button></div>
@@ -899,7 +899,7 @@ const sh=$('#sheet');$('#burger').onclick=()=>{sh.classList.add('open');sh.setAt
 const shc=()=>{sh.classList.remove('open');sh.setAttribute('aria-hidden','true')};$('#sheetX').onclick=shc;$$('#sheet a').forEach(a=>a.addEventListener('click',shc));
 
 /* Vorhang auf – Interaktion erst danach */
-if(/[?&]hero=b/.test(location.search)){const tp=$('#heroB');$('#hero').replaceWith(tp.content.cloneNode(true))}
+if(/[?&]hero=a/.test(location.search)){const tp=$('#heroB');$('#hero').replaceWith(tp.content.cloneNode(true))}
 const hero=$('#hero');
 requestAnimationFrame(()=>requestAnimationFrame(()=>hero.classList.add('open')));
 setTimeout(()=>hero.classList.add('live'),1900);
