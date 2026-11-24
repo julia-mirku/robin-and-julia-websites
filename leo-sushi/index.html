@@ -654,6 +654,12 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   .sheet{height:calc(5 * 62px)}.sheet .half{grid-auto-rows:62px}.sheet .row{padding:4px 8px}.sheet .row .rd{-webkit-line-clamp:1}
   .karte h2{font-size:clamp(30px,3.4vw,44px)}.khead{gap:8px 24px}.kfilters{margin-top:8px}.board2{margin-top:10px;padding-top:10px}.bhead{padding-bottom:6px}.bnav{padding-top:6px}
 }
+/* ---------- Tablet hochkant (601–1100 px, Hochformat): Bar in einer Reihe, Karte neben den Kontakten ---------- */
+@media (min-width:601px) and (max-width:1100px) and (orientation:portrait){
+  .drinks:not(.two){grid-template-columns:1.2fr 1fr 1fr}.drinks:not(.two) .big{grid-column:auto}
+  .drinks.two{grid-template-columns:1fr 1fr}
+  .visit .grid{grid-template-columns:1fr 1fr;gap:28px}
+}
 </style>
 </head>
 <body>
