@@ -262,15 +262,16 @@ footer img{width:90px}
 /* Tablet */
 @media (max-width:1080px){
   .hero .wrap{grid-template-columns:1fr 1fr;gap:32px}
-  .grid3,.feste{grid-template-columns:1fr 1fr}
-  .grid3>:first-child,.feste>:last-child{grid-column:span 2}
   .stimmen{grid-template-columns:1fr 1fr}
   .stimme.gross{grid-row:auto;grid-column:span 2}
 }
 @media (max-width:860px){
+  .grid3,.feste{grid-template-columns:1fr 1fr}
+  .grid3>:first-child,.feste>:last-child{grid-column:span 2}
+  .feste>:last-child{flex-direction:row}.feste>:last-child .pic{flex:0 0 42%;aspect-ratio:auto}
   .hero .wrap,.zm,.haus,.card2,.besuch,.duo{grid-template-columns:1fr}
   .boxWrap{max-width:520px;width:100%;margin:0 auto;justify-self:center}
-  .duo .card{flex-direction:column}.duo .card .pic{aspect-ratio:308/200}
+  .zm .foto{max-width:340px;width:100%;justify-self:center}
 }
 /* Telefon */
 @media (max-width:600px){
@@ -291,6 +292,8 @@ footer img{width:90px}
   .fach{gap:7px;padding:9px;border-radius:12px}
   .praline{padding:9px 3px 7px;font-size:11.5px;gap:5px}
   .grid3,.feste,.stimmen{grid-template-columns:1fr}
+  .duo .card{flex-direction:column}.duo .card .pic{aspect-ratio:308/220}
+  .feste>:last-child{flex-direction:column}.feste>:last-child .pic{aspect-ratio:308/220}
   .grid3>:first-child,.feste>:last-child,.stimme.gross{grid-column:auto}
   .buehne{padding:12px 10px 4px}
   .pfeil{display:none}
