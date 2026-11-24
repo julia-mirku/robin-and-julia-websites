@@ -20,7 +20,8 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--creme);color:var(--kakao);font:400 17px/1.6 "Public Sans",system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+/* Julia №120 «б»: Pergament (Tom, nahtlos), nur Licht/Schatten auf Dober-Creme, scrollt mit der Seite */
+body{margin:0;background:var(--creme) url(img/bg_pergament.webp) repeat 0 0/1024px 1024px;color:var(--kakao);font:400 17px/1.6 "Public Sans",system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 :focus:not(:focus-visible){outline:none}
@@ -214,9 +215,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .pdf::before{content:"";width:10px;height:12px;border:1.6px solid currentColor;border-radius:2px}
 @media (hover:hover){.pdf:hover{background:var(--rosa);box-shadow:0 0 0 4px rgba(180,0,90,.08)}}
 /* Julia №132: drei Karten erscheinen nacheinander mit derselben Animation (kein Extra-Hereinfahren nur beim Doberino) */
-.feste>.card.rv{transition:opacity .7s ease,transform .7s ease,box-shadow .25s}
-@media (min-width:600px){.feste>.card.rv:nth-child(2){transition-delay:.25s,.25s,0s}.feste>.card.rv:nth-child(3){transition-delay:.5s,.5s,0s}}
-.feste>.card.rv.da{transition:transform .25s,box-shadow .25s;transition-delay:0s}
 .doberino .pic img{transition:transform .4s}
 @media (hover:hover){.doberino.in:hover .pic img{transform:scale(1.04)}}
 
@@ -764,7 +762,12 @@ function ladeKarte(){if(kl)return;kl=true;const i=document.createElement('iframe
 
 /* Einblenden */
 const rv=[...document.querySelectorAll('.rv')];
-document.querySelectorAll('.feste>.card').forEach(c=>c.addEventListener('transitionend',e=>{if(e.propertyName==='opacity'&&c.classList.contains('in'))c.classList.add('da')}));
+/* Julia №132 (ganze Seite): jedes .rv blendet weich ein; Geschwister einer Gruppe nacheinander (0,15 s), gleiche Animation.
+   Eigene transition von .card/.stimme/.team würde das Einblenden sonst verschlucken. Danach wieder die eigene transition (Hover). */
+if(!shot&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const GR=new Map();rv.forEach(e=>{const k=e.parentElement;if(!GR.has(k))GR.set(k,[]);GR.get(k).push(e)});
+ const breit=matchMedia('(min-width:600px)').matches;
+ GR.forEach(g=>g.forEach((e,i)=>{const d=breit?Math.min(i*.15,.6):0;e.style.transition='opacity .7s ease '+d+'s, transform .7s ease '+d+'s';
+  e.addEventListener('transitionend',ev=>{if(ev.propertyName==='opacity'&&e.classList.contains('in'))e.style.transition=''})}))}
 if(shot||!('IntersectionObserver' in window)){rv.forEach(e=>e.classList.add('in'));ladeKarte()}
 else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('in');io.unobserve(e.target);if(e.target===kb)ladeKarte()}}),{rootMargin:'0px 0px -6% 0px'});
  rv.forEach(e=>io.observe(e));
