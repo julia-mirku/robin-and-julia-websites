@@ -1101,9 +1101,6 @@ html body .prices>.wrap{padding-top:70px}
 /* Juli/Holly 24.11: auf niedrigen Laptops (1470×659) passt jeder Block ganz in den Bildschirm */
 @media (min-width:900px) and (max-height:800px){
   html body .stage{height:max(440px,calc(100vh - 171px))!important;min-height:0!important}
-  html body .about>.wrap{padding-top:36px!important;padding-bottom:16px!important;row-gap:20px}
-  html body .about .arch{height:min(480px,calc(100vh - 140px))!important;width:auto!important;aspect-ratio:3/4}
-  html body .ab-lead{font-size:38px!important}
   html body .prices>.wrap{padding-top:80px!important;padding-bottom:22px!important}
   html body .p-head{margin-bottom:20px!important}
   html body .board{padding-top:20px!important;padding-bottom:12px!important}
@@ -1113,6 +1110,15 @@ html body .prices>.wrap{padding-top:70px}
 /* Juli/Holly 24.11: keine Nähte – Deckenfoto über den Preisen blendet oben weich ein, Zeiten-Block mit weichen Rändern */
 html body .prices::before{-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.3) 30%,rgba(0,0,0,.82) 62%,rgba(0,0,0,.7) 75%,rgba(0,0,0,0) 100%)!important;mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.3) 30%,rgba(0,0,0,.82) 62%,rgba(0,0,0,.7) 75%,rgba(0,0,0,0) 100%)!important}
 html body .hours{background:linear-gradient(to bottom,var(--bg) 0,var(--bg2) 56px,var(--bg2) calc(100% - 56px),var(--bg) 100%)!important}
+/* Juli 24.11: «Unser Ziel» wieder gross; auf dem schwarzen Grund weiches warmes Licht von den Seiten wie von Wandleuchten (ruhig, ohne Blinken) */
+html body .about{background:
+  radial-gradient(ellipse 30% 40% at 0% 50%,rgba(226,184,100,.26),rgba(226,184,100,.09) 55%,rgba(226,184,100,0) 100%),
+  radial-gradient(ellipse 30% 40% at 100% 50%,rgba(226,184,100,.26),rgba(226,184,100,.09) 55%,rgba(226,184,100,0) 100%),
+  var(--bg)!important}
+@media (max-width:899px){html body .about{background:
+  radial-gradient(ellipse 40% 26% at 0% 50%,rgba(222,182,104,.14),rgba(222,182,104,0) 100%),
+  radial-gradient(ellipse 40% 26% at 100% 50%,rgba(222,182,104,.14),rgba(222,182,104,0) 100%),
+  var(--bg)!important}}
 </style>
 </head>
 <body>
