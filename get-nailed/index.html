@@ -576,6 +576,37 @@ html.sv .akt-stage .vh:after{content:"";position:absolute;inset:0;pointer-events
 #toneCtrl .tone{height:auto;padding-top:4px;padding-bottom:2px}
 #toneCtrl .tone-ticks{padding-top:2px;line-height:0}
 #toneCtrl{margin-bottom:20px!important}
+
+/* ---------- 24.11 Die Logen: Instagram & TikTok ---------- */
+.logen{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;margin-top:38px}
+.loge{position:relative;border-radius:20px;background:radial-gradient(120% 90% at 50% 0,#4a1828 0,var(--samt) 62%);color:var(--papier);padding:62px 28px 34px;overflow:hidden;isolation:isolate;text-decoration:none;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 60px -36px rgba(42,14,23,.75)}
+.loge:before{content:"";position:absolute;left:0;right:0;top:0;height:40px;z-index:2;pointer-events:none;
+  background:radial-gradient(circle at 50% 0,#7d2034 0 17px,#5c1626 18px 19px,transparent 20px) 0 10px/38px 30px repeat-x,linear-gradient(180deg,#5c1626,#41101d) 0 0/100% 14px no-repeat}
+.loge:after{content:"";position:absolute;left:0;right:0;bottom:0;height:16px;z-index:2;pointer-events:none;
+  background:linear-gradient(var(--gold-2),var(--gold)) 0 0/100% 2px no-repeat,repeating-linear-gradient(90deg,rgba(217,189,132,.55) 0 3px,transparent 3px 22px) 0 2px/100% 14px no-repeat}
+.loge .lg-k{font-family:"Josefin Sans";font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-2)}
+.loge .lg-h{font-family:"Playfair Display";font-size:clamp(24px,2.1vw,30px);line-height:1.1;margin:2px 0 0}
+.loge .lg-h em{color:var(--gold-2)}
+.lg-count{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.lg-count b{font-family:"Playfair Display";font-weight:400;font-size:clamp(46px,4.6vw,64px);line-height:1;color:var(--gold-3);font-variant-numeric:tabular-nums}
+.lg-count span{font-size:14px;color:rgba(246,238,230,.78)}
+.lg-thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.lg-thumbs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;box-shadow:0 0 0 1px rgba(217,189,132,.35);transition:transform .5s var(--ease),filter .5s}
+.loge:hover .lg-thumbs img{transform:translateY(-3px)}
+.loge:hover .lg-thumbs img:nth-child(2){transform:translateY(-7px)}
+.lg-go{margin-top:auto;align-self:flex-start;font-family:"Josefin Sans";font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--samt);background:linear-gradient(180deg,var(--gold-3),var(--gold-2));padding:12px 18px;border-radius:99px;transition:transform .3s var(--ease)}
+.loge:hover .lg-go{transform:translateX(4px)}
+.lg-reels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lg-reel{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(217,189,132,.35)}
+.lg-reel img{width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:object-position 6s linear}
+.loge:hover .lg-reel img,.logen.play .lg-reel img{object-position:50% 100%}
+.lg-reel:nth-child(2) img{transition-delay:.4s}
+.lg-reel i{position:absolute;left:12px;bottom:12px;width:38px;height:38px;border-radius:50%;background:rgba(28,9,16,.6);backdrop-filter:blur(4px);box-shadow:0 0 0 1px rgba(241,223,182,.7)}
+.lg-reel i:before{content:"";position:absolute;left:15px;top:12px;border-left:11px solid var(--gold-3);border-top:7px solid transparent;border-bottom:7px solid transparent}
+.loge:hover .lg-reel i{animation:lgPuls 1.4s ease-in-out infinite}
+@keyframes lgPuls{50%{box-shadow:0 0 0 1px rgba(241,223,182,.7),0 0 0 8px rgba(241,223,182,.12)}}
+@media (max-width:900px){.logen{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:26px}.loge{padding:56px 20px 30px}}
+@media (prefers-reduced-motion:reduce){.lg-reel img{transition:none}.loge:hover .lg-reel i{animation:none}}
 </style>
 </head>
 <body>
@@ -881,7 +912,6 @@ html.sv .akt-stage .vh:after{content:"";position:absolute;inset:0;pointer-events
     <div class="sec-head reveal">
       <div><span class="kicker">#nailingzurich · @getnailedch</span>
       <h2 class="t" data-en="Fresh from <em>the salon.</em>">Frisch aus <em>dem Salon.</em></h2></div>
-      <a class="btn btn-ghost" href="https://www.instagram.com/getnailedch/" target="_blank" rel="noopener" data-en="Instagram · 13k">Instagram · 13 000</a>
     </div>
     <div class="strip-wrap reveal">
       <button class="arr l" aria-label="Zurück"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
@@ -898,6 +928,21 @@ html.sv .akt-stage .vh:after{content:"";position:absolute;inset:0;pointer-events
       </div>
       <button class="arr r" aria-label="Weiter"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
       <div class="dots" id="dots"></div>
+    </div>
+    <div class="logen reveal" id="logen">
+      <a class="loge" href="https://www.instagram.com/getnailedch/" target="_blank" rel="noopener" aria-label="Get Nailed! auf Instagram">
+        <span class="lg-k">Loge I · Instagram</span>
+        <span class="lg-h" data-en="@getnailedch – <em>the audience</em>">@getnailedch – <em>das Publikum</em></span>
+        <span class="lg-count"><b id="lgZahl" data-n="13000">13 000</b><span data-en="followers watch every new set">Follower sehen jedes neue Set</span></span>
+        <span class="lg-thumbs"><img loading="lazy" src="img/hand_nude.webp" alt=""><img loading="lazy" src="img/seefeld_empfang_logo.webp" alt=""><img loading="lazy" src="img/hand_dots.webp" alt=""></span>
+        <span class="lg-go" data-en="To the profile →">Zum Profil →</span>
+      </a>
+      <a class="loge" href="https://www.tiktok.com/@getnailedch" target="_blank" rel="noopener" aria-label="Get Nailed! auf TikTok">
+        <span class="lg-k">Loge II · TikTok &amp; Reels</span>
+        <span class="lg-h" data-en="Behind the scenes, <em>in motion</em>">Hinter den Kulissen, <em>in Bewegung</em></span>
+        <span class="lg-reels"><span class="lg-reel"><img loading="lazy" src="img/ig_reel_booked.webp" alt="Reel: He asked to go back to his place"><i></i></span><span class="lg-reel"><img loading="lazy" src="img/ig_reel_workplace.webp" alt="Reel: Your new Workplace"><i></i></span></span>
+        <span class="lg-go" data-en="@getnailedch on TikTok →">@getnailedch auf TikTok →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1153,6 +1198,15 @@ if(H.classList.contains('sv')){(()=>{const stg=$('#aktStage');if(!stg)return;con
   /* Aktwechsel: kurz zu, dann wieder offen – weich, ohne Klassen-Sprung */
   window.__svAkt=fn=>{force=0;kick();setTimeout(()=>{fn();force=null;kick()},430)};
 })()}
+
+
+/* ===== 24.11 Logen: Zähler + Reels laufen auf Touch-Geräten beim Erscheinen ===== */
+(()=>{const lg=$('#logen');if(!lg)return;const z=$('#lgZahl'),N=+z.dataset.n;const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt=n=>String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(!e.isIntersecting)return;o.disconnect();
+    if(matchMedia('(hover: none)').matches)lg.classList.add('play');
+    if(rm){z.textContent=fmt(N);return}const t0=performance.now(),D=1600;
+    const st=t=>{const k=Math.min(1,(t-t0)/D),e2=1-Math.pow(1-k,3);z.textContent=fmt(N*e2);if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}),{threshold:.35}).observe(lg)})();
 
 /* ---------- Atelier ---------- */
 /* Preise Get Nailed! (Fresha, 24.11.2026): [CHF, Min.]. Kurz = BIAB S bis 2 mm, Medium = X-Build BIAB M bis 4 mm, Lang = X-Press neues Set, Extra lang = Gel neues Set; French +15/10 Min., Baby Boomer +25/25 Min. */
