@@ -482,6 +482,9 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 .preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.62),rgba(251,245,232,.52) 50%,rgba(251,245,232,.62)),linear-gradient(90deg,rgba(251,245,232,.9) 0%,rgba(251,245,232,.66) 34%,rgba(251,245,232,.3) 58%,rgba(251,245,232,.36) 100%)!important}
 @media (max-width:1020px){.preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.84) 0%,rgba(251,245,232,.72) 40%,rgba(251,245,232,.5) 70%,rgba(251,245,232,.56) 100%)!important}}
 /*MEDWEICH-END*/
+/* Юля 24.11: keine gelben Rahmen um die Figuren; nur Hand-Cursor, Fokusrahmen nur für Tastatur */
+.fig{cursor:pointer;-webkit-tap-highlight-color:transparent;background:none;border:0}.fig .ring,.done .fig:hover .ring{box-shadow:none!important}
+.fig:focus{outline:none}.fig:focus-visible{outline:2px solid rgba(251,245,232,.9);outline-offset:2px;border-radius:12px}
 /* Юля 24.11: Textebene liess Klicks nicht zu den Figuren durch */
 .hero-in,.hero-in .wrap{pointer-events:none}.hero-in .wrap>*{pointer-events:auto}
 
