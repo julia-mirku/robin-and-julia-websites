@@ -700,7 +700,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 .board.empty .wait svg{width:44px;height:28px}
 @media (max-width:760px){.board.empty .wait{padding:8px 6px;font-size:14px}.board.empty .wait svg{width:36px;height:22px}.board.empty{padding-top:6px;padding-bottom:6px}}
 /* 6) Wo finden: keine Leiste ueber dem Kartenrahmen */
-.frame.map .lamp{display:none}
+.frame .lamp{display:none}
 /* 8) Gaeste: Muster auf den gruenen Koepfen wieder da (ruhig, ohne Animation) */
 .sleeve .band{background:
    radial-gradient(circle at 0 100%,transparent 12px,rgba(232,207,143,.24) 13px,transparent 14px) 0 0/28px 14px,
@@ -713,6 +713,35 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 /* dreistellige Kuechennummern auf einer Zeile */
 .sheet .row{grid-template-columns:58px 1fr auto}.sheet .rn{white-space:nowrap}
 @media (max-width:760px){.sheet .row{grid-template-columns:52px 1fr auto}}
+/* Umblaettern ruhiger: laenger, Blatt hebt sich leicht, Schatten auf der freigelegten Seite */
+.sheetwrap{perspective:1600px}
+.sheetwrap .cast{position:absolute;top:0;bottom:0;z-index:2;pointer-events:none;opacity:0;width:50%}
+.sheetwrap .cast[data-side=r]{left:50%;background:linear-gradient(90deg,rgba(40,28,8,.45),rgba(40,28,8,.12) 40%,rgba(40,28,8,0) 80%)}
+.sheetwrap .cast[data-side=l]{left:0;background:linear-gradient(270deg,rgba(40,28,8,.45),rgba(40,28,8,.12) 40%,rgba(40,28,8,0) 80%)}
+.sheetwrap .cast[data-side=one]{left:0;width:100%;background:linear-gradient(90deg,rgba(40,28,8,.4),rgba(40,28,8,0) 70%)}
+/* Register 24.11 Runde 3 */
+/* Kopfzeile bleibt in der Mitte durchsichtig (.42), unter Logo/Adresse und Menue dunkler, damit nichts durchscheint */
+.hdr.solid{background:linear-gradient(90deg,rgba(6,16,11,.95) 0,rgba(6,16,11,.94) calc(50% - 400px),rgba(6,16,11,.42) calc(50% - 250px),rgba(6,16,11,.42) calc(50% - 130px),rgba(6,16,11,.82) calc(50% - 40px),rgba(6,16,11,.82) 100%)}
+@media (max-width:980px){.hdr.solid{background:linear-gradient(90deg,rgba(6,16,11,.95) 0,rgba(6,16,11,.92) 55%,rgba(6,16,11,.8) 100%)}}
+/* Karte: Zusammensetzungen nicht mit «…» abschneiden – zwei kleine Zeilen */
+.sheet .row .rd{-webkit-line-clamp:4!important;font-size:12.5px;line-height:1.2}
+.sheet .row{padding-top:2px!important;padding-bottom:2px!important}
+.sheet .tg i{font-size:9.5px;padding:1px 4px;line-height:1.3}
+.sheet .rt{line-height:1.2}
+/* niedrige Laptops (1470x659, 1280x720): ganzer Block mit Notiz im Bild */
+@media (min-width:761px) and (max-height:740px), (min-width:761px) and (max-width:1100px) and (max-height:820px){
+  .karte .sub{display:none}
+  .karte h2{font-size:clamp(28px,3vw,38px)}
+  .noren{margin-top:10px;padding-top:6px}
+  .nren{padding:8px 10px 13px}.nren small{display:none}
+  .board2{margin-top:8px;padding-top:8px;padding-bottom:6px}
+  .sheet{height:calc(5 * 58px + 34px)}.sheet .half{grid-auto-rows:58px}
+  .knote{margin-top:8px}
+}
+/* schmale Breiten: Zeilen hoch genug fuer lange Zusammensetzungen (keine Ueberlappung, kein «…») */
+@media (max-width:760px){.sheet{height:auto;min-height:calc(5 * 76px + 34px)}.sheet .half{grid-auto-rows:minmax(76px,auto)}.sheet .row .rd{font-size:12px;line-height:1.18}.sheet .row{gap:0 8px}#karte{scroll-margin-top:calc(var(--hdr) - 42px)}}
+@media (min-width:761px) and (max-width:1100px) and (min-height:821px){.sheet{height:calc(5 * 92px + 34px)}.sheet .half{grid-auto-rows:92px}}
+@media (min-width:761px) and (max-width:1100px) and (max-height:820px){.sheet{height:calc(5 * 76px + 34px)}.sheet .half{grid-auto-rows:76px}}
 </style>
 </head>
 <body>
@@ -1034,7 +1063,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
    der Schwung geschluckt (zeitbasiert, nicht verlaengert, ohne Timer/rAF-Abhaengigkeit). */
 (function(){
   const hero=$("#hero"), cord=$("#cord"), html=document.documentElement, now=()=>performance.now();
-  let p=0,target=0,done=false,doneAt=0,tFull=0,raf=0;
+  let p=0,target=0,done=false,doneAt=0,tFull=0,raf=0,extra=0,pass=false;
   const set=v=>{hero.style.setProperty("--p",v.toFixed(4));hero.style.setProperty("--r",(v*100).toFixed(2));};
   const L=[]; const on=(t,f,o)=>{ addEventListener(t,f,o); L.push([t,f,o]); };
   function finish(){ if(done) return; done=true; doneAt=now(); p=1; set(1); cancelAnimationFrame(raf); raf=0;
@@ -1043,14 +1072,16 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const check=()=>{ if(!done && target>=1 && tFull && (p>=0.99 || now()-tFull>900)) finish(); };
   function loop(){ raf=0; if(done) return; p+=(target-p)*0.085; if(Math.abs(target-p)<0.002) p=target; set(p); check(); if(!done) raf=requestAnimationFrame(loop); }
   const go=()=>{ if(!raf && !done) raf=requestAnimationFrame(loop); };
-  const push=d=>{ target=Math.max(0,Math.min(1,target+d)); if(target>.985) target=1; if(target>=1 && !tFull){ tFull=now(); setTimeout(check,950); } go(); check(); };
-  const swallow=e=>{ if(done){ if(now()-doneAt<650) e.preventDefault(); return true; } e.preventDefault(); return false; };
+  const push=d=>{ if(target>=1&&d>0) extra+=d; target=Math.max(0,Math.min(1,target+d)); if(target>.985) target=1; if(target>=1 && !tFull){ tFull=now(); setTimeout(check,950); } go(); check(); };
+  const swallow=e=>{ if(done){ if(!pass && now()-doneAt<650) e.preventDefault(); return true; } e.preventDefault(); return false; };
   if(reduce || scrollY>10 || location.hash){ target=1; p=1; set(1); done=true; hero.classList.remove("off"); return; }
   html.classList.add("locked"); scrollTo(0,0);
   /* Ohne overflow:hidden – Bildlaufleiste bleibt sichtbar, Breite aendert sich nie. Ziehen an der Leiste wird zurueckgesetzt. */
   on("scroll",()=>{ if(!done && scrollY>0) scrollTo(0,0); },{passive:true});
   on("wheel",e=>{ if(swallow(e)) return;
-    const dy=e.deltaMode===1?e.deltaY*32:e.deltaMode===2?e.deltaY*600:e.deltaY; push(Math.max(-.34,Math.min(.34,dy/700))); },{passive:false});
+    const dy=e.deltaMode===1?e.deltaY*32:e.deltaMode===2?e.deltaY*600:e.deltaY; push(Math.max(-.34,Math.min(.34,dy/700)));
+    /* kraeftiges Weiterdrehen nach vollem Licht: sofort fertig, der Rest der Bewegung scrollt die Seite weiter */
+    if(!done && extra>.25){ pass=true; finish(); } },{passive:false});
   let ty=null;
   on("touchstart",e=>{ ty=e.touches[0].clientY; },{passive:true});
   on("touchmove",e=>{ if(swallow(e)||ty==null) return; const y=e.touches[0].clientY; push((ty-y)/420); ty=y; },{passive:false});
@@ -1107,25 +1138,26 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   const spreadHTML=()=>two()?half(book[at])+half(book[at+1]):half(book[at]);
   /* ---- Umblaettern: die Seite dreht sich als feste Halbseite um den Mittelfalz (Perspektive, weicher Schatten) ---- */
   let cur=null;
-  function endTurn(){ if(!cur) return; const c=cur; cur=null; c.anims.forEach(a=>{ try{a.cancel()}catch(e){} }); c.leaf.remove(); sw.classList.remove("turning"); sheet.innerHTML=c.final; }
+  function endTurn(){ if(!cur) return; const c=cur; cur=null; c.anims.forEach(a=>{ try{a.cancel()}catch(e){} }); c.leaf.remove(); c.cast.remove(); sw.classList.remove("turning"); sheet.innerHTML=c.final; }
   async function turn(d,html){ endTurn();
     const oldH=[...sheet.children].map(h=>h.outerHTML), box=document.createElement("div"); box.innerHTML=html; const newH=[...box.children].map(h=>h.outerHTML);
     const dbl=two(), bad=h=>!h.length||(dbl&&h.length<2)||(!dbl&&h.length!==1);
     if(bad(oldH)||bad(newH)||!sheet.animate){ sheet.innerHTML=html; return; }
     const leaf=document.createElement("div"); leaf.className="sheet leaf"; leaf.setAttribute("aria-hidden","true"); sw.appendChild(leaf); sw.classList.add("turning");
-    const me={leaf,anims:[],final:html}; cur=me;
-    const run=(side,h,from,to,ms,ease)=>{ leaf.dataset.side=side; leaf.innerHTML=h+'<i class="shade"></i>'; const sh=leaf.lastChild;
+    const cast=document.createElement("i"); cast.className="cast"; sw.appendChild(cast);
+    const me={leaf,cast,anims:[],final:html}; cur=me;
+    const run=(side,h,from,to,ms,ease,castSide,c0,c1)=>{ leaf.dataset.side=side; leaf.innerHTML=h+'<i class="shade"></i>'; const sh=leaf.lastChild; cast.dataset.side=castSide;
       const o={duration:ms,easing:ease,fill:"forwards"}, darkFrom=Math.abs(from)>Math.abs(to)?.85:0, darkTo=Math.abs(from)>Math.abs(to)?0:.85;
-      const a=leaf.animate([{transform:`rotateY(${from}deg)`},{transform:`rotateY(${to}deg)`}],o), b=sh.animate([{opacity:darkFrom},{opacity:darkTo}],o);
-      me.anims=[a,b]; return a.finished; };
-    const IN="cubic-bezier(.42,.05,.72,.38)", OUT="cubic-bezier(.22,.68,.32,1)";
+      const a=leaf.animate([{transform:`rotateY(${from}deg)`},{transform:`rotateY(${(from+to)/2}deg) translateZ(14px)`,offset:.5},{transform:`rotateY(${to}deg)`}],o), b=sh.animate([{opacity:darkFrom},{opacity:darkTo}],o), c=cast.animate([{opacity:c0},{opacity:c1}],o);
+      me.anims=[a,b,c]; return a.finished; };
+    const IN="cubic-bezier(.55,.06,.68,.53)", OUT="cubic-bezier(.25,.46,.45,.94)";
     try{
-      if(dbl&&d>0){ sheet.innerHTML=oldH[0]+newH[1]; await run("r",oldH[1],0,-90,300,IN); if(cur!==me) return; await run("l",newH[0],90,0,420,OUT); }
-      else if(dbl){ sheet.innerHTML=newH[0]+oldH[1]; await run("l",oldH[0],0,90,300,IN); if(cur!==me) return; await run("r",newH[1],-90,0,420,OUT); }
-      else if(d>0){ sheet.innerHTML=newH[0]; await run("one",oldH[0],0,-92,520,"cubic-bezier(.4,0,.6,1)"); }
-      else { await run("one",newH[0],-92,0,520,"cubic-bezier(.4,0,.6,1)"); }
+      if(dbl&&d>0){ sheet.innerHTML=oldH[0]+newH[1]; await run("r",oldH[1],0,-90,480,IN,"r",.55,0); if(cur!==me) return; await run("l",newH[0],90,0,560,OUT,"l",0,.0); }
+      else if(dbl){ sheet.innerHTML=newH[0]+oldH[1]; await run("l",oldH[0],0,90,480,IN,"l",.55,0); if(cur!==me) return; await run("r",newH[1],-90,0,560,OUT,"r",0,0); }
+      else if(d>0){ sheet.innerHTML=newH[0]; await run("one",oldH[0],0,-92,760,"cubic-bezier(.45,.05,.4,1)","one",.5,0); }
+      else { await run("one",newH[0],-92,0,760,"cubic-bezier(.45,.05,.4,1)","one",0,0); }
     }catch(e){ return; }
-    if(cur===me){ cur=null; leaf.remove(); sw.classList.remove("turning"); sheet.innerHTML=html; } }
+    if(cur===me){ cur=null; leaf.remove(); cast.remove(); sw.classList.remove("turning"); sheet.innerHTML=html; } }
   function paint(dir){ const L=book[at], lc=L&&L.c; board.style.setProperty("--acc",lc?lc.acc:"#e8cf8f");
     const real=book.filter(p=>p.kind!=="blank").length;
     $("#pg").textContent="";
