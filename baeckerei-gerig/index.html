@@ -515,6 +515,9 @@ footer{background:transparent;color:var(--muted);border-top:0}
 }
 /* Tablet hochkant wie Telefon (Julia 23.11): Touch bis 1100 px – wischen + Punkte, keine Pfeile */
 @media (max-width:1100px) and (pointer:coarse){.pfeil{display:none!important}.punkte{display:flex;justify-content:center;gap:7px;margin-top:10px}}
+/* Sprungmarken: Überschrift nicht unter der Kopfzeile (Prüfer 25.11) */
+main>section[id],body>section[id]{scroll-margin-top:84px}
+@media (max-width:767px){main>section[id],body>section[id]{scroll-margin-top:70px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .fade{opacity:1;transform:none}.mini{opacity:1;transform:none}}
 </style>
 </head>
@@ -843,7 +846,10 @@ $('#kats').onclick=e=>{const b=e.target.closest('.kat');if(!b)return;kat=b.datas
 $('#such').oninput=e=>{q=e.target.value.trim().toLowerCase();$$('.kat').forEach(x=>x.classList.toggle('sel',!q&&x.dataset.k===kat));shop()};
 function shop(){const list=q?P.filter(p=>p[1].toLowerCase().includes(q)):P.filter(p=>p[3]===kat);const r=$('#regal');
   r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">${ear}glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div><div class="nm">${p[1]}</div><span class="pr">${chf(p[2])}</span></div><button class="plus" data-add="${p[0]}" aria-label="${p[1]} ins Paket">${plusSvg}</button></div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
-  r.scrollLeft=0;r.style.gridTemplateRows=list.length<=4&&innerWidth>767?'auto':'';upd('regal')}
+  r.scrollLeft=0;reihen();upd('regal')}
+/* wenige Produkte: eine volle Reihe statt halb leerer Doppelreihe (Prüfer 25.11) */
+function reihen(){const r=$('#regal');r.style.gridTemplateRows='';if(innerWidth<768)return;const c=r.firstElementChild;if(!c||!c.classList.contains('karte'))return;const g=parseFloat(getComputedStyle(r).columnGap)||16;const cols=Math.max(1,Math.round((r.clientWidth+g)/(c.getBoundingClientRect().width+g)));if(r.children.length<=cols)r.style.gridTemplateRows='auto'}
+let _bw=innerWidth;addEventListener('resize',()=>{if(innerWidth!==_bw){_bw=innerWidth;reihen();upd('regal')}});
 shop();
 
 /* Ribbons: Pfeile (1 Karte), Punkte */
