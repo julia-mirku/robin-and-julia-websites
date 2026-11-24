@@ -701,6 +701,13 @@ header.top{z-index:90!important}
 
 /* ---------- 24.11 Kopfzeile Tablet: Knöpfe rechts ---------- */
 @media (max-width:1100px) and (min-width:601px){.top .lang{margin-left:auto}}
+
+/* ---------- 24.11 №124 «+» gewählt → «−» zum Entfernen ---------- */
+#atelier .seg button[data-p].on,#atelier #segEx button.on{padding-right:40px!important;position:relative}
+#atelier .seg button[data-p].on::after,#atelier #segEx button.on::after{content:"−";position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 16px/1 system-ui,-apple-system,sans-serif;
+  background:rgba(255,255,255,.22);color:inherit}
+@media (hover:hover){#atelier .seg button[data-p].on:hover::after,#atelier #segEx button.on:hover::after{background:rgba(255,255,255,.38)}}
 </style>
 </head>
 <body>
@@ -3673,6 +3680,16 @@ function trK(){const root=$('#atelier');const w=document.createTreeWalker(root,N
 const _upd=update;update=function(u){_upd(u);if(kLang==='en')trK()};
 window.__konfLang=l=>{kLang=l;update();trK()};
 if(document.documentElement.lang==='en')window.__konfLang('en');
+
+
+/* ===== 24.11 №124: «+»-Option nochmals tippen = entfernen ===== */
+(()=>{const back={segFin:'farbe',segFx:'none'};
+  Object.keys(back).forEach(id=>{const seg=document.getElementById(id);if(!seg)return;
+    seg.addEventListener('click',e=>{const b=e.target.closest('button[data-p]');if(!b||!b.classList.contains('on'))return;
+      const f=seg.querySelector(`[data-v="${back[id]}"]`);if(!f||f.disabled)return;e.stopPropagation();e.preventDefault();f.click()},true)});
+  const lab=()=>document.querySelectorAll('#atelier .seg button[data-p],#atelier #segEx button').forEach(b=>{const n=b.childNodes[0].textContent.trim();
+    b.setAttribute('aria-pressed',b.classList.contains('on'));b.title=b.classList.contains('on')?n+' – nochmals tippen zum Entfernen':''});
+  new MutationObserver(lab).observe(document.getElementById('atelier'),{subtree:true,attributes:true,attributeFilter:['class']});lab()})();
 
 
 /* ===== 24.11 Bookbar nicht über dem Preis ===== */
