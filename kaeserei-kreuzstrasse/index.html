@@ -448,6 +448,11 @@ body:before{background:url(img/kaesetextur.webp) 0 0/900px 900px repeat;opacity:
 /* Regel 18j: Übergänge ohne Farbsprung – gleiche Käsetextur wie body:before */
 .hero-bar{background:linear-gradient(rgba(251,245,232,.7),rgba(251,245,232,.7)),url(img/kaesetextur.webp) 0 0/900px 900px fixed,var(--milk)!important;backdrop-filter:none;-webkit-backdrop-filter:none}
 .weg:before{content:"";position:absolute;left:0;right:0;top:0;height:34%;z-index:1;pointer-events:none;background:linear-gradient(rgba(251,245,232,.7),rgba(251,245,232,.7)),url(img/kaesetextur.webp) 0 0/900px 900px fixed,var(--milk);-webkit-mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%)}
+@media (max-width:700px){ /* Telefon: Kachel halb so gross (450px, Datei 1024px = >2x scharf) – mehr Löcher pro Bildschirm, gleiche Stärke */
+body:before{background-size:450px 450px}
+.hero-bar{background:linear-gradient(rgba(251,245,232,.7),rgba(251,245,232,.7)),url(img/kaesetextur.webp) 0 0/450px 450px fixed,var(--milk)!important}
+.weg:before{background-size:auto,450px 450px}
+}
 .weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 </style>
