@@ -303,6 +303,9 @@ body{position:relative}
 @media (hover:hover){.weg li:hover{border-color:var(--gold-l);background:rgba(227,179,162,.07)}}
 .weg svg{width:21px;height:21px;color:var(--gold-l);flex:none;margin-top:2px}
 .weg b{display:block;font-weight:600}
+.weg .see{margin:0 0 0 auto;flex:none;width:112px;aspect-ratio:16/9;border-radius:6px;overflow:hidden;cursor:zoom-in;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.weg .see img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+@media (hover:hover){.weg .see:hover img{transform:scale(1.06)}}
 .weg span{font-size:14px;color:rgba(247,241,231,.78)}
 .s-besuch .klein{font-size:13.5px;color:rgba(247,241,231,.62);margin:6px 0 0}
 footer{color:rgba(247,241,231,.6);font-size:13.5px;padding:22px 0 calc(22px + env(safe-area-inset-bottom))}
@@ -413,7 +416,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .fkarten{gap:20px}
   .fk{grid-template-columns:1fr}
   .fk figure{aspect-ratio:21/9}
-  .s-besuch{padding:52px 0 50px}
+  .s-besuch{padding:52px 0 36px}
   .abschied{grid-template-columns:1fr 1fr;gap:34px;align-items:center}
   .pk-hinten{grid-template-columns:1.25fr 1fr;gap:22px;padding:26px 28px 26px}
   .ph-rechts{border-top:0;border-left:1px solid rgba(42,33,28,.15);padding:0 0 0 22px;justify-content:space-between}
@@ -659,7 +662,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
     </div>
     <ul class="weg rise">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/></svg><span><b>Zug</b>Bahnhof Romanshorn, gleich gegenüber</span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/></svg><span><b>Schiff &amp; Boot</b>Hafen am Bodensee, ein paar Minuten zu Fuss</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/></svg><span><b>Schiff &amp; Boot</b>Hafen am Bodensee, ein paar Minuten zu Fuss</span><figure class="see" data-big="img/see_abend_1600.webp"><img src="img/see_abend_m.webp" alt="Abends am Hafen Romanshorn: Schiff am Steg, ruhiger Bodensee" loading="lazy"></figure></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16h14l-1.5-5.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5zM5 16v3M19 16v3"/><circle cx="8" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg><span><b>Auto</b>Kostenpflichtige Parkplätze in der Umgebung</span></li>
     </ul>
     <p class="klein">Bezahlen mit TWINT, Karte, bar oder WIR.</p>
