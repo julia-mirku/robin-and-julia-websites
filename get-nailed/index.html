@@ -703,11 +703,13 @@ header.top{z-index:90!important}
 @media (max-width:1100px) and (min-width:601px){.top .lang{margin-left:auto}}
 
 /* ---------- 24.11 №124 «+» gewählt → «−» zum Entfernen ---------- */
-#atelier .seg button[data-p].on,#atelier #segEx button.on{padding-right:40px!important;position:relative}
-#atelier .seg button[data-p].on::after,#atelier #segEx button.on::after{content:"−";position:absolute;right:8px;top:50%;transform:translateY(-50%);
-  width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 16px/1 system-ui,-apple-system,sans-serif;
-  background:rgba(255,255,255,.22);color:inherit}
-@media (hover:hover){#atelier .seg button[data-p].on:hover::after,#atelier #segEx button.on:hover::after{background:rgba(255,255,255,.38)}}
+/* №130: Breite bleibt gleich – das «−» steht genau an der Stelle von «+15» (Preis steht in der Summe darunter) */
+#atelier .seg button[data-p] span,#atelier #segEx button span{position:relative;display:inline-block}
+#atelier .seg button[data-p].on span,#atelier #segEx button.on span{color:transparent!important}
+#atelier .seg button[data-p].on span::after,#atelier #segEx button.on span::after{content:"−";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 15px/1 system-ui,-apple-system,sans-serif;
+  background:rgba(255,255,255,.24);color:#fff}
+@media (hover:hover){#atelier .seg button[data-p].on:hover span::after,#atelier #segEx button.on:hover span::after{background:rgba(255,255,255,.4)}}
 </style>
 </head>
 <body>
