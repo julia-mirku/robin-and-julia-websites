@@ -488,10 +488,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
    radial-gradient(circle at 0 100%,transparent 12px,rgba(232,207,143,.26) 13px,transparent 14px) 0 0/28px 14px,
    radial-gradient(circle at 14px 100%,transparent 12px,rgba(232,207,143,.26) 13px,transparent 14px) 0 7px/28px 14px,
    linear-gradient(135deg,#1d4a34,#0f2a1d);box-shadow:inset 0 -3px 0 #9c2f72,inset 0 -4px 0 rgba(255,95,168,.35)}
-html.g-b .sleeve .band{background:
-   radial-gradient(circle at 0 100%,transparent 12px,rgba(255,226,200,.2) 13px,transparent 14px) 0 0/28px 14px,
-   radial-gradient(circle at 14px 100%,transparent 12px,rgba(255,226,200,.2) 13px,transparent 14px) 0 7px/28px 14px,
-   linear-gradient(135deg,#1d4a34 0%,#173a2a 30%,#3d1a3a 72%,#5a1f4c 100%);box-shadow:none}
 
 /* Neon-Ueberzeile (Wortlaut wie bei Leo: Signature Sake Cocktails) */
 .neon-kick{text-align:center;font:600 clamp(13px,1.3vw,16px)/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:#d9ffe9;text-shadow:0 0 6px #33e08a,0 0 16px rgba(51,224,138,.6);margin:0 0 clamp(10px,1.4vw,18px);padding-left:.42em}
@@ -512,19 +508,6 @@ html.g-b .sleeve .band{background:
 }
 @media (orientation:portrait) and (min-width:761px) and (max-width:1100px){.wall .frame,.wall .stack .frame{flex-basis:62%}}
 
-/* ---------- Gaeste Variante C (?gaeste=c): helles Papier, ringsum eine feine Neonroehre (rosa / gruen im Wechsel) ---------- */
-html.g-c .sleeve .band{background:linear-gradient(180deg,#eee8d4,#e8e3cd);box-shadow:inset 0 -1px 0 rgba(122,96,40,.22)}
-html.g-c .sleeve .band img{filter:brightness(0);opacity:.72}
-html.g-c .sleeve::before{inset:92px 8px 8px}
-html.g-c .sleeve{--tube:255,95,168;--core:#ffd1e6;border:2px solid rgba(var(--tube),.25);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow 1.2s ease,border-color 1.2s ease}
-html.g-c .sleeve:nth-child(even){--tube:51,224,138;--core:#c9ffe2}
-html.g-c .sleeves.lit .sleeve{border-color:var(--core);box-shadow:0 0 0 1px rgba(var(--tube),.85),0 0 10px 1px rgba(var(--tube),.7),0 0 26px 4px rgba(var(--tube),.32),inset 0 0 10px rgba(var(--tube),.25),0 22px 34px -18px rgba(0,0,0,.85)}
-html.g-c .sleeve .who b{color:#b8185f;text-shadow:0 0 8px rgba(255,95,168,.35)}
-html.g-c .sleeve:nth-child(even) .who b{color:#137a46;text-shadow:0 0 8px rgba(51,224,138,.35)}
-html.g-c .score .stars{color:#ffd9ea;text-shadow:0 0 6px #ff9fcb,0 0 14px rgba(255,95,168,.7)}
-html.g-c .score{border-color:#ffb3d6;box-shadow:0 0 12px rgba(255,95,168,.35)}
-@media (hover:hover){html.g-c .sleeve:hover{border-color:var(--core)}}
-html.g-c .sleeves{padding-left:14px;padding-right:14px}
 
 /* ---------- Fusszeile wie bei einer echten Website ---------- */
 footer.foot{padding:clamp(34px,4vw,52px) 0 calc(22px + env(safe-area-inset-bottom));font-size:14.5px;color:#b9b09c}
@@ -566,6 +549,21 @@ footer .wrap.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
 
 /* Bar auf dem Telefon: Drinks als Band zum Wischen */
 @media (max-width:760px){.drinks{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;gap:14px;margin-left:-20px;margin-right:-20px;padding:0 20px 4px;scroll-padding:0 20px}.drinks::-webkit-scrollbar{display:none}.drinks>*{flex:0 0 82%;min-width:0;scroll-snap-align:start}.drink img{aspect-ratio:4/5}}
+
+/* ---------- Gaeste endgueltig (Variante A): kein Neon, kein Rosa – Goldrahmen und ein langsamer Verlauf gruen -> gold ---------- */
+.rev h2 i{color:var(--gold)}
+.score{border-color:rgba(201,164,92,.5)}.score b{color:var(--gold)}.score span{color:#bfb59f}
+@media (hover:hover){.score:hover{border-color:var(--gold);box-shadow:0 0 26px rgba(232,207,143,.2)}}
+.sleeve{border:1px solid #c9a45c;box-shadow:0 0 0 1px rgba(232,207,143,.25),0 22px 34px -18px rgba(0,0,0,.85)}
+.sleeve::before{border-color:rgba(160,124,52,.45)}
+@media (hover:hover){.sleeve:hover{border-color:#e8cf8f;box-shadow:0 0 0 1px rgba(232,207,143,.45),0 30px 44px -20px rgba(0,0,0,.9),0 0 30px rgba(232,207,143,.16)}}
+.sleeve .band{background:
+   radial-gradient(circle at 0 100%,transparent 12px,rgba(232,207,143,.24) 13px,transparent 14px) 0 0/28px 14px,
+   radial-gradient(circle at 14px 100%,transparent 12px,rgba(232,207,143,.24) 13px,transparent 14px) 0 7px/28px 14px,
+   linear-gradient(115deg,#0f2a1d 0%,#1d4a34 36%,#2c5a3c 50%,#8a6a2c 74%,#d8b866 100%) 55% 0/280% 100%;
+   box-shadow:inset 0 -2px 0 #c9a45c}
+@keyframes gaesteGold{from{background-position:0 0,0 7px,0% 0}to{background-position:0 0,0 7px,55% 0}}
+.sleeves.lit .sleeve .band{animation:gaesteGold 14s cubic-bezier(.4,0,.3,1) 1 both}
 </style>
 </head>
 <body>
@@ -737,11 +735,11 @@ footer .wrap.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
 <section class="rev" id="stimmen">
   <div class="wrap">
     <div class="top reveal">
-      <h2>Was Gäste <i>sagen</i></h2>
+      <h2>Was unsere Gäste <i>sagen</i></h2>
       <a class="score" href="https://www.google.com/maps/search/?api=1&amp;query=Leo+Caf%C3%A9+Bar+Restaurant+Engelgasse+2+St.+Gallen" target="_blank" rel="noopener"><b>4,4</b><span><span class="stars">★★★★</span><span class="stars" style="opacity:.3">★</span><br>302 Bewertungen auf Google</span></a>
     </div>
     <div class="sleeves" id="sleeves"></div>
-    <div class="revnav"><button class="arrow" id="rPrev" aria-label="Vorherige Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button><button class="arrow" id="rNext" aria-label="Nächste Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button></div>
+    <div class="revnav"><button class="arrow ga" id="rPrev" aria-label="Vorherige Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button><button class="arrow ga" id="rNext" aria-label="Nächste Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button></div>
   </div>
 </section>
 
@@ -1051,7 +1049,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 })();
 
 /* ================= Bewertungen ================= */
-(function(){ const g=new URLSearchParams(location.search).get("gaeste"); document.documentElement.classList.add(g==="b"?"g-b":g==="c"?"g-c":"g-a"); })();
 (function(){ const box=$("#sleeves");
   box.innerHTML=REV.map(r=>`<article class="sleeve"><div class="band"><img src="img/s/leo_logo.png" alt="" width="46" height="46" loading="lazy"></div><blockquote>«${esc(r.q)}»</blockquote><div class="who"><b>${esc(r.n)}</b><span>Google · ${r.t}</span></div></article>`).join("");
   const step=()=>box.querySelector(".sleeve").getBoundingClientRect().width+24;
@@ -1163,7 +1160,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Sake, Matcha, Zitrone, Zucker – umami & erfrischend":"Sake, matcha, lemon, sugar – umami & refreshing",
 "Sake, Holunder, Tonic, Limettenzeste":"Sake, elderflower, tonic, lime zest","Sake, Yuzu, Soda – Zitrus & Spritz":"Sake, yuzu, soda – citrus & spritz",
 "Bier & Bläschen":"Beer & bubbles","Thailand · 5,0 % · 3,3 dl":"Thailand · 5.0% · 33 cl","Japan · 5,0 % · 3,3 dl":"Japan · 5.0% · 33 cl","7,5 dl":"75 cl",
-"Was Gäste":"What guests","sagen":"say","302 Bewertungen auf Google":"302 reviews on Google",
+"Was unsere Gäste":"What our guests","sagen":"say","302 Bewertungen auf Google":"302 reviews on Google",
 "Vorherige Bewertung":"Previous review","Vorherige Gerichte":"Previous dishes","Weitere Gerichte":"More dishes","Nächste Bewertung":"Next review",
 "Bis":"See you","heute Abend?":"this evening?","heute Mittag?":"at lunchtime?","morgen?":"tomorrow?","bald?":"soon?","Tisch reservieren & Bestellungen":"Table bookings & orders","Route planen":"Get directions",
 "Anfragen für Gruppen & Feste":"Enquiries for groups & parties","7’840 Follower auf Instagram":"7,840 followers on Instagram",
