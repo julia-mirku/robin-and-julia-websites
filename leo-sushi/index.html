@@ -1063,6 +1063,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   const step=()=>box.querySelector(".sleeve").getBoundingClientRect().width+24;
   const next=()=>{ if(box.scrollLeft+box.clientWidth>=box.scrollWidth-8) box.scrollTo({left:0}); else box.scrollBy({left:step()}); };
   $("#rNext").onclick=next; $("#rPrev").onclick=()=>{ if(box.scrollLeft<8) box.scrollTo({left:box.scrollWidth}); else box.scrollBy({left:-step()}); };
+  const rUpd=()=>{ $("#rPrev").disabled=box.scrollLeft<8; }; box.addEventListener("scroll",()=>requestAnimationFrame(rUpd),{passive:true}); addEventListener("resize",rUpd); rUpd();
   let hold=false, vis=false; box.addEventListener("mouseenter",()=>hold=true); box.addEventListener("mouseleave",()=>hold=false); box.addEventListener("touchstart",()=>{hold=true;setTimeout(()=>hold=false,9000)},{passive:true});
   new IntersectionObserver(es=>{ vis=es[0].isIntersecting; if(vis) box.classList.add("lit"); },{threshold:.3}).observe(box);
   if(!reduce) setInterval(()=>{ if(vis&&!hold) next(); },6000);
