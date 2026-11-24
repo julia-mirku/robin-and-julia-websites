@@ -163,10 +163,13 @@ nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;
 .pfeil.l{left:12px}.pfeil.r{right:12px}
 @media (hover:hover){.pfeil:hover{background:var(--rosa);box-shadow:0 0 0 5px rgba(180,0,90,.1)}}
 .pfeil:disabled{opacity:.35;cursor:default}
-#fassade{transition:fill .8s}
-.schildtxt{font-family:"Young Serif";transition:opacity .35s}
-.jahrgross{font-family:"Young Serif";font-size:clamp(54px,6vw,84px);line-height:1;color:var(--ocker);transition:color .3s}
-.jahrtxt{min-height:120px;font-size:17px;color:var(--kakao2);margin:10px 0 18px}
+#fassade{transition:fill var(--fade,.6s) ease-in-out,stroke var(--fade,.6s) ease-in-out}
+.schildtxt{font-family:"Young Serif";transition:opacity var(--fade,.6s) ease-in-out}
+.jahrgross{font-family:"Young Serif";font-size:clamp(54px,6vw,84px);line-height:1;color:var(--ocker)}
+.jahrtxt{font-size:17px;color:var(--kakao2);margin:10px 0 18px}
+/* Kreuzblende (Julia №121): alle Ebenen in einer Zelle, Höhe = grösste Ebene, kein Springen */
+.blende{display:grid}.blende>*{grid-area:1/1;opacity:0;transition:opacity var(--fade,.6s) ease-in-out}.blende>.an{opacity:1}
+.blende>.y5{color:var(--ocker)}.blende>.y0{color:var(--kakao2)}
 .jahrtxt b{color:var(--kakao)}
 .leiste{position:relative;margin-top:18px}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;background:transparent;cursor:pointer;margin:0}
@@ -312,7 +315,7 @@ footer img{width:90px}
   .grid3>:first-child,.feste>:last-child,.stimme.gross{grid-column:auto}
   .buehne{padding:12px 10px 4px}
   .pfeil{display:none}
-  .hausLauf{display:flex;flex-direction:column}.hausLauf .leiste{order:2;margin-top:6px}.hausLauf .jahrtxt{order:3;min-height:0;margin:8px 0 0}
+  .hausLauf{display:flex;flex-direction:column}.hausLauf .leiste{order:2;margin-top:6px}.hausLauf .jahrtxt{order:3;margin:8px 0 0}
   .geschenke{grid-template-columns:repeat(2,1fr)}
   .stimmen{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:22px -18px 0;padding:4px 18px 10px;scrollbar-width:none}
   .stimmen::-webkit-scrollbar{display:none}
@@ -445,14 +448,14 @@ footer img{width:90px}
       <svg viewBox="0 0 520 330" role="img" aria-label="Das Haus an der Wilerstrasse 73">
         <defs><linearGradient id="dach" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7b4a3a"/><stop offset="1" stop-color="#5a3329"/></linearGradient></defs>
         <!-- ZauberGarten -->
-        <g id="garten" opacity="0" style="transition:opacity .8s">
+        <g id="garten" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out">
           <rect x="372" y="186" width="128" height="104" rx="6" fill="#e9f1ee" stroke="#9fb7ad" stroke-width="3"/>
           <path d="M372 186 L436 150 L500 186" fill="#d7e6e0" stroke="#9fb7ad" stroke-width="3"/>
           <path d="M404 186v104M436 186v104M468 186v104" stroke="#9fb7ad" stroke-width="2"/>
           <circle cx="388" cy="282" r="9" fill="#6fa36b"/><circle cx="486" cy="280" r="11" fill="#7cb276"/>
         </g>
         <!-- Anbau -->
-        <g id="anbau" opacity="0" style="transition:opacity .8s">
+        <g id="anbau" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out">
           <rect x="22" y="120" width="96" height="170" fill="#e8dccb" stroke="#bda98f" stroke-width="2"/>
           <path d="M14 122 L70 82 L126 122z" fill="url(#dach)"/>
           <rect x="42" y="150" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/><rect x="78" y="150" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/>
@@ -467,12 +470,12 @@ footer img{width:90px}
         <g stroke="#a88f74" stroke-width="2"><path d="M159 124v42M240 124v42M321 124v42"/></g>
         <!-- Schild -->
         <rect x="150" y="180" width="180" height="34" rx="6" fill="#fffbf4" stroke="#3A2522" stroke-width="2"/>
-        <text id="schild" class="schildtxt" x="240" y="203" text-anchor="middle" font-size="17" fill="#3A2522">Schneiderei</text>
+        <g id="schild"></g>
         <!-- Laden -->
         <rect x="140" y="226" width="78" height="64" fill="#cfe0e8" stroke="#fff" stroke-width="4"/>
         <rect x="262" y="226" width="78" height="64" fill="#cfe0e8" stroke="#fff" stroke-width="4"/>
         <rect x="224" y="232" width="32" height="58" fill="#6b4a3a"/>
-        <path id="markise" d="M136 222 h208 l-10 14 h-188z" fill="#B4005A" opacity="0" style="transition:opacity .8s"/>
+        <path id="markise" d="M136 222 h208 l-10 14 h-188z" fill="#B4005A" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out"/>
         <rect x="0" y="290" width="520" height="40" fill="#d9d2c6"/>
         <rect x="0" y="290" width="520" height="4" fill="#bfb6a8"/>
       </svg>
@@ -692,21 +695,33 @@ const J=[
 const zr=document.getElementById('zeit'),jE=document.getElementById('jahr'),jT=document.getElementById('jahrtxt'),sch=document.getElementById('schild');
 const fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
 const hp=document.getElementById('hPrev'),hn=document.getElementById('hNext');
-function jahr(i,keep){const [y,s,t]=J[i];jE.textContent=y;jT.innerHTML=t;if(jT.animate){const k=[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}];jT.animate(k,{duration:520,easing:'ease-out'});jE.animate(k,{duration:420,easing:'ease-out'})}
- if(sch.textContent!==s){sch.style.opacity=0;setTimeout(()=>{sch.textContent=s;sch.setAttribute('font-size',s.length>15?15:17);sch.style.opacity=1},250)}
+/* Kreuzblende statt Hineinschieben (Julia №121): alle Jahre/Texte/Schilder liegen übereinander, nur Deckkraft wechselt */
+const FADE=600,HALT=1500;/* ms: Blende, Stehzeit pro Jahr */
+document.getElementById('haus').style.setProperty('--fade',FADE+'ms');
+jE.classList.add('blende');jT.classList.add('blende');jE.innerHTML=J.map(r=>'<span class="'+(r[0]>=2005?'y5':'y0')+'">'+r[0]+'</span>').join('');jT.innerHTML=J.map(r=>'<span>'+r[2]+'</span>').join('');
+const SN=[...new Set(J.map(r=>r[1]))];sch.innerHTML=SN.map(n=>'<text class="schildtxt" x="240" y="203" text-anchor="middle" font-size="'+(n.length>15?15:17)+'" fill="#3A2522" opacity="0">'+n+'</text>').join('');
+const jEs=[...jE.children],jTs=[...jT.children],schs=[...sch.children];
+function jahr(i,keep){const [y,s]=J[i];jEs.forEach((e,k)=>e.classList.toggle('an',k===i));jTs.forEach((e,k)=>e.classList.toggle('an',k===i));schs.forEach((e,k)=>e.style.opacity=SN[k]===s?1:0);
  fas.setAttribute('fill',y>=2005?'#E9A23E':'#e8dccb');fas.setAttribute('stroke',y>=2005?'#c98426':'#bda98f');
- gar.setAttribute('opacity',y>=2005?1:(y>=1999?.55:0));anb.setAttribute('opacity',y>=1908?1:0);mk.setAttribute('opacity',y>=1991?1:0);
- jE.style.color=y>=2005?'var(--ocker)':'var(--kakao2)';hp.disabled=i===0;hn.disabled=i===J.length-1;if(!keep)zr.value=i}
-let ai=-1,auto=true,raf=0,t0=0,v0=0;const DAUER=2000;/* ms pro Jahr-Schritt, gleitend */
+ gar.style.opacity=y>=2005?1:(y>=1999?.55:0);anb.style.opacity=y>=1908?1:0;mk.style.opacity=y>=1991?1:0;
+ hp.disabled=i===0;hn.disabled=i===J.length-1;if(!keep)zr.value=i}
+let ai=-1,auto=true,raf=0,t0=0,v0=0;
 function stopAuto(){auto=false;cancelAnimationFrame(raf);document.getElementById('haus').classList.add('hand')}
 const bue=document.querySelector('.buehne'),bsv=bue.querySelector('svg');
 function ton(v){const q=v/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';const mix=(a,b)=>a.map((x,i)=>Math.round(x+(b[i]-x)*q));const top=mix([239,229,212],[226,238,244]);bue.style.background='linear-gradient(rgb('+top+'),#F7F1E7 78%)'}
 function hzeig(v){zr.value=v;ton(v);const i=Math.round(v);if(i!==ai){ai=i;jahr(i,true)}}
-function lauf(t){if(!auto)return;if(!t0){t0=t;v0=+zr.value}const v=Math.min(J.length-1,v0+(t-t0)/DAUER);hzeig(v);if(v<J.length-1)raf=requestAnimationFrame(lauf);else auto=false}
+/* Autolauf schrittweise: Stehzeit, dann Blende zum nächsten Jahr (Regler und Farbton gleiten in derselben Zeit mit) */
+const ein=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+function lauf(t){if(!auto)return;if(!t0){t0=t;v0=Math.round(+zr.value)}const d=t-t0;
+ if(d<HALT){raf=requestAnimationFrame(lauf);return}
+ if(v0>=J.length-1){auto=false;return}
+ if(ai!==v0+1){ai=v0+1;jahr(v0+1,true)}
+ const q=Math.min(1,(d-HALT)/FADE);const v=v0+ein(q);zr.value=v;ton(v);
+ if(q<1)raf=requestAnimationFrame(lauf);else{zr.value=v0+1;t0=0;raf=requestAnimationFrame(lauf)}}
 ['pointerdown','keydown','touchstart'].forEach(e=>zr.addEventListener(e,stopAuto,{passive:true}));
 zr.addEventListener('input',()=>{stopAuto();hzeig(+zr.value)});zr.addEventListener('change',()=>{zr.value=Math.round(+zr.value)});
 hp.onclick=()=>{stopAuto();hzeig(Math.max(0,Math.round(+zr.value)-1))};hn.onclick=()=>{stopAuto();hzeig(Math.min(J.length-1,Math.round(+zr.value)+1))};
-jahr(0);ton(0);
+ai=0;jahr(0);ton(0);
 const hausSec=document.getElementById('haus');
 if(shot||matchMedia('(prefers-reduced-motion: reduce)').matches){auto=false}
 else if('IntersectionObserver' in window){const hio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.45&&auto){t0=0;raf=requestAnimationFrame(lauf)}else{cancelAnimationFrame(raf)}})},{threshold:[0,.45,.7]});hio.observe(hausSec)}
