@@ -20,7 +20,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--creme) url(img/ranken.webp) center top/1400px auto repeat;color:var(--kakao);font:400 17px/1.6 "Public Sans",system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+body{margin:0;background:var(--creme);color:var(--kakao);font:400 17px/1.6 "Public Sans",system-ui,sans-serif;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 :focus:not(:focus-visible){outline:none}
@@ -28,7 +28,7 @@ a{color:inherit}
 h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.12;margin:0;letter-spacing:-.01em}
 .script{font-family:"Grand Hotel",cursive;color:var(--magenta);font-weight:400}
 .wrap{max-width:1140px;margin:0 auto;padding:0 32px}
-section{padding:44px 0;scroll-margin-top:70px}
+section{padding:34px 0;scroll-margin-top:70px}
 .kicker{font:600 13px/1.2 "Public Sans";letter-spacing:.16em;text-transform:uppercase;color:var(--magenta)}
 .h2{font-size:clamp(30px,3.4vw,46px)}
 .h2 .script{font-size:1.18em;line-height:.8}
@@ -65,7 +65,7 @@ nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;
 }
 
 /* HERO */
-.hero{padding:28px 0 44px}
+.hero{padding:26px 0 34px}
 .hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:48px;align-items:center}
 .hero h1{font-size:clamp(40px,min(4.6vw,7.4vh),66px);margin:12px 0 16px}
 .hero h1 .script{display:block;font-size:1.25em;line-height:.9;margin-bottom:4px}
@@ -277,7 +277,7 @@ footer img{width:90px}
 @media (max-width:600px){
   body{font-size:16px}
   .wrap{padding:0 18px}
-  section{padding:36px 0}
+  section{padding:28px 0}
   .draft{font-size:12px;padding:6px 12px}
   .top .wrap{height:62px;gap:10px}
   .logo{width:84px}
@@ -400,7 +400,7 @@ footer img{width:90px}
 <!-- ZMORGE -->
 <section id="zmorge">
   <div class="wrap zm">
-    <div class="foto rv"><img src="img/konditorzmorge1.webp" alt="Der Chef kocht am Buffet" decoding="async" width="308" height="286"><span class="tag">Sa, So &amp; Feiertage · 8.30–11.30 Uhr</span></div>
+    <div class="foto rv"><img src="img/konditorzmorge1_klar.webp" alt="Der Chef kocht am Buffet" decoding="async" width="308" height="286"><span class="tag">Sa, So &amp; Feiertage · 8.30–11.30 Uhr</span></div>
     <div>
       <div class="kicker rv">Ein Highlight unseres Hauses</div>
       <h2 class="h2 rv">Konditor Zmorge <span class="script">à discretion</span></h2>
@@ -468,7 +468,7 @@ footer img{width:90px}
       <div class="jahrgross" id="jahr">1853</div>
       <p class="jahrtxt" id="jahrtxt"></p>
       <div class="leiste">
-        <input type="range" id="zeit" min="0" max="12" value="0" step="1" aria-label="Jahr wählen">
+        <input type="range" id="zeit" min="0" max="12" value="0" step="0.01" aria-label="Jahr wählen">
         <div class="skala"><span>1853</span><span>2026</span></div>
       </div>
     </div>
@@ -681,13 +681,24 @@ const J=[
 const zr=document.getElementById('zeit'),jE=document.getElementById('jahr'),jT=document.getElementById('jahrtxt'),sch=document.getElementById('schild');
 const fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
 const hp=document.getElementById('hPrev'),hn=document.getElementById('hNext');
-function jahr(i){const [y,s,t]=J[i];jE.textContent=y;jT.innerHTML=t;
+function jahr(i,keep){const [y,s,t]=J[i];jE.textContent=y;jT.innerHTML=t;if(jT.animate){const k=[{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}];jT.animate(k,{duration:520,easing:'ease-out'});jE.animate(k,{duration:420,easing:'ease-out'})}
  if(sch.textContent!==s){sch.style.opacity=0;setTimeout(()=>{sch.textContent=s;sch.setAttribute('font-size',s.length>15?15:17);sch.style.opacity=1},250)}
  fas.setAttribute('fill',y>=2005?'#E9A23E':'#e8dccb');fas.setAttribute('stroke',y>=2005?'#c98426':'#bda98f');
  gar.setAttribute('opacity',y>=2005?1:(y>=1999?.55:0));anb.setAttribute('opacity',y>=1908?1:0);mk.setAttribute('opacity',y>=1991?1:0);
- jE.style.color=y>=2005?'var(--ocker)':'var(--kakao2)';hp.disabled=i===0;hn.disabled=i===J.length-1;zr.value=i}
-zr.addEventListener('input',()=>jahr(+zr.value));hp.onclick=()=>jahr(Math.max(0,+zr.value-1));hn.onclick=()=>jahr(Math.min(J.length-1,+zr.value+1));
-jahr(0);
+ jE.style.color=y>=2005?'var(--ocker)':'var(--kakao2)';hp.disabled=i===0;hn.disabled=i===J.length-1;if(!keep)zr.value=i}
+let ai=-1,auto=true,raf=0,t0=0,v0=0;const DAUER=2000;/* ms pro Jahr-Schritt, gleitend */
+function stopAuto(){auto=false;cancelAnimationFrame(raf);document.getElementById('haus').classList.add('hand')}
+const bue=document.querySelector('.buehne'),bsv=bue.querySelector('svg');
+function ton(v){const q=v/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';const mix=(a,b)=>a.map((x,i)=>Math.round(x+(b[i]-x)*q));const top=mix([239,229,212],[226,238,244]);bue.style.background='linear-gradient(rgb('+top+'),#F7F1E7 78%)'}
+function hzeig(v){zr.value=v;ton(v);const i=Math.round(v);if(i!==ai){ai=i;jahr(i,true)}}
+function lauf(t){if(!auto)return;if(!t0){t0=t;v0=+zr.value}const v=Math.min(J.length-1,v0+(t-t0)/DAUER);hzeig(v);if(v<J.length-1)raf=requestAnimationFrame(lauf);else auto=false}
+['pointerdown','keydown','touchstart'].forEach(e=>zr.addEventListener(e,stopAuto,{passive:true}));
+zr.addEventListener('input',()=>{stopAuto();hzeig(+zr.value)});zr.addEventListener('change',()=>{zr.value=Math.round(+zr.value)});
+hp.onclick=()=>{stopAuto();hzeig(Math.max(0,Math.round(+zr.value)-1))};hn.onclick=()=>{stopAuto();hzeig(Math.min(J.length-1,Math.round(+zr.value)+1))};
+jahr(0);ton(0);
+const hausSec=document.getElementById('haus');
+if(shot||matchMedia('(prefers-reduced-motion: reduce)').matches){auto=false}
+else if('IntersectionObserver' in window){const hio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.45&&auto){t0=0;raf=requestAnimationFrame(lauf)}else{cancelAnimationFrame(raf)}})},{threshold:[0,.45,.7]});hio.observe(hausSec)}
 
 /* DoberCard */
 const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
