@@ -37,7 +37,7 @@
   --wolken:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .56 0 0 0 0 .62 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;overflow-x:clip;scrollbar-gutter:stable;overscroll-behavior-y:none}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scrollbar-gutter:stable}
 body{margin:0;background:var(--putz) var(--putzbild) 0 0/var(--kachel) repeat;color:var(--tinte);font:17px/1.6 var(--text);font-weight:400;overflow-x:clip;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -56,7 +56,7 @@ body{position:relative}
 .nacht{position:absolute;left:0;right:0;bottom:0;top:var(--nacht-top,100%);z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(24,31,38,0) 0,rgba(24,31,38,0) 40%,rgba(24,31,38,.42) 100%),var(--putzdunkel) 0 var(--nacht-y,0) / var(--kachel) repeat #2f3a44;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) calc(var(--nf,600px)*0),rgba(0,0,0,0.028) calc(var(--nf,600px)*0.1),rgba(0,0,0,0.104) calc(var(--nf,600px)*0.2),rgba(0,0,0,0.216) calc(var(--nf,600px)*0.3),rgba(0,0,0,0.352) calc(var(--nf,600px)*0.4),rgba(0,0,0,0.5) calc(var(--nf,600px)*0.5),rgba(0,0,0,0.648) calc(var(--nf,600px)*0.6),rgba(0,0,0,0.784) calc(var(--nf,600px)*0.7),rgba(0,0,0,0.896) calc(var(--nf,600px)*0.8),rgba(0,0,0,0.972) calc(var(--nf,600px)*0.9),rgba(0,0,0,1) calc(var(--nf,600px)*1));mask-image:linear-gradient(180deg,rgba(0,0,0,0) calc(var(--nf,600px)*0),rgba(0,0,0,0.028) calc(var(--nf,600px)*0.1),rgba(0,0,0,0.104) calc(var(--nf,600px)*0.2),rgba(0,0,0,0.216) calc(var(--nf,600px)*0.3),rgba(0,0,0,0.352) calc(var(--nf,600px)*0.4),rgba(0,0,0,0.5) calc(var(--nf,600px)*0.5),rgba(0,0,0,0.648) calc(var(--nf,600px)*0.6),rgba(0,0,0,0.784) calc(var(--nf,600px)*0.7),rgba(0,0,0,0.896) calc(var(--nf,600px)*0.8),rgba(0,0,0,0.972) calc(var(--nf,600px)*0.9),rgba(0,0,0,1) calc(var(--nf,600px)*1))}
 .putz::before,.putz::after{content:none}
 .putz>*{position:relative;z-index:1}
-.rise{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.rise{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease}
 .rise.shown{opacity:1;transform:none}
 
 /* Knöpfe */
@@ -85,7 +85,12 @@ body{position:relative}
 .kopf .tel{width:42px;padding:0}
 
 /* ===== Bühne ===== */
-.buehne{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:var(--nacht);color:var(--creme);isolation:isolate}
+.buehne{position:relative;height:190vh;height:190svh;background:var(--nacht);color:var(--creme)}
+/* Bühne folgt dem Scrollen: die Szene klebt oben, der Fortschritt kommt aus der Scrollposition (kein Timer, kein Blockieren) */
+.klebe{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden;isolation:isolate}
+.buehne.still{height:auto}.buehne.still .klebe{position:relative}
+.ausgang{position:absolute;left:0;right:0;bottom:0;height:var(--af,160px);z-index:1;pointer-events:none;opacity:0;background:var(--putz) var(--putzbild) 0 var(--ay,0px)/var(--kachel) repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.1) 25%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.85) 75%,#000 100%);mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.1) 25%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.85) 75%,#000 100%)}
+.s-wand .uebergang{display:none}
 .buehne .szene{position:absolute;inset:0;will-change:transform}
 .buehne .bild{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .schleier{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(24,30,36,.42) 0,rgba(24,30,36,0) 16%,rgba(24,30,36,0) 50%,rgba(24,30,36,.74) 84%,rgba(24,30,36,.92) 100%);opacity:0;z-index:1}
@@ -113,8 +118,8 @@ body{position:relative}
 .s-wand{display:flex;flex-direction:column;padding:64px 0 0}
 .s-wand .wand-inhalt{order:1}
 .s-wand .wandfoto{order:2;display:block;margin-top:30px}
-.s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 78%}
-.s-wand .wandfoto{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 56px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 56px),transparent 100%)}
+.s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 50%}
+.s-wand .wandfoto{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 14px),transparent 100%)}
 .uebergang{position:absolute;left:0;right:0;top:0;height:72px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(24,30,36,.92) 0,rgba(24,30,36,.42) 32%,rgba(24,30,36,.1) 68%,rgba(24,30,36,0) 100%)}
 .wand-text p{margin:0 0 16px;max-width:44ch;color:#3f362f}
 .zeiten{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;max-width:520px}
@@ -372,7 +377,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .s-wand{min-height:max(620px,calc(100vh - var(--hh)));justify-content:center;padding:64px 0 44px}
   .s-wand .uebergang{height:96px}
   .s-wand.putz::before,.s-wand.putz::after{display:none}
-  .s-wand .wandfoto{position:absolute;inset:0;margin:0;z-index:0;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 96px),transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 96px),transparent 100%)}
+  .s-wand .wandfoto{position:absolute;inset:0;margin:0;z-index:0;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 60px,#000 calc(100% - 32px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 60px,#000 calc(100% - 32px),transparent 100%)}
   .s-wand .wandfoto img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:72% 50%;transform:none}
   .wand-inhalt{position:relative;z-index:1}
   .wand-text,.details{max-width:540px}
@@ -433,7 +438,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .s-lounge{padding:76px 0 40px}
 }
 @media (max-height:520px) and (orientation:landscape){
-  .buehne{min-height:0}
+  .klebe{min-height:0}
   .nachher{bottom:calc(44px + env(safe-area-inset-bottom))}
   .nachher h1{font-size:40px;margin-bottom:6px}
   .nachher p{display:none}
@@ -441,7 +446,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .va .eintritt{bottom:auto;top:calc(var(--hh) + 16px)}
   .va .eintritt b{font-size:38px}
   .hinweis{bottom:calc(40px + env(safe-area-inset-bottom))}
-  .s-wand .wandfoto img{aspect-ratio:16/9}
+  .s-wand .wandfoto img{aspect-ratio:16/9;object-position:50% 88%}
 }
 @media (max-width:370px){
   .rt{padding:0 13px 0 7px;font-size:14px;gap:7px}
@@ -473,8 +478,8 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 
 <section class="s-wand putz" id="wand">
   <picture class="wandfoto">
-    <source media="(max-width:899px)" srcset="img/wand_zweige_hoch_900.webp 900w, img/wand_zweige_hoch_1536.webp 1536w" sizes="100vw">
-    <img src="img/wand_zweige_1600.webp" srcset="img/wand_zweige_1600.webp 1600w, img/wand_zweige_2752.webp 2752w" sizes="100vw" alt="Die bemalte Wand im Bodan: Kalkputz mit Zweigen und goldenen Blättern, eine Eichennische mit Licht" loading="lazy">
+    <source media="(max-width:899px)" srcset="img/wand_ohne_bank_hoch_900.webp 900w, img/wand_ohne_bank_hoch_1413.webp 1413w" sizes="100vw">
+    <img src="img/wand_ohne_bank_1600.webp" srcset="img/wand_ohne_bank_1600.webp 1600w, img/wand_ohne_bank_2752.webp 2752w" sizes="100vw" alt="Die bemalte Wand im Bodan: Kalkputz mit Zweigen und goldenen Blättern, eine Eichennische mit Licht" loading="lazy">
   </picture>
   <div class="uebergang" aria-hidden="true"></div>
   <div class="wrap wand-inhalt">
@@ -682,46 +687,58 @@ function $(id){return D.getElementById(id)}
 /* ================= Bühne (Variante A/B) ================= */
 var B=$('start'), kopf=$('kopf');
 B.classList.add('va');
-B.appendChild($('tA').content.cloneNode(true));
-B.appendChild($('tGemeinsam').content.cloneNode(true));
-function ease(t){return 1-(1-t)*(1-t)}
-var state='ruhe', raf=0;
-function lauf(dauer,frame,done){var t0=performance.now();function step(ts){var t=Math.min(1,(ts-t0)/dauer);frame(ease(t));if(t<1)raf=requestAnimationFrame(step);else done()}raf=requestAnimationFrame(step)}
-function frameA(e){
-  var sz=B.querySelector('.szene'),mob=W.innerWidth<900,sc=1+(mob?0.32:0.46)*e;
-  sz.style.transformOrigin=mob?'62% 34%':'54% 36%';sz.style.transform='scale('+sc.toFixed(4)+')';
-  var et=B.querySelector('.eintritt');et.style.opacity=Math.max(0,1-e*1.8).toFixed(3);
-  var vh=B.querySelector('.vorhang');if(vh)vh.style.opacity=Math.max(0,1-e*1.5).toFixed(3);
-  if(e>=.7)B.classList.add('auf');
+var klebe=D.createElement('div');klebe.className='klebe';B.appendChild(klebe);
+klebe.appendChild($('tA').content.cloneNode(true));
+klebe.appendChild($('tGemeinsam').content.cloneNode(true));
+var ag=D.createElement('div');ag.className='ausgang';ag.setAttribute('aria-hidden','true');
+var sz=klebe.querySelector('.szene'),et=klebe.querySelector('.eintritt'),vh=klebe.querySelector('.vorhang'),sl=klebe.querySelector('.schleier'),na=klebe.querySelector('.nachher'),fz=klebe.querySelector('.fusszeile'),hw=klebe.querySelector('.hinweis');
+klebe.insertBefore(ag,na);
+na.style.transition='none';sl.style.transition='none';hw.style.transition='none';
+function cl(x){return x<0?0:x>1?1:x}
+function eo(t){return 1-Math.pow(1-t,3)}
+var mob=false,F=160,maxS=1,p=0,pZiel=0,tk=0;
+function mass(){
+  mob=W.innerWidth<900;F=mob?120:160;
+  if(reduce)B.classList.add('still');
+  maxS=Math.max(0,B.offsetHeight-klebe.offsetHeight);
+  var unten=B.offsetTop+B.offsetHeight;
+  ag.style.setProperty('--af',F+'px');ag.style.setProperty('--ay',(-(unten-F))+'px');
+  sz.style.transformOrigin=mob?'62% 34%':'24% 34%';
+  ziel();
 }
-function start(){
-  hinweisWeg();
-  if(state!=='ruhe')return;state='lauf';B.classList.add('lauf');
-  var fr=frameA;
-  lauf(reduce?1:850,fr,function(){state='fertig';B.classList.remove('lauf');B.classList.add('fertig');fr(1)});
+function render(q){
+  var z=eo(cl(q/0.6)),x=cl((q-0.6)/0.4);
+  var sc=1+(mob?0.32:0.55)*z+0.05*x;
+  sz.style.transform='translate3d(0,'+(-4*x).toFixed(3)+'%,0) scale('+sc.toFixed(4)+')';
+  et.style.opacity=(1-cl(q/0.22)).toFixed(3);
+  if(vh)vh.style.opacity=(1-cl(q/0.25)).toFixed(3);
+  hw.style.opacity=(1-cl(q/0.08)).toFixed(3);
+  sl.style.opacity=cl((q-0.12)/0.33).toFixed(3);
+  var o=eo(cl((q-0.3)/0.25)),lift=F*0.45*cl((q-0.78)/0.22);
+  na.style.opacity=o.toFixed(3);na.style.transform='translateY('+(16*(1-o)-lift).toFixed(1)+'px)';na.style.pointerEvents=o>0.6?'auto':'none';
+  ag.style.opacity=cl((q-0.78)/0.22).toFixed(3);
+  fz.style.opacity=(1-cl((q-0.7)/0.12)).toFixed(3);fz.style.pointerEvents=q<0.75?'auto':'none';
 }
-function sofort(){if(state==='fertig')return;cancelAnimationFrame(raf);state='fertig';B.classList.remove('lauf');B.classList.add('fertig');frameA(1)}
-function oben(){return W.scrollY<=2}
+function tick(){tk=0;var d=pZiel-p;p=Math.abs(d)<0.002?pZiel:p+d*0.2;render(p);if(p!==pZiel)tk=requestAnimationFrame(tick)}
+function ziel(){pZiel=maxS>0?cl(W.scrollY/maxS):1;if(reduce){p=pZiel;render(p);return}if(!tk)tk=requestAnimationFrame(tick)}
 var mk=$('mkHinweis'),mkWeg=false;
 function mkLage(){if(mkWeg)return;var h=mk.offsetHeight;kopf.style.transform='translateY('+h+'px)'}
 function hinweisWeg(){if(mkWeg)return;mkWeg=true;mk.classList.add('weg');kopf.style.transform='translateY(0)'}
-mkLage();W.addEventListener('resize',mkLage);
-W.addEventListener('wheel',function(e){if(e.deltaY>0)hinweisWeg();if(state==='lauf'){e.preventDefault();return}if(state==='ruhe'&&oben()&&e.deltaY>0){e.preventDefault();start()}},{passive:false});
-var ty=null,gl=false;
-W.addEventListener('touchstart',function(e){ty=e.touches[0].clientY;gl=(state!=='fertig'&&oben())},{passive:true});
-W.addEventListener('touchmove',function(e){if(state==='lauf'){e.preventDefault();return}if(!gl||ty===null)return;var d=ty-e.touches[0].clientY;if(state==='ruhe'){e.preventDefault();if(d>6)start()}},{passive:false});
-W.addEventListener('touchend',function(){ty=null;gl=false},{passive:true});
-W.addEventListener('keydown',function(e){var k=e.key;if(!(k==='ArrowDown'||k==='PageDown'||k===' '||k==='End'))return;if(state==='lauf'){e.preventDefault();return}if(state==='ruhe'&&oben()){e.preventDefault();start()}});
-var sprung=false;
+mkLage();
+W.addEventListener('resize',function(){mkLage();mass()});
+W.addEventListener('load',mass);
+W.addEventListener('wheel',function(e){if(e.deltaY>0)hinweisWeg()},{passive:true});
+W.addEventListener('touchmove',hinweisWeg,{passive:true});
 W.addEventListener('scroll',function(){
   if(W.scrollY>4)hinweisWeg();
-  if(state!=='fertig'&&W.scrollY>2&&!sprung){W.scrollTo(0,0);start()}
-  kopf.classList.toggle('hell',W.scrollY>B.offsetHeight-kopf.offsetHeight-12);
+  ziel();
+  kopf.classList.toggle('hell',W.scrollY>maxS-8);
 },{passive:true});
-function geheZu(id){var el=$(id);if(!el)return;sprung=true;sofort();el.scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(function(){sprung=false},1400)}
-D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);e.preventDefault();if(id==='start'){W.scrollTo({top:0,behavior:'smooth'});return}geheZu(id)});
+function geheZu(id){var el=$(id);if(!el)return;el.scrollIntoView({behavior:reduce?'auto':'smooth'})}
+D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);e.preventDefault();if(id==='start'){W.scrollTo({top:0,behavior:reduce?'auto':'smooth'});return}geheZu(id)});
 W.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!=='start')geheZu(h)});
-if(reduce||location.hash.length>1){sofort();if(location.hash.length>1){var h0=location.hash.slice(1);setTimeout(function(){geheZu(h0)},60)}}else W.scrollTo(0,0);
+mass();render(p);
+if(location.hash.length>1){var h0=location.hash.slice(1);setTimeout(function(){var el=$(h0);if(el)el.scrollIntoView({behavior:'auto'});ziel()},60)}else W.scrollTo(0,0);
 
 /* ================= Einblenden ================= */
 var rs=[].slice.call(D.querySelectorAll('.rise'));
