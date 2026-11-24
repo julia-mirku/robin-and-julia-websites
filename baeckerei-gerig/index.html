@@ -458,9 +458,9 @@ body.menu .mmenu{transform:none}
 /* Krume (Julia 25.11): ein nahtloses Kachelbild Brotkrume, hell, für die ganze Seite */
 :root{--ks:600px;--kw:max(100vw,1100px)}
 @media (max-width:767px){:root{--ks:420px;--kw:900px}}
-body{background:var(--creme) url(img/krume.webp) 0 0/var(--ks) var(--ks) repeat}
+body{background:var(--creme) url(img/kruste_b.webp) center 0/var(--kw) auto repeat-y}
 .shop,.gfsec,.cafes,.cat,.chronik,.stimmen,.kontakt{background:transparent}
-.heroA::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:171px;background:var(--creme) url(img/krume.webp) 0 var(--ky,0px)/var(--ks) var(--ks) repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));pointer-events:none;z-index:1}
+.heroA::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:171px;background:var(--creme) url(img/kruste_b.webp) center var(--ky,0px)/var(--kw) auto repeat-y;-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 58%,#000 calc(100% - 14px));pointer-events:none;z-index:1}
 .heroA .in{z-index:2;padding-bottom:150px}
 .tage,body.hb .tage{background:transparent;color:var(--text);padding:8px 0 10px;margin-top:-2px;position:relative;z-index:3}
 .tage h2{color:var(--kruste)}.tage h2 small{color:var(--muted)}
