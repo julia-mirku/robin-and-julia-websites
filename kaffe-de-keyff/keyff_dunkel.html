@@ -1367,8 +1367,10 @@ tbody tr[role=button]:focus{outline:none}
 tbody tr[role=button]:focus-visible th{text-decoration:underline;text-underline-offset:4px}
 .day-out{margin:14px 0 0;text-align:center;font-size:1rem;min-height:1.5em}
 @media (prefers-reduced-motion:reduce){.day-frame{transition:none}}
-.day-hov{border:1.5px dashed rgba(255,226,170,.55);border-radius:6px}
-.day-sel{border:2px solid rgba(255,197,110,.95);border-radius:7px;box-shadow:0 0 14px -4px rgba(255,197,110,.55)}
+/* 25.11 (Julia): statt Rahmen eine weiche, warme Hinterlegung der ganzen Zeile */
+.day-hov{border:0;border-radius:6px;background:rgba(255,214,150,.10)}
+.day-sel{border:0;border-radius:6px;box-shadow:none;background:rgba(255,197,110,.17)}
+.chalk-hover{display:none!important}   /* 25.11: beim Darüberfahren nur die weiche Hinterlegung, kein Kreide-Oval; Kreide-Kreis um «heute» bleibt (Tafel-Ende, Julia «концовку не меняй») */
 .sel-today .day-sel{opacity:0}
 .board .day-out{color:#efe4cf;font-family:inherit}
 .board .day-out strong{color:#ffd28a}
@@ -1574,6 +1576,98 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
   .hero-photo .main{aspect-ratio:1/1}
   .hero-photo .room{left:calc(-44*var(--u));bottom:calc(-22*var(--u));width:calc(176*var(--u));height:calc(176*var(--u))}
 }
+/* 24.11 (Julia «чиним»): Deckel der Karte in Safari/WebKit – Innenseite lag über der Vorderseite */
+.bk[data-state="closed"] .bk-inner{visibility:hidden;transition:visibility 0s .5s}
+</style>
+<style id="bk-sides-css">
+/* 25.11 (Julia): Blättern links/rechts neben dem Buch statt Leiste unten – das Buch bekommt den Platz */
+.bk-sides .bk-bar{display:none!important}
+.bk-sides .bk-stage{position:relative}
+.bk-rail{position:absolute;top:0;bottom:0;width:56px;display:flex;align-items:center;justify-content:center;z-index:7;pointer-events:none;visibility:hidden;opacity:0;transition:opacity .2s ease,visibility 0s .2s}
+.bk[data-state="open"] .bk-rail{visibility:visible;opacity:1;transition:opacity .4s ease .5s,visibility 0s}
+.bk-rail .bk-btn{pointer-events:auto;min-width:52px;min-height:52px;width:52px;height:52px;padding:0;box-shadow:0 8px 18px -8px rgba(60,30,10,.55)}
+.bk-rail .bk-btn svg{width:22px;height:22px}
+.bk-rail .bk-btn[disabled]{opacity:.28;box-shadow:none}
+.bk-topbar{display:flex;align-items:center;gap:8px;visibility:hidden;opacity:0;transition:opacity .2s ease,visibility 0s .2s;position:relative;z-index:8}
+.bk[data-state="open"] .bk-topbar{visibility:visible;opacity:1;transition:opacity .4s ease .5s,visibility 0s}
+.bk-topbar .bk-gap{flex:1}
+.bk-topbar .bk-btn{min-height:36px;min-width:36px;padding:0 14px;font-size:.88rem}
+.bk-topbar #bk-close{padding:0;width:36px}
+.bk-topbar #bk-close .x{font-size:1.35rem;line-height:1;font-weight:700}
+.bk-topbar .bk-lang-bar{display:inline-flex!important}
+.bk-topbar .bk-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (min-width:900px){
+  /* Buch höher: unten keine Leiste mehr (184 → 132 px Rest) */
+  .bk-sides{--bkh:clamp(380px,calc(100vh - 132px),760px)}
+  @supports (height:100svh){.bk-sides{--bkh:clamp(380px,calc(100svh - 132px),760px)}}
+  .bk-sides .bk-book{width:min(100% - 136px,calc(var(--bkh)*1.7),1120px)}
+  .bk-sides .bk-rail.l{left:calc(50% - min(100% - 136px,calc(var(--bkh)*1.7),1120px)/2 - 64px)}
+  .bk-sides .bk-rail.r{left:calc(50% + min(100% - 136px,calc(var(--bkh)*1.7),1120px)/2 + 8px)}
+  /* Steuerung oben in den Seitenschienen (links «Inhalt», rechts × und DE/EN untereinander) – keine Zeile über den Registern */
+  .bk-sides .bk-topbar{display:none}
+  .bk-railtop{position:absolute;top:46px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:auto}
+  .bk-railtop .bk-btn{min-height:32px;height:32px;padding:0 10px;font-size:.84rem}
+  .bk-railtop #bk-close{width:36px;height:36px;min-height:36px;padding:0}
+  .bk-railtop #bk-close .x{font-size:1.35rem;line-height:1;font-weight:700}
+  .bk-railtop .bk-lang-wrap{display:flex!important;flex-direction:column;align-items:center}
+  .bk-railtop .bk-lang-lbl{display:none}
+  .bk-railtop .bk-lang{flex-direction:column;border-radius:18px}
+  .bk-railtop .bk-lang button{min-width:40px;min-height:30px;height:30px;padding:0 8px}
+  .bk-sides{position:relative}
+  .bk-sides .bk-lang-top{display:none!important}
+}
+@media (max-width:899px){
+  .bk-sides .bk-topbar{margin:0 0 8px}
+  .bk-sides .bk-stage{padding-left:30px;padding-right:30px}
+  .bk-rail{width:40px;align-items:flex-start}
+  .bk-rail.l{left:-6px}.bk-rail.r{right:-6px}
+  .bk-rail .bk-btn{position:sticky;top:calc(50vh - 20px);min-width:40px;min-height:40px;width:40px;height:40px;margin-top:40vh}
+  .bk-rail .bk-btn svg{width:18px;height:18px}
+  .bk-sides .bk-lang-top{display:none!important}
+}
+</style>
+<style id="foot-logo-css">
+/* 25.11 (Julia): Logo unten grösser, Fusszeile gleich hoch – Platz aus den Abständen; beim Darüberfahren nur Neigen + leicht grösser, kein Leuchten/Farbwechsel */
+@media (min-width:900px){
+  .foot{padding-bottom:calc(16*var(--u))!important}
+  .foot .wrap{padding-top:calc(6*var(--u))!important}
+  .foot .plate-lg{width:calc(236*var(--u))!important;height:calc(164*var(--u))!important;margin-bottom:0!important}
+}
+@media (max-width:899px){
+  .foot{padding-bottom:14px!important}
+  .foot .wrap{padding-top:8px!important}
+  .foot .plate-lg{width:218px!important;height:152px!important;margin-bottom:0!important}
+}
+.foot .plate-lg img{transition:transform .35s ease!important}
+.foot .plate:hover img,.foot .plate-lg:hover img{filter:invert(1) hue-rotate(180deg) brightness(1.1)!important}
+</style>
+<style id="hero-sell-css">
+/* 25.11 (Julia): Text im ersten Bildschirm verkauft – Unterzeile grösser und kräftig, «Jetzt geöffnet» als Plakette, Preise als kleine Preisschilder */
+.lede{font-weight:600;color:var(--cream);line-height:1.3}
+.lede span{font-weight:500}
+.facts .fact{display:inline-flex;width:max-content;max-width:100%;min-height:0!important;padding:7px 16px;border-radius:999px;font-weight:600;background:rgba(233,162,59,.10);border:1px solid rgba(233,162,59,.42)}
+.facts .fact + .fact{border-top:1px solid rgba(233,162,59,.42)}
+.hero-info{color:rgba(241,230,210,.82);font-weight:500}
+.hero-info a{color:inherit}
+#ab-preise{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+#ab-preise .pt{display:inline-flex;align-items:baseline;gap:5px;padding:4px 10px 5px;border-radius:9px;background:rgba(20,14,10,.45);border:1px dashed rgba(233,162,59,.55);white-space:nowrap}
+#ab-preise .pt small{font-size:.92em;text-transform:none!important;letter-spacing:0!important;font-family:var(--body);font-weight:500;color:rgba(241,230,210,.82)}
+#ab-preise .pt b{font-family:var(--display);font-weight:800;font-size:1.08em;color:var(--gold);letter-spacing:.01em}
+@media (min-width:900px){
+  .hero .wrap{padding-top:calc(52*var(--u))!important;padding-bottom:calc(44*var(--u))!important}
+  .hero .hero-text{max-width:clamp(430px,42vw,640px);min-width:0}   /* Textspalte begrenzen, sonst drückt sie das Foto weg */
+  .lede{font-size:max(1.15rem,calc(25*var(--u)))!important;max-width:30em}
+  .facts{margin:calc(18*var(--u)) 0 calc(14*var(--u))!important}
+  .facts .fact{font-size:max(1rem,calc(17*var(--u)))!important;padding:calc(6*var(--u) + 2px) calc(16*var(--u))}
+  .hero-info{display:flex!important;flex-wrap:wrap;align-items:center;column-gap:calc(20*var(--u));row-gap:0;margin:0 0 calc(20*var(--u))!important;font-size:max(1rem,calc(16*var(--u)))!important}
+  .hero-info > li:not(#ab-preise) + li:not(#ab-preise)::before{content:"";display:inline-block;width:5px;height:5px;margin:0 calc(14*var(--u)) 2px 0;background:rgba(233,162,59,.55);transform:rotate(45deg)}
+  .hero-info a{min-height:max(28px,calc(32*var(--u)))!important}
+  #ab-preise{flex-basis:100%;font-size:max(.94rem,calc(15*var(--u)));gap:6px}
+}
+@media (max-width:899px){
+  .lede{font-size:1.17rem}
+  .hero-info{font-size:.98rem}
+}
 </style>
 <style id="vw-css">
 .vw-bar{position:relative;z-index:200;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;margin:0;padding:8px 14px;
@@ -1590,30 +1684,49 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
 .vw-n{flex:1 1 260px;max-width:520px;font-size:13px;color:#4a443d}
 @media (max-width:560px){.vw-n{flex-basis:100%}}
 @media (max-width:699px){.vw-n{display:none}.vw-bar{padding:5px 10px;gap:6px 12px}.vw-a{min-height:36px;padding:4px 16px}}
-
-/* 24.11 Plaschke «Entwurf» über der Kopfzeile (Regel 22) */
-.mk-hinweis{position:relative;z-index:60;display:block;background:#2A1C14;color:#F2E6D0;border-bottom:1px solid rgba(181,135,43,.45);font-family:'DM Sans',system-ui,sans-serif;font-weight:500;font-size:13px;line-height:1.4;text-align:center;padding:7px 16px;max-height:90px;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1),padding .5s cubic-bezier(.2,.7,.2,1),opacity .35s}
-.mk-hinweis i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#B5872B;margin-right:8px;vertical-align:1px}
-.mk-hinweis.weg{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-width:0}
-@media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
-@media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
-
-
-/* 24.11 Abstände enger */
-@media (min-width:761px){html body #karte{padding-top:26px;padding-bottom:20px}html body #fotos{padding-top:60px;padding-bottom:18px}}
-@media (max-width:760px){html body #karte{padding-top:18px;padding-bottom:14px}html body #fotos{padding-top:14px;padding-bottom:14px}}
-
-/* 24.11 (2) Abstände */
-@media (min-width:900px){html body .hero .wrap{padding-bottom:28px}html body .foot .wrap{padding-top:14px}html body .sec.besuch{padding-bottom:50px}html body #fotos + .sec{padding-bottom:64px}}
-@media (max-width:899px){html body .foot .wrap{padding-top:10px}html body .sec.besuch{padding-bottom:18px}}
+/* 25.11: Leiste auf dem Computer schlanker, damit der erste Bildschirm samt Knöpfen in 1470×659 passt */
+@media (min-width:700px){.vw-bar{padding:3px 14px;border-width:1.5px}.vw-a{min-height:32px;padding:3px 16px;font-size:14px}.vw-n{font-size:12.5px}}
+</style>
+<style id="sand-css">
+/* Julia №127: Blöcke näher, keine Farbkanten; «Was Gäste sagen» unverändert, nur Abstand */
+#karte{padding-top:22px!important;padding-bottom:36px!important}
+#fotos{padding-top:40px!important}
+.foot .parquet,main > .parquet{display:none!important}
+.sec.besuch{padding-bottom:44px!important}
+#karte,#fotos{background-image:none!important}
+.hero{background-image:radial-gradient(58% 48% at 80% 0%,rgba(233,199,122,.42),rgba(0,0,0,0) 70%),radial-gradient(40% 30% at 78% 6%,rgba(255,236,196,.55),rgba(0,0,0,0) 70%)!important;overflow:visible!important;overflow-x:clip!important}
+@media (max-width:699px){
+  #karte{padding-top:10px!important;padding-bottom:30px!important}
+  #fotos{padding-top:30px!important}
+  #stimmen{padding-top:34px!important;padding-bottom:34px!important}
+  .sec.besuch{padding-bottom:20px!important}
+}
+/* Julia 25.11: nur Sand (Toms Düne), läuft mit der Seite */
+html{background:#1E140E url(fon_sand_dunkel.jpg) center top/max(100%,1100px) auto repeat-y scroll}
+body{background:transparent!important}
+/* Leiste: längerer Text bricht sauber um */
+.vw-n{text-wrap:balance}
+@media (max-width:699px){.vw-n{display:block!important;flex:1 1 100%;max-width:none;font-size:11.5px;line-height:1.3;text-align:center;margin:0}}
+</style>
+<style id="buch-bordeaux-css">
+/* Julia 25.11: Buchdeckel bordeaux (Leder, Goldprägung) – nur Deckel und Rücken, Seiten unverändert */
+.bk-front,.bk-board{background:radial-gradient(120% 70% at 50% 0%,rgba(255,235,200,.10),rgba(0,0,0,0) 60%),radial-gradient(140% 100% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.32) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='turbulence' baseFrequency='.045' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .85  0 0 0 .9 -.32'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.35'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 .78'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.55'/%3E%3C/svg%3E"),linear-gradient(165deg,#8E2A36 0%,#74202B 50%,#561520 100%)!important}
+.bk-front{box-shadow:inset 0 1px 0 rgba(255,220,170,.18),inset 0 0 0 1px rgba(0,0,0,.35),inset 0 -40px 70px -30px rgba(0,0,0,.35),1px 2px 0 #3E0F17,2px 3px 0 #3E0F17!important}
+.bk-spineband{background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(0,0,0,.15) 40%,rgba(255,225,180,.16) 72%,rgba(0,0,0,.30) 92%,rgba(0,0,0,0))!important}
+.bk-herr{opacity:.55;filter:brightness(1.4)}
+.bk-frame{border-color:rgba(226,184,104,.85)!important;box-shadow:inset 0 0 0 1px rgba(226,184,104,.35),0 0 0 1px rgba(0,0,0,.18)!important}
+.bk-cv-k{color:#E2BE78!important;text-shadow:0 -1px 0 rgba(0,0,0,.45)}
+.bk-cv-t{background:linear-gradient(180deg,#F6DDA0 0%,#D9A94E 55%,#A9762A 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;filter:drop-shadow(0 -1px 0 rgba(0,0,0,.5)) drop-shadow(0 1px 0 rgba(255,225,170,.18))!important}
+.bk-cv .bk-plate img{filter:invert(1) sepia(1) saturate(1.6) hue-rotate(-8deg) brightness(.95) drop-shadow(0 -1px 0 rgba(0,0,0,.45))!important;mix-blend-mode:normal!important}
+.bk-cv-btn,.bk[data-state="closed"] .bk-cover:hover .bk-cv-btn{background:linear-gradient(180deg,#F1CF86,#D29C3E)!important;color:#2A1608!important;box-shadow:0 10px 22px -10px rgba(0,0,0,.8)!important}
+.bk-cv-btn svg{color:#2A1608}
 </style>
 </head>
 <body>
-<div class="mk-hinweis" id="mk-hinweis" role="note" lang="de"><i aria-hidden="true"></i>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
 <span class="vw-l">Variante wählen</span>
-<span class="vw-b"><a class="vw-a" href="keyff_hell.html">Hell</a><a class="vw-a" href="keyff_dunkel.html" aria-current="true">Dunkel</a></span>
-<span class="vw-n">Diese Leiste sehen nur Sie im Entwurf. Auf der fertigen Website erscheint sie nicht.</span>
+<span class="vw-b"><a class="vw-a" href="keyff_dunkel.html" aria-current="true">Dunkel</a><a class="vw-a" href="keyff_hell.html">Hell</a></span>
+<span class="vw-n">Zwei Varianten zur Wahl: Sie können eine wählen oder beide behalten – am Preis ändert das nichts.</span>
 </div>
 
 <div class="ribbon">Entwurf – nur zur Ansicht</div>
@@ -2714,9 +2827,9 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
       /* schneller zu Ende (Doppelklick): das Blatt läuft sichtbar fertig, in höchstens ms */
       hurry: function(ms){ if(an && an.b === 1 && an.fin && left() > ms){ var q = an.fin; to(1, ms, null, q); } },
       set: function(u){ an = null; dropping = false; if(raf){ cancelAnimationFrame(raf); raf = 0; } clearTimeout(timer); uNow = u < 0 ? 0 : u > 1 ? 1 : u; show(uNow); },
-      done: function(){ dropping = false; to(1, 260 + 120 * (1 - c01(uNow)), E_DONE, function(){ end(false); }); },
+      done: function(){ dropping = false; flip.peek = false; to(1, 260 + 120 * (1 - c01(uNow)), E_DONE, function(){ end(false); }); },
       back: function(){ dropping = false; to(0, 220, E_BACK, function(){ end(true); }); },
-      turn: function(){ dropping = false; to(1, Math.max(220, o.dur * (1 - c01(uNow))), null, function(){ end(false); }); },
+      turn: function(){ dropping = false; flip.peek = false; /* 25.11: blättert jetzt wirklich – weitere Klicks warten in der Schlange */ to(1, Math.max(220, o.dur * (1 - c01(uNow))), null, function(){ end(false); }); },
       lift: function(){ dropping = false; to(.04, 240, E_LIFT, null); },
       drop: function(){ if(dropping) return; dropping = true; to(0, 200, E_LIFT, function(){ end(true); }); },
       dropping: function(){ return dropping; },
@@ -2822,6 +2935,7 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
       startFlip({g:dir, hx:W, W:W, n:14, dur:dur, front:front, back:back, peek:opt.peek, hint:opt.hint, drag:opt.drag, dir:dir}, function(c){
         if(!c){ pos = newPos; paint(); } end(c);
       });
+      if(flip) flip.target = newPos;   /* 25.11: Ziel des laufenden Blatts, für Klicks in der Warteschlange */
       return flip;
     }
     /* Telefon, eine Seite: vorwärts rollt die alte Seite nach links weg, rückwärts legt sich die neue von links darüber */
@@ -2876,7 +2990,7 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
       if(flip.dir === dir && !flip.hint){ lastReq = Date.now(); flip.turn(); return; }
       flip.cancelNow();
     }
-    var from = busy && pend ? pend.pos : pos;
+    var from = busy && pend ? pend.pos : (busy && flip && !flip.peek && flip.target != null ? flip.target : pos);
     var target = wide ? base(from) + 2*dir : from + dir;
     if(target < 0 || target > pages.length - 1) return;
     go(target, turnDone);
@@ -3179,7 +3293,13 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
   });
   stage.addEventListener('mouseleave', function(){ if(!md && flip && flip.peek && !flip.hint) flip.drop(); stage.style.cursor = ''; });
   stage.addEventListener('mousedown', function(e){
-    if(e.button !== 0 || !flip || !flip.peek || flip.hint || Date.now() - lastTouch < 800) return;
+    if(e.button !== 0 || Date.now() - lastTouch < 800) return;
+    /* 25.11 (Julia): Klick auf die Ecke blättert immer – auch ohne Mausbewegung davor und während ein Blatt noch läuft (dann in der Warteschlange) */
+    if(!flip || !flip.peek || flip.hint){
+      var c = cornerAt(e.clientX, e.clientY);
+      if(c){ e.preventDefault(); lastReq = Date.now(); turn(c); }
+      return;
+    }
     e.preventDefault();
     md = {x:e.clientX, lx:e.clientX, lt:e.timeStamp, v:0, moved:false, W:R.offsetWidth || 1, f:flip, dir:flip.dir};
     window.addEventListener('mousemove', mdMove); window.addEventListener('mouseup', mdUp);
@@ -3696,5 +3816,52 @@ a:focus-visible,button:focus-visible,[role=button]:focus-visible,[tabindex]:focu
   });
 })();
 </script>
+<script>(function(){
+  /* 25.11 (Julia): Pfeile neben das Buch; Inhalt, Sprache, Schliessen und Status in eine kleine Zeile über dem Buch. Knöpfe werden verschoben, ihre Funktionen bleiben. */
+  var bk = document.getElementById('buch'); if(!bk) return;
+  var stage = bk.querySelector('.bk-stage'), bar = document.getElementById('bk-bar'), tabs = document.getElementById('bk-tabs');
+  var prev = document.getElementById('bk-prev'), next = document.getElementById('bk-next');
+  var toc = document.getElementById('bk-toc'), close = document.getElementById('bk-close'), st = document.getElementById('bk-status');
+  if(!stage || !bar || !prev || !next) return;
+  [['l', prev], ['r', next]].forEach(function(a){ var r = document.createElement('div'); r.className = 'bk-rail ' + a[0]; r.appendChild(a[1]); stage.appendChild(r); });
+  var top = document.createElement('div'); top.className = 'bk-topbar';
+  var gap = document.createElement('span'); gap.className = 'bk-gap';
+  if(toc) top.appendChild(toc);
+  top.appendChild(gap);
+  var lang = bar.querySelector('.bk-lang-bar'); if(lang) top.appendChild(lang);
+  if(close){ close.setAttribute('aria-label', close.textContent.trim()); close.setAttribute('title', close.textContent.trim()); close.innerHTML = '<span class="x" aria-hidden="true">×</span>'; close.removeAttribute('data-t'); close.setAttribute('data-ta', 'Speisekarte schliessen'); top.appendChild(close); }
+  if(st) top.appendChild(st);
+  bk.insertBefore(top, tabs || stage);
+  bk.classList.add('bk-sides');
+  /* Computer: Steuerung oben in die Seitenschienen; Telefon: kleine Zeile über den Registern */
+  var rl = stage.querySelector('.bk-rail.l'), rr = stage.querySelector('.bk-rail.r');
+  var tl = document.createElement('div'), tr = document.createElement('div'); tl.className = tr.className = 'bk-railtop';
+  rl.appendChild(tl); rr.appendChild(tr);
+  var mqw = window.matchMedia('(min-width:900px)');
+  function place(){
+    if(mqw.matches){ if(toc) tl.appendChild(toc); if(close) tr.appendChild(close); if(lang) tr.appendChild(lang); }
+    else { if(toc) top.insertBefore(toc, gap); if(lang) top.insertBefore(lang, close || null); if(close) top.insertBefore(close, st || null); }
+  }
+  place(); if(mqw.addEventListener) mqw.addEventListener('change', place); else if(mqw.addListener) mqw.addListener(place);
+  window.dispatchEvent(new Event('resize'));
+})();</script>
+<script>(function(){
+  /* 25.11: Einstiegspreise als kleine Preisschilder (Zahl bleibt die aus der Karte gerechnete) */
+  var ab = document.getElementById('ab-preise'); if(!ab) return;
+  [].forEach.call(ab.querySelectorAll('.nw'), function(n){
+    var h = n.innerHTML.replace(/\s*·\s*$/, '');
+    var m = h.match(/^([\s\S]*?)\s*CHF\s*(<span data-ab="\w+">[^<]*<\/span>)\s*$/);
+    if(m){ n.innerHTML = '<small>' + m[1].trim() + '</small><b>CHF&nbsp;' + m[2] + '</b>'; n.classList.add('pt'); }
+  });
+})();</script>
+<script>(function(){
+  /* Sand liegt auf <html>; Blöcke darüber durchsichtig, damit nichts an Blockgrenzen abbricht (deckende Farbe/linear-gradient weg, Lichtverläufe bleiben) */
+  var SEL='main > section, main > div:not(.parquet), main > section > .wrap, footer.foot';
+  [].slice.call(document.querySelectorAll(SEL)).forEach(function(e){var c=getComputedStyle(e);e.style.backgroundColor='transparent';
+    if(c.backgroundImage==='none')return;
+    var L=c.backgroundImage.split(/,(?![^(]*\))(?=\s*(?:radial|linear|conic|url|repeating))/);
+    var keep=L.filter(function(l){l=l.trim();return !(/^linear-gradient/.test(l)&&!/rgba\([^)]*,\s*0?\.\d+\)|transparent/.test(l));});
+    if(keep.length!==L.length){e.style.backgroundImage=keep.length?keep.join(', '):'none';}});
+})();</script>
 </body>
 </html>
