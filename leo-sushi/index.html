@@ -662,6 +662,50 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 }
 /* ---------- Touch-Geraete (Tablet wie Telefon): keine Pfeile an den Baendern, nur Wischen und Punkte ---------- */
 @media (hover:none) and (pointer:coarse){.sidewrap>.arrow{display:none!important}.sidewrap{padding-inline:0!important}}
+
+/* ===== Julia 24.11 ~17:00 ===== */
+/* 1) Licht: rechts unten etwas heller – der Schatten liegt nur noch hinter dem Titel (oben rechts), nicht mehr ueber der ganzen rechten Seite */
+@media (min-width:761px) and (orientation:landscape), (min-width:1101px){.hero .shade{background:radial-gradient(62% 58% at 86% 26%,rgba(3,6,4,.5),rgba(3,6,4,0) 100%),linear-gradient(180deg,rgba(3,6,4,.45),rgba(3,6,4,0) 20%)}}
+@media (max-width:760px), (orientation:portrait) and (max-width:1100px){.hero .shade{background:linear-gradient(180deg,rgba(3,6,4,.7) 0%,rgba(3,6,4,.35) 20%,rgba(3,6,4,0) 30%,rgba(3,6,4,0) 80%,rgba(3,6,4,.62) 100%)}}
+/* 2+3) Keine goldenen Rahmen beim Ueberfahren/Scrollen: Lieblinge nur leichtes Vergroessern des Gerichts; Karten bleiben ruhig */
+.dish.ready:hover{transform:none;box-shadow:0 20px 40px -20px rgba(0,0,0,.7)}
+.dish.ready:hover img{transform:scale(1.05)}
+@media (hover:hover){.sleeve:hover{border-color:#c9a45c;box-shadow:0 0 0 1px rgba(232,207,143,.25),0 12px 12px -8px rgba(0,0,0,.75)}}
+.board2:focus,.board2:focus-visible{outline:none}
+/* 4) Karte: Seitenkopf je Seite, Brett-Kopf entfaellt; Seitenzahl unten; Halbseite dreht um den Falz */
+.board2 .bhead{display:none}
+.sheet{height:calc(5 * 74px + 38px)}
+.sheet .half{grid-template-rows:38px;grid-auto-rows:74px}
+.ph{display:flex;align-items:center;gap:10px;padding:4px 8px 8px;border-bottom:1px solid rgba(60,50,20,.16);min-width:0}
+.ph .stripe{flex:none;width:22px;height:3px;border-radius:2px;background:color-mix(in srgb,var(--acc,#c9a45c) 70%,#3a2a10)}
+.ph b{font:600 20px/1 var(--serif);font-variation-settings:"SOFT" 100;color:#16251c;white-space:nowrap}
+.ph small{font:600 11.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#6e6a58;white-space:nowrap}
+.ph .pn{margin-left:auto;font:600 12.5px var(--sans);color:#4f5245;white-space:nowrap;font-variant-numeric:tabular-nums}
+.half.info p{padding:10px 8px 0;font-size:14.5px;line-height:1.45;color:#55594c}
+.bnav .dots{font:600 13px var(--sans);color:#4f5245;font-variant-numeric:tabular-nums}
+.sheetwrap{perspective:2200px}
+.sheetwrap.turning{overflow:visible}
+.sheet.leaf{transform-style:flat;box-shadow:none}
+.sheet.leaf[data-side=r],.sheet.leaf[data-side=one]{box-shadow:-1px 0 0 rgba(70,58,28,.17)}
+.leaf .shade{background:linear-gradient(90deg,rgba(60,42,12,.22),rgba(60,42,12,.06) 45%,rgba(255,250,235,.10))}
+.leaf[data-side=l] .shade{background:linear-gradient(270deg,rgba(60,42,12,.22),rgba(60,42,12,.06) 45%,rgba(255,250,235,.10))}
+@media (min-width:761px) and (max-height:820px){.sheet{height:calc(5 * 62px + 34px)}.sheet .half{grid-template-rows:34px;grid-auto-rows:62px}.ph b{font-size:18px}}
+@media (max-width:760px){.sheet{height:calc(5 * 62px + 34px)}.sheet .half{grid-template-rows:34px;grid-auto-rows:62px}.ph b{font-size:18px}.ph small{display:none}}
+/* 5) Platten: Foto klebt nicht mehr; Personen direkt unter dem Foto; leerer Kasten nur als schmale Zeile */
+.plan .pic{position:relative!important;top:auto!important;box-shadow:0 24px 40px -26px rgba(0,0,0,.7)}
+.lcol .pers{margin-bottom:16px}
+.lcol .pers .lb{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);font-weight:700;display:block;margin-bottom:8px}
+.lcol .pers .lb .no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(201,164,92,.2);color:var(--lamp);font-size:12px;letter-spacing:0;margin-right:8px}
+.board.empty .wait{flex-direction:row;justify-content:center;padding:14px 12px;font-size:15px;gap:12px}
+.board.empty .wait svg{width:44px;height:28px}
+@media (max-width:760px){.board.empty .wait{padding:8px 6px;font-size:14px}.board.empty .wait svg{width:36px;height:22px}.board.empty{padding-top:6px;padding-bottom:6px}}
+/* 6) Wo finden: keine Leiste ueber dem Kartenrahmen */
+.frame.map .lamp{display:none}
+/* 8) Gaeste: Muster auf den gruenen Koepfen wieder da (ruhig, ohne Animation) */
+.sleeve .band{background:
+   radial-gradient(circle at 0 100%,transparent 12px,rgba(232,207,143,.24) 13px,transparent 14px) 0 0/28px 14px,
+   radial-gradient(circle at 14px 100%,transparent 12px,rgba(232,207,143,.24) 13px,transparent 14px) 0 7px/28px 14px,
+   linear-gradient(115deg,#0f2a1d 0%,#1d4a34 36%,#2c5a3c 50%,#8a6a2c 74%,#d8b866 100%) 55% 0/280% 100%}
 </style>
 </head>
 <body>
@@ -751,18 +795,16 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
     <p class="lead reveal" style="margin-top:14px">Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.</p>
     <ol class="steps reveal" id="pSteps" aria-label="So funktioniert es"><li data-s="1"><b>1</b>Personen</li><li data-s="2"><b>2</b>Hunger</li><li data-s="3"><b>3</b>Stil</li><li data-s="4" class="goal"><b>✓</b>Ihre Platte</li></ol>
     <div class="grid">
-      <div class="lcol"><div class="pic reveal">
+      <div class="lcol">
+        <div class="pers"><span class="lb"><b class="no">1</b>Personen</span>
+          <div class="stepper"><button type="button" id="pm" aria-label="Eine Person weniger">−</button><output id="pers">4 Personen</output><button type="button" id="pp" aria-label="Eine Person mehr">+</button></div>
+        </div>
+        <div class="pic reveal">
         <img src="img/s/platte_4_personen.jpg" srcset="img/s/platte_4_personen_m.jpg 760w, img/s/platte_4_personen.jpg 1100w" sizes="(max-width:900px) 100vw, 50vw" width="1100" height="821" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy" decoding="async">
         <div class="tot" id="pTot"><span class="pill"><b id="tStk">0</b> Stück</span><span class="pill">Fr. <b id="tFr">0</b></span><span class="pill">≈ Fr. <b id="tPP">0</b> pro Person</span></div>
       </div>
-        <p class="hint">Ideal für Geburtstage, Feste und Take-away. Am Telefon einfach die Nummern durchgeben.</p>
-        <!-- MUSTER-HINWEIS fuer den Inhaber: zum Entfernen diesen <aside> loeschen -->
-        <aside class="muster" data-muster><span>Musterentwurf · Hinweis für Leo</span>Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.</aside>
       </div>
       <div class="ctrl reveal">
-        <div><span class="lb"><b class="no">1</b>Personen</span>
-          <div class="stepper"><button type="button" id="pm" aria-label="Eine Person weniger">−</button><output id="pers">4 Personen</output><button type="button" id="pp" aria-label="Eine Person mehr">+</button></div>
-        </div>
         <div><span class="lb"><b class="no">2</b>Hunger</span>
           <div class="seg one" id="hunger">
             <button data-v="10" aria-pressed="false">Klein<small>≈ 10 Stück p. P.</small></button>
@@ -783,6 +825,8 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
           <a class="btn btn-lamp" id="pOrder" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Diese Platte telefonisch bestellen</a>
           <button class="btn btn-line" type="button" id="copy">Liste kopieren</button>
         </div>
+        <!-- MUSTER-HINWEIS fuer den Inhaber: zum Entfernen diesen <aside> loeschen -->
+        <aside class="muster" data-muster><span>Musterentwurf · Hinweis für Leo</span>Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.</aside>
 
       </div>
     </div>
@@ -1026,63 +1070,68 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 (function(){
   const ACC={"nigiri": "#ff8f70", "maki": "#9ed36a", "futo": "#f4e3b5", "ura": "#ff6f91", "crunchy": "#e8cf8f", "sashimi": "#ff5e5e", "vor": "#c9a0ff", "ramen": "#ffb347"}; KARTE.forEach(c=>c.acc=ACC[c.id]||"#e8cf8f");
   const q=$("#q"), sheet=$("#sheet"), sw=$("#sw"), board=$("#board"), act=new Set();
-  let cat=KARTE[0], page=0, pages=[[]], mode="cat";
-  const per=()=>matchMedia("(max-width:760px)").matches?5:10;
+  let mode="cat";
   const TG={v:'<i class="v">VEGI</i>',s:'<i class="s">SCHARF</i>',fl:'<i class="fl">GEFLÄMMT</i>',t:'<i class="t">TEMPURA</i>'};
   const row=(it,acc)=>{ const [nr,n,d,p,tg]=it; const tags=tg.split(" ").filter(x=>TG[x]).map(x=>TG[x]).join("");
     return `<div class="row" style="--acc:${acc}"><span class="rn">${nr?("Nr. "+nr):"·"}</span><span class="rt" title="${esc(n)}">${esc(n)}${tags?`<span class="tg">${tags}</span>`:""}</span><span class="rp">Fr. ${fr(p)}</span>${d?`<span class="rd">${esc(d)}</span>`:""}</div>`; };
   const match=(it,s)=>{ const [nr,n,d,,tg]=it; const T=tg.split(" ");
     for(const f of act){ if(f==="nr"){ if(T.includes("r")) return false; } else if(!T.includes(f)) return false; }
     if(!s) return true; s=s.toLowerCase(); return String(nr)===s || (n+" "+d+" "+(window.LANG==="en"?window.__trDesc(d):"")).toLowerCase().includes(s); };
-  function build(){ const s=q.value.trim(); let list;
-    if(s||act.size){ mode="search"; list=[]; KARTE.forEach(c=>c.items.forEach(it=>{ if(match(it,s)) list.push([it,c.acc]); })); }
-    else { mode="cat"; list=cat.items.map(it=>[it,cat.acc]); }
-    const n=per(); pages=[]; for(let i=0;i<list.length;i+=n) pages.push(list.slice(i,i+n)); if(!pages.length) pages=[[]]; if(page>=pages.length) page=pages.length-1; }
-  /* ---- Doppelseite: links 5, rechts 5 (Telefon: eine Seite) ---- */
+  /* ---- Buch: jede Kategorie in Seiten zu 5 Gerichten; die Seiten laufen durch die ganze Karte.
+     Computer: Doppelseite = zwei Seiten nebeneinander (kurze Kategorien teilen sich eine Doppelseite, keine leeren Seiten).
+     Telefon: eine Seite. ---- */
   const two=()=>!matchMedia("(max-width:760px)").matches;
-  function pageHTML(p){ if(!p.length) return `<div class="half full"><p class="empty">Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.</p></div>`;
-    const r=x=>x.map(([it,acc])=>row(it,acc)).join("");
-    return two()?`<div class="half">${r(p.slice(0,5))}</div><div class="half">${r(p.slice(5))}</div>`:`<div class="half">${r(p)}</div>`; }
-  /* ---- Umblaettern: flaches Falten an der Mittellinie (kein 3D-Wellen wie bei anderen Entwuerfen) ----
-     vorwaerts: rechte Haelfte faltet sich zur Mitte zusammen, die neue linke klappt aus der Mitte auf */
+  let book=[], at=0, step=1, focus=null;
+  function build(){ const s=q.value.trim(); book=[];
+    if(s||act.size){ mode="search"; const list=[]; KARTE.forEach(c=>c.items.forEach(it=>{ if(match(it,s)) list.push([it,c.acc]); }));
+      const n=Math.max(1,Math.ceil(list.length/5)); for(let i=0;i<n;i++) book.push({kind:"res",items:list.slice(i*5,i*5+5),k:i,n,total:list.length}); }
+    else { mode="cat"; KARTE.forEach(c=>{ const L=c.items.length, n=Math.ceil(L/5), base=Math.floor(L/n), extra=L%n; let o=0;
+        for(let i=0;i<n;i++){ const m=base+(i<extra?1:0); book.push({kind:"cat",c,items:c.items.slice(o,o+m).map(it=>[it,c.acc]),k:i,n}); o+=m; } });
+      if(two()&&book.length%2) book.push({kind:"info"}); }
+    if(two()&&book.length%2) book.push({kind:"blank"});
+    step=two()?2:1; if(at>=book.length) at=0; at-=at%step; }
+  function half(pg){ if(!pg||pg.kind==="blank") return `<div class="half"></div>`;
+    if(pg.kind==="info") return `<div class="half info"><div class="ph"><span class="stripe"></span><b>Gut zu wissen</b></div>${$$(".knote span").map(x=>`<p>${esc(x.textContent)}</p>`).join("")}</div>`;
+    const pn=pg.n>1?`<span class="pn">Seite ${pg.k+1} / ${pg.n}</span>`:"";
+    const head=pg.kind==="cat"?`<div class="ph" style="--acc:${pg.c.acc}"><span class="stripe"></span><b>${esc(pg.c.t)}</b>${pg.c.u?`<small>${esc(pg.c.u)}</small>`:""}${pn}</div>`
+      :`<div class="ph"><span class="stripe"></span><b>Suchergebnis</b><small>${pg.total} Gerichte</small>${pn}</div>`;
+    const body=pg.items.length?pg.items.map(([it,acc])=>row(it,acc)).join(""):`<p class="empty">Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.</p>`;
+    return `<div class="half">${head}${body}</div>`; }
+  const spreadHTML=()=>two()?half(book[at])+half(book[at+1]):half(book[at]);
+  /* ---- Umblaettern: die Seite dreht sich als feste Halbseite um den Mittelfalz (Perspektive, weicher Schatten) ---- */
   let cur=null;
-  function endTurn(){ if(!cur) return; const c=cur; cur=null; c.anims.forEach(a=>{ try{a.cancel()}catch(e){} }); c.leaf.remove(); sheet.innerHTML=c.final; }
+  function endTurn(){ if(!cur) return; const c=cur; cur=null; c.anims.forEach(a=>{ try{a.cancel()}catch(e){} }); c.leaf.remove(); sw.classList.remove("turning"); sheet.innerHTML=c.final; }
   async function turn(d,html){ endTurn();
     const oldH=[...sheet.children].map(h=>h.outerHTML), box=document.createElement("div"); box.innerHTML=html; const newH=[...box.children].map(h=>h.outerHTML);
-    const dbl=two(), bad=h=>!h.length||h.some(x=>x.includes('half full'))||(dbl&&h.length<2)||(!dbl&&h.length!==1);
+    const dbl=two(), bad=h=>!h.length||(dbl&&h.length<2)||(!dbl&&h.length!==1);
     if(bad(oldH)||bad(newH)||!sheet.animate){ sheet.innerHTML=html; return; }
-    const leaf=document.createElement("div"); leaf.className="sheet leaf"; leaf.setAttribute("aria-hidden","true"); sw.appendChild(leaf);
+    const leaf=document.createElement("div"); leaf.className="sheet leaf"; leaf.setAttribute("aria-hidden","true"); sw.appendChild(leaf); sw.classList.add("turning");
     const me={leaf,anims:[],final:html}; cur=me;
     const run=(side,h,from,to,ms,ease)=>{ leaf.dataset.side=side; leaf.innerHTML=h+'<i class="shade"></i>'; const sh=leaf.lastChild;
-      const o={duration:ms,easing:ease,fill:"forwards"};
-      const a=leaf.animate([{transform:`scaleX(${from})`},{transform:`scaleX(${to})`}],o), b=sh.animate([{opacity:from>to?0:1},{opacity:from>to?1:0}],o);
+      const o={duration:ms,easing:ease,fill:"forwards"}, darkFrom=Math.abs(from)>Math.abs(to)?.85:0, darkTo=Math.abs(from)>Math.abs(to)?0:.85;
+      const a=leaf.animate([{transform:`rotateY(${from}deg)`},{transform:`rotateY(${to}deg)`}],o), b=sh.animate([{opacity:darkFrom},{opacity:darkTo}],o);
       me.anims=[a,b]; return a.finished; };
-    const IN="cubic-bezier(.5,0,.75,.35)", OUT="cubic-bezier(.2,.6,.3,1)";
+    const IN="cubic-bezier(.42,.05,.72,.38)", OUT="cubic-bezier(.22,.68,.32,1)";
     try{
-      if(dbl&&d>0){ sheet.innerHTML=oldH[0]+newH[1]; await run("r",oldH[1],1,.001,250,IN); if(cur!==me) return; await run("l",newH[0],.001,1,340,OUT); }
-      else if(dbl){ sheet.innerHTML=newH[0]+oldH[1]; await run("l",oldH[0],1,.001,250,IN); if(cur!==me) return; await run("r",newH[1],.001,1,340,OUT); }
-      else if(d>0){ sheet.innerHTML=newH[0]; await run("one",oldH[0],1,.001,420,"cubic-bezier(.45,0,.55,1)"); }
-      else { await run("one",newH[0],.001,1,420,"cubic-bezier(.45,0,.55,1)"); }
+      if(dbl&&d>0){ sheet.innerHTML=oldH[0]+newH[1]; await run("r",oldH[1],0,-90,300,IN); if(cur!==me) return; await run("l",newH[0],90,0,420,OUT); }
+      else if(dbl){ sheet.innerHTML=newH[0]+oldH[1]; await run("l",oldH[0],0,90,300,IN); if(cur!==me) return; await run("r",newH[1],-90,0,420,OUT); }
+      else if(d>0){ sheet.innerHTML=newH[0]; await run("one",oldH[0],0,-92,520,"cubic-bezier(.4,0,.6,1)"); }
+      else { await run("one",newH[0],-92,0,520,"cubic-bezier(.4,0,.6,1)"); }
     }catch(e){ return; }
-    if(cur===me){ cur=null; leaf.remove(); sheet.innerHTML=html; } }
-  function paint(dir){ const p=pages[page]; board.style.setProperty("--acc",mode==="cat"?cat.acc:"#e8cf8f");
-    $("#bt").textContent=mode==="cat"?cat.t:"Suchergebnis"; $("#bu").textContent=mode==="cat"?cat.u:(pages.flat().length+" Gerichte");
-    $("#pg").textContent=pages.length>1?`Seite ${page+1} / ${pages.length}`:"";
-    const html=pageHTML(p);
+    if(cur===me){ cur=null; leaf.remove(); sw.classList.remove("turning"); sheet.innerHTML=html; } }
+  function paint(dir){ const L=book[at], lc=L&&L.c; board.style.setProperty("--acc",lc?lc.acc:"#e8cf8f");
+    const real=book.filter(p=>p.kind!=="blank").length;
+    $("#pg").textContent="";
+    $("#dots").textContent=book.length>step?(step===2?`Seiten ${at+1}–${Math.min(at+2,real)} / ${real}`:`Seite ${at+1} / ${book.length}`):"";
+    const html=spreadHTML();
     if((dir==="in-r"||dir==="in-l")&&!reduce) turn(dir==="in-r"?1:-1,html);
     else { endTurn(); sheet.innerHTML=html; sheet.classList.remove("in-r","in-l","drop"); void sheet.offsetWidth; if(dir) sheet.classList.add(dir); }
-    /* Blaettern laeuft durch die ganze Karte: am Ende einer Kategorie geht es in die naechste */
-    const one=mode==="search"&&pages.length<2; $("#prev").disabled=one; $("#next").disabled=one;
-    const nc=KARTE[(KARTE.indexOf(cat)+1)%KARTE.length];
-    const end=mode==="cat"&&page>=pages.length-1; $("#nxl").textContent=end?"Weiter: "+nc.t:"Weiter"; $(".bnav").classList.toggle("end",end);
-    $("#dots").innerHTML=pages.length>1?pages.map((_,i)=>`<i class="${i===page?"on":""}"></i>`).join(""):""; }
-  const go=d=>{ const np=page+d, dir=d>0?"in-r":"in-l";
-    if(np>=0&&np<pages.length){ page=np; paint(dir); return; }
-    if(mode==="search"){ if(pages.length<2) return; page=(np+pages.length)%pages.length; paint(dir); return; }
-    const i=(KARTE.indexOf(cat)+d+KARTE.length)%KARTE.length; cat=KARTE[i];
-    const tb=$$(".nren"); tb.forEach(t=>t.setAttribute("aria-selected",+t.dataset.i===i));
-    const b=tb[i], tw=$("#tabs"); if(b&&tw.scrollWidth>tw.clientWidth) tw.scrollTo({left:b.offsetLeft-(tw.clientWidth-b.offsetWidth)/2,behavior:"smooth"});
-    page=0; build(); page=d>0?0:pages.length-1; paint(dir); };
+    const one=book.length<=step; $("#prev").disabled=one; $("#next").disabled=one;
+    const nx=book[(at+step)%book.length]; $("#nxl").textContent=(mode==="cat"&&nx&&nx.kind==="cat"&&nx.k===0)?"Weiter: "+nx.c.t:"Weiter";
+    if(mode==="cat"){ const inSpread=[book[at],book[at+step-1]].some(p=>p&&p.c===focus); const c=inSpread?focus:lc; const ix=KARTE.indexOf(c);
+      const tb=$$(".nren"); tb.forEach(t=>t.setAttribute("aria-selected",+t.dataset.i===ix));
+      const b=tb[ix], tw=$("#tabs"); if(b&&tw.scrollWidth>tw.clientWidth) tw.scrollTo({left:b.offsetLeft-(tw.clientWidth-b.offsetWidth)/2,behavior:"smooth"}); } }
+  const go=d=>{ if(book.length<=step) return; focus=null; at=(at+d*step+book.length)%book.length; at-=at%step; paint(d>0?"in-r":"in-l"); };
   $("#prev").onclick=()=>go(-1); $("#next").onclick=()=>go(1); $("#kPrev").onclick=()=>go(-1); $("#kNext").onclick=()=>go(1);
   /* Wischen: nur waagrecht blaettert, senkrecht scrollt die Seite */
   let sx=null,sy=0; sw.addEventListener("pointerdown",e=>{ sx=e.clientX; sy=e.clientY; },{passive:true});
@@ -1091,11 +1140,11 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   let wx=0,wt=0,wl=false; board.addEventListener("wheel",e=>{ if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)) return; e.preventDefault();
     clearTimeout(wt); wt=setTimeout(()=>{ wl=false; wx=0; },220); if(wl) return; wx+=e.deltaX; if(Math.abs(wx)>36){ wl=true; go(wx>0?1:-1); wx=0; } },{passive:false});
   board.tabIndex=0; board.addEventListener("keydown",e=>{ if(e.key==="ArrowRight"){e.preventDefault();go(1);} if(e.key==="ArrowLeft"){e.preventDefault();go(-1);} });
-  const refresh=dir=>{ page=0; build(); paint(dir); };
+  const refresh=dir=>{ at=0; build(); paint(dir); };
   q.addEventListener("input",()=>{  refresh(); });
   $("#filters").addEventListener("click",e=>{ const b=e.target.closest(".f"); if(!b) return; const f=b.dataset.f; act.has(f)?act.delete(f):act.add(f); b.setAttribute("aria-pressed",act.has(f));  refresh(); });
-  let lastPer=per(); addEventListener("resize",()=>{ if(per()!==lastPer){ lastPer=per(); build(); paint(); } });
-  const pick=c=>{ cat=c; q.value=""; act.clear(); $$(".f").forEach(f=>f.setAttribute("aria-pressed","false")); refresh("drop"); };
+  let lastTwo=two(); addEventListener("resize",()=>{ if(two()!==lastTwo){ lastTwo=two(); const k=book[at]; build(); const ix=k?book.findIndex(p=>p.c===k.c&&p.k===k.k&&p.kind===k.kind):0; at=Math.max(0,ix); at-=at%step; paint(); } });
+  const pick=c=>{ q.value=""; act.clear(); $$(".f").forEach(f=>f.setAttribute("aria-pressed","false")); build(); const ix=book.findIndex(p=>p.c===c); at=Math.max(0,ix); at-=at%step; focus=c; paint("drop"); };
   const tabs=$("#tabs");
   tabs.innerHTML=KARTE.map((c,i)=>`<button class="nren" role="tab" style="--acc:${c.acc}" data-i="${i}" aria-selected="${i===0}">${c.t}<small>${c.items.length} Gerichte</small></button>`).join("");
   tabs.addEventListener("click",e=>{ const b=e.target.closest(".nren"); if(!b) return; $$(".nren").forEach(t=>t.setAttribute("aria-selected",t===b)); pick(KARTE[+b.dataset.i]); });
@@ -1236,7 +1285,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in CHF incl. 8.1% VAT.",
 "Lachs: Schottland (Zucht) · Thunfisch: Pazifik (Wildfang) · Aal: Neuseeland (Wildfang)":"Salmon: Scotland (farmed) · Tuna: Pacific (wild-caught) · Eel: New Zealand (wild-caught)",
 "Allergien? Bitte beim Bestellen sagen.":"Allergies? Please tell us when you order.",
-"Suchergebnis":"Search results","Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.":"Nothing found – try “salmon”, “avocado” or a number.",
+"Suchergebnis":"Search results","Gut zu wissen":"Good to know","Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.":"Nothing found – try “salmon”, “avocado” or a number.",
 "Crunchy Rollen":"Crunchy Rolls","Vorspeisen & Bao":"Starters & Bao","Ramen & Suppen":"Ramen & Soups",
 "Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
 "Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose people, appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
@@ -1310,6 +1359,8 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     [/^(\d+) Personen?$/, (m,n)=>n+(n==="1"?" person":" people")],
     [/^(\d+) Gerichte$/, (m,n)=>n+(n==="1"?" dish":" dishes")],
     [/^Seite (\d+) \/ (\d+)$/, (m,a,b)=>"Page "+a+" / "+b],
+    [/^Seiten (\d+)–(\d+) \/ (\d+)$/, (m,a,b,c)=>"Pages "+a+"–"+b+" / "+c],
+    [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)],
     [/^Nr\. (.+)$/, (m,a)=>"No. "+a],
     [/^Heute · (\S+)$/, (m,a)=>"Today · "+(DAY[a]||a)],
     [/^(Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag)$/, (m,a)=>DAY[a]],
