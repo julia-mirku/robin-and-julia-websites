@@ -356,10 +356,19 @@ footer .soc{margin-left:auto;display:flex;gap:22px}
   .v-photo{min-height:calc(100dvh - 60px)}
 }
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01s!important;animation:none!important}}
+
+/* 24.11 Plaschke «Entwurf» über der Kopfzeile (Regel 22) */
+.mk-hinweis{position:relative;z-index:60;display:block;background:var(--acc,#2F7F79);color:#FFFFFF;border-bottom:1px solid rgba(0,0,0,.08);font-family:'Be Vietnam Pro',system-ui,sans-serif;font-weight:500;font-size:13px;line-height:1.4;text-align:center;padding:7px 16px;max-height:90px;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1),padding .5s cubic-bezier(.2,.7,.2,1),opacity .35s}
+.mk-hinweis i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blush,#DDF0EC);margin-right:8px;vertical-align:1px}
+.mk-hinweis.weg{max-height:0;padding-top:0;padding-bottom:0;opacity:0;border-bottom-width:0}
+@media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
+@media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
+
 </style>
 </head>
 <body>
 
+<div class="mk-hinweis" id="mk-hinweis" role="note" lang="de"><i aria-hidden="true"></i>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <header class="top gate" id="top">
   <div class="wrap">
     <a class="logo" href="#farbe" aria-label="Minh Nail Salon"><b>Minh</b><span>Nail Salon</span></a>
