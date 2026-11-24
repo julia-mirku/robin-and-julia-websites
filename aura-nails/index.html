@@ -487,6 +487,8 @@ body.lb-open{overflow:hidden}
 .fw-chip.on{border-color:var(--gold);color:var(--gold);background:#FFFBF3}
 .fw-hint-t{display:none}
 @media (hover:none),(max-width:900px){.fw-hint-m{display:none}.fw-hint-t{display:inline}}
+/* Julia 23.11 23:40: Tablet mit Touch wie Telefon – keine Pfeile, Wischen + Punkte (18f) */
+@media (hover:none) and (pointer:coarse){.carousel{padding-inline:0}.carousel .car-btn{display:none}}
 /* Julia 22.11 21:46: Logo im untersten Block etwas schneller */
 .oval .ring{transition-duration:.9s}.oval .ring2{transition-delay:.08s}.oval .word{transition:opacity .5s .3s}
 @media (max-width:900px){.fw-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'wall' 'chips' 'set';gap:14px}.fw-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-inline:-16px;padding-inline:16px}.fw-chips::-webkit-scrollbar{display:none}.fw-chip{flex:0 0 auto}.fw-set{aspect-ratio:4/5;width:min(100%,460px);justify-self:center}}
