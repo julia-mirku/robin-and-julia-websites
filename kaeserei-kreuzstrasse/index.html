@@ -462,6 +462,11 @@ body:before{background:var(--tex) 0 0/var(--texsz) var(--texsz) repeat!important
 @media (max-aspect-ratio:3/4){:root{--fon:linear-gradient(180deg,rgba(251,245,232,.4) 0%,rgba(251,245,232,.55) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.55) 92%,rgba(251,245,232,.4) 100%),url(img/fon_a_m.webp) center/auto 116% no-repeat}}
 body:before,.ftex i{background:var(--fon)!important;opacity:1!important}
 .weg .ftex{display:none!important}  /* №111: Löcher/Käse laufen nicht ins Wiesenbild – klare Kante */
+/* Holly 24.11 (KG19 «ohne sichtbare Linien»): weicher Übergang zum Wiesenbild – letzte ~150px vor dem Bild heller Käsegrund ohne Löcher/Rinde,
+   dann sanft in den Himmel des Fotos. Keine Löcher auf dem Foto. */
+.laden{position:relative;z-index:0}
+.laden:after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(251,245,232,0) 0,#FBF5E8 55px,#FBF5E8 100%)}
+.weg.weg:before{content:""!important;display:block;position:absolute;left:0;right:0;top:0;height:170px;z-index:1;pointer-events:none;background:linear-gradient(180deg,#FBF5E8 0,rgba(251,245,232,.82) 22%,rgba(251,245,232,.45) 52%,rgba(251,245,232,.14) 80%,rgba(251,245,232,0) 100%)!important;-webkit-mask-image:none!important;mask-image:none!important}
 /*FONA-END*/
 .weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
 .day small{line-height:1.25;text-align:center;display:flex;flex-direction:column;align-items:center}
