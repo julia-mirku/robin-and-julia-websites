@@ -577,10 +577,21 @@ footer .wrap.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
 /* Telefon: keine Pfeile an Baendern, nur Wischen und Punkte */
 @media (max-width:600px){.sidewrap>.arrow{display:none!important}}
 #stimmen .dnav{margin-top:4px}
+
+/* ---------- Entwurf-Hinweis ueber der Kopfzeile: verschwindet sanft beim ersten Scrollen ---------- */
+.draftbar{position:fixed;left:0;right:0;top:0;z-index:70;padding:7px 16px;text-align:center;font:600 12.5px/1.35 var(--sans);letter-spacing:.02em;color:#1d1406;background:linear-gradient(90deg,#c9a45c,#e8cf8f 50%,#c9a45c);box-shadow:0 2px 12px rgba(0,0,0,.35);transition:transform .55s cubic-bezier(.4,0,.2,1),opacity .55s}
+.hdr{top:var(--nb,0px);transition:top .55s cubic-bezier(.4,0,.2,1),background .4s,backdrop-filter .4s}
+.hero .post .txt{transform:translateY(var(--nb,0px));transition:transform .55s cubic-bezier(.4,0,.2,1)}
+html.nb-off .draftbar{transform:translateY(-100%);opacity:0;pointer-events:none}
+html.nb-off{--nb:0px!important}
+@media (max-width:560px){.draftbar{font-size:11.5px;padding:6px 12px}}
 </style>
 </head>
 <body>
 
+<!-- ENTWURF-LEISTE (nur Leo, Kiku entfernt sie beim Bauen) -->
+<div class="draftbar" id="draftbar" role="note">Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+<!-- /ENTWURF-LEISTE -->
 <header class="hdr" id="hdr">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Leo – nach oben"><img src="img/s/leo_logo.png" alt="Leo" width="46" height="46" fetchpriority="high"></a>
@@ -882,6 +893,13 @@ const fr=n=>Number.isInteger(n)?String(n):n.toFixed(2);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* ================= Entwurf-Leiste: Hoehe messen, beim ersten Scrollen/Wischen/Taste weg ================= */
+(function(){ const b=document.getElementById("draftbar"), H=document.documentElement; if(!b) return;
+  const set=()=>{ if(!H.classList.contains("nb-off")) H.style.setProperty("--nb",b.offsetHeight+"px"); }; set(); addEventListener("resize",set);
+  const off=()=>{ H.classList.add("nb-off"); H.style.setProperty("--nb","0px"); ["wheel","touchmove","scroll","keydown"].forEach(e=>removeEventListener(e,off)); };
+  if(scrollY>10) off(); else ["wheel","touchmove","scroll","keydown"].forEach(e=>addEventListener(e,off,{passive:true}));
+})();
+
 /* ================= Licht an (Seite steht, bis das Licht ganz an ist) ================= */
 /* Sobald das Licht 100 % ist: Sperre sofort weg. Nur 650 ms ab diesem Moment wird
    der Schwung geschluckt (zeitbasiert, nicht verlaengert, ohne Timer/rAF-Abhaengigkeit). */
@@ -1180,7 +1198,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Bis":"See you","heute Abend?":"this evening?","heute Mittag?":"at lunchtime?","morgen?":"tomorrow?","bald?":"soon?","Tisch reservieren & Bestellungen":"Table bookings & orders","Route planen":"Get directions",
 "Anfragen für Gruppen & Feste":"Enquiries for groups & parties","7’840 Follower auf Instagram":"7,840 followers on Instagram",
 "Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl":"Map of St. Gallen’s old town: Leo on Engelgasse 2, near Marktplatz and Bohl",
-"Route in Google Maps":"Directions in Google Maps","Entwurf · nur zur Ansicht":"Draft · preview only",
+"Route in Google Maps":"Directions in Google Maps","Entwurf · nur zur Ansicht":"Draft · preview only","Website-Entwurf von Julia & Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.":"Website draft by Julia & Robin Mirku · preview only – some links and features are not active yet.",
 "Schnellzugriff":"Quick access","Anrufen":"Call","Platte":"Platter","Route":"Directions",
 "Foto":"Photo","Schliessen":"Close","Mit zwei Fingern vergrössern · nach unten wischen zum Schliessen":"Pinch to zoom · swipe down to close",
 "Geschlossen":"Closed","Kontakt":"Contact","Öffnungszeiten":"Opening hours","Rechtliches":"Legal","Impressum":"Legal notice","Datenschutz":"Privacy policy","Mo":"Mo","Di":"Tu","Mi":"We","Do":"Th","Fr":"Fr","Sa":"Sa","So":"Su",
