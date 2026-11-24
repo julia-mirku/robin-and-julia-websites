@@ -446,7 +446,7 @@ button.rb{cursor:pointer}
 /* englische Stimmen: Original und deutsche Übersetzung liegen übereinander, der Knopf schaltet um (nichts verschiebt sich) */
 .tp blockquote.zwei{display:grid;font-size:15px;line-height:1.46;margin-top:14px}
 .tp blockquote.zwei>span{grid-area:1/1;white-space:pre-line}
-.tuete:not(.ueb) .t-de,.tuete.ueb .t-or{visibility:hidden}
+.tuete:not(.ueb) .t-de,.tuete.ueb .t-or{display:none!important}
 .umsch{align-self:flex-start;display:grid;margin:-8px 0 14px;padding:6px 0;border:0;background:none;font:inherit;font-size:13.5px;font-weight:700;color:var(--terra-dk);text-align:left;cursor:pointer;-webkit-user-select:none;user-select:none}
 .umsch>span{grid-area:1/1;text-decoration:underline;text-underline-offset:3px}
 .tuete:not(.ueb) .u1,.tuete.ueb .u0{visibility:hidden}
@@ -975,6 +975,9 @@ Preis, Grösse, Geschmack, Frische – alles perfekt!</span></blockquote><button
       if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');});
     if(dlg){ dlg.querySelector('.tdx').addEventListener('click',function(){dlg.close?dlg.close():dlg.removeAttribute('open')}); dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); }); }
     window.addEventListener('resize',mehrPruefen); window.addEventListener('load',mehrPruefen); setTimeout(mehrPruefen,300);
+    function reiheHoehe(){ tr.style.minHeight=''; var all=tr.querySelectorAll('.tuete'),h0=tr.offsetHeight,ue=[].filter.call(all,function(t){return !t.classList.contains('ueb')&&t.querySelector('.zwei')});
+      ue.forEach(function(t){t.classList.add('ueb')}); var h1=tr.offsetHeight; ue.forEach(function(t){t.classList.remove('ueb')}); tr.style.minHeight=Math.max(h0,h1)+'px'; }
+    window.addEventListener('resize',reiheHoehe); window.addEventListener('load',reiheHoehe); setTimeout(reiheHoehe,350);
     tr.addEventListener('click',function(e){var b=e.target.closest('.umsch'); if(!b) return; var on=b.closest('.tuete').classList.toggle('ueb'); b.setAttribute('aria-pressed',on?'true':'false'); mehrPruefen();});
     tr.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); window.addEventListener('load',upd); upd();
   })();
