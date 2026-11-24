@@ -440,10 +440,33 @@ button.rb{cursor:pointer}
 .tlogo{display:block;width:92px;height:auto;margin:auto auto 0;opacity:.5;filter:brightness(.5) saturate(.7);mix-blend-mode:multiply}
 .leer{margin:18px 0}.leer i{display:block;height:10px;border-radius:5px;background:rgba(96,58,22,.17);margin:0 0 12px}.leer i.k{width:56%}
 .leer-n{display:block;width:96px;height:13px;border-radius:6px;background:rgba(96,58,22,.24)}
+/* Live-Tüten (Google Maps Platform, Klasse Place): Name nah am Text, Verweis «Google Maps» im selben Behälter, Text unverändert */
+.tuete.live{animation:tuein .7s cubic-bezier(.2,.9,.3,1.2) backwards;animation-delay:calc(var(--i)*80ms)}
+@keyframes tuein{from{opacity:0;transform:translateY(24px) rotate(calc(var(--r)*3))}to{opacity:1;transform:rotate(var(--r))}}
+.tuete{min-width:0;max-width:100%}.tuete .tp{min-width:0}.tp figcaption{min-width:0}.tuete.live{width:clamp(250px,23vw,284px)}
+.wer{display:inline-flex;align-items:center;gap:7px;color:inherit;text-decoration:none;max-width:100%}
+.wer b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wer[href] b{text-decoration:underline;text-decoration-color:rgba(42,29,23,.3);text-underline-offset:3px}
+.bild{flex:none;width:26px;height:26px;border-radius:50%;object-fit:cover;border:1px solid rgba(42,29,23,.35)}
+.tuete.live blockquote{white-space:pre-line;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden;margin-bottom:10px}
+.tuete.live.auf blockquote{display:block;-webkit-line-clamp:unset}
+.mehr{align-self:flex-start;margin:0 0 12px;padding:6px 0;border:0;background:none;font:inherit;font-size:14px;font-weight:700;color:var(--terra-dk);cursor:pointer;text-decoration:underline;text-underline-offset:3px;-webkit-user-select:none;user-select:none}
+.gattr{margin-top:auto;align-self:flex-start;font-family:Roboto,var(--f-t),sans-serif;font-weight:400;font-style:normal;font-size:13px;letter-spacing:normal;line-height:1.3;color:#1F1F1F;white-space:nowrap}
+@media (hover:hover){.tueten.settled .wer[href]:hover b{text-decoration-color:var(--terra)}.mehr:hover{color:var(--terra)}}
+/* wartende Tüten: solange keine Live-Daten da sind – ruhig, ohne Dauerbewegung */
+.tuete.warte .tp{min-height:318px}
+.stempel-leer{position:absolute;left:14px;top:10px;width:96px;height:96px;border-radius:50%;border:3px solid rgba(150,63,28,.28)}
+.wlabel{margin:auto 0 2px;font-size:14px;font-weight:700;color:#5A4636}
+.tueten.fehler .tuete.warte{display:none}
+.tfuss{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap}
+.tfuss .glink{margin-top:0}
+.quelle{flex-basis:100%;margin:0;font-size:12.5px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.tuete.live{animation:none}}
+.still .tuete.live{animation:none}
 .tprog{width:132px;height:3px;border-radius:2px;background:rgba(42,29,23,.15);overflow:hidden}
 .tprog i{display:block;height:100%;width:40%;border-radius:2px;background:var(--terra)}
 .tprog.aus{visibility:hidden}.tnav.aus{visibility:hidden}
-@media (max-width:620px){.tbar{margin-top:36px}.tnav{display:none}.tueten{gap:14px;padding-top:20px;padding-bottom:30px;scroll-snap-type:x mandatory}.tuete{flex-basis:min(78vw,300px)}.tprog{margin:0 auto}}
+@media (max-width:620px){.tbar{margin-top:36px}.tnav{display:none}.tueten{gap:14px;padding-top:20px;padding-bottom:30px;scroll-snap-type:x mandatory}.tuete{flex-basis:min(78vw,300px)}.tuete.live{width:min(78vw,300px)}.tfuss{justify-content:flex-start}.tprog{order:-1;flex-basis:100%;width:132px;margin:0 auto 6px;flex:none}}
 .still .tueten .tuete{opacity:1;transform:rotate(var(--r))}
 @media (prefers-reduced-motion:reduce){.tueten .tuete{transition:none}}
 .glink{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--soot);font-weight:700;text-decoration:none;border-bottom:2px solid rgba(180,83,42,.45);padding-bottom:2px;transition:border-color .25s ease}
@@ -672,7 +695,6 @@ html :focus:not(:focus-visible){outline:none}
           <div class="cnt"><b data-count="1283" class="dual-i">1 283</b> <span data-i18n="cnt">Bewertungen auf Google</span></div>
         </div>
       </div>
-      <a class="glink" href="https://www.google.com/maps/search/?api=1&query=Istanbul+Kebap+Halsgasse+28+Rapperswil" target="_blank" rel="noopener"><span data-i18n="glink">Alle Bewertungen ansehen</span> <span aria-hidden="true">→</span></a>
     </div>
     <div>
       <p class="gloss" data-i18n="gloss">Das loben Gäste am häufigsten:</p>
@@ -692,8 +714,12 @@ html :focus:not(:focus-visible){outline:none}
       <button type="button" class="tb tnext" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </div>
   </div>
-  <div class="tueten" id="tueten" data-settle="1500" tabindex="0" role="group" aria-label="Google-Bewertungen"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="stp" d="M60 60 m-42 0 a42 42 0 1 1 84 0 a42 42 0 1 1 -84 0"/></defs></svg><figure class="tuete" style="--r:-1.6deg;--i:0"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:-12deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GOOGLE MAPS ✦ GOOGLE MAPS ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote lang="de" class="kurz">«Super Kebab mit selbst gemachtem Taschenbrot – einfach lecker!»</blockquote><figcaption><b>Milena G.</b></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure></div>
-  <div class="wrap"><div class="tprog" aria-hidden="true"><i></i></div></div>
+  <div class="tueten" id="tueten" data-settle="1500" tabindex="0" role="group" aria-label="Google-Bewertungen"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="stp" d="M60 60 m-42 0 a42 42 0 1 1 84 0 a42 42 0 1 1 -84 0"/></defs></svg><figure class="tuete fest" style="--r:-1.6deg;--i:0"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen" style="--sr:-12deg"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GÄSTESTIMME ✦ GÄSTESTIMME ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><blockquote lang="de" class="kurz">«Super Kebab mit selbst gemachtem Taschenbrot – einfach lecker!»</blockquote><figcaption><b>Milena G.</b></figcaption><svg class="tlogo" viewBox="30 300 965 390" aria-hidden="true"><use href="#logo-w"/></svg></div></figure><figure class="tuete warte" style="--r:1.1deg;--i:1"><div class="tp"><span class="stempel-leer" aria-hidden="true"></span><figcaption aria-hidden="true"><b class="leer-n"></b></figcaption><div class="leer" aria-hidden="true"><i></i><i></i><i></i><i class="k"></i></div><p class="wlabel" data-i18n="laden">Bewertungen werden geladen</p></div></figure><figure class="tuete warte" style="--r:-0.7deg;--i:2"><div class="tp"><span class="stempel-leer" aria-hidden="true"></span><figcaption aria-hidden="true"><b class="leer-n"></b></figcaption><div class="leer" aria-hidden="true"><i></i><i></i><i></i><i class="k"></i></div><p class="wlabel" data-i18n="laden">Bewertungen werden geladen</p></div></figure><template id="tuete-vorlage"><figure class="tuete live"><div class="tp"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="5 von 5 Sternen"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1.5"/><text class="s-rund" textLength="262" lengthAdjust="spacing"><textPath href="#stp">GÄSTESTIMME ✦ GÄSTESTIMME ✦ </textPath></text><text class="s-zahl" x="60" y="62" text-anchor="middle">5</text><text class="s-sterne" x="60" y="78" text-anchor="middle">★★★★★</text></svg><figcaption><a class="wer" target="_blank" rel="noopener"><img class="bild" alt="" width="26" height="26" loading="lazy" referrerpolicy="no-referrer"><b></b></a><span class="wann"></span></figcaption><blockquote></blockquote><button type="button" class="mehr" hidden><span class="dual-i"><span class="l" data-l="de" lang="de">Weiterlesen</span><span class="l" data-l="en" lang="en">Read more</span></span></button><span class="gattr" translate="no">Google Maps</span></div></figure></template></div>
+  <div class="wrap tfuss">
+    <a class="glink" id="galle" href="https://www.google.com/maps/search/?api=1&query=Istanbul+Kebap+Halsgasse+28+Rapperswil" target="_blank" rel="noopener"><span data-i18n="glink">Alle Bewertungen auf Google</span> <span aria-hidden="true">→</span></a>
+    <div class="tprog" aria-hidden="true"><i></i></div>
+    <p class="quelle" id="gquelle" hidden></p>
+  </div>
 </section>
 
 <!-- ===== Anfahrt ===== -->
@@ -750,6 +776,7 @@ html :focus:not(:focus-visible){outline:none}
   </div></div>
 </footer>
 
+<script src="gkey.js"></script>
 <script>
 (function(){
   var T = {
@@ -766,7 +793,7 @@ html :focus:not(:focus-visible){outline:none}
       e3:"Öffnungszeiten",h2c:"Jeden Tag für Sie da",subc:"Unter der Woche Mittag und Abend, am Wochenende durchgehend.",
       hint:"Tag wählen – die Karte zeigt die Zeiten.",hnote:"Feiertage können abweichen – im Zweifel kurz anrufen.",
       gloss:"Das loben Gäste am häufigsten:",
-      cnt:"Bewertungen auf Google",glink:"Alle Bewertungen ansehen",p1:"Döner",p2:"hausgemachtes Brot",p3:"Taschenbrot",p4:"Pide",
+      cnt:"Bewertungen auf Google",glink:"Alle Bewertungen auf Google",laden:"Bewertungen werden geladen",p1:"Döner",p2:"hausgemachtes Brot",p3:"Taschenbrot",p4:"Pide",
       src:"So oft nennen Gäste diese Stichworte in Google-Bewertungen (Stand November 2026).",
       e5:"So finden Sie uns",h2d:"Mitten in der Altstadt",walk:"Wenige Schritte vom Hauptplatz.",
       kBar:"Zum Abholen",kTitle:"Bestellung zum Abholen",kTotal:"Total",kNote:"Bestellt wird am Telefon – die Liste bleibt hier stehen, zum Vorlesen.",kCall:"Anrufen und bestellen",kCopy:"Liste kopieren",kCopied:"Liste kopiert ✓",kClear:"Liste leeren",copy:"Adresse kopieren",copied:"Adresse kopiert ✓",walkmin:"Ca. 5 Minuten zu Fuss vom Bahnhof Rapperswil",todayIs:"Heute ",karteAria:"Karte der Altstadt Rapperswil – Route öffnen",
@@ -788,7 +815,7 @@ html :focus:not(:focus-visible){outline:none}
       e3:"Opening hours",h2c:"Open every day",subc:"Lunch and evening on weekdays, all day at the weekend.",
       hint:"Pick a day – the card shows the hours.",hnote:"Hours may differ on public holidays – if in doubt, give us a quick call.",
       gloss:"What guests praise most often:",
-      cnt:"reviews on Google",glink:"See all reviews",p1:"döner",p2:"homemade bread",p3:"pocket bread",p4:"pide",
+      cnt:"reviews on Google",glink:"All reviews on Google",laden:"Loading reviews",p1:"döner",p2:"homemade bread",p3:"pocket bread",p4:"pide",
       src:"How often guests mention these words in Google reviews (as of November 2026).",
       e5:"How to find us",h2d:"Right in the Old Town",walk:"A few steps from Hauptplatz.",
       kBar:"For pick-up",kTitle:"Order for pick-up",kTotal:"Total",kNote:"You order by phone – the list stays here for you to read out.",kCall:"Call and order",kCopy:"Copy list",kCopied:"List copied ✓",kClear:"Clear list",copy:"Copy address",copied:"Address copied ✓",walkmin:"About 5 minutes on foot from Rapperswil station",todayIs:"Today ",karteAria:"Map of Rapperswil Old Town – open directions",
@@ -930,6 +957,67 @@ html :focus:not(:focus-visible){outline:none}
     }
     if(pv){pv.addEventListener('click',function(){hop(-1)}); nx.addEventListener('click',function(){hop(1)});}
     tr.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); window.addEventListener('load',upd); upd();
+  })();
+
+  // ---- Gästestimmen live: echte Bewertungen direkt von Google (Maps JavaScript API, Klasse Place, höchstens 5).
+  // Nichts wird kopiert oder gespeichert; geladen wird erst, wenn der Block näher kommt. Ohne Schlüssel (gkey.js) bleibt der Wartezustand.
+  (function(){
+    var tr=document.getElementById('tueten'),vor=document.getElementById('tuete-vorlage'); if(!tr||!vor) return;
+    var KEY=String(window.IST_GKEY||'').replace(/\s+/g,''),PID='ChIJCYC6Ih63mkcR4NliH5C8z9s';
+    var ROT=[-1.6,1.1,-.7,1.8,-1.2],SROT=[-12,9,-7,14,-10],los=false,fertig=false;
+    function neu(){ tr.dispatchEvent(new Event('scroll')); }
+    function fehler(){ if(fertig) return; fertig=true; tr.classList.add('fehler'); neu(); }
+    function wann(d){
+      try{
+        var t=(Date.now()-d.getTime())/864e5,u=t<1?['day',0]:t<7?['day',Math.round(t)]:t<30?['week',Math.round(t/7)]:t<365?['month',Math.max(1,Math.round(t/30.44))]:['year',Math.max(1,Math.round(t/365.25))];
+        return new Intl.RelativeTimeFormat('en',{numeric:'auto'}).format(-u[1],u[0]);
+      }catch(e){return ''}
+    }
+    function zeigen(p,rs){
+      if(fertig) return; fertig=true;
+      [].slice.call(tr.querySelectorAll('.tuete')).forEach(function(b){b.parentNode.removeChild(b)});
+      rs.slice(0,5).forEach(function(r,i){
+        var f=vor.content.firstElementChild.cloneNode(true),a=r.authorAttribution||{},st=Math.max(1,Math.min(5,Math.round(r.rating||0)))||5;
+        f.style.setProperty('--r',ROT[i%5]+'deg'); f.style.setProperty('--i',i);
+        var sv=f.querySelector('.stempel'); sv.style.setProperty('--sr',SROT[i%5]+'deg'); sv.setAttribute('aria-label',st+' von 5 Sternen');
+        sv.querySelector('.s-zahl').textContent=st; sv.querySelector('.s-sterne').textContent='★★★★★'.slice(0,st)+'☆☆☆☆☆'.slice(0,5-st);
+        var w=f.querySelector('.wer'),im=f.querySelector('.bild');
+        w.querySelector('b').textContent=a.displayName||'Google';
+        if(a.uri&&/^https:\/\//.test(a.uri)) w.href=a.uri;
+        if(a.photoURI&&/^https:\/\//.test(a.photoURI)){ im.addEventListener('error',function(){im.parentNode&&im.parentNode.removeChild(im)}); im.src=a.photoURI; } else im.parentNode.removeChild(im);
+        var de=r.relativePublishTimeDescription||'',en=r.publishTime?wann(r.publishTime):'',wn=f.querySelector('.wann');
+        if(de){ wn.className='wann dual-i'; var s1=document.createElement('span'),s2=document.createElement('span'); s1.className=s2.className='l'; s1.setAttribute('data-l','de'); s1.lang='de'; s2.setAttribute('data-l','en'); s2.lang='en'; s1.textContent=de; s2.textContent=en||de; wn.appendChild(s1); wn.appendChild(s2); }
+        var q=f.querySelector('blockquote'),tx=String(r.originalText||r.text||'').trim(),lc=r.originalText?r.originalTextLanguageCode:r.textLanguageCode;
+        q.textContent=tx; if(lc) q.lang=lc; if(tx.length<90) q.className='kurz';
+        tr.appendChild(f);
+        var m=f.querySelector('.mehr');
+        if(q.scrollHeight>q.clientHeight+4){ m.hidden=false; m.addEventListener('click',function(){f.classList.add('auf'); m.hidden=true; neu();}); }
+      });
+      if(p.googleMapsURI&&/^https:\/\//.test(p.googleMapsURI)) document.getElementById('galle').href=p.googleMapsURI;
+      var at=(p.attributions||[]).map(function(x){return x&&x.provider}).filter(Boolean),qu=document.getElementById('gquelle');
+      if(at.length&&qu){ qu.textContent=at.join(' · '); qu.hidden=false; }
+      tr.classList.add('live'); tr.scrollLeft=0; neu();
+    }
+    function holen(){
+      google.maps.importLibrary('places').then(function(lib){
+        var p=new lib.Place({id:PID,requestedLanguage:'de'});
+        return p.fetchFields({fields:['displayName','rating','userRatingCount','googleMapsURI','reviews']}).then(function(){
+          var rs=(p.reviews||[]).filter(function(r){return r&&(r.originalText||r.text)});
+          if(rs.length) zeigen(p,rs); else fehler();
+        });
+      }).catch(fehler);
+    }
+    function start(){
+      if(los) return; los=true;
+      if(window.google&&google.maps&&google.maps.importLibrary){ holen(); return; }
+      window.gm_authFailure=fehler; window.__istG=holen;
+      var sc=document.createElement('script'); sc.async=true; sc.onerror=fehler;
+      sc.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(KEY)+'&v=weekly&loading=async&libraries=places&language=de&region=CH&callback=__istG';
+      document.head.appendChild(sc); setTimeout(fehler,15000);
+    }
+    if(!KEY) return;
+    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(e){ if(e.some(function(x){return x.isIntersecting})){ io.disconnect(); start(); } },{rootMargin:'900px 0px'}); io.observe(tr); }
+    else start();
   })();
 
   // ---- Einblenden: einmal, auch bei schnellem Scrollen; Hover erst danach
