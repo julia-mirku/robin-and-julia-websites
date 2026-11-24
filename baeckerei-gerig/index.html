@@ -73,7 +73,8 @@ nav.main a{text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px;
 .heroA .bg{position:absolute;inset:0;overflow:hidden}
 .heroA .bg img{width:100%;height:100%;object-fit:cover;object-position:55% 50%;transform:scale(1.04);animation:hz 1.6s var(--ease) forwards}
 @keyframes hz{to{transform:scale(1)}}
-.heroA .bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,17,10,.82) 0%,rgba(30,17,10,.55) 38%,rgba(30,17,10,0) 66%),linear-gradient(0deg,rgba(30,17,10,.7),rgba(30,17,10,0) 42%)}
+.heroA .bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,17,10,.5) 0%,rgba(30,17,10,.25) 32%,rgba(30,17,10,0) 46%),linear-gradient(0deg,rgba(30,17,10,.25),rgba(30,17,10,0) 26%)}
+.heroA h1,.heroA p.lead,.heroA .kick,.heroA .adr{text-shadow:0 1px 3px rgba(30,17,10,.35),0 1px 18px rgba(30,17,10,.5)}
 .heroA .in{position:relative;width:min(1240px,100% - 48px);margin:0 auto;padding:60px 0 34px;display:grid;grid-template-columns:minmax(0,600px) 1fr;gap:32px;align-items:end}
 .kick{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--goldhell)}
 .kick i{width:28px;height:2px;background:var(--gold);display:block}
@@ -108,6 +109,17 @@ nav.main a{text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px;
 .plus svg{width:18px;height:18px}
 @media (hover:hover){.ready .mini:hover{box-shadow:0 0 0 2px var(--gold),0 18px 40px -22px rgba(0,0,0,.6)}.plus:hover{background:#c43a33;box-shadow:0 0 0 5px rgba(181,48,42,.2)}}
 .plus:active{transform:scale(.9)}
+/* Plus bekommt Minus + Zähler, sobald etwas im Paket ist (Julia 25.11, Nr. 124) */
+.stp{display:flex;align-items:center;gap:4px;flex:none}
+.stp .minus,.stp .q{display:none}
+.stp.hat .minus{display:grid}.stp.hat .q{display:block}
+.minus{width:32px;height:32px;border-radius:50%;background:#fff;color:var(--kruste);box-shadow:inset 0 0 0 1.5px rgba(58,35,23,.3);place-items:center;flex:none;transition:box-shadow .2s,transform .2s}
+.minus svg{width:16px;height:16px}
+.minus:active{transform:scale(.9)}
+@media (hover:hover){.minus:hover{box-shadow:inset 0 0 0 2px var(--kruste)}}
+.stp .q{min-width:14px;text-align:center;font-family:Alegreya,serif;font-weight:800;font-size:17px;color:var(--kruste)}
+.stp.hat .plus{width:32px;height:32px}
+.karte .unt{flex-wrap:wrap;row-gap:8px}.karte .unt:has(.stp.hat)>div{flex:1 1 100%}.karte .stp.hat{flex:1 1 100%;justify-content:space-between;background:var(--creme);border-radius:999px;padding:3px}.karte .stp .plus{margin-left:0}.karte .stp.hat .q{flex:1}
 
 /* HERO B — Theke im Kreis */
 .heroB{display:none;position:relative;min-height:min(calc(100svh - 100px),860px);background:radial-gradient(120% 90% at 78% 40%,#FFF6E1 0%,var(--creme) 55%,#EFDFC6 100%);overflow:hidden}
@@ -144,7 +156,7 @@ body.hb .tage{background:var(--kruste)}
 .tag.bt:after{content:"";position:absolute;top:6px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
 .tag.sel{background:var(--mehl);color:var(--kruste);box-shadow:none}
 .tag.sel span{color:var(--muted)}
-@media (hover:hover){.tag:not(.sel):hover{box-shadow:inset 0 0 0 1.5px var(--gold);background:rgba(232,170,0,.08)}}
+@media (hover:hover){.tag:not(.sel):hover{box-shadow:inset 0 0 0 1.5px var(--gold);background:#3f271a}}
 .zeiten{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:380px}
 .ort{background:rgba(255,255,255,.06);border-radius:14px;padding:10px 14px;transition:background .2s,box-shadow .2s}
 .ort .o{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--kraft2);font-weight:700}
@@ -399,7 +411,7 @@ body.menu .mmenu{transform:none}
   .heroA{min-height:0;max-height:none;display:block;background:var(--kruste)}
   .heroA .bg{position:relative;height:33svh;min-height:220px;overflow:hidden}
   .heroA .bg img{object-position:50% 52%}
-  .heroA .bg:after{background:linear-gradient(0deg,var(--kruste) 0%,var(--kruste) 4%,rgba(58,35,23,.55) 30%,rgba(58,35,23,0) 62%)}
+  .heroA .bg:after{background:linear-gradient(0deg,var(--kruste) 0%,var(--kruste) 4%,rgba(58,35,23,.28) 26%,rgba(58,35,23,0) 48%)}
   .heroA .in{grid-template-columns:1fr;padding:0 0 20px;margin-top:-44px;gap:14px;width:calc(100% - 32px)}
   .heroA h1{font-size:33px;margin:8px 0 10px}
   .heroA h1 br{display:none}
@@ -466,6 +478,9 @@ body{background:var(--creme) url(img/kruste_b.webp) center 0/var(--kw) auto repe
 .tage h2{color:var(--kruste)}.tage h2 small{color:var(--muted)}
 .tag{box-shadow:inset 0 0 0 1px rgba(58,35,23,.16);background:#fff}.tag span{color:var(--muted)}
 .tag.sel{background:var(--kruste);color:#fff}.tag.sel span{color:var(--kraft2)}
+/* Tage: Hover = dunkle Rahmenlinie + leichter Lift, nie durchsichtig (Julia 25.11, Nr. 123) */
+.tag{transition:box-shadow .2s,background .2s,transform .2s}
+@media (hover:hover){.tag:not(.sel):hover{background:#fff;box-shadow:inset 0 0 0 2px var(--kruste),0 10px 22px -14px rgba(58,35,23,.55);transform:translateY(-2px)}}
 .ort{background:#fff;box-shadow:0 10px 24px -20px rgba(58,35,23,.5)}.ort .o{color:var(--muted)}.ort .h{color:var(--kruste)}.ort .x{color:var(--rot)}
 .bthint{color:var(--muted)}.bthint b{color:var(--kruste)}
 @media (hover:hover){.ort:hover{background:#fff;box-shadow:0 0 0 2px rgba(232,170,0,.5)}}
@@ -778,6 +793,9 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const chf=n=>'CHF '+n.toFixed(2);
 const ear='<svg viewBox="0 0 24 24" fill="none" stroke="#B5302A" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 19V8M12 10c-2-1-3-3-3-5 2 1 3 2 3 5zm0 0c2-1 3-3 3-5-2 1-3 2-3 5zm0 4c-2-1-3-3-3-5 2 1 3 2 3 5zm0 0c2-1 3-3 3-5-2 1-3 2-3 5z"/><path d="M5 5l14 14"/></svg>';
 const plusSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>';
+const minusSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/></svg>';
+const knopf=(id,lab,st)=>`<span class="stp" data-stp="${id}"${st?` style="${st}"`:''}><button class="minus" data-m="${id}" aria-label="${lab} weniger">${minusSvg}</button><b class="q"></b><button class="plus" data-add="${id}" aria-label="${lab} ins Paket">${plusSvg}</button></span>`;
+function stp(){$$('[data-stp]').forEach(s=>{const q=korb[s.dataset.stp]||0;s.classList.toggle('hat',q>0);s.querySelector('.q').textContent=q||''})}
 const urlv=new URLSearchParams(location.search);
 if(urlv.get('hero')==='b')document.body.classList.add('hb');
 
@@ -814,7 +832,7 @@ function render(){const ids=Object.keys(korb).filter(k=>korb[k]>0);let n=0,zw=0;
   $('[data-anz]').textContent=n?n+(n===1?' Artikel':' Artikel')+' · glutenfrei gebacken':'noch leer';
   const vs=n?15:0;$('[data-zw]').textContent=chf(zw);$('[data-vs]').textContent=n?chf(vs):'–';$('[data-tot]').textContent=chf(zw+vs);
   const nb=nextBack();$('[data-bi]').innerHTML=`Glutenfrei gebacken an den Backtagen <b>Mo, Di und Do</b>, Versand mit A-Post Priority – meist am nächsten Tag bei Ihnen. Für Montag bis Freitag 16:00 bestellen. Ab 8 kg Versand CHF 25.`;
-  $('.paketfab').classList.toggle('zeig',n>0||scrollY>innerHeight*.8)}
+  $('.paketfab').classList.toggle('zeig',n>0||scrollY>innerHeight*.8);stp()}
 function add(id,fromImg){korb[id]=(korb[id]||0)+1;save();render();
   const tgt=innerWidth<768?$('.paketfab'):$('header .paketbtn');
   if(fromImg&&tgt){const r=fromImg.getBoundingClientRect(),t=tgt.getBoundingClientRect();const f=fromImg.cloneNode();f.className='flieg';Object.assign(f.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});document.body.appendChild(f);
@@ -831,13 +849,13 @@ render();
 
 /* Theke Hero A */
 const THEKE=[85,74,24];
-$('[data-theke]').insertAdjacentHTML('beforeend',THEKE.map(id=>{const p=byId(id);const f=String(id).padStart(3,'0');return `<div class="mini"><img src="img/p/${f}.webp" alt="${p[1]}" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><div><div class="nm">${p[1]}</div><div class="gf">glutenfrei</div></div><span class="pr">${p[2].toFixed(2)}</span><button class="plus" data-add="${id}" aria-label="${p[1]} ins Paket">${plusSvg}</button></div>`}).join(''));
+$('[data-theke]').insertAdjacentHTML('beforeend',THEKE.map(id=>{const p=byId(id);const f=String(id).padStart(3,'0');return `<div class="mini"><img src="img/p/${f}.webp" alt="${p[1]}" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><div><div class="nm">${p[1]}</div><div class="gf">glutenfrei</div></div><span class="pr">${p[2].toFixed(2)}</span>${knopf(id,p[1])}</div>`}).join(''));stp();
 setTimeout(()=>document.body.classList.add('ready'),1300);
 
 /* Hero B Teller */
 const TEL=[85,24,58,74,38,37];let ti=0;
 $('#disk').innerHTML=TEL.map((id,i)=>`<img src="img/pl/${String(id).padStart(3,'0')}.webp" alt="${byId(id)[1]}" class="${i?'':'on'}" ${i>1?'loading="lazy"':''}>`).join('');
-function tel(i){ti=(i+TEL.length)%TEL.length;$$('#disk img').forEach((im,k)=>im.classList.toggle('on',k===ti));const p=byId(TEL[ti]);$('#ttag').innerHTML=`<div><div class="nm">${p[1]}</div><div class="pr">${chf(p[2])}</div></div><button class="plus" data-add="${p[0]}" aria-label="ins Paket" style="margin-left:auto">${plusSvg}</button>`}
+function tel(i){ti=(i+TEL.length)%TEL.length;$$('#disk img').forEach((im,k)=>im.classList.toggle('on',k===ti));const p=byId(TEL[ti]);$('#ttag').innerHTML=`<div><div class="nm">${p[1]}</div><div class="pr">${chf(p[2])}</div></div>${knopf(p[0],p[1],'margin-left:auto')}`;stp()}
 tel(0);$('#tl').onclick=()=>tel(ti-1);$('#tr').onclick=()=>tel(ti+1);
 let tsx=null;$('#disk').addEventListener('touchstart',e=>tsx=e.touches[0].clientX,{passive:true});$('#disk').addEventListener('touchend',e=>{if(tsx==null)return;const dx=e.changedTouches[0].clientX-tsx;if(Math.abs(dx)>40)tel(ti+(dx<0?1:-1));tsx=null});
 $('#disk').onclick=()=>tel(ti+1);
@@ -848,8 +866,8 @@ $('#kats').innerHTML=KAT.map(([k,l])=>`<button class="kat${k===kat?' sel':''}" d
 $('#kats').onclick=e=>{const b=e.target.closest('.kat');if(!b)return;kat=b.dataset.k;q='';$('#such').value='';$$('.kat').forEach(x=>x.classList.toggle('sel',x===b));shop()};
 $('#such').oninput=e=>{q=e.target.value.trim().toLowerCase();$$('.kat').forEach(x=>x.classList.toggle('sel',!q&&x.dataset.k===kat));shop()};
 function shop(){const list=q?P.filter(p=>p[1].toLowerCase().includes(q)):P.filter(p=>p[3]===kat);const r=$('#regal');
-  r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">${ear}glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div><div class="nm">${p[1]}</div><span class="pr">${chf(p[2])}</span></div><button class="plus" data-add="${p[0]}" aria-label="${p[1]} ins Paket">${plusSvg}</button></div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
-  r.scrollLeft=0;reihen();upd('regal')}
+  r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">${ear}glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div><div class="nm">${p[1]}</div><span class="pr">${chf(p[2])}</span></div>${knopf(p[0],p[1])}</div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
+  r.scrollLeft=0;reihen();upd('regal');stp()}
 /* wenige Produkte: eine volle Reihe statt halb leerer Doppelreihe (Prüfer 25.11) */
 function reihen(){const r=$('#regal');r.style.gridTemplateRows='';if(innerWidth<768)return;const c=r.firstElementChild;if(!c||!c.classList.contains('karte'))return;const g=parseFloat(getComputedStyle(r).columnGap)||16;const cols=Math.max(1,Math.round((r.clientWidth+g)/(c.getBoundingClientRect().width+g)));if(r.children.length<=cols)r.style.gridTemplateRows='auto'}
 let _bw=innerWidth;addEventListener('resize',()=>{if(innerWidth!==_bw){_bw=innerWidth;reihen();upd('regal')}});
