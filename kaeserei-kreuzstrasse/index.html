@@ -445,18 +445,30 @@ body:before{background:url(img/kaesetextur.webp) 0 0/900px 900px repeat;opacity:
 @media (max-width:380px){.fig .bub{margin-bottom:8px}}
 .pot .potimg{box-shadow:0 12px 26px rgba(74,46,22,.22)!important}
 
-/* Regel 18j: Übergänge ohne Farbsprung – gleiche Käsetextur wie body:before */
-.hero-bar{background:linear-gradient(rgba(251,245,232,.7),rgba(251,245,232,.7)),url(img/kaesetextur.webp) 0 0/900px 900px fixed,var(--milk)!important;backdrop-filter:none;-webkit-backdrop-filter:none}
-.weg:before{content:"";position:absolute;left:0;right:0;top:0;height:34%;z-index:1;pointer-events:none;background:linear-gradient(rgba(251,245,232,.7),rgba(251,245,232,.7)),url(img/kaesetextur.webp) 0 0/900px 900px fixed,var(--milk);-webkit-mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%)}
-@media (max-width:700px){ /* Telefon: Kachel halb so gross (450px, Datei 1024px = >2x scharf) – mehr Löcher pro Bildschirm, gleiche Stärke */
-body:before{background-size:450px 450px}
-.hero-bar{background:linear-gradient(rgba(251,245,232,.7),rgba(251,245,232,.7)),url(img/kaesetextur.webp) 0 0/450px 450px fixed,var(--milk)!important}
-.weg:before{background-size:auto,450px 450px}
-}
+/* Fon steht (Юля 24.11: «не едет при прокрутке»): EIN Fon-Muster, position:fixed, nirgends background-attachment:fixed (iOS ignoriert es).
+   Hero-Leiste und Weg-Übergang zeigen dasselbe fixierte Muster durch clip-path-Fenster (.ftex > i fixed) – kein Sprung, kein Mitlaufen. */
+:root{--tex:url(img/kaesetextur.webp);--texsz:900px;--texop:.3}
+body:before{background:var(--tex) 0 0/var(--texsz) var(--texsz) repeat!important;opacity:var(--texop)!important;transform:none!important}
+.ftex{position:absolute;inset:0;z-index:0;pointer-events:none;clip-path:inset(0);-webkit-clip-path:inset(0);background:var(--milk)}
+.ftex i{position:fixed;inset:0;display:block;background:var(--tex) 0 0/var(--texsz) var(--texsz) repeat;opacity:var(--texop)}
+.hero-bar{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.hero-bar>.wrap{position:relative;z-index:1}
+.weg:before{content:none!important}
+.weg .ftex{bottom:auto;height:34%;z-index:1;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%)}
+@media (max-width:700px){:root{--texsz:450px}}
 .weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
 .day small{line-height:1.25;text-align:center;display:flex;flex-direction:column;align-items:center}
 .day small span{white-space:nowrap;letter-spacing:-.01em}
 @media (max-width:400px){.day small{font-size:8.6px!important}.days{gap:5px!important}}
+/* Holly 24.11: Kopfleiste ganz deckend (Text schien durch), Harfe deckt keine Sortennamen */
+.hdr.solid{background:#FBF5E8!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.stop span{top:40px}
+@media (max-width:700px){.stop span{top:39px}.stop:nth-child(odd) span{top:-42px}.scale .ends{margin-bottom:44px}.track{margin-bottom:14px}}
+/* HEUTE-Marke über dem Rand, nie über dem Tagesnamen (Реестр 24.11) */
+.day .dn{font:inherit;line-height:1.1}
+.day .today{top:-12px;line-height:1.15;padding:2px 7px;box-shadow:0 0 0 2px var(--milk)}
+.days{margin-top:24px}
+@media (max-width:700px){.day .today{top:-12px;font-size:8px;letter-spacing:.06em;padding:2px 5px}.days{margin-top:20px!important}}
 @media (max-width:440px){.medal h3{font-size:16.5px!important;line-height:1.2}}
 /* Tablet mit Touch wie Telefon (Julia 23.11): Stimmen ohne Pfeile, Wischen + Punkte */
 @media (hover:none) and (pointer:coarse) and (max-width:1100px){.arr{display:none!important}.rail-wrap{padding:0!important}.dots{display:flex!important}}
@@ -490,7 +502,7 @@ body:before{background-size:450px 450px}
     <p class="lead h-line d2">Stefan und Franziska Jud machen ihren Käse selbst. Und die drei auf dem Bänkli wissen Bescheid.</p>
     <div class="ctas h-line d3"><a class="btn btn-gold" href="#kaese">Unsere Käse</a><a class="btn btn-line" href="#laden">Öffnungszeiten &amp; Weg</a></div>
   </div></div>
-  <div class="hero-bar"><div class="wrap">
+  <div class="hero-bar"><div class="ftex" aria-hidden="true"><i></i></div><div class="wrap">
     <span class="js-status"><span class="dot"></span>…</span>
     <a href="https://maps.google.com/?q=K%C3%A4serei+Kreuzstrasse,+Chr%C3%BCzstrasse+781,+9113+Degersheim" target="_blank" rel="noopener">Chrüzstrasse 781, 9113 Degersheim</a>
     <a href="tel:+41713711116">071 371 11 16</a>
@@ -619,6 +631,7 @@ body:before{background-size:450px 450px}
 
 <!-- WEG -->
 <section class="weg" id="weg">
+  <div class="ftex" aria-hidden="true"><i></i></div>
   <picture><source media="(max-aspect-ratio:3/4)" srcset="img/huegel_m.webp"><img src="img/huegel_l.webp" alt="Hügel bei Degersheim am Morgen"></picture>
   <div class="wrap">
     <span class="kick" style="color:var(--gold2)">Luftkurort Degersheim</span>
@@ -666,7 +679,7 @@ function paintStatus(){ const s=state();
 const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
 [1,2,3,4,5,6,0].forEach(d=>{ const b=document.createElement('button'); const zu=!HOURS[d].length;
   b.className='day'+(zu?' zu':''); b.dataset.d=d;
-  b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+SH[d]+'<small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt(x)+'–'+fmt(y)+'</span>').join(''))+'</small>';
+  b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+'<b class="dn">'+SH[d]+'</b><small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt(x)+'–'+fmt(y)+'</span>').join(''))+'</small>';
   b.addEventListener('click',()=>sel(d)); daysEl.appendChild(b); });
 function sel(d){ QA('.day').forEach(x=>x.classList.toggle('sel',+x.dataset.d===d)); const sl=HOURS[d];
   info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<div class="slots">'+sl.map(([a,b])=>'<span class="slot">'+fmt(a)+'–'+fmt(b)+'</span>').join('')+'</div><p>'+(sl.length>1?'Mittags geschlossen.':'Nachmittags geschlossen.')+'</p>':'<p style="margin:0;font-size:17px">Heute ist der Laden geschlossen. '+(()=>{for(let i=1;i<=7;i++){const dd=(d+i)%7;if(HOURS[dd].length)return 'Nächster Verkauf: '+NAMES[dd]+' ab '+fmt(HOURS[dd][0][0])+' Uhr.';}})()+'</p>'); }
