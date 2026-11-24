@@ -513,6 +513,8 @@ footer{background:transparent;color:var(--muted);border-top:0}
   .vorschau{margin-top:10px;padding:10px 14px}
   .catbild{min-height:0}
 }
+/* Tablet hochkant wie Telefon (Julia 23.11): Touch bis 1100 px – wischen + Punkte, keine Pfeile */
+@media (max-width:1100px) and (pointer:coarse){.pfeil{display:none!important}.punkte{display:flex;justify-content:center;gap:7px;margin-top:10px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .fade{opacity:1;transform:none}.mini{opacity:1;transform:none}}
 </style>
 </head>
