@@ -456,17 +456,21 @@ body:before{background:var(--tex) 0 0/var(--texsz) var(--texsz) repeat!important
 .weg:before{content:none!important}
 .weg .ftex{bottom:auto;height:34%;z-index:1;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 18%,transparent 100%)}
 @media (max-width:700px){:root{--texsz:450px}}
-/*FONA*/ /* Юля 24.11 (№111): Fon A genau wie fon-wahl/#A (Rinde an den Seiten, Löcher, Verhalten); einzige Änderung: Weg-Bild unten ohne Käse-Überblendung: «На сыре вариант А» – EIN grosses Käsefoto (Tom, fon_a) als fixe Schicht hinter der ganzen Seite, keine Kachel:
-   Löcher stehen am Bildschirm, an verschiedenen Stellen verschieden. Sanfter Schleier zur Mitte, damit Text auf Creme liegt. */
-:root{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_a_l.webp) center/cover no-repeat}
-@media (max-aspect-ratio:3/4){:root{--fon:linear-gradient(180deg,rgba(251,245,232,.4) 0%,rgba(251,245,232,.55) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.55) 92%,rgba(251,245,232,.4) 100%),url(img/fon_a_m.webp) center/auto 116% no-repeat}}
-body:before,.ftex i{background:var(--fon)!important;opacity:1!important}
-.weg .ftex{display:none!important}  /* №111: Löcher/Käse laufen nicht ins Wiesenbild – klare Kante */
-/* Holly 24.11 (KG19 «ohne sichtbare Linien»): weicher Übergang zum Wiesenbild – letzte ~150px vor dem Bild heller Käsegrund ohne Löcher/Rinde,
-   dann sanft in den Himmel des Fotos. Keine Löcher auf dem Foto. */
+/*FONA*/ /* Юля №115/№116 (24.11): Fon A (Toms Käse, Rinde links/rechts) wie fon-wahl/#A, aber scrollt mit der Seite.
+   Länge: Foto gespiegelt fortgesetzt (fon_a_band_*), Naht spiegelgleich. Unten: Käse löst sich beim Scrollen ins Wiesenbild auf (--wp). */
+body{position:relative}
+:root{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_a_band_l.webp) center top/100% auto repeat-y}
+@media (max-aspect-ratio:3/4){:root{--fon:linear-gradient(rgba(251,245,232,.5),rgba(251,245,232,.5)),url(img/fon_a_band_m.webp) center top/100% auto repeat-y}}
+body:before{position:absolute!important;inset:0!important;z-index:-1;background:var(--fon)!important;opacity:1!important}
+.ftex i{position:absolute!important;left:0!important;right:0!important;top:var(--ftop,0px)!important;height:var(--doch,100vh)!important;bottom:auto!important;background:var(--fon)!important;opacity:1!important}
+.weg .ftex{display:none!important}
 .laden{position:relative;z-index:0}
 .laden:after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(251,245,232,0) 0,#FBF5E8 55px,#FBF5E8 100%)}
-.weg.weg:before{content:""!important;display:block;position:absolute;left:0;right:0;top:0;height:170px;z-index:1;pointer-events:none;background:linear-gradient(180deg,#FBF5E8 0,rgba(251,245,232,.82) 22%,rgba(251,245,232,.45) 52%,rgba(251,245,232,.14) 80%,rgba(251,245,232,0) 100%)!important;-webkit-mask-image:none!important;mask-image:none!important}
+/* №116: Übergang Käse -> Wiesen beim Scrollen: Creme-Schleier über dem Bild schrumpft und wird durchsichtig (nur Höhe/Deckkraft, keine Seitensprünge) */
+.weg.weg:before{content:""!important;display:block;position:absolute;left:0;right:0;top:0;z-index:1;pointer-events:none;
+ height:calc(170px + (1 - var(--wp,1)) * 75%);opacity:1;
+ background:linear-gradient(180deg,#FBF5E8 0,#FBF5E8 calc((1 - var(--wp,1)) * 45%),rgba(251,245,232,.82) calc(8% + (1 - var(--wp,1)) * 45%),rgba(251,245,232,.4) calc(40% + (1 - var(--wp,1)) * 30%),rgba(251,245,232,0) 100%)!important;-webkit-mask-image:none!important;mask-image:none!important}
+@media (prefers-reduced-motion:reduce){.weg.weg:before{height:170px;opacity:1}}
 /*FONA-END*/
 .weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
 .day small{line-height:1.25;text-align:center;display:flex;flex-direction:column;align-items:center}
@@ -791,5 +795,10 @@ lb.addEventListener('click',()=>lb.classList.remove('open')); addEventListener('
 QA('[data-lb]').forEach(e=>e.addEventListener('click',()=>openLb(e.dataset.lb)));
 })();
 </script>
+<!--FONA-JS--><script>(()=>{const h=document.documentElement,w=document.querySelector('#weg');
+const lay=()=>{const H=document.body.scrollHeight;h.style.setProperty('--doch',H+'px');document.querySelectorAll('.ftex i').forEach(i=>{const r=i.parentElement.getBoundingClientRect();i.style.setProperty('--ftop',-(r.top+scrollY)+'px')})};
+let t=0;const wp=()=>{t=0;if(!w)return;const r=w.getBoundingClientRect(),vh=innerHeight;const p=Math.min(1,Math.max(0,(vh-r.top)/(vh*.85)));w.style.setProperty('--wp',p.toFixed(3))};
+addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(wp)},{passive:true});addEventListener('resize',()=>{lay();wp()});addEventListener('load',()=>{lay();wp()});
+if(window.ResizeObserver)new ResizeObserver(lay).observe(document.body);lay();wp()})()</script><!--FONA-JS-END-->
 </body>
 </html>
