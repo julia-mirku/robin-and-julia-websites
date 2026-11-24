@@ -336,6 +336,12 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .karten{grid-auto-columns:calc((100% - 16px)/2)}
   .punkte{display:none}
 }
+/* Touch-Tablet: wie Telefon — Wischen und Punkte, keine Pfeile (18f) */
+@media (min-width:600px) and (hover:none) and (pointer:coarse){
+  .pfeil{display:none!important}
+  .punkte{display:flex!important}
+  .streifen-wrap{padding:0}
+}
 @media (min-width:900px) and (max-width:1199px){
   .pk{grid-template-columns:1.35fr 1fr;gap:18px}
   .pk .rechts{flex-direction:column;align-items:flex-end;border-top:0;border-left:1px solid rgba(42,33,28,.15);padding:0 0 0 16px}
