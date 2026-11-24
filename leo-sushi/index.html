@@ -104,7 +104,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 .cord .knob{width:16px;height:26px;border-radius:8px 8px 9px 9px;background:linear-gradient(160deg,#f4dc9c,#a9853f);box-shadow:0 0 14px rgba(255,200,97,.4);margin-top:-1px}
 .cord{transition:transform .22s cubic-bezier(.3,.7,.4,1)}
 @keyframes knobGlow{0%,100%{box-shadow:0 0 12px 1px rgba(255,200,97,.38)}50%{box-shadow:0 0 22px 6px rgba(255,200,97,.55),0 0 40px 10px rgba(255,190,90,.18)}}
-.cord small{margin:12px 0 22px;font-size:13px;color:#bfb29a;white-space:nowrap}
+.cord{padding-bottom:52px}
 @media (hover:hover){.cord:hover .knob{animation:knobGlow 2.4s ease-in-out infinite}}
 .cord.pull{transform:translateY(18px);transition-duration:.12s}
 @media (hover:none){.cord{width:150px;margin-left:-75px}.cord .knob{width:22px;height:34px;border-radius:11px}}
@@ -493,7 +493,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <div class="pre" aria-hidden="true">
     <div class="inner"><img src="img/s/leo_logo.png" alt="" width="230" height="230"><span class="sub">Sushi · Ramen · Cocktails</span></div>
   </div>
-  <button class="cord" id="cord" type="button" aria-label="Licht einschalten"><span class="knob"></span><small>Scrollen – das Licht geht an</small></button>
+  <button class="cord" id="cord" type="button" aria-label="Licht einschalten"><span class="knob"></span></button>
   <div class="post">
     <div class="wrap">
       <div class="txt">
