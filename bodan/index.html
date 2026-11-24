@@ -51,6 +51,9 @@ h2{font:400 clamp(38px,9.5vw,74px)/1 var(--serif);letter-spacing:-.01em;margin:0
 .hand{font-family:var(--hand);font-weight:400}
 section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset-top) - 1px)}
 .putz{background:transparent}
+body{position:relative}
+/* Eine Putzschicht für die ganze Seite; das Dunkle am Ende ist EINE Ebene mit einem langen weichen Übergang, unabhängig von den Blockgrenzen */
+.nacht{position:absolute;left:0;right:0;bottom:0;top:var(--nacht-top,100%);z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(24,31,38,0) 0,rgba(24,31,38,0) 40%,rgba(24,31,38,.42) 100%),var(--putzdunkel) 0 var(--nacht-y,0) / var(--kachel) repeat #2f3a44;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) calc(var(--nf,600px)*0),rgba(0,0,0,0.028) calc(var(--nf,600px)*0.1),rgba(0,0,0,0.104) calc(var(--nf,600px)*0.2),rgba(0,0,0,0.216) calc(var(--nf,600px)*0.3),rgba(0,0,0,0.352) calc(var(--nf,600px)*0.4),rgba(0,0,0,0.5) calc(var(--nf,600px)*0.5),rgba(0,0,0,0.648) calc(var(--nf,600px)*0.6),rgba(0,0,0,0.784) calc(var(--nf,600px)*0.7),rgba(0,0,0,0.896) calc(var(--nf,600px)*0.8),rgba(0,0,0,0.972) calc(var(--nf,600px)*0.9),rgba(0,0,0,1) calc(var(--nf,600px)*1));mask-image:linear-gradient(180deg,rgba(0,0,0,0) calc(var(--nf,600px)*0),rgba(0,0,0,0.028) calc(var(--nf,600px)*0.1),rgba(0,0,0,0.104) calc(var(--nf,600px)*0.2),rgba(0,0,0,0.216) calc(var(--nf,600px)*0.3),rgba(0,0,0,0.352) calc(var(--nf,600px)*0.4),rgba(0,0,0,0.5) calc(var(--nf,600px)*0.5),rgba(0,0,0,0.648) calc(var(--nf,600px)*0.6),rgba(0,0,0,0.784) calc(var(--nf,600px)*0.7),rgba(0,0,0,0.896) calc(var(--nf,600px)*0.8),rgba(0,0,0,0.972) calc(var(--nf,600px)*0.9),rgba(0,0,0,1) calc(var(--nf,600px)*1))}
 .putz::before,.putz::after{content:none}
 .putz>*{position:relative;z-index:1}
 .rise{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
@@ -110,7 +113,8 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .s-wand{display:flex;flex-direction:column;padding:64px 0 0}
 .s-wand .wand-inhalt{order:1}
 .s-wand .wandfoto{order:2;display:block;margin-top:30px}
-.s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 78%}
+.s-wand .wandfoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;transform:scale(1.12);transform-origin:28% 40%}
+.s-wand .wandfoto{overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 86%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 86%,transparent 100%)}
 .uebergang{position:absolute;left:0;right:0;top:0;height:72px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(24,30,36,.92) 0,rgba(24,30,36,.42) 32%,rgba(24,30,36,.1) 68%,rgba(24,30,36,0) 100%)}
 .wand-text p{margin:0 0 16px;max-width:44ch;color:#3f362f}
 .zeiten{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;max-width:520px}
@@ -185,7 +189,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .fuss{font-size:13px;color:var(--sepia);margin:12px 2px 0}
 
 /* ===== Lounge ===== */
-.s-lounge{padding:44px 0 28px;background:linear-gradient(180deg,rgba(102,115,127,.94) 0,rgba(102,115,127,0) 48px),var(--putzdunkel) 0 0/var(--kachel) repeat #2f3a44;color:var(--creme)}
+.s-lounge{padding:44px 0 28px;color:var(--creme)}
 .s-lounge .kick{color:var(--gold-l)}
 .s-lounge .lead{color:rgba(247,241,231,.78)}
 .lounge-grid{display:grid;gap:26px}
@@ -240,7 +244,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.score a:hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(220,187,115,.18)}}
 
 /* ===== Feiern ===== */
-.s-feiern{padding:28px 0 20px;background:linear-gradient(180deg,rgba(37,48,58,0) 0,rgba(37,48,58,0) calc(100% - 76px),rgba(37,48,58,.26) calc(100% - 34px),rgba(37,48,58,.5) 100%)}
+.s-feiern{padding:28px 0 20px}
 .feiern-grid{display:grid;gap:16px;margin-top:22px}
 .fbild{margin:0;position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--putz3);box-shadow:0 18px 40px rgba(30,40,50,.2);cursor:zoom-in}
 .fbild img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
@@ -259,7 +263,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .zimmer,.fk,.pk,.pk-vorn,.pk-hinten{background-image:var(--papier)}
 
 /* ===== Besuch: Postkarte zum Abschied ===== */
-.s-besuch{padding:28px 0 40px;background:linear-gradient(180deg,rgba(24,31,38,0) 0,rgba(24,31,38,.35) 100%),var(--putzdunkel) 0 0/var(--kachel) repeat #2f3a44;color:var(--creme)}
+.s-besuch{padding:28px 0 40px;color:var(--creme)}
 .s-besuch .kick{color:var(--gold-l)}
 .abschied{display:grid;gap:16px;margin-top:20px}
 .pk-vorn{position:relative;margin:0;padding:12px 12px 44px;background:#fbf7ef;border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,.25),0 24px 50px rgba(0,0,0,.45);transform:rotate(-1.2deg);cursor:zoom-in;transition:transform .35s ease}
@@ -296,7 +300,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .weg b{display:block;font-weight:600}
 .weg span{font-size:14px;color:rgba(247,241,231,.78)}
 .s-besuch .klein{font-size:13.5px;color:rgba(247,241,231,.62);margin:6px 0 0}
-footer{background:linear-gradient(rgba(24,31,38,.45),rgba(24,31,38,.45)),var(--putzdunkel) 0 0/var(--kachel) repeat #2a343e;color:rgba(247,241,231,.6);font-size:13.5px;padding:22px 0 calc(22px + env(safe-area-inset-bottom));border-top:1px solid rgba(247,241,231,.08)}
+footer{color:rgba(247,241,231,.6);font-size:13.5px;padding:22px 0 calc(22px + env(safe-area-inset-bottom))}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
 footer .logo{width:86px;height:26px;color:var(--creme)}
 
@@ -334,9 +338,9 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 @media (min-width:600px) and (max-width:899px){
   .s-tag{padding:64px 0 36px}
   .s-karte{padding:36px 0 28px}
-  .s-lounge{padding:56px 0 36px;background:linear-gradient(180deg,rgba(102,115,127,.94) 0,rgba(102,115,127,0) 60px),var(--putzdunkel) 0 0/var(--kachel) repeat #2f3a44}
+  .s-lounge{padding:56px 0 36px}
   .s-gaeste{padding:44px 0 36px}
-  .s-feiern{padding:36px 0 28px;background:linear-gradient(180deg,rgba(37,48,58,0) 0,rgba(37,48,58,0) calc(100% - 90px),rgba(37,48,58,.26) calc(100% - 40px),rgba(37,48,58,.5) 100%)}
+  .s-feiern{padding:36px 0 28px}
   .s-besuch{padding:36px 0 44px}
 }
 /* ===== Tablet hoch ===== */
@@ -365,11 +369,11 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .fusszeile{left:56px;right:56px;bottom:30px;font-size:14px}
   .schleier{background:linear-gradient(180deg,rgba(24,30,36,.45) 0,rgba(24,30,36,0) 14%,rgba(24,30,36,0) 78%,rgba(24,30,36,.9) 100%),radial-gradient(88% 98% at 0% 100%,rgba(24,30,36,.86) 0,rgba(24,30,36,.64) 42%,rgba(24,30,36,0) 78%)}
   .va .eintritt{right:3.2%;top:22%;width:20%}
-  .s-wand{min-height:max(620px,calc(100vh - var(--hh)));justify-content:center;padding:64px 0 44px;background:#aab7bf}
+  .s-wand{min-height:max(620px,calc(100vh - var(--hh)));justify-content:center;padding:64px 0 44px}
   .s-wand .uebergang{height:96px}
   .s-wand.putz::before,.s-wand.putz::after{display:none}
-  .s-wand .wandfoto{position:absolute;inset:0;margin:0;z-index:0}
-  .s-wand .wandfoto img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:72% 50%}
+  .s-wand .wandfoto{position:absolute;inset:0;margin:0;z-index:0;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 290px),rgba(0,0,0,.5) calc(100% - 175px),transparent calc(100% - 70px));mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 290px),rgba(0,0,0,.5) calc(100% - 175px),transparent calc(100% - 70px))}
+  .s-wand .wandfoto img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:72% 50%;transform:none}
   .wand-inhalt{position:relative;z-index:1}
   .wand-text,.details{max-width:540px}
   .wand-text h2{font-size:clamp(44px,4.2vw,64px)}
@@ -387,12 +391,12 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .zimmer figure{aspect-ratio:auto;min-height:100%}
   .zimmer .liste{padding:12px 26px 16px}
   .pos{padding:7px 0}
-  .s-lounge{padding:76px 0 44px;background:linear-gradient(180deg,rgba(102,115,127,.94) 0,rgba(102,115,127,0) 80px),var(--putzdunkel) 0 0/var(--kachel) repeat #2f3a44}
+  .s-lounge{padding:76px 0 44px}
   .lounge-grid{grid-template-columns:7fr 4fr;gap:44px;align-items:center}
   .s-gaeste{padding:64px 0 48px}
   .gaeste-kopf{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
   .gaeste-kopf h2{margin:0}
-  .s-feiern{padding:52px 0 40px;background:linear-gradient(180deg,rgba(37,48,58,0) 0,rgba(37,48,58,0) calc(100% - 110px),rgba(37,48,58,.26) calc(100% - 48px),rgba(37,48,58,.5) 100%)}
+  .s-feiern{padding:52px 0 40px}
   .feiern-grid{grid-template-columns:5fr 7fr;gap:24px;align-items:stretch}
   .fbild{aspect-ratio:auto;min-height:100%}
   .fkarten{gap:20px}
@@ -635,6 +639,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 </section>
 </main>
 
+<div class="nacht" aria-hidden="true"></div>
 <footer><div class="wrap"><span class="logo" aria-hidden="true"></span><span>Bodan Restaurant • Lounge · Bahnhofstrasse 1 · 8590 Romanshorn</span><a href="tel:+41712223434" style="text-decoration:none">071 222 34 34</a></div></footer>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bild gross"><img id="lbImg" alt=""><button type="button" aria-label="Schliessen">×</button></div>
 
@@ -845,6 +850,11 @@ D.addEventListener('click',function(e){var el=e.target.closest('[data-big]');if(
 lb.addEventListener('click',function(e){if(e.target!==lbImg)lb.classList.remove('offen')});
 D.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('offen')});
 })();
+/* ================= Dunkle Ebene: ein langer Übergang über die Feiern-Karten bis in die Lounge ================= */
+(function(){var D=document,W=window,n=D.querySelector('.nacht'),a=D.querySelector('.s-feiern .fkarten'),b=D.querySelector('.s-lounge .wrap');if(!n||!a||!b)return;
+function top(el){var y=0;while(el){y+=el.offsetTop;el=el.offsetParent}return y}
+function setz(){var e=top(b)+40,t=Math.min(top(a),e-760),r=D.documentElement.style;r.setProperty('--nacht-top',t+'px');r.setProperty('--nacht-y',(-t)+'px');r.setProperty('--nf',Math.max(240,e-t)+'px')}
+setz();W.addEventListener('load',setz);W.addEventListener('resize',setz);if(D.fonts&&D.fonts.ready)D.fonts.ready.then(setz);if('ResizeObserver' in W)new ResizeObserver(setz).observe(D.body)})();
 </script>
 </body>
 </html>
