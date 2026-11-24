@@ -458,6 +458,8 @@ body:before{background-size:450px 450px}
 .day small span{white-space:nowrap;letter-spacing:-.01em}
 @media (max-width:400px){.day small{font-size:8.6px!important}.days{gap:5px!important}}
 @media (max-width:440px){.medal h3{font-size:16.5px!important;line-height:1.2}}
+/* Tablet mit Touch wie Telefon (Julia 23.11): Stimmen ohne Pfeile, Wischen + Punkte */
+@media (hover:none) and (pointer:coarse) and (max-width:1100px){.arr{display:none!important}.rail-wrap{padding:0!important}.dots{display:flex!important}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 </style>
 </head>
