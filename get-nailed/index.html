@@ -661,6 +661,19 @@ html.sv .akt-stage .vh:after{content:"";position:absolute;inset:0;pointer-events
 @media (max-width:1300px) and (min-width:901px){.ticket .trow a{font-size:12.5px}.ticket .trow a.b{letter-spacing:.08em}}
 /* Telefon: untere Leiste weicht, solange die Preis-Plakette sichtbar ist */
 .bookbar.konf-off{transform:translateY(140%)!important}
+
+/* ---------- 24.11 Raffvorhang (html.sv) ---------- */
+html.sv .akt-stage .vh{background:none!important;transform:none!important;overflow:visible}
+html.sv .akt-stage .vh:after{display:none}
+html.sv .akt-stage .vh.r{transform:scaleX(-1)!important;transform-origin:center center!important}
+html.sv .akt-stage .vh .st{position:absolute;top:0;bottom:0;left:0;background:#3A0F1C url(img/samt_vorhang.webp) repeat-x;
+  transform-origin:left top;will-change:transform,clip-path;backface-visibility:hidden}
+html.sv .akt-stage .vh .st:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--s,0);
+  background:linear-gradient(90deg,rgba(18,2,8,.62) 0,rgba(18,2,8,.18) 22%,rgba(255,214,196,.16) 48%,rgba(18,2,8,.22) 74%,rgba(18,2,8,.66) 100%)}
+html.sv .akt-stage .vh .cord{position:absolute;left:0;width:13%;height:5px;border-radius:3px;z-index:3;opacity:0;
+  background:linear-gradient(90deg,#8a6a2c,#f1dfb6 45%,#b8924f);box-shadow:0 2px 6px rgba(0,0,0,.45);transform-origin:left center}
+html.sv .akt-stage .vh .cord i{position:absolute;right:-7px;top:-4px;width:12px;height:22px;border-radius:40% 40% 50% 50%;
+  background:radial-gradient(circle at 40% 30%,#f6e7c3,#b8924f 60%,#6d5220);box-shadow:0 3px 6px rgba(0,0,0,.4)}
 </style>
 </head>
 <body>
@@ -1240,13 +1253,29 @@ addEventListener('pointerdown',e=>{if(!hero.classList.contains('live')||e.button
 if(H.classList.contains('sv')){(()=>{const stg=$('#aktStage');if(!stg)return;const L=stg.querySelector('.vh.l'),R=stg.querySelector('.vh.r');
   const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;let cur=rm?1:0,tgt=cur,force=null,raf=0;
   const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
-  function target(){const r=stg.getBoundingClientRect(),vh=innerHeight;const a=vh*.88,b=vh/2-r.height/2;const p=(a-r.top)/Math.max(1,a-Math.max(b,-r.height));return Math.max(0,Math.min(1,p))}
-  function draw(){const e=ease(cur);const sway=Math.sin(cur*Math.PI);
-    const tx=e*101,sx=1-.38*e,sk=sway*1.6;
-    L.style.transform=`translate3d(${-tx}%,0,0) scaleX(${sx}) skewY(${sk*.35}deg)`;
-    R.style.transform=`translate3d(${tx}%,0,0) scaleX(${sx}) skewY(${-sk*.35}deg)`;
-    L.style.setProperty('--fold',(e*.9).toFixed(3));R.style.setProperty('--fold',(e*.9).toFixed(3))}
-  function tick(){raf=0;tgt=force!==null?force:(rm?1:target());const k=force!==null?.22:.1;const d=tgt-cur;cur=Math.abs(d)<.0008?tgt:cur+d*k;draw();if(cur!==tgt)raf=requestAnimationFrame(tick)}
+  function target(){const r=stg.getBoundingClientRect(),vh=innerHeight;const a=vh*.78,b=vh/2-r.height/2;const p=(a-r.top)/Math.max(1,a-Math.max(b,-r.height));return Math.max(0,Math.min(1,p))}
+  /* Raffvorhang: Bahnen bauen */
+  let N=0,W=0,Hh=0,bw=0;const P=[L,R];
+  function build(){const r=stg.getBoundingClientRect();W=L.getBoundingClientRect().width||r.width*.51;Hh=r.height;N=innerWidth<700?11:16;bw=W/N;
+    P.forEach(pn=>{pn.innerHTML='';for(let i=0;i<N;i++){const d=document.createElement('span');d.className='st';d.style.width=(bw+1.5)+'px';d.style.left=(i*bw)+'px';
+      d.style.backgroundSize='auto '+Hh+'px';d.style.backgroundPosition=(-i*bw)+'px 0';pn.appendChild(d)}
+      const c=document.createElement('span');c.className='cord';c.innerHTML='<i></i>';pn.appendChild(c)})}
+  const lift=(u,e)=>e*(.10+.86*Math.pow(u,1.35));          /* Anteil der Höhe, um den der Saum angehoben ist */
+  function draw(){if(!N)build();const G=.075;              /* gerafft bleiben 17 % der Bahnbreite am Rand */
+    P.forEach(pn=>{const st=pn.children;let x=0;
+      const EE=[];for(let i=0;i<N;i++){const u=i/(N-1),dl=.26*(1-u);const q=Math.max(0,Math.min(1,(cur-dl)/(1-dl)));EE.push(q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2)}
+      for(let i=0;i<N;i++){const e=EE[i];
+        const sc=1-(1-G)*e, w=bw*sc;
+        const lu=(i-.5)/(N-1),ru=(i+.5)/(N-1);
+        const eL=i?(EE[i-1]+e)/2:e,eR=i<N-1?(EE[i+1]+e)/2:e;const yl=100*(1-lift(Math.max(0,lu),eL)),yr=100*(1-lift(Math.min(1,ru),eR));
+        const wave=0;
+        const d=st[i];d.style.transform=`translate3d(${x.toFixed(2)}px,${wave.toFixed(2)}px,0) scaleX(${sc.toFixed(4)})`;
+        d.style.left='0px';d.style.clipPath=`polygon(0 0,100% 0,100% ${yr.toFixed(2)}%,0 ${yl.toFixed(2)}%)`;
+        d.style.setProperty('--s',(Math.min(1,e*1.25)).toFixed(3));x+=w}
+      const c=st[N];const eo=Math.max(0,Math.min(1,(cur-.45)/.4));const cy=Hh*.56;
+      c.style.opacity=eo.toFixed(3);c.style.top=cy+'px';c.style.width=(W*G*1.05)+'px';c.style.transform=`scaleX(${(.3+.7*eo).toFixed(3)})`})}
+  addEventListener('resize',()=>{N=0;draw()});
+  function tick(){raf=0;tgt=force!==null?force:(rm?1:target());const k=force!==null?.2:.075;const d=tgt-cur;const st=Math.max(-.022,Math.min(.022,d*k));cur=Math.abs(d)<.0008?tgt:cur+(force!==null?d*k:st);draw();if(cur!==tgt)raf=requestAnimationFrame(tick)}
   const kick=()=>{if(!raf)raf=requestAnimationFrame(tick)};
   addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);draw();kick();
   /* Aktwechsel: kurz zu, dann wieder offen – weich, ohne Klassen-Sprung */
