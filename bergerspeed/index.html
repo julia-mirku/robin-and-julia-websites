@@ -1371,7 +1371,7 @@ function heroTop(ev){
   if(grob && ev && ev.type==='resize' && b===letzteB) return;   /* Adressleiste am Telefon: nichts neu rechnen */
   letzteB=b; festH=innerHeight;
   var kopfH=D.querySelector('.kopf').offsetHeight;
-  var hv=festH-kopfH;                       /* Foto füllt den ganzen Bildschirm unter der Kopfzeile */
+  var mkH=D.getElementById('mk-hinweis'), hv=festH-kopfH-(mkH?mkH.offsetHeight:0);   /* Hinweis-Leiste bleibt stehen: nichts schiebt das Auto */                       /* Foto füllt den ganzen Bildschirm unter der Kopfzeile */
   heroH.style.height=hv+'px'; torR.style.height=hv+'px';
   var bx=tor.offsetWidth/Math.max(1,tor.offsetHeight);
   tor.style.setProperty('--fit', bx>=1.3?'cover':'contain');   /* hochkant: ganzes Auto zeigen, nicht abschneiden */
@@ -1440,7 +1440,6 @@ setInterval(zeigen,30000);
 })();
 </script>
 <script>/* Plaschke: beim ersten Scrollversuch fährt sie weg (die Seite steht hier, bis das Tor offen ist) */
-(function(){var h=document.getElementById('mk-hinweis');if(!h)return;var fertig=false;function weg(){if(fertig)return;fertig=true;h.classList.add('weg');setTimeout(function(){window.dispatchEvent(new Event('resize'));},560);}
-['wheel','touchmove','keydown'].forEach(function(t){window.addEventListener(t,weg,{passive:true});});window.addEventListener('scroll',function(){if((window.scrollY||0)>2)weg();},{passive:true});})();</script>
+/* Hinweis-Leiste klappt nicht mehr zu: das Zuklappen hat das Autobild beim Öffnen der Jalousie verschoben (PД3) */</script>
 </body>
 </html>
