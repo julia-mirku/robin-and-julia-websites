@@ -417,10 +417,11 @@ h2.mit-umlaut{padding-top:.36em}
 @media (max-width:640px){.serviette{width:100%}.servietten-rahmen{padding:0 26px}.sv-pfeil{width:36px;height:36px}}
 /* Telefon: keine Pfeile, nur Wischen und Punkte (Regel 18f) */
 .sv-punkte{display:none}
-@media (max-width:600px){.sv-pfeile{display:none}.servietten-rahmen{padding:0}.serviette{width:calc(100% - 34px)}
-  .sv-punkte{display:flex;justify-content:center;gap:8px;margin-top:2px}
-  .sv-punkte i{width:8px;height:8px;border-radius:50%;background:rgba(var(--senf-rgb),.32);transition:background-color .2s ease,transform .2s ease}
-  .sv-punkte i.an{background:var(--senf);transform:scale(1.25)}}
+.sv-punkte i{width:8px;height:8px;border-radius:50%;background:rgba(var(--senf-rgb),.32);transition:background-color .2s ease,transform .2s ease}
+.sv-punkte i.an{background:var(--senf);transform:scale(1.25)}
+/* Telefon und Tablet (Finger): keine Pfeile, nur Wischen und Punkte */
+@media (max-width:600px),(hover:none) and (pointer:coarse) and (max-width:1100px){.sv-pfeile{display:none}.servietten-rahmen{padding:0}.sv-punkte{display:flex;justify-content:center;gap:8px;margin-top:2px}}
+@media (max-width:600px){.serviette{width:calc(100% - 34px)}}
 
 /* ---------- IDEE 3: Zisch ---------- */
 .zisch-wort{position:absolute;left:58%;top:14%;z-index:4;pointer-events:none;font-family:"Bowlby One SC",sans-serif;font-size:34px;color:#FFFDF8;-webkit-text-stroke:0;text-shadow:2px 2px 0 var(--grill),3px 3px 0 var(--grill),-1px -1px 0 var(--grill),1px -1px 0 var(--grill),-1px 1px 0 var(--grill);transform-origin:50% 100%;animation:zischWort 1.3s cubic-bezier(.3,1.4,.5,1) both}
@@ -633,6 +634,8 @@ h2.mit-umlaut{padding-top:.36em}
 }
 @media (max-width:700px){.held .teller{width:min(262px,66%)}}
 @media (max-width:640px){.bau-buehne .teller{width:min(270px,77%)}}
+/* Tablet hochkant: Pommes und Saucen gross und mittig, keine leere rechte Haelfte */
+@media (min-width:601px) and (max-width:860px){.pommes{grid-template-columns:190px 250px;justify-content:center;gap:18px 56px}.pommes .tuete,.tuete{width:190px}.dips,.dip-feld{width:250px}}
 @media (max-width:360px){.pommes{grid-template-columns:104px minmax(0,1fr)}.pommes .tuete{width:104px}.dip-feld,.dips{width:160px}}
 @media (max-width:360px){.held .teller{width:66%}}
 @media (orientation:landscape) and (max-height:500px){.held .teller{width:min(222px,72%)}.bau-buehne .teller{width:min(330px,80%)}}
@@ -770,7 +773,7 @@ html body .abschnitt{padding:44px 0}
   <div class="wrap">
     <div class="kopfzeile rv">
       <div><div class="kicker" style="color:var(--ketchup)">Aus der Küche</div><h2 id="karteTitel">Die Burger</h2></div>
-      <p>Eine Auswahl aus der Karte.</p>
+      <p>Eine Auswahl aus der Karte. Mit <b>+</b> auf deine Abhol-Liste – dann anrufen und bestellen.</p>
     </div>
     <div class="karte">
       <article class="gericht star rv"><div class="mini" data-schichten="deckel,salat,kaese,roesti,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">01</span><h3>Rösti-Burger</h3><p>Mit knuspriger Rösti.</p><span class="marke-tag tag-liebling">Liebling</span><button class="minus" type="button" hidden aria-label="Ein Rösti-Burger weniger">−</button><button class="plus" type="button" data-name="Rösti-Burger" data-schichten="deckel,salat,kaese,roesti,fleisch,boden" aria-label="Rösti-Burger in die Bestellung">+</button></div></article>
