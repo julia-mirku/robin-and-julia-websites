@@ -63,7 +63,7 @@ html[lang="de"] .l[data-l="en"],html[lang="en"] .l[data-l="de"]{visibility:hidde
 .hinweis p{margin:0 auto;max-width:1120px;text-wrap:balance}
 @media (max-width:620px){.hinweis{font-size:11.5px;padding:6px 12px}}
 @media (max-width:380px){.hinweis{font-size:11px;padding:6px 10px;letter-spacing:0}}
-.top{position:sticky;top:0;z-index:40;background:rgba(31,22,18,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,137,59,.55)}
+.top{position:sticky;top:0;z-index:40;background:#1F1612;border-bottom:1px solid rgba(184,137,59,.55)}
 .top .wrap{display:flex;align-items:center;gap:14px;height:58px}
 .brand{display:flex;align-items:center;text-decoration:none;margin-right:auto;min-width:0;border-radius:6px}
 .brand svg{display:block;height:42px;width:auto;aspect-ratio:965/390;transition:filter .25s ease, transform .25s ease}
@@ -426,6 +426,7 @@ button.rb{cursor:pointer}
 @media (hover:hover){.tb:not(:disabled):hover{background:#FFF4DC;transform:translateY(-2px);box-shadow:3px 3px 0 var(--soot)}}
 .tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:flex-start;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 18px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tueten::-webkit-scrollbar{display:none}
+.tueten{transition:height .35s ease}
 .tuete{flex:0 0 clamp(260px,24vw,304px);display:flex;margin:0;scroll-snap-align:start;opacity:0;transform:translateY(28px) rotate(calc(var(--r)*3));filter:drop-shadow(0 2px 0 rgba(42,29,23,.3)) drop-shadow(0 12px 11px rgba(42,29,23,.15));transition:opacity .5s ease calc(var(--i)*80ms),transform .75s cubic-bezier(.2,.9,.3,1.25) calc(var(--i)*80ms)}
 .tueten.in .tuete{opacity:1;transform:rotate(var(--r))}
 .tueten.settled .tuete{transition:transform .28s ease}
@@ -948,6 +949,9 @@ Preis, Grösse, Geschmack, Frische – alles perfekt!</span></blockquote><button
       if(pv){pv.disabled=x<4; nx.disabled=x>max-4;}
       if(nav) nav.classList.toggle('aus',max<4);
       if(dots&&nb){var b0=tr.querySelector('.tuete'),w0=b0.offsetWidth+(parseFloat(getComputedStyle(tr).columnGap)||14),k=x>max-4?nb-1:Math.min(nb-1,Math.round(x/w0)); [].forEach.call(dots.children,function(d,i){d.classList.toggle('an',i===k)});}
+      // Handy: Höhe der Reihe = Höhe der sichtbaren Tüte (Holly 25.11: kein leerer Raum unter einer kurzen Tüte)
+      if(dots&&nb&&window.matchMedia('(max-width:620px)').matches){var bs=tr.querySelectorAll('.tuete'),k2=x>max-4?nb-1:Math.min(nb-1,Math.round(x/(bs[0].offsetWidth+(parseFloat(getComputedStyle(tr).columnGap)||14)))),cs2=getComputedStyle(tr),hh=bs[k2].offsetHeight+parseFloat(cs2.paddingTop)+parseFloat(cs2.paddingBottom)+12; tr.style.height=hh+'px';}
+      else tr.style.height='';
       if(bar){bar.classList.toggle('aus',max<4); pg.style.width=(f*100)+'%'; pg.style.transform='translateX('+(max>0?(x/max)*(1/f-1)*100:0)+'%)';}
     }
     if(pv){pv.addEventListener('click',function(){hop(-1)}); nx.addEventListener('click',function(){hop(1)});}
