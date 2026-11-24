@@ -116,12 +116,12 @@ h2{font:800 clamp(40px,10vw,76px)/.92 var(--head);letter-spacing:.01em;text-tran
 @media (max-height:700px) and (max-width:899px){@supports (height:1svh){.tag{--ph:calc(var(--hh) + env(safe-area-inset-top) + 27svh)}}}
 
 /* ---------- Abschnitte (der Tag wird Abend) ---------- */
-section{position:relative;padding:84px 0}
-.s-zug{background:var(--paper)}
+section{position:relative;padding:84px 0;scroll-margin-top:calc(var(--hh) + env(safe-area-inset-top) - 1px)}
+.s-zug{background:linear-gradient(180deg,var(--ink) 0,#3a3633 22px,#cfc6b8 70px,var(--paper) 120px,var(--paper) 100%);padding-top:132px}
 .s-karte{background:linear-gradient(180deg,var(--paper) 0,var(--cream) 140px,var(--cream) 100%)}
 .s-haus{background:linear-gradient(180deg,var(--cream) 0,var(--sand) 100%)}
 .s-feiern{background:linear-gradient(180deg,var(--sand) 0,#d8bfa0 100%)}
-.s-gaeste{background:linear-gradient(180deg,#d8bfa0 0,var(--dusk) 150px,#2c2a2c 70%,var(--ink2) 100%);color:var(--cream)}
+.s-gaeste{background:linear-gradient(180deg,#d8bfa0 0,var(--dusk) 110px,#2c2a2c 70%,var(--ink2) 100%);color:var(--cream)}
 .s-besuch{background:linear-gradient(180deg,var(--ink2) 0,var(--ink) 100%);color:var(--cream)}
 .s-gaeste .lead,.s-besuch .lead{color:rgba(243,235,222,.75)}
 .kick{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--copper-d);margin:0 0 14px}
@@ -179,7 +179,11 @@ section{position:relative;padding:84px 0}
 .gtipp span{display:block;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--copper-d);margin-bottom:8px}
 .gtipp cite{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:6px}
 .panel.ohne .list .gtipp{column-span:all}
-.mehr{margin:14px 0 6px;color:var(--txt);border-color:rgba(27,30,34,.35)}
+.pager{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 4px;column-span:all}
+.pager button{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid rgba(27,30,34,.3);background:transparent;cursor:pointer;font:500 13px/1 var(--mono);transition:background-color .2s,color .2s,border-color .2s,box-shadow .2s}
+.pager button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+@media (hover:hover){.pager button:not([aria-pressed="true"]):hover{border-color:var(--copper);box-shadow:0 0 0 4px rgba(192,112,63,.16)}}
+.pager span{font-size:13px;color:var(--muted)}
 .fuss{font-size:13px;color:var(--muted);margin:14px 2px 0}
 
 /* ---------- Haus ---------- */
@@ -279,8 +283,10 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
   .logo{width:132px;height:40px}
   .top nav{display:flex}
   .top .acts{margin-left:10px}
-  section{padding:120px 0}
-  .lead{font-size:20px}
+  section{padding:72px 0}
+  .s-zug{padding-top:140px}
+  h2{font-size:clamp(48px,4.6vw,70px)}
+  .lead{font-size:19px;margin-bottom:22px}
   /* Hero: links die Tafel, rechts das Bild */
   .tag{--ph:100%;flex-direction:row}
   .pics{left:max(40%,440px);height:100%}
@@ -300,33 +306,61 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
   .tipp figure{aspect-ratio:auto;min-height:340px}
   .tipp .tx{padding:30px 28px}
   /* Karte */
-  .sek{grid-template-columns:repeat(6,1fr)}
-  .sek button{flex-direction:column;align-items:flex-start;min-height:104px;padding:12px}
-  .panel{grid-template-columns:2fr 3fr}
+  .kopf{display:grid;grid-template-columns:5fr 7fr;gap:40px;align-items:end;margin-bottom:22px}
+  .kopf .lead{margin-bottom:0}
+  .sek{grid-template-columns:repeat(3,minmax(0,1fr));margin:0}
+  .sek button{min-height:64px}
+  .panel{grid-template-columns:1fr 2fr;min-height:440px}
   .panel figure{aspect-ratio:auto;min-height:100%}
   .panel.ohne{grid-template-columns:1fr}
-  .panel .list{padding:14px 32px 20px}
-  .panel.ohne .list{columns:2;column-gap:44px}
-  .panel.ohne .list h3,.panel.ohne .list .note{column-span:all}
-  .it{break-inside:avoid}
+  .panel .list{padding:10px 30px 16px;columns:2;column-gap:40px}
+  .panel .list h3,.panel .list .note,.panel .list .gtipp,.panel .list .pager{column-span:all}
+  .panel .list h3{margin-top:12px}
+  .it{break-inside:avoid;padding:8px 0}
+  .gtipp{padding:10px 14px}
+  .fuss{margin-top:10px}
   /* Haus */
-  .haus{grid-template-columns:7fr 5fr;gap:56px;align-items:center}
-  .raum{grid-template-columns:repeat(4,1fr);gap:12px}
-  .raum button.w{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .haus{grid-template-columns:7fr 5fr;grid-template-rows:auto auto;gap:22px 48px;align-items:start}
+  .haus .wand{grid-row:1/span 2;aspect-ratio:auto;height:100%;min-height:460px}
+  .raum{grid-template-columns:repeat(4,1fr);gap:10px;margin-top:0}
+  .raum button,.raum button.w{grid-column:auto;grid-row:auto;aspect-ratio:1/1}
+  .raum span{font-size:12px;left:6px;bottom:6px}
   .zwei{grid-template-columns:1fr 1fr;gap:22px}
-  .karte2{padding:34px 32px}
-  /* Gäste: Linie in der Mitte */
-  .linie{padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:90px}
-  .linie::before{left:50%;margin-left:-1.5px}
-  .halt{padding:0 0 46px}
-  .halt:nth-child(odd){grid-column:1;text-align:right}
-  .halt:nth-child(even){grid-column:2;margin-top:110px}
-  .halt:nth-child(odd)::before{left:auto;right:-54px}
-  .halt:nth-child(even)::before{left:-54px}
-  .halt:nth-child(odd) .wer{justify-content:flex-end}
-  .halt q{font-size:19px}
-  .besuch{grid-template-columns:5fr 6fr;gap:60px}
-  .map{aspect-ratio:16/10}
+  .karte2{padding:28px 30px}
+  /* Gäste: Linie quer, 4 Halte pro Reihe */
+  .gkopf{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+  .gkopf h2{margin:0}
+  .score{margin:0}
+  .linie{padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 26px}
+  .linie::before{display:none}
+  .halt{padding:26px 0 0}
+  .halt::before{left:0;top:-7px}
+  .halt::after{content:"";position:absolute;left:0;right:-26px;top:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--copper));opacity:.75}
+  .halt:nth-child(4n)::after{right:0}
+  .halt q{font-size:16px;line-height:1.5}
+  .besuch{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px;align-items:start}
+  .besuch .kontakt,.besuch .anreise{padding-top:4px}
+  .map{aspect-ratio:4/3}
+  .kontakt address{font-size:18px}
+}
+@media (min-width:600px) and (max-width:899px) and (min-height:860px){
+  .tag{--ph:calc(var(--hh) + env(safe-area-inset-top) + 46vh)}
+  .tafel{grid-template-columns:76px 1fr;padding:6px 32px 12px}
+  .meta{font-size:15px}.meta h1{font-size:15px}
+  .rail .tick{font-size:11px}
+  .clock b{font-size:42px}
+  .st h2{font-size:76px}.st p{font-size:18px}.st .when{font-size:13px}
+}
+@media (max-width:899px) and (max-height:520px) and (orientation:landscape){
+  .tag{--ph:100%;flex-direction:row;min-height:0}
+  .pics{left:46%;height:100%}
+  .tag::after{left:46%;height:100%;background:linear-gradient(90deg,rgba(20,23,27,.5) 0,rgba(20,23,27,0) 20%)}
+  .tafel{margin-top:0;flex:none;width:46%;grid-template-columns:44px 1fr;padding:calc(var(--hh) + 6px) 14px 2px max(14px,env(safe-area-inset-left))}
+  .meta{font-size:12px;margin-bottom:4px}.meta h1{font-size:12px}
+  .rail{margin:4px 0 6px}.rail .tick{font-size:9px}
+  .clock b{font-size:20px}.clock{font-size:10px}
+  .stages{margin-top:4px}.st .when{font-size:10px;margin-bottom:4px}.st h2{font-size:28px;margin-bottom:0}.st p{display:none}
+  .hint{font-size:12px;padding-top:0}.hint button{padding:6px 0;font-size:12px}
 }
 @media (min-width:900px) and (max-height:760px){
   .st h2{font-size:60px}
@@ -440,12 +474,14 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
 
 <section class="s-karte" id="karte">
   <div class="wrap">
-    <div class="rise">
-      <p class="kick">Sektor A bis F</p>
-      <h2>Die Karte</h2>
-      <p class="lead">Von Sushi bis Pizza für den ganzen Tisch: wählen Sie einen Sektor.</p>
+    <div class="kopf">
+      <div class="rise">
+        <p class="kick">Sektor A bis F</p>
+        <h2>Die Karte</h2>
+        <p class="lead">Von Sushi bis Pizza für den ganzen Tisch: wählen Sie einen Sektor.</p>
+      </div>
+      <div class="sek rise" role="group" aria-label="Sektoren der Karte" id="sek"></div>
     </div>
-    <div class="sek rise" role="group" aria-label="Sektoren der Karte" id="sek"></div>
     <div class="panel rise" id="panel"></div>
     <p class="fuss">Preise in CHF wie auf der Online-Bestellkarte (Just Eat); im Restaurant können sie abweichen.</p>
   </div>
@@ -469,7 +505,6 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
     </div>
     <div class="raum rise" id="raum">
       <button type="button" class="w" data-big="img/g05_l.webp"><img src="img/g05_m.webp" alt="Lounge mit Lederpolstern" loading="lazy"><span>Lounge</span></button>
-      <button type="button" data-big="img/g04_l.webp"><img src="img/g04_m.webp" alt="Saal mit Holzdecke" loading="lazy"><span>Saal</span></button>
       <button type="button" data-big="img/g12_l.webp"><img src="img/g12_m.webp" alt="Wein wird eingeschenkt" loading="lazy"><span>Wein</span></button>
       <button type="button" data-big="img/g07_l.webp"><img src="img/g07_m.webp" alt="Terrasse an der Bahnhofstrasse" loading="lazy"><span>Terrasse</span></button>
       <button type="button" data-big="img/g10_l.webp"><img src="img/g10_m.webp" alt="Bier vom Fass" loading="lazy"><span>Vom Fass</span></button>
@@ -506,6 +541,7 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
 
 <section class="s-gaeste" id="gaeste">
   <div class="wrap">
+    <div class="gkopf">
     <div class="rise">
       <p class="kick">Stimmen</p>
       <h2>Was Gäste sagen</h2>
@@ -513,6 +549,7 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
     <div class="score rise">
       <a href="https://www.google.com/maps?cid=6969817241493487356" target="_blank" rel="noopener"><b>4,3</b><span>Google · 215 Bewertungen</span></a>
       <a href="https://www.just-eat.ch/speisekarte/restaurant-bodan" target="_blank" rel="noopener"><b>4,5</b><span>Just Eat · über 300 Bewertungen</span></a>
+    </div>
     </div>
     <ol class="linie">
       <li class="halt rise"><div class="wer"><b>Nara</b><span>★★★★★</span><em>Google</em></div><q>Super Ort um beste Sushi Romanshorns zu probieren. Nette Service und direkt am Bahnhof. Gerne komme ich wieder.</q></li>
@@ -552,13 +589,16 @@ footer .logo{width:90px;height:28px;color:var(--cream)}
         <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn" target="_blank" rel="noopener">Route</a>
         <a class="btn" href="https://www.instagram.com/restaurant_bodan/" target="_blank" rel="noopener">Instagram</a>
       </div>
+      <p class="klein">Bezahlen mit TWINT, Karte, bar oder WIR.</p>
+    </div>
+    <div class="anreise rise">
+      <p class="kick">Anreise</p>
       <ul class="weg">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/></svg><span><b>Zug</b>Bahnhof Romanshorn, gleich gegenüber</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/></svg><span><b>Schiff &amp; Boot</b>Hafen am Bodensee, ein paar Minuten zu Fuss</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16h14l-1.5-5.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5zM5 16v3M19 16v3"/><circle cx="8" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg><span><b>Auto</b>Kostenpflichtige Parkplätze in der Umgebung</span></li>
       </ul>
       <div class="map"><iframe title="Karte: Bahnhofstrasse 1, Romanshorn" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn&z=16&output=embed"></iframe></div>
-      <p class="klein">Bezahlen mit TWINT, Karte, bar oder WIR.</p>
     </div>
   </div>
 </section>
@@ -654,6 +694,7 @@ D.addEventListener('click',function(e){
   if(id==='tag'){e.preventDefault();W.scrollTo({top:0,behavior:reduce?'auto':'smooth'});return}
   e.preventDefault();geheZu(id);
 });
+W.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!=='tag')geheZu(h)});
 D.getElementById('skip').addEventListener('click',function(){geheZu(this.dataset.z||'zug')});
 W.addEventListener('resize',render);
 var topEl=D.querySelector('.top');function kopf(){topEl.classList.toggle('solid',W.scrollY>hero.offsetHeight-80)}W.addEventListener('scroll',kopf,{passive:true});kopf();
@@ -747,19 +788,19 @@ var KARTE=[
   ['Cocktails','von der Bar, auch Hugo','Bar'],['Japanischer Whisky','und weitere Spirituosen','Bar'],
   ['Bier vom Fass','','Zapfhahn'],['Wein','abends Rotwein zum Verkosten','Glas',1],['Espresso','zum Abschluss','Bar',1]]}
 ];
-var sek=D.getElementById('sek'), panel=D.getElementById('panel'), aktiv='A', offen={};
+var sek=D.getElementById('sek'), panel=D.getElementById('panel'), aktiv='A', seite=0, PRO=8;
 KARTE.forEach(function(c){var b=D.createElement('button');b.type='button';b.dataset.k=c.k;b.innerHTML='<b>'+c.k+'</b><span>'+c.n.replace('&','&amp;')+'</span>';sek.appendChild(b)});
-function zeigSek(k){
-  aktiv=k;var c=KARTE.filter(function(x){return x.k===k})[0];
+function zeigSek(k,pg){
+  if(k!==aktiv||pg===undefined)seite=0; if(pg!==undefined)seite=pg; aktiv=k;var c=KARTE.filter(function(x){return x.k===k})[0];
   [].forEach.call(sek.children,function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});
   panel.className='panel shown'+(c.img?'':' ohne');
   panel.innerHTML=(c.img?'<figure><img src="img/'+c.img+'_m.webp" alt="'+c.alt+'" loading="lazy"></figure>':'')+
    '<div class="list"><h3>Sektor '+c.k+' · '+c.n.replace('&','&amp;')+'</h3><p class="note">'+c.note+'</p>'+(c.q?'<blockquote class="gtipp"><span>Gäste sagen</span>«'+c.q[0]+'»<cite>'+c.q[1]+', Google</cite></blockquote>':'')+
-   c.it.map(function(i,n){return '<div class="it'+(n>=8&&!offen[k]?' zu':'')+'"><b>'+i[0]+(i[3]?' <em class="tip">Gäste-Tipp</em>':'')+'</b>'+(i[1]?'<small>'+i[1]+'</small>':'')+'<span class="pr">'+i[2]+'</span></div>'}).join('')+
-   (c.it.length>8&&!offen[k]?'<button type="button" class="btn mehr">Alle '+c.it.length+' zeigen</button>':'')+'</div>';
+   c.it.slice(seite*PRO,seite*PRO+PRO).map(function(i){return '<div class="it"><b>'+i[0]+(i[3]?' <em class="tip">Gäste-Tipp</em>':'')+'</b>'+(i[1]?'<small>'+i[1]+'</small>':'')+'<span class="pr">'+i[2]+'</span></div>'}).join('')+
+   (c.it.length>PRO?'<div class="pager" role="group" aria-label="Seiten">'+Array.apply(null,{length:Math.ceil(c.it.length/PRO)}).map(function(_,n){return '<button type="button" data-pg="'+n+'" aria-pressed="'+(n===seite)+'">'+(n*PRO+1)+'–'+Math.min(c.it.length,n*PRO+PRO)+'</button>'}).join('')+'<span>von '+c.it.length+'</span></div>':'')+'</div>';
 }
 sek.addEventListener('click',function(e){var b=e.target.closest('button');if(b)zeigSek(b.dataset.k)});
-panel.addEventListener('click',function(e){if(e.target.closest('.mehr')){offen[aktiv]=true;zeigSek(aktiv);return}var it=e.target.closest('.it');if(!it)return;[].forEach.call(panel.querySelectorAll('.it.tap'),function(x){if(x!==it)x.classList.remove('tap')});it.classList.toggle('tap')});
+panel.addEventListener('click',function(e){var pb=e.target.closest('.pager button');if(pb){zeigSek(aktiv,+pb.dataset.pg);return}var it=e.target.closest('.it');if(!it)return;[].forEach.call(panel.querySelectorAll('.it.tap'),function(x){if(x!==it)x.classList.remove('tap')});it.classList.toggle('tap')});
 zeigSek('A');
 
 /* ================= Lightbox ================= */
