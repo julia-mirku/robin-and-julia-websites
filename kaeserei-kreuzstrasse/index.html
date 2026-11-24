@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="de-CH" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="google" content="notranslate">
+<meta name="robots" content="noindex,nofollow">
+<title>Käserei Kreuzstrasse · Degersheim</title>
+<meta name="description" content="Käserei Kreuzstrasse in Degersheim – Käse aus der eigenen Käserei, Familie Jud. Appenzeller mit Gold ausgezeichnet, Magdenauer Klosterkäse, Wolfensberg-Mutschli, Fondue-Mischung.">
+<meta property="og:title" content="Käserei Kreuzstrasse · Degersheim">
+<meta property="og:description" content="Käse aus der eigenen Käserei. Familie Jud, Chrüzstrasse 781, 9113 Degersheim.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Rethink+Sans:wght@400;500;600;700;800&family=Grenze+Gotisch:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --milk:#FBF5E8; --milk2:#F3E8CF; --rind:#7A4E25; --rind2:#4A2E16; --cellar:#1B1712; --cellar2:#2A231A;
+  --gold:#E3A72F; --gold2:#F2C766; --red:#B5272D; --red2:#D0383E; --green:#5B7A35; --green2:#86A55A;
+  --ink:#231B12; --mute:#6F604D;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --hdr:68px; --bar:0px;
+  --f-head:"Abril Fatface",Georgia,serif; --f-body:"Rethink Sans",system-ui,sans-serif; --f-goth:"Grenze Gotisch",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--milk);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-head);font-weight:400;font-synthesis:none;margin:0;line-height:1.04;letter-spacing:.005em}
+.brand b,.seal b,.disc b,.slot,.gnum,.result .g,.score b,.card q,.mapcard b,.ktxt .sub{font-synthesis:none}
+h2{font-size:clamp(34px,4.4vw,62px);font-weight:850}
+.wrap{width:min(1240px,100% - 48px);margin:0 auto}
+.kick{font-family:var(--f-goth);font-size:22px;color:var(--red);letter-spacing:.02em;display:block;margin-bottom:6px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:background-color .2s,box-shadow .2s,transform .2s,color .2s;cursor:pointer;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-gold{background:var(--gold);color:var(--cellar)}
+.btn-line{border:1.5px solid currentColor}
+@media (hover:hover){
+  .btn-gold:hover{background:var(--gold2);box-shadow:0 0 0 6px rgba(242,199,102,.28),0 8px 26px rgba(227,167,47,.35)}
+  .btn-line:hover{background:rgba(242,199,102,.16);box-shadow:0 0 0 5px rgba(242,199,102,.18)}
+}
+.btn:active{transform:scale(.97)}
+
+/* ===== Entwurf-Hinweis (Regel 22) ===== */
+.entwurf{position:fixed;inset:0 0 auto 0;z-index:70;background:var(--cellar);color:rgba(251,245,232,.86);font-size:12.5px;line-height:1.4;text-align:center;padding:6px 16px;transition:transform .45s var(--ease)}
+.entwurf b{color:var(--gold2);font-weight:700}
+html.bar-off .entwurf{transform:translateY(-102%)}
+
+/* ===== Header ===== */
+.hdr{position:fixed;left:0;right:0;top:var(--bar);z-index:60;height:var(--hdr);transition:top .45s var(--ease),background-color .35s,box-shadow .35s;color:var(--milk)}
+.hdr.solid{background:rgba(27,23,18,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.hdr .wrap{height:100%;display:flex;align-items:center;gap:22px}
+.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1;margin-right:auto}
+.brand b{font-family:var(--f-head);font-weight:900;font-size:23px;letter-spacing:-.01em;font-variation-settings:"SOFT" 100,"WONK" 1}
+.brand span{font-family:var(--f-goth);font-size:15px;color:var(--gold2);margin-top:3px;letter-spacing:.04em}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px;border-radius:999px;transition:background-color .2s,color .2s}
+@media (hover:hover){.nav a:hover{background:rgba(242,199,102,.18);color:var(--gold2)}}
+.hdr .btn{height:42px;padding:0 16px;font-size:15px}
+@media (max-width:1020px){.nav{display:none}}
+@media (max-width:560px){.hdr .btn .t{display:none}.hdr .btn{width:46px;padding:0;justify-content:center}.brand b{font-size:20px}}
+
+/* ===== HERO A: Anschnitt ===== */
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--cellar);color:var(--milk)}
+.hero .ph{position:absolute;inset:0}
+.hero .ph img{width:100%;height:100%;object-fit:cover}
+.hero .ph.cut{clip-path:inset(0 0 100% 0)}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,11,.86) 0%,rgba(20,16,11,.55) 38%,rgba(20,16,11,0) 66%),linear-gradient(0deg,rgba(20,16,11,.75),rgba(20,16,11,0) 34%)}
+.wire{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 20%,#fff 80%,rgba(255,255,255,0));box-shadow:0 0 14px 2px rgba(255,236,190,.85);opacity:0;pointer-events:none}
+.hero-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:calc(var(--hdr) + var(--bar0,0px));padding-bottom:110px}
+.hero h1{font-size:clamp(46px,6.6vw,104px);font-weight:900;max-width:9.5em;font-variation-settings:"SOFT" 100,"WONK" 1}
+.hero h1 em{font-style:normal;color:var(--gold2)}
+.hero p.lead{max-width:30em;font-size:clamp(17px,1.4vw,20px);color:rgba(251,245,232,.88);margin:22px 0 28px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn-line{color:var(--milk)}
+.h-line{opacity:0;transform:translateY(26px)}
+.ready .h-line{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.ready .h-line.d1{transition-delay:.12s}.ready .h-line.d2{transition-delay:.24s}.ready .h-line.d3{transition-delay:.36s}
+/* Medaille */
+.seal{position:absolute;z-index:3;right:clamp(18px,5vw,80px);top:calc(var(--hdr) + var(--bar0,0px) + 26px);width:132px;height:132px;border-radius:50%;display:grid;place-items:center;text-align:center;color:#3c2a06;
+  background:radial-gradient(circle at 34% 28%,#fff3c4 0,#f4cd62 24%,#d79e22 62%,#a8730e 100%);box-shadow:inset 0 0 0 5px rgba(255,240,190,.55),inset 0 0 0 8px rgba(140,92,10,.45),0 14px 34px rgba(0,0,0,.45);
+  transform:rotate(-8deg) scale(.6);opacity:0;transition:transform .2s,box-shadow .2s;text-decoration:none}
+.ready .seal{opacity:1;transform:rotate(-8deg);transition:opacity .6s .9s,transform .8s .9s cubic-bezier(.3,1.6,.5,1)}
+.seal small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.seal b{display:block;font-family:var(--f-head);font-size:34px;font-weight:900;line-height:.9;margin:2px 0}
+.seal i{font-style:normal;font-size:11px;font-weight:700;line-height:1.2;display:block}
+@media (hover:hover){.done .seal:hover{transform:rotate(0) scale(1.06);box-shadow:inset 0 0 0 5px rgba(255,240,190,.7),inset 0 0 0 8px rgba(140,92,10,.45),0 0 0 10px rgba(242,199,102,.22),0 18px 40px rgba(0,0,0,.5)}}
+/* Info-Leiste unten */
+.hero-bar{position:absolute;z-index:3;left:0;right:0;bottom:0;background:rgba(20,16,11,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(242,199,102,.2)}
+.hero-bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px;min-height:70px;padding:10px 0;font-size:15px}
+.hero-bar a{text-decoration:none;font-weight:600;transition:color .2s}
+@media (hover:hover){.hero-bar a:hover{color:var(--gold2)}}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;background:var(--red2);box-shadow:0 0 0 4px rgba(208,56,62,.25)}
+.dot.on{background:#7fd05a;box-shadow:0 0 0 4px rgba(127,208,90,.25)}
+.hint{margin-left:auto;font-size:13px;color:rgba(251,245,232,.6);display:flex;align-items:center;gap:8px}
+.hint svg{width:16px;height:16px;animation:nudge 1.6s 3 ease-in-out}
+@keyframes nudge{50%{transform:translateY(4px)}}
+.done .hint{opacity:0;transition:opacity .4s}
+
+/* ===== HERO B: Bänkli ===== */
+.heroB .shade{background:linear-gradient(180deg,#1E1914 0%,rgba(30,25,20,.7) 9%,rgba(30,25,20,0) 22%,rgba(30,25,20,0) 80%,rgba(30,25,20,.75) 92%,#211A13 100%),linear-gradient(90deg,rgba(20,16,11,.88) 0%,rgba(20,16,11,.6) 30%,rgba(20,16,11,0) 46%),linear-gradient(180deg,rgba(20,16,11,.55) 0%,rgba(20,16,11,0) 26%),linear-gradient(0deg,rgba(20,16,11,.6),rgba(20,16,11,0) 22%)}
+.bank{height:auto;min-height:0;aspect-ratio:16/9;max-height:min(100vh,900px);width:100%}
+.heroB .hero-in{justify-content:center;padding:60px 0}
+.heroB h2{font-size:clamp(40px,5.2vw,84px);font-weight:400}
+.heroB h2 em{font-style:normal;color:var(--gold2)}
+@media (max-aspect-ratio:3/4){.bank{aspect-ratio:auto;height:min(100svh,1100px);max-height:none}.bank .hero-in{justify-content:flex-start;padding-top:72px}.bank .shade{background:linear-gradient(180deg,#1E1914 0%,rgba(20,16,11,.85) 12%,rgba(20,16,11,.6) 34%,rgba(20,16,11,0) 50%,rgba(20,16,11,0) 84%,#211A13 100%)}}
+.heroB .hero-in .wrap>*{max-width:520px}
+.heroB p.lead{max-width:440px}
+@media (min-width:641px){.heroB .ph img{object-position:0% 50%}.fig[data-k="0"] .bub{left:20%;transform:translate(0,10px) scale(.8);transform-origin:10% 100%}.fig[data-k="0"].show .bub{transform:translate(0,0) scale(1)}.fig[data-k="0"] .bub:after{left:14%}}
+.figs{position:absolute;inset:0;z-index:2}
+.fig{position:absolute;width:9%;height:28%;transform:translate(-50%,-50%)}
+.bub{position:absolute;left:50%;bottom:100%;transform:translate(-50%,10px) scale(.8);transform-origin:50% 100%;width:max-content;max-width:250px;background:var(--milk);color:var(--ink);border-radius:18px;padding:12px 16px;font-size:15px;line-height:1.35;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
+.bub:after{content:"";position:absolute;left:50%;top:100%;margin-left:-9px;border:9px solid transparent;border-top-color:var(--milk)}
+.bub b{font-family:var(--f-goth);color:var(--red);font-size:18px;display:block;font-weight:700}
+.fig.show .bub{opacity:1;transform:translate(-50%,0) scale(1)}
+.fig .ring{position:absolute;inset:8% 14%;border-radius:40%;box-shadow:0 0 0 0 rgba(242,199,102,0);transition:box-shadow .25s}
+@media (hover:hover){.done .fig:hover .ring{box-shadow:0 0 0 3px rgba(242,199,102,.7),0 0 30px rgba(242,199,102,.35)}}
+
+/* ===== Sektionen allgemein ===== */
+section{position:relative}
+.sec{padding:clamp(28px,3.7vw,54px) 0}
+.fade-top:before{content:"";position:absolute;left:0;right:0;top:-80px;height:80px;pointer-events:none}
+.rv{opacity:0;transform:translateY(30px)}
+.rv.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+
+/* ===== Käse: Reife-Regler ===== */
+.kaese{background:linear-gradient(180deg,var(--cellar) 0,#221c15 100%);color:var(--milk)}
+.kaese:before{background:linear-gradient(180deg,rgba(27,23,18,0),var(--cellar))}
+.kaese .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 40px;margin-bottom:26px}
+.kaese .head p{max-width:30em;color:rgba(251,245,232,.72);margin:0}
+.kaese .kick{color:var(--gold2)}
+.stage{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.kpic{position:relative;aspect-ratio:4/3;max-height:min(48vh,470px);width:100%;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.4);cursor:zoom-in}
+.kpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s var(--ease),transform 1.2s var(--ease)}
+.kpic img.on{opacity:1;transform:none}
+@media (hover:hover){.kpic:hover img.on{transform:scale(1.03)}}
+.ktxt .num{font-family:var(--f-goth);font-size:20px;color:var(--gold2)}
+.ktxt h3{font-size:clamp(32px,3.3vw,48px);font-weight:850;margin:4px 0 6px}
+.ktxt .sub{color:rgba(251,245,232,.7);font-style:italic;font-family:var(--f-head);font-size:19px;margin:0 0 16px}
+.ktxt .taste{font-size:16.5px;color:rgba(251,245,232,.9);margin:0 0 16px;min-height:5.2em}
+.ktxt .taste b{color:var(--gold2);font-weight:700;display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;background:rgba(242,199,102,.14);color:var(--gold2);transition:background-color .2s,box-shadow .2s;cursor:default}
+@media (hover:hover){.tag:hover{background:rgba(242,199,102,.26);box-shadow:0 0 0 4px rgba(242,199,102,.12)}}
+.herbs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px;min-height:40px}
+.herb{height:38px;padding:0 14px;border-radius:999px;border:1.5px solid rgba(251,245,232,.28);font-size:14px;font-weight:600;transition:background-color .2s,border-color .2s,color .2s,box-shadow .2s}
+.herb.on{background:var(--green);border-color:var(--green2);color:#fff}
+@media (hover:hover){.herb:hover{border-color:var(--gold2);box-shadow:0 0 0 4px rgba(242,199,102,.14)}}
+/* Regler */
+.scale{margin-top:34px;position:relative;padding:0 6px;user-select:none;-webkit-user-select:none}
+.scale .ends{display:flex;justify-content:space-between;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(251,245,232,.6);margin-bottom:12px}
+.track{position:relative;height:64px;touch-action:pan-y;cursor:pointer}
+.track .bar{position:absolute;left:0;right:0;top:50%;height:10px;margin-top:-5px;border-radius:10px;background:linear-gradient(90deg,#f6e6b0,#ecc663 30%,#d69a2c 62%,#8a5a1d 85%,#3d2610)}
+.stops{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center}
+.stop{position:relative;width:22px;height:22px;border-radius:50%;background:var(--cellar);border:3px solid rgba(251,245,232,.6);transition:border-color .2s,transform .2s,box-shadow .2s}
+.stop span{position:absolute;top:30px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:13.5px;font-weight:600;color:rgba(251,245,232,.66);transition:color .2s}
+.stop:first-child span{left:-4px;transform:none}.stop:last-child span{left:auto;right:-4px;transform:none}
+.stop.on{border-color:var(--gold2)}
+.stop.on span{color:var(--gold2)}
+@media (hover:hover){.stop:hover{transform:scale(1.18);box-shadow:0 0 0 6px rgba(242,199,102,.18)}.stop:hover span{color:var(--milk)}}
+.harp{position:absolute;top:50%;left:0;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(242,199,102,.25),0 10px 24px rgba(0,0,0,.45);display:grid;place-items:center;cursor:grab;transition:box-shadow .2s;touch-action:none}
+.harp:active{cursor:grabbing}
+.harp svg{width:30px;height:30px}
+@media (hover:hover){.harp:hover{box-shadow:0 0 0 10px rgba(242,199,102,.3),0 10px 24px rgba(0,0,0,.45)}}
+.harp.anim{transition:left .55s var(--ease),box-shadow .2s}
+
+/* ===== Laden heute (Öffnungszeiten) ===== */
+.laden{background:var(--milk)}
+.laden-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(26px,4vw,60px);align-items:stretch}
+.status{display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px;margin:18px 0 6px}
+.status small{font-weight:500;color:var(--mute);font-size:15px}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:22px 0 14px}
+.day{position:relative;aspect-ratio:1/1.12;border-radius:16px;border:1.5px solid rgba(122,78,37,.22);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:700;transition:border-color .2s,box-shadow .2s,background-color .2s,color .2s;background:#fff}
+.day small{font-size:11px;font-weight:600;color:var(--mute)}
+.day.zu{background:transparent;color:#a99880}
+.day.zu small{color:#b9ab95}
+.day.sel{background:var(--rind2);border-color:var(--rind2);color:var(--milk)}
+.day.sel small{color:var(--gold2)}
+.day .today{position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:#fff;padding:2px 7px;border-radius:999px}
+@media (hover:hover){.day:hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(227,167,47,.18)}}
+.dayinfo{background:#fff;border-radius:18px;padding:18px 22px;border:1.5px solid rgba(122,78,37,.14);min-height:108px}
+.dayinfo h3{font-size:24px;font-weight:800;margin-bottom:8px}
+.slots{display:flex;flex-wrap:wrap;gap:10px}
+.slot{font-family:var(--f-head);font-size:26px;font-weight:800;padding:4px 14px;border-radius:12px;background:var(--milk2);transition:background-color .2s,box-shadow .2s}
+@media (hover:hover){.slot:hover{background:#f6dc98;box-shadow:0 0 0 4px rgba(227,167,47,.2)}}
+.dayinfo p{margin:6px 0 0;color:var(--mute);font-size:15px}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.btn-dark{background:var(--rind2);color:var(--milk)}
+@media (hover:hover){.btn-dark:hover{background:var(--rind);box-shadow:0 0 0 6px rgba(122,78,37,.2)}}
+.laden .btn-line{color:var(--rind2)}
+.mapbox{position:relative;border-radius:24px;overflow:hidden;min-height:420px;background:#e9e1cd;box-shadow:0 24px 50px rgba(74,46,22,.18)}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.25) saturate(.9)}
+.mapcard{position:absolute;left:16px;bottom:16px;right:16px;max-width:360px;background:var(--milk);border-radius:18px;padding:16px 18px;box-shadow:0 12px 30px rgba(0,0,0,.2);transition:box-shadow .2s,transform .2s}
+@media (hover:hover){.mapcard:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(0,0,0,.25)}}
+.mapcard b{font-family:var(--f-head);font-size:21px;display:block}
+.mapcard span{color:var(--mute);font-size:15px}
+.mapcard a{display:inline-block;margin-top:8px;font-weight:700;color:var(--red);text-decoration:none}
+
+/* ===== Medaillen ===== */
+.preise{background:linear-gradient(180deg,var(--milk) 0,var(--milk2) 100%)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:clamp(20px,3vw,40px);align-items:center}
+.medal{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;cursor:default;padding-top:80px}
+.disc{position:relative;width:min(220px,46vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;transform-origin:50% -30%;transition:transform .5s cubic-bezier(.3,1.5,.5,1),box-shadow .3s}
+.disc:before{content:"";position:absolute;left:50%;bottom:92%;width:54px;height:86px;margin-left:-27px;background:linear-gradient(90deg,var(--red) 0 33%,#fff 33% 66%,var(--red) 66%);clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);z-index:-1}
+.disc.g{background:radial-gradient(circle at 34% 28%,#fff3c4 0,#f4cd62 24%,#d79e22 62%,#a8730e 100%);box-shadow:inset 0 0 0 8px rgba(255,240,190,.5),inset 0 0 0 12px rgba(140,92,10,.4),0 20px 40px rgba(122,78,37,.35);color:#3c2a06}
+.disc.b{background:radial-gradient(circle at 34% 28%,#ffe2c4 0,#e0a36d 26%,#b06a35 62%,#7a4218 100%);box-shadow:inset 0 0 0 8px rgba(255,220,190,.45),inset 0 0 0 12px rgba(100,50,16,.4),0 20px 40px rgba(122,78,37,.35);color:#3a1b06}
+.disc .in{text-align:center}
+.disc small{display:block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.disc b{display:block;font-family:var(--f-head);font-size:58px;font-weight:900;line-height:.9;margin:4px 0}
+.medal.swing .disc{animation:swing 1.6s var(--ease) 1}
+@keyframes swing{0%{transform:rotate(0)}25%{transform:rotate(7deg)}55%{transform:rotate(-4deg)}80%{transform:rotate(1.5deg)}100%{transform:rotate(0)}}
+@media (hover:hover){.medal.ok:hover .disc{transform:rotate(-6deg) scale(1.04)}.medal.ok:hover .disc.g{box-shadow:inset 0 0 0 8px rgba(255,240,190,.6),inset 0 0 0 12px rgba(140,92,10,.4),0 0 0 12px rgba(242,199,102,.25),0 24px 46px rgba(122,78,37,.4)}.medal.ok:hover .disc.b{box-shadow:inset 0 0 0 8px rgba(255,220,190,.55),inset 0 0 0 12px rgba(100,50,16,.4),0 0 0 12px rgba(224,163,109,.25),0 24px 46px rgba(122,78,37,.4)}}
+.medal h3{font-size:24px;font-weight:800}
+.medal p{margin:0;color:var(--mute);font-size:15.5px;max-width:17em}
+.ptxt p{color:var(--mute);margin:16px 0 0}
+
+/* ===== Fondue-Rechner ===== */
+.fondue{background:var(--milk2);overflow:hidden}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,60px);align-items:center}
+.pot{position:relative;aspect-ratio:1;border-radius:50%;max-width:min(520px,66vh);width:100%;margin:0 auto}
+.pot .potimg{position:absolute;inset:9%;border-radius:50%;overflow:hidden;box-shadow:0 30px 60px rgba(74,46,22,.35)}
+.pot .potimg img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.pot .potimg img.on{opacity:1}
+.fork{position:absolute;left:50%;top:50%;width:6px;height:46%;margin-left:-3px;transform-origin:50% 0;pointer-events:none}
+.fork i{position:absolute;left:0;right:0;top:63%;bottom:0;border-radius:3px;background:linear-gradient(90deg,#7b5a3a,#b98a5b,#7b5a3a);transform:translateY(40px);opacity:0;transition:transform .45s cubic-bezier(.3,1.4,.5,1),opacity .3s}
+.fork i:before{content:"";position:absolute;left:50%;top:-6px;width:12px;height:10px;margin-left:-6px;border-radius:3px;background:var(--fc,#3c6e9e)}
+.fork.on i{transform:none;opacity:1}
+.calc .mode{display:inline-flex;background:#fff;border-radius:999px;padding:5px;gap:4px;margin:18px 0 22px;border:1.5px solid rgba(122,78,37,.15)}
+.calc .mode button{height:42px;padding:0 20px;border-radius:999px;font-weight:700;transition:background-color .2s,color .2s}
+.calc .mode button.on{background:var(--rind2);color:var(--milk)}
+@media (hover:hover){.calc .mode button:not(.on):hover{background:rgba(227,167,47,.18)}}
+.guests{display:flex;align-items:center;gap:16px}
+.guests button{width:54px;height:54px;border-radius:50%;background:#fff;border:1.5px solid rgba(122,78,37,.22);font-size:28px;font-weight:600;line-height:1;transition:background-color .2s,box-shadow .2s,border-color .2s}
+@media (hover:hover){.guests button:hover{border-color:var(--gold);box-shadow:0 0 0 5px rgba(227,167,47,.18);background:#fff8e6}}
+.guests button:active{transform:scale(.94)}
+.gnum{font-family:var(--f-head);font-size:52px;font-weight:900;min-width:2ch;text-align:center}
+.gl{font-size:15px;color:var(--mute)}
+.result{margin-top:22px;background:#fff;border-radius:20px;padding:18px 22px;border:1.5px solid rgba(122,78,37,.14)}
+.result .g{font-family:var(--f-head);font-size:clamp(44px,5vw,64px);font-weight:900;line-height:1;color:var(--rind2)}
+.result .g small{font-size:.45em;font-weight:700;color:var(--mute)}
+.result p{margin:8px 0 0;font-size:15px;color:var(--mute)}
+
+/* ===== Familie / Jahre ===== */
+.familie{background:var(--cellar);color:var(--milk)}
+.familie:before{background:linear-gradient(180deg,rgba(27,23,18,0),var(--cellar))}
+.famgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,4vw,60px);align-items:center}
+.famimg{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;max-height:min(72vh,620px);cursor:zoom-in}
+.famimg img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+@media (hover:hover){.famimg:hover img{transform:scale(1.04)}}
+.familie .kick{color:var(--gold2)}
+.familie p.intro{color:rgba(251,245,232,.78);max-width:34em}
+.shelf{margin-top:26px;display:grid;gap:14px}
+.plank{position:relative;display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;padding:12px 16px 16px;border-radius:14px;transition:background-color .25s}
+.plank:after{content:"";position:absolute;left:0;right:0;bottom:0;height:7px;border-radius:4px;background:linear-gradient(180deg,#8a6438,#5b3d1d);box-shadow:0 6px 10px rgba(0,0,0,.35)}
+.plank .yr{font-family:var(--f-goth);font-size:36px;color:var(--gold2);line-height:1}
+.plank p{margin:0;color:rgba(251,245,232,.86);font-size:16px}
+.plank p b{color:var(--milk)}
+@media (hover:hover){.plank:hover{background:rgba(242,199,102,.08)}}
+
+/* ===== Stimmen ===== */
+.stimmen{background:var(--milk)}
+.sthead{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:28px}
+.score{display:flex;align-items:center;gap:14px}
+.score b{font-family:var(--f-head);font-size:64px;font-weight:900;line-height:1}
+.stars{color:var(--gold);font-size:22px;letter-spacing:2px}
+.score small{display:block;color:var(--mute);font-size:14px}
+.rail-wrap{position:relative}
+.rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 4px 24px;overscroll-behavior-x:contain}
+.rail::-webkit-scrollbar{display:none}
+.card{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;background:#fff;border-radius:6px 6px 22px 22px;padding:26px 24px 22px;position:relative;box-shadow:0 14px 30px rgba(74,46,22,.1);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:before{content:"";position:absolute;left:0;right:0;top:0;height:8px;border-radius:6px 6px 0 0;background:repeating-linear-gradient(90deg,var(--red) 0 14px,#fff 14px 28px)}
+@media (hover:hover){.card:hover{transform:translateY(-5px);box-shadow:0 0 0 4px rgba(227,167,47,.18),0 22px 40px rgba(74,46,22,.16)}}
+.card q{font-family:var(--f-head);font-size:20px;line-height:1.35;font-weight:500;quotes:"«" "»";flex:1}
+.card .who{margin-top:16px;font-size:14px;color:var(--mute);display:flex;justify-content:space-between;gap:10px}
+.card .who b{color:var(--ink)}
+.card .st{color:var(--gold);letter-spacing:1px}
+.arr{position:absolute;top:50%;transform:translateY(-60%);width:52px;height:52px;border-radius:50%;background:var(--rind2);color:var(--milk);display:grid;place-items:center;z-index:2;transition:background-color .2s,box-shadow .2s,opacity .2s;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.arr svg{width:22px;height:22px}
+.rail-wrap{padding:0 70px}.arr.l{left:0}.arr.r{right:0}
+.arr[disabled]{opacity:.25;cursor:default}
+@media (hover:hover){.arr:not([disabled]):hover{background:var(--rind);box-shadow:0 0 0 6px rgba(122,78,37,.2)}}
+.dots{display:none;justify-content:center;gap:8px}
+.dots i{width:8px;height:8px;border-radius:50%;background:rgba(122,78,37,.25);transition:background-color .2s,width .2s}
+.dots i.on{background:var(--rind2);width:22px;border-radius:5px}
+
+/* ===== Hügel / Schluss ===== */
+.weg{position:relative;min-height:min(78vh,640px);color:var(--milk);display:flex;align-items:flex-end;overflow:hidden;background:var(--cellar)}
+.weg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.weg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--milk) 0,rgba(251,245,232,0) 18%,rgba(20,16,11,0) 40%,rgba(20,16,11,.82) 100%)}
+.weg .wrap{position:relative;z-index:2;padding:0 0 clamp(40px,6vw,72px)}
+.weg h2{max-width:14em}
+.weg p{max-width:34em;color:rgba(251,245,232,.88)}
+.weg .btn-line{color:var(--milk)}
+footer{background:#120f0b;color:rgba(251,245,232,.62);font-size:14px;padding:24px 0 calc(24px + env(safe-area-inset-bottom))}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between}
+footer a{text-decoration:none}
+@media (hover:hover){footer a:hover{color:var(--gold2)}}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(10,8,6,.94);display:none;align-items:center;justify-content:center;touch-action:pinch-zoom}
+.lb.open{display:flex}
+.lb img{max-width:96vw;max-height:92vh;object-fit:contain;border-radius:8px}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;width:48px;height:48px;border-radius:50%;background:rgba(251,245,232,.14);color:#fff;font-size:26px}
+
+/* ===== Tablet / Telefon ===== */
+@media (max-width:1020px){
+  .stage,.laden-grid,.fgrid,.famgrid{grid-template-columns:1fr}
+  .kaese .wrap{display:flex;flex-direction:column}.stage{display:contents}.kpic{order:2;max-height:none}.kaese .scale{order:3;margin-top:22px}.ktxt{order:4;margin-top:22px}.kaese .head{order:1}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .pgrid .ptxt{grid-column:1/-1;order:-1}
+  .card{flex-basis:calc((100% - 20px)/2)}
+  .famimg{aspect-ratio:16/10;max-height:none}
+  .pot{max-width:420px}
+  .rail-wrap{padding:0 62px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 36px)}
+  .hero{min-height:560px}
+  .hero-in{padding-bottom:150px;justify-content:flex-end}
+  .heroA .shade{background:linear-gradient(180deg,rgba(20,16,11,.9) 0%,rgba(20,16,11,.78) 40%,rgba(20,16,11,.1) 62%,rgba(20,16,11,0) 80%,rgba(20,16,11,.55) 100%)}
+  .heroA .hero-in{justify-content:flex-start;padding-top:calc(var(--hdr) + var(--bar0,0px) + 14px)}
+  .heroA h1{font-size:40px;max-width:8em}
+  .heroA p.lead{font-size:15.5px;margin:14px 0 18px;max-width:22em}
+  .heroA .seal{top:auto;bottom:118px;right:18px}
+  .heroA .btn{height:46px;padding:0 18px;font-size:15px}
+  .seal{width:100px;height:100px;top:calc(var(--hdr) + var(--bar0,0px) + 12px)}
+  .seal b{font-size:26px}.seal small{font-size:9px}.seal i{font-size:9.5px}
+  .hero-bar .wrap{gap:4px 18px;font-size:14px;min-height:0;padding:12px 0}
+  .hint{display:none}
+  .ktxt .taste{min-height:0}
+  .stop span{font-size:11.5px}
+  .stop:nth-child(odd) span{top:-28px}
+  .scale .ends{margin-bottom:30px}
+  .days{gap:5px}
+  .day{border-radius:12px;font-size:14px}
+  .day small{font-size:9.5px}
+  .mapbox{min-height:360px}
+  .pgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+  .disc{width:min(170px,40vw)}
+  .medal h3{hyphens:auto;-webkit-hyphens:auto}
+  .disc b{font-size:40px}
+  .disc:before{width:40px;height:60px;margin-left:-20px}
+  .medal{padding-top:56px}
+  .medal h3{font-size:19px}.medal p{font-size:14px}
+  .card{flex-basis:86%}
+  .arr{display:none}
+  .rail-wrap{padding:0}
+  .dots{display:flex}
+  .plank{grid-template-columns:70px 1fr;gap:12px;padding:10px 6px 14px}
+  .plank .yr{font-size:28px}
+  .fig{width:22%;height:17%}
+  .bank{aspect-ratio:auto;height:100svh;max-height:none;min-height:640px}
+  .heroB .shade{background:linear-gradient(180deg,#1E1914 0%,rgba(20,16,11,.85) 12%,rgba(20,16,11,.7) 38%,rgba(20,16,11,0) 54%,rgba(20,16,11,0) 84%,#211A13 100%)}
+  .heroB .hero-in{justify-content:flex-start;padding-top:64px}
+  .heroB h2{font-size:38px}
+  .heroB p.lead{font-size:15.5px;margin:12px 0 16px}
+  .heroB .btn{height:46px;padding:0 18px;font-size:15px}
+  .bub{max-width:170px;font-size:13px;padding:9px 12px}
+  .fig[data-k="0"] .bub{left:0;transform:translate(0,10px) scale(.8);transform-origin:20% 100%}.fig[data-k="0"].show .bub{transform:translate(0,0) scale(1)}.fig[data-k="0"] .bub:after{left:22%}
+  .fig[data-k="2"] .bub{left:auto;right:0;transform:translate(0,10px) scale(.8);transform-origin:80% 100%}.fig[data-k="2"].show .bub{transform:translate(0,0) scale(1)}.fig[data-k="2"] .bub:after{left:78%}
+  .bub b{font-size:15px}
+}
+@media (min-width:1021px) and (max-height:800px){
+  .sec{padding:40px 0}
+  h2{font-size:clamp(32px,3.6vw,50px)}
+  .kaese .head{margin-bottom:16px}.scale{margin-top:18px}
+  .kpic{max-height:42vh}
+  .ktxt .taste{min-height:0}
+  .shelf{margin-top:14px;gap:8px}.plank{padding:8px 14px 12px}
+  .calc .mode{margin:12px 0 14px}.result{margin-top:14px;padding:12px 18px}
+  .days{margin:14px 0 10px}
+}
+
+/* ===== Regel 18h: eine Atmosphäre (warmer Keller), kein Hell/Dunkel-Wechsel ===== */
+body{background:linear-gradient(180deg,#1B1712 0%,#211A13 22%,#2A2017 48%,#251C14 74%,#1B1712 100%);color:var(--milk);--mute:rgba(251,245,232,.66)}
+.kaese,.laden,.preise,.fondue,.familie,.stimmen{background:transparent;color:var(--milk)}
+.fade-top:before{display:none}
+.kick{color:var(--gold2)}
+.day{background:rgba(251,245,232,.05);border-color:rgba(242,199,102,.18);color:var(--milk)}
+.day.zu{background:transparent;color:rgba(251,245,232,.35)}.day.zu small{color:rgba(251,245,232,.3)}
+.day.sel{background:var(--gold);border-color:var(--gold);color:var(--cellar)}.day.sel small{color:#4a3208}
+.dayinfo,.result{background:rgba(251,245,232,.05);border-color:rgba(242,199,102,.16)}
+.slot{background:rgba(242,199,102,.14);color:var(--gold2)}
+@media (hover:hover){.slot:hover{background:rgba(242,199,102,.26);box-shadow:0 0 0 4px rgba(242,199,102,.14)}}
+.btn-dark{background:var(--gold);color:var(--cellar)}
+@media (hover:hover){.btn-dark:hover{background:var(--gold2);box-shadow:0 0 0 6px rgba(242,199,102,.25)}}
+.laden .btn-line{color:var(--milk)}
+.mapbox{box-shadow:0 24px 50px rgba(0,0,0,.4)}
+.mapbox iframe{filter:sepia(.35) saturate(.85) brightness(.92)}
+.mapcard{background:#2A2017;color:var(--milk)}
+.mapcard a{color:var(--gold2)}
+.disc.g,.disc.b{box-shadow:inset 0 0 0 8px rgba(255,240,190,.45),inset 0 0 0 12px rgba(100,60,10,.4),0 20px 44px rgba(0,0,0,.5)}
+.calc .mode{background:rgba(251,245,232,.06);border-color:rgba(242,199,102,.18)}
+.calc .mode button.on{background:var(--gold);color:var(--cellar)}
+.guests button{background:rgba(251,245,232,.06);border-color:rgba(242,199,102,.25);color:var(--milk)}
+@media (hover:hover){.guests button:hover{background:rgba(242,199,102,.16);border-color:var(--gold2)}}
+.result .g{color:var(--gold2)}
+.pot .potimg{box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.card{background:#F6EEDC;color:var(--ink)}
+.card .who{color:#7a6a55}
+.arr{background:var(--gold);color:var(--cellar)}
+@media (hover:hover){.arr:not([disabled]):hover{background:var(--gold2);box-shadow:0 0 0 6px rgba(242,199,102,.25)}}
+.dots i{background:rgba(251,245,232,.25)}.dots i.on{background:var(--gold2)}
+.weg{background:transparent}
+.weg:after{background:linear-gradient(180deg,#1B1712 0,rgba(27,23,18,0) 26%,rgba(20,16,11,0) 45%,rgba(20,16,11,.85) 100%)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="entwurf" id="entwurf"><b>Website-Entwurf von Julia &amp; Robin Mirku</b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>Käserei Kreuzstrasse</b><span>Degersheim · Familie Jud</span></a>
+    <nav class="nav"><a href="#kaese">Unsere Käse</a><a href="#laden">Laden</a><a href="#fondue">Fondue</a><a href="#familie">Familie Jud</a><a href="#stimmen">Stimmen</a></nav>
+    <a class="btn btn-gold" href="tel:+41713711116" aria-label="Anrufen 071 371 11 16"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="t">071 371 11 16</span></a>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO A: Anschnitt -->
+<section class="hero heroA" id="heroA">
+  <div class="ph whole"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_laib_m.webp"><img src="img/keller_laib_l.webp" alt="Käsekeller mit Käselaiben auf Holzbrettern"></picture></div>
+  <div class="ph cut"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_anschnitt_m.webp"><img src="img/keller_anschnitt_l.webp" alt="Angeschnittener Käselaib im Keller"></picture></div>
+  <div class="wire" id="wire"></div>
+  <div class="shade"></div>
+  <a class="seal" href="#preise" aria-label="Goldmedaille Swiss Cheese Award 2008"><span><small>Gold</small><b>2008</b><i>Swiss Cheese<br>Award</i></span></a>
+  <div class="hero-in"><div class="wrap">
+    <span class="kick h-line">Seit 2006 · Familie Jud</span>
+    <h1 class="h-line d1">Käse aus Degersheim, <em>frisch vom Keller</em></h1>
+    <p class="lead h-line d2">Stefan und Franziska Jud machen ihren Käse selbst – vom würzigen Appenzeller bis zur hausgemachten Fondue-Mischung. Zu kaufen im kleinen Chäsilädeli direkt in der Käserei.</p>
+    <div class="ctas h-line d3"><a class="btn btn-gold" href="#kaese">Unsere Käse</a><a class="btn btn-line" href="#laden">Öffnungszeiten &amp; Weg</a></div>
+  </div></div>
+  <div class="hero-bar"><div class="wrap">
+    <span class="js-status"><span class="dot"></span>…</span>
+    <a href="https://maps.google.com/?q=K%C3%A4serei+Kreuzstrasse,+Chr%C3%BCzstrasse+781,+9113+Degersheim" target="_blank" rel="noopener">Chrüzstrasse 781, 9113 Degersheim</a>
+    <a href="tel:+41713711116">071 371 11 16</a>
+    <span class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Scrollen – wir schneiden an</span>
+  </div></div>
+</section>
+
+
+<!-- KÄSE -->
+<section class="kaese sec fade-top" id="kaese">
+  <div class="wrap">
+    <div class="head rv">
+      <div><span class="kick">Aus dem eigenen Käsekeller</span><h2>Wie kräftig darf’s sein?</h2></div>
+      <p>8 Käse machen wir das ganze Jahr, dazu saisonale Spezialitäten. Ziehen Sie die Käseharfe – von jung &amp; mild bis extra reif.</p>
+    </div>
+    <div class="stage rv">
+      <div class="kpic" id="kpic" role="button" tabindex="0" aria-label="Foto gross anzeigen"></div>
+      <div class="ktxt">
+        <span class="num" id="knum"></span>
+        <h3 id="kname"></h3>
+        <p class="sub" id="ksub"></p>
+        <div class="herbs" id="herbs"></div>
+        <p class="taste" id="ktaste"></p>
+        <span class="tag" id="ktag"></span>
+      </div>
+    </div>
+    <div class="scale rv">
+      <div class="ends"><span>jung &amp; mild</span><span>extra reif</span></div>
+      <div class="track" id="track"><div class="bar"></div><div class="stops" id="stops"></div>
+        <div class="harp" id="harp" role="slider" tabindex="0" aria-label="Reife wählen" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><svg viewBox="0 0 32 32" fill="none" stroke="#2a1a08" stroke-width="2.2" stroke-linecap="round"><path d="M7 5v22M25 5v22M7 5h18M7 27h18"/><path d="M12 5v22M16 5v22M20 5v22" stroke-width="1.2"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHÄSILÄDELI: Bänkli (früher Hero B) -->
+<section class="hero heroB bank" id="laedeli">
+  <div class="ph"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/bank_appenzeller_m.webp"><img src="img/bank_appenzeller_l.webp" alt="Drei Holzfiguren in Appenzeller Tracht auf der Bank vor der Käserei" loading="lazy"></picture></div>
+  <div class="shade"></div>
+  <div class="figs" id="figs">
+    <button class="fig" data-k="0" aria-label="Wann offen?"><span class="ring"></span><span class="bub"><b>Offen?</b>Mittwoch bis Samstag ab acht – unter der Woche auch abends ab fünf.</span></button>
+    <button class="fig" data-k="1" aria-label="Goldmedaille"><span class="ring"></span><span class="bub"><b>Gold!</b>Unser Appenzeller hat 2008 Gold geholt.</span></button>
+    <button class="fig" data-k="2" aria-label="Einladung"><span class="ring"></span><span class="bub"><b>Grüezi!</b>Chömed verbii – probiere isch erlaubt!</span></button>
+  </div>
+  <div class="hero-in"><div class="wrap">
+    <span class="kick h-line">Direkt in der Käserei</span>
+    <h2 class="h-line d1">Grüezi im <em>Chäsilädeli</em></h2>
+    <p class="lead h-line d2">Hier wird der Käse gemacht, gereift und verkauft. Und die drei auf dem Bänkli wissen Bescheid.</p>
+    <div class="ctas h-line d3"><a class="btn btn-gold" href="#laden">Heute offen?</a></div>
+  </div></div>
+</section>
+
+<!-- LADEN -->
+<section class="laden sec" id="laden">
+  <div class="wrap laden-grid">
+    <div class="rv">
+      <span class="kick">Öffnungszeiten</span>
+      <h2>Heute offen?</h2>
+      <div class="status js-status2"></div>
+      <div class="days" id="days"></div>
+      <div class="dayinfo" id="dayinfo"></div>
+      <div class="contact-row">
+        <a class="btn btn-dark" href="tel:+41713711116"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>071 371 11 16</a>
+        <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener">Route planen</a>
+      </div>
+    </div>
+    <div class="mapbox rv">
+      <iframe title="Karte Käserei Kreuzstrasse" loading="lazy" src="https://maps.google.com/maps?q=47.391402,9.194627&z=15&hl=de&output=embed"></iframe>
+      <div class="mapcard"><b>Käserei Kreuzstrasse</b><span>Chrüzstrasse 781 · 9113 Degersheim</span><br><a href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener">Wegbeschreibung →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDAILLEN -->
+<section class="preise sec" id="preise">
+  <div class="wrap pgrid">
+    <div class="medal rv" data-swing><div class="disc g"><div class="in"><small>Gold</small><b>2008</b><small>Appenzeller</small></div></div><h3>Swiss Cheese Award</h3><p>Goldmedaille für unseren Appenzeller Käse</p></div>
+    <div class="medal rv" data-swing><div class="disc b"><div class="in"><small>Bronze</small><b>2010</b><small>World Champ.</small></div></div><h3>World Championship Cheese Contest</h3><p>Bronzemedaille 2010</p></div>
+    <div class="ptxt rv"><span class="kick">Ausgezeichnet</span><h2>Gold und Bronze für unseren Käse</h2><p>Gemacht in unserer Käserei an der Chrüzstrasse in Degersheim – und gereift im eigenen Käsekeller.</p></div>
+  </div>
+</section>
+
+<!-- FONDUE -->
+<section class="fondue sec" id="fondue">
+  <div class="wrap fgrid">
+    <div class="pot rv" id="pot"><div class="potimg" role="button" tabindex="0" aria-label="Foto gross anzeigen" style="cursor:zoom-in"><img id="pimgF" class="on" src="img/fondue_1x1.webp" alt="Fondue im Caquelon"><img id="pimgR" src="img/raclette_1x1.webp" alt="Raclette"></div></div>
+    <div class="calc rv">
+      <span class="kick">Hausgemachte Mischung</span>
+      <h2>Wie viel Käse für Ihre Runde?</h2>
+      <div class="mode" role="tablist"><button class="on" data-m="f" role="tab">Fondue</button><button data-m="r" role="tab">Raclette</button></div>
+      <div class="guests"><button id="minus" aria-label="Eine Person weniger">−</button><span class="gnum" id="gnum">4</span><button id="plus" aria-label="Eine Person mehr">+</button><span class="gl">Personen<br>am Tisch</span></div>
+      <div class="result"><div class="g" id="gres">800 <small>g</small></div><p id="gtxt"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILIE -->
+<section class="familie sec fade-top" id="familie">
+  <div class="wrap famgrid">
+    <div class="famimg rv" data-lb="img/kaeser_haende_l.webp"><img src="img/kaeser_haende_m.webp" alt="Hände des Käsers wenden einen jungen Käselaib"></div>
+    <div class="rv">
+      <span class="kick">Familie Jud</span>
+      <h2>In langer Familientradition</h2>
+      <p class="intro">Stefan und Franziska Jud führen die Käserei Kreuzstrasse in alter Tradition weiter – und erweitern das Angebot laufend mit neuen Ideen und Produkten.</p>
+      <div class="shelf">
+        <div class="plank"><span class="yr">2006</span><p><b>1. November:</b> Stefan und Franziska Jud-Weber übernehmen die Käserei Kreuzstrasse.</p></div>
+        <div class="plank"><span class="yr">2008</span><p><b>Gold</b> am Swiss Cheese Award für den Appenzeller. Im September öffnet das Käsilädeli direkt in der Käserei.</p></div>
+        <div class="plank"><span class="yr">2010</span><p><b>Bronze</b> am World Championship Cheese Contest.</p></div>
+        <div class="plank"><span class="yr">Heute</span><p><b>8 Käsespezialitäten</b> und saisonale Sorten – alle aus der eigenen Käserei.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STIMMEN -->
+<section class="stimmen sec" id="stimmen">
+  <div class="wrap">
+    <div class="sthead rv">
+      <div><span class="kick">Das sagen unsere Kunden</span><h2>Immer wieder die Fahrt wert</h2></div>
+      <div class="score"><b>4,8</b><div><span class="stars">★★★★★</span><small>24 Bewertungen auf Google</small></div></div>
+    </div>
+    <div class="rail-wrap rv">
+      <button class="arr l" id="al" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="rail" id="rail">
+        <article class="card"><q>Sehr feine und gute Produkte zu fairen Preisen und für mich immer wieder die Fahrt dort hin wert. Beste Beratung für alles rund um Käse und Milchprodukte.</q><div class="who"><b>Tamara L.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Der Käse ist stets ausgesprochen lecker – durfte sogar ein wenig degustieren, denn bei diesem feinen Sortiment kann man nur sagen: wer die Wahl hat, hat die Qual!</q><div class="who"><b>Regina B.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Hammer Käse, sehr gute Qualität und sehr schmackhaft. Sehr zu empfehlen!</q><div class="who"><b>Ralph G.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Auch der persönliche Schwatz neben dem Einkauf war immer sehr wertvoll und ist so nicht mehr oft zu finden.</q><div class="who"><b>Tamara L.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Leckere Käsesorten. Sehr freundlicher Service. Sie können Käse vor Ort probieren.</q><div class="who"><b>cibor c.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Sehr freundliche und kompetente Bedienung, sehr leckere Käse, gute Preise und sehr gute Qualität. Empfehlenswert – gerne wieder 🧀</q><div class="who"><b>cuisine adel</b><span class="st">★★★★★</span></div></article>
+      </div>
+      <button class="arr r" id="ar" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" id="dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WEG -->
+<section class="weg" id="weg">
+  <picture><source media="(max-aspect-ratio:3/4)" srcset="img/huegel_m.webp"><img src="img/huegel_l.webp" alt="Hügel bei Degersheim am Morgen"></picture>
+  <div class="wrap">
+    <span class="kick" style="color:var(--gold2)">Luftkurort Degersheim</span>
+    <h2>Kommen Sie vorbei – probieren ist erlaubt</h2>
+    <p>Wir freuen uns, Sie in unserem kleinen Chäsilädeli begrüssen zu dürfen.</p>
+    <div class="ctas" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px"><a class="btn btn-gold" href="tel:+41713711116">Anrufen</a><a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener">Route planen</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span>Käserei Kreuzstrasse · Stefan &amp; Franziska Jud · Chrüzstrasse 781 · 9113 Degersheim</span><a href="tel:+41713711116">071 371 11 16</a><span>Website-Entwurf · nur zur Ansicht</span></div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true"><img alt=""><button aria-label="Schliessen">×</button></div>
+
+<script>
+(()=>{
+const html=document.documentElement, Q=s=>document.querySelector(s), QA=s=>[...document.querySelectorAll(s)];
+const params=new URLSearchParams(location.search);
+const heroEl=Q('#heroA');
+QA('img').forEach(i=>{ const h=()=>{i.style.visibility='hidden'}; if(i.complete&&!i.naturalWidth&&i.getAttribute('src')) h(); i.addEventListener('error',h); });
+
+/* --- Entwurf-Leiste (Regel 22) --- */
+const bar=Q('#entwurf'), hdr=Q('#hdr');
+const size=()=>{const h=bar.offsetHeight; html.style.setProperty('--bar0',h+'px'); if(!html.classList.contains('bar-off')) html.style.setProperty('--bar',h+'px');};
+size(); addEventListener('resize',size);
+const barOff=()=>{ if(html.classList.contains('bar-off')) return; html.classList.add('bar-off'); html.style.setProperty('--bar','0px'); };
+const onScroll=()=>{ const y=scrollY; if(y>8) barOff(); hdr.classList.toggle('solid', y>innerHeight*.6); };
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+/* --- Öffnungszeiten (Google, 24.11.2026) --- */
+const HOURS={1:[],2:[],3:[[480,720],[1020,1110]],4:[[480,720],[1020,1110]],5:[[480,720],[1020,1110]],6:[[480,720]],0:[]};
+const NAMES=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'], SH=['So','Mo','Di','Mi','Do','Fr','Sa'];
+const fmt=m=>Math.floor(m/60)+(m%60?'.'+String(m%60).padStart(2,'0'):'');
+const zh=()=>{const p=new Intl.DateTimeFormat('de-CH',{timeZone:'Europe/Zurich',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+  const wd={'So':0,'Mo':1,'Di':2,'Mi':3,'Do':4,'Fr':5,'Sa':6}; const g=t=>p.find(x=>x.type===t).value;
+  return {d:wd[g('weekday').replace('.','').slice(0,2)], m:(+g('hour')%24)*60+(+g('minute'))};};
+function state(){
+  const {d,m}=zh(); const sl=HOURS[d];
+  for(const [a,b] of sl){ if(m>=a&&m<b){ const left=b-m; return {open:true,txt:'Jetzt offen',sub:'bis '+fmt(b)+' Uhr'+(left<=60?' – noch '+left+' Min.':'')}; } }
+  for(const [a] of sl){ if(m<a) return {open:false,txt:'Jetzt geschlossen',sub:'heute wieder ab '+fmt(a)+' Uhr'}; }
+  for(let i=1;i<=7;i++){ const dd=(d+i)%7; if(HOURS[dd].length) return {open:false,txt:'Jetzt geschlossen',sub:(i===1?'morgen':NAMES[dd])+' ab '+fmt(HOURS[dd][0][0])+' Uhr'}; }
+}
+function paintStatus(){ const s=state();
+  QA('.js-status').forEach(e=>e.innerHTML='<span class="dot'+(s.open?' on':'')+'"></span>'+s.txt+' · '+s.sub);
+  Q('.js-status2').innerHTML='<span class="dot'+(s.open?' on':'')+'"></span>'+s.txt+' <small>'+s.sub+'</small>'; }
+const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
+[1,2,3,4,5,6,0].forEach(d=>{ const b=document.createElement('button'); const zu=!HOURS[d].length;
+  b.className='day'+(zu?' zu':''); b.dataset.d=d;
+  b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+SH[d]+'<small>'+(zu?'zu':fmt(HOURS[d][0][0])+'–'+fmt(HOURS[d][HOURS[d].length-1][1]))+'</small>';
+  b.addEventListener('click',()=>sel(d)); daysEl.appendChild(b); });
+function sel(d){ QA('.day').forEach(x=>x.classList.toggle('sel',+x.dataset.d===d)); const sl=HOURS[d];
+  info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<div class="slots">'+sl.map(([a,b])=>'<span class="slot">'+fmt(a)+'–'+fmt(b)+'</span>').join('')+'</div><p>'+(sl.length>1?'Mittags geschlossen.':'Nachmittags geschlossen.')+'</p>':'<p style="margin:0;font-size:17px">Heute ist der Laden geschlossen. '+(()=>{for(let i=1;i<=7;i++){const dd=(d+i)%7;if(HOURS[dd].length)return 'Nächster Verkauf: '+NAMES[dd]+' ab '+fmt(HOURS[dd][0][0])+' Uhr.';}})()+'</p>'); }
+sel(today); paintStatus(); setInterval(paintStatus,30000);
+
+/* --- Hero A: Anschnitt (einmal; Seite steht nur während des Schnitts) --- */
+const ready=()=>heroEl.classList.add('ready');
+{
+  const cut=Q('#heroA .ph.cut'), wire=Q('#wire'); let played=false, lock=false, pend=0;
+  const play=()=>{ if(played) return; played=true; lock=true; const t0=performance.now(), D=850; pend=0;
+    const h=heroEl.offsetHeight;
+    const step=t=>{ let p=Math.min(1,(t-t0)/D); const e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+      cut.style.clipPath='inset(0 0 '+(100-e*100)+'% 0)'; wire.style.opacity=p<.96?1:0; wire.style.transform='translateY('+(e*h)+'px)';
+      if(p<1) requestAnimationFrame(step); else { lock=false; heroEl.classList.add('done'); if(pend>2) Q('#kaese').scrollIntoView({behavior:'smooth'}); } };
+    requestAnimationFrame(step); };
+  const block=e=>{ if(!played && scrollY<40){ if(e.cancelable) e.preventDefault(); play(); } else if(lock){ pend++; if(e.cancelable) e.preventDefault(); } };
+  addEventListener('wheel',e=>{ if(e.deltaY>0) block(e); },{passive:false});
+  let ty=0; addEventListener('touchstart',e=>{ty=e.touches[0].clientY},{passive:true});
+  addEventListener('touchmove',e=>{ if(ty-e.touches[0].clientY>4) block(e); },{passive:false});
+  addEventListener('keydown',e=>{ if(['ArrowDown','PageDown',' '].includes(e.key)) block(e); });
+  setTimeout(ready,150); setTimeout(play,2600);
+}
+/* --- Chäsilädeli: Sprechblasen einmal nacheinander, wenn der Block sichtbar wird; danach Hover/Tap --- */
+{
+  const bank=Q('#laedeli');
+  const FIG={l:{ar:16/9,p:[[.415,.71],[.605,.71],[.79,.71]]}, m:{ar:9/16,p:[[.20,.70],[.50,.70],[.83,.68]]}};
+  const figs=QA('.fig'), ph=Q('#laedeli .ph');
+  const place=()=>{ const W=ph.offsetWidth,H=ph.offsetHeight; const F=(W/H<=.75)?FIG.m:FIG.l; const left=(F===FIG.l&&W>640); const sc=Math.max(W/(F.ar),H)/H; const iw=H*sc*F.ar, ih=H*sc;
+    figs.forEach((f,i)=>{ const x=(left?0:(W-iw)/2)+F.p[i][0]*iw, y=(H-ih)/2+F.p[i][1]*ih; f.style.left=x+'px'; f.style.top=y+'px'; }); };
+  place(); addEventListener('resize',place);
+  let started=false;
+  const run=()=>{ if(started) return; started=true; bank.classList.add('ready');
+    figs.forEach((f,i)=>setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },700+i*1700));
+    setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); bank.classList.add('done');
+      figs.forEach(f=>{ f.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches){ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); } });
+        f.addEventListener('mouseleave',()=>{ if(matchMedia('(hover:hover)').matches) f.classList.remove('show'); });
+        f.addEventListener('click',()=>{ const on=f.classList.contains('show'); figs.forEach(x=>x.classList.remove('show')); if(!on) f.classList.add('show'); }); }); },700+3*1700+300); };
+  new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ run(); o.disconnect(); } }),{threshold:.45}).observe(bank);
+}
+
+/* --- Reveal --- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);
+  if(e.target.hasAttribute('data-swing')){ const t=e.target; setTimeout(()=>{t.classList.add('swing'); setTimeout(()=>{t.classList.remove('swing'); t.classList.add('ok');},1650);},500);} } }),{threshold:.18});
+QA('.rv').forEach(e=>io.observe(e));
+
+/* --- Käse / Reife-Regler (Texte von kaeserei-kreuzstrasse.ch, Archiv 2025) --- */
+const K=[
+ {n:'Wolfensberg-Mutschli',s:'Symphonie aus frischer Milch, klarer Luft und Käsermeisterkunst',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer',tag:'5 Sorten',img:'mutschli_kraeuter',
+  herbs:[['Nature','Symphonie aus frischer Milch, klarer Luft und Käsermeisterkunst.'],['Basilikum','Kombiniert mit dem Aroma des Basilikums, der einen sehr eigenwilligen pfeffrig-süssen Geschmack mit einem Hauch Gewürznelken aufweist.'],['Thymian','Kombiniert mit dem Geschmack des Thymians, der stark würzig riecht und herb-aromatisch schmeckt, mit einer milden, pfeffrigen Schärfe.'],['Bärlauch','Vereint mit dem Geschmack des Bärlauchs, dessen ätherisches Öl das charakteristische knoblauchähnliche Aroma entfaltet.'],['Orangenblüten','Kombiniert mit dem zartblumigen Geschmack der Orangenblüte und einer leichten Zitrusnote.']]},
+ {n:'Magdenauer Klosterkäse',s:'Rahmkäse nach altem Rezept der Klosterkäserei',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer, sauber im Abgang',tag:'Rahmkäse',img:'magdenauer'},
+ {n:'Roter Pfeffer Käse',s:'Frische Milch, klare Luft, Käsermeisterkunst und die blumige Schärfe des Pfeffers',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer – mit der blumigen Schärfe des roten Pfeffers',tag:'mit rotem Pfeffer',img:'roter_pfeffer'},
+ {n:'Appenzeller',s:'Würzig – unser ausgezeichneter Klassiker',t:'Vom würzigen Appenzeller bis zum milden Wolfensberger: bei uns finden Sie alles, was das Käseherz begehrt.',tag:'★ Gold · Swiss Cheese Award 2008',img:'appenzeller_stueck'},
+ {n:'Schwarzer Wolf',s:'Wolfensberg Chäs extra reif – Vollmilchkäse aus dem Luftkurort Degersheim',t:'zeichnet sich aus durch sein würzig-fruchtiges Aroma, brennt nicht auf der Zunge, cremig',tag:'extra reif',img:'schwarzer_wolf'}
+];
+const kpic=Q('#kpic'), stops=Q('#stops'), harp=Q('#harp'), track=Q('#track'); let cur=-1, herbI=0;
+K.forEach((k,i)=>{ const im=document.createElement('img'); im.src='img/'+k.img+'_k.webp'; im.alt=k.n; im.loading='lazy'; kpic.appendChild(im);
+  const s=document.createElement('button'); s.className='stop'; s.setAttribute('aria-label',k.n); s.innerHTML='<span>'+k.n.replace('Wolfensberg-','').replace(' Klosterkäse','').replace(' Käse','')+'</span>'; s.addEventListener('click',e=>{e.stopPropagation(); go(i,true);}); stops.appendChild(s); });
+const pos=i=>{ const r=track.getBoundingClientRect(); const pad=11; return pad+(r.width-2*pad)*i/(K.length-1); };
+function show(i){ if(i===cur) return; cur=i; const k=K[i];
+  QA('#kpic img').forEach((im,j)=>im.classList.toggle('on',j===i)); QA('.stop').forEach((s,j)=>s.classList.toggle('on',j===i));
+  Q('#knum').textContent='Reife '+(i+1)+' von 5'; Q('#kname').textContent=k.n; Q('#ksub').textContent=k.s; Q('#ktag').textContent=k.tag;
+  const hb=Q('#herbs'); hb.innerHTML='';
+  if(k.herbs){ k.herbs.forEach(([h,txt],j)=>{ const b=document.createElement('button'); b.className='herb'+(j===herbI?' on':''); b.textContent=h; b.addEventListener('click',()=>{herbI=j; QA('.herb').forEach((x,q)=>x.classList.toggle('on',q===j)); Q('#ktaste').innerHTML='<b>Geschmack</b>'+k.t+'. '+txt;}); hb.appendChild(b); }); Q('#ktaste').innerHTML='<b>Geschmack</b>'+k.t+'. '+k.herbs[herbI][1]; }
+  else Q('#ktaste').innerHTML='<b>Geschmack</b>'+k.t;
+  harp.setAttribute('aria-valuenow',i+1); }
+function go(i,anim){ i=Math.max(0,Math.min(K.length-1,i)); harp.classList.toggle('anim',!!anim); harp.style.left=pos(i)+'px'; show(i); }
+let drag=false;
+const xTo=x=>{ const r=track.getBoundingClientRect(); const pad=11; let f=(x-r.left-pad)/(r.width-2*pad); f=Math.max(0,Math.min(1,f)); harp.classList.remove('anim'); harp.style.left=(pad+f*(r.width-2*pad))+'px'; show(Math.round(f*(K.length-1))); };
+harp.addEventListener('pointerdown',e=>{drag=true; harp.setPointerCapture(e.pointerId);});
+harp.addEventListener('pointermove',e=>{ if(drag) xTo(e.clientX); });
+const end=()=>{ if(drag){drag=false; go(cur,true);} }; harp.addEventListener('pointerup',end); harp.addEventListener('pointercancel',end);
+track.addEventListener('click',e=>{ if(e.target===track||e.target.classList.contains('bar')||e.target===stops){ const r=track.getBoundingClientRect(); go(Math.round((e.clientX-r.left)/r.width*(K.length-1)),true);} });
+harp.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'){go(cur+1,true);e.preventDefault();} if(e.key==='ArrowLeft'){go(cur-1,true);e.preventDefault();} });
+go(0); addEventListener('resize',()=>go(cur));
+kpic.addEventListener('click',()=>openLb('img/'+K[cur].img+'_l.webp'));
+
+/* --- Fondue-Rechner --- */
+const pot=Q('#pot'); const FC=['#3c6e9e','#b5272d','#5b7a35','#e3a72f','#7a4e25','#8a5aa8','#2f8f86','#d06a2c','#455a64','#c2185b','#6d8b2f','#1f6fb2'];
+for(let i=0;i<12;i++){ const f=document.createElement('div'); f.className='fork'; f.style.transform='rotate('+(i*30+15)+'deg)'; f.style.setProperty('--fc',FC[i]); f.innerHTML='<i></i>'; pot.appendChild(f); }
+let n=4, mode='f'; const G={f:200,r:200};
+function calc(){ Q('#gnum').textContent=n; QA('.fork').forEach((f,i)=>f.classList.toggle('on',i<n));
+  const w=g=>g>=1000?(g/1000).toLocaleString('de-CH'):g, u=g=>g>=1000?'kg':'g';
+  if(mode==='f'){ const g=n*200; Q('#gres').innerHTML=w(g)+' <small>'+u(g)+'</small>'; }
+  else { const a=n*200,b=n*250; Q('#gres').innerHTML=w(a)+(u(a)===u(b)?'':' <small>'+u(a)+'</small>')+'–'+w(b)+' <small>'+u(b)+'</small>'; }
+  Q('#gtxt').textContent= mode==='f' ? 'Pro Person rechnet man mit rund 200 g Käse. Unsere hausgemachte Fondue-Mischung gibt es im Laden.' : 'Für Raclette rechnet man mit 200 bis 250 g Käse pro Person. Für grössere Runden am besten vorher anrufen: 071 371 11 16.'; }
+Q('#plus').addEventListener('click',()=>{n=Math.min(12,n+1);calc();}); Q('#minus').addEventListener('click',()=>{n=Math.max(1,n-1);calc();});
+QA('.mode button').forEach(b=>b.addEventListener('click',()=>{ mode=b.dataset.m; QA('.mode button').forEach(x=>x.classList.toggle('on',x===b)); Q('#pimgF').classList.toggle('on',mode==='f'); Q('#pimgR').classList.toggle('on',mode==='r'); calc(); }));
+Q('.potimg').addEventListener('click',()=>openLb(mode==='f'?'img/fondue_1x1.webp':'img/raclette_1x1.webp'));
+calc();
+
+/* --- Stimmen: Leiste (eine Karte pro Schritt) --- */
+const rail=Q('#rail'), cards=QA('.card'), dots=Q('#dots');
+cards.forEach((c,i)=>{const d=document.createElement('i'); dots.appendChild(d);});
+const stepW=()=>cards[1].offsetLeft-cards[0].offsetLeft;
+const smooth=(to)=>{ const from=rail.scrollLeft, t0=performance.now(), D=500; rail.style.scrollSnapType='none';
+  const st=t=>{const p=Math.min(1,(t-t0)/D), e=1-Math.pow(1-p,3); rail.scrollLeft=from+(to-from)*e; if(p<1) requestAnimationFrame(st); else rail.style.scrollSnapType='';}; requestAnimationFrame(st); };
+const upd=()=>{ const i=Math.round(rail.scrollLeft/stepW()); QA('#dots i').forEach((d,j)=>d.classList.toggle('on',j===i));
+  Q('#al').disabled=rail.scrollLeft<4; Q('#ar').disabled=rail.scrollLeft>rail.scrollWidth-rail.clientWidth-4; };
+Q('#al').addEventListener('click',()=>smooth(Math.max(0,Math.round(rail.scrollLeft/stepW()-1)*stepW())));
+Q('#ar').addEventListener('click',()=>smooth(Math.min(rail.scrollWidth-rail.clientWidth,Math.round(rail.scrollLeft/stepW()+1)*stepW())));
+rail.addEventListener('scroll',upd,{passive:true}); upd();
+
+/* --- Lightbox --- */
+const lb=Q('#lb'); function openLb(src){ lb.querySelector('img').src=src; lb.classList.add('open'); }
+lb.addEventListener('click',()=>lb.classList.remove('open')); addEventListener('keydown',e=>{if(e.key==='Escape') lb.classList.remove('open');});
+QA('[data-lb]').forEach(e=>e.addEventListener('click',()=>openLb(e.dataset.lb)));
+})();
+</script>
+</body>
+</html>
