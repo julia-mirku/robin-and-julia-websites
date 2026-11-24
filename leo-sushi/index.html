@@ -604,6 +604,13 @@ html.nb-off{--nb:0px!important}
 .sheet.leaf[data-side=one]{transform-origin:0 50%;box-shadow:10px 0 22px -14px rgba(40,30,10,.35)}
 .leaf .shade{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgba(70,48,14,.30),rgba(70,48,14,.10) 55%,rgba(255,250,235,.18))}
 .leaf[data-side=l] .shade{background:linear-gradient(270deg,rgba(70,48,14,.30),rgba(70,48,14,.10) 55%,rgba(255,250,235,.18))}
+
+/* ---------- Abstaende Runde 3: hoechstens ca. 100 px (1440) / ca. 75 px (390), unabhaengig von der Bildschirmhoehe ---------- */
+.karte{min-height:0}
+.bar{padding-bottom:clamp(16px,2vw,28px)}
+.rev{padding-top:clamp(24px,2.4vw,34px)}
+.visit{padding-bottom:clamp(36px,3.4vw,50px)}
+footer.foot{padding-top:clamp(30px,3vw,40px)}
 </style>
 </head>
 <body>
