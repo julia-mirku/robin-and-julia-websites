@@ -64,6 +64,11 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.knopf:hover{box-shadow:0 0 0 5px rgba(220,187,115,.22),0 8px 24px rgba(184,145,63,.3);border-color:var(--gold-l)}.knopf.gold:hover{background:#c69c48}}
 .knopf:active{transform:scale(.97)}
 
+/* Plashka «Entwurf» */
+.mk-hinweis{position:fixed;left:0;right:0;top:0;z-index:45;display:flex;align-items:center;justify-content:center;padding:7px 16px;padding-top:calc(7px + env(safe-area-inset-top));text-align:center;font:500 12.5px/1.35 var(--text);letter-spacing:.02em;color:rgba(247,241,231,.92);background:#2a211c;border-bottom:1px solid rgba(220,187,115,.4);transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.mk-hinweis span::before{content:"";display:inline-block;width:6px;height:6px;margin:0 9px 1px 0;border-radius:50%;background:var(--gold-l);vertical-align:middle}
+.mk-hinweis.weg{transform:translateY(-100%)}
+.kopf{transition:background-color .35s,color .35s,box-shadow .35s,transform .5s cubic-bezier(.22,.61,.36,1)}
 /* Kopf */
 .kopf{position:fixed;inset:0 0 auto;z-index:40;height:calc(var(--hh) + env(safe-area-inset-top));padding:env(safe-area-inset-top) 16px 0;display:flex;align-items:center;gap:12px;color:var(--creme);transition:background-color .35s,color .35s,box-shadow .35s}
 .kopf.hell{background:rgba(236,231,222,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--tinte);box-shadow:0 1px 0 rgba(42,33,28,.08)}
@@ -103,29 +108,6 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .va .eintritt{position:absolute;z-index:2;color:var(--tinte);pointer-events:none;text-shadow:0 0 22px rgba(240,234,224,.95),0 0 4px rgba(240,234,224,.9)}
 .va .eintritt b{display:block;font:400 clamp(40px,4.4vw,72px)/.98 var(--serif);letter-spacing:-.01em}
 .va .eintritt span{display:block;margin-top:14px;font:500 13px/1.4 var(--text);letter-spacing:.16em;text-transform:uppercase;color:#5b5047}
-/* B */
-.vb .putzwand{position:absolute;inset:0;z-index:0;background:radial-gradient(90% 70% at 42% 40%,#f3ece1 0,#e9dfd1 55%,#d9ccba 100%)}
-.vb .putzwand::before{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;background-image:var(--noise)}
-.vb .putzwand::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;background-image:var(--wolken)}
-.vb .fenster{position:absolute;inset:0;z-index:2;will-change:clip-path}
-.vb .fenster .bild{transform-origin:0 0;will-change:transform;inset:auto;left:0;top:0;object-fit:fill;max-width:none}
-.vb .karte{position:absolute;z-index:1;background:#fbf7ef;box-shadow:0 2px 3px rgba(60,45,35,.15),0 28px 60px rgba(60,45,35,.28);border-radius:3px}
-.vb .karte .unten{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;padding:0 20px 14px;color:#4b3f36}
-.vb .karte .druck{font:500 11px/1.2 var(--text);letter-spacing:.18em;text-transform:uppercase}
-.vb .karte .gruss{font:400 clamp(17px,1.6vw,24px)/1.2 var(--hand);color:var(--blau);transform:rotate(-3deg);transform-origin:right bottom}
-.marke{position:absolute;z-index:3;width:120px;height:150px;padding:8px;background:radial-gradient(circle at 5px 5px,transparent 3.2px,#fbf7ef 3.7px) -5px -5px/10px 10px;filter:drop-shadow(0 4px 8px rgba(60,45,35,.25));transform:rotate(4deg)}
-.marke div{width:100%;height:100%;background:linear-gradient(160deg,#cf9656,#a96b33);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#fff7ea}
-.marke .logo{width:86px;height:26px}
-.marke small{font:600 9px/1 var(--text);letter-spacing:.14em}
-.stempel{position:absolute;z-index:4;width:140px;height:140px;border-radius:50%;border:2px solid rgba(46,58,82,.7);color:rgba(46,58,82,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;font:600 11px/1.35 var(--text);letter-spacing:.14em;text-align:center;transform:rotate(-12deg);pointer-events:none}
-.stempel::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(46,58,82,.55)}
-.stempel b{font:400 18px/1 var(--serif);letter-spacing:.04em;margin:3px 0}
-.stempel::after{content:"";position:absolute;left:96%;top:34%;width:120px;height:40px;background:repeating-linear-gradient(180deg,transparent 0 7px,rgba(46,58,82,.55) 7px 9px);-webkit-mask:linear-gradient(90deg,#000 70%,transparent);mask:linear-gradient(90deg,#000 70%,transparent)}
-.vb .vorn{transition:opacity .45s ease}
-.vb.lauf .vorn,.vb.fertig .vorn{opacity:0}
-.vb .hinweis{color:var(--tinte)}
-.vb .hinweis i{background:linear-gradient(var(--gold),transparent)}
-
 /* ===== Die Wand ===== */
 .s-wand{display:flex;flex-direction:column;padding:120px 0 0}
 .s-wand .wand-inhalt{order:1}
@@ -195,7 +177,7 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 @media (hover:hover){.pos:hover .pr{background:var(--gold);color:#fff;box-shadow:0 0 0 4px rgba(220,187,115,.25)}}
 .pos.tap .pr{background:var(--gold);color:#fff}
 .pos em.gt{font:normal 600 9px/1 var(--text);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--eiche);padding:4px 7px;border-radius:999px;margin-left:6px;vertical-align:2px;white-space:nowrap}
-.seiten{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 2px}
+.seiten{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 10px}
 .seiten button{min-height:38px;padding:0 13px;border-radius:999px;border:1.5px solid rgba(42,33,28,.3);background:transparent;cursor:pointer;font:500 13px/1 var(--text);transition:background-color .2s,color .2s,border-color .2s,box-shadow .2s}
 .seiten button[aria-pressed="true"]{background:var(--tinte);border-color:var(--tinte);color:var(--creme)}
 @media (hover:hover){.seiten button:not([aria-pressed="true"]):hover{border-color:var(--gold);box-shadow:0 0 0 4px rgba(220,187,115,.2)}}
@@ -230,11 +212,18 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 /* ===== Gäste: Postkarten ===== */
 .s-gaeste{padding:110px 0 80px;background:linear-gradient(180deg,var(--nacht) 0,#4a4038 26px,#a89a88 62px,var(--putz) 100px,var(--putz) 100%)}
 .s-gaeste::before,.s-gaeste::after{top:100px}
-.karten{display:grid;gap:18px;margin-top:24px}
+.streifen-wrap{position:relative;margin-top:20px}
+.karten{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:14px 6px 26px;scrollbar-width:none}
+.karten::-webkit-scrollbar{display:none}
+.pk{scroll-snap-align:start}
+.pfeil{display:none}
+.punkte{display:flex;justify-content:center;gap:8px;margin-top:2px}
+.punkte button{width:9px;height:9px;border-radius:999px;border:0;padding:0;background:rgba(42,33,28,.25);cursor:pointer;transition:width .3s,background-color .3s}
+.punkte button[aria-current="true"]{width:24px;background:var(--gold)}
 .pk{position:relative;display:grid;grid-template-columns:1fr;gap:12px;padding:20px 20px 18px;background:#fbf7ef;border-radius:3px;box-shadow:0 2px 3px rgba(60,45,35,.12),0 18px 34px rgba(60,45,35,.18);transition:transform .35s ease,box-shadow .35s ease}
 .pk:nth-child(odd){transform:rotate(-.9deg)}
 .pk:nth-child(even){transform:rotate(.8deg)}
-@media (hover:hover){.pk:hover{transform:rotate(0) translateY(-4px);box-shadow:0 4px 6px rgba(60,45,35,.12),0 26px 46px rgba(60,45,35,.24)}}
+@media (hover:hover){.pfeil:not(:disabled):hover{border-color:var(--gold);box-shadow:0 0 0 5px rgba(220,187,115,.22)}.pk:hover{transform:rotate(0) translateY(-4px);box-shadow:0 4px 6px rgba(60,45,35,.12),0 26px 46px rgba(60,45,35,.24)}}
 .pk .text{font-size:15.5px;line-height:1.55;color:#3c322b}
 .pk .anrede{font:400 15px/1.3 var(--hand);color:var(--blau);margin:0 0 8px}
 .pk .gez{font:400 16px/1.3 var(--hand);color:var(--blau);margin:10px 0 0}
@@ -245,7 +234,6 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .pk .mk div b{font:400 15px/1 var(--serif);letter-spacing:0;color:#fff}
 .pk .pm{position:relative;flex:none;margin-left:-30px;width:76px;height:76px;border-radius:50%;border:1.5px solid rgba(46,58,82,.6);color:rgba(46,58,82,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;font:600 8px/1.3 var(--text);letter-spacing:.12em;text-align:center;transform:rotate(-14deg);pointer-events:none}
 .pk .pm b{font:400 11px/1 var(--serif);letter-spacing:.02em;margin:2px 0}
-.blaettern{display:flex;align-items:center;gap:14px;margin-top:22px}
 .score{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 0}
 .score a{display:flex;align-items:baseline;gap:10px;padding:10px 14px;border-radius:10px;border:1px solid rgba(42,33,28,.18);text-decoration:none;transition:border-color .2s,box-shadow .2s;background:rgba(251,247,239,.6)}
 .score b{font:400 30px/1 var(--serif);color:var(--gold-d)}
@@ -266,32 +254,44 @@ section{position:relative;scroll-margin-top:calc(var(--hh) + env(safe-area-inset
 .fk blockquote cite{display:block;font-style:normal;font-size:12.5px;color:var(--sepia);margin-top:4px}
 .fk .reihe{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 
-/* ===== Besuch ===== */
-.s-besuch{padding:110px 0 70px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 60px,var(--nacht2) 150px,var(--nacht2) 100%);color:var(--creme)}
+/* ===== Besuch: Postkarte zum Abschied ===== */
+.s-besuch{padding:110px 0 60px;background:linear-gradient(180deg,var(--putz) 0,#6b5e52 60px,var(--nacht2) 150px,var(--nacht2) 100%);color:var(--creme)}
 .s-besuch .kick{color:var(--gold-l)}
-.besuch-grid{display:grid;gap:30px}
-.tage{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:0 0 14px}
-.tage button{min-height:46px;border-radius:8px;border:1.5px solid rgba(247,241,231,.22);background:transparent;cursor:pointer;font-weight:600;color:var(--creme);transition:border-color .2s,background-color .2s,color .2s,box-shadow .2s}
-@media (hover:hover){.tage button:hover{border-color:var(--gold-l);box-shadow:0 0 0 3px rgba(220,187,115,.18)}}
+.abschied{display:grid;gap:16px;margin-top:20px}
+.pk-vorn{position:relative;margin:0;padding:12px 12px 44px;background:#fbf7ef;border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,.25),0 24px 50px rgba(0,0,0,.45);transform:rotate(-1.2deg);cursor:zoom-in;transition:transform .35s ease}
+.pk-vorn img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:2px}
+.pk-vorn figcaption{position:absolute;left:14px;right:14px;bottom:13px;font:500 11px/1.2 var(--text);letter-spacing:.18em;text-transform:uppercase;color:#4b3f36}
+.pk-hinten{position:relative;display:grid;gap:14px;padding:20px 20px 22px;background:#fbf7ef;color:var(--tinte);border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,.25),0 24px 50px rgba(0,0,0,.45);transform:rotate(.8deg);transition:transform .35s ease}
+@media (hover:hover){.pk-vorn:hover,.pk-hinten:hover{transform:rotate(0) translateY(-3px)}}
+.ph-gruss{font:400 19px/1.3 var(--hand);color:var(--blau);margin:0 0 12px}
+.tage{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:0 0 12px}
+.tage button{min-height:40px;border-radius:7px;border:1.5px solid rgba(42,33,28,.22);background:transparent;cursor:pointer;font-weight:600;font-size:14px;color:var(--tinte);transition:border-color .2s,background-color .2s,color .2s,box-shadow .2s}
+@media (hover:hover){.tage button:hover{border-color:var(--gold);box-shadow:0 0 0 3px rgba(220,187,115,.22)}}
 .tage button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#fff}
-.zeit{border-radius:10px;border:1px solid rgba(247,241,231,.14);background:rgba(247,241,231,.05);padding:18px 20px}
-.zeit .tg{font-size:14px;color:rgba(247,241,231,.7);margin:0 0 4px}
-.zeit .h{font:400 clamp(34px,9vw,44px)/1 var(--serif);margin:0 0 12px;color:#fff;white-space:nowrap}
-.zeit ul{margin:0;padding:0;list-style:none;display:grid;gap:5px;font-size:14px;color:rgba(247,241,231,.85)}
-.zeit li b{font-weight:600;color:var(--gold-l);margin-right:8px}
-.kontakt address{font-style:normal;font-size:19px;line-height:1.5;margin:0 0 16px}
-.kontakt address a{text-decoration:none;border-bottom:1px solid rgba(220,187,115,.5);transition:color .2s,border-color .2s}
-@media (hover:hover){.kontakt address a:hover{color:var(--gold-l);border-color:var(--gold-l)}}
-.kontakt .reihe{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
-.kontakt .klein{font-size:13.5px;color:rgba(247,241,231,.62);margin:10px 0 0}
-.weg{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.pk-hinten .tg{font-size:13.5px;color:var(--sepia);margin:0 0 2px}
+.pk-hinten .h{font:400 clamp(34px,9vw,46px)/1 var(--serif);margin:0 0 10px;white-space:nowrap}
+.ph-klein{font-size:13.5px;color:#55493f;margin:0}
+.ph-klein b{color:var(--gold-d);font-weight:600}
+.ph-rechts{display:flex;flex-direction:column;gap:12px;border-top:1px solid rgba(42,33,28,.15);padding-top:14px}
+.ph-oben{display:flex;align-items:center;justify-content:flex-end}
+.pk-hinten .mk.gross{display:block;width:86px;height:106px;padding:7px;background:radial-gradient(circle at 5px 5px,transparent 3px,#fbf7ef 3.5px) -5px -5px/10px 10px;filter:drop-shadow(0 2px 5px rgba(60,45,35,.3));transform:rotate(3deg)}
+.pk-hinten .mk.gross div{width:100%;height:100%;background:linear-gradient(160deg,#cf9656,#a96b33);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff7ea;font:600 8px/1 var(--text);letter-spacing:.14em}
+.pk-hinten .mk.gross .logo{width:62px;height:19px}
+.pk-hinten .pm.gross{position:relative;margin-right:-26px;z-index:1;width:96px;height:96px;border-radius:50%;border:1.5px solid rgba(46,58,82,.6);color:rgba(46,58,82,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;font:600 9px/1.3 var(--text);letter-spacing:.14em;transform:rotate(-12deg)}
+.pk-hinten .pm.gross b{font:400 14px/1 var(--serif);letter-spacing:.02em;margin:2px 0}
+.ph-adr{font-style:normal;font:400 15px/2 var(--hand);color:var(--blau)}
+.ph-adr a{text-decoration:none;border-bottom:1px solid rgba(59,79,107,.35);transition:color .2s,border-color .2s}
+@media (hover:hover){.ph-adr a:hover{color:var(--gold-d);border-color:var(--gold)}}
+.knoepfe{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 18px}
+.knoepfe .knopf{color:var(--creme)}
+.knoepfe .knopf.gold{color:#fff}
+.weg{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
 .weg li{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;border-radius:10px;border:1px solid rgba(247,241,231,.12);transition:border-color .2s,background-color .2s}
 @media (hover:hover){.weg li:hover{border-color:var(--gold-l);background:rgba(220,187,115,.07)}}
 .weg svg{width:21px;height:21px;color:var(--gold-l);flex:none;margin-top:2px}
 .weg b{display:block;font-weight:600}
 .weg span{font-size:14px;color:rgba(247,241,231,.78)}
-.karte-map{border-radius:10px;overflow:hidden;border:1px solid rgba(247,241,231,.12);aspect-ratio:4/3;background:#2b241f}
-.karte-map iframe{width:100%;height:100%;border:0;display:block}
+.s-besuch .klein{font-size:13.5px;color:rgba(247,241,231,.62);margin:6px 0 0}
 footer{background:var(--nacht2);color:rgba(247,241,231,.6);font-size:13.5px;padding:22px 0 calc(22px + env(safe-area-inset-bottom));border-top:1px solid rgba(247,241,231,.08)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
 footer .logo{width:86px;height:26px;color:var(--creme)}
@@ -312,7 +312,13 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 @media (min-width:600px){
   .tag-reihe{grid-template-columns:repeat(4,1fr)}
   .kopf .tel{width:auto;padding:0 16px}.kopf .tel span{display:inline}
-  .karten{grid-template-columns:1fr 1fr}
+  .streifen-wrap{padding:0 62px}
+  .pfeil{display:grid;place-items:center;position:absolute;top:50%;z-index:2;width:48px;height:48px;margin-top:-24px;border-radius:50%;border:1.5px solid rgba(42,33,28,.3);background:rgba(251,247,239,.92);color:var(--tinte);cursor:pointer;transition:background-color .2s,border-color .2s,box-shadow .2s,opacity .2s}
+  .pfeil svg{width:20px;height:20px}
+  .pfeil.zurueck{left:0}.pfeil.vor{right:0}
+  .pfeil:disabled{opacity:.28;cursor:default}
+  .karten{grid-auto-columns:calc((100% - 16px)/2)}
+  .punkte{display:none}
 }
 @media (min-width:900px) and (max-width:1199px){
   .pk{grid-template-columns:1.35fr 1fr;gap:18px}
@@ -328,9 +334,8 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .zimmer{grid-template-columns:2fr 3fr}
   .zimmer figure{aspect-ratio:auto;min-height:100%}
   .feiern-grid{grid-template-columns:1fr 1fr}
-  .besuch-grid{grid-template-columns:1fr 1fr}
-  .besuch-grid>:last-child{grid-column:1/-1}
-  .karte-map{aspect-ratio:16/9}
+  .abschied{grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .weg{grid-template-columns:repeat(3,1fr)}
 }
 /* ===== Computer ===== */
 @media (min-width:900px){
@@ -371,16 +376,19 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .s-gaeste{padding:130px 0 70px}
   .gaeste-kopf{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
   .gaeste-kopf h2{margin:0}
-  .karten{gap:24px 30px}
   .s-feiern{padding:70px 0}
   .feiern-grid{grid-template-columns:1fr 1fr;gap:24px}
   .fk{grid-template-columns:1fr}
   .fk figure{aspect-ratio:21/9}
-  .s-besuch{padding:140px 0 60px}
-  .besuch-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;align-items:start}
+  .s-besuch{padding:130px 0 50px}
+  .abschied{grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+  .pk-hinten{grid-template-columns:1.25fr 1fr;gap:22px;padding:26px 28px 26px}
+  .ph-rechts{border-top:0;border-left:1px solid rgba(42,33,28,.15);padding:0 0 0 22px;justify-content:space-between}
+  .weg{grid-template-columns:repeat(3,1fr)}
+  .knoepfe{margin:30px 0 16px}
 }
 @media (min-width:1200px){
-  .karten{grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+  .karten{grid-auto-columns:calc((100% - 52px)/3);gap:26px}
   .pk .text{font-size:15px}
 }
 @media (min-width:900px) and (max-height:820px){
@@ -393,7 +401,13 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .fk figure{aspect-ratio:3/1}
   .s-karte{padding:60px 0 40px}
   .s-feiern{padding:56px 0}
-  .s-besuch{padding:120px 0 40px}
+  .s-besuch{padding:96px 0 24px}
+  .pk-vorn img{aspect-ratio:2/1}
+  .pk-hinten{padding:18px 24px}
+  .pk-hinten .h{font-size:38px}
+  .knoepfe{margin:18px 0 12px}
+  .weg li{padding:8px 12px}
+  .s-besuch .klein{display:none}
   .s-lounge{padding:120px 0 50px}
 }
 @media (max-height:520px) and (orientation:landscape){
@@ -419,6 +433,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 </style>
 </head>
 <body>
+<div class="mk-hinweis" id="mkHinweis" role="note"><span>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</span></div>
 <header class="kopf" id="kopf">
   <a href="#start" class="logo" aria-label="Bodan Restaurant • Lounge – zum Anfang"></a>
   <nav aria-label="Seiten">
@@ -528,8 +543,12 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
         <a href="https://www.just-eat.ch/speisekarte/restaurant-bodan" target="_blank" rel="noopener"><b>4,5</b><span>Just Eat · über 300</span></a>
       </div>
     </div>
-    <div class="karten" id="karten"></div>
-    <div class="blaettern"><button type="button" class="knopf" id="weiter">Weitere Karten</button><span id="seite" style="font-size:14px;color:var(--sepia)"></span></div>
+    <div class="streifen-wrap rise">
+      <button type="button" class="pfeil zurueck" id="pfZ" aria-label="Vorherige Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="karten" id="karten" aria-label="Postkarten von Gästen"></div>
+      <button type="button" class="pfeil vor" id="pfV" aria-label="Nächste Karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="punkte" id="punkte"></div>
   </div>
 </section>
 
@@ -562,41 +581,48 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 </section>
 
 <section class="s-besuch" id="besuch">
-  <div class="wrap besuch-grid">
-    <div class="rise">
-      <h2>Wann wir da sind</h2>
-      <div class="tage" id="tage" role="group" aria-label="Wochentag wählen"></div>
-      <div class="zeit">
-        <p class="tg" id="zTag">Heute</p>
-        <p class="h" id="zH">08:00 – 23:00</p>
-        <ul><li><b>Abholung</b>ab 11:30</li><li><b>Lieferung</b>ab 17:00 über Just Eat</li></ul>
-      </div>
-    </div>
-    <div class="kontakt rise">
+  <div class="wrap">
+    <div class="besuch-kopf rise">
       <p class="kick">Besuch</p>
-      <address>Bodan Restaurant • Lounge<br>Bahnhofstrasse 1, 8590 Romanshorn<br><a href="tel:+41712223434">071 222 34 34</a><br><a href="mailto:info@restaurant-bodan.ch">info@restaurant-bodan.ch</a></address>
-      <div class="reihe">
-        <a class="knopf gold" href="https://www.local.ch/de/d/romanshorn/8590/lounge/restaurant-lounge-bodan-romanshorn-o8p-9_UDoLK8gJtnWI5J8Q" target="_blank" rel="noopener">Tisch reservieren</a>
-        <a class="knopf" href="https://www.just-eat.ch/speisekarte/restaurant-bodan" target="_blank" rel="noopener">Liefern lassen</a>
-        <a class="knopf" href="https://www.google.com/maps/dir/?api=1&destination=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn" target="_blank" rel="noopener">Route</a>
-        <a class="knopf" href="https://www.instagram.com/restaurant_bodan/" target="_blank" rel="noopener">Instagram</a>
-      </div>
-      <p class="klein">Bezahlen mit TWINT, Karte, bar oder WIR.</p>
+      <h2>Bis bald im Bodan</h2>
     </div>
-    <div class="rise">
-      <p class="kick">Anreise</p>
-      <ul class="weg">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/></svg><span><b>Zug</b>Bahnhof Romanshorn, gleich gegenüber</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/></svg><span><b>Schiff &amp; Boot</b>Hafen am Bodensee, ein paar Minuten zu Fuss</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16h14l-1.5-5.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5zM5 16v3M19 16v3"/><circle cx="8" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg><span><b>Auto</b>Kostenpflichtige Parkplätze in der Umgebung</span></li>
-      </ul>
-      <div class="karte-map"><iframe title="Karte: Bahnhofstrasse 1, Romanshorn" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn&z=16&output=embed"></iframe></div>
+    <div class="abschied">
+      <figure class="pk-vorn rise" data-big="img/terrasse.webp">
+        <img src="img/terrasse.webp" srcset="img/terrasse_m.webp 900w, img/terrasse.webp 1600w" sizes="(min-width:900px) 45vw, 100vw" alt="Die Terrasse des Bodan an der Bahnhofstrasse in Romanshorn" loading="lazy">
+        <figcaption>Romanshorn · Bahnhofstrasse 1</figcaption>
+      </figure>
+      <article class="pk-hinten rise">
+        <div class="ph-links">
+          <p class="ph-gruss">Wir freuen uns auf Sie!</p>
+          <div class="tage" id="tage" role="group" aria-label="Wochentag wählen"></div>
+          <p class="tg" id="zTag">Heute</p>
+          <p class="h" id="zH">08:00 – 23:00</p>
+          <p class="ph-klein"><b>Abholung</b> ab 11:30 · <b>Lieferung</b> ab 17:00 über Just Eat</p>
+        </div>
+        <div class="ph-rechts">
+          <div class="ph-oben"><span class="pm gross"><span>8590</span><b>Romanshorn</b><span>Bahnhof</span></span><span class="mk gross"><div><span class="logo"></span>ROMANSHORN</div></span></div>
+          <address class="ph-adr">Bodan Restaurant • Lounge<br>Bahnhofstrasse 1<br>8590 Romanshorn<br><a href="tel:+41712223434">071 222 34 34</a><br><a href="mailto:info@restaurant-bodan.ch">info@restaurant-bodan.ch</a></address>
+        </div>
+      </article>
     </div>
+    <div class="reihe knoepfe rise">
+      <a class="knopf gold" href="https://www.local.ch/de/d/romanshorn/8590/lounge/restaurant-lounge-bodan-romanshorn-o8p-9_UDoLK8gJtnWI5J8Q" target="_blank" rel="noopener">Tisch reservieren</a>
+      <a class="knopf" href="tel:+41712223434">Anrufen</a>
+      <a class="knopf" href="https://www.google.com/maps/dir/?api=1&destination=Bodan+Restaurant+Lounge,+Bahnhofstrasse+1,+8590+Romanshorn" target="_blank" rel="noopener">Route planen</a>
+      <a class="knopf" href="https://www.just-eat.ch/speisekarte/restaurant-bodan" target="_blank" rel="noopener">Liefern lassen</a>
+      <a class="knopf" href="https://www.instagram.com/restaurant_bodan/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <ul class="weg rise">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l-2-4M15 21l2-4"/></svg><span><b>Zug</b>Bahnhof Romanshorn, gleich gegenüber</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-5h12l1 5M9 9V5h6v4"/></svg><span><b>Schiff &amp; Boot</b>Hafen am Bodensee, ein paar Minuten zu Fuss</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 16h14l-1.5-5.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5zM5 16v3M19 16v3"/><circle cx="8" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg><span><b>Auto</b>Kostenpflichtige Parkplätze in der Umgebung</span></li>
+    </ul>
+    <p class="klein">Bezahlen mit TWINT, Karte, bar oder WIR.</p>
   </div>
 </section>
 </main>
 
-<footer><div class="wrap"><span class="logo" aria-hidden="true"></span><span>Bahnhofstrasse 1 · 8590 Romanshorn</span><span>Entwurf · nur zur Ansicht</span></div></footer>
+<footer><div class="wrap"><span class="logo" aria-hidden="true"></span><span>Bodan Restaurant • Lounge · Bahnhofstrasse 1 · 8590 Romanshorn</span><a href="tel:+41712223434" style="text-decoration:none">071 222 34 34</a></div></footer>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bild gross"><img id="lbImg" alt=""><button type="button" aria-label="Schliessen">×</button></div>
 
 <template id="tA">
@@ -612,18 +638,6 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
     <div class="eintritt"><b>Treten Sie ein.</b><span>Bahnhofstrasse 1 · Romanshorn</span></div>
   </div>
   <div class="vorhang"></div>
-</template>
-<template id="tB">
-  <div class="putzwand"></div>
-  <div class="karte vorn" id="pkarte"><div class="unten"><span class="druck">Romanshorn · Hotel Bodan</span><span class="gruss">Grüsse aus dem Bodan!</span></div></div>
-  <div class="marke vorn" id="marke"><div><span class="logo"></span><small>ROMANSHORN</small></div></div>
-  <div class="stempel vorn" id="stempel"><span>8590</span><b>Romanshorn</b><span>Bahnhofstr. 1</span></div>
-  <div class="fenster" id="fenster">
-    <picture>
-      <source media="(max-width:899px)" srcset="img/wandbild_abend_hoch_900.webp 900w, img/wandbild_abend_hoch_1536.webp 1536w" sizes="100vw">
-      <img class="bild" id="bildB" src="img/wandbild_abend_1600.webp" srcset="img/wandbild_abend_1600.webp 1600w, img/wandbild_abend_2752.webp 2752w" sizes="100vw" alt="Am Abend im Bodan: das Wandbild mit dem alten Hotel Bodan, darüber leuchten die Glaslampen" fetchpriority="high">
-    </picture>
-  </div>
 </template>
 <template id="tGemeinsam">
   <div class="schleier"></div>
@@ -649,10 +663,9 @@ try{history.scrollRestoration='manual'}catch(e){}
 function $(id){return D.getElementById(id)}
 
 /* ================= Bühne (Variante A/B) ================= */
-var V=(new URLSearchParams(location.search).get('v')||'a').toLowerCase()==='b'?'b':'a';
 var B=$('start'), kopf=$('kopf');
-B.classList.add('v'+V);
-B.appendChild($(V==='b'?'tB':'tA').content.cloneNode(true));
+B.classList.add('va');
+B.appendChild($('tA').content.cloneNode(true));
 B.appendChild($('tGemeinsam').content.cloneNode(true));
 function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
 var state='ruhe', raf=0;
@@ -666,43 +679,19 @@ function frameA(e){
   var et=B.querySelector('.eintritt');et.style.opacity=Math.max(0,1-e*2.4).toFixed(3);
   var vh=B.querySelector('.vorhang');if(vh)vh.style.opacity=Math.max(0,1-e*1.6).toFixed(3);
 }
-var geo=null, CROP={x:0.30,y:0.02,w:0.42,h:0.60}, CROPM={x:0.03,y:0.07,w:0.94,h:0.50};
-function layoutB(){
-  var vw=W.innerWidth,vh=W.innerHeight,mob=vw<900,img=$('bildB'),nw=mob?1536:2752,nh=mob?2752:1536;
-  var k=Math.max(vw/nw,vh/nh),ox=(vw-nw*k)/2,oy=(vh-nh*k)/2,c=mob?CROPM:CROP;
-  var Wd=c.w*nw*k,Hd=c.h*nh*k,ar=Wd/Hd;
-  var cw=mob?Math.min(vw-52,420):Math.min(vw*0.5,760),ch=cw/ar;
-  if(!mob&&ch>vh*0.56){ch=vh*0.56;cw=ch*ar}
-  var cx=(vw-cw)/2+(mob?0:-vw*0.06),cy=mob?Math.max((vh-ch-52)/2-6,96):(vh-ch)/2-vh*0.02;
-  var m=cw/Wd,bx=c.x*nw*k,by=c.y*nh*k,tx=cx-bx*m,ty=cy-by*m;
-  img.style.width=(nw*k)+'px';img.style.height=(nh*k)+'px';
-  geo={cx:cx,cy:cy,cw:cw,ch:ch,m:m,tx:tx,ty:ty,ox:ox,oy:oy,vw:vw,vh:vh,mob:mob};
-  var rand=mob?12:18,unten=mob?52:64,pk=$('pkarte');
-  pk.style.left=(cx-rand)+'px';pk.style.top=(cy-rand)+'px';pk.style.width=(cw+2*rand)+'px';pk.style.height=(ch+rand+unten)+'px';pk.style.transform='rotate('+(mob?-1.2:-1.6)+'deg)';
-  var mk=$('marke'),st=$('stempel');
-  mk.style.left=(cx+cw-(mob?70:84))+'px';mk.style.top=(cy-(mob?66:72))+'px';
-  st.style.left=(cx+cw-(mob?160:206))+'px';st.style.top=(cy-(mob?40:30))+'px';
-  mk.style.transform=mob?'rotate(4deg) scale(.72)':'rotate(4deg)';st.style.transform=mob?'rotate(-12deg) scale(.74)':'rotate(-12deg)';
-  frameB(state==='fertig'?1:0);
-}
-function frameB(e){
-  if(!geo)return;var g=geo,img=$('bildB'),f=$('fenster');
-  var m=g.m+(1-g.m)*e,tx=g.tx+(g.ox-g.tx)*e,ty=g.ty+(g.oy-g.ty)*e;
-  img.style.transform='translate('+tx.toFixed(2)+'px,'+ty.toFixed(2)+'px) scale('+m.toFixed(5)+')';
-  var t=g.cy*(1-e),l=g.cx*(1-e),r=(g.vw-g.cx-g.cw)*(1-e),b=(g.vh-g.cy-g.ch)*(1-e);
-  f.style.clipPath='inset('+t.toFixed(1)+'px '+r.toFixed(1)+'px '+b.toFixed(1)+'px '+l.toFixed(1)+'px round '+(3*(1-e)).toFixed(1)+'px)';
-  f.style.transform='rotate('+((g.mob?-1.2:-1.6)*(1-e)).toFixed(3)+'deg)';f.style.transformOrigin=(g.cx+g.cw/2)+'px '+(g.cy+g.ch/2)+'px';
-  kopfFarbe(e);
-}
-function kopfFarbe(e){ if(V!=='b')return; kopf.classList.toggle('dunkel',e<0.5&&W.scrollY<10) }
 function start(){
+  hinweisWeg();
   if(state!=='ruhe')return;state='lauf';B.classList.add('lauf');
-  var fr=V==='b'?frameB:frameA;
+  var fr=frameA;
   lauf(reduce?1:1300,fr,function(){state='fertig';B.classList.remove('lauf');B.classList.add('fertig');fr(1)});
 }
-function sofort(){if(state==='fertig')return;cancelAnimationFrame(raf);state='fertig';B.classList.remove('lauf');B.classList.add('fertig');(V==='b'?frameB:frameA)(1)}
+function sofort(){if(state==='fertig')return;cancelAnimationFrame(raf);state='fertig';B.classList.remove('lauf');B.classList.add('fertig');frameA(1)}
 function oben(){return W.scrollY<=2}
-W.addEventListener('wheel',function(e){if(state==='lauf'){e.preventDefault();return}if(state==='ruhe'&&oben()&&e.deltaY>0){e.preventDefault();start()}},{passive:false});
+var mk=$('mkHinweis'),mkWeg=false;
+function mkLage(){if(mkWeg)return;var h=mk.offsetHeight;kopf.style.transform='translateY('+h+'px)'}
+function hinweisWeg(){if(mkWeg)return;mkWeg=true;mk.classList.add('weg');kopf.style.transform='translateY(0)'}
+mkLage();W.addEventListener('resize',mkLage);
+W.addEventListener('wheel',function(e){if(e.deltaY>0)hinweisWeg();if(state==='lauf'){e.preventDefault();return}if(state==='ruhe'&&oben()&&e.deltaY>0){e.preventDefault();start()}},{passive:false});
 var ty=null,gl=false;
 W.addEventListener('touchstart',function(e){ty=e.touches[0].clientY;gl=(state!=='fertig'&&oben())},{passive:true});
 W.addEventListener('touchmove',function(e){if(state==='lauf'){e.preventDefault();return}if(!gl||ty===null)return;var d=ty-e.touches[0].clientY;if(state==='ruhe'){e.preventDefault();if(d>6)start()}},{passive:false});
@@ -710,14 +699,13 @@ W.addEventListener('touchend',function(){ty=null;gl=false},{passive:true});
 W.addEventListener('keydown',function(e){var k=e.key;if(!(k==='ArrowDown'||k==='PageDown'||k===' '||k==='End'))return;if(state==='lauf'){e.preventDefault();return}if(state==='ruhe'&&oben()){e.preventDefault();start()}});
 var sprung=false;
 W.addEventListener('scroll',function(){
+  if(W.scrollY>4)hinweisWeg();
   if(state!=='fertig'&&W.scrollY>2&&!sprung){W.scrollTo(0,0);start()}
   kopf.classList.toggle('hell',W.scrollY>B.offsetHeight-kopf.offsetHeight-12);
-  if(V==='b'&&state!=='ruhe')kopf.classList.remove('dunkel');
 },{passive:true});
 function geheZu(id){var el=$(id);if(!el)return;sprung=true;sofort();el.scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(function(){sprung=false},1400)}
 D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);e.preventDefault();if(id==='start'){W.scrollTo({top:0,behavior:'smooth'});return}geheZu(id)});
 W.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!=='start')geheZu(h)});
-if(V==='b'){layoutB();W.addEventListener('resize',layoutB);kopfFarbe(0)}
 if(reduce||location.hash.length>1){sofort();if(location.hash.length>1){var h0=location.hash.slice(1);setTimeout(function(){geheZu(h0)},60)}}else W.scrollTo(0,0);
 
 /* ================= Einblenden ================= */
@@ -761,9 +749,10 @@ function zeig(i,pg){
   var seiten=Math.ceil(c.it.length/PRO);
   zimmer.innerHTML='<figure data-big="img/'+c.img+'.webp"><img src="img/'+c.img+'.webp" alt="'+c.alt+'" loading="lazy"><figcaption>Zimmer '+(i+1)+'</figcaption></figure>'+
    '<div class="liste"><div class="kopfz"><span class="nr">Zimmer '+(i+1)+'</span><h3>'+esc(c.n)+'</h3><p class="note">'+c.note+'</p></div>'+
+   (seiten>1?'<div class="seiten" role="group" aria-label="Seiten">'+Array.apply(null,{length:seiten}).map(function(_,n){return '<button type="button" data-pg="'+n+'" aria-pressed="'+(n===seite)+'">'+(n*PRO+1)+(Math.min(c.it.length,n*PRO+PRO)>n*PRO+1?'–'+Math.min(c.it.length,n*PRO+PRO):'')+'</button>'}).join('')+'<span>von '+c.it.length+'</span></div>':'')+
    (c.q?'<div class="tipp"><span>Gäste schreiben</span>«'+c.q[0]+'»<cite>'+c.q[1]+', Google</cite></div>':'')+
    c.it.slice(seite*PRO,seite*PRO+PRO).map(function(p){return '<div class="pos"><b>'+esc(p[0])+(p[3]===1?' <em class="gt">Gäste-Tipp</em>':'')+'</b>'+(p[1]?'<small>'+p[1]+'</small>':'')+'<span class="pr'+(p[3]===2||/[A-Za-zØ]/.test(p[2].replace('ab ',''))?' s':'')+'">'+p[2]+'</span></div>'}).join('')+
-   (seiten>1?'<div class="seiten" role="group" aria-label="Seiten">'+Array.apply(null,{length:seiten}).map(function(_,n){return '<button type="button" data-pg="'+n+'" aria-pressed="'+(n===seite)+'">'+(n*PRO+1)+(Math.min(c.it.length,n*PRO+PRO)>n*PRO+1?'–'+Math.min(c.it.length,n*PRO+PRO):'')+'</button>'}).join('')+'<span>von '+c.it.length+'</span></div>':'')+'</div>';
+   ''+'</div>';
 }
 brett.addEventListener('click',function(e){var b=e.target.closest('.sl');if(b)zeig(+b.dataset.i)});
 zimmer.addEventListener('click',function(e){var pb=e.target.closest('.seiten button');if(pb){zeig(aktiv,+pb.dataset.pg);return}var p=e.target.closest('.pos');if(!p)return;[].forEach.call(zimmer.querySelectorAll('.pos.tap'),function(x){if(x!==p)x.classList.remove('tap')});p.classList.toggle('tap')});
@@ -803,19 +792,32 @@ var POST=[
  ['Franziska','vor 11 Monaten',5,'Bin restlos begeistert von diesem Restaurant! … ein weiteres Must-Try sind die Crispy Salmon Sushi! Die Pizzen sind ebenfalls hauchdünn und geschmacklich eine 10 von 10!'],
  ['Nara','vor einem Jahr',5,'Super Ort um beste Sushi Romanshorns zu probieren. Nette Service und direkt am Bahnhof. Gerne komme ich wieder.']
 ];
-var karten=$('karten'),pseite=0,PK=W.innerWidth>=1200?3:(W.innerWidth>=600?2:3);
-function sterne(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n)}
-function zeigPost(){
-  karten.innerHTML=POST.slice(pseite*PK,pseite*PK+PK).map(function(p){
-    return '<article class="pk"><div class="links"><p class="anrede">Liebes Bodan,</p><div class="text">'+p[3]+'</div><p class="gez">– '+p[0]+'</p></div>'+
-     '<div class="rechts"><span class="mk"><div><b>'+sterne(p[2]).replace(/☆/g,'')+'</b>GOOGLE</div></span><span class="pm"><span>'+p[1].toUpperCase()+'</span><b>Romanshorn</b><span>8590</span></span>'+
-     '<span class="adr">Bodan<br>Bahnhofstrasse 1<br>8590 Romanshorn</span></div></article>';
-  }).join('');
-  var n=Math.ceil(POST.length/PK);$('seite').textContent='Karte '+(pseite*PK+1)+'–'+Math.min(POST.length,pseite*PK+PK)+' von '+POST.length;
-  $('weiter').textContent=pseite<n-1?'Weitere Karten':'Zurück zum Anfang';
+var karten=$('karten'),punkte=$('punkte'),pfZ=$('pfZ'),pfV=$('pfV');
+function sterne(n){return '★★★★★'.slice(0,n)}
+karten.innerHTML=POST.map(function(p){
+  return '<article class="pk"><div class="links"><p class="anrede">Liebes Bodan,</p><div class="text">'+p[3]+'</div><p class="gez">– '+p[0]+'</p></div>'+
+   '<div class="rechts"><span class="mk"><div><b>'+sterne(p[2])+'</b>GOOGLE</div></span><span class="pm"><span>'+p[1].toUpperCase()+'</span><b>Romanshorn</b><span>8590</span></span>'+
+   '<span class="adr">Bodan<br>Bahnhofstrasse 1<br>8590 Romanshorn</span></div></article>';
+}).join('');
+POST.forEach(function(_,i){var b=D.createElement('button');b.type='button';b.setAttribute('aria-label','Karte '+(i+1));b.dataset.i=i;punkte.appendChild(b)});
+function schritt(){var c=karten.querySelector('.pk');var g=parseFloat(getComputedStyle(karten).columnGap)||16;return c?c.getBoundingClientRect().width+g:300}
+var gleitet=false;
+function gleite(ziel){
+  var start=karten.scrollLeft,max=karten.scrollWidth-karten.clientWidth;ziel=Math.max(0,Math.min(max,ziel));
+  if(Math.abs(ziel-start)<2)return;gleitet=true;karten.style.scrollSnapType='none';var t0=performance.now();
+  function f(ts){var t=Math.min(1,(ts-t0)/(reduce?1:520)),e=1-Math.pow(1-t,3);karten.scrollLeft=start+(ziel-start)*e;if(t<1)requestAnimationFrame(f);else{karten.style.scrollSnapType='';gleitet=false;lage()}}
+  requestAnimationFrame(f);
 }
-$('weiter').addEventListener('click',function(){var n=Math.ceil(POST.length/PK);pseite=(pseite+1)%n;zeigPost();var t=$('gaeste');if(t.getBoundingClientRect().top<0)t.scrollIntoView({behavior:'smooth'})});
-zeigPost();
+function lage(){
+  var st=schritt(),i=Math.round(karten.scrollLeft/st),max=karten.scrollWidth-karten.clientWidth;
+  pfZ.disabled=karten.scrollLeft<4;pfV.disabled=karten.scrollLeft>max-4;
+  [].forEach.call(punkte.children,function(b,k){b.setAttribute('aria-current',k===i?'true':'false')});
+}
+pfZ.addEventListener('click',function(){gleite(Math.round(karten.scrollLeft/schritt()-1)*schritt())});
+pfV.addEventListener('click',function(){gleite(Math.round(karten.scrollLeft/schritt()+1)*schritt())});
+punkte.addEventListener('click',function(e){var b=e.target.closest('button');if(b)gleite(+b.dataset.i*schritt())});
+var lr=0;karten.addEventListener('scroll',function(){if(!lr)lr=requestAnimationFrame(function(){lr=0;lage()})},{passive:true});
+W.addEventListener('resize',lage);lage();
 
 /* ================= Öffnungszeiten ================= */
 var ZEIT={1:[8,23],2:[8,23],3:[8,23],4:[8,23],5:[8,25],6:[10,25],0:[10,23]};
