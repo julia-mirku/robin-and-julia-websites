@@ -1119,6 +1119,16 @@ html body .about{background:
   radial-gradient(circle 110px at 0% 30%,rgba(255,206,120,.3),rgba(226,170,80,0) 100%),
   radial-gradient(circle 110px at 100% 30%,rgba(255,206,120,.3),rgba(226,170,80,0) 100%),
   var(--bg)!important}}
+/* Juli 24.11: «шрифт слишком впритык» – Luft zwischen Deckenfoto und «Unsere Leistungen», Überschrift und Text oben bündig */
+html body .p-head{align-items:start!important}
+html body .p-head h2,html body .p-head p{margin-top:0!important}
+@media (min-width:900px){html body .prices>.wrap{padding-top:120px!important}}
+@media (max-width:899px){html body .prices>.wrap{padding-top:88px!important}}
+@media (min-width:900px) and (max-height:800px){
+  html body .prices>.wrap{padding-top:120px!important;padding-bottom:12px!important}
+  html body .board .menu li{padding-top:5px!important;padding-bottom:5px!important}
+  html body .board .feat{padding-top:7px!important;padding-bottom:7px!important}
+}
 </style>
 </head>
 <body>
