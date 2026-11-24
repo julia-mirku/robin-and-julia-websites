@@ -143,9 +143,6 @@ h2 i{font-weight:400;color:var(--gold2)}
 .dish .pr{font:700 19px/1 var(--sans);color:var(--lamp);white-space:nowrap;padding:8px 12px;border-radius:999px;background:rgba(255,200,97,.1);border:1px solid rgba(255,200,97,.35);transition:background .2s,color .2s}
 .dish .hot{position:absolute;top:14px;left:14px;font-size:12px;font-weight:700;letter-spacing:.06em;padding:6px 10px;border-radius:999px;background:rgba(8,18,13,.72);color:var(--lamp);border:1px solid rgba(255,200,97,.3)}
 @media (hover:hover){
-  .dish{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg stroke-linecap='round'%3E%3Cpath d='M52 4 L9 50' stroke='%2308120d' stroke-width='7'/%3E%3Cpath d='M55 13 L13 52' stroke='%2308120d' stroke-width='7'/%3E%3Cpath d='M52 4 L9 50' stroke='%23f3dc9a' stroke-width='3.6'/%3E%3Cpath d='M55 13 L13 52' stroke='%23d4ad5f' stroke-width='3.6'/%3E%3Cpath d='M47 9 L42 14 M50 16 L45 20' stroke='%2308120d' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") 10 51,pointer}
-.dish .zoom,.dish img{cursor:inherit}
-  html.chop .dish,html.chop .dish *{cursor:none!important}
   .dish.ready:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(232,207,143,.45),0 0 50px rgba(255,200,97,.12)}
   .dish.ready:hover img{transform:scale(1.06)}
   .dish.ready:hover .pr{background:var(--lamp);color:#1d1406}
@@ -293,7 +290,7 @@ h2 i{font-weight:400;color:var(--gold2)}
 .frame .lamp{position:absolute;top:-18px;left:50%;width:34%;height:10px;margin-left:-17%;border-radius:6px 6px 3px 3px;background:linear-gradient(#e8cf8f,#8a6a2c);box-shadow:0 2px 6px rgba(0,0,0,.6)}
 .frame .lamp::after{content:"";position:absolute;left:8%;right:8%;top:9px;height:60px;background:radial-gradient(60% 100% at 50% 0,rgba(255,210,130,.35),transparent 70%);opacity:0;transition:opacity .8s;pointer-events:none}
 .frame.on .lit,.frame.on .lamp::after{opacity:1}
-@media (hover:hover){.frame.ready:hover .lit,.frame.ready:hover .lamp::after{opacity:1}.frame.ready:hover img{transform:scale(1.04)}.frame.ready{cursor:zoom-in}}
+@media (hover:hover){.frame.ready:hover .lit,.frame.ready:hover .lamp::after{opacity:1}.frame.ready:hover img{transform:scale(1.04)}}
 .plate{display:block;margin:14px auto 0;width:max-content;max-width:100%;padding:6px 14px;font:600 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#2a1d07;background:linear-gradient(#f0d792,#b8923f);border-radius:3px;box-shadow:0 4px 10px rgba(0,0,0,.4)}
 
 /* ---------- Bar ---------- */
@@ -413,22 +410,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .sleeve:nth-child(odd),.sleeve:nth-child(even){transform:none}
   .pin .tag{font-size:13px}
 }
-/* ---------- Foto gross ansehen ---------- */
-.zoom{cursor:zoom-in}
-.chopc{position:fixed;left:0;top:0;width:66px;height:66px;pointer-events:none;z-index:300;opacity:0;transition:opacity .12s;will-change:transform}
-.chopc.show{opacity:1}
-.chopc svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
-.chopc .s1,.chopc .s2{transform-box:view-box}
-.chopc .s1{transform-origin:52px 4px}.chopc .s2{transform-origin:55px 13px}
-.chopc.pick .s1{animation:pick1 .3s ease-in-out}.chopc.pick .s2{animation:pick2 .3s ease-in-out}
-@keyframes pick1{0%{transform:none}40%{transform:rotate(9deg)}80%{transform:rotate(-1.5deg)}100%{transform:none}}
-@keyframes pick2{0%{transform:none}40%{transform:rotate(-9deg)}80%{transform:rotate(1.5deg)}100%{transform:none}}
-.zb{position:fixed;inset:0;z-index:200;background:rgba(3,6,4,.96);display:none;align-items:center;justify-content:center;touch-action:none;overscroll-behavior:contain}
-.zb.open{display:flex}
-.zb img{max-width:100vw;max-height:100vh;max-height:100dvh;object-fit:contain;transform-origin:0 0;will-change:transform;user-select:none;-webkit-user-drag:none}
-.zb-x{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;border-radius:50%;background:rgba(244,236,220,.12);color:#fff;font-size:30px;line-height:1;display:grid;place-items:center;z-index:2;transition:background .2s}
-@media (hover:hover){.zb-x:hover{background:var(--lamp);color:#1d1406}}
-.zb-hint{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:13px;color:#a79f8d;pointer-events:none}
 
 @media (max-width:520px){.dayinfo .hh{font-size:21px}}
 /* ---------- Menue-Blatt: helles Papier (beige-gruen), alles drumherum bleibt dunkelgruen ---------- */
@@ -698,7 +679,7 @@ html.nb-off{--nb:0px!important}
     <ol class="steps reveal" id="pSteps" aria-label="So funktioniert es"><li data-s="1"><b>1</b>Personen</li><li data-s="2"><b>2</b>Hunger</li><li data-s="3"><b>3</b>Stil</li><li data-s="4" class="goal"><b>✓</b>Ihre Platte</li></ol>
     <div class="grid">
       <div class="lcol"><div class="pic reveal">
-        <img class="zoom" src="img/s/platte_4_personen.jpg" srcset="img/s/platte_4_personen_m.jpg 760w, img/s/platte_4_personen.jpg 1100w" sizes="(max-width:900px) 100vw, 50vw" width="1100" height="821" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy" decoding="async">
+        <img src="img/s/platte_4_personen.jpg" srcset="img/s/platte_4_personen_m.jpg 760w, img/s/platte_4_personen.jpg 1100w" sizes="(max-width:900px) 100vw, 50vw" width="1100" height="821" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy" decoding="async">
         <div class="tot" id="pTot"><span class="pill"><b id="tStk">0</b> Stück</span><span class="pill">Fr. <b id="tFr">0</b></span><span class="pill">≈ Fr. <b id="tPP">0</b> pro Person</span></div>
       </div>
         <p class="hint">Ideal für Geburtstage, Feste und Take-away. Am Telefon einfach die Nummern durchgeben.</p>
@@ -741,10 +722,10 @@ html.nb-off{--nb:0px!important}
     <h2 class="reveal">Der Salon an der <i>Engelgasse</i></h2>
     <p class="moved reveal" id="moved">Sie finden uns an der <a class="addr-u" href="https://www.google.com/maps/search/?api=1&amp;query=Engelgasse+2,+9000+St.+Gallen" target="_blank" rel="noopener">Engelgasse 2</a>, mitten in der Altstadt. Grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.</p>
     <div class="wall">
-      <figure class="frame f1 reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/salon_quer.jpg" srcset="img/s/salon_quer_m.jpg 900w, img/s/salon_quer.jpg 1500w" sizes="(max-width:760px) 100vw, 1180px" width="1500" height="837" alt="Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen" loading="lazy" decoding="async" style="aspect-ratio:16/8.4"><span class="lit"></span></div></figure>
-      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/salon_hoch.jpg" srcset="img/s/salon_hoch_m.jpg 720w, img/s/salon_hoch.jpg 900w" sizes="(max-width:760px) 100vw, 580px" width="900" height="1125" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
+      <figure class="frame f1 reveal"><span class="lamp"></span><div class="mat"><img src="img/s/salon_quer.jpg" srcset="img/s/salon_quer_m.jpg 900w, img/s/salon_quer.jpg 1500w" sizes="(max-width:760px) 100vw, 1180px" width="1500" height="837" alt="Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen" loading="lazy" decoding="async" style="aspect-ratio:16/8.4"><span class="lit"></span></div></figure>
+      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/s/salon_hoch.jpg" srcset="img/s/salon_hoch_m.jpg 720w, img/s/salon_hoch.jpg 900w" sizes="(max-width:760px) 100vw, 580px" width="900" height="1125" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
       <div class="stack">
-        <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/hosomaki.jpg" width="700" height="700" alt="Hosomaki mit Lachs und Gurke auf Schiefer" loading="lazy" decoding="async"><span class="lit"></span></div></figure>
+        <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/s/hosomaki.jpg" width="700" height="700" alt="Hosomaki mit Lachs und Gurke auf Schiefer" loading="lazy" decoding="async"><span class="lit"></span></div></figure>
       </div>
     </div>
     <div class="wdots" id="wdots" aria-hidden="true"></div>
@@ -758,9 +739,9 @@ html.nb-off{--nb:0px!important}
     <h2 class="neon" id="neon">Sake Cocktails</h2>
     <p class="lead reveal">Hausgemachte Sake-Kreationen, passend zu Sushi – und unser eigenes Bier, das Leo Lager.</p>
     <div class="drinks">
-      <article class="drink big reveal"><img class="zoom" src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Aperitif vor dem Sushi oder der letzte Drink um elf.</p></div></article>
-      <article class="drink reveal"><span class="pr">Fr. 18</span><img class="zoom" src="img/s/yuzu_sakura.jpg" width="700" height="700" alt="Cocktail Yuzu Sakura" loading="lazy" decoding="async"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
-      <article class="drink reveal"><span class="pr">Fr. 18</span><img class="zoom" src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
+      <article class="drink big reveal"><img src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Aperitif vor dem Sushi oder der letzte Drink um elf.</p></div></article>
+      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/yuzu_sakura.jpg" width="700" height="700" alt="Cocktail Yuzu Sakura" loading="lazy" decoding="async"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
+      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
     </div>
     <div class="drinks two">
       <div class="list reveal"><h3>Signature Sake</h3>
@@ -961,7 +942,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 
 /* ================= Lieblinge ================= */
 (function(){ const box=$("#dishes");
-  box.innerHTML=LIEB.map((d,i)=>`<article class="dish" style="transition-delay:${(i%3)*.12}s"><picture><source type="image/webp" srcset="img/s/${d.img}_34_600.webp 600w, img/s/${d.img}_34_900.webp 900w" sizes="(max-width:520px) 92vw, (max-width:900px) 46vw, 380px"><img class="zoom" src="img/s/${d.img}_34_600.jpg" srcset="img/s/${d.img}_34_600.jpg 600w, img/s/${d.img}_34_900.jpg 900w" sizes="(max-width:520px) 92vw, (max-width:900px) 46vw, 380px" width="600" height="800" alt="${esc(d.n)}" loading="lazy" decoding="async"></picture>${d.hot?`<span class="hot">${d.hot}</span>`:""}<div class="cap"><div>${d.nr?`<div class="nr">Nr. ${d.nr}</div>`:""}<h3>${esc(d.n)}</h3><div class="d">${esc(d.d)}</div></div><span class="pr">Fr. ${d.p}</span></div></article>`).join("");
+  box.innerHTML=LIEB.map((d,i)=>`<article class="dish" style="transition-delay:${(i%3)*.12}s"><picture><source type="image/webp" srcset="img/s/${d.img}_34_600.webp 600w, img/s/${d.img}_34_900.webp 900w" sizes="(max-width:520px) 92vw, (max-width:900px) 46vw, 380px"><img src="img/s/${d.img}_34_600.jpg" srcset="img/s/${d.img}_34_600.jpg 600w, img/s/${d.img}_34_900.jpg 900w" sizes="(max-width:520px) 92vw, (max-width:900px) 46vw, 380px" width="600" height="800" alt="${esc(d.n)}" loading="lazy" decoding="async"></picture>${d.hot?`<span class="hot">${d.hot}</span>`:""}<div class="cap"><div>${d.nr?`<div class="nr">Nr. ${d.nr}</div>`:""}<h3>${esc(d.n)}</h3><div class="d">${esc(d.d)}</div></div><span class="pr">Fr. ${d.p}</span></div></article>`).join("");
   $$(".dish").forEach(el=>{ io.observe(el); el.addEventListener("transitionend",()=>{ if(el.classList.contains("in")){ el.style.transitionDelay="0s"; el.classList.add("ready"); } },{once:true}); });
 })();
 
@@ -1124,51 +1105,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   show(today);
 })();
 
-/* ================= Staebchen ueber den Gerichten (nur Maus): kurz oeffnen und zugreifen, dann Foto ================= */
-(function(){ const CHOP=true; /* false = alter Cursor (Bild) */
-  if(!CHOP||reduce||!matchMedia("(hover:hover) and (pointer:fine)").matches) return;
-  const H=document.documentElement, c=document.createElement("div"); c.className="chopc"; c.setAttribute("aria-hidden","true");
-  c.innerHTML='<svg viewBox="0 0 56 56"><g stroke-linecap="round"><g class="s1"><path d="M52 4 L9 50" stroke="#08120d" stroke-width="7"/><path d="M52 4 L9 50" stroke="#f3dc9a" stroke-width="3.6"/><path d="M47 9 L42 14" stroke="#08120d" stroke-width="1.6"/></g><g class="s2"><path d="M55 13 L13 52" stroke="#08120d" stroke-width="7"/><path d="M55 13 L13 52" stroke="#d4ad5f" stroke-width="3.6"/><path d="M50 16 L45 20" stroke="#08120d" stroke-width="1.6"/></g></g></svg>';
-  document.body.appendChild(c); H.classList.add("chop");
-  const K=66/56; let lx=-99, ly=-99;
-  const place=()=>{ c.style.transform=`translate(${lx-10*K}px,${ly-51*K}px)`; };
-  const test=()=>{ const el=document.elementFromPoint(lx,ly); c.classList.toggle("show",!!(el&&el.closest(".dish")&&!el.closest(".zb"))); };
-  addEventListener("pointermove",e=>{ if(e.pointerType!=="mouse") return; lx=e.clientX; ly=e.clientY; place(); test(); },{passive:true});
-  addEventListener("scroll",()=>{ if(lx>0) test(); },{passive:true});
-  document.addEventListener("mouseleave",()=>c.classList.remove("show"));
-  window.__chopPick=()=>{ c.classList.remove("pick"); void c.offsetWidth; c.classList.add("pick"); setTimeout(()=>{ c.classList.remove("pick"); test(); },320); };
-})();
-
-/* ================= Foto gross: Tippen öffnet, zwei Finger zoomen, Kreuz/Wischen schliesst ================= */
-(function(){
-  const lb=document.createElement("div"); lb.className="zb"; lb.setAttribute("role","dialog"); lb.setAttribute("aria-label","Foto");
-  lb.innerHTML='<button class="zb-x" type="button" aria-label="Schliessen">×</button><img alt=""><div class="zb-hint">Mit zwei Fingern vergrössern · nach unten wischen zum Schliessen</div>';
-  document.body.appendChild(lb);
-  const im=lb.querySelector("img"), x=lb.querySelector(".zb-x");
-  let sc=1,tx=0,ty=0,base=null,pts=new Map(),start=null,lastTap=0,dragY=0;
-  const apply=()=>{ const r=im.getBoundingClientRect(); im.style.transform=`translate(${tx}px,${ty+dragY}px) scale(${sc})`; };
-  const reset=()=>{ sc=1;tx=0;ty=0;dragY=0; im.style.transform=""; lb.style.background=""; };
-  function open(src,alt){ im.src=src; im.alt=alt||""; reset(); lb.classList.add("open"); x.focus({preventScroll:true}); }
-  function close(){ lb.classList.remove("open"); reset(); }
-  lb.addEventListener("wheel",e=>e.preventDefault(),{passive:false}); lb.addEventListener("touchmove",e=>e.preventDefault(),{passive:false});
-  document.addEventListener("click",e=>{ const z=e.target.closest(".zoom, .dish, .drink, .frame:not(.map)"); if(!z||lb.contains(e.target)) return;
-    const img=z.matches("img")?z:z.querySelector("img"); if(!img) return; e.preventDefault();
-    const go=()=>open(img.currentSrc||img.src,img.alt);
-    if(window.__chopPick && e.target.closest(".dish")){ window.__chopPick(); setTimeout(go,300); } else go(); });
-  x.addEventListener("click",close);
-  addEventListener("keydown",e=>{ if(e.key==="Escape"&&lb.classList.contains("open")) close(); });
-  lb.addEventListener("click",e=>{ if(e.target===lb) close(); });
-  im.style.transformOrigin="50% 50%";
-  lb.addEventListener("pointerdown",e=>{ if(e.target===x) return; lb.setPointerCapture(e.pointerId); pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
-    if(pts.size===2){ const [a,b]=[...pts.values()]; base={d:Math.hypot(a.x-b.x,a.y-b.y),sc}; }
-    else { start={x:e.clientX,y:e.clientY,tx,ty}; const t=performance.now(); if(t-lastTap<300){ sc=sc>1?1:2.5; tx=ty=0; im.style.transition="transform .25s"; apply(); setTimeout(()=>im.style.transition="",260); } lastTap=t; } });
-  lb.addEventListener("pointermove",e=>{ if(!pts.has(e.pointerId)) return; pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
-    if(pts.size>=2&&base){ const [a,b]=[...pts.values()]; sc=Math.max(1,Math.min(5,base.sc*Math.hypot(a.x-b.x,a.y-b.y)/base.d)); apply(); }
-    else if(start){ const dx=e.clientX-start.x, dy=e.clientY-start.y; if(sc>1){ tx=start.tx+dx; ty=start.ty+dy; } else { dragY=Math.max(0,dy); lb.style.background=`rgba(3,6,4,${Math.max(.4,.96-dragY/500)})`; } apply(); } });
-  const up=e=>{ pts.delete(e.pointerId); if(pts.size<2) base=null; if(pts.size===0){ if(sc<=1&&dragY>110){ close(); return; } if(sc<=1){ tx=ty=0; } dragY=0; lb.style.background=""; im.style.transition="transform .2s"; apply(); setTimeout(()=>im.style.transition="",220); start=null; } };
-  lb.addEventListener("pointerup",up); lb.addEventListener("pointercancel",up);
-})();
-
 $$(".reveal,#moved").forEach(el=>io.observe(el));
 
 /* ================= Sprache DE / EN (British English) =================
@@ -1223,7 +1159,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl":"Map of St. Gallen’s old town: Leo on Engelgasse 2, near Marktplatz and Bohl",
 "Route in Google Maps":"Directions in Google Maps","Entwurf · nur zur Ansicht":"Draft · preview only","Website-Entwurf von Julia & Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.":"Website draft by Julia & Robin Mirku · preview only – some links and features are not active yet.",
 "Schnellzugriff":"Quick access","Anrufen":"Call","Platte":"Platter","Route":"Directions",
-"Foto":"Photo","Schliessen":"Close","Mit zwei Fingern vergrössern · nach unten wischen zum Schliessen":"Pinch to zoom · swipe down to close",
+
 "Geschlossen":"Closed","Kontakt":"Contact","Öffnungszeiten":"Opening hours","Rechtliches":"Legal","Impressum":"Legal notice","Datenschutz":"Privacy policy","Mo":"Mo","Di":"Tu","Mi":"We","Do":"Th","Fr":"Fr","Sa":"Sa","So":"Su",
 "Geflämmter Lachs, Avocado, Teriyaki · 2 Stück":"Flamed salmon, avocado, teriyaki · 2 pieces",
 "Crevette in Tempura, aussen Thunfisch & Tobiko · 8 Stück":"Tempura prawn, topped with tuna & tobiko · 8 pieces",
