@@ -1261,7 +1261,7 @@ if(H.classList.contains('sv')){(()=>{const stg=$('#aktStage');if(!stg)return;con
       d.style.backgroundSize='auto '+Hh+'px';d.style.backgroundPosition=(-i*bw)+'px 0';pn.appendChild(d)}
       const c=document.createElement('span');c.className='cord';c.innerHTML='<i></i>';pn.appendChild(c)})}
   const lift=(u,e)=>e*(.10+.86*Math.pow(u,1.35));          /* Anteil der Höhe, um den der Saum angehoben ist */
-  function draw(){if(!N)build();const G=.075;              /* gerafft bleiben 17 % der Bahnbreite am Rand */
+  function draw(){if(!N)build();const G=.045;              /* gerafft bleiben 17 % der Bahnbreite am Rand */
     P.forEach(pn=>{const st=pn.children;let x=0;
       const EE=[];for(let i=0;i<N;i++){const u=i/(N-1),dl=.26*(1-u);const q=Math.max(0,Math.min(1,(cur-dl)/(1-dl)));EE.push(q<.5?4*q*q*q:1-Math.pow(-2*q+2,3)/2)}
       for(let i=0;i<N;i++){const e=EE[i];
