@@ -1365,7 +1365,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     reise({x:P.cx,y:P.sy-6,rot:rotZ,sc:1},function(){
       var gewellt=false;
       tween({y:P.sy+P.tief},240,eInOut,function(){setTimeout(function(){abschliessen(name);},160);},
-        function(){var tief=st.y-P.sy;if(tief>0&&!gewellt){gewellt=true;welle(P);}benetzen(P,tief);});
+        function(){var tief=st.y-VX-P.sy;if(tief>0&&!gewellt){gewellt=true;welle(P);}benetzen(P,tief);});
     });
   }
   function treffer(){
@@ -1378,7 +1378,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
   /* Grenzen beim Ziehen — gilt auch bei schnellem Ruck (jedes Bild):
      aus der Sauce erst senkrecht ueber den Rand, hinein nur von oben,
      unterwegs nie unter den Rand einer Schale, die auf dem Weg liegt (erst heben, dann hinueber) */
-  var raus=null;
+  var raus=null,getaucht=null;
   function deckel(x1,x2,ohne){var a=Math.min(x1,x2)-12,b=Math.max(x1,x2)+12,d=1e9;
     for(var n in POT){if(n===ohne)continue;var P=POT[n],m=P.cx+VX;if(b>=m-P.rimRx&&a<=m+P.rimRx)d=Math.min(d,P.rimY-6);}return d;}
   function zwang(tx,ty){
@@ -1393,7 +1393,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
       if(st.y>P.rimY-8)return {x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
       raus=null;}
     for(i=0;i<REIHE.length;i++){n=REIHE[i];P=POT[n];m=P.cx+VX;
-      if(Math.abs(tx-m)<=P.rx*.82&&ty>=P.sy-1&&(P.vorn||ty<=P.sy+33||st.y<P.sy)){drin=n;welle(P);w=Math.max(3,P.rx-14);
+      if(Math.abs(tx-m)<=P.rx*.82&&ty>=P.sy-1&&(P.vorn||ty<=P.sy+33||st.y<P.sy)){drin=n;w=Math.max(3,P.rx-14);
         c={x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
         if(Math.abs(st.x-m)>w+1){d=Math.min(P.rimY-6,deckel(st.x,c.x,n));if(st.y>d+1)return {x:st.x,y:d,heben:1};c.y=Math.min(c.y,d);}
         return c;}
@@ -1420,7 +1420,8 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
       else{var rb=1-Math.exp(-dt/240);drag.ox+=(drag.ox0-drag.ox)*rb;drag.oy+=(drag.oy0-drag.oy)*rb;}st.x+=(c.x-st.x)*a;st.y+=(c.y-st.y)*a;
       vx*=Math.exp(-dt/120);
       zielR=ruhig?0:(drin?POT[drin].lean*.5:Math.max(-14,Math.min(14,vx*12)));tilt+=(zielR-tilt)*(1-Math.exp(-dt/90));st.rot=tilt;
-      if(drin)benetzen(POT[drin],st.y-POT[drin].sy);
+      /* Farbe und Welle erst, wenn die sichtbare Spitze die Sauce beruehrt */
+      if(drin){var tf=st.y-VX-POT[drin].sy;if(tf>0&&getaucht!==drin){getaucht=drin;welle(POT[drin]);}else if(tf<=0&&getaucht===drin)getaucht=null;benetzen(POT[drin],tf);}else getaucht=null;
       zeichnen();
       requestAnimationFrame(loop);})(performance.now());
     fry.classList.add("zieht");document.documentElement.classList.add("fry-zieht");fry.style.willChange="transform";
