@@ -1375,19 +1375,34 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     return best;
   }
   /* Grenzen beim Ziehen: Spitze bleibt in der Sauce, geht nie durch Schale oder Rand */
+  /* Grenzen beim Ziehen — gilt auch bei schnellem Ruck (jedes Bild):
+     aus der Sauce erst senkrecht ueber den Rand, hinein nur von oben,
+     unterwegs nie unter den Rand einer Schale, die auf dem Weg liegt (erst heben, dann hinueber) */
+  var raus=null;
+  function deckel(x1,x2,ohne){var a=Math.min(x1,x2)-12,b=Math.max(x1,x2)+12,d=1e9;
+    for(var n in POT){if(n===ohne)continue;var P=POT[n],m=P.cx+VX;if(b>=m-P.rimRx&&a<=m+P.rimRx)d=Math.min(d,P.rimY-6);}return d;}
   function zwang(tx,ty){
-    var P,m;
-    /* Mitte der Sauce im Rechenmass (Spitze wird VX weiter links gezeichnet); Fritte ganz in der Sauce: halbe Breite 14 */
-    if(drin){P=POT[drin];m=P.cx+VX;
-      if(ty<P.sy-4){drin=null;}
-      else{var w=Math.max(3,P.rx-14);return {x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};}
+    var P,m,w,c,i,n,d;
+    if(drin){P=POT[drin];m=P.cx+VX;w=Math.max(3,P.rx-14);
+      if(ty<P.sy-4){raus=drin;drin=null;}
+      else{c={x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
+        if(Math.abs(st.x-m)>w+1){d=Math.min(P.rimY-6,deckel(st.x,c.x,drin));if(st.y>d+1)return {x:st.x,y:d,heben:1};c.y=Math.min(c.y,d);}
+        return c;}
     }
-    for(var i=0;i<REIHE.length;i++){var n=REIHE[i];P=POT[n];m=P.cx+VX;var dx=Math.abs(tx-m);
-      var w2=Math.max(3,P.rx-14);
-      if(dx<=P.rx*.82&&ty>=P.sy-1&&(P.vorn||ty<=P.sy+33||st.y<P.sy)){drin=n;welle(P);return {x:Math.max(m-w2,Math.min(m+w2,tx)),y:Math.min(ty,P.sy+P.tief)};}
-      if(dx<=P.rimRx+3&&ty>P.rimY-5&&(P.vorn||(st.y<=P.rimY-3&&ty<P.rimY+40)))return {x:tx,y:P.rimY-5};
+    if(raus){P=POT[raus];m=P.cx+VX;w=Math.max(3,P.rx-14);
+      if(st.y>P.rimY-8)return {x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
+      raus=null;}
+    for(i=0;i<REIHE.length;i++){n=REIHE[i];P=POT[n];m=P.cx+VX;
+      if(Math.abs(tx-m)<=P.rx*.82&&ty>=P.sy-1&&(P.vorn||ty<=P.sy+33||st.y<P.sy)){drin=n;welle(P);w=Math.max(3,P.rx-14);
+        c={x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
+        if(Math.abs(st.x-m)>w+1){d=Math.min(P.rimY-6,deckel(st.x,c.x,n));if(st.y>d+1)return {x:st.x,y:d,heben:1};c.y=Math.min(c.y,d);}
+        return c;}
     }
-    return {x:tx,y:ty};
+    /* frei: ueber dem Rand der naechsten Schale und aller Schalen auf dem Weg */
+    var nah=null,bd=1e9;for(n in POT){P=POT[n];var e=Math.abs(tx-(P.cx+VX));if(e<bd){bd=e;nah=P;}}
+    d=Math.min(nah.rimY-6,deckel(st.x,tx));
+    if(st.y>d+1)return {x:st.x,y:d,heben:1};
+    return {x:tx,y:Math.min(ty,d)};
   }
   var vx=0,lx=0,lt=0,zielR=0,tilt=0,px=0,py=0;
   fry.addEventListener("pointerdown",function(e){
@@ -1395,13 +1410,13 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     e.preventDefault();messen();fry.setPointerCapture(e.pointerId);
     var r=feld.getBoundingClientRect();
     drag={id:e.pointerId,ox:(e.clientX-r.left)/k-st.x,oy:(e.clientY-r.top)/k-st.y,r:r};drag.ox0=drag.ox;drag.oy0=drag.oy;
-    drin=home;
+    drin=home;raus=null;
     vx=0;lx=e.clientX;lt=performance.now();tilt=st.rot;px=e.clientX;py=e.clientY;
     var lastT=performance.now();(function loop(t){if(!drag)return;var dt=Math.min(32,Math.max(1,t-lastT));lastT=t;
       var r2=feld.getBoundingClientRect();
       var tx=Math.max(-30,Math.min(280,(px-r2.left)/k-drag.ox)),ty=Math.max(10,Math.min(240,(py-r2.top)/k-drag.oy));
       drag.tx=(px-r2.left)/k-drag.ox0;drag.ty=(py-r2.top)/k-drag.oy0;var c=zwang(tx,ty),a=ruhig?1:1-Math.exp(-dt/26);
-      if(c.x!==tx||c.y!==ty){drag.ox=Math.max(-30,Math.min(30,drag.ox+(tx-c.x)));drag.oy=Math.max(-108,Math.min(10,drag.oy+(ty-c.y)));}
+      if(!c.heben&&(c.x!==tx||c.y!==ty)){drag.ox=Math.max(-30,Math.min(30,drag.ox+(tx-c.x)));drag.oy=Math.max(-108,Math.min(10,drag.oy+(ty-c.y)));}
       else{var rb=1-Math.exp(-dt/240);drag.ox+=(drag.ox0-drag.ox)*rb;drag.oy+=(drag.oy0-drag.oy)*rb;}st.x+=(c.x-st.x)*a;st.y+=(c.y-st.y)*a;
       vx*=Math.exp(-dt/120);
       zielR=ruhig?0:(drin?POT[drin].lean*.5:Math.max(-14,Math.min(14,vx*12)));tilt+=(zielR-tilt)*(1-Math.exp(-dt/90));st.rot=tilt;
