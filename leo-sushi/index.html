@@ -467,12 +467,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.dish{opacity:1;transform:none}}
 
 /* ---------- Abstaende zwischen den Bloecken etwa halbiert (Farbuebergaenge bleiben, liegen jetzt unter dem Titel) ---------- */
-.lieb{padding-top:clamp(48px,6vw,84px);padding-bottom:clamp(30px,4vw,56px)}
+.lieb{padding-top:clamp(26px,3vw,44px);padding-bottom:clamp(30px,4vw,56px)}
+/* weicher Uebergang vom ersten Bild in die Lieblinge: Verlauf liegt auf dem unteren Rand des Bildes */
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(90px,14vh,170px);background:linear-gradient(180deg,rgba(13,36,26,0) 0%,rgba(13,36,26,.55) 45%,var(--green-main) 100%);pointer-events:none;z-index:1}
+.hero .post{z-index:2}
 .plan{padding-top:clamp(44px,5vw,72px);padding-bottom:clamp(44px,5vw,72px)}
 .salon{padding-top:clamp(46px,5.5vw,80px);padding-bottom:clamp(46px,5.5vw,80px)}
 .bar{padding-top:clamp(50px,6vw,84px);padding-bottom:clamp(50px,6vw,84px)}
 .rev{padding-top:clamp(46px,5.5vw,78px);padding-bottom:calc(clamp(30px,3vw,46px) + 40px)}
-.visit{padding-top:clamp(20px,2.5vw,36px)}
+.visit{padding-top:clamp(20px,2.5vw,36px);padding-bottom:clamp(48px,5vw,72px)}
 
 /* ---------- Gaeste: helle Papier-Huellen, Kopf gruen (A, Standard) oder Verlauf gruen->lila (B: ?gaeste=b) ---------- */
 .sleeve{background:linear-gradient(180deg,#eee8d4,#e6e2cc);border:1px solid #cfc6a6;box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 22px 34px -18px rgba(0,0,0,.85)}
@@ -493,6 +496,76 @@ html.g-b .sleeve .band{background:
 /* Neon-Ueberzeile (Wortlaut wie bei Leo: Signature Sake Cocktails) */
 .neon-kick{text-align:center;font:600 clamp(13px,1.3vw,16px)/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:#d9ffe9;text-shadow:0 0 6px #33e08a,0 0 16px rgba(51,224,138,.6);margin:0 0 clamp(10px,1.4vw,18px);padding-left:.42em}
 @supports selector(:has(a)){.neon-kick{opacity:.2;transition:opacity .4s .3s}.neon-kick:has(+ .neon.on){opacity:1}}
+
+/* ---------- Salon auf Telefon / Tablet hochkant: Fotos als Band zum Wischen (Computer bleibt wie er ist) ---------- */
+.wdots{display:none}
+@media (max-width:760px), (orientation:portrait) and (max-width:1100px){
+  .wall{display:flex;grid-template-columns:none;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:26px 20px 8px;margin-left:-20px;margin-right:-20px;scroll-padding:0 20px;scrollbar-width:none;align-items:flex-start}
+  .wall::-webkit-scrollbar{display:none}
+  .wall .stack{display:contents}
+  .wall .frame,.wall .stack .frame{flex:0 0 84%;scroll-snap-align:start;display:block}
+  .wall .frame .mat{flex:none}
+  .wall .frame img,.wall .stack img{position:static!important;width:100%!important;height:auto!important;aspect-ratio:4/5!important;object-fit:cover}
+  .wdots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .wdots i{width:8px;height:8px;border-radius:50%;background:rgba(232,207,143,.3);transition:background .25s,transform .25s}
+  .wdots i.on{background:var(--gold2);transform:scale(1.3)}
+}
+@media (orientation:portrait) and (min-width:761px) and (max-width:1100px){.wall .frame,.wall .stack .frame{flex-basis:62%}}
+
+/* ---------- Gaeste Variante C (?gaeste=c): helles Papier, ringsum eine feine Neonroehre (rosa / gruen im Wechsel) ---------- */
+html.g-c .sleeve .band{background:linear-gradient(180deg,#eee8d4,#e8e3cd);box-shadow:inset 0 -1px 0 rgba(122,96,40,.22)}
+html.g-c .sleeve .band img{filter:brightness(0);opacity:.72}
+html.g-c .sleeve::before{inset:92px 8px 8px}
+html.g-c .sleeve{--tube:255,95,168;--core:#ffd1e6;border:2px solid rgba(var(--tube),.25);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow 1.2s ease,border-color 1.2s ease}
+html.g-c .sleeve:nth-child(even){--tube:51,224,138;--core:#c9ffe2}
+html.g-c .sleeves.lit .sleeve{border-color:var(--core);box-shadow:0 0 0 1px rgba(var(--tube),.85),0 0 10px 1px rgba(var(--tube),.7),0 0 26px 4px rgba(var(--tube),.32),inset 0 0 10px rgba(var(--tube),.25),0 22px 34px -18px rgba(0,0,0,.85)}
+html.g-c .sleeve .who b{color:#b8185f;text-shadow:0 0 8px rgba(255,95,168,.35)}
+html.g-c .sleeve:nth-child(even) .who b{color:#137a46;text-shadow:0 0 8px rgba(51,224,138,.35)}
+html.g-c .score .stars{color:#ffd9ea;text-shadow:0 0 6px #ff9fcb,0 0 14px rgba(255,95,168,.7)}
+html.g-c .score{border-color:#ffb3d6;box-shadow:0 0 12px rgba(255,95,168,.35)}
+@media (hover:hover){html.g-c .sleeve:hover{border-color:var(--core)}}
+html.g-c .sleeves{padding-left:14px;padding-right:14px}
+
+/* ---------- Fusszeile wie bei einer echten Website ---------- */
+footer.foot{padding:clamp(34px,4vw,52px) 0 calc(22px + env(safe-area-inset-bottom));font-size:14.5px;color:#b9b09c}
+footer .wrap.fgrid{display:grid;grid-template-columns:1.2fr 1fr 1.3fr .9fr;gap:24px 32px}
+.fgrid h4{font:700 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:12px}
+.fgrid a{display:block;color:#e2d9c6;text-decoration:none;padding:3px 0;width:max-content;max-width:100%}
+@media (hover:hover){.fgrid a:hover{color:var(--lamp)}}
+.fbrand b{display:block;font:600 22px/1.2 var(--serif);color:var(--cream);margin-bottom:8px}
+.fbrand span{line-height:1.5}
+.fhours{list-style:none;display:grid;gap:4px}
+.fhours li{display:flex;gap:10px}.fhours li b{min-width:56px;color:#e2d9c6;font-weight:700}
+footer .wrap.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;margin-top:28px;padding-top:16px;border-top:1px solid rgba(201,164,92,.15);font-size:13px;color:#8f897a}
+.fbot a{color:#cfc6b3}
+@media (max-width:900px){footer .wrap.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){footer.foot{padding-bottom:calc(112px + env(safe-area-inset-bottom))}}
+@media (max-width:420px){footer .wrap.fgrid{grid-template-columns:1fr 1fr;gap:22px 18px}.fbrand{grid-column:1/-1}}
+
+/* ---------- 18a: Bloecke unter den Bildschirm ---------- */
+/* Lieblinge als Band: 3 Gerichte sichtbar, Rest per Pfeil / Wischen */
+.dishes{display:flex!important;gap:clamp(14px,2vw,26px);overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding:12px 2px 6px;margin:-12px -2px 0}
+.dishes::-webkit-scrollbar{display:none}
+.dishes .dish{flex:0 0 calc((100% - 2 * clamp(14px,2vw,26px)) / 3);scroll-snap-align:start}
+@media (max-width:860px){.dishes .dish{flex-basis:calc((100% - clamp(14px,2vw,26px)) / 2)}}
+@media (max-width:520px){.dishes{margin:-12px -20px 0;padding:12px 20px 6px;scroll-padding:0 20px;gap:14px}.dishes .dish{flex-basis:84%}}
+.dnav{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}
+.ddots{display:flex;gap:7px}.ddots i{width:7px;height:7px;border-radius:50%;background:rgba(232,207,143,.3);transition:background .25s,transform .25s}.ddots i.on{background:var(--gold2);transform:scale(1.3)}
+.dbtn{display:flex;gap:10px}
+.arrow.ga{border-color:rgba(201,164,92,.5);color:var(--cream)}
+@media (hover:hover){.arrow.ga:hover{background:var(--lamp);border-color:var(--lamp);color:#1d1406;box-shadow:0 0 22px rgba(255,200,97,.35)}}
+.arrow.ga:disabled{opacity:.3}
+/* Fotos: Seitenverhaeltnis gilt wirklich (height-Attribut ueberstimmte es) */
+.wall .frame img{height:auto}
+.drink img{height:auto}
+@media (min-width:901px){.drink img{aspect-ratio:1/1}}
+/* Platte: lange Liste scrollt im Brett statt die Seite zu verlaengern */
+.lcol{display:grid;gap:14px;align-content:start}.lcol .hint{margin-top:4px}
+@media (max-width:900px){.lcol{display:contents}.plan .grid>.ctrl{order:1}.lcol .hint{order:2}.lcol .muster{order:3}}
+.board ol{max-height:min(32vh,250px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(201,164,92,.4) transparent}
+
+/* Bar auf dem Telefon: Drinks als Band zum Wischen */
+@media (max-width:760px){.drinks{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;gap:14px;margin-left:-20px;margin-right:-20px;padding:0 20px 4px;scroll-padding:0 20px}.drinks::-webkit-scrollbar{display:none}.drinks>*{flex:0 0 82%;min-width:0;scroll-snap-align:start}.drink img{aspect-ratio:4/5}}
 </style>
 </head>
 <body>
@@ -547,6 +620,7 @@ html.g-b .sleeve .band{background:
       <p class="lead">Auf schwarzem Schiefer serviert – mit den Nummern unserer Küche.</p>
     </div>
     <div class="dishes" id="dishes"></div>
+    <div class="dnav"><span class="ddots" id="ddots" aria-hidden="true"></span><span class="dbtn"><button class="arrow ga" id="dPrev" type="button" aria-label="Vorherige Gerichte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button><button class="arrow ga" id="dNext" type="button" aria-label="Weitere Gerichte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button></span></div>
   </div>
 </section>
 
@@ -578,9 +652,13 @@ html.g-b .sleeve .band{background:
     <p class="lead reveal" style="margin-top:14px">Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.</p>
     <ol class="steps reveal" id="pSteps" aria-label="So funktioniert es"><li data-s="1"><b>1</b>Personen</li><li data-s="2"><b>2</b>Hunger</li><li data-s="3"><b>3</b>Stil</li><li data-s="4" class="goal"><b>✓</b>Ihre Platte</li></ol>
     <div class="grid">
-      <div class="pic reveal">
+      <div class="lcol"><div class="pic reveal">
         <img class="zoom" src="img/s/platte_4_personen.jpg" srcset="img/s/platte_4_personen_m.jpg 760w, img/s/platte_4_personen.jpg 1100w" sizes="(max-width:900px) 100vw, 50vw" width="1100" height="821" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy" decoding="async">
         <div class="tot" id="pTot"><span class="pill"><b id="tStk">0</b> Stück</span><span class="pill">Fr. <b id="tFr">0</b></span><span class="pill">≈ Fr. <b id="tPP">0</b> pro Person</span></div>
+      </div>
+        <p class="hint">Ideal für Geburtstage, Feste und Take-away. Am Telefon einfach die Nummern durchgeben.</p>
+        <!-- MUSTER-HINWEIS fuer den Inhaber: zum Entfernen diesen <aside> loeschen -->
+        <aside class="muster" data-muster><span>Musterentwurf · Hinweis für Leo</span>Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.</aside>
       </div>
       <div class="ctrl reveal">
         <div><span class="lb"><b class="no">1</b>Personen</span>
@@ -606,9 +684,7 @@ html.g-b .sleeve .band{background:
           <a class="btn btn-lamp" id="pOrder" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Diese Platte telefonisch bestellen</a>
           <button class="btn btn-line" type="button" id="copy">Liste kopieren</button>
         </div>
-        <p class="hint">Ideal für Geburtstage, Feste und Take-away. Am Telefon einfach die Nummern durchgeben.</p>
-        <!-- MUSTER-HINWEIS fuer den Inhaber: zum Entfernen diesen <aside> loeschen -->
-        <aside class="muster" data-muster><span>Musterentwurf · Hinweis für Leo</span>Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.</aside>
+
       </div>
     </div>
   </div>
@@ -627,6 +703,7 @@ html.g-b .sleeve .band{background:
         <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img class="zoom" src="img/s/sashimi.jpg" width="700" height="700" alt="Sashimi von Lachs und Thunfisch auf Eis" loading="lazy" decoding="async"><span class="lit"></span></div></figure>
       </div>
     </div>
+    <div class="wdots" id="wdots" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -671,7 +748,7 @@ html.g-b .sleeve .band{background:
 <!-- ===== Besuch ===== -->
 <section class="visit" id="besuch">
   <div class="wrap">
-    <h2 class="reveal">Bis <i>heute Abend?</i></h2>
+    <h2 class="reveal" id="gruss">Bis <i>bald?</i></h2>
     <div class="grid">
       <div class="reveal">
         <div class="days" id="days"></div>
@@ -689,7 +766,15 @@ html.g-b .sleeve .band{background:
 </section>
 </main>
 
-<footer><div class="wrap"><span>Leo · Sushi Bar St. Gallen · Engelgasse 2</span><span>Entwurf · nur zur Ansicht</span></div></footer>
+<footer class="foot">
+  <div class="wrap fgrid">
+    <div class="fbrand"><b>Leo · Sushi Bar</b><span>Engelgasse 2<br>9000 St. Gallen</span></div>
+    <div><h4>Kontakt</h4><a href="tel:+41767661747">076 766 17 47</a><a href="mailto:sushibarleo@gmx.ch">sushibarleo@gmx.ch</a><a href="https://www.instagram.com/sushibarleo/" target="_blank" rel="noopener">@sushibarleo</a></div>
+    <div><h4>Öffnungszeiten</h4><ul class="fhours" id="fhours"></ul></div>
+    <div><h4>Rechtliches</h4><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+  </div>
+  <div class="wrap fbot"><span>Entwurf · nur zur Ansicht</span><span class="by">Website: <a href="https://webstudio-mirku.ch" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></span></div>
+</footer>
 
 <nav class="dock" id="dock" aria-label="Schnellzugriff">
   <a class="main" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Anrufen</a>
@@ -923,15 +1008,57 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   addEventListener("scroll",chk,{passive:true}); chk();
 })();
 
+/* ================= Salon-Band (nur wenn es waagrecht scrollt) ================= */
+(function(){ const w=$(".wall"), d=$("#wdots"); if(!w||!d) return; const fr=[...w.querySelectorAll(".frame")];
+  d.innerHTML=fr.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("");
+  const upd=()=>{ if(w.scrollWidth<=w.clientWidth+4) return; let best=0,bd=1e9; const L=w.getBoundingClientRect().left+20;
+    fr.forEach((f,i)=>{ const dd=Math.abs(f.getBoundingClientRect().left-L); if(dd<bd){bd=dd;best=i;} }); [...d.children].forEach((x,i)=>x.classList.toggle("on",i===best)); };
+  w.addEventListener("scroll",upd,{passive:true}); addEventListener("resize",upd);
+})();
+
+/* ================= Fusszeile: Oeffnungszeiten kurz (aus DAYS, gleiche Zeiten zusammengefasst) ================= */
+(function(){ const ul=$("#fhours"); if(!ul) return; const ord=[1,2,3,4,5,6,0], g=[];
+  ord.forEach(i=>{ const h=DAYS[i][2]||"Geschlossen", last=g[g.length-1]; if(last&&last.h===h&&(h!=="Geschlossen"||true)) last.d.push(DAYS[i][0]); else g.push({h,d:[DAYS[i][0]]}); });
+  const cl=g.filter(x=>x.h==="Geschlossen").flatMap(x=>x.d), op=g.filter(x=>x.h!=="Geschlossen");
+  const lab=d=>d.length>1?d[0]+"–"+d[d.length-1]:d[0];
+  ul.innerHTML=op.map(x=>`<li><b>${lab(x.d)}</b><span>${x.h}</span></li>`).join("")+(cl.length?`<li><b>${cl.join(" & ")}</b><span>Geschlossen</span></li>`:"");
+})();
+
+/* ================= Gruss nach Tageszeit (Zuercher Zeit, echte Oeffnungszeiten aus DAYS) ================= */
+(function(){ const h2=$("#gruss"); if(!h2) return;
+  const z=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Zurich"})), wd=z.getDay(), now=z.getHours()*60+z.getMinutes();
+  const mins=t=>{ const [a,b]=t.split(":"); return +a*60+ +b; };
+  const sess=i=>(DAYS[i][2]||"").split(" · ").filter(Boolean).map(x=>x.split("–").map(mins));
+  const today=sess(wd), tomorrow=sess((wd+1)%7); let w="bald?";
+  if(today.length){ const first=today[0][0], end=today[today.length-1][1], eve=today.find(x=>x[0]>=16*60)||today[today.length-1];
+    if(now<first && first<15*60) w="heute Mittag?";
+    else if(now<end) w=(now<eve[0]||now<eve[1])?"heute Abend?":"bald?";
+    else w=tomorrow.length?"morgen?":"bald?";
+    if(now<first && first>=15*60) w="heute Abend?"; }
+  else w=tomorrow.length?"morgen?":"bald?";
+  const i=h2.querySelector("i"); if(i) i.textContent=w;
+})();
+
+/* ================= Lieblinge-Band: Pfeile + Punkte ================= */
+(function(){ const box=$("#dishes"), dots=$("#ddots"), pv=$("#dPrev"), nx=$("#dNext"); if(!box) return;
+  const cards=()=>[...box.querySelectorAll(".dish")], step=()=>{ const c=cards(); return c.length>1?c[1].offsetLeft-c[0].offsetLeft:box.clientWidth; };
+  const per=()=>Math.max(1,Math.round(box.clientWidth/step()));
+  const draw=()=>{ const n=Math.max(1,Math.ceil(cards().length/per())); const end=box.scrollLeft+box.clientWidth>=box.scrollWidth-4; const cur=end?n-1:Math.round(box.scrollLeft/(step()*per()));
+    dots.innerHTML=Array.from({length:n},(_,i)=>`<i class="${i===Math.min(cur,n-1)?"on":""}"></i>`).join("");
+    pv.disabled=box.scrollLeft<4; nx.disabled=box.scrollLeft+box.clientWidth>=box.scrollWidth-4; };
+  pv.onclick=()=>box.scrollBy({left:-step()*per(),behavior:"smooth"}); nx.onclick=()=>box.scrollBy({left:step()*per(),behavior:"smooth"});
+  box.addEventListener("scroll",()=>requestAnimationFrame(draw),{passive:true}); addEventListener("resize",draw); setTimeout(draw,50);
+})();
+
 /* ================= Bewertungen ================= */
-document.documentElement.classList.add(new URLSearchParams(location.search).get("gaeste")==="b"?"g-b":"g-a");
+(function(){ const g=new URLSearchParams(location.search).get("gaeste"); document.documentElement.classList.add(g==="b"?"g-b":g==="c"?"g-c":"g-a"); })();
 (function(){ const box=$("#sleeves");
   box.innerHTML=REV.map(r=>`<article class="sleeve"><div class="band"><img src="img/s/leo_logo.png" alt="" width="46" height="46" loading="lazy"></div><blockquote>«${esc(r.q)}»</blockquote><div class="who"><b>${esc(r.n)}</b><span>Google · ${r.t}</span></div></article>`).join("");
   const step=()=>box.querySelector(".sleeve").getBoundingClientRect().width+24;
   const next=()=>{ if(box.scrollLeft+box.clientWidth>=box.scrollWidth-8) box.scrollTo({left:0}); else box.scrollBy({left:step()}); };
   $("#rNext").onclick=next; $("#rPrev").onclick=()=>{ if(box.scrollLeft<8) box.scrollTo({left:box.scrollWidth}); else box.scrollBy({left:-step()}); };
   let hold=false, vis=false; box.addEventListener("mouseenter",()=>hold=true); box.addEventListener("mouseleave",()=>hold=false); box.addEventListener("touchstart",()=>{hold=true;setTimeout(()=>hold=false,9000)},{passive:true});
-  new IntersectionObserver(es=>vis=es[0].isIntersecting,{threshold:.3}).observe(box);
+  new IntersectionObserver(es=>{ vis=es[0].isIntersecting; if(vis) box.classList.add("lit"); },{threshold:.3}).observe(box);
   if(!reduce) setInterval(()=>{ if(vis&&!hold) next(); },6000);
 })();
 
@@ -1037,14 +1164,14 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Sake, Holunder, Tonic, Limettenzeste":"Sake, elderflower, tonic, lime zest","Sake, Yuzu, Soda – Zitrus & Spritz":"Sake, yuzu, soda – citrus & spritz",
 "Bier & Bläschen":"Beer & bubbles","Thailand · 5,0 % · 3,3 dl":"Thailand · 5.0% · 33 cl","Japan · 5,0 % · 3,3 dl":"Japan · 5.0% · 33 cl","7,5 dl":"75 cl",
 "Was Gäste":"What guests","sagen":"say","302 Bewertungen auf Google":"302 reviews on Google",
-"Vorherige Bewertung":"Previous review","Nächste Bewertung":"Next review",
-"Bis":"See you","heute Abend?":"tonight?","Tisch reservieren & Bestellungen":"Table bookings & orders","Route planen":"Get directions",
+"Vorherige Bewertung":"Previous review","Vorherige Gerichte":"Previous dishes","Weitere Gerichte":"More dishes","Nächste Bewertung":"Next review",
+"Bis":"See you","heute Abend?":"this evening?","heute Mittag?":"at lunchtime?","morgen?":"tomorrow?","bald?":"soon?","Tisch reservieren & Bestellungen":"Table bookings & orders","Route planen":"Get directions",
 "Anfragen für Gruppen & Feste":"Enquiries for groups & parties","7’840 Follower auf Instagram":"7,840 followers on Instagram",
 "Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl":"Map of St. Gallen’s old town: Leo on Engelgasse 2, near Marktplatz and Bohl",
 "Route in Google Maps":"Directions in Google Maps","Entwurf · nur zur Ansicht":"Draft · preview only",
 "Schnellzugriff":"Quick access","Anrufen":"Call","Platte":"Platter","Route":"Directions",
 "Foto":"Photo","Schliessen":"Close","Mit zwei Fingern vergrössern · nach unten wischen zum Schliessen":"Pinch to zoom · swipe down to close",
-"Geschlossen":"Closed","Mo":"Mo","Di":"Tu","Mi":"We","Do":"Th","Fr":"Fr","Sa":"Sa","So":"Su",
+"Geschlossen":"Closed","Kontakt":"Contact","Öffnungszeiten":"Opening hours","Rechtliches":"Legal","Impressum":"Legal notice","Datenschutz":"Privacy policy","Mo":"Mo","Di":"Tu","Mi":"We","Do":"Th","Fr":"Fr","Sa":"Sa","So":"Su",
 "Geflämmter Lachs, Avocado, Teriyaki · 2 Stück":"Flamed salmon, avocado, teriyaki · 2 pieces",
 "Crevette in Tempura, aussen Thunfisch & Tobiko · 8 Stück":"Tempura prawn, topped with tuna & tobiko · 8 pieces",
 "Crevette in Tempura, aussen Avocado, Teriyaki · 8 Stück":"Tempura prawn, topped with avocado & teriyaki · 8 pieces",
@@ -1091,7 +1218,8 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     [/^(Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag)$/, (m,a)=>DAY[a]],
     [/^Google · vor (\d+) (\S+)$/, (m,n,u)=>"Google · "+n+" "+(UNIT[u]||u)+" ago"],
     [/^Anrufen: (.+)$/, (m,a)=>"Call: "+a],
-    [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)]
+    [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)],
+    [/^(Mo|Di|Mi|Do|Fr|Sa|So)((?:[–&]| & )(Mo|Di|Mi|Do|Fr|Sa|So))*$/, m=>m.replace(/Mo|Di|Mi|Do|Fr|Sa|So/g,x=>D[x]||x)]
   ];
   const tr=s=>{ if(D[s]!=null) return D[s]; if(s.includes(" – ")||ING[s]){ const x=desc(s); if(x) return x; }
     for(const [re,f] of R){ const m=s.match(re); if(m) return f(...m); } return null; };
