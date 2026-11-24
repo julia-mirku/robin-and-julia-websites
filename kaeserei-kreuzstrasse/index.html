@@ -472,6 +472,17 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
  background:linear-gradient(180deg,#FBF5E8 0,#FBF5E8 calc((1 - var(--wp,1)) * 45%),rgba(251,245,232,.82) calc(8% + (1 - var(--wp,1)) * 45%),rgba(251,245,232,.4) calc(40% + (1 - var(--wp,1)) * 30%),rgba(251,245,232,0) 100%)!important;-webkit-mask-image:none!important;mask-image:none!important}
 @media (prefers-reduced-motion:reduce){.weg.weg:before{height:170px;opacity:1}}
 /*FONA-END*/
+/*MEDWEICH*/ /* Юля 24.11: блок медалей — корки и подвал мягче, медали главное */
+.preise{isolation:isolate}
+.preise:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(251,245,232,.8) 0,rgba(251,245,232,.88) 9%,#FBF5E8 20%,#FBF5E8 80%,rgba(251,245,232,.88) 91%,rgba(251,245,232,.8) 100%);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%)}
+.preise .kbg{z-index:0}
+.preise .kbg img{filter:blur(3px);transform:scale(1.03)}
+.preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.62),rgba(251,245,232,.52) 50%,rgba(251,245,232,.62)),linear-gradient(90deg,rgba(251,245,232,.9) 0%,rgba(251,245,232,.66) 34%,rgba(251,245,232,.3) 58%,rgba(251,245,232,.36) 100%)!important}
+@media (max-width:1020px){.preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.84) 0%,rgba(251,245,232,.72) 40%,rgba(251,245,232,.5) 70%,rgba(251,245,232,.56) 100%)!important}}
+/*MEDWEICH-END*/
+
 .weg:after{background:linear-gradient(180deg,rgba(20,16,11,0) 40%,rgba(20,16,11,.8) 100%)!important}
 .day small{line-height:1.25;text-align:center;display:flex;flex-direction:column;align-items:center}
 .day small span{white-space:nowrap;letter-spacing:-.01em}
