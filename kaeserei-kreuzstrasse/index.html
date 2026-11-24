@@ -72,6 +72,8 @@ html.bar-off .entwurf{transform:translateY(-102%)}
 .hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,21,14,.86) 0%,rgba(28,21,14,.62) 30%,rgba(28,21,14,0) 47%),linear-gradient(180deg,rgba(28,21,14,.55) 0%,rgba(28,21,14,0) 22%)}
 .hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--hdr) + var(--bar0,0px) + 28px) 0 40px}
 .hero-in .wrap>*{max-width:480px}
+@media (min-width:1500px){.hero-in .wrap{width:calc(100% - 2*clamp(48px,6vw,120px))}}
+@media (max-width:380px){.hero h1{font-size:34px!important}.hero p.lead{font-size:14.5px!important;margin:8px 0 12px!important}.hero .btn{height:42px!important;font-size:14px!important;padding:0 14px!important}.hero-in{padding-top:calc(var(--hdr) + var(--bar0,0px) + 8px)!important}}
 .hero h1{font-size:clamp(42px,5.4vw,82px);font-weight:400}
 .hero h1 em{font-style:normal;color:var(--gold2)}
 .hero .kick{color:var(--gold2)}
@@ -90,7 +92,8 @@ html.bar-off .entwurf{transform:translateY(-102%)}
 .dot.on{background:#7fd05a;box-shadow:0 0 0 4px rgba(127,208,90,.25)}
 /* Figuren + Sprechblasen */
 .figs{position:absolute;inset:0;z-index:2}
-.fig{position:absolute;width:9%;height:26%;transform:translate(-50%,-50%)}
+.fig{position:absolute;transform:translate(-50%,0)}
+.fig .bub{margin-bottom:10px}
 .bub{position:absolute;left:50%;bottom:100%;transform:translate(-50%,10px) scale(.8);transform-origin:50% 100%;width:max-content;max-width:250px;background:var(--milk);color:var(--ink);border-radius:18px;padding:12px 16px;font-size:15px;line-height:1.35;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.35);opacity:0;transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
 .bub:after{content:"";position:absolute;left:50%;top:100%;margin-left:-9px;border:9px solid transparent;border-top-color:var(--milk)}
 .bub b{font-family:var(--f-goth);color:var(--red);font-size:18px;display:block;font-weight:700}
@@ -114,7 +117,6 @@ html.bar-off .entwurf{transform:translateY(-102%)}
   .hero .ph img{object-position:50% 100%;transform:none}
   .hero .shade{background:linear-gradient(180deg,rgba(28,21,14,.88) 0%,rgba(28,21,14,.74) 30%,rgba(28,21,14,.15) 50%,rgba(28,21,14,0) 60%)}
   .hero-in{justify-content:flex-start;padding-top:calc(var(--hdr) + var(--bar0,0px) + 16px)}
-  .fig{width:22%;height:17%}
   .hero .kick{display:none}
 }
 
@@ -631,12 +633,16 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
 
 /* --- Hero: Bänkli – Sprechblasen einmal nacheinander, danach Hover/Tap --- */
 {
-  const FIG={l:{ar:16/9,p:[[.415,.71],[.605,.71],[.79,.71]]}, m:{ar:9/16,p:[[.20,.70],[.50,.70],[.83,.68]]}};
+  /* Kopfboxen (Hut + Gesicht) der drei Figuren im Bild, Anteile 0..1: [x1,y1,x2,y2] */
+  const FIG={l:{ar:16/9,h:[[.395,.55,.44,.665],[.585,.545,.63,.66],[.765,.55,.81,.665]],body:.25},
+             m:{ar:9/16,h:[[.13,.59,.27,.69],[.42,.585,.56,.685],[.75,.575,.89,.675]],body:.2}};
   const figs=QA('.fig'), ph=Q('#hero .ph'), img=Q('#hero .ph img');
   const place=()=>{ const W=ph.offsetWidth,H=ph.offsetHeight; const port=matchMedia('(max-aspect-ratio:3/4)').matches, mid=!port&&matchMedia('(max-aspect-ratio:3/2)').matches; const F=port?FIG.m:FIG.l;
     const ih=Math.max(H,W/F.ar), iw=ih*F.ar; const x0=(port||mid)?(W-iw)/2:0, y0=H-ih;
-    const cs=getComputedStyle(img); const zs=(port||mid)?1:parseFloat(cs.getPropertyValue('--zs'))||1.14; const zox=(port?.5:(parseFloat(cs.getPropertyValue('--zox'))||40)/100)*W;
-    figs.forEach((f,i)=>{ let x=x0+F.p[i][0]*iw, y=y0+F.p[i][1]*ih; x=zox+(x-zox)*zs; y=H+(y-H)*zs; f.style.left=x+'px'; f.style.top=y+'px'; f.style.height=(port?15:26*zs)+'%'; }); };
+    const cs=getComputedStyle(img); const zs=(port||mid)?1:parseFloat(cs.getPropertyValue('--zs'))||1.14; const zox=((port||mid)?.5:(parseFloat(cs.getPropertyValue('--zox'))||40)/100)*W;
+    const X=v=>zox+(x0+v*iw-zox)*zs, Y=v=>H+(y0+v*ih-H)*zs;
+    window.__heads=F.h.map(b=>({l:X(b[0]),t:Y(b[1]),r:X(b[2]),b:Y(b[3])}));
+    figs.forEach((f,i)=>{ const hd=window.__heads[i]; f.style.left=((hd.l+hd.r)/2)+'px'; f.style.top=hd.t+'px'; f.style.width=Math.max(60,(hd.r-hd.l)*1.6)+'px'; f.style.height=(F.body*ih*zs)+'px'; }); };
   place(); addEventListener('resize',place); addEventListener('load',place);
   setTimeout(()=>heroEl.classList.add('ready'),150);
   figs.forEach((f,i)=>setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700));
