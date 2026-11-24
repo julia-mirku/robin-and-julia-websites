@@ -200,8 +200,11 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .gaeste{margin-top:6px}
 .gaeste label{display:flex;justify-content:space-between;font-weight:600;font-size:15px}
 .gaeste output{color:var(--magenta)}
-.gaeste .erg{font-family:"Young Serif";font-size:22px;color:var(--kakao);margin-top:4px}
-.pdfs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.gaeste .erg{font-family:"Young Serif";font-size:19px;color:var(--kakao);margin-top:4px}
+.pdfs{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.pdf{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--magenta);text-decoration:none;border-radius:999px;padding:6px 12px;background:var(--rosa2);transition:background .2s,box-shadow .2s}
+.pdf::before{content:"";width:10px;height:12px;border:1.6px solid currentColor;border-radius:2px}
+@media (hover:hover){.pdf:hover{background:var(--rosa);box-shadow:0 0 0 4px rgba(180,0,90,.08)}}
 .doberino .pic img{transform:translateX(-110%);transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
 .doberino.in .pic img{transform:none}
 @media (hover:hover){.doberino.in:hover .pic img{transform:scale(1.04)}}
@@ -215,15 +218,16 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 @media (hover:hover){.chips span:hover{background:var(--rosa);color:var(--magenta)}}
 
 /* Stimmen */
-.stimmen{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.stimmen{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:26px;align-items:start}
 .stimme{margin:0;background:var(--papier);border-radius:var(--r);padding:22px 24px;box-shadow:0 14px 36px -24px rgba(58,37,34,.45);transition:transform .25s,box-shadow .25s;position:relative}
 .stimme::before{content:"“";position:absolute;right:18px;top:-6px;font:400 74px/1 "Young Serif";color:var(--rosa)}
 @media (hover:hover){.stimme:hover{transform:translateY(-3px);box-shadow:0 0 0 2px var(--rosa),0 20px 40px -22px rgba(58,37,34,.5)}}
 .stimme p{margin:0 0 12px;font-size:15.5px}
 .stimme .wer{font-weight:600;font-size:14px;color:var(--kakao2)}
 .sterne{color:var(--ocker);letter-spacing:2px;font-size:15px;margin-bottom:6px}
-.stimme.gross{grid-row:span 2;display:flex;flex-direction:column;justify-content:center}
-.stimme.gross p{font-family:"Young Serif";font-size:22px;line-height:1.35}
+.stimme.gross{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:8px 24px;align-items:center;padding:22px 30px}
+.stimme.gross p{font-family:"Young Serif";font-size:24px;line-height:1.3;margin:0}
+.stimme.gross .sterne{margin:0}
 .quelle{font-size:13.5px;color:var(--kakao2);margin-top:14px}
 .punkteNav{display:none}
 
@@ -259,11 +263,22 @@ footer{padding:34px 0 40px;color:var(--kakao2);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
 footer img{width:90px}
 
+/* Niedrige Laptop-Fenster (z. B. 1470×659) */
+@media (min-width:861px) and (max-height:760px){
+  .hero{padding:16px 0 26px}
+  .hero h1{font-size:clamp(36px,7.2vh,52px);margin:8px 0 10px}
+  .hero h1 .script{font-size:1.15em}
+  .hero p.lead{font-size:16.5px;line-height:1.5;margin-bottom:12px}
+  .facts{gap:4px;margin-bottom:14px}.facts .ic{width:30px;height:30px}
+  .kicker{font-size:12px}
+  .boxWrap{width:min(100%,max(360px,calc(100vh - 290px)))}
+  .zettel{min-height:76px;padding:12px 16px;margin-top:12px}.zettel h3{font-size:19px}
+}
 /* Tablet */
 @media (max-width:1080px){
   .hero .wrap{grid-template-columns:1fr 1fr;gap:32px}
   .stimmen{grid-template-columns:1fr 1fr}
-  .stimme.gross{grid-row:auto;grid-column:span 2}
+  .stimme.gross{grid-template-columns:1fr}
 }
 @media (max-width:860px){
   .grid3,.feste{grid-template-columns:1fr 1fr}
@@ -292,11 +307,12 @@ footer img{width:90px}
   .fach{gap:7px;padding:9px;border-radius:12px}
   .praline{padding:9px 3px 7px;font-size:11.5px;gap:5px}
   .grid3,.feste,.stimmen{grid-template-columns:1fr}
-  .duo .card{flex-direction:column}.duo .card .pic{aspect-ratio:308/220}
-  .feste>:last-child{flex-direction:column}.feste>:last-child .pic{aspect-ratio:308/220}
+  .duo .card{flex-direction:column}.duo .card .pic{flex:none;aspect-ratio:308/220}
+  .feste>:last-child{flex-direction:column}.feste>:last-child .pic{flex:none;aspect-ratio:308/220}
   .grid3>:first-child,.feste>:last-child,.stimme.gross{grid-column:auto}
   .buehne{padding:12px 10px 4px}
   .pfeil{display:none}
+  .hausLauf{display:flex;flex-direction:column}.hausLauf .leiste{order:2;margin-top:6px}.hausLauf .jahrtxt{order:3;min-height:0;margin:8px 0 0}
   .geschenke{grid-template-columns:repeat(2,1fr)}
   .stimmen{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:22px -18px 0;padding:4px 18px 10px;scrollbar-width:none}
   .stimmen::-webkit-scrollbar{display:none}
@@ -465,12 +481,12 @@ footer img{width:90px}
     <div>
       <div class="kicker rv">Wilerstrasse 73 · seit 1853</div>
       <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
-      <div class="jahrgross" id="jahr">1853</div>
+      <div class="hausLauf"><div class="jahrgross" id="jahr">1853</div>
       <p class="jahrtxt" id="jahrtxt"></p>
       <div class="leiste">
         <input type="range" id="zeit" min="0" max="12" value="0" step="0.01" aria-label="Jahr wählen">
         <div class="skala"><span>1853</span><span>2026</span></div>
-      </div>
+      </div></div>
     </div>
   </div>
 </section>
@@ -503,7 +519,7 @@ footer img{width:90px}
     <div class="feste">
       <article class="card rv">
         <div class="pic"><img src="img/hochzeit1.webp" alt="Apérobuffet" decoding="async" width="308" height="286"></div>
-        <div class="txt"><h3>Hochzeit</h3><p>Liebe geht durch den Magen. Die liebevolle Gestaltung von Apérobuffet und Dessertbuffet zählen wir zu unseren Paradedisziplinen.</p></div>
+        <div class="txt"><h3>Hochzeit</h3><p>Liebe geht durch den Magen. Die liebevolle Gestaltung von Apérobuffet und Dessertbuffet zählen wir zu unseren Paradedisziplinen.</p><div class="pdfs"><a class="pdf" href="https://www.confiserie-dober.ch/festefeiern/apero.pdf" target="_blank" rel="noopener">Apérobuffet (PDF)</a><a class="pdf" href="https://www.confiserie-dober.ch/festefeiern/Dessert_PDF2015.pdf" target="_blank" rel="noopener">Dessertbuffet (PDF)</a><a class="pdf" href="https://www.confiserie-dober.ch/festefeiern/Menu-Vorschlaege2019.pdf" target="_blank" rel="noopener">Menuvorschläge (PDF)</a></div></div>
       </article>
       <article class="card rv">
         <div class="pic"><img src="img/festefeiern3.webp" alt="Dessertbuffet wird flambiert" decoding="async" width="308" height="286"></div>
@@ -511,18 +527,13 @@ footer img{width:90px}
           <div class="gaeste"><label for="gaeste">Gäste <output id="gOut">50</output></label>
           <input type="range" id="gaeste" min="20" max="150" step="5" value="50">
           <div class="erg" id="gErg">ca. 6–8 verschiedene Desserts</div>
-          <p>Pro Person Fr. 8.00 bis 15.00 oder nach Absprache.</p></div>
+          <p>Pro Person Fr. 8.00 bis 15.00 oder nach Absprache.</p><p style="margin-top:6px">Servicestunde Fr. 35.00 · Transport nach Absprache.</p></div>
         </div>
       </article>
       <article class="card doberino rv" id="doberino">
         <div class="pic"><img src="img/doberino2.webp" alt="Der Doberino" decoding="async" width="308" height="286"></div>
-        <div class="txt"><h3>Doberino</h3><p>Unser dreirädriger Doberino – mit Kühlelement für die hausgemachte Glace und Ofen für heisses Apérogebäck – ist eine Attraktion für viele Veranstaltungen. Vom Chef bedient.</p></div>
+        <div class="txt"><h3>Doberino</h3><p>Unser dreirädriger Doberino – mit Kühlelement für die hausgemachte Glace und Ofen für heisses Apérogebäck – ist eine Attraktion für viele Veranstaltungen. Vom Chef bedient.</p><a class="btn ghost" href="tel:+41713931189">Doberino anfragen</a></div>
       </article>
-    </div>
-    <div class="pdfs rv">
-      <a class="btn ghost" href="https://www.confiserie-dober.ch/festefeiern/apero.pdf" target="_blank" rel="noopener">Angebot Apérobuffet</a>
-      <a class="btn ghost" href="https://www.confiserie-dober.ch/festefeiern/Dessert_PDF2015.pdf" target="_blank" rel="noopener">Angebot Dessertbuffet</a>
-      <a class="btn ghost" href="https://www.confiserie-dober.ch/festefeiern/Menu-Vorschlaege2019.pdf" target="_blank" rel="noopener">Menuvorschläge</a>
     </div>
   </div>
 </section>
@@ -556,7 +567,7 @@ footer img{width:90px}
     <div class="stimmen" id="stimmenListe">
       <figure class="stimme gross rv"><div class="sterne">★★★★★</div><p>«Ich wohne schon länger nicht mehr in Flawil, aber nehme jeden Weg in Kauf, um bei Euch einzukaufen. Absolut einzigartig!»</p><figcaption class="wer">Marc Tobler</figcaption></figure>
       <figure class="stimme rv"><div class="sterne">★★★★★</div><p>«Am Freitag Vormittag angerufen, Sonntag pünktlich um 10 Uhr hatten wir 150 Mandelgipfel und 150 Nussstangen geliefert bekommen. Sensationeller Geschmack.»</p><figcaption class="wer">M. Akdil</figcaption></figure>
-      <figure class="stimme rv"><div class="sterne">★★★★★</div><p>«Es war ein super toller Sonntagsbrunch. Der Schokobrunnen war ein absolutes Highlight.»</p><figcaption class="wer">Denise Bürki</figcaption></figure>
+      <figure class="stimme rv"><div class="sterne">★★★★★</div><p>«Es war ein super toller Sonntagsbrunch. Der Schokobrunnen war ein absolutes Highlight. Perfektes Preis-Leistungsverhältnis und super lecker.»</p><figcaption class="wer">Denise Bürki</figcaption></figure>
       <figure class="stimme rv"><div class="sterne">★★★★★</div><p>«Wie immer sehr reichhaltiges Buffet und sehr feines Essen. Der Chef kochte sehr schmackhafte Rösti mit Eier und Speck! Die Patisserie und das Brot ist auch spitze.»</p><figcaption class="wer">Kurt Vetterli</figcaption></figure>
       <figure class="stimme rv"><div class="sterne">★★★★★</div><p>«Schöner Innenraum und kleiner, gepflegter Aussenbereich. Grosse Auswahl an Kuchen, Torten, Salat. Service aufmerksam, zuvorkommend und kompetent.»</p><figcaption class="wer">Brix</figcaption></figure>
     </div>
