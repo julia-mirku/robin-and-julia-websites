@@ -89,8 +89,8 @@ html[lang="de"] .l[data-l="en"],html[lang="en"] .l[data-l="de"]{visibility:hidde
   radial-gradient(120% 70% at 78% 118%, rgba(180,83,42,.34), rgba(180,83,42,0) 60%),
   #1F1612;color:var(--cream)}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:64px;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(74,48,34,0) 0,rgba(74,48,34,.1) 46%,rgba(74,48,34,.5) 78%,#4A3022 100%)}
-.hero+section{padding-top:88px;background:linear-gradient(180deg,#4A3022 0,#7E5438 17px,#B98C5E 39px,#DEC197 59px,rgba(248,240,225,.75) 76px,rgba(248,240,225,0) 88px) top/100% 88px no-repeat}
-@media (max-width:620px){.hero::after{height:44px}.hero+section{padding-top:64px;background:linear-gradient(180deg,#4A3022 0,#7E5438 12px,#B98C5E 28px,#DEC197 43px,rgba(248,240,225,.75) 54px,rgba(248,240,225,0) 64px) top/100% 64px no-repeat}}
+.hero+section{padding-top:70px;background:linear-gradient(180deg,#4A3022 0,#7E5438 14px,#B98C5E 31px,#DEC197 47px,rgba(248,240,225,.75) 60px,rgba(248,240,225,0) 70px) top/100% 70px no-repeat}
+@media (max-width:620px){.hero::after{height:44px}.hero+section{padding-top:52px;background:linear-gradient(180deg,#4A3022 0,#7E5438 10px,#B98C5E 23px,#DEC197 35px,rgba(248,240,225,.75) 44px,rgba(248,240,225,0) 52px) top/100% 52px no-repeat}}
 .hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);align-items:center;gap:28px;
   min-height:min(calc(100vh - 60px - 100px - var(--nh,0px)),820px);min-height:min(calc(100svh - 60px - 100px - var(--nh,0px)),820px)}
 .htxt{position:relative;z-index:2;padding:30px 0;text-shadow:0 1px 14px rgba(31,22,18,.8)}
@@ -178,8 +178,8 @@ h1{margin:0}
 }
 
 /* ---------- Sektionen ---------- */
-section{padding:50px 0}
-@media (max-width:620px){section{padding:28px 0}}
+section{padding:40px 0}
+@media (max-width:620px){section{padding:22px 0}}
 .eyebrow{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;margin:0 0 8px}
 .eyebrow .gl{font-size:13.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
 h2{font-family:var(--f-d);font-weight:400;font-size:clamp(31px,3.7vw,46px);line-height:1.08;margin:0 0 14px}
@@ -249,8 +249,8 @@ html.still .ill .fl,html.still .ill .dt,html.still .ill .st{animation:none!impor
 @media (max-width:820px){.cards{grid-template-columns:1fr;gap:16px}.card .art{padding:16px 12px 2px}.card .ill{width:min(78%,290px)}.card .txt{padding:6px 20px 20px}}
 
 /* ---------- Karte auf Dönerpapier ---------- */
-.menu{padding-bottom:50px}
-@media (max-width:620px){.menu{padding-bottom:28px}}
+.menu{padding-bottom:40px}
+@media (max-width:620px){.menu{padding-bottom:22px}}
 .mhead{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px}
 .sheet{position:relative;margin-top:30px;background:var(--paper);color:var(--soot);padding:0 0 26px;box-shadow:0 14px 30px rgba(42,29,23,.16),0 2px 0 rgba(42,29,23,.22);transform:rotate(-.35deg)}
 .sheet::after{content:"";position:absolute;left:0;right:0;top:100%;height:14px;
@@ -424,7 +424,7 @@ button.rb{cursor:pointer}
 .tb:disabled{opacity:0;pointer-events:none}
 .tb:active:not(:disabled){background:#F8EBDD}
 @media (hover:hover){.tb:not(:disabled):hover{background:#FFF4DC;transform:translateY(-2px);box-shadow:3px 3px 0 var(--soot)}}
-.tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:stretch;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 26px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:stretch;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 18px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tueten::-webkit-scrollbar{display:none}
 .tuete{flex:0 0 clamp(260px,24vw,304px);display:flex;margin:0;scroll-snap-align:start;opacity:0;transform:translateY(28px) rotate(calc(var(--r)*3));filter:drop-shadow(0 2px 0 rgba(42,29,23,.3)) drop-shadow(0 12px 11px rgba(42,29,23,.15));transition:opacity .5s ease calc(var(--i)*80ms),transform .75s cubic-bezier(.2,.9,.3,1.25) calc(var(--i)*80ms)}
 .tueten.in .tuete{opacity:1;transform:rotate(var(--r))}
@@ -517,8 +517,8 @@ button.rb{cursor:pointer}
 @media (max-width:820px){.visit-grid{grid-template-columns:minmax(0,1fr)}.karte{min-height:0;aspect-ratio:1000/736}}
 
 /* ---------- Fuss ---------- */
-footer{padding:36px 0 0}
-.gule{margin:0 0 34px;text-align:center}
+footer{padding:18px 0 0}
+.gule{margin:0 0 26px;text-align:center}
 .gule .tr{font-size:clamp(24px,3vw,32px);color:var(--terra);line-height:1.2}
 .fine{color:var(--muted);font-size:14.5px;padding:20px 0 26px}
 .fine .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 30px;align-items:baseline}
