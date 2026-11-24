@@ -109,17 +109,22 @@ nav.main a{text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px;
 .plus svg{width:18px;height:18px}
 @media (hover:hover){.ready .mini:hover{box-shadow:0 0 0 2px var(--gold),0 18px 40px -22px rgba(0,0,0,.6)}.plus:hover{background:#c43a33;box-shadow:0 0 0 5px rgba(181,48,42,.2)}}
 .plus:active{transform:scale(.9)}
-/* Plus bekommt Minus + Zähler, sobald etwas im Paket ist (Julia 25.11, Nr. 124) */
-.stp{display:flex;align-items:center;gap:4px;flex:none}
+/* «+» → kompakte Kapsel «− n +» an derselben Stelle; Kartengrösse bleibt gleich (Julia 25.11, Nr. 124 + Nr. 130) */
+.stp{--h:36px;display:flex;align-items:center;justify-content:flex-end;width:calc(var(--h)*2 + 18px);height:var(--h);flex:none;border-radius:999px;transition:background .2s,box-shadow .2s}
 .stp .minus,.stp .q{display:none}
-.stp.hat .minus{display:grid}.stp.hat .q{display:block}
-.minus{width:32px;height:32px;border-radius:50%;background:#fff;color:var(--kruste);box-shadow:inset 0 0 0 1.5px rgba(58,35,23,.3);place-items:center;flex:none;transition:box-shadow .2s,transform .2s}
-.minus svg{width:16px;height:16px}
+.stp.hat{background:#fff;box-shadow:inset 0 0 0 1.5px rgba(58,35,23,.22);justify-content:space-between;padding:0 3px}
+.stp.hat .minus{display:grid}.stp.hat .q{display:block;flex:1}
+.stp.hat .plus,.stp.hat .minus{width:calc(var(--h) - 6px);height:calc(var(--h) - 6px)}
+.minus{border-radius:50%;background:var(--creme);color:var(--kruste);place-items:center;flex:none;transition:box-shadow .2s,transform .2s}
+.minus svg{width:15px;height:15px}
 .minus:active{transform:scale(.9)}
-@media (hover:hover){.minus:hover{box-shadow:inset 0 0 0 2px var(--kruste)}}
-.stp .q{min-width:14px;text-align:center;font-family:Alegreya,serif;font-weight:800;font-size:17px;color:var(--kruste)}
-.stp.hat .plus{width:32px;height:32px}
-.karte .unt{flex-wrap:wrap;row-gap:8px}.karte .unt:has(.stp.hat)>div{flex:1 1 100%}.karte .stp.hat{flex:1 1 100%;justify-content:space-between;background:var(--creme);border-radius:999px;padding:3px}.karte .stp .plus{margin-left:0}.karte .stp.hat .q{flex:1}
+@media (hover:hover){.minus:hover{box-shadow:inset 0 0 0 1.5px var(--kruste)}}
+.stp .q{text-align:center;font-family:Alegreya,serif;font-weight:800;font-size:16px;line-height:1;color:var(--kruste)}
+article.karte .unt{display:block}
+@media (min-width:768px) and (max-height:800px){.karte .stp{--h:30px;width:76px}body .karte .plus{width:30px;height:30px}body .karte .stp.hat .plus,body .karte .stp.hat .minus{width:25px;height:25px}.karte .zr{margin-top:1px}body article.karte .unt{padding:7px 10px 7px 14px}}
+@media (max-width:379px){body .karte .stp{width:70px}body .karte .stp.hat{padding:0 2px}body .karte .stp.hat .plus,body .karte .stp.hat .minus{width:26px;height:26px}body .karte .zr .pr{font-size:14px}body article.karte .unt{padding:10px 8px}}
+.karte .zr{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:4px}
+.karte .zr .plus{margin-left:0}
 
 /* HERO B — Theke im Kreis */
 .heroB{display:none;position:relative;min-height:min(calc(100svh - 100px),860px);background:radial-gradient(120% 90% at 78% 40%,#FFF6E1 0%,var(--creme) 55%,#EFDFC6 100%);overflow:hidden}
@@ -444,7 +449,7 @@ body.menu .mmenu{transform:none}
   .shr{align-items:stretch;width:100%}.shr p{text-align:left}.such{width:100%}.such input{width:100%}
   .regal{grid-auto-columns:46%;gap:12px;margin:0 -16px;padding:4px 16px 10px;scroll-padding:0 16px}
   .karte .unt{padding:10px;gap:6px}.karte .nm{font-size:14px}.karte .pr{font-size:16px}
-  .karte .plus{width:34px;height:34px}
+  .karte .plus{width:34px;height:34px}.karte .stp{--h:34px;width:80px}.karte .stp.hat{padding:0 3px}.karte .stp.hat .plus,.karte .stp.hat .minus{width:28px;height:28px}.karte .zr{gap:4px}.karte .zr .pr{white-space:nowrap;font-size:15px}
   .pfeil{display:none}
   .paketfab{display:flex;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s,transform .3s}
   .paketfab.zeig{opacity:1;transform:none;pointer-events:auto}
@@ -866,7 +871,7 @@ $('#kats').innerHTML=KAT.map(([k,l])=>`<button class="kat${k===kat?' sel':''}" d
 $('#kats').onclick=e=>{const b=e.target.closest('.kat');if(!b)return;kat=b.dataset.k;q='';$('#such').value='';$$('.kat').forEach(x=>x.classList.toggle('sel',x===b));shop()};
 $('#such').oninput=e=>{q=e.target.value.trim().toLowerCase();$$('.kat').forEach(x=>x.classList.toggle('sel',!q&&x.dataset.k===kat));shop()};
 function shop(){const list=q?P.filter(p=>p[1].toLowerCase().includes(q)):P.filter(p=>p[3]===kat);const r=$('#regal');
-  r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">${ear}glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div><div class="nm">${p[1]}</div><span class="pr">${chf(p[2])}</span></div>${knopf(p[0],p[1])}</div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
+  r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">${ear}glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div class="nm">${p[1]}</div><div class="zr"><span class="pr">${chf(p[2])}</span>${knopf(p[0],p[1])}</div></div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
   r.scrollLeft=0;reihen();upd('regal');stp()}
 /* wenige Produkte: eine volle Reihe statt halb leerer Doppelreihe (Prüfer 25.11) */
 function reihen(){const r=$('#regal');r.style.gridTemplateRows='';if(innerWidth<768)return;const c=r.firstElementChild;if(!c||!c.classList.contains('karte'))return;const g=parseFloat(getComputedStyle(r).columnGap)||16;const cols=Math.max(1,Math.round((r.clientWidth+g)/(c.getBoundingClientRect().width+g)));if(r.children.length<=cols)r.style.gridTemplateRows='auto'}
