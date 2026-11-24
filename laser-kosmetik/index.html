@@ -137,7 +137,8 @@ section{position:relative}
 .row.act,.row:focus-visible{background:linear-gradient(90deg,rgba(230,213,181,.45),rgba(230,213,181,0));padding-left:20px}
 .row.act h3{color:var(--gold)}
 @media (hover:hover){.row:hover .pr b{color:var(--gold)}}
-.stage{position:sticky;top:110px;aspect-ratio:4/5;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px -40px rgba(74,56,38,.55);background:var(--sand)}
+.stage{position:sticky;top:110px;aspect-ratio:4/5;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px -40px rgba(74,56,38,.55);background:var(--sand);transition:box-shadow .3s}
+@media (hover:hover){.stage:hover{box-shadow:0 36px 80px -36px rgba(74,56,38,.7)}}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .7s var(--ease),transform 1.2s var(--ease)}
 .stage img.on{opacity:1;transform:none}
 .stage .tag{position:absolute;left:16px;bottom:16px;right:16px;display:flex;justify-content:space-between;align-items:center;background:rgba(251,248,243,.9);backdrop-filter:blur(8px);border-radius:14px;padding:12px 14px;font-size:13px;color:var(--ink2)}
@@ -440,6 +441,13 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
   .entwurf{font-size:11.5px;padding:6px 12px}
   .tat-vis{height:170px}
 }
+/* Lightbox */
+.zoomable{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:80;background:rgba(35,29,25,.92);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s;touch-action:pinch-zoom}
+.lb.on{opacity:1;pointer-events:auto}
+.lb img{max-width:94vw;max-height:88vh;border-radius:12px;object-fit:contain}
+.lb button{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer;transition:background .2s}
+@media (hover:hover){.lb button:hover{background:rgba(255,255,255,.25)}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}}
 </style>
 </head>
@@ -841,6 +849,7 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
   <div class="wrap credit">Website-Entwurf: Julia &amp; Robin Mirku · Fotos: Laser Kosmetik GmbH</div>
 </footer>
 
+<div class="lb" id="lb" role="dialog" aria-label="Foto gross"><img alt=""><button type="button" aria-label="Schliessen">×</button></div>
 <div class="mcta">
   <a class="btn btn-gold" href="https://connect.shore.com/bookings/laser-kosmetik-gmbh/services?locale=de-CH" target="_blank" rel="noopener"><i></i>Termin buchen</a>
   <a class="btn btn-line" href="tel:+41793415244" aria-label="Anrufen">Anrufen</a>
@@ -932,6 +941,15 @@ footer{padding:56px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
   function sel(i){[].forEach.call(dw.children,function(b){b.setAttribute('aria-pressed',+b.dataset.i==i?'true':'false')});var h=H[i];
     out.innerHTML=(h[2]?h[2]+' Uhr':'Geschlossen')+'<small>'+h[1]+(i==today?' · heute':'')+(h[2]?' · Termine nach Vereinbarung':' · Online-Buchung jederzeit möglich')+'</small>'}
   sel(today);
+
+  // Fotos gross
+  var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+  [].forEach.call(document.querySelectorAll('.portrait img,.ol img,.dev .ph img,.stage img'),function(im){
+    var t=im.closest('.stage')||im;t.classList.add('zoomable');
+    t.addEventListener('click',function(e){if(e.target.closest('a'))return;var src=im.closest('.stage')?document.querySelector('.stage img.on').src:im.src;lbi.src=src;lbi.alt=im.alt;lb.classList.add('on')});
+  });
+  lb.addEventListener('click',function(){lb.classList.remove('on')});
+  addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});
 })();
 </script>
 </body>
