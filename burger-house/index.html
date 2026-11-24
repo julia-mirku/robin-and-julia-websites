@@ -678,6 +678,14 @@ h2.mit-umlaut{padding-top:.36em}
 @media (max-width:600px){.mk-hinweis{font-size:11px;line-height:1.35;padding:6px 10px;letter-spacing:0}}
 @media (prefers-reduced-motion:reduce){.mk-hinweis{transition:none}}
 
+
+/* 24.11 Abstände enger, Übergänge hell/dunkel weicher */
+html body .abschnitt{padding:44px 0}
+@media (max-width:760px){html body .abschnitt{padding:24px 0}}
+html body #karte{background:linear-gradient(to bottom,var(--grill) 0,#6E6358 12px,#D9D0C2 30px,var(--weiss) 48px,var(--weiss) 100%)}
+html body #besuch{background-image:linear-gradient(to bottom,var(--weiss) 0,#BFB7AC 14px,#5A5048 32px,var(--grill) 48px,var(--grill) 100%)}
+html body #karte,html body #besuch{padding-top:66px}
+@media (max-width:760px){html body #karte,html body #besuch{padding-top:50px}}
 </style>
 </head>
 <body>
