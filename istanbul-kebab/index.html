@@ -175,8 +175,8 @@ h1{margin:0}
 }
 
 /* ---------- Sektionen ---------- */
-section{padding:68px 0}
-@media (max-width:620px){section{padding:50px 0}}
+section{padding:50px 0}
+@media (max-width:620px){section{padding:28px 0}}
 .eyebrow{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;margin:0 0 8px}
 .eyebrow .gl{font-size:13.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
 h2{font-family:var(--f-d);font-weight:400;font-size:clamp(31px,3.7vw,46px);line-height:1.08;margin:0 0 14px}
@@ -246,7 +246,8 @@ html.still .ill .fl,html.still .ill .dt,html.still .ill .st{animation:none!impor
 @media (max-width:820px){.cards{grid-template-columns:1fr;gap:16px}.card .art{padding:16px 12px 2px}.card .ill{width:min(78%,290px)}.card .txt{padding:6px 20px 20px}}
 
 /* ---------- Karte auf Dönerpapier ---------- */
-.menu{background:var(--soot);color:var(--cream);padding-bottom:84px}
+.menu{background:var(--soot);color:var(--cream);padding-bottom:50px}
+@media (max-width:620px){.menu{padding-bottom:28px}}
 .menu .eyebrow .gl{color:var(--sun)}
 .menu .sub{color:#DCCDBB}
 .mhead{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px}
@@ -410,7 +411,7 @@ button.rb{cursor:pointer}
 .chip b{font-family:var(--f-d);font-weight:400;font-size:28px;line-height:1;color:var(--turq)}
 .src{font-size:13.5px;color:var(--muted);margin:12px 0 0}
 /* Gästestimmen auf Papiertüten mit Stempel: echte Google-Bewertungen, wörtlich. Die Reihe lässt sich seitlich schieben (Finger, Pfeile, Tastatur). */
-.tbar{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:46px}
+.tbar{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-top:36px}
 .tbar .gloss{max-width:none}
 .tnav{display:flex;gap:8px;flex:none}
 .tb{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--soot);background:#fff;color:var(--soot);display:grid;place-items:center;padding:0;cursor:pointer;-webkit-user-select:none;user-select:none;transition:background-color .2s ease,transform .2s ease,box-shadow .2s ease,opacity .2s ease}
@@ -418,7 +419,7 @@ button.rb{cursor:pointer}
 .tb:disabled{opacity:.3;cursor:default}
 .tb:active:not(:disabled){background:#F8EBDD}
 @media (hover:hover){.tb:not(:disabled):hover{background:#FFF4DC;transform:translateY(-2px);box-shadow:3px 3px 0 var(--soot)}}
-.tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:stretch;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 36px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tueten{--pad:max(20px,calc((100% - 1160px)/2 + 20px));display:flex;gap:22px;align-items:stretch;overflow-x:auto;overflow-y:hidden;padding:24px var(--pad) 26px;scroll-padding-inline:var(--pad);scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tueten::-webkit-scrollbar{display:none}
 .tuete{flex:0 0 clamp(260px,24vw,304px);display:flex;margin:0;scroll-snap-align:start;opacity:0;transform:translateY(28px) rotate(calc(var(--r)*3));filter:drop-shadow(0 2px 0 rgba(42,29,23,.3)) drop-shadow(0 12px 11px rgba(42,29,23,.15));transition:opacity .5s ease calc(var(--i)*80ms),transform .75s cubic-bezier(.2,.9,.3,1.25) calc(var(--i)*80ms)}
 .tueten.in .tuete{opacity:1;transform:rotate(var(--r))}
@@ -451,7 +452,7 @@ button.rb{cursor:pointer}
 .tprog{width:132px;height:3px;border-radius:2px;background:rgba(42,29,23,.15);overflow:hidden}
 .tprog i{display:block;height:100%;width:40%;border-radius:2px;background:var(--terra)}
 .tprog.aus{visibility:hidden}.tnav.aus{visibility:hidden}
-@media (max-width:620px){.tbar{margin-top:36px}.tnav{display:none}.tueten{gap:14px;padding-top:20px;padding-bottom:30px;scroll-snap-type:x mandatory}.tuete{flex-basis:min(78vw,300px)}.tprog{margin:0 auto}}
+@media (max-width:620px){.tbar{margin-top:28px}.tnav{display:none}.tueten{gap:14px;padding-top:20px;padding-bottom:22px;scroll-snap-type:x mandatory}.tuete{flex-basis:min(78vw,300px)}.tprog{margin:0 auto}}
 .still .tueten .tuete{opacity:1;transform:rotate(var(--r))}
 @media (prefers-reduced-motion:reduce){.tueten .tuete{transition:none}}
 .glink{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--soot);font-weight:700;text-decoration:none;border-bottom:2px solid rgba(180,83,42,.45);padding-bottom:2px;transition:border-color .25s ease}
