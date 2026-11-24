@@ -146,7 +146,10 @@ nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;
 .stepper output{min-width:28px;text-align:center;font-weight:700;font-size:18px}
 /* Julia №124: nach «+» erscheint «−» (Platz bleibt reserviert, «+» springt nicht) */
 .stepper .weg{visibility:hidden;opacity:0}.stepper #kidSub,.stepper #kidN{transition:opacity .25s}
-.kids{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+/* Julia №130: Stepper bleibt an seinem Platz (oben), die Alters-Chips klappen weich auf */
+#rechner .reihe:has(#kidAdd){align-items:flex-start}#rechner .reihe:has(#kidAdd) .stepper{margin-top:10px}
+.kidsWrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}.kidsWrap.an{grid-template-rows:1fr}
+.kids{display:flex;flex-wrap:wrap;gap:6px;padding-top:8px;min-height:0;overflow:hidden}
 .kidchip{width:auto;height:auto;border-radius:999px;padding:6px 10px 6px 12px;font-size:14px;display:inline-flex;gap:6px;align-items:center}
 .kidchip select{appearance:none;border:0;background:transparent;font:600 14px "Public Sans";color:var(--magenta);cursor:pointer;padding:0}
 .kidchip .x{font-size:16px;opacity:.6}
@@ -160,11 +163,11 @@ nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;
 .haus{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
 .buehne{position:relative;background:linear-gradient(#EAF1F4,#F7F1E7 78%);border-radius:24px;padding:20px 64px 10px;box-shadow:inset 0 0 0 1px rgba(58,37,34,.06)}
 .buehne svg{width:100%;height:auto;display:block}
-.pfeil{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:var(--papier);color:var(--magenta);cursor:pointer;box-shadow:0 6px 16px rgba(58,37,34,.15);display:grid;place-items:center;transition:background .2s,box-shadow .2s}
+.pfeil{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:2px solid var(--magenta);background:var(--papier);color:var(--magenta);cursor:pointer;box-shadow:0 6px 16px rgba(58,37,34,.15);display:grid;place-items:center;transition:background .2s,box-shadow .2s}
 .pfeil svg{width:20px;height:20px}
 .pfeil.l{left:12px}.pfeil.r{right:12px}
-@media (hover:hover){.pfeil:hover{background:var(--rosa);box-shadow:0 0 0 5px rgba(180,0,90,.1)}}
-.pfeil:disabled{opacity:.35;cursor:default}
+@media (hover:hover){.pfeil:hover:not(:disabled){background:var(--magenta);color:#fff;box-shadow:0 0 0 4px rgba(180,0,90,.18)}}
+.pfeil:disabled{color:var(--kakao2);border-color:#cdbfae;background:var(--papier);opacity:.8;cursor:default}
 #fassade{transition:fill var(--fade,.6s) ease-in-out,stroke var(--fade,.6s) ease-in-out}
 .schildtxt{font-family:"Young Serif";transition:opacity var(--fade,.6s) ease-in-out}
 .jahrgross{font-family:"Young Serif";font-size:clamp(54px,6vw,84px);line-height:1;color:var(--ocker)}
@@ -177,8 +180,8 @@ nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;background:transparent;cursor:pointer;margin:0}
 input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--sand),var(--ocker))}
 input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--sand),var(--ocker))}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--magenta);border:4px solid var(--papier);margin-top:-10px;box-shadow:0 2px 8px rgba(0,0,0,.25);transition:box-shadow .2s}
-input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--magenta);border:4px solid var(--papier)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--magenta);border:4px solid var(--papier);margin-top:-10px;box-shadow:0 0 0 2px var(--magenta2),0 2px 8px rgba(0,0,0,.3);transition:box-shadow .2s}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--magenta);border:4px solid var(--papier);box-shadow:0 0 0 2px var(--magenta2)}
 @media (hover:hover){input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 7px rgba(180,0,90,.15)}}
 .skala{display:flex;justify-content:space-between;font-size:13px;color:var(--kakao2);margin-top:2px}
 
@@ -210,13 +213,20 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .pdf{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--magenta);text-decoration:none;border-radius:999px;padding:6px 12px;background:var(--rosa2);transition:background .2s,box-shadow .2s}
 .pdf::before{content:"";width:10px;height:12px;border:1.6px solid currentColor;border-radius:2px}
 @media (hover:hover){.pdf:hover{background:var(--rosa);box-shadow:0 0 0 4px rgba(180,0,90,.08)}}
-.doberino .pic img{transform:translateX(-110%);transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
-.doberino.in .pic img{transform:none}
+/* Julia №132: drei Karten erscheinen nacheinander mit derselben Animation (kein Extra-Hereinfahren nur beim Doberino) */
+.feste>.card.rv{transition:opacity .7s ease,transform .7s ease,box-shadow .25s}
+@media (min-width:600px){.feste>.card.rv:nth-child(2){transition-delay:.25s,.25s,0s}.feste>.card.rv:nth-child(3){transition-delay:.5s,.5s,0s}}
+.feste>.card.rv.da{transition:transform .25s,box-shadow .25s;transition-delay:0s}
+.doberino .pic img{transition:transform .4s}
 @media (hover:hover){.doberino.in:hover .pic img{transform:scale(1.04)}}
 
 /* Bestellen */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
 .duo .card{flex-direction:row}
+/* Julia №133: Fotos quadratisch, ganz sichtbar, im Rahmen der Karte, beide gleich */
+#bestellen .duo .card{align-items:center}
+#bestellen .duo .card .pic{flex:0 0 42%;aspect-ratio:1/1;padding:18px 0 18px 18px;overflow:visible}
+#bestellen .duo .card .pic img{border-radius:14px;object-fit:cover;aspect-ratio:1/1;height:auto}
 .duo .card .pic{flex:0 0 40%;aspect-ratio:auto}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
 .chips span{border-radius:999px;padding:5px 10px;background:var(--creme);font-size:13.5px;font-weight:600;transition:background .2s,color .2s;cursor:default}
@@ -313,6 +323,7 @@ footer img{width:90px}
   .praline{padding:9px 3px 7px;font-size:11.5px;gap:5px}
   .grid3,.feste,.stimmen{grid-template-columns:1fr}
   .duo .card{flex-direction:column}.duo .card .pic{flex:none;aspect-ratio:308/220}
+  #bestellen .duo .card{align-items:stretch}#bestellen .duo .card .pic{aspect-ratio:1/1;padding:16px 16px 0}
   .feste>:last-child{flex-direction:column}.feste>:last-child .pic{flex:none;aspect-ratio:308/220}
   .grid3>:first-child,.feste>:last-child,.stimme.gross{grid-column:auto}
   .buehne{padding:12px 10px 4px}
@@ -333,7 +344,7 @@ footer img{width:90px}
   .karteBox .route .btn{padding:10px 14px;font-size:14px}
   .tag{font-size:13px;padding:9px 0}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.deckel{display:none}.doberino .pic img{transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.deckel{display:none}}
 </style>
 </head>
 <body>
@@ -429,7 +440,7 @@ footer img{width:90px}
       <div class="rechner rv" id="rechner">
         <div class="reihe"><div class="l">Erwachsene<small>Genuss-Preis CHF 36.00</small></div>
           <div class="stepper"><button type="button" data-d="-1" aria-label="weniger">−</button><output id="erw">2</output><button type="button" data-d="1" aria-label="mehr">+</button></div></div>
-        <div class="reihe"><div class="l">Kinder bis 12 Jahre<small>CHF 2.00 pro Altersjahr</small><div class="kids" id="kids"></div></div>
+        <div class="reihe"><div class="l">Kinder bis 12 Jahre<small>CHF 2.00 pro Altersjahr</small><div class="kidsWrap" id="kidsWrap"><div class="kids" id="kids"></div></div></div>
           <div class="stepper"><button type="button" id="kidSub" aria-label="Kind entfernen" class="weg">−</button><output id="kidN" class="weg">0</output><button type="button" id="kidAdd" aria-label="Kind hinzufügen">+</button></div></div>
         <div class="total"><span>Ihr Zmorge</span><b id="summe">CHF 72.00</b></div>
       </div>
@@ -673,7 +684,7 @@ function rechne(){document.getElementById('erw').textContent=erw;
  kE.innerHTML='';kids.forEach((a,i)=>{const c=document.createElement('span');c.className='kidchip';
   c.innerHTML='<select aria-label="Alter">'+Array.from({length:13},(_,k)=>'<option value="'+k+'"'+(k===a?' selected':'')+'>'+k+' J.</option>').join('')+'</select><button type="button" class="x" aria-label="entfernen" style="border:0;background:none;color:inherit;cursor:pointer;font-size:16px">×</button>';
   c.querySelector('select').onchange=e=>{kids[i]=+e.target.value;rechne()};c.querySelector('.x').onclick=()=>{kids.splice(i,1);rechne()};kE.appendChild(c)});
- const kS=document.getElementById('kidSub'),kN=document.getElementById('kidN');kN.textContent=kids.length;[kS,kN].forEach(e=>e.classList.toggle('weg',!kids.length));kS.disabled=!kids.length;
+ const kS=document.getElementById('kidSub'),kN=document.getElementById('kidN');kN.textContent=kids.length;[kS,kN].forEach(e=>e.classList.toggle('weg',!kids.length));document.getElementById('kidsWrap').classList.toggle('an',kids.length>0);kS.disabled=!kids.length;
  const s=erw*36+kids.reduce((a,b)=>a+2*b,0);document.getElementById('summe').textContent=chf(s)}
 document.querySelectorAll('#rechner .stepper button[data-d]').forEach(b=>b.onclick=()=>{erw=Math.max(0,Math.min(30,erw+ +b.dataset.d));rechne()});
 document.getElementById('kidAdd').onclick=()=>{if(kids.length<8){kids.push(6);rechne()}};
@@ -700,7 +711,7 @@ const zr=document.getElementById('zeit'),jE=document.getElementById('jahr'),jT=d
 const fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
 const hp=document.getElementById('hPrev'),hn=document.getElementById('hNext');
 /* Kreuzblende statt Hineinschieben (Julia №121): alle Jahre/Texte/Schilder liegen übereinander, nur Deckkraft wechselt */
-const FADE=600,HALT=1500;/* ms: Blende, Stehzeit pro Jahr */
+const FADE=600,DAUER=1500;/* ms: Blende; Fahrzeit pro Jahr, durchgehend ohne Halt (Julia №131) */
 document.getElementById('haus').style.setProperty('--fade',FADE+'ms');
 jE.classList.add('blende');jT.classList.add('blende');jE.innerHTML=J.map(r=>'<span class="'+(r[0]>=2005?'y5':'y0')+'">'+r[0]+'</span>').join('');jT.innerHTML=J.map(r=>'<span>'+r[2]+'</span>').join('');
 const SN=[...new Set(J.map(r=>r[1]))];sch.innerHTML=SN.map(n=>'<text class="schildtxt" x="240" y="203" text-anchor="middle" font-size="'+(n.length>15?15:17)+'" fill="#3A2522" opacity="0">'+n+'</text>').join('');
@@ -714,14 +725,8 @@ function stopAuto(){auto=false;cancelAnimationFrame(raf);document.getElementById
 const bue=document.querySelector('.buehne'),bsv=bue.querySelector('svg');
 function ton(v){const q=v/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';const mix=(a,b)=>a.map((x,i)=>Math.round(x+(b[i]-x)*q));const top=mix([239,229,212],[226,238,244]);bue.style.background='linear-gradient(rgb('+top+'),#F7F1E7 78%)'}
 function hzeig(v){zr.value=v;ton(v);const i=Math.round(v);if(i!==ai){ai=i;jahr(i,true)}}
-/* Autolauf schrittweise: Stehzeit, dann Blende zum nächsten Jahr (Regler und Farbton gleiten in derselben Zeit mit) */
-const ein=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
-function lauf(t){if(!auto)return;if(!t0){t0=t;v0=Math.round(+zr.value)}const d=t-t0;
- if(d<HALT){raf=requestAnimationFrame(lauf);return}
- if(v0>=J.length-1){auto=false;return}
- if(ai!==v0+1){ai=v0+1;jahr(v0+1,true)}
- const q=Math.min(1,(d-HALT)/FADE);const v=v0+ein(q);zr.value=v;ton(v);
- if(q<1)raf=requestAnimationFrame(lauf);else{zr.value=v0+1;t0=0;raf=requestAnimationFrame(lauf)}}
+/* Autolauf durchgehend (Julia №131): Regler gleitet gleichmässig, beim Überfahren eines Jahres blendet alles weich über */
+function lauf(t){if(!auto)return;if(!t0){t0=t;v0=+zr.value}const v=Math.min(J.length-1,v0+(t-t0)/DAUER);hzeig(v);if(v<J.length-1)raf=requestAnimationFrame(lauf);else auto=false}
 ['pointerdown','keydown','touchstart'].forEach(e=>zr.addEventListener(e,stopAuto,{passive:true}));
 zr.addEventListener('input',()=>{stopAuto();hzeig(+zr.value)});zr.addEventListener('change',()=>{zr.value=Math.round(+zr.value)});
 hp.onclick=()=>{stopAuto();hzeig(Math.max(0,Math.round(+zr.value)-1))};hn.onclick=()=>{stopAuto();hzeig(Math.min(J.length-1,Math.round(+zr.value)+1))};
@@ -759,6 +764,7 @@ function ladeKarte(){if(kl)return;kl=true;const i=document.createElement('iframe
 
 /* Einblenden */
 const rv=[...document.querySelectorAll('.rv')];
+document.querySelectorAll('.feste>.card').forEach(c=>c.addEventListener('transitionend',e=>{if(e.propertyName==='opacity'&&c.classList.contains('in'))c.classList.add('da')}));
 if(shot||!('IntersectionObserver' in window)){rv.forEach(e=>e.classList.add('in'));ladeKarte()}
 else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('in');io.unobserve(e.target);if(e.target===kb)ladeKarte()}}),{rootMargin:'0px 0px -6% 0px'});
  rv.forEach(e=>io.observe(e));
