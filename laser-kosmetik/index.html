@@ -63,35 +63,19 @@ body.scrolled .hdr{top:0;background:rgba(251,248,243,.86);backdrop-filter:blur(1
 
 /* ---------- Hero (Lichtpuls / Goldmosaik) ---------- */
 .hx{position:relative;height:100svh;min-height:620px;max-height:980px;overflow:hidden;background:var(--sand);display:flex;align-items:center}
-.hx-a,.hx-b{position:absolute;inset:0}
-.hx-soft{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 50%}
-.hx-cv{position:absolute;inset:0;width:100%;height:100%}
-.spot{position:absolute;left:0;top:0;width:150px;height:98px;margin:-49px 0 0 -75px;border:2px solid var(--gold2);border-radius:6px;box-shadow:0 0 0 1px rgba(255,255,255,.5) inset,0 0 26px 6px rgba(232,206,150,.55);opacity:0;transition:opacity .4s;pointer-events:none;will-change:transform}
-.spot.on{opacity:1}
-.hx-b{display:none;left:auto;width:56%;display:none;grid-template-columns:repeat(var(--c),1fr);grid-auto-rows:1fr;gap:0;perspective:1400px}
-.tile{position:relative;transform-style:preserve-3d;transition:transform .7s var(--ease)}
-.tile.f{transform:rotateY(180deg)}
-.tile i,.tile b{position:absolute;inset:-.5px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.tile i{background:var(--g,#C8A971)}
-.tile i::after{content:"";position:absolute;inset:22%;border:1px solid rgba(255,255,255,.35);border-radius:var(--rr,0)}
-.tile b{transform:rotateY(180deg);background-image:var(--img);background-repeat:no-repeat}
-@media (hover:hover){body.ready .tile.f:hover{transform:rotateY(180deg) scale(.94)}}
-.hx-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,rgba(247,242,235,.97) 0%,rgba(247,242,235,.9) 34%,rgba(247,242,235,.3) 52%,rgba(247,242,235,0) 64%),linear-gradient(0deg,var(--cream) 0%,rgba(247,242,235,0) 16%)}
-body:not(.kb) .hx-txt{margin-left:auto}
-body:not(.kb) .hx-hint{right:auto;left:48px}
-body.kb .hx-veil{background:linear-gradient(0deg,var(--cream) 0%,rgba(247,242,235,0) 14%)}
-body.kb .hx{background:var(--cream)}
-body.kb .hx-a{display:none}
-body.kb .hx-b{display:grid}
+.hx{background:var(--cream)}
+.hx-ph{position:absolute;top:0;right:0;bottom:0;width:56%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%);mask-image:linear-gradient(90deg,transparent 0,#000 16%)}
+.hx-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;opacity:0;transform:scale(1.04);animation:phIn 1.6s .1s var(--ease) forwards}
+@keyframes phIn{to{opacity:1;transform:none}}
+.glint{position:absolute;top:-10%;bottom:-10%;left:0;width:60%;background:linear-gradient(100deg,rgba(255,236,205,0) 0%,rgba(255,232,196,.55) 45%,rgba(255,246,228,.75) 50%,rgba(255,232,196,.55) 55%,rgba(255,236,205,0) 100%);mix-blend-mode:soft-light;transform:translateX(-120%) skewX(-12deg);animation:glint 2.6s 1.1s cubic-bezier(.45,.05,.25,1) forwards;pointer-events:none;will-change:transform}
+@keyframes glint{to{transform:translateX(260%) skewX(-12deg)}}
+.hx-veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,var(--cream) 0%,rgba(247,242,235,0) 14%)}
 .hx-in{position:relative;z-index:2;pointer-events:none;display:flex;flex-direction:column;justify-content:center;height:100%;padding-top:110px;padding-bottom:40px}
 .hx-txt{max-width:520px;pointer-events:auto}
 .hx h1{font-size:clamp(42px,5.2vw,78px);line-height:1.02;margin:18px 0 22px}
 .hx .lead{margin-bottom:28px}
 .hx-txt>*{opacity:0;animation:fadeUp .9s var(--ease) forwards}
 .hx-txt>*:nth-child(1){animation-delay:.1s}.hx-txt>*:nth-child(2){animation-delay:.25s}.hx-txt>*:nth-child(3){animation-delay:.4s}.hx-txt>*:nth-child(4){animation-delay:.55s}.hx-txt>*:nth-child(5){animation-delay:.7s}
-.hx-hint{position:absolute;right:48px;bottom:34px;font:500 11.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);background:rgba(251,248,243,.82);border:1px solid var(--line);border-radius:99px;padding:10px 14px;opacity:0;transition:opacity .6s}
-.hx-hint.on{opacity:1}
-.hint-b{display:none}body.kb .hint-a{display:none}body.kb .hint-b{display:inline}
 .stars-s{color:var(--gold)}
 .addr{margin-top:6px;font:400 13px/1.6 var(--mono);color:var(--muted)}
 .addr a{white-space:nowrap;text-decoration:none;color:var(--ink2);border-bottom:1px solid var(--line);transition:color .2s,border-color .2s}
@@ -250,6 +234,10 @@ input[type=range]:hover::-webkit-slider-thumb{box-shadow:0 0 0 6px rgba(200,169,
 @media (hover:hover){.mate:hover{transform:translateY(-3px);box-shadow:0 20px 40px -26px rgba(74,56,38,.5);border-color:var(--gold2)}}
 .dots{display:none}
 
+.studio{margin:16px 0 0;position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/6;box-shadow:0 24px 50px -34px rgba(74,56,38,.5)}
+.studio img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;transition:transform 1.2s var(--ease)}
+@media (hover:hover){.studio:hover img{transform:scale(1.03)}}
+.studio figcaption{position:absolute;left:12px;bottom:12px;background:rgba(251,248,243,.92);border-radius:99px;padding:7px 12px;font:400 12px var(--mono);color:var(--ink2)}
 /* ---------- Bewertungen ---------- */
 .rev{display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:center}
 .score{text-align:center;padding:34px 40px;border-radius:24px;background:var(--paper);border:1px solid var(--line);transition:box-shadow .25s,transform .25s}
@@ -281,11 +269,6 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .qbox blockquote::before{display:inline;font-size:1em;line-height:0;margin:0 .1em 0 0;color:var(--gold)}
 .qbox figcaption{margin-top:10px;font:400 12.5px var(--mono);color:var(--muted);transition:opacity .3s}
 .qbox.sw blockquote,.qbox.sw figcaption{opacity:0}
-/* Mosaik-Variante: Themen als Kacheln */
-body.kb .claim{border-radius:4px;background:linear-gradient(135deg,#E9D6AE,#C8A971);border-color:transparent;color:#3A2C1C}
-body.kb .claim small{color:#6B5230}
-body.kb .claim[aria-selected="true"]{background:var(--paper);color:var(--ink);border-color:var(--gold)}
-body.kb .qbox{border-radius:4px}
 
 /* ---------- Gut zu wissen ---------- */
 .know{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
@@ -354,24 +337,16 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 
 @media (max-width:900px){
   .hx{height:auto;min-height:0;max-height:none;flex-direction:column;align-items:stretch}
-  .hx-a,.hx-b{position:relative;inset:auto;height:56vw;min-height:300px;width:100%;order:-1}
+  .hx-ph{position:relative;inset:auto;height:62vw;min-height:300px;width:100%;order:-1;-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 18%);mask-image:linear-gradient(0deg,transparent 0,#000 18%)}
   .hx-veil{display:none}
   .hx{background:var(--cream)}
   .hx-in{height:auto;padding-top:28px;padding-bottom:30px}
-  .hx-hint{display:none}
-  body.kb .hx-b{width:100%}
 }
-@media (max-width:900px) and (min-width:641px){.hx-a,.hx-b{margin-top:74px}}
-@media (max-width:640px){.hx-a,.hx-b{margin-top:62px;height:70vw}.hx h1{font-size:38px;margin:12px 0 14px}.hx .lead{margin-bottom:16px;font-size:15.5px}.hx-in{padding-top:20px}}
+@media (max-width:900px) and (min-width:641px){.hx-ph{margin-top:74px}}
+@media (max-width:640px){.hx-ph{margin-top:62px;height:92vw}.hx-ph img{object-position:50% 70%}.hx h1{font-size:38px;margin:12px 0 14px}.hx .lead{margin-bottom:16px;font-size:15.5px}.hx-in{padding-top:20px}}
 
 @media (max-width:900px){.proof{grid-template-columns:1fr}.proof .score{grid-row:auto;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;text-align:left;padding:18px 20px}.proof .score a{margin-top:0}.proof .score b{font-size:52px}.proof .stars{margin:0}.claims{grid-template-columns:1fr 1fr}.claim{font-size:16px;padding:14px}}
 
-body.plain .tile b{background:var(--paper)!important;box-shadow:inset 0 0 0 1px var(--line)}
-body.plain .tile b::after{content:"";position:absolute;inset:30%;border:1px solid var(--gold2);border-radius:var(--rr,0);opacity:.6}
-.hx-word{display:none;position:absolute;right:4%;top:50%;transform:translateY(-50%);z-index:1;pointer-events:none;text-align:right;font:300 clamp(90px,12vw,200px)/.9 var(--serif);color:var(--ink);letter-spacing:-.02em;opacity:0;animation:fadeUp 1.2s 1.4s var(--ease) forwards}
-.hx-word em{font-style:italic;color:var(--gold);display:block}
-body.plain .hx-word{display:block}
-@media (max-width:900px){.hx-word{right:6%;font-size:22vw}}
 /* Mobile CTA */
 .mcta{display:none}
 
@@ -473,16 +448,11 @@ body.plain .hx-word{display:block}
 
 <!-- HERO -->
 <section class="hx" id="hx" aria-label="Willkommen">
-  <!-- A · Lichtpuls -->
-  <div class="hx-a">
-    <img class="hx-soft" src="img/beine_soft_1920.webp" srcset="img/beine_soft_960.webp 960w, img/beine_soft_1920.webp 1920w" sizes="100vw" alt="" aria-hidden="true">
-    <canvas class="hx-cv" id="hxCv" aria-hidden="true"></canvas>
-    <div class="spot" id="spot" aria-hidden="true"></div>
+  <div class="hx-ph">
+    <img src="img/g23_1400.webp" srcset="img/g23_700.webp 700w, img/g23_1400.webp 1400w" sizes="(max-width:900px) 100vw, 56vw" alt="Entspannte Kundin unter einem weissen Tuch bei Laser Kosmetik" width="1400" height="2100" fetchpriority="high">
+    <i class="glint" aria-hidden="true"></i>
   </div>
-  <!-- B · Goldmosaik -->
-  <div class="hx-b" id="mosaic" aria-hidden="true"></div>
   <div class="hx-veil" aria-hidden="true"></div>
-  <div class="hx-word" aria-hidden="true">Licht<em>puls.</em></div>
   <div class="wrap hx-in">
     <div class="hx-txt">
       <div class="eyebrow">Laser-Studio in St. Gallen · seit 2011</div>
@@ -494,7 +464,6 @@ body.plain .hx-word{display:block}
       </div>
       <p class="addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Laser+Kosmetik+GmbH+Ullmannstrasse+18a+9014+St.+Gallen" target="_blank" rel="noopener">Ullmannstrasse 18a, 9014 St. Gallen</a> · <a href="tel:+41793415244">+41 79 341 52 44</a> · <span class="stars-s">★</span> 5,0 · 493 Google-Bewertungen</p>
     </div>
-    <p class="hx-hint" id="hxHint"><span class="hint-a">Fahren Sie mit dem Licht über das Bild</span><span class="hint-b">Jede Kachel ein Lichtpuls</span></p>
   </div>
 </section>
 
@@ -709,6 +678,7 @@ body.plain .hx-word{display:block}
         <div class="mate"><div class="mono">C</div><b>Camilla</b><span>Kosmetikerin · ästhetische Laserbehandlungen</span></div>
       </div>
       <div class="dots" id="crewDots"><i class="on"></i><i></i><i></i></div>
+      <figure class="studio"><img src="img/g13_1400.webp" srcset="img/g13_700.webp 700w, img/g13_1400.webp 1400w" sizes="(max-width:900px) 100vw, 640px" alt="Empfang von Laser Kosmetik mit Zertifikaten und Klimt-Bild" width="1400" height="2100" loading="lazy"><figcaption>Unser Studio an der Ullmannstrasse 18a</figcaption></figure>
     </div>
   </div>
 </section>
@@ -825,7 +795,6 @@ body.plain .hx-word{display:block}
 (function(){
   var B=document.body;
   // Interaktion erst nach Hero-Animation
-  if(!/[?&]k=a/.test(location.search))B.classList.add('kb');
   setTimeout(function(){B.classList.add('ready')},2400);
   // Band + Header
   var band=document.getElementById('band');
@@ -908,54 +877,6 @@ body.plain .hx-word{display:block}
     out.innerHTML=(h[2]?h[2]+' Uhr':'Geschlossen')+'<small>'+h[1]+(i==today?' · heute':'')+(h[2]?' · Termine nach Vereinbarung':' · Online-Buchung jederzeit möglich')+'</small>'}
   sel(today);
 
-  // ===== Hero A · Lichtpuls (Canvas: scharfe Stellen bleiben) =====
-  var hint=document.getElementById('hxHint');
-  if(!B.classList.contains('kb')){
-    var mob=innerWidth<=900,cv=document.getElementById('hxCv'),ctx=cv.getContext('2d'),spot=document.getElementById('spot'),hx=document.getElementById('hx').querySelector('.hx-a');
-    var sharp=new Image(),W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,1.5),geo=null,last=null;
-    sharp.src=(innerWidth>900?'img/beine_1920.webp':'img/beine_960.webp');
-    function size(){var r=hx.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
-      if(!sharp.naturalWidth)return;var iw=sharp.naturalWidth,ih=sharp.naturalHeight,sc=Math.max(W/iw,H/ih),dw=iw*sc,dh=ih*sc;
-      geo={sc:sc,ox:(W-dw)*.35,oy:(H-dh)*.50};}
-    var PW=210,PH=150,st=document.createElement('canvas'),sx2=st.getContext('2d'),tmp=document.createElement('canvas'),tx=tmp.getContext('2d');
-    st.width=tmp.width=PW;st.height=tmp.height=PH;
-    (function(){var g=sx2.createRadialGradient(PW/2,PH/2,10,PW/2,PH/2,PW/2);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(.62,'rgba(0,0,0,.9)');g.addColorStop(1,'rgba(0,0,0,0)');sx2.save();sx2.scale(1,PH/PW);sx2.fillStyle=g;sx2.fillRect(0,0,PW,PW);sx2.restore();
-      var g2=sx2.createRadialGradient(PW/2,PH/2,10,PW/2,PH/2,PW*.5);})();
-    function pulse(x,y){if(!geo)return;var sx=(x-PW/2-geo.ox)/geo.sc,sy=(y-PH/2-geo.oy)/geo.sc;
-      tx.globalCompositeOperation='source-over';tx.clearRect(0,0,PW,PH);tx.drawImage(sharp,sx,sy,PW/geo.sc,PH/geo.sc,0,0,PW,PH);
-      tx.globalCompositeOperation='destination-in';tx.drawImage(st,0,0);ctx.drawImage(tmp,x-PW/2,y-PH/2);}
-    function stroke(x,y){if(last){var dx=x-last[0],dy=y-last[1],d=Math.hypot(dx,dy),n=Math.ceil(d/26);for(var i=1;i<=n;i++)pulse(last[0]+dx*i/n,last[1]+dy*i/n)}else pulse(x,y);last=[x,y];}
-    function moveSpot(x,y){spot.style.transform='translate('+x+'px,'+y+'px)';}
-    sharp.onload=function(){size();
-      // automatischer Durchgang wie ein Handstück: drei Bahnen
-      var t0=performance.now(),D=2800,paths=mob?[[0,.12,1,.12],[1,.30,0,.30],[0,.48,1,.48],[1,.66,0,.66],[0,.84,1,.84]]:[[.02,.16,.56,.16],[.56,.27,.02,.27],[.02,.38,.56,.38],[.56,.49,.02,.49],[.02,.60,.56,.60],[.56,.71,.02,.71],[.02,.82,.56,.82]];spot.classList.add('on');
-      (function step(t){var p=Math.max(0,Math.min(1,(t-t0)/D)),N=paths.length,seg=Math.min(N-1,Math.floor(p*N)),q=(p*N)-seg,a=paths[seg];
-        if(q<0.02)last=null;var x=W*(a[0]+(a[2]-a[0])*q),y=H*(a[1]+(a[3]-a[1])*q);stroke(x,y);moveSpot(x,y);
-        if(p<1)requestAnimationFrame(step);else{last=null;spot.classList.remove('on');hint.classList.add('on');}})(t0);
-    };
-    addEventListener('resize',function(){var img=ctx.getImageData?null:null;size();});
-    function pt(e){var r=hx.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];}
-    var raf=0,pend=null;
-    hx.parentNode.addEventListener('pointermove',function(e){if(!B.classList.contains('ready'))return;var p=pt(e);if(p[1]<0||p[1]>H)return;pend=p;if(!raf)raf=requestAnimationFrame(function(){raf=0;spot.classList.add('on');moveSpot(pend[0],pend[1]);stroke(pend[0],pend[1]);hint.classList.remove('on');});});
-    hx.parentNode.addEventListener('pointerleave',function(){last=null;spot.classList.remove('on')});
-  }
-  // ===== Hero B · Goldmosaik =====
-  else{
-    var mo=document.getElementById('mosaic'),mob=innerWidth<=900,C=mob?6:9,R=mob?6:8;mo.style.setProperty('--c',C);
-    var G=['#C8A971','#B89156','#D9BE8C','#A9844E','#E3CDA0','#BF9C62'],tiles=[];
-    var HI={g13:[1400,2100,.5,.45],g07:[1400,2100,.45,.45],g16:[1400,2100,.5,.55],g23:[1400,2100,.5,.42],g11:[1400,2100,.5,.5]};
-    var hn=(location.search.match(/[?&]hero=(\d)/)||[])[1],hk=({1:'g13',2:'g07',3:'g16',4:'g23',5:'none'})[hn]||(location.search.match(/[?&]img=(\w+)/)||[])[1]||'g13',plain=hk==='none';if(!HI[hk]&&!plain)hk='g13';
-    if(plain)B.classList.add('plain');
-    var src=plain?'':'img/'+hk+'_'+(innerWidth>900?1400:700)+'.webp',HD=HI[hk]||[1,1,.5,.5];
-    for(var r=0;r<R;r++)for(var c=0;c<C;c++){var t=document.createElement('div');t.className='tile';
-      var g=G[(r*7+c*3)%G.length];t.innerHTML='<i style="--g:'+g+(((r+c)%3==0)?';--rr:50%':'')+'"></i><b></b>';t.dataset.r=r;t.dataset.c=c;if(r>0&&(c==0&&r%2==1||c==1&&r%3==2||(r==R-1&&c%4==1)))t.dataset.keep=1;mo.appendChild(t);tiles.push(t);}
-    function bg(){if(plain)return;var w=mo.clientWidth,h=mo.clientHeight,iw=HD[0],ih=HD[1],sc=Math.max(w/iw,h/ih),dw=iw*sc,dh=ih*sc,ox=(w-dw)*HD[2],oy=(h-dh)*HD[3];
-      tiles.forEach(function(t){var x=t.offsetLeft,y=t.offsetTop,b=t.querySelector('b');b.style.backgroundImage='url('+src+')';b.style.backgroundSize=dw+'px '+dh+'px';b.style.backgroundPosition=(ox-x)+'px '+(oy-y)+'px';});}
-    bg();addEventListener('resize',bg);
-    var im=new Image();if(plain)setTimeout(function(){im.onload()},50);im.onload=function(){tiles.forEach(function(t){var r=+t.dataset.r,c=+t.dataset.c;if(t.dataset.keep)return;var d=(r+c)*70+200;setTimeout(function(){t.classList.add('f')},d)});setTimeout(function(){hint.classList.add('on')},(R+C)*70+700)};if(!plain)im.src=src;
-    tiles.forEach(function(t){t.addEventListener('click',function(){if(!B.classList.contains('ready'))return;t.classList.remove('f');setTimeout(function(){t.classList.add('f')},900)})});
-  }
-
   // ===== Bewertungen: Beleg zu jedem Versprechen =====
   var Q=[['Auch finde ich es super, dass ich nur alle 3 Monate zur Haarentfernung muss.','Z. · Google, vor einem Monat'],
     ['Es wird ganz klar kommuniziert, was machbar ist und was nicht.','Z. · Google, vor einem Monat'],
@@ -971,7 +892,7 @@ body.plain .hx-word{display:block}
 
   // Fotos gross
   var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
-  [].forEach.call(document.querySelectorAll('.ol img,.dev .ph img,.stage img'),function(im){
+  [].forEach.call(document.querySelectorAll('.ol img,.studio img,.dev .ph img,.stage img'),function(im){
     var t=im.closest('.stage')||im;t.classList.add('zoomable');
     t.addEventListener('click',function(e){if(e.target.closest('a'))return;var src=im.closest('.stage')?document.querySelector('.stage img.on').src:im.src;lbi.src=src;lbi.alt=im.alt;lb.classList.add('on')});
   });
