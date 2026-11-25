@@ -635,58 +635,13 @@ html:not(.menu) body:not(.menu) .mmenu{visibility:hidden;transition:transform .4
 @media (min-width:768px){.mini .gf{display:none}}
 .mini .pr{text-align:right;line-height:1}.mini .pr small{display:block;font-family:Cabin,CabinFB,sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;margin-bottom:2px;color:var(--muted)}
 </style>
-<style id="runde18-26-11">
-/* Hängende Einzelwörter in Überschriften und Absätzen vermeiden */
-h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
-.nw{white-space:nowrap}
-/* «Cafés & Läden» im Startbild reagiert sichtbar auf die Maus */
-@media (hover:hover){.heroA .btn.glas:hover{background:rgba(255,252,245,.28);box-shadow:inset 0 0 0 2px #fff,0 0 24px rgba(255,231,163,.45)}}
-/* Plaketten in den Café-Karten reagieren */
-.cafe .pl span{transition:background .2s,color .2s}
-@media (hover:hover){.cafe .pl span:hover{background:var(--goldhell);color:var(--kruste)}}
-.cafe .pl span:active{background:var(--goldhell)}
-/* Leeres Paket: Hinweis ohne Scrollen sichtbar, «Zur Kasse» erst mit Inhalt */
-.paket .leerpaket img{max-height:24vh}@media (max-height:760px){.paket .leerpaket{padding-top:10px}.paket .leerpaket img{max-height:15vh}}
-#kasse:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
-/* Handy: grössere Tippfläche für «+», «−» und Catering-Knöpfe, ohne dass sich etwas verschiebt */
-@media (max-width:767px){.stp button,.plus,.pos button,.chip{position:relative}.stp button::after,.plus::after,.pos button::after,.chip::after{content:"";position:absolute;inset:-6px}}
-/* 360: Preis in «Unsere Klassiker» überdeckt «glutenfrei» nicht */
-@media (max-width:400px){.mini{gap:8px}.mini img{width:52px;height:52px;object-fit:cover}}
-/* Paket am Handy: Name wieder breiter («Baumnussbrot» ohne Trennung) */
-.pos .sum{width:58px}.pos .nm{hyphens:manual;-webkit-hyphens:manual}
-/* Logo führt ganz nach oben; unter offenem Paket/Menü scrollt die Seite nicht mit (Handy/Tablet) */
-@media (max-width:1100px){html:has(body.paketauf),html:has(body.menu),body.paketauf,body.menu{overflow:hidden}}
-/* Startbild Computer: Adresszeile auf heller Mehlstelle lesbar (Julia Nr. 136) */
-@media (min-width:768px){.heroA .adr{text-shadow:0 0 1px rgba(30,17,10,1),0 0 3px rgba(30,17,10,1),0 0 7px rgba(30,17,10,.95),0 0 14px rgba(30,17,10,.8)}}
-/* Handy: Adressen/Telefone im Startbild leichter zu treffen */
-@media (max-width:767px){.heroA .adr a{position:relative}.heroA .adr a::after{content:"";position:absolute;inset:-12px -4px}}
-/* Graue Hinweise auf der Kruste kräftiger; «Backtag» unter den Tagen grösser */
-.bthint{color:#5E4A3C}footer{color:#5E4A3C}
-.tag span{font-size:11px}
-</style>
-<style id="runde18b-26-11">
-/* 1 Catering-Chips als Raster */
-#artchips{display:grid;grid-template-columns:repeat(4,1fr)}
-#artchips .chip[data-a="Biberbacken für Gruppen"]{grid-column:span 2}
-@media (max-width:1100px){#anlasschips{display:grid;grid-template-columns:repeat(3,1fr)}}
-@media (max-width:480px){#artchips,#anlasschips{grid-template-columns:repeat(2,1fr)}}
-.chips .chip{text-align:center}
-/* 2 Paket-Knopf verdeckt nichts */
-@media (max-width:767px){.paketfab.zeig.deckt{opacity:0;transform:translateY(24px);pointer-events:none}}
-/* 3 wenige Produkte: mittig, ohne Löcher */
-.regal.flach{display:flex;flex-wrap:wrap;justify-content:center;overflow:visible}
-.regal.flach>.karte{flex:0 0 var(--cw);width:var(--cw)}
-/* 4 Catering-Foto: Köpfe nicht abgeschnitten */
-.catbild img{object-position:60% 12%!important}
-@media (max-width:767px){.catbild img{object-position:50% 22%!important}}
-</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#" aria-label="Bäckerei Gerig – nach oben"><img src="img/logo_g.png" alt="Gerig Logo"><span><span class="n">Gerig</span><span class="s">Bäckerei · Konditorei</span></span></a>
+    <a class="brand" href="#top" aria-label="Bäckerei Gerig – nach oben"><img src="img/logo_g.png" alt="Gerig Logo"><span><span class="n">Gerig</span><span class="s">Bäckerei · Konditorei</span></span></a>
     <nav class="main">
       <a href="#shop">Glutenfrei-Shop</a><a href="#cafes">Cafés</a><a href="#catering">Catering</a><a href="#seit1987">Seit 1987</a><a href="#kontakt">Kontakt</a>
     </nav>
@@ -712,7 +667,7 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
     <div>
       <span class="kick"><i></i><span class="nw">Familienbetrieb seit 1987 ·</span><span class="nw">Urnäsch seit 2014</span></span>
       <h1>Glutenfrei gebacken.<br> <em>Wie normales Brot.</em></h1>
-      <p class="lead">Über 90 glutenfreie Produkte aus eigener Backstube – Brot, Guetzli und Torten per Post in die ganze Schweiz. Und zwei Bäckercafés im Appenzellerland.</p>
+      <p class="lead">Über 90 glutenfreie Brote, Guetzli und Torten aus eigener Backstube – per Post in die ganze Schweiz. Und zwei Bäckercafés im Appenzellerland.</p>
       <div class="cta">
         <a class="btn rot" href="#shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg>Glutenfrei bestellen</a>
         <a class="btn glas" href="#cafes">Cafés &amp; Läden</a>
@@ -762,7 +717,7 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
   <div class="wrap">
     <div class="sh fade">
       <h2>Der Glutenfrei-Shop.<br><em>Per Post in die ganze Schweiz.</em></h2>
-      <div class="shr"><p><span class="tp">Tippen Sie aufs Bild</span><span class="pc">Klicken Sie aufs Bild</span>, um es gross zu sehen; <b>+</b> legt es ins Paket.</p><label class="such"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="such" type="search" placeholder="Suchen: Zopf, Biber …" aria-label="Produkte suchen"></label></div>
+      <div class="shr"><p>Gebacken in einem separaten Raum. <span class="tp">Tippen Sie aufs Bild</span><span class="pc">Klicken Sie aufs Bild</span>, um es gross zu sehen; <b>+</b> legt es ins Paket.</p><label class="such"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="such" type="search" placeholder="Suchen: Zopf, Biber …" aria-label="Produkte suchen"></label></div>
     </div>
     <div class="shopbar fade">
       <div class="kats" id="kats"></div>
@@ -786,9 +741,9 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
   <div class="wrap gfgrid">
     <div class="gfbild fade" data-zoom="img/mehl_aehre.webp"><img src="img/mehl_aehre.webp" alt="Mehl mit dem Zeichen der durchgestrichenen Ähre" loading="lazy"></div>
     <div class="gftext fade">
-      <h2>Glutenfrei ist bei uns <em>kein&nbsp;Trend.</em></h2>
+      <h2>Glutenfrei ist bei uns <em>kein Trend.</em></h2>
       <p>1987 übernahmen Alois und Erika Gerig die Bäckerei in Waldstatt – und mit ihr die glutenfreie Produktion, die mit dem «Thomas- und Markusbrot» begann. Heute führen Daniel Gerig und Isabelle Diem den Betrieb in zweiter Generation.</p>
-      <p>Glutenfreies backen wir in einem eigenen, abgetrennten Raum.</p>
+      <p>Glutenfreies backen wir in einem eigenen, abgetrennten Raum – getrennt von der täglichen Produktion.</p>
       <div class="fakten">
         <div class="fakt"><b>seit 1987</b><span>Familienbetrieb mit glutenfreier Backstube</span></div>
         <div class="fakt"><b>90+</b><span>glutenfreie Produkte im Onlineshop</span></div>
@@ -812,7 +767,7 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
           <h3>Isa und Danis BäckerCafé</h3>
           <div class="pl"><span>16 Plätze</span><span>2 Stehtische</span><span>seit 2019</span></div>
           <p data-cafe="w"></p>
-          <div class="zit">Feinste Backwaren und sehr freundliches Personal.<small>Wanda Schwarz, Google</small></div>
+          <div class="zit">Feinste Backwaren und sehr freundliches Personal. Danke fürs dürfen verweilen.<small>Wanda Schwarz, Google</small></div>
           <div class="acts"><a class="btn rot" href="tel:+41713512126">Anrufen</a><a class="btn hell" href="https://maps.google.com/?q=Dorfstrasse+26,+9104+Waldstatt" target="_blank" rel="noopener">Route</a></div>
         </div>
       </article>
@@ -875,14 +830,14 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
 <!-- STIMMEN -->
 <section class="sec stimmen" id="stimmen">
   <div class="wrap">
-    <div class="sh fade"><h2>«Hier stimmt <em>einfach alles.</em>»</h2><div class="sterne"><b>4,6</b><span><span style="color:var(--gold);letter-spacing:2px" aria-label="4,6 von 5 Sternen">★★★★<span class="halb">★</span></span><br>115 Bewertungen auf Google</span></div></div>
+    <div class="sh fade"><h2>«Hier stimmt <em>einfach alles.</em>»</h2><div class="sterne"><b>4,6</b><span><span style="color:var(--gold);letter-spacing:2px" aria-label="4,6 von 5 Sternen">★★★★<span class="halb">★</span></span><br>114 Bewertungen auf Google</span></div></div>
     <div class="regalwrap fade">
       <button class="pfeil l" data-l="zitate" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="zitate" id="zitate">
-        <div class="zitat"><span class="s">★★★★★</span><q>Da ich Glutenfrei essen muss, für mich ein Paradies. Das Brot schmeckt sehr gut, wie auch das Konfekt ein Traum.</q><span class="w"><b>Nicole S.</b> · Google</span></div>
+        <div class="zitat"><span class="s">★★★★★</span><q>Da ich Glutenfrei essen muss, für mich ein Paradies. Das Brot schmeckt sehr gut, wie auch das Konfekt ein Traum.</q><span class="w"><b>Nicole S</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Sehr nettes Personal. Gute Qualität der Produkte</q><span class="w"><b>Thomas Bachmann</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Echte Backkunst, fantastischer Service und stets frische Ware!</q><span class="w"><b>Karin S.</b> · Google</span></div>
-        
+        <div class="zitat"><span class="s">★★★★★</span><q>Trotz Megaansturm wegen altem Silvester blieb das Personal äusserst freundlich</q><span class="w"><b>Elisabeth Eberle</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Für von Zöliakie betroffene Personen ist dies sowas wie ein Schlaraffenland.</q><span class="w"><b>Andrew</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Das Biberbacken als Gruppenevent ist eine tolle Angelegenheit.</q><span class="w"><b>sotrue</b> · Google</span></div>
         <div class="zitat"><span class="s">★★★★★</span><q>Die Auswahl ist so toll, dass man fast nicht weiss, was man bestellen soll. Bitte weiter so!</q><span class="w"><b>Susanne Pfrunder</b> · Google</span></div>
@@ -896,13 +851,13 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
 <!-- KONTAKT -->
 <section class="kontakt" id="kontakt">
   <div class="wrap kgrid">
-    <div class="kk fade"><span class="o">Hauptgeschäft</span><h3>Waldstatt</h3><span>Dorfstrasse 26 · 9104&nbsp;Waldstatt AR</span><a class="tel" href="tel:+41713512126">071 351 21 26</a><ul data-std="w"></ul><div class="acts"><a class="btn rot" href="tel:+41713512126">Anrufen</a><a class="btn glas" href="https://maps.google.com/?q=Dorfstrasse+26,+9104+Waldstatt" target="_blank" rel="noopener">Route</a></div></div>
-    <div class="kk fade"><span class="o">Filiale · glutenfreie Backstube</span><h3>Urnäsch</h3><span>Tüfenbergstrasse 2 · 9107&nbsp;Urnäsch</span><a class="tel" href="tel:+41713641804">071 364 18 04</a><ul data-std="u"></ul><div class="acts"><a class="btn rot" href="tel:+41713641804">Anrufen</a><a class="btn glas" href="https://maps.google.com/?q=T%C3%BCfenbergstrasse+2,+9107+Urn%C3%A4sch" target="_blank" rel="noopener">Route</a></div></div>
-    <div class="kk fade"><span class="o">Onlineshop &amp; Catering</span><h3>Schreiben Sie uns</h3><a class="tel" href="mailto:info@baeckerei-gerig.ch" style="font-size:19px">info@baeckerei-gerig.ch</a><span style="font-size:14.5px">Fragen zu Produkten oder zu Ihrer Bestellung beantworten wir gerne per Mail oder während der Öffnungszeiten am Telefon.</span><span style="font-size:14.5px">Wir liefern innerhalb der Schweiz.</span><div class="acts"><a class="btn rot" href="#shop">Zum Shop</a><a class="btn glas" href="#catering">Catering</a></div></div>
+    <div class="kk fade"><span class="o">Hauptgeschäft</span><h3>Waldstatt</h3><span>Dorfstrasse 26 · 9104 Waldstatt AR</span><a class="tel" href="tel:+41713512126">071 351 21 26</a><ul data-std="w"></ul><div class="acts"><a class="btn rot" href="tel:+41713512126">Anrufen</a><a class="btn glas" href="https://maps.google.com/?q=Dorfstrasse+26,+9104+Waldstatt" target="_blank" rel="noopener">Route</a></div></div>
+    <div class="kk fade"><span class="o">Filiale · glutenfreie Backstube</span><h3>Urnäsch</h3><span>Tüfenbergstrasse 2 · 9107 Urnäsch</span><a class="tel" href="tel:+41713641804">071 364 18 04</a><ul data-std="u"></ul><div class="acts"><a class="btn rot" href="tel:+41713641804">Anrufen</a><a class="btn glas" href="https://maps.google.com/?q=T%C3%BCfenbergstrasse+2,+9107+Urn%C3%A4sch" target="_blank" rel="noopener">Route</a></div></div>
+    <div class="kk fade"><span class="o">Onlineshop &amp; Catering</span><h3>Schreiben Sie uns</h3><a class="tel" href="mailto:info@baeckerei-gerig.ch" style="font-size:19px">info@baeckerei-gerig.ch</a><span style="font-size:14.5px">Fragen zu Produkten oder Bestellung: während der Öffnungszeiten unter 071 351 21 26.</span><span style="font-size:14.5px">Wir liefern innerhalb der Schweiz.</span><div class="acts"><a class="btn rot" href="#shop">Zum Shop</a><a class="btn glas" href="#catering">Catering</a></div></div>
   </div>
 </section>
 </main>
-<footer><div class="wrap"><img src="img/logo_g.png" alt=""><span>Bäckerei-Konditorei Gerig GmbH · Dorfstrasse 26 · 9104&nbsp;Waldstatt</span><span>Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht</span></div></footer>
+<footer><div class="wrap"><img src="img/logo_g.png" alt=""><span>Bäckerei-Konditorei Gerig GmbH · Dorfstrasse 26 · 9104 Waldstatt</span><span>Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht</span></div></footer>
 
 <!-- Paket -->
 <div class="schleier" data-zu></div>
@@ -957,24 +912,24 @@ const woche=$('#woche');[1,2,3,4,5,6,0].forEach(d=>{const b=document.createEleme
 function zeigTag(d){$$('.tag').forEach(t=>t.classList.toggle('sel',+t.dataset.d===d));
   const extra=d===6?'<div class="x">Café bis 15:00</div>':d===0?'<div class="x">nur November–April</div>':'';
   $('#zeiten2').innerHTML=`<div class="ort"><div class="o">Waldstatt</div><div class="h">${fmt(slots('w',d))}</div></div><div class="ort"><div class="o">Urnäsch</div><div class="h">${fmt(slots('u',d))}</div>${extra}</div>`;
-  const nb=nextBack();$('#bthint').innerHTML=`<span><i></i>${BACK.includes(d)?'<b>'+TL[d]+' ist glutenfreier Backtag.</b>':TL[d]+': kein glutenfreier Backtag.'}</span><span>Nächster Backtag ab heute: <b>${nb.txt}</b></span>`}
+  const nb=nextBack();$('#bthint').innerHTML=`<span><i></i>${BACK.includes(d)?'<b>'+TL[d]+' ist glutenfreier Backtag.</b>':TL[d]+': kein glutenfreier Backtag.'}</span><span>Nächster Backtag: <b>${nb.txt}</b></span><span>Bis Freitag 16:00 bestellt – am Montag gebacken&nbsp;und&nbsp;verschickt.</span>`}
 zeigTag(today);
 $$('[data-std]').forEach(ul=>{const o=ul.dataset.std;ul.innerHTML=[[1,'Mo, Di, Do, Fr'],[3,'Mittwoch'],[6,'Samstag'],[0,'Sonntag']].map(([d,l])=>`<li><span>${l}</span><span>${d===0&&o==='u'?'Nov–Apr 7:00–11:00':fmt(slots(o,d,new Date(2026,5,1)))}</span></li>`).join('')});
-const czt=t=>t.replace(/(\d{1,2}:\d{2}–\d{1,2}:\d{2})/g,'<span class="nw">$1</span>').replace(/ · /g,'&nbsp;· ').replace('So (Nov–Apr)','<span class="nw">So (Nov–Apr)</span>');$('[data-cafe="w"]').innerHTML=czt('Mo, Di, Do, Fr 6:00–18:30 · Mi und Sa 6:00–13:00 · So geschlossen.');
-$('[data-cafe="u"]').innerHTML=czt('Mo, Di, Do, Fr 6:15–12:15 und 14:00–18:30 · Mi 6:15–12:15 · Sa 6:15–15:00 · So (Nov–Apr) 7:00–11:00.');
+$('[data-cafe="w"]').textContent='Mo, Di, Do, Fr 6:00–18:30 · Mi und Sa 6:00–13:00 · So geschlossen.';
+$('[data-cafe="u"]').textContent='Mo, Di, Do, Fr 6:15–12:15 und 14:00–18:30 · Mi 6:15–12:15 · Sa 6:15–15:00 · So (Nov–Apr) 7:00–11:00.';
 
 /* Paket */
 let korb={};try{korb=JSON.parse(localStorage.getItem('gerigPaket')||'{}')}catch(e){}
 const byId=id=>P.find(p=>p[0]===id);
 function save(){try{localStorage.setItem('gerigPaket',JSON.stringify(korb))}catch(e){}}
 function render(){const ids=Object.keys(korb).filter(k=>korb[k]>0);let n=0,zw=0;
-  $('#liste').innerHTML=ids.length?ids.map(k=>{const p=byId(+k),q=korb[k];n+=q;zw+=q*p[2];return `<div class="pos"><img src="img/p/${String(p[0]).padStart(3,'0')}.webp" alt=""><div><div class="nm">${p[1]}</div><div class="ep">${chf(p[2])}</div></div><div class="menge"><button data-m="${k}" aria-label="weniger">−</button><b>${q}</b><button data-pl="${k}" aria-label="mehr">+</button></div><div class="sum">${q*p[2]>0?(q*p[2]).toFixed(2):''}</div></div>`}).join(''):'<div class="leerpaket"><img src="img/tom_versand.webp" alt="Paket mit Zopf und Guetzli, bereit für den Versand" loading="lazy"><b>Noch nichts im Paket</b><span class="tp">Tippen</span><span class="pc">Klicken</span> Sie bei einem Produkt auf +</div>';
-  $$('[data-cnt]').forEach(c=>c.textContent=n);$('#kasse').disabled=n===0;
+  $('#liste').innerHTML=ids.length?ids.map(k=>{const p=byId(+k),q=korb[k];n+=q;zw+=q*p[2];return `<div class="pos"><img src="img/p/${String(p[0]).padStart(3,'0')}.webp" alt=""><div><div class="nm">${p[1]}</div><div class="ep">${chf(p[2])}</div></div><div class="menge"><button data-m="${k}" aria-label="weniger">−</button><b>${q}</b><button data-pl="${k}" aria-label="mehr">+</button></div><div class="sum">${q*p[2]>0?(q*p[2]).toFixed(2):''}</div></div>`}).join(''):'<div class="leerpaket"><img src="img/tom_versand.webp" alt="Paket mit Zopf und Guetzli, bereit für den Versand" loading="lazy"><b>Noch nichts im Paket</b>Tippen Sie bei einem Produkt auf +</div>';
+  $$('[data-cnt]').forEach(c=>c.textContent=n);
   const mitG=Object.keys(korb).some(id=>korb[id]>0&&(P.find(x=>String(x[0])===String(id))||[])[3]==='biber');
   $('[data-anz]').textContent=n?n+' Artikel'+(mitG?' · enthält Produkte mit Gluten':' · glutenfrei gebacken'):'ist noch leer';
   const vs=n?15:0;$('[data-zw]').textContent=chf(zw);$('[data-vs]').textContent=n?chf(vs):'–';$('[data-tot]').textContent=chf(zw+vs);
   const nb=nextBack();$('[data-bi]').innerHTML=`${mitG?'Gebacken':'Glutenfrei gebacken'} an den Backtagen <b>Mo, Di und Do</b>, Priority-Versand – in der Regel 1–2 Werktage. Bis Freitag 16:00 bestellt – am Montag gebacken&nbsp;und&nbsp;verschickt. Über 8&nbsp;kg Versand CHF&nbsp;25.`;
-  $('.paketfab').classList.toggle('zeig',n>0);$('.paketfab').classList.remove('weg');window.__fy=scrollY;setTimeout(fabFrei,350);stp()}
+  $('.paketfab').classList.toggle('zeig',n>0);$('.paketfab').classList.remove('weg');window.__fy=scrollY;stp()}
 function add(id,fromImg){korb[id]=(korb[id]||0)+1;save();render();
   const tgt=innerWidth<768?$('.paketfab'):$('header .paketbtn');
   if(fromImg&&tgt){const r=fromImg.getBoundingClientRect(),t=tgt.getBoundingClientRect();const f=fromImg.cloneNode();f.className='flieg';Object.assign(f.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});document.body.appendChild(f);
@@ -1011,10 +966,7 @@ function shop(){const list=q?P.filter(p=>p[1].toLowerCase().includes(q)):P.filte
   r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div class="nm">${p[1]}</div><div class="zr"><span class="pr">${chf(p[2])}</span>${knopf(p[0],p[1])}</div></div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
   r.scrollLeft=0;reihen();upd('regal');stp()}
 /* wenige Produkte: eine volle Reihe statt halb leerer Doppelreihe (Prüfer 25.11) */
-function reihen(){const r=$('#regal');r.style.gridTemplateRows='';r.classList.remove('flach');r.style.removeProperty('--cw');const c=r.firstElementChild;if(!c||!c.classList.contains('karte'))return;const cw=c.getBoundingClientRect().width,n=r.children.length;if(innerWidth<768){if(n>3)return}else{const g=parseFloat(getComputedStyle(r).columnGap)||16;const cols=Math.max(1,Math.round((r.clientWidth+g)/(cw+g)));if(n>2*cols)return}r.style.setProperty('--cw',cw+'px');r.classList.add('flach')}
-/* Paket-Knopf verdeckt nie Text oder Knöpfe (Julia-Regel 25.11) */
-function fabFrei(){const f=$('.paketfab');if(!f)return;if(innerWidth>767||!f.classList.contains('zeig')){f.classList.remove('deckt');return}const cs=getComputedStyle(f),fw=f.offsetWidth,fh=f.offsetHeight,fx=innerWidth-parseFloat(cs.right)-fw,fy=innerHeight-parseFloat(cs.bottom)-fh,b={left:fx,top:fy,right:fx+fw,bottom:fy+fh},R={l:b.left-6,r:b.right+6,t:b.top-6,u:b.bottom+6},hit=q=>q.width>0&&q.right>R.l&&q.left<R.r&&q.bottom>R.t&&q.top<R.u,seen=new Set();let d=false;for(const x of [b.left+4,(b.left+b.right)/2,b.right-4])for(const y of [b.top+4,(b.top+b.bottom)/2,b.bottom-4]){if(d)break;const el=document.elementsFromPoint(x,y).find(e=>!f.contains(e));if(!el||seen.has(el)||el===document.body||el===document.documentElement)continue;seen.add(el);if(el.closest('a,button,input,label,select,textarea')||[...el.querySelectorAll('a,button,input,label,select,textarea')].some(k=>!f.contains(k)&&hit(k.getBoundingClientRect()))){d=true;break}const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let t;while(t=w.nextNode()){if(!t.textContent.trim())continue;const g=document.createRange();g.selectNodeContents(t);if([...g.getClientRects()].some(hit)){d=true;break}}}f.classList.toggle('deckt',d)}
-let __ft,__ft2;addEventListener('scroll',()=>{clearTimeout(__ft);clearTimeout(__ft2);__ft=setTimeout(fabFrei,140);__ft2=setTimeout(fabFrei,900)},{passive:true});addEventListener('resize',fabFrei);
+function reihen(){const r=$('#regal');r.style.gridTemplateRows='';if(innerWidth<768)return;const c=r.firstElementChild;if(!c||!c.classList.contains('karte'))return;const g=parseFloat(getComputedStyle(r).columnGap)||16;const cols=Math.max(1,Math.round((r.clientWidth+g)/(c.getBoundingClientRect().width+g)));if(r.children.length<=cols)r.style.gridTemplateRows='auto'}
 let _bw=innerWidth;addEventListener('resize',()=>{if(innerWidth!==_bw){_bw=innerWidth;reihen();upd('regal')}});
 shop();
 
