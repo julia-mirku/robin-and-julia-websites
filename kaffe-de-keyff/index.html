@@ -4172,7 +4172,7 @@ var band=document.createElement('div'), rel=document.createElement('div'), sun=d
 /* Relief: Kopie des Fotos, leicht verschoben, als Licht/Schatten darüber – Grate wirken plastisch und ihre Schatten wandern */
 rel.style.mixBlendMode=DARK?'soft-light':'multiply'; rel.style.opacity=DARK?'.55':'.22'; rel.style.filter=DARK?'contrast(1.6) brightness(1.1)':'contrast(1.5) saturate(.9)';
 sun.style.cssText='position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:'+(DARK?'screen':'soft-light')+';will-change:transform';
-sun.style.background=DARK?'radial-gradient(42% 48% at 50% 50%,rgba(255,200,130,.12),rgba(255,176,100,.045) 55%,rgba(0,0,0,0) 78%)':'radial-gradient(30% 36% at 50% 50%,rgba(255,226,170,.85),rgba(255,214,150,.30) 55%,rgba(255,255,255,0) 75%)';
+sun.style.background=DARK?'radial-gradient(42% 48% at 50% 50%,rgba(255,200,130,.07),rgba(255,176,100,.025) 55%,rgba(0,0,0,0) 78%)':'radial-gradient(30% 36% at 50% 50%,rgba(255,226,170,.85),rgba(255,214,150,.30) 55%,rgba(255,255,255,0) 75%)';
 lay.appendChild(band);lay.appendChild(rel);lay.appendChild(sun);document.body.insertBefore(lay,document.body.firstChild);
 H.backgroundImage='none'; /* Hintergrund liegt jetzt in der fixen Ebene */
 var BH=1, PAR=RM?1:.82;  /* Parallaxe: Sand läuft mit 82 % der Scrollgeschwindigkeit */
@@ -4182,10 +4182,9 @@ var tk=false;function upd(){tk=false;var sy=scrollY,o=-((sy*PAR)%BH);
   if(RM){rel.style.display='none';sun.style.display='none';return;}
   var dh=document.documentElement.scrollHeight-innerHeight, u=dh>0?sy/dh:0;   /* 0 … 1 über die ganze Seite */
   var ang=-0.6+u*1.8, dx=Math.cos(ang)*2.4, dy=Math.sin(ang)*2.4;           /* Sonnenrichtung wandert → Schatten wandern */
-  rel.style.transform='translate3d('+dx.toFixed(2)+'px,'+(o+dy).toFixed(2)+'px,0)';
-  var vx=(-.35+1.4*(.5-.5*Math.cos(Math.PI*u*2.2/1.4)))*innerWidth, vy=(Math.sin(u*9)*.22)*innerHeight;
-  sun.style.transform='translate3d('+vx.toFixed(1)+'px,'+vy.toFixed(1)+'px,0)';}
+  rel.style.transform='translate3d('+dx.toFixed(2)+'px,'+(o+dy).toFixed(2)+'px,0)';}
 addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd);}},{passive:true});
+if(!RM){var SP=60000,t0=performance.now();(function sl(t){var k=.5-.5*Math.cos(2*Math.PI*((t-t0)%SP)/SP);sun.style.transform='translate3d('+((-.35+1.4*k)*innerWidth).toFixed(1)+'px,0,0)';requestAnimationFrame(sl);})(t0);}
 addEventListener('resize',rs);rs();
 })();}
 })();</script>
