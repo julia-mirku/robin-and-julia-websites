@@ -591,6 +591,13 @@ a.btn::after{content:"";position:absolute;left:0;right:0;top:-5px;bottom:-5px}
 .pill::after{content:"";position:absolute;left:0;right:0;top:-5px;bottom:-5px}
 @media (hover:none),(max-width:1099px){.heroA .adr,.heroB .adr{row-gap:26px}}
 </style>
+<style id="mobil-26-11">
+/* Menü: Inhalt bleibt im Fenster (scrollt), geschlossen ganz unsichtbar und nicht klickbar */
+.mmenu{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+html:not(.menu) body:not(.menu) .mmenu{visibility:hidden;transition:transform .4s var(--ease),visibility 0s linear .4s}
+.menu .mmenu{visibility:visible}
+@media (max-height:500px){.mmenu{padding:58px 24px 18px;gap:0}.mmenu a{font-size:24px;padding:5px 0}.mmenu .btn{font-size:15px!important;padding:10px 16px}}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -885,7 +892,7 @@ function render(){const ids=Object.keys(korb).filter(k=>korb[k]>0);let n=0,zw=0;
   $('[data-anz]').textContent=n?n+' Artikel'+(mitG?' · enthält Produkte mit Gluten':' · glutenfrei gebacken'):'ist noch leer';
   const vs=n?15:0;$('[data-zw]').textContent=chf(zw);$('[data-vs]').textContent=n?chf(vs):'–';$('[data-tot]').textContent=chf(zw+vs);
   const nb=nextBack();$('[data-bi]').innerHTML=`${mitG?'Gebacken':'Glutenfrei gebacken'} an den Backtagen <b>Mo, Di und Do</b>, Priority-Versand – in der Regel 1–2 Werktage. Für Montag bestellen Sie bis Freitag 16:00 Uhr. Über 8 kg Versand CHF 25.`;
-  $('.paketfab').classList.toggle('zeig',n>0||scrollY>innerHeight*.8);stp()}
+  $('.paketfab').classList.toggle('zeig',n>0);stp()}
 function add(id,fromImg){korb[id]=(korb[id]||0)+1;save();render();
   const tgt=innerWidth<768?$('.paketfab'):$('header .paketbtn');
   if(fromImg&&tgt){const r=fromImg.getBoundingClientRect(),t=tgt.getBoundingClientRect();const f=fromImg.cloneNode();f.className='flieg';Object.assign(f.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});document.body.appendChild(f);
@@ -961,7 +968,7 @@ $('#burger').onclick=()=>document.body.classList.add('menu');$('#mzu').onclick=(
 /* Einblenden (einmal) */
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px'});
 if(urlv.has('shot'))$$('.fade').forEach(el=>{el.style.transition='none';el.classList.add('in')});else $$('.fade').forEach(el=>io.observe(el));
-addEventListener('scroll',()=>{$('.paketfab').classList.toggle('zeig',Object.values(korb).some(v=>v>0)||scrollY>innerHeight*.8)},{passive:true});
+addEventListener('scroll',()=>{$('.paketfab').classList.toggle('zeig',Object.values(korb).some(v=>v>0))},{passive:true});
 </script>
 <script>(function(){const h=document.getElementById('heroA');if(!h)return;const f=()=>{const a=parseFloat(getComputedStyle(h,'::after').height)||0;const top=h.getBoundingClientRect().top+scrollY+h.offsetHeight+1-a;h.style.setProperty('--ky',(-top)+'px')};f();addEventListener('resize',f);addEventListener('load',f);if(document.fonts)document.fonts.ready.then(f)})();</script>
 </body>
