@@ -472,16 +472,53 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
  background:linear-gradient(180deg,#FBF5E8 0,#FBF5E8 calc((1 - var(--wp,1)) * 45%),rgba(251,245,232,.82) calc(8% + (1 - var(--wp,1)) * 45%),rgba(251,245,232,.4) calc(40% + (1 - var(--wp,1)) * 30%),rgba(251,245,232,0) 100%)!important;-webkit-mask-image:none!important;mask-image:none!important}
 @media (prefers-reduced-motion:reduce){.weg.weg:before{height:170px;opacity:1}}
 /*FONA-END*/
-/*MEDWEICH*/ /* Юля 24.11: блок медалей — корки и подвал мягче, медали главное */
+/*MEDWEICH*/ /* Юля 24.11 (2): keine hellen Flecken an den Seiten, Rinde schmal, Kellerfoto schärfer, eine Unterlage unter dem Text */
 .preise{isolation:isolate}
-.preise:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(251,245,232,.8) 0,rgba(251,245,232,.88) 9%,#FBF5E8 20%,#FBF5E8 80%,rgba(251,245,232,.88) 91%,rgba(251,245,232,.8) 100%);
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 78%,transparent 100%)}
-.preise .kbg{z-index:0}
-.preise .kbg img{filter:blur(3px);transform:scale(1.03)}
-.preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.62),rgba(251,245,232,.52) 50%,rgba(251,245,232,.62)),linear-gradient(90deg,rgba(251,245,232,.9) 0%,rgba(251,245,232,.66) 34%,rgba(251,245,232,.3) 58%,rgba(251,245,232,.36) 100%)!important}
-@media (max-width:1020px){.preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.84) 0%,rgba(251,245,232,.72) 40%,rgba(251,245,232,.5) 70%,rgba(251,245,232,.56) 100%)!important}}
+.preise .kbg{z-index:0;left:clamp(10px,1.3vw,22px);right:clamp(10px,1.3vw,22px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 10px),transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(180deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 10px),transparent 100%);mask-composite:intersect}
+.preise .kbg img{filter:none;transform:none}
+.preise .kbg:after{background:linear-gradient(90deg,rgba(251,245,232,.9) 0%,rgba(251,245,232,.82) 30%,rgba(251,245,232,.45) 50%,rgba(251,245,232,.18) 70%,rgba(251,245,232,.18) 100%)!important}
+@media (max-width:1020px){.preise .kbg{left:0;right:0}.preise .kbg:after{background:linear-gradient(180deg,rgba(251,245,232,.86) 0%,rgba(251,245,232,.74) 42%,rgba(251,245,232,.4) 70%,rgba(251,245,232,.45) 100%)!important}}
+.preise .medal{position:relative}.preise .medal:before{content:"";position:absolute;left:-14%;right:-14%;top:52%;bottom:-18px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(251,245,232,.93) 0,rgba(251,245,232,.86) 55%,rgba(251,245,232,0) 100%)}
+.preise .medal h3{color:var(--ink)}.preise .medal p{color:#3d3226;opacity:1}
+/* Юля 24.11: kein dunkler Pflaster-Streifen unter der Kopfleiste: Fotofuss weich in Creme */
+.hero-bar:before{content:"";position:absolute;left:0;right:0;top:-30px;height:30px;background:linear-gradient(180deg,rgba(251,245,232,0),rgba(251,245,232,.94));pointer-events:none;z-index:0}
 /*MEDWEICH-END*/
+/*RUNDE-B 24.11*/
+.nav{gap:2px}
+.nav a{font-family:var(--f-head);font-weight:400;font-size:16px;letter-spacing:.045em;padding:8px 13px;border-radius:0;position:relative;color:#FBF5E8;text-shadow:0 1px 2px rgba(20,14,8,.55),0 0 12px rgba(20,14,8,.35);background:none!important}
+.nav a:after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:1.5px;background:var(--gold2);transform:scaleX(0);transform-origin:50% 50%;transition:transform .25s var(--ease)}
+@media (hover:hover){.nav a:hover{color:#FBF5E8;background:none!important}.nav a:hover:after{transform:scaleX(1)}.hdr.solid .nav a:hover{color:var(--ink)}}
+.nav a:focus-visible:after{transform:scaleX(1)}
+.hdr.solid .nav a{color:var(--ink);text-shadow:none}.hdr.solid .nav a:after{background:var(--gold)}
+.hdr:not(.solid):before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,14,8,.42),rgba(20,14,8,.12) 75%,rgba(20,14,8,0));pointer-events:none}
+.kpic{max-height:min(46vh,470px)}
+.kpic img{object-position:50% 96%}
+#kaese.sec{padding-top:clamp(14px,2vh,40px)!important;padding-bottom:clamp(18px,2.6vh,36px)}
+@media (min-width:1021px){#kaese .head{margin-bottom:10px}#kaese .scale{margin-top:12px}}
+.mapcard .btn{display:inline-flex;align-items:center;gap:8px;line-height:1}
+.mapcard .btn svg{width:16px;height:16px;margin:0}
+.pin{width:40px;height:54px}
+.day,.day.zu,.day.sel{background:rgba(255,255,255,.78)!important;color:var(--ink)!important;border:1.5px solid rgba(122,78,37,.2)!important;box-shadow:none!important;transform:none!important;opacity:1!important;justify-content:flex-start;padding-top:12px}
+.day.zu .dn{color:var(--ink)}.day.zu small,.day small{color:var(--mute)!important}
+.day.zu small{font-size:10px}
+.day.sel{background:var(--rind2)!important;border-color:var(--rind2)!important;color:#fff!important}.day.sel .dn{color:#fff}.day.sel small{color:#F6D88A!important}.day.sel .today{color:#F6D88A!important}.day.sel.istoday{box-shadow:0 0 0 2px var(--milk),0 0 0 4px var(--red)!important;border-color:var(--rind2)!important}
+.day.istoday{border:2px solid var(--red)!important}
+.day .today{position:static!important;transform:none!important;order:-1;box-shadow:none!important;background:none!important;color:var(--red)!important;font-size:9px!important;letter-spacing:.08em;padding:0!important;margin:-6px 0 1px;line-height:1}
+@media (hover:hover){.day:not(.sel):hover{border-color:var(--gold)!important;box-shadow:none!important}}
+@media (max-width:700px){.day{aspect-ratio:auto!important;align-self:stretch;min-height:50px;padding-top:9px;padding-bottom:6px}}
+/*RUNDE-B-END*/
+/*RUNDE-C 25.11*/
+/* Prüfung 25.11: auf 1280 lagen die Rinden (Fon A) über Text – nur Ränder, Rinden bleiben (Юля: Rinde A nie entfernen) */
+@media (min-width:701px) and (max-width:1499px) and (min-aspect-ratio:3/4){section:not(.hero) .wrap{width:min(1240px,100% - 2*max(24px,8.5vw))}}
+/* №189: Tageskacheln überall gleich gross, auch 1024 (heute-Kachel war höher) */
+@media (min-width:701px){.days{container-type:inline-size;grid-auto-rows:1fr}.day{aspect-ratio:auto!important;align-self:stretch;min-height:calc((100cqw - 48px)/7*1.12)}}
+/* №185: Klick auf den linken Mannli mit dem ersten Mal – Überschrift/Knöpfe-Zeile/Leiste lagen über der Figur; nur Links und Knöpfe bleiben klickbar */
+.hero-in .wrap,.hero-in .wrap *{pointer-events:none!important}
+.hero-in .wrap a,.hero-in .wrap button,.hero-in .wrap [role=button],.hero-in .wrap a *,.hero-in .wrap button *{pointer-events:auto!important}
+/*RUNDE-C-END*/
+
 /* Юля 24.11: keine gelben Rahmen um die Figuren; nur Hand-Cursor, Fokusrahmen nur für Tastatur */
 .fig{cursor:pointer;-webkit-tap-highlight-color:transparent;background:none;border:0}.fig .ring,.done .fig:hover .ring{box-shadow:none!important}
 .fig:focus{outline:none}.fig:focus-visible{outline:2px solid rgba(251,245,232,.9);outline-offset:2px;border-radius:12px}
@@ -656,7 +693,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
     </div>
     <div class="mapbox rv">
       <a class="karte" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener" aria-label="Route zur Käserei Kreuzstrasse planen"><img src="img/karte.svg" alt="Karte: Käserei Kreuzstrasse, Chrüzstrasse 781, Degersheim" loading="lazy">
-        <span class="pin" aria-hidden="true"><svg viewBox="0 0 48 64"><defs><radialGradient id="pinK" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FBDD8A"/><stop offset=".6" stop-color="#F2C766"/><stop offset="1" stop-color="#E3A72F"/></radialGradient><radialGradient id="pinL" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#B97F1E"/><stop offset="1" stop-color="#D9A33A"/></radialGradient><radialGradient id="pinD" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#1E130A"/><stop offset=".7" stop-color="#3A2412"/><stop offset="1" stop-color="#5A3A1C"/></radialGradient></defs><path d="M24 61C24 61 5 37.5 5 23.5A19 19 0 1 1 43 23.5C43 37.5 24 61 24 61Z" fill="url(#pinK)" stroke="#7A4E25" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="23" r="7.2" fill="url(#pinD)" stroke="#7A4E25" stroke-width="1.2"/><circle cx="12.5" cy="17" r="2.6" fill="url(#pinL)"/><circle cx="35" cy="14" r="2" fill="url(#pinL)"/><circle cx="35.5" cy="31" r="2.8" fill="url(#pinL)"/><circle cx="15" cy="33" r="1.8" fill="url(#pinL)"/><circle cx="24" cy="44" r="2.1" fill="url(#pinL)"/><circle cx="21" cy="9" r="1.5" fill="url(#pinL)"/></svg></span></a>
+        <span class="pin" aria-hidden="true"><svg viewBox="0 0 40 54"><path d="M20 52C20 52 3.5 32 3.5 19.5A16.5 16.5 0 1 1 36.5 19.5C36.5 32 20 52 20 52Z" fill="#8E2A22" stroke="#5E1A15" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="19.5" r="10.5" fill="#FBF5E8"/><path d="M13.2 23.6h13.6v-5.2L20 13.4l-6.8 5Z" fill="#7A4E25"/><rect x="18.2" y="19.6" width="3.6" height="4" rx=".6" fill="#FBF5E8"/></svg></span></a>
       <div class="mapcard"><b>Käserei Kreuzstrasse</b><span>Chrüzstrasse 781 · 9113 Degersheim</span><a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>Route planen</a></div>
     </div>
   </div>
@@ -712,7 +749,7 @@ function paintStatus(){ const s=state();
 const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
 [1,2,3,4,5,6,0].forEach(d=>{ const b=document.createElement('button'); const zu=!HOURS[d].length;
   b.className='day'+(zu?' zu':''); b.dataset.d=d;
-  b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+'<b class="dn">'+SH[d]+'</b><small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt(x)+'–'+fmt(y)+'</span>').join(''))+'</small>';
+  b.classList.toggle('istoday',d===today); b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+'<b class="dn">'+SH[d]+'</b><small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt(x)+'–'+fmt(y)+'</span>').join(''))+'</small>';
   b.addEventListener('click',()=>sel(d)); daysEl.appendChild(b); });
 function sel(d){ QA('.day').forEach(x=>x.classList.toggle('sel',+x.dataset.d===d)); const sl=HOURS[d];
   info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<div class="slots">'+sl.map(([a,b])=>'<span class="slot">'+fmt(a)+'–'+fmt(b)+'</span>').join('')+'</div><p>'+(sl.length>1?'Mittags geschlossen.':'Nachmittags geschlossen.')+'</p>':'<p style="margin:0;font-size:17px">Heute ist der Laden geschlossen. '+(()=>{for(let i=1;i<=7;i++){const dd=(d+i)%7;if(HOURS[dd].length)return 'Nächster Verkauf: '+NAMES[dd]+' ab '+fmt(HOURS[dd][0][0])+' Uhr.';}})()+'</p>'); }
@@ -729,23 +766,26 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
     const cs=getComputedStyle(img); const zs=(port||mid)?1:parseFloat(cs.getPropertyValue('--zs'))||1.14; const zox=((port||mid)?.5:(parseFloat(cs.getPropertyValue('--zox'))||40)/100)*W;
     const X=v=>zox+(x0+v*iw-zox)*zs, Y=v=>H+(y0+v*ih-H)*zs;
     window.__heads=F.h.map(b=>({l:X(b[0]),t:Y(b[1]),r:X(b[2]),b:Y(b[3])}));
-    figs.forEach((f,i)=>{ const hd=window.__heads[i]; f.style.left=((hd.l+hd.r)/2)+'px'; f.style.top=hd.t+'px'; f.style.width=Math.max(60,(hd.r-hd.l)*1.6)+'px'; f.style.height=(F.body*ih*zs)+'px'; }); };
+    figs.forEach((f,i)=>{ const hd=window.__heads[i]; f.style.left=((hd.l+hd.r)/2)+'px'; f.style.top=hd.t+'px'; f.style.width=Math.max(60,(hd.r-hd.l)*1.6)+'px'; f.style.height=Math.max(F.body*ih*zs,Y(.96)-hd.t)+'px'; }); };
   place(); addEventListener('resize',place); addEventListener('load',place);
   setTimeout(()=>heroEl.classList.add('ready'),150);
-  figs.forEach((f,i)=>setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700));
-  setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); heroEl.classList.add('done');
+  /* Юля 24.11 (2): Klick wirkt sofort – auch während der Begrüssung; Hover zeigt nichts, nur Hand-Cursor */
+  const T=[]; let intro=true;
+  figs.forEach((f,i)=>T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700)));
+  const endIntro=()=>{ if(!intro) return; intro=false; T.forEach(clearTimeout); heroEl.classList.add('done'); };
+  T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); endIntro(); },1300+3*1700+300));
     /* Юля 24.11: jeder Klick/Tap/Hover = nächster neuer Satz, keine Wiederholung bis alle durch */
     const SAY=[
       [['Offen?','Mittwoch bis Samstag ab acht – unter der Woche auch abends ab fünf.'],['Wo?','Chrüzstrasse 781 in Degersheim – grad bi de Käserei.'],['Lüüt aa!','071 371 11 16 – Stefan und Franziska säged der gärn, was grad reif isch.'],['Sit 2006','Stefan und Franziska Jud füehred d’Käserei sit em 1. November 2006.'],['S’Lädeli','Sit 2008 gits s’Chäsilädeli diräkt i de Käserei.']],
       [['Gold!','Unser Appenzeller hat 2008 Gold geholt.'],['Bronze!','2010 hämmer Bronze am World Championship Cheese Contest gholt.'],['Im Chäller','Jede Laib reift bi üs im eigene Chäller.'],['Acht Sorte','8 Chäs s’ganze Jahr – und no saisonali Spezialitäte.'],['Schwarze Wolf','Hesch de Schwarzi Wolf scho probiert?']],
       [['Grüezi!','Chömed verbii – probiere isch erlaubt!'],['Fondue?','Üsi hausgmachti Fondue-Mischig gits im Lädeli – rund 200 g pro Person.'],['Raclette!','Rächned mit 200 bis 250 g Chäs pro Person.'],['Klosterchäs','De Magdenauer isch en Rahmchäs nach altem Rezept.'],['Mutschli','S’Wolfensberg-Mutschli gits au mit Bärlauch, Thymian oder Basilikum.']]];
-    const idx=[0,0,0], last=[0,0,0];
-    const say=(f,i,klick)=>{ if(klick&&matchMedia('(hover:hover)').matches&&f.classList.contains('show')&&Date.now()-last[i]<450) return; last[i]=Date.now(); idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]]; const b=f.querySelector('.bub');
+    const idx=[0,0,0];
+    const say=(f,i)=>{ endIntro(); idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]]; const b=f.querySelector('.bub');
       figs.forEach(x=>x.classList.remove('show')); b.innerHTML='<b>'+h+'</b>'+t; void f.offsetWidth; f.classList.add('show'); };
-    figs.forEach((f,i)=>{ f.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches) say(f,i); });
-      f.addEventListener('mouseleave',()=>{ if(matchMedia('(hover:hover)').matches) f.classList.remove('show'); });
-      f.addEventListener('click',()=>say(f,i,1)); });
-    document.addEventListener('click',e=>{ if(!e.target.closest('.fig')) figs.forEach(x=>x.classList.remove('show')); }); },1300+3*1700+300);
+    figs.forEach((f,i)=>{ f.addEventListener('pointerdown',e=>{ if(e.button>0) return; if(e.pointerType==='mouse') e.preventDefault(); f.__d=[e.clientX,e.clientY]; });
+      f.addEventListener('pointerup',e=>{ const d=f.__d; f.__d=null; if(!d||Math.hypot(e.clientX-d[0],e.clientY-d[1])>12) return; say(f,i); f.__pd=Date.now(); });
+      f.addEventListener('click',e=>{ if(Date.now()-(f.__pd||0)<800) return; say(f,i); }); });
+    document.addEventListener('pointerdown',e=>{ if(!e.target.closest('.fig')&&!intro) figs.forEach(x=>x.classList.remove('show')); });
 }
 
 /* --- Reveal --- */
