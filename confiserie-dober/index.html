@@ -350,6 +350,53 @@ footer img{width:90px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.deckel{display:none}}
 </style>
+<style id="fit-25-11">
+/* 25.11: Bühne – alter Himmel als eigene Schicht, wechselt nur die Deckkraft (flüssig in Safari) */
+.buehne{background:linear-gradient(rgb(226,238,244),#F7F1E7 78%)}
+.buehne::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(rgb(239,229,212),#F7F1E7 78%);opacity:var(--alt,1);transition:opacity var(--fade,600ms) ease;pointer-events:none}
+.buehne > svg{position:relative}
+/* Julia: jeder Block ganz im Laptop-Bildschirm 1470×659 (25.11) – nur Abstände und Grössen, Bilder und Aussehen gleich */
+@media (min-width:861px) and (max-height:820px){
+  section{padding:12px 0}
+  .h2{font-size:clamp(30px,3vw,40px)}
+  .lead{max-width:100ch}
+  section .lead{margin:10px 0}
+  /* Sortiment (erster Bildschirm) */
+  #sortiment{padding:4px 0 6px}
+  #sortiment .schachtel{padding:14px}
+  #sortiment .zettel{margin-top:8px;padding:8px 12px}
+  /* Heute */
+  #heute .grid3{margin-top:18px}
+  /* Zmorge */
+  #zmorge .rechner{margin-top:12px;padding:14px 22px}
+  #zmorge .rechner .reihe{padding:6px 0}
+  #zmorge .rechner .total{margin-top:6px;padding-top:8px}
+  #zmorge ul.info{margin-top:10px}
+  #zmorge .ctas{margin-top:12px}
+  /* DoberCard */
+  #dobercard .h2{font-size:34px}
+  #dobercard .h2 .script{line-height:.9}
+  #dobercard .lead{margin:6px 0}
+  #dobercard .geschenke li{padding-top:6px;padding-bottom:6px}
+  #dobercard .punkte{margin-top:12px;padding:14px 22px}
+  #dobercard .geschenke{margin:10px 0}
+  #dobercard .plus{margin-top:8px}
+  /* Feste */
+  #feste .feste{margin-top:16px}
+  #feste .card .pic{aspect-ratio:344/150}
+  #feste .card .txt{padding:12px 18px 14px;gap:6px}
+  #feste .card h3{font-size:21px}
+  #feste .card p{font-size:14.5px;line-height:1.45}
+  /* Besuch */
+  #besuch .besuch{margin-top:12px}
+  #besuch .besuch .card .txt{padding:16px 22px}
+  #besuch .karteBox, #besuch .karteBox iframe{max-height:280px}
+  #besuch .besuch .card .txt{line-height:1.45}
+  #besuch .team{margin-top:14px;padding:8px 14px}
+  #besuch .team img{width:130px}
+}
+
+</style>
 </head>
 <body>
 <div class="draft" id="draft">Website-Entwurf von <b>Julia &amp; Robin Mirku</b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -499,7 +546,7 @@ footer img{width:90px}
       <button class="pfeil r" id="hNext" aria-label="später"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
     <div>
-      <div class="kicker rv">Wilerstrasse 73 · seit 1853</div>
+      <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt 1853</div>
       <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
       <div class="hausLauf"><div class="jahrgross" id="jahr">1853</div>
       <p class="jahrtxt" id="jahrtxt"></p>
@@ -728,8 +775,8 @@ function jahr(i,keep){const [y,s]=J[i];jEs.forEach((e,k)=>e.classList.toggle('an
 let ai=-1,auto=true,raf=0,t0=0,v0=0;
 function stopAuto(){auto=false;cancelAnimationFrame(raf);document.getElementById('haus').classList.add('hand')}
 const bue=document.querySelector('.buehne'),bsv=bue.querySelector('svg');
-function ton(v){const q=v/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';const mix=(a,b)=>a.map((x,i)=>Math.round(x+(b[i]-x)*q));const top=mix([239,229,212],[226,238,244]);bue.style.background='linear-gradient(rgb('+top+'),#F7F1E7 78%)'}
-function hzeig(v){zr.value=v;ton(v);const i=Math.round(v);if(i!==ai){ai=i;jahr(i,true)}}
+function ton(v){const q=Math.round(v)/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';bue.style.setProperty('--alt',(1-q).toFixed(3))}/* 25.11: nur beim Jahreswechsel, Hintergrund per Deckkraft – Safari ruckelte */
+function hzeig(v){zr.value=v;const i=Math.round(v);if(i!==ai){ai=i;jahr(i,true);ton(i)}}
 /* Autolauf durchgehend (Julia №131): Regler gleitet gleichmässig, beim Überfahren eines Jahres blendet alles weich über */
 function lauf(t){if(!auto)return;if(!t0){t0=t;v0=+zr.value}const v=Math.min(J.length-1,v0+(t-t0)/DAUER);hzeig(v);if(v<J.length-1)raf=requestAnimationFrame(lauf);else auto=false}
 ['pointerdown','keydown','touchstart'].forEach(e=>zr.addEventListener(e,stopAuto,{passive:true}));
