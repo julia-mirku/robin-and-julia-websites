@@ -556,9 +556,9 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 .mbub.on{pointer-events:none!important}
 /* Telefon: Adresse/Telefon unten mit grösserer Tippfläche */
 @media (max-width:700px){.mapcard a:not(.btn),footer a{display:inline-block;padding:11px 0;margin:-11px 0}}
-/* Telefon quer: Einleitungstext aus (lag über der Figur), Blase oben rechts, Wiesenblock höher, Zeiten ≥ 12 px */
+/* Telefon quer: Einleitungstext schmal links neben den Figuren (JR 25.11: zurück), Blase oben rechts, Wiesenblock höher, Zeiten ≥ 12 px */
 @media (orientation:landscape) and (max-height:500px){
-  .hero p.lead{display:none!important}
+  .hero p.lead{display:block!important;font-size:13px!important;line-height:1.35!important;max-width:calc(37.5vw - 36px)!important;margin:6px 0 10px!important}
   .hero h1{font-size:30px!important}.hero .kick{font-size:13px!important}.hero .btn{padding:8px 14px!important;font-size:13px!important;min-height:0!important}
   .mbub{top:calc(var(--bar,0px) + var(--hdr) + 10px)!important;bottom:auto!important;max-width:36%!important}
   .weg{min-height:560px!important}
