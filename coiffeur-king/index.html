@@ -1190,6 +1190,34 @@ document.addEventListener("click",function(e){
   html body .reviews>.wrap{padding-top:62px!important}
 }
 </style>
+<style id="voll-25-11">
+/* 25.11 (volle Prüfung): keine einzelnen Wörter auf der letzten Zeile */
+.quotes q,.ab-p,.ab-sig,.p-head p,.band p,.ask-t,.c-main p{text-wrap:pretty}
+.ab-lead,.h2{text-wrap:balance}
+/* Bewertungen: Namen in einer Linie unten */
+.quotes li{grid-template-rows:1fr auto}
+.quotes .who{align-self:end}
+/* «Unser Ziel» reagiert auf Maus und Finger wie der Rest der Seite */
+.about .arch{transition:transform .3s ease,filter .3s ease}
+.about .arch:hover,.about .arch:active{transform:translateY(-3px);filter:drop-shadow(0 0 14px rgba(214,176,98,.45))}
+.ab-l li{transition:transform .25s ease;-webkit-tap-highlight-color:transparent}
+.ab-l li b,.ab-l li i{transition:color .25s ease,transform .25s ease}
+.ab-l li:hover,.ab-l li:active{transform:translateX(4px)}
+.ab-l li:hover b,.ab-l li:active b{color:var(--acc-text)}
+.ab-l li:hover i,.ab-l li:active i{transform:scale(1.15)}
+/* Telefon 360: «Haarschnitt & Waschen» bleibt auf einer Zeile */
+@media (max-width:380px){html body .menu li>span:first-child{white-space:nowrap}}
+/* Leistungen: Überschrift mit Luft unter dem Deckenfoto, Karten enden auf Creme (kein Saum ins Dunkle) */
+@media (min-width:900px){
+  html body .about .wrap{padding-bottom:10px!important}
+  html body .prices>.wrap{padding-top:72px!important;padding-bottom:54px!important}
+  html body .prices::before{height:60px!important}
+  html body .crops{padding-top:8px!important}
+  html body .reviews .quotes{align-self:center}
+  html body .prices{background:radial-gradient(ellipse 70% 38% at 50% 55%,rgba(222,186,112,.22),rgba(222,186,112,0) 72%),linear-gradient(to bottom,var(--bg) 0,#14120E 22px,#3A332A 36px,#8E8066 46px,#CFC2A4 54px,#F2EADA 60px,#F2EADA calc(100% - 50px),#CFC2A4 calc(100% - 37px),#6E614B calc(100% - 22px),#1E1A15 calc(100% - 9px),var(--bg) 100%)!important}
+}
+@media (max-width:899px){html body .reviews>.wrap{padding-bottom:40px!important}}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mk-hinweis" role="note" lang="de" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
