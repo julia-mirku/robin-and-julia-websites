@@ -711,7 +711,7 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
   <div class="in">
     <div>
       <span class="kick"><i></i><span class="nw">Familienbetrieb seit 1987 ·</span><span class="nw">Urnäsch seit 2014</span></span>
-      <h1>Glutenfrei gebacken.<br> <em>Man schmeckt’s nicht.</em></h1>
+      <h1>Glutenfrei gebacken.<br> <em>Wie normales Brot.</em></h1>
       <p class="lead">Über 90 glutenfreie Produkte aus eigener Backstube – Brot, Guetzli und Torten per Post in die ganze Schweiz. Und zwei Bäckercafés im Appenzellerland.</p>
       <div class="cta">
         <a class="btn rot" href="#shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg>Glutenfrei bestellen</a>
@@ -776,7 +776,7 @@ h1,h2,h3{text-wrap:balance}p,q,.zit{text-wrap:pretty}
     <div class="versand fade">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/></svg>Versand bis 8 kg CHF 15, über 8 kg CHF 25</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Priority-Versand – in der Regel 1–2 Werktage</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Für Montag bestellen Sie bis Freitag 16:00 Uhr.</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>Bis Freitag 16:00 bestellt – am Montag gebacken&nbsp;und&nbsp;verschickt.</span>
     </div>
   </div>
 </section>
@@ -973,7 +973,7 @@ function render(){const ids=Object.keys(korb).filter(k=>korb[k]>0);let n=0,zw=0;
   const mitG=Object.keys(korb).some(id=>korb[id]>0&&(P.find(x=>String(x[0])===String(id))||[])[3]==='biber');
   $('[data-anz]').textContent=n?n+' Artikel'+(mitG?' · enthält Produkte mit Gluten':' · glutenfrei gebacken'):'ist noch leer';
   const vs=n?15:0;$('[data-zw]').textContent=chf(zw);$('[data-vs]').textContent=n?chf(vs):'–';$('[data-tot]').textContent=chf(zw+vs);
-  const nb=nextBack();$('[data-bi]').innerHTML=`${mitG?'Gebacken':'Glutenfrei gebacken'} an den Backtagen <b>Mo, Di und Do</b>, Priority-Versand – in der Regel 1–2 Werktage. Für Montag bestellen Sie bis Freitag 16:00 Uhr. Über 8&nbsp;kg Versand CHF&nbsp;25.`;
+  const nb=nextBack();$('[data-bi]').innerHTML=`${mitG?'Gebacken':'Glutenfrei gebacken'} an den Backtagen <b>Mo, Di und Do</b>, Priority-Versand – in der Regel 1–2 Werktage. Bis Freitag 16:00 bestellt – am Montag gebacken&nbsp;und&nbsp;verschickt. Über 8&nbsp;kg Versand CHF&nbsp;25.`;
   $('.paketfab').classList.toggle('zeig',n>0);$('.paketfab').classList.remove('weg');window.__fy=scrollY;setTimeout(fabFrei,350);stp()}
 function add(id,fromImg){korb[id]=(korb[id]||0)+1;save();render();
   const tgt=innerWidth<768?$('.paketfab'):$('header .paketbtn');
