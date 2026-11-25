@@ -457,9 +457,9 @@ dialog.karten[open] .kk{animation:kopen .35s cubic-bezier(.2,.8,.2,1) both}
 }
 @media (prefers-reduced-motion:reduce){.karten .kpane,dialog.karten[open] .kk{animation:none}}
 </style>
-</head>
+<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
 <body>
-<div class="draft" id="draft">Website-Entwurf von <b>Julia &amp; Robin Mirku</b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+<div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 
 <header class="top">
   <div class="wrap">
