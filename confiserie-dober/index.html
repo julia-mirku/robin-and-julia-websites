@@ -478,6 +478,16 @@ header.top{background:#F9E9EC;box-shadow:0 1px 0 rgba(180,0,90,.10),0 6px 18px -
 }
 @media (max-width:700px){#dobercard{padding-top:40px}}
 </style>
+<style id="tap-25-11">
+/* 25.11: grössere Tippfläche (≥44 px) für kleine Knöpfe und Links, Aussehen unverändert */
+.facts a{position:relative}
+.facts a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;transform:translateY(-50%)}
+/* Knöpfe: unsichtbarer Rand vergrössert die Fläche, Hintergrund nur im Innern, Abstände gleich */
+.tage .tag{border-top:6px solid transparent!important;border-bottom:6px solid transparent!important;background-clip:padding-box;margin:-6px 0;border-radius:12px/18px}
+.plus button,.kbtn{border-top:6px solid transparent!important;border-bottom:6px solid transparent!important;background-clip:padding-box;margin-top:-6px;margin-bottom:-6px}
+@media (hover:hover){.kbtn:hover{box-shadow:0 0 0 -2px rgba(180,0,90,.08)}}
+.kbtn:focus-visible{outline-offset:-4px}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
