@@ -488,6 +488,14 @@ header.top{background:#F9E9EC;box-shadow:0 1px 0 rgba(180,0,90,.10),0 6px 18px -
 @media (hover:hover){.kbtn:hover{box-shadow:0 0 0 -2px rgba(180,0,90,.08)}}
 .kbtn:focus-visible{outline-offset:-4px}
 </style>
+<style id="handy-25-11">
+/* 25.11 Handy: Deckel-Animation ragt nicht über den Rand; «Route planen» über der OSM-Zeile; Luft unter «Das orange Haus» */
+html{overflow-x:clip}
+#sortiment,header.top{overflow-x:clip}
+.karteBox .route{bottom:26px}
+#haus .h2{margin-bottom:10px}
+@media (max-width:700px){.karteBox .route{bottom:24px}}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -879,7 +887,7 @@ if(shot||matchMedia('(prefers-reduced-motion: reduce)').matches){auto=false}
 else if('IntersectionObserver' in window){const hio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.45&&auto){t0=0;raf=requestAnimationFrame(lauf)}else{cancelAnimationFrame(raf)}})},{threshold:[0,.45,.7]});hio.observe(hausSec)}
 
 /* DoberCard */
-const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
+const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
 const gE=document.getElementById('geschenke'),wo=document.getElementById('woche');
 let ziel=-1;
 G.forEach((g,i)=>{const li=document.createElement('li');li.innerHTML='<b>'+g[0]+' Punkte</b>'+g[1]+'<em></em>';li.tabIndex=0;li.setAttribute('role','button');li.setAttribute('aria-label',g[1]+' als Ziel wählen');
