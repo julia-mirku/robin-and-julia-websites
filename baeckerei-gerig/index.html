@@ -598,6 +598,13 @@ html:not(.menu) body:not(.menu) .mmenu{visibility:hidden;transition:transform .4
 .menu .mmenu{visibility:visible}
 @media (max-height:500px){.mmenu{padding:58px 24px 18px;gap:0}.mmenu a{font-size:24px;padding:5px 0}.mmenu .btn{font-size:15px!important;padding:10px 16px}}
 </style>
+<style id="final-26-11">
+/* Finale Prüfung 26.11: «− n +» im Paket immer bündig */
+.pos .menge,.pos .sum{flex-shrink:0}
+.pos>div:nth-child(2){flex:1;min-width:0}.pos .nm{hyphens:auto;overflow-wrap:anywhere}
+/* Finale Prüfung 26.11: Paket am quergestellten Handy – Liste sichtbar, ganzes Paket scrollt bis «Zur Kasse» */
+@media (max-height:500px){.paket{overflow-y:auto;overscroll-behavior:contain}.paket .liste{flex:none;overflow:visible}.paket .kopf,.paket .fuss{flex:none}}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -891,7 +898,7 @@ function render(){const ids=Object.keys(korb).filter(k=>korb[k]>0);let n=0,zw=0;
   const mitG=Object.keys(korb).some(id=>korb[id]>0&&(P.find(x=>String(x[0])===String(id))||[])[3]==='biber');
   $('[data-anz]').textContent=n?n+' Artikel'+(mitG?' · enthält Produkte mit Gluten':' · glutenfrei gebacken'):'ist noch leer';
   const vs=n?15:0;$('[data-zw]').textContent=chf(zw);$('[data-vs]').textContent=n?chf(vs):'–';$('[data-tot]').textContent=chf(zw+vs);
-  const nb=nextBack();$('[data-bi]').innerHTML=`${mitG?'Gebacken':'Glutenfrei gebacken'} an den Backtagen <b>Mo, Di und Do</b>, Priority-Versand – in der Regel 1–2 Werktage. Für Montag bestellen Sie bis Freitag 16:00 Uhr. Über 8 kg Versand CHF 25.`;
+  const nb=nextBack();$('[data-bi]').innerHTML=`${mitG?'Gebacken':'Glutenfrei gebacken'} an den Backtagen <b>Mo, Di und Do</b>, Priority-Versand – in der Regel 1–2 Werktage. Für Montag bestellen Sie bis Freitag 16:00 Uhr. Über 8&nbsp;kg Versand CHF&nbsp;25.`;
   $('.paketfab').classList.toggle('zeig',n>0);stp()}
 function add(id,fromImg){korb[id]=(korb[id]||0)+1;save();render();
   const tgt=innerWidth<768?$('.paketfab'):$('header .paketbtn');
@@ -958,6 +965,7 @@ function cv(){const a=[...art].join(', ');$('#vorschau').innerHTML=`<b>${a}</b> 
 cv();
 
 /* Lightbox */
+document.body.addEventListener('click',()=>{}); /* iPhone: Tippen auf Bilder öffnet sie */
 const L=$('#lb');function lb(src,cap){L.querySelector('img').src=src;L.querySelector('.cap').textContent=cap;L.classList.add('auf');L.classList.remove('zoom')}
 L.onclick=e=>{if(e.target.tagName==='IMG'&&matchMedia('(hover:hover)').matches){L.classList.toggle('zoom');return}if(e.target.tagName!=='IMG')L.classList.remove('auf')};
 addEventListener('keydown',e=>{if(e.key==='Escape'){L.classList.remove('auf');document.body.classList.remove('paketauf','menu')}});
