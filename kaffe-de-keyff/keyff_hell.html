@@ -2149,7 +2149,7 @@ body{background:transparent!important}
 .bk .bk-row .n .bk-en{font-size:.74em;margin-top:1px}
 .bk .bk-row .n .pop{vertical-align:.1em}
 .bk .bk-h .bk-en-c{font-size:.42em;margin-top:4px;opacity:.6;white-space:normal;min-width:0;overflow-wrap:anywhere}
-.bk .bk-en-d{margin:4px 0 0;font-size:.82em}
+.bk .bk-en-d{margin:6px 0 0;font-size:.82em}
 .bk .bk-dv-h + .bk-en{font-size:.86rem;margin-top:4px}
 </style>
 <style id="runde2-buch">
@@ -2738,7 +2738,7 @@ body{background:transparent!important}
   function escE(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function enN(x){ return own(NE, x) ? '<span class="bk-en" lang="en">' + escE(NE[x]) + '</span>' : ''; }
   function enC(c){ return own(CE, c.t) ? '<span class="bk-en bk-en-c" lang="en">' + escE(CE[c.t]) + '</span>' : ''; }
-  function enD(x){ var e = own(DEFIX, x) ? DEFIX[x] : (own(EN.d, x) ? EN.d[x] : ''); return e && e.length <= 110 ? '<p class="bk-en bk-en-d" lang="en">' + escE(e) + '</p>' : ''; }
+  function enD(x){ var e = own(DEFIX, x) ? DEFIX[x] : (own(EN.d, x) ? EN.d[x] : ''); return e && e.length <= 110 ? '<span class="bk-en bk-en-d" lang="en">' + escE(e) + '</span>' : ''; }
   function nl(){ return lang === 'en' ? ' lang="de"' : ''; }
   /* Hinweis «Gericht antippen …»: eine Zeile pro Rubrik und Doppelseite, immer. Das Atmen der ersten Zeile gibt es nur, bis der Besucher
      einmal ein Gericht geöffnet hat (gemerkt im Browser). seen = schon einmal geöffnet; pulsed = die Zeile hat in diesem Besuch schon geatmet */
@@ -2891,7 +2891,7 @@ body{background:transparent!important}
     var parts = esc(descT(x)).split(', ');
     return '<div class="bk-zu"><' + tag + '>' + tr('Zutaten') + '</' + tag + '><p>' + parts.map(function(p, i){
       return '<span class="zi" style="--i:' + i + '">' + p + (i < parts.length - 1 ? ',' : '') + '</span>';
-    }).join(' ') + '</p>' + enD(x) + '</div>';
+    }).join(' ') + enD(x) + '</p></div>';
   }
   var PH = {"Pizza Kebab": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TNEN3mn2tNhlQ6jw-lTob1mvhITsYajHOwgColXgQuDTswRL-tuXlNPMWepdGMc6xlLT4BIX8DvJ6oMyTBBw9UqGB_E0F1pGGkw_aRa6UmWpEeunN60t3Zl0zm1yNM0JIFGUp2Igkbgu8=w900-h675-k-no", "Pide Sucuk": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6aZdMhbv9ncJ3rQwTqnyTXfz4Vbu56HiG_lV2ZWrugJgaTGFThMm6xFga9qYkElgUAq-i9VdqH2dBrM1n8MDfpAxdL4DEBI1qLsjTpfdTmMmQdxwrz3EMLz-0YzCGOTnoPpb_7Q=w900-h675-k-no", "Gemischter Salat (gross)": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RvXE_NnTKQNgknH-DlRv5o77Jl9yRh0ac1YuZNCETbj6WgQWvcBHW3wftCR1I4HWZfwvWCqS_it3vWGBO9XpjTyxqJsvNVi7I0oUDDmuAyE6EJaEQfkldy3H19OHR98Rs2SF_qvQ=w900-h675-k-no"};
   function detailHTML(ci, j){
