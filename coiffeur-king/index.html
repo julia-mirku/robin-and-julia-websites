@@ -1132,6 +1132,30 @@ html body .p-head h2,html body .p-head p{margin-top:0!important}
 /* Juli 24.11: «пустое место» zwischen Bewertungen und Öffnungszeiten – weniger Abstand */
 @media (min-width:900px){html body .reviews>.wrap{padding-bottom:20px!important}html body .hours>.wrap{padding-top:28px!important}}
 </style>
+<style id="pruefung-25-11">
+/* 25.11 (Prüfung): «Unser Ziel» auf 1470×659 ganz im Bildschirm – nur weniger Luft oben, Grösse bleibt */
+@media (min-width:900px) and (max-height:800px){html body .about .wrap{padding-top:36px!important}}
+/* 25.11: Galerie – Foto innerhalb des Goldrahmens, untere Goldkante sichtbar */
+.crop{box-sizing:border-box}
+.crop .cin{position:absolute!important;inset:3px;width:auto!important;height:auto!important}
+</style>
+<script>
+/* 25.11 (Prüfung): Menü-Sprung – Überschrift des Blocks direkt unter der Kopfzeile, nicht darunter versteckt */
+document.addEventListener("click",function(e){
+  var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
+  var id=a.getAttribute("href").slice(1); if(!id) return;
+  if(id==="top"){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});history.replaceState(null,"","#top");return;}
+  var sec=document.getElementById(id); if(!sec) return;
+  var h=sec.querySelector("h2")||sec, head=document.querySelector(".head");
+  var hb=head?Math.max(0,head.offsetHeight+(parseFloat(getComputedStyle(head).top)||0)):0;
+  e.preventDefault();
+  var y=h.getBoundingClientRect().top+window.pageYOffset-hb-18;
+  var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({top:Math.max(0,y),behavior:rm?"auto":"smooth"});
+  history.replaceState(null,"","#"+id);
+  setTimeout(function(){var d=h.getBoundingClientRect().top-hb-18;if(Math.abs(d)>3){window.scrollBy({top:d,behavior:"auto"});}},rm?60:900);
+});
+</script>
 </head>
 <body>
 <div class="mk-hinweis" id="mk-hinweis" role="note" lang="de"><i aria-hidden="true"></i>Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -1220,21 +1244,21 @@ html body .p-head h2,html body .p-head p{margin-top:0!important}
           <h3 id="h-g1">Haarschnitte <svg viewBox="0 0 100 112" aria-hidden="true" focusable="false"><path d="M50 4 L95 30 L95 82 L50 108 L5 82 L5 30 Z"/></svg></h3>
           <div class="feat"><span class="lbl">Herrenhaarschnitt</span><span class="big"><small>CHF</small><b>25.–</b></span></div>
           <ul class="menu">
-            <li style="--i:1"><span><span class="lw">Haarschnitt </span><span class="sw2">Kinder bis 12&nbsp;J.</span><span class="lw">Kinder bis 12 Jahre</span></span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>15.–</span></li>
-            <li style="--i:2"><span><span class="lw">Haarschnitt </span><span class="sw2">Jugendliche bis 16&nbsp;J.</span><span class="lw">Jugendliche bis 16 Jahre</span></span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>20.–</span></li>
-            <li style="--i:3"><span>Haarschnitt &amp; Waschen</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>30.–</span></li>
-            <li style="--i:4"><span>Föhnen</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>10.–</span></li>
-            <li style="--i:5"><span>Bartschnitt</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>15.–</span></li>
-            <li style="--i:6"><span>Augenbrauen zupfen</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>10.–</span></li>
+            <li style="--i:1"><span><span class="lw">Haarschnitt </span><span class="sw2">Kinder bis 12&nbsp;J.</span><span class="lw">Kinder bis 12 Jahre</span></span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;15.–</span></li>
+            <li style="--i:2"><span><span class="lw">Haarschnitt </span><span class="sw2">Jugendliche bis 16&nbsp;J.</span><span class="lw">Jugendliche bis 16 Jahre</span></span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;20.–</span></li>
+            <li style="--i:3"><span>Haarschnitt &amp; Waschen</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;30.–</span></li>
+            <li style="--i:4"><span>Föhnen</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;10.–</span></li>
+            <li style="--i:5"><span>Bartschnitt</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;15.–</span></li>
+            <li style="--i:6"><span>Augenbrauen zupfen</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;10.–</span></li>
           </ul>
         </article>
         <div class="side">
           <article class="board r" aria-labelledby="h-g2" style="--d:.12s">
             <h3 id="h-g2">Pflege &amp; Farbe <svg viewBox="0 0 100 112" aria-hidden="true" focusable="false"><path d="M50 4 L95 30 L95 82 L50 108 L5 82 L5 30 Z"/></svg></h3>
             <ul class="menu">
-              <li style="--i:1"><span>Black Mask</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>10.–</span></li>
-              <li style="--i:2"><span>Bart färben</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>20.–</span></li>
-              <li style="--i:3"><span>Haare färben</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>20.–</span></li>
+              <li style="--i:1"><span>Black Mask</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;10.–</span></li>
+              <li style="--i:2"><span>Bart färben</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;20.–</span></li>
+              <li style="--i:3"><span>Haare färben</span><span class="lead" aria-hidden="true"></span><span class="pr"><small>CHF</small>&nbsp;20.–</span></li>
             </ul>
           </article>
           <div class="ask r" style="--d:.2s">
@@ -1275,7 +1299,7 @@ html body .p-head h2,html body .p-head p{margin-top:0!important}
           <svg viewBox="0 0 100 112" role="img" aria-label="4,9 von 5"><path class="hx2" d="M50 12 L88 34 L88 78 L50 100 L12 78 L12 34 Z"/><path class="hx" d="M50 4 L95 30 L95 82 L50 108 L5 82 L5 30 Z"/><text class="v" x="50" y="62" text-anchor="middle">4,9</text><text class="o" x="50" y="80" text-anchor="middle">/ 5</text></svg>
           <p><b>163</b> auf Google</p>
         </div>
-        <a class="btn ghost more r" href="https://www.google.com/maps/search/?api=1&amp;query=Coiffeurking1+Wilerstrasse+164+Flawil" rel="noopener"><span>Alle ansehen</span> <span aria-hidden="true">→</span></a>
+        <a class="btn ghost more r" href="https://www.google.com/maps/place/Coiffeurking1/data=!4m3!3m2!1s0x479ae70043742479:0xaf05808fa431fb20!9m1!1b1" rel="noopener"><span>Auf Google ansehen</span> <span aria-hidden="true">→</span></a>
       </div>
       <ul class="quotes">
         <li class="r"><q>Guter Mann, er geht auf Wünsche ein, ist schnell und professionell. Gerne wieder.</q><span class="who">Stefan</span></li>
@@ -1432,7 +1456,7 @@ html body .p-head h2,html body .p-head p{margin-top:0!important}
     var r=timeOf(n);if(!r){return;}
     for(var q=0;q<dbs.length;q++){var on=dbs[q].getAttribute("data-d")===String(n);dbs[q].setAttribute("aria-pressed",on?"true":"false");dbs[q].parentNode.classList.toggle("d-sel",on);}
     for(var q2=0;q2<tiles.length;q2++){tiles[q2].classList.toggle("is-sel",tiles[q2]===r.tile);}
-    if(pd2&&pt&&pick){pd2.textContent=DN[n]+(n===d?", heute":"")+" ";pt.textContent=r.txt;pick.classList.toggle("zu",r.tile.classList.contains("off"));}
+    if(pd2&&pt&&pick){pd2.textContent=DN[n]+(n===d?", heute":(n===(d+1)%7?", morgen":""))+" ";pt.textContent=r.txt;pick.classList.toggle("zu",r.tile.classList.contains("off"));}
   }
   for(var q3=0;q3<dbs.length;q3++){dbs[q3].addEventListener("click",function(){choose(parseInt(this.getAttribute("data-d"),10));});}
   choose(d);
@@ -1457,6 +1481,8 @@ html body .p-head h2,html body .p-head p{margin-top:0!important}
     else if(o&&hh<o[0]){ht.textContent="Heute ab "+two(o[0])+" geöffnet";}
     else if(o&&hh<o[1]){ht.textContent="Jetzt geöffnet bis "+two(o[1]);}
     else{ht.textContent="Geschlossen · "+nextOpen();hl.classList.add("zu");}
+    /* 25.11 (Prüfung): nach Ladenschluss/Feiertag zeigt die Tageszeile den nächsten offenen Tag, nicht «heute 09:00–19:00» */
+    if(hl.classList.contains("zu")){for(var nn=1;nn<9;nn++){var xx=plus(now,nn),ww=xx.getDay();if(HRS[ww]&&!isFT(xx)){if(nn<7){choose(ww);}break;}}}
   }
 
   /* Daumenleiste erst, wenn die Knoepfe im Startbild weg sind */
