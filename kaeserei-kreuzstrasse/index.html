@@ -459,7 +459,7 @@ body:before{background:var(--tex) 0 0/var(--texsz) var(--texsz) repeat!important
 /*FONA*/ /* Юля №115/№116 (24.11): Fon A (Toms Käse, Rinde links/rechts) wie fon-wahl/#A, aber scrollt mit der Seite.
    Länge: Foto gespiegelt fortgesetzt (fon_a_band_*), Naht spiegelgleich. Unten: Käse löst sich beim Scrollen ins Wiesenbild auf (--wp). */
 body{position:relative}
-:root{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_a_band_l.webp) center top/100% auto repeat-y}
+:root{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_c_band_l.webp) center top/100% auto repeat-y} /* Юля 25.11: Fon C fest (Originalkäse + Verlauf, dünne helle Rinde) */
 @media (max-aspect-ratio:3/4){:root{--fon:linear-gradient(rgba(251,245,232,.5),rgba(251,245,232,.5)),url(img/fon_a_band_m.webp) center top/100% auto repeat-y}}
 body:before{position:absolute!important;inset:0!important;z-index:-1;background:var(--fon)!important;opacity:1!important}
 .ftex i{position:absolute!important;left:0!important;right:0!important;top:var(--ftop,0px)!important;height:var(--doch,100vh)!important;bottom:auto!important;background:var(--fon)!important;opacity:1!important}
@@ -518,17 +518,26 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 .hero-in .wrap,.hero-in .wrap *{pointer-events:none!important}
 .hero-in .wrap a,.hero-in .wrap button,.hero-in .wrap [role=button],.hero-in .wrap a *,.hero-in .wrap button *{pointer-events:auto!important}
 /*RUNDE-C-END*/
-/*FON-WAHL 25.11*/ /* Юля 25.11: Hintergrund wählbar in der Entwurf-Leiste – «Jetzt» (Fon A, Rinde, Standard) | «B» (Käse wie Chäsi Lindenrain, ohne Rinde) */
-html.fon-b{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_b_band_l.webp) center top/100% auto repeat-y}
-@media (max-aspect-ratio:3/4){html.fon-b{--fon:linear-gradient(rgba(251,245,232,.5),rgba(251,245,232,.5)),url(img/fon_b_band_m.webp) center top/100% auto repeat-y}}
-.entwurf .fsw{display:inline-flex;align-items:center;gap:4px;margin-left:10px;vertical-align:middle;cursor:default}
-.entwurf .fsw span{font-weight:600}
-.entwurf .fsw button{font:inherit;font-weight:700;font-size:11.5px;line-height:1.2;padding:1px 9px;border-radius:999px;border:1.5px solid rgba(122,78,37,.45);background:transparent;color:var(--ink);cursor:pointer}
-.entwurf .fsw button[aria-pressed="true"]{background:var(--rind2);border-color:var(--rind2);color:#fff}
-@media (max-width:700px){.entwurf .fsw{display:flex;justify-content:center;margin:3px 0 0}}
-/* Юля 25.11 «чтобы и рыбку съесть»: C = Originalkäse und Verlauf, statt dunkler Rinde nur ein dünner heller Rand (wie Chäsi Lindenrain) */
-html.fon-c{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_c_band_l.webp) center top/100% auto repeat-y}
-/*FON-WAHL-END*/
+/*RUNDE-D 25.11*/
+/* Юля 25.11: Rinde links und rechts immer sauber – keine Unterlage/Schleier eines Blocks auf der Rinde (Fon C: Rinde ≈ 0–4 % der Breite) */
+@media (min-width:701px){.preise .kbg{left:4.5%!important;right:4.5%!important}}
+/* Юля 25.11: unter «Heute offen?» Käse und Rinde lang und weich ins Creme, kein harter Abbruch vor dem Wiesenbild */
+.laden:after{height:min(520px,70%)!important;background:linear-gradient(180deg,rgba(251,245,232,0) 0,rgba(251,245,232,.18) 30%,rgba(251,245,232,.55) 62%,#FBF5E8 100%)!important}
+/* Telefon: Sprechblase der Figuren unten über der Infoleiste, nichts überdeckt; Blasen an den Figuren auf dem Telefon aus */
+.mbub{display:none}
+@media (max-width:700px){
+  .fig .bub{display:none!important}
+  .mbub{display:block;position:absolute;left:14px;right:14px;z-index:6;background:var(--milk);color:var(--ink);border-radius:16px;padding:10px 14px;font-size:14px;line-height:1.35;box-shadow:0 10px 26px -12px rgba(20,14,8,.55);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility 0s linear .25s;pointer-events:none}
+  .mbub.on{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s,visibility 0s;pointer-events:auto}
+  .mbub b{font-family:var(--f-goth);color:var(--red);font-size:15px;display:block;font-weight:700}
+}
+/* 768: «Geschmack» und Text nicht auf dem gerissenen Rand des nächsten Blocks */
+@media (min-width:701px) and (max-width:1020px){#kaese.sec{padding-bottom:56px!important}#familie.sec{padding-bottom:64px!important}}
+/* Reife-Punkte: Tippfläche ≥ 44 px, Aussehen gleich */
+.stop{position:relative}.stop:after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%}
+/*RUNDE-D-END*/
+
+
 /* Юля 25.11: Luft zwischen den Blöcken wie bei Dober (60–82 px): Hero→Medaillen, Medaillen→Käse, Käse→Fondue waren 40–60 px */
 @media (min-width:701px){.preise{padding-top:max(46px,2.6vw)!important;padding-bottom:52px!important}#fondue.sec{padding-top:66px!important}}
 
@@ -558,10 +567,9 @@ html.fon-c{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232
 @media (hover:none) and (pointer:coarse) and (max-width:1100px){.arr{display:none!important}.rail-wrap{padding:0!important}.dots{display:flex!important}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 </style>
-<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script>try{var f=localStorage.getItem("kaeFon");if(f==="b"||f==="c")document.documentElement.classList.add("fon-"+f)}catch(e){}</script>
-</head>
+<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
 <body>
-<div class="entwurf" id="entwurf" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.<span class="fsw" onclick="event.stopPropagation()"><span>Hintergrund:</span><button type="button" data-fon="a" aria-pressed="true">Jetzt</button><button type="button" data-fon="b" aria-pressed="false">B</button><button type="button" data-fon="c" aria-pressed="false">C</button></span></div>
+<div class="entwurf" id="entwurf" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 
 <header class="hdr" id="hdr">
   <div class="wrap">
@@ -739,7 +747,7 @@ QA('img').forEach(i=>{ const h=()=>{i.style.visibility='hidden'; const w=i.close
 /* --- Entwurf-Leiste (Regel 22) --- */
 const bar=Q('#entwurf'), hdr=Q('#hdr');
 const size=()=>{const h=bar.offsetHeight; html.style.setProperty('--bar0',h+'px'); if(!html.classList.contains('bar-off')) html.style.setProperty('--bar',h+'px');};
-size(); addEventListener('resize',size);
+size(); addEventListener('resize',size); addEventListener('load',size); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(size); if(window.ResizeObserver) new ResizeObserver(size).observe(bar);
 const barOff=()=>{ if(html.classList.contains('bar-off')) return; html.classList.add('bar-off'); html.style.setProperty('--bar','0px'); };
 const onScroll=()=>{ const y=scrollY; if(y>8) barOff(); hdr.classList.toggle('solid', y>innerHeight*.6); };
 addEventListener('scroll',onScroll,{passive:true}); onScroll();
@@ -785,7 +793,8 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
   setTimeout(()=>heroEl.classList.add('ready'),150);
   /* Юля 24.11 (2): Klick wirkt sofort – auch während der Begrüssung; Hover zeigt nichts, nur Hand-Cursor */
   const T=[]; let intro=true;
-  figs.forEach((f,i)=>T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700)));
+  const PH=()=>matchMedia('(max-width:700px)').matches;
+  if(!PH()) figs.forEach((f,i)=>T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700)));
   const endIntro=()=>{ if(!intro) return; intro=false; T.forEach(clearTimeout); heroEl.classList.add('done'); };
   T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); endIntro(); },1300+3*1700+300));
     /* Юля 24.11: jeder Klick/Tap/Hover = nächster neuer Satz, keine Wiederholung bis alle durch */
@@ -794,12 +803,17 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
       [['Gold!','Euse Appezeller hät 2008 Gold gholt.'],['Bronze!','2010 hämmer Bronze am World Championship Cheese Contest gholt.'],['Im Chäller','Euse Chäs lagered im eigene Chäschäller.'],['Acht Sorte','8 Chäs s’ganze Jahr – und no saisonali Spezialitäte.'],['Schwarz Wolf','Händ Si de Schwarz Wolf scho probiert?']],
       [['Grüezi!','Chömed verbii – probiere isch erlaubt!'],['Fondue?','Üsi hausgmachti Fondue-Mischig gits im Lädeli – rund 200 g pro Person.'],['Raclette!','Rächned mit 200 bis 250 g Chäs pro Person.'],['Klosterchäs','De Magdenauer isch en Rahmchäs nach altem Rezept.'],['Mutschli','S’Wolfensberg-Mutschli gits au mit Bärlauch, Thymian oder Basilikum.']]];
     const idx=[0,0,0];
-    const say=(f,i)=>{ endIntro(); idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]]; const b=f.querySelector('.bub');
+    const mb=document.createElement('div'); mb.className='mbub'; mb.setAttribute('role','status'); heroEl.appendChild(mb); let mbT=null, mbI=-1;
+    const mbHide=()=>{ mb.classList.remove('on'); mbI=-1; clearTimeout(mbT); };
+    const say=(f,i)=>{ endIntro();
+      if(PH()){ if(mbI===i&&mb.classList.contains('on')){ mbHide(); return; } idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]];
+        const hb=Q('.hero-bar'); mb.style.bottom=((hb?hb.offsetHeight:0)+10)+'px'; mb.innerHTML='<b>'+h+'</b>'+t; mbI=i; mb.classList.add('on'); clearTimeout(mbT); mbT=setTimeout(mbHide,4500); return; }
+      idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]]; const b=f.querySelector('.bub');
       figs.forEach(x=>x.classList.remove('show')); b.innerHTML='<b>'+h+'</b>'+t; void f.offsetWidth; f.classList.add('show'); };
     figs.forEach((f,i)=>{ f.addEventListener('pointerdown',e=>{ if(e.button>0) return; if(e.pointerType==='mouse') e.preventDefault(); f.__d=[e.clientX,e.clientY]; });
       f.addEventListener('pointerup',e=>{ const d=f.__d; f.__d=null; if(!d||Math.hypot(e.clientX-d[0],e.clientY-d[1])>12) return; say(f,i); f.__pd=Date.now(); });
       f.addEventListener('click',e=>{ if(Date.now()-(f.__pd||0)<800) return; say(f,i); }); });
-    document.addEventListener('pointerdown',e=>{ if(!e.target.closest('.fig')&&!intro) figs.forEach(x=>x.classList.remove('show')); });
+    document.addEventListener('pointerdown',e=>{ if(!e.target.closest('.fig')&&!intro){ figs.forEach(x=>x.classList.remove('show')); if(!e.target.closest('.mbub')) mbHide(); } });
 }
 
 /* --- Reveal --- */
@@ -880,9 +894,5 @@ const lay=()=>{const H=document.body.scrollHeight;h.style.setProperty('--doch',H
 let t=0;const wp=()=>{t=0;if(!w)return;const r=w.getBoundingClientRect(),vh=innerHeight;const p=Math.min(1,Math.max(0,(vh-r.top)/(vh*.85)));w.style.setProperty('--wp',p.toFixed(3))};
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(wp)},{passive:true});addEventListener('resize',()=>{lay();wp()});addEventListener('load',()=>{lay();wp()});
 if(window.ResizeObserver)new ResizeObserver(lay).observe(document.body);lay();wp()})()</script><!--FONA-JS-END-->
-<script>/* FON-WAHL 25.11 */(function(){var R=document.documentElement,B=[].slice.call(document.querySelectorAll('.fsw [data-fon]'));
-function set(v,save){R.classList.toggle('fon-b',v==='b');R.classList.toggle('fon-c',v==='c');B.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-fon')===v?'true':'false')});if(save){try{localStorage.setItem('kaeFon',v)}catch(e){}}}
-B.forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();set(b.getAttribute('data-fon'),true)})});
-set(R.classList.contains('fon-b')?'b':(R.classList.contains('fon-c')?'c':'a'),false);})();</script>
 </body>
 </html>
