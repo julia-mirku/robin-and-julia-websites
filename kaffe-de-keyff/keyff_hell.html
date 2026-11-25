@@ -2105,16 +2105,15 @@ body{background:transparent!important}
 #stimmen .wertung p{font-size:15px;margin:0}
 @media (max-width:899px){#stimmen .gb-wrap{grid-template-columns:1fr !important}#stimmen .gbuch{grid-template-columns:1fr !important}#stimmen .gbuch .zettel:nth-child(2) blockquote{font-size:21px !important}}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Libre+Caslon+Display&family=EB+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
 <style id="varianten-css">
 .vw-x{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:12.5px;font-weight:700;color:#2a2622}
 .vw-x label{display:inline-flex;align-items:center;gap:5px;letter-spacing:.04em;text-transform:uppercase}
 .vw-x select{font:700 13px/1 system-ui,sans-serif;min-height:32px;padding:3px 26px 3px 10px;border:1.5px solid #2a2622;border-radius:999px;background:#fff;color:#2a2622;text-transform:none;letter-spacing:0}
 @media (max-width:699px){.vw-x{justify-content:center;width:100%}.vw-x select{min-height:30px;font-size:12.5px}.vw-ix{display:inline-flex!important;flex-wrap:wrap;justify-content:center}.vw-ix button{min-height:28px!important;padding:2px 9px!important;font-size:12px!important}}
-body.skA .bk .bk-cv-t{font-family:"Cinzel",serif!important;font-style:normal!important;font-weight:600!important;letter-spacing:.05em!important;font-size:clamp(1.55rem,7.6vw,2.15rem)!important}
-body.skB .bk .bk-cv-t{font-family:"Libre Caslon Display",serif!important;font-style:normal!important;font-weight:400!important;letter-spacing:.01em!important;font-size:clamp(2.2rem,10.5vw,3.3rem)!important}
-body.skC .bk .bk-cv-t{font-family:"EB Garamond",serif!important;font-style:italic!important;font-weight:500!important;letter-spacing:.01em!important;font-size:clamp(2.4rem,11.5vw,3.5rem)!important}
-body.skA .bk .bk-cv-t,body.skB .bk .bk-cv-t,body.skC .bk .bk-cv-t{line-height:1.05!important;background-image:linear-gradient(180deg,#F7E9C4 0%,#E6C27C 45%,#B48A45 78%,#8E6A32 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important;filter:drop-shadow(0 -1px 0 rgba(0,0,0,.55)) drop-shadow(0 1px 0 rgba(255,236,200,.25))!important}
+/* Julia 25.11 «хочу тот изысканный — на самой книге»: «Speisekarte» auf dem Deckel 1:1 wie im Premium (Newsreader kursiv, Messing), nur dieses Wort */
+.bk .bk-cv-t{font-family:"Newsreader",Georgia,serif!important;font-weight:400!important;font-style:italic!important;background:none!important;-webkit-text-fill-color:#C9A464!important;color:#C9A464!important;letter-spacing:0!important}
+#karte .bk-cv-btn{white-space:nowrap!important;letter-spacing:.1em!important}
 </style>
 <style id="karte-exponat-css">
 /* Julia 25.11 «Мне нравится второй блок»: Buch als Exponat, Auszug links (Schriften der Hauptfassung) */
@@ -2140,7 +2139,7 @@ body.skA .bk .bk-cv-t,body.skB .bk .bk-cv-t,body.skC .bk .bk-cv-t{line-height:1.
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
 <span class="vw-l">Variante wählen</span>
 <span class="vw-b"><a class="vw-a" href="keyff_dunkel.html">Dunkel</a><a class="vw-a" href="keyff_hell.html" aria-current="true">Hell</a></span>
-<span class="vw-x" role="group" aria-label="Varianten"><label>Sand <select id="vx-sand" aria-label="Sand"><option value="">Jetzt</option><option value="a">Wind</option><option value="b">Wischen</option><option value="c">Sonne</option></select></label><label>Schrift <select id="vx-font" aria-label="Schrift «Speisekarte»"><option value="">Jetzt</option><option value="A">A Cinzel</option><option value="B">B Libre Caslon</option><option value="C">C EB Garamond</option></select></label></span>
+<span class="vw-x" role="group" aria-label="Varianten"><label>Sand <select id="vx-sand" aria-label="Sand"><option value="">Jetzt</option><option value="a">Wind</option><option value="b">Wischen</option><option value="c">Sonne</option></select></label></span>
 <span class="vw-n">Zwei Varianten zur Wahl: Sie können eine wählen oder beide behalten – am Preis ändert das nichts.</span>
 </div>
 
@@ -4214,15 +4213,14 @@ body.skA .bk .bk-cv-t,body.skB .bk .bk-cv-t,body.skC .bk .bk-cv-t{line-height:1.
   });
 })();</script>
 <script>(function(){
-  var Q=new URLSearchParams(location.search), SAND=Q.get('sand')||'', FONT=Q.get('schrift')||'', IX=(Q.get('ideen')||'').split('').filter(function(c){return /[123]/.test(c)});
-  var B=document.body, ss=document.getElementById('vx-sand'), sf=document.getElementById('vx-font');
-  function q(){ var p=new URLSearchParams(location.search); [['sand',ss.value],['schrift',sf.value]].forEach(function(a){ if(a[1]) p.set(a[0],a[1]); else p.delete(a[0]); });
+  var Q=new URLSearchParams(location.search), SAND=Q.get('sand')||'', IX=(Q.get('ideen')||'').split('').filter(function(c){return /[123]/.test(c)});
+  var B=document.body, ss=document.getElementById('vx-sand');
+  function q(){ var p=new URLSearchParams(location.search); p.delete('schrift'); [['sand',ss.value]].forEach(function(a){ if(a[1]) p.set(a[0],a[1]); else p.delete(a[0]); });
     var on=[].slice.call(document.querySelectorAll('.vw-ix button[aria-pressed="true"]')).map(function(b){return b.getAttribute('data-ix')}).join(''); if(on) p.set('ideen',on); else p.delete('ideen'); return p.toString(); }
   function keep(){ var s=q(); history.replaceState(null,'',location.pathname+(s?'?'+s:'')+location.hash);
     [].forEach.call(document.querySelectorAll('.vw-a'),function(a){ var h=a.getAttribute('href').split('?')[0]; a.setAttribute('href',h+(s?'?'+s:'')); }); }
-  ss.value=SAND; sf.value=FONT; if(FONT) B.classList.add('sk'+FONT);
+  ss.value=SAND;
   ss.addEventListener('change',function(){ var s=q(); location.href=location.pathname+(s?'?'+s:''); });
-  sf.addEventListener('change',function(){ B.classList.remove('skA','skB','skC'); if(sf.value) B.classList.add('sk'+sf.value); keep(); });
   IX.forEach(function(n){ var b=document.querySelector('.vw-ix button[data-ix="'+n+'"]'); if(b&&b.getAttribute('aria-pressed')!=='true') b.click(); });
   [].forEach.call(document.querySelectorAll('.vw-ix button'),function(b){ b.addEventListener('click',function(){ setTimeout(keep,0); }); });
   keep();
