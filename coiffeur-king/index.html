@@ -1166,7 +1166,23 @@ document.addEventListener("click",function(e){
   setTimeout(function(){var d=h.getBoundingClientRect().top-hb-18;if(Math.abs(d)>3){window.scrollBy({top:d,behavior:"auto"});}},rm?60:900);
 });
 </script>
-<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
+<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><style id="telefon-25-11">
+/* 25.11 (Telefon-Prüfung): Knöpfe im ersten Bildschirm ganz im Bild (360 px), Menü passt ohne Wischen, Kopf im Querformat kompakt */
+@media (max-width:480px){
+  html body .cta{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;width:100%!important;max-width:100%!important}
+  html body .cta .btn{min-width:0!important;padding-left:14px!important;padding-right:14px!important;justify-content:center}
+  html body .cta .btn:first-child{grid-column:1/-1}
+  html body .nav{gap:0!important;justify-content:space-between;overflow:visible!important;-webkit-mask-image:none!important;mask-image:none!important}
+  html body .nav a{font-size:14px!important}
+  html body .nav .nav-x{display:none}
+}
+@media (orientation:landscape) and (max-height:500px){
+  html body .head-in{grid-template-columns:auto 1fr!important;column-gap:20px!important}
+  html body .mark{grid-row:1!important;grid-column:1!important;min-height:48px!important}
+  html body .nav{grid-row:1!important;grid-column:2!important;height:48px!important;margin:0!important;padding:0!important;border-bottom:0!important;justify-content:flex-end;gap:22px!important;-webkit-mask-image:none!important;mask-image:none!important;overflow:visible!important}
+}
+</style>
+</head>
 <body>
 <div class="mk-hinweis" id="mk-hinweis" role="note" lang="de" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <div class="page" id="top">
@@ -1183,7 +1199,7 @@ document.addEventListener("click",function(e){
       <a href="#top">Startseite</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#zeiten">Öffnungszeiten</a>
-      <a href="#kontakt">Kontakt &amp; Standort</a>
+      <a href="#kontakt">Kontakt<span class="nav-x">&nbsp;&amp; Standort</span></a>
     </nav>
     <div class="tools">
       <a class="btn callpill" href="tel:+41412188696">Anrufen</a>
