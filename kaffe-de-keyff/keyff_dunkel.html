@@ -1724,6 +1724,13 @@ body{background:transparent!important}
 }
 /* Julia 25.11 «full menu внизу надо убрать»: Knopf «Ganze Karte als Liste» weg */
 .bk-listrow{display:none!important}
+/* Julia 25.11 «полосы и точки неоч, полосы убрать бы»: in der Karte keine Trennlinien zwischen Gerichten und keine Punktlinien */
+.bk-dish{border-bottom:0!important}
+.bk-toc .l,.bk-row .l{border-bottom:0!important}
+.bk-toc li{border-bottom:0!important}
+/* Julia 25.11 «книжка когда увеличивается при открытии, надо это плавнее сделать»: Buchgrösse gleitet statt zu springen */
+@property --bkh{syntax:"<length>";inherits:true;initial-value:520px}
+@media (min-width:700px) and (prefers-reduced-motion:no-preference){#buch.bk{transition:--bkh 1s cubic-bezier(.4,.08,.2,1)}}
 /* kleineres Buch auf niedrigen Bildschirmen: Deckel-Inhalt luftig, Zierlinie berührt die Taste nicht */
 @media (min-width:700px) and (max-height:820px){
   .bk-cv .bk-plate{width:150px!important;height:104px!important}
@@ -3881,6 +3888,18 @@ body{background:transparent!important}
     var h = n.innerHTML.replace(/\s*·\s*$/, '');
     var m = h.match(/^([\s\S]*?)\s*CHF\s*(<span data-ab="\w+">[^<]*<\/span>)\s*$/);
     if(m){ n.innerHTML = '<small>' + m[1].trim() + '</small><b>CHF&nbsp;' + m[2] + '</b>'; n.classList.add('pt'); }
+  });
+})();</script>
+<script>(function(){
+  /* 25.11: Buch wächst weich (--bkh 1 s) – danach ganz ins Bild holen wie fitBook (Kopfleiste + 6 px) */
+  var bk=document.getElementById('buch'); if(!bk) return;
+  bk.addEventListener('transitionend',function(e){
+    if(e.target!==bk||e.propertyName!=='--bkh'||bk.dataset.state!=='open'||innerWidth<900) return;
+    var t=document.querySelector('.top'),hh=t?t.getBoundingClientRect().height:0,m=6,vh=innerHeight,r=bk.getBoundingClientRect(),y=window.pageYOffset,to=null;
+    if(r.height>vh-hh-2*m){ if(Math.abs(r.top-hh-m)>2) to=y+r.top-hh-m; }
+    else if(r.top<hh+m-1) to=y+r.top-hh-m;
+    else if(r.bottom>vh-m+1) to=y+r.bottom-vh+m;
+    if(to!==null) window.scrollTo({top:to,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   });
 })();</script>
 <script>(function(){
