@@ -2141,6 +2141,40 @@ body{background:transparent!important}
 }
 @media (max-width:1099px){#karte .auszug{margin-top:10px}#karte .auszug li{padding:5px 0;font-size:1rem}#karte .sec-head{margin-bottom:14px!important}}
 </style>
+<style id="runde2-en">
+/* 10: kleine englische Zeile, kein Sprachschalter */
+.bk-lang-wrap,.bk-lang,.bk-lang-bar,.bk-lang-top,.bk-lang-lbl,.bk-railtop .bk-lang-wrap,.bk-topbar .bk-lang-bar{display:none!important}
+.bk .bk-en{display:block;font-family:var(--body);font-style:italic;font-weight:400;font-size:.78em;line-height:1.25;letter-spacing:0;text-transform:none;opacity:.62;margin-top:2px}
+.bk .bk-row .n{display:inline-block}
+.bk .bk-row .n .bk-en{font-size:.74em;margin-top:1px}
+.bk .bk-row .n .pop{vertical-align:.1em}
+.bk .bk-h .bk-en-c{font-size:.42em;margin-top:4px;opacity:.6;white-space:normal;min-width:0;overflow-wrap:anywhere}
+.bk .bk-en-d{margin:4px 0 0;font-size:.82em}
+.bk .bk-dv-h + .bk-en{font-size:.86rem;margin-top:4px}
+</style>
+<style id="runde2-buch">
+.bk-sf{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.bk-st,.bk-sf{-webkit-transform-style:preserve-3d}
+/* Innenseite des Deckels nur während der Bewegung sichtbar: offen liegend deckte sie in Safari die linke Seite ab (leere linke Seite) */
+@keyframes r2innerA{0%,99%{visibility:visible}100%{visibility:hidden}}
+@keyframes r2innerZ{0%,99%{visibility:visible}100%{visibility:hidden}}
+.bk[data-state="open"] .bk-inner{animation:r2innerA 1.05s step-end both}
+.bk[data-state="closed"] .bk-inner{animation:r2innerZ .5s step-end both}
+</style>
+<style id="runde2-knoepfe">
+@media (max-width:900px){
+  #karte .bk-btn{min-width:48px!important;min-height:48px!important;height:48px!important}
+  #karte .bk-btn.bk-nav{width:52px!important;height:52px!important}
+  #karte .bk-btn.bk-nav svg{width:22px;height:22px}
+  #karte .bk-x{min-height:44px!important}
+}
+</style>
+<style id="runde2-abstaende">/* 1: Luft zwischen den Blöcken ~62 px */
+@media (min-width:1300px){footer.foot{margin-top:-1px!important}#fotos{margin-top:1px!important}#karte{margin-top:5px!important}#ort{margin-top:-21px!important}#stimmen:not(.r3){margin-top:-14px!important}#zeiten{margin-top:-21px!important}}
+@media (min-width:1100px) and (max-width:1299.98px){footer.foot{margin-top:-2px!important}#fotos{margin-top:2px!important}#karte{margin-top:-1px!important}#ort{margin-top:-30px!important}#stimmen:not(.r3){margin-top:-22px!important}#zeiten{margin-top:-30px!important}}
+@media (min-width:901px) and (max-width:1099.98px){footer.foot{margin-top:1px!important}#fotos{margin-top:3px!important}#karte{margin-top:-37px!important}#ort{margin-top:-20px!important}#stimmen:not(.r3){margin-top:-12px!important}#zeiten{margin-top:-20px!important}}
+@media (max-width:900px){footer.foot{margin-top:12px!important}#fotos{margin-top:2px!important}#ort{margin-top:-20px!important}}
+</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
@@ -2428,11 +2462,11 @@ body{background:transparent!important}
         <details class="pl-cat">
           <summary><span>Box-Gerichte</span><small>5</small></summary>
           <ul>
-            <li><span class="pl-n">Lammschisch Box mit Gemüse</span><span class="pl-p">CHF 18.00</span></li>
-            <li><span class="pl-n">Falafel Box</span><span class="pl-p">CHF 13.00</span></li>
-            <li><span class="pl-n">Fisch Box</span><span class="pl-p">CHF 14.50</span></li>
-            <li><span class="pl-n">Poulet Box mit Gemüse</span><span class="pl-p">CHF 15.50</span></li>
-            <li><span class="pl-n">Döner Box Kalbfleisch</span><span class="pl-p">CHF 18.00</span></li>
+            <li><span class="pl-n">Lammschisch-Box mit Gemüse</span><span class="pl-p">CHF 18.00</span></li>
+            <li><span class="pl-n">Falafel-Box</span><span class="pl-p">CHF 13.00</span></li>
+            <li><span class="pl-n">Fisch-Box</span><span class="pl-p">CHF 14.50</span></li>
+            <li><span class="pl-n">Poulet-Box mit Gemüse</span><span class="pl-p">CHF 15.50</span></li>
+            <li><span class="pl-n">Döner-Box Kalbfleisch</span><span class="pl-p">CHF 18.00</span></li>
           </ul>
         </details>
         <details class="pl-cat">
@@ -2610,11 +2644,11 @@ body{background:transparent!important}
       ["Fitnessteller", "", "18.50"]
     ]},
     {s:"box-gerichte", t:"Box-Gerichte", n:"", d:[
-      ["Lammschisch Box mit Gemüse", "", "18.00"],
-      ["Falafel Box", "", "13.00"],
-      ["Fisch Box", "", "14.50"],
-      ["Poulet Box mit Gemüse", "", "15.50"],
-      ["Döner Box Kalbfleisch", "", "18.00"]
+      ["Lammschisch-Box mit Gemüse", "", "18.00"],
+      ["Falafel-Box", "", "13.00"],
+      ["Fisch-Box", "", "14.50"],
+      ["Poulet-Box mit Gemüse", "", "15.50"],
+      ["Döner-Box Kalbfleisch", "", "18.00"]
     ]},
     {s:"pide", t:"Pide", n:"", d:[
       ["Pide Kalbfleisch", "", "17.50"],
@@ -2681,14 +2715,21 @@ body{background:transparent!important}
   };
   /* Sprache des Buchs: Deutsch (Standard) oder Englisch; Namen der Gerichte und Preise bleiben */
   var LKEY = 'keyff-karte-sprache', lang = 'de';
-  try { if(window.localStorage.getItem(LKEY) === 'en') lang = 'en'; } catch(e){}
   function own(o, k){ return Object.prototype.hasOwnProperty.call(o, k); }
   /* Auf Just Eat unter «Beliebt» (20.11) */
-  var POP = {'Dürüm Kalbfleisch':1,'Kebab Kalbfleisch':1,'Döner Box Kalbfleisch':1,'Pizza Kebab':1,'Pide Kalbfleisch':1};
+  var POP = {'Dürüm Kalbfleisch':1,'Kebab Kalbfleisch':1,'Döner-Box Kalbfleisch':1,'Pizza Kebab':1,'Pide Kalbfleisch':1};
   function tr(x){ return lang === 'en' && own(EN.u, x) ? EN.u[x] : x; }
   function catT(c){ return lang === 'en' && own(EN.c, c.t) ? EN.c[c.t] : c.t; }
   function descT(x){ return lang === 'en' && own(EN.d, x) ? EN.d[x] : x; }
   function nmT(x){ return lang === 'en' ? x.replace(/Stück/g, 'pieces').replace(/\(gross\)/g, '(large)').replace(/\(klein\)/g, '(small)').replace(/ klein /g, ' small ') : x; }
+  /* Julia 25.11 (2. Prüfrunde): kein DE/EN-Schalter – deutsche Namen + kleine englische Zeile darunter */
+  var NE = {"Pizza-Menü": "Pizza meal deal", "Pide-Menü": "Pide meal deal", "Dürüm-Menü": "Dürüm meal deal", "Kebab-Menü": "Kebab meal deal", "Gemischter Salat (gross)": "Mixed salad (large)", "Gemischter Salat (klein)": "Mixed salad (small)", "Hirtensalat (gross)": "Shepherd's salad (large)", "Hirtensalat (klein)": "Shepherd's salad (small)", "Grüner Salat": "Green salad", "Pommes frites": "Chips", "Röstikroketten (6 Stück)": "Rösti croquettes (6 pieces)", "Chicken Nuggets (6 Stück)": "Chicken nuggets (6 pieces)", "Börek mit Käse": "Cheese börek (filo pastry)", "Börek mit Hackfleisch": "Börek with minced meat (filo pastry)", "Calamari-Ringe (6 Stück)": "Calamari rings (6 pieces)", "Frühlingsrollen klein (6 Stück)": "Small spring rolls (6 pieces)", "Lahmacun": "Thin Turkish flatbread with spiced mince", "Lahmacun mit Kalbfleisch": "Lahmacun with veal", "Dürüm Kalbfleisch": "Veal döner wrap", "Kebab Kalbfleisch": "Veal döner kebab in flatbread", "Pizza Kaffe de Keyff": "House pizza", "Pizza Peperoni": "Pizza with peppers", "Pizza Peperoncini": "Pizza with hot chillies", "Pizza Spinat": "Spinach pizza", "Pizza Vegi": "Vegetable pizza", "Pouletschnitzel": "Breaded chicken escalope", "Poulet Cordon Bleu": "Chicken cordon bleu", "Frühlingsrollen": "Spring rolls", "Falafel-Teller": "Falafel plate", "Poulet Pepito": "Chicken pepito", "Köfte": "Grilled meatballs", "Cevapcici": "Grilled minced-meat rolls", "Poulet Kebab mit Gemüse": "Chicken kebab with vegetables", "Adana Kebab": "Spicy minced-lamb skewer", "Lammschisch Kebab mit Gemüse": "Lamb shish kebab with vegetables", "Lammfilet": "Lamb fillet", "Lammkotelett": "Lamb chops", "Poulet-Kebab-Teller": "Chicken kebab plate", "Adana-Teller": "Adana kebab plate", "Köfte-Teller": "Meatball plate", "Döner-Teller Kalbfleisch": "Veal döner plate", "Lammschisch-Teller": "Lamb shish plate", "Fitnessteller": "Fitness plate", "Lammschisch-Box mit Gemüse": "Lamb shish box with vegetables", "Falafel-Box": "Falafel box", "Fisch-Box": "Fish box", "Poulet-Box mit Gemüse": "Chicken box with vegetables", "Döner-Box Kalbfleisch": "Veal döner box", "Pide Kalbfleisch": "Pide with veal", "Pide Poulet": "Pide with chicken", "Pide Schinken": "Pide with ham", "Seele mit Dönerfleisch": "Seele (Swiss long bread roll) with döner meat", "Pide Lamm": "Pide with lamb", "Pide Hackfleisch": "Pide with minced meat", "Pide Gemüse": "Pide with vegetables", "Pide Spinat": "Pide with spinach", "Pide Käse": "Pide with cheese", "Pide Sucuk": "Pide with sucuk (spicy Turkish sausage)", "Poulet Curry": "Chicken curry", "Poulet Süss-Sauer": "Sweet-and-sour chicken", "Penne Vegetarisch": "Vegetarian penne", "Penne mit Lamm": "Penne with lamb", "Penne Poulet": "Penne with chicken", "Tartaresauce": "Tartare sauce", "Scharfe Sauce": "Hot sauce", "Cocktailsauce": "Cocktail sauce", "Joghurtsauce": "Yoghurt sauce", "Coupe Schokolade": "Chocolate sundae", "Baklava (3 Stück)": "Baklava (3 pieces)", "Marlenka Schokolade": "Marlenka honey cake, chocolate", "Marlenka mit Walnuss": "Marlenka honey cake with walnuts", "Coupe Cheesecake": "Cheesecake sundae", "Rivella Rot 0,5 l": "Rivella Red (Swiss soft drink), 0.5 l", "Apfelschorle 0,5 l": "Sparkling apple juice, 0.5 l", "Ayran 0,25 l": "Ayran (salted yoghurt drink), 0.25 l", "Valser mit Kohlensäure 0,5 l": "Valser sparkling water, 0.5 l", "Valser ohne Kohlensäure 0,5 l": "Valser still water, 0.5 l", "Ice Tea Lemon 0,5 l": "Lemon iced tea, 0.5 l", "Efes 0,5 l": "Efes (Turkish lager), 0.5 l", "Schützengarten 0,5 l": "Schützengarten (local lager), 0.5 l"};
+  var CE = {"Menüs": "Meal deals", "Salate": "Salads", "Frittiertes": "Fried dishes", "Vegetarische Gerichte": "Vegetarian dishes", "Grillgerichte": "From the grill", "Tellergerichte": "Mains", "Fitnessteller": "Fitness plate", "Box-Gerichte": "Box meals", "Pide": "Turkish flatbread", "Asiatische Gerichte": "Asian dishes", "Extrasaucen": "Extra sauces", "Alkoholfreie Getränke": "Soft drinks", "Alkoholische Getränke": "Alcoholic drinks"};
+  var DEFIX = {"Pizza nach Wahl mit einem kleinen Salat und einem Getränk nach Wahl": "Any pizza with a side salad and a drink", "Pide nach Wahl mit Pommes frites und einem Getränk nach Wahl": "Any pide with chips and a drink", "Dürüm mit Pommes frites und einem Getränk nach Wahl": "Dürüm with chips and a drink", "Kebab mit Pommes frites und einem Getränk nach Wahl": "Kebab with chips and a drink", "Tomatensauce, Mozzarella, grilliertes Lammgeschnetzeltes, Peperoncini, Knoblauch, Oregano": "Tomato sauce, mozzarella, strips of grilled lamb, chilli peppers, garlic, oregano", "Tomatensauce, Mozzarella, 4 verschiedene Käsesorten, Oregano": "Tomato sauce, mozzarella, four cheeses, oregano", "Tomatensauce, Mozzarella, Dönerfleisch, Champignons, Oregano": "Tomato sauce, mozzarella, döner meat, mushrooms, oregano", "Frittiertes Poulet Cordon Bleu. Serviert mit Zitrone und einer Beilage nach Wahl": "Deep-fried chicken cordon bleu, served with a lemon wedge and a side of your choice", "Zubereitet mit Gemüse und Sauce nach Wahl": "With vegetables and a sauce of your choice", "Lammhackfleisch vom Grill nach eigenem Rezept. Serviert mit einer Beilage nach Wahl": "Grilled minced lamb made to our own recipe, served with a side of your choice", "Poulet mit Gemüse an einer feinen Currysauce": "Chicken with vegetables in a mild curry sauce", "Reis mit Gemüse, Poulet und Sojasauce im Wok gebraten": "Wok-fried rice with vegetables, chicken and soy sauce", "Nudeln mit Gemüse, Poulet und Sojasauce im Wok gebraten": "Wok-fried noodles with vegetables, chicken and soy sauce", "Zubereitet mit Gemüse und einer Tomatensauce": "With vegetables and tomato sauce", "Zubereitet mit Lamm, Gemüse und einer Tomatensauce": "With lamb, vegetables and tomato sauce", "Zubereitet mit Rahm und Speck": "With cream and bacon", "Zubereitet mit Poulet, Gemüse und einer Tomatensauce": "With chicken, vegetables and tomato sauce", "Zubereitet mit scharfer Tomatensauce": "In a spicy tomato sauce", "5 % vol": "5% ABV"};
+  function escE(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function enN(x){ return own(NE, x) ? '<span class="bk-en" lang="en">' + escE(NE[x]) + '</span>' : ''; }
+  function enC(c){ return own(CE, c.t) ? '<span class="bk-en bk-en-c" lang="en">' + escE(CE[c.t]) + '</span>' : ''; }
+  function enD(x){ var e = own(DEFIX, x) ? DEFIX[x] : (own(EN.d, x) ? EN.d[x] : ''); return e && e.length <= 110 ? '<p class="bk-en bk-en-d" lang="en">' + escE(e) + '</p>' : ''; }
   function nl(){ return lang === 'en' ? ' lang="de"' : ''; }
   /* Hinweis «Gericht antippen …»: eine Zeile pro Rubrik und Doppelseite, immer. Das Atmen der ersten Zeile gibt es nur, bis der Besucher
      einmal ein Gericht geöffnet hat (gemerkt im Browser). seen = schon einmal geöffnet; pulsed = die Zeile hat in diesem Besuch schon geatmet */
@@ -2831,7 +2872,7 @@ body{background:transparent!important}
   }
   function catHTML(ci, extra, rows, more, num){
     var c = MENU[ci];
-    return (num ? runLine(catT(c), num) : '') + '<h3 class="bk-h" tabindex="-1">' + esc(catT(c)) + (c.n ? ' <small>' + esc(c.n) + '</small>' : '') + extra +
+    return (num ? runLine(catT(c), num) : '') + '<h3 class="bk-h" tabindex="-1">' + esc(catT(c)) + (c.n ? ' <small>' + esc(c.n) + '</small>' : '') + extra + enC(c) +
       '</h3>' + hintHTML(true) + '<ul class="bk-list">' + rows + '</ul>' +
       '';
   }
@@ -2841,13 +2882,13 @@ body{background:transparent!important}
     var parts = esc(descT(x)).split(', ');
     return '<div class="bk-zu"><' + tag + '>' + tr('Zutaten') + '</' + tag + '><p>' + parts.map(function(p, i){
       return '<span class="zi" style="--i:' + i + '">' + p + (i < parts.length - 1 ? ',' : '') + '</span>';
-    }).join(' ') + '</p></div>';
+    }).join(' ') + '</p>' + enD(x) + '</div>';
   }
   var PH = {"Pizza Kebab": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TNEN3mn2tNhlQ6jw-lTob1mvhITsYajHOwgColXgQuDTswRL-tuXlNPMWepdGMc6xlLT4BIX8DvJ6oMyTBBw9UqGB_E0F1pGGkw_aRa6UmWpEeunN60t3Zl0zm1yNM0JIFGUp2Igkbgu8=w900-h675-k-no", "Pide Sucuk": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S6aZdMhbv9ncJ3rQwTqnyTXfz4Vbu56HiG_lV2ZWrugJgaTGFThMm6xFga9qYkElgUAq-i9VdqH2dBrM1n8MDfpAxdL4DEBI1qLsjTpfdTmMmQdxwrz3EMLz-0YzCGOTnoPpb_7Q=w900-h675-k-no", "Gemischter Salat (gross)": "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RvXE_NnTKQNgknH-DlRv5o77Jl9yRh0ac1YuZNCETbj6WgQWvcBHW3wftCR1I4HWZfwvWCqS_it3vWGBO9XpjTyxqJsvNVi7I0oUDDmuAyE6EJaEQfkldy3H19OHR98Rs2SF_qvQ=w900-h675-k-no"};
   function detailHTML(ci, j){
     var d = MENU[ci].d[j], price = 'CHF ' + d[2];
     return '<div class="bk-dv-top"><div class="bk-dv-ttl"><span class="bk-dv-cat">' + esc(catT(MENU[ci])) + '</span>' +
-        '<h4 class="bk-dv-h" id="bk-dv-h" tabindex="-1"' + nl() + '>' + esc(nmT(d[0])) + '</h4></div>' +
+        '<h4 class="bk-dv-h" id="bk-dv-h" tabindex="-1"' + nl() + '>' + esc(nmT(d[0])) + '</h4>' + enN(d[0]) + '</div>' +
         '<button type="button" class="bk-x">' + XICON + tr('Schliessen') + '</button></div>' +
       '<div class="bk-dv-body">' + zuHTML(d[1], 'h5') + '<div class="bk-dv-price"><span class="bk-big">' + price + '</span></div>' +
         (PH[d[0]] ? '<figure class="bk-dv-ph"><img src="' + PH[d[0]] + '" alt="' + esc(d[0]) + '" loading="lazy"><figcaption>' + tr('Foto eines Gastes') + '</figcaption></figure>' : '') + '<div class="bk-dv-orn" aria-hidden="true"><img src="keyff_k6.png" alt=""><span>' + tr('Guten Appetit') + '</span></div></div>' +
@@ -2856,7 +2897,7 @@ body{background:transparent!important}
   }
   function dishHTML(ci, j, pfx){
     var d = MENU[ci].d[j], id = pfx + '-' + ci + '-' + j, price = 'CHF ' + d[2];
-    var row = '<span class="n"' + nl() + '>' + esc(nmT(d[0])) + (own(POP, d[0]) ? ' <span class="pop">' + tr('Beliebt') + '</span>' : '') + '</span><span class="l" aria-hidden="true"></span><span class="p">' + price + '</span>' +
+    var row = '<span class="n"' + nl() + '>' + esc(nmT(d[0])) + enN(d[0]) + (own(POP, d[0]) ? ' <span class="pop">' + tr('Beliebt') + '</span>' : '') + '</span><span class="l" aria-hidden="true"></span><span class="p">' + price + '</span>' +
       '<span class="go" aria-hidden="true"><span class="go-a">' + tr('Details') + '</span><span class="go-b">' + tr('weniger') + '</span>' + GO + '</span></button>';
     /* Doppelseite: das Gericht übernimmt beim Antippen seine Seite (siehe openDetail), darum kein Aufklappfeld in der Zeile */
     if(wide) return '<li class="bk-dish"><button type="button" class="bk-row" id="b' + id + '" aria-expanded="false" data-c="' + ci + '" data-j="' + j + '">' + row + '</li>';
@@ -2881,7 +2922,7 @@ body{background:transparent!important}
     }
     var c = MENU[p.c];
     h = runHead(idx) + '<h3 class="bk-h" tabindex="-1">' + esc(catT(c)) +
-        (c.n ? ' <small>' + esc(c.n) + '</small>' : '') +
+        (c.n ? ' <small>' + esc(c.n) + '</small>' : '') + enC(c) +
         '' +
         '</h3>' + hintHTML(!wide || idx % 2 === 0 || !pages[idx-1] || pages[idx-1].k !== 'cat' || pages[idx-1].c !== p.c) + '<ul class="bk-list">';
     for(j = p.from; j < p.to; j++) h += dishHTML(p.c, j, pfx);
@@ -3199,6 +3240,7 @@ body{background:transparent!important}
       for(i = 1; i < n; i++) edge[i] = (ang[i - 1] + ang[i]) / 2;
       for(i = 0; i < n; i++){
         a = ang[i];
+        lf[i].parentNode.style.visibility = a <= 90 ? '' : 'hidden'; lb[i].parentNode.style.visibility = a > 90 ? '' : 'hidden';
         /* Licht kommt von vorn, leicht von links: jede Fläche so hell, wie sie zum Licht steht */
         e0 = edge[i] * Math.PI / 180; e1 = edge[i + 1] * Math.PI / 180;
         l0 = .34 * g * Math.sin(e0) + .94 * Math.cos(e0); l1 = .34 * g * Math.sin(e1) + .94 * Math.cos(e1);
@@ -3875,7 +3917,7 @@ body{background:transparent!important}
       <div class="gb-wrap">
         <div class="gbuch">
           <figure class="zettel"><blockquote>«Top Essen, Top Service, sehr freundliches Personal.»</blockquote><cite>Marcel</cite></figure>
-          <figure class="zettel"><blockquote>«Essen immer frisch, immer warm. Service freundlich, aufmerksam. Cooler Laden, gemütliches Ambiente. Immer wieder gerne»</blockquote><cite>Christian</cite></figure>
+          <figure class="zettel"><blockquote>«Essen immer frisch, immer warm. Service freundlich, aufmerksam. Cooler Laden, gemütliches Ambiente. Immer wieder gerne.»</blockquote><cite>Christian</cite></figure>
           <figure class="zettel"><blockquote>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches Personal.»</blockquote><cite>Bruno</cite></figure>
           <figure class="zettel"><blockquote>«Sehr netter Bediener, und das Essen ist immer top.»</blockquote><cite>Nico</cite></figure>
         </div>
@@ -3929,8 +3971,8 @@ body{background:transparent!important}
   <div class="wrap">
     <span class="plate plate-lg"><img src="keyff_k6.png" alt="Kaffe de Keyff" width="124" height="86" loading="lazy" referrerpolicy="no-referrer"></span>
     <nav aria-label="Rechtliches">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
+      <a href="impressum.html#hell">Impressum</a>
+      <a href="datenschutz.html#hell">Datenschutz</a>
     </nav>
   </div>
 </footer>
