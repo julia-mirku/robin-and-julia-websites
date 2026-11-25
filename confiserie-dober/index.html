@@ -514,6 +514,38 @@ p,li,small{text-wrap:pretty}.lead,.h2,h3{text-wrap:balance}
 @media (min-width:861px) and (max-height:820px){#feste .card .pic img{object-position:center 8%}}
 @media (max-width:1100px){.karteBox .haus-foto{bottom:auto;top:12px}.karteBox .route{bottom:56px}}
 </style>
+<style id="advent-25-11">
+/* Advent: hell wie die ganze Seite (keine Zebra), Festliches nur in Details */
+#advent .kicker{color:var(--magenta)}
+#advent .lead{max-width:56ch;margin:10px 0 0}
+.adkopf{display:flex;justify-content:space-between;align-items:flex-end;gap:28px}
+.kranz{display:flex;align-items:center;gap:8px;flex:none;padding:10px 18px 8px;border-radius:999px;background:var(--papier);box-shadow:0 10px 26px -18px rgba(58,37,34,.45),inset 0 0 0 1px var(--beige);transition:box-shadow .25s}
+.kerzen{position:relative;display:flex;gap:10px;padding:0 6px 7px}
+.zweig{position:absolute;left:-4px;right:-4px;bottom:0;width:calc(100% + 8px);height:12px}
+.kerze{display:block;width:14px;height:30px;position:relative;z-index:1}
+.kerze svg{width:100%;height:100%;overflow:visible}
+.kerze rect{fill:#FFF;stroke:var(--sand);stroke-width:1}
+.kerze .docht{stroke:var(--kakao);stroke-width:1.2}
+.kerze .fl{fill:var(--ocker);opacity:0;transform-origin:7px 10px;transform:scale(.4);transition:opacity .4s,transform .4s}
+.kerze.an .fl{opacity:1;transform:none;animation:flack 2.4s ease-in-out infinite}
+@keyframes flack{0%,100%{transform:scale(1) rotate(0)}40%{transform:scale(.92,1.06) rotate(-3deg)}70%{transform:scale(1.04,.96) rotate(2deg)}}
+@media (prefers-reduced-motion:reduce){.kerze.an .fl{animation:none}}
+.kranz small{font:600 13px/1.3 "Public Sans";color:var(--kakao);margin-left:6px;white-space:nowrap}
+.gaben{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:18px;margin-top:26px}
+.gabe{margin:0;background:var(--papier);border-radius:var(--r);display:flex;flex-direction:column;padding:10px;position:relative;box-shadow:0 14px 36px -24px rgba(58,37,34,.45);transition:transform .25s,box-shadow .25s}
+.gabe::before{content:"";position:absolute;left:22px;right:22px;top:0;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,var(--ocker2),var(--ocker),var(--ocker2))}
+.gabe .gb{aspect-ratio:308/230;overflow:hidden;border-radius:10px}
+.gabe .gb img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gabe .gt{padding:12px 8px 6px}
+.gabe h3{font-size:21px;margin:0 0 4px;color:var(--kakao)}
+.gabe p{margin:0;font-size:14.5px;line-height:1.45;color:var(--kakao2)}
+.adfuss{margin:20px 0 0;font-size:15px;color:var(--kakao2)}
+.adfuss a{color:var(--magenta);font-weight:600;text-underline-offset:3px;margin-left:4px;transition:color .2s}
+@media (hover:hover){.gabe:hover{transform:translateY(-4px);box-shadow:0 0 0 2px var(--rosa),0 20px 40px -22px rgba(58,37,34,.5)}.gabe:hover .gb img{transform:scale(1.05)}.adfuss a:hover{color:var(--magenta2)}.kranz:hover{box-shadow:0 0 0 2px var(--rosa),0 10px 26px -18px rgba(58,37,34,.45)}.kranz:hover .kerze .fl{opacity:1;transform:none}}
+@media (min-width:861px) and (max-height:820px){.gaben{margin-top:18px}.gabe .gb{aspect-ratio:308/200}.adfuss{margin-top:14px}}
+@media (max-width:860px){.gaben{grid-template-columns:repeat(2,1fr)}.gabe .gb{aspect-ratio:308/220}}
+@media (max-width:700px){.adkopf{flex-direction:column;align-items:flex-start;gap:16px}.gaben{gap:12px;margin-top:20px}.gabe{padding:8px}.gabe .gt{padding:10px 6px 6px}.gabe h3{font-size:18px}.gabe p{font-size:13.5px}.gabe .gb{aspect-ratio:1/1}}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -594,6 +626,27 @@ p,li,small{text-wrap:pretty}.lead,.h2,h3{text-wrap:balance}
         </div>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ADVENT -->
+<section id="advent">
+  <div class="wrap">
+    <div class="adkopf">
+      <div>
+        <div class="kicker rv">Adventszeit in der Confiserie</div>
+        <h2 class="h2 rv">Advent <span class="script">bei Dober</span></h2>
+        <p class="lead rv">Kleine Freuden aus unserer eigenen Herstellung, festlich verpackt – zum Verschenken oder für den eigenen Adventskaffee.</p>
+      </div>
+      <div class="kranz rv" id="kranz" aria-live="polite"><span class="kerzen"><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><svg class="zweig" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8c12-6 22 4 32-1s20-5 32 0 20 5 32-2" fill="none" stroke="#5C7A4A" stroke-width="5" stroke-linecap="round"/><path d="M4 7c10-3 18 3 28 0m6 0c10-4 18 2 28 1m6-1c9-3 17 3 26 0" fill="none" stroke="#7E9C62" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="9" r="1.8" fill="#C8102E"/><circle cx="52" cy="6" r="1.8" fill="#C8102E"/><circle cx="82" cy="8" r="1.8" fill="#C8102E"/></svg></span><small id="kranzTxt"></small></div>
+    </div>
+    <div class="gaben">
+      <article class="gabe rv"><div class="gb"><img src="img/advent_truffes.webp" alt="Champagner-Truffes in festlicher Verpackung" decoding="async" loading="lazy" width="308" height="286"></div><div class="gt"><h3>Champagner-Truffes</h3><p>Aus eigener Fabrikation, mit Schleife und Karte.</p></div></article>
+      <article class="gabe rv"><div class="gb"><img src="img/advent_pralines.webp" alt="Pralinés Maison im Geschenksäckli" decoding="async" loading="lazy" width="308" height="286"></div><div class="gt"><h3>Pralinés Maison</h3><p>Im Säckli mit roter Schleife – ein süsses Dankeschön.</p></div></article>
+      <article class="gabe rv"><div class="gb"><img src="img/advent_stollen.webp" alt="Bananenstollen aus der Konditorei" decoding="async" loading="lazy" width="308" height="286"></div><div class="gt"><h3>Stollen</h3><p>Bananenstollen und Hefestollen aus unserer Konditorei.</p></div></article>
+      <article class="gabe rv"><div class="gb"><img src="img/advent_kirsch.webp" alt="Kirschstengeli, einzeln verpackt" decoding="async" loading="lazy" width="308" height="286"></div><div class="gt"><h3>Kirschstengeli</h3><p>Ein Klassiker der Confiserie, einzeln verpackt zum Mitbringen.</p></div></article>
+    </div>
+    <p class="adfuss rv">Pralinés und Gutscheine zum Verschenken – fragen Sie im Laden. <a href="#bestellen">Zu den Gutscheinen</a></p>
   </div>
 </section>
 
@@ -969,6 +1022,13 @@ else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting||e
  d.querySelector('[data-kclose]').addEventListener('click',function(){d.close()});
  d.addEventListener('click',function(e){if(e.target===d)d.close()});
 })();
+/* Advent: Kerzen nach Kalender (4. Advent = letzter Sonntag vor dem 25.12.) */
+(function(){const K=[...document.querySelectorAll('#kranz .kerze')],T=document.getElementById('kranzTxt');if(!K.length)return;
+ const d=new Date(),y=d.getFullYear(),w=new Date(y,11,24);w.setDate(24-w.getDay());const A=[0,1,2,3].map(i=>{const x=new Date(w);x.setDate(w.getDate()-7*(3-i));return x});
+ const heute=new Date(y,d.getMonth(),d.getDate());let n=A.filter(x=>x<=heute).length;if(heute>new Date(y,11,26))n=0;
+ K.forEach((k,i)=>k.classList.toggle('an',i<n));
+ const MO=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+ if(n===0){const t=Math.round((A[0]-heute)/864e5);T.textContent=(t>=0&&t<=30)?(t===1?'Morgen ist 1. Advent':'1. Advent: '+A[0].getDate()+'. '+MO[A[0].getMonth()]):'Adventszeit'}else T.textContent=n+'. Advent';})();
 </script>
 </body>
 </html>
