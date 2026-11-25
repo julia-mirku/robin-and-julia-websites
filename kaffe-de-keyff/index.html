@@ -1909,6 +1909,15 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
   #karte .bk-btn.bk-nav svg{width:22px;height:22px}
   #karte .bk-x{min-height:44px!important}
 }
+/* JR 25.11: Telefon quer (844×390) – Buchdeckel passt ganz in den Bildschirm, Buch wächst beim Öffnen; Touch-Knöpfe ≥ 44 px */
+@media (max-width:899px) and (orientation:landscape) and (max-height:560px){
+  #buch .bk-stage{transform-origin:50% 0;transition:transform .9s cubic-bezier(.4,.08,.2,1),margin-bottom .9s cubic-bezier(.4,.08,.2,1)}
+  #buch[data-state="closed"] .bk-stage{transform:scale(var(--ls,.42));margin-bottom:calc((var(--ls,.42) - 1)*784px)}
+}
+@media (max-width:899px) and (orientation:landscape) and (max-height:380px){#buch{--ls:.38}}
+@media (max-width:899px) and (orientation:landscape) and (min-height:381px) and (max-height:430px){#buch{--ls:.42}}
+@media (max-width:899px) and (orientation:landscape) and (min-height:431px) and (max-height:560px){#buch{--ls:.5}}
+@media (pointer:coarse) and (min-width:900px){#karte .bk-btn{min-width:44px!important;min-height:44px!important}}
 </style>
 <style id="runde2-gaeste-dunkel">
 @media (min-width:901px){

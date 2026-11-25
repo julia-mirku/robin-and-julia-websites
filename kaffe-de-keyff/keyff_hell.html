@@ -2168,11 +2168,20 @@ body{background:transparent!important}
   #karte .bk-btn.bk-nav svg{width:22px;height:22px}
   #karte .bk-x{min-height:44px!important}
 }
+/* JR 25.11: Telefon quer (844×390) – Buchdeckel passt ganz in den Bildschirm, Buch wächst beim Öffnen; Touch-Knöpfe ≥ 44 px */
+@media (max-width:899px) and (orientation:landscape) and (max-height:560px){
+  #buch .bk-stage{transform-origin:50% 0;transition:transform .9s cubic-bezier(.4,.08,.2,1),margin-bottom .9s cubic-bezier(.4,.08,.2,1)}
+  #buch[data-state="closed"] .bk-stage{transform:scale(var(--ls,.42));margin-bottom:calc((var(--ls,.42) - 1)*784px)}
+}
+@media (max-width:899px) and (orientation:landscape) and (max-height:380px){#buch{--ls:.38}}
+@media (max-width:899px) and (orientation:landscape) and (min-height:381px) and (max-height:430px){#buch{--ls:.42}}
+@media (max-width:899px) and (orientation:landscape) and (min-height:431px) and (max-height:560px){#buch{--ls:.5}}
+@media (pointer:coarse) and (min-width:900px){#karte .bk-btn{min-width:44px!important;min-height:44px!important}}
 </style>
 <style id="runde2-abstaende">/* 1: Luft zwischen den Blöcken ~62 px */
-@media (min-width:1300px){footer.foot{margin-top:-1px!important}#fotos{margin-top:1px!important}#karte{margin-top:5px!important}#ort{margin-top:-21px!important}#stimmen:not(.r3){margin-top:-14px!important}#zeiten{margin-top:-21px!important}}
-@media (min-width:1100px) and (max-width:1299.98px){footer.foot{margin-top:-2px!important}#fotos{margin-top:2px!important}#karte{margin-top:-1px!important}#ort{margin-top:-30px!important}#stimmen:not(.r3){margin-top:-22px!important}#zeiten{margin-top:-30px!important}}
-@media (min-width:901px) and (max-width:1099.98px){footer.foot{margin-top:1px!important}#fotos{margin-top:3px!important}#karte{margin-top:-37px!important}#ort{margin-top:-20px!important}#stimmen:not(.r3){margin-top:-12px!important}#zeiten{margin-top:-20px!important}}
+@media (min-width:1300px){.sec.besuch{margin-top:-21px!important}footer.foot{margin-top:-1px!important}#fotos{margin-top:1px!important}#karte{margin-top:5px!important}#stimmen:not(.r3){margin-top:-14px!important}}
+@media (min-width:1100px) and (max-width:1299.98px){.sec.besuch{margin-top:-30px!important}footer.foot{margin-top:-2px!important}#fotos{margin-top:2px!important}#karte{margin-top:-1px!important}#stimmen:not(.r3){margin-top:-22px!important}}
+@media (min-width:901px) and (max-width:1099.98px){.sec.besuch{margin-top:-20px!important}footer.foot{margin-top:1px!important}#fotos{margin-top:3px!important}#karte{margin-top:-37px!important}#stimmen:not(.r3){margin-top:-12px!important}}
 @media (max-width:900px){footer.foot{margin-top:12px!important}#fotos{margin-top:2px!important}#ort{margin-top:-20px!important}}
 </style>
 </head>
