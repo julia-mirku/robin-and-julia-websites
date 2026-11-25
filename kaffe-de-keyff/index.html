@@ -1856,8 +1856,11 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
 .bk .bk-cv-t{font-family:"Newsreader",Georgia,serif!important;font-weight:400!important;font-style:italic!important;background:none!important;-webkit-text-fill-color:#C9A464!important;color:#C9A464!important;letter-spacing:0!important}
 #karte .bk-cv-btn{white-space:nowrap!important;letter-spacing:.1em!important;max-width:100%}
 /* Julia 25.11 «чтобы она пульсировала подсветкой медленно»: weiches Messing-Leuchten, 2,8 s */
-@keyframes bkpuls{0%,100%{box-shadow:0 0 0 0 rgba(201,164,100,0),inset 0 0 0 rgba(201,164,100,0)}50%{box-shadow:0 0 18px 2px rgba(201,164,100,.45),inset 0 0 10px rgba(201,164,100,.18)}}
-@media (prefers-reduced-motion:no-preference){.bk[data-state="closed"] #bk-open .bk-cv-btn{animation:bkpuls 2.8s ease-in-out infinite}}
+#bk-open .bk-cv-btn{position:relative}
+#bk-open .bk-cv-btn::after{content:"";position:absolute;inset:-1px;border-radius:2px;pointer-events:none;opacity:0;
+  box-shadow:0 0 20px 3px rgba(214,174,104,.55),inset 0 0 12px rgba(214,174,104,.25);background:rgba(214,174,104,.06)}
+@keyframes bkpuls{0%,100%{opacity:0}50%{opacity:1}}
+@media (prefers-reduced-motion:no-preference){.bk[data-state="closed"] #bk-open .bk-cv-btn::after{animation:bkpuls 2.8s ease-in-out infinite}}
 @media (max-width:420px){#karte .bk-cv-btn{letter-spacing:.06em!important;font-size:.68rem!important;padding-left:14px!important;padding-right:14px!important}}
 </style>
 <style id="karte-exponat-css">
