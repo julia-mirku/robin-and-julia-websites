@@ -547,6 +547,25 @@ header.top{background:var(--mehl);backdrop-filter:none;-webkit-backdrop-filter:n
 body::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.04);pointer-events:none;z-index:2147483647}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .fade{opacity:1;transform:none}.mini{opacity:1;transform:none}}
 </style>
+<style id="pruefung-26-11">
+/* Prüfung 26.11: Sprungmarke genau unter der Kopfzeile (67 px) */
+@media (min-width:768px){main>section[id],body>section[id]{scroll-margin-top:67px}}
+/* Prüfung 26.11: Laden und «Glutenfrei ist bei uns» ganz im Laptop-Bildschirm (1470×659, 1280×720, 1024×768) */
+@media (min-width:768px) and (max-height:800px){
+  #shop{padding-top:8px!important;padding-bottom:8px!important}
+  #shop .sh{margin-bottom:4px!important}
+  #shop .shopbar{margin-bottom:4px!important}
+  #shop .versand{margin-top:6px!important}
+  #shop .karte .bild{aspect-ratio:2.3/1!important}
+  #catering{padding-top:18px!important;padding-bottom:18px!important}
+  #glutenfrei{padding-top:14px!important;padding-bottom:14px!important}
+  #glutenfrei .gfbild{height:calc(100svh - 95px)!important}
+  #glutenfrei .gftext h2{margin-bottom:10px!important}
+  #glutenfrei .gftext .fakten{margin-top:12px!important;margin-bottom:12px!important}
+}
+/* Prüfung 26.11: Pfeile der Ladenreihe liegen nicht auf dem «+» */
+@media (min-width:768px) and (max-width:1400px){.regalwrap .pfeil{width:34px;height:34px}.regalwrap .pfeil svg{width:18px;height:18px}}
+</style>
 </head>
 <body>
 <div class="draft" id="draft">Website-Entwurf von <b>Julia &amp; Robin Mirku</b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -838,9 +857,10 @@ function save(){try{localStorage.setItem('gerigPaket',JSON.stringify(korb))}catc
 function render(){const ids=Object.keys(korb).filter(k=>korb[k]>0);let n=0,zw=0;
   $('#liste').innerHTML=ids.length?ids.map(k=>{const p=byId(+k),q=korb[k];n+=q;zw+=q*p[2];return `<div class="pos"><img src="img/p/${String(p[0]).padStart(3,'0')}.webp" alt=""><div><div class="nm">${p[1]}</div><div class="ep">${chf(p[2])}</div></div><div class="menge"><button data-m="${k}" aria-label="weniger">−</button><b>${q}</b><button data-pl="${k}" aria-label="mehr">+</button></div><div class="sum">${q*p[2]>0?(q*p[2]).toFixed(2):''}</div></div>`}).join(''):'<div class="leerpaket"><img src="img/tom_versand.webp" alt="Paket mit Zopf und Guetzli, bereit für den Versand" loading="lazy"><b>Noch nichts im Paket</b>Tippen Sie bei einem Produkt auf +</div>';
   $$('[data-cnt]').forEach(c=>c.textContent=n);
-  $('[data-anz]').textContent=n?n+(n===1?' Artikel':' Artikel')+' · glutenfrei gebacken':'noch leer';
+  const mitG=Object.keys(korb).some(id=>korb[id]>0&&(P.find(x=>String(x[0])===String(id))||[])[3]==='biber');
+  $('[data-anz]').textContent=n?n+' Artikel'+(mitG?' · enthält Produkte mit Gluten':' · glutenfrei gebacken'):'noch leer';
   const vs=n?15:0;$('[data-zw]').textContent=chf(zw);$('[data-vs]').textContent=n?chf(vs):'–';$('[data-tot]').textContent=chf(zw+vs);
-  const nb=nextBack();$('[data-bi]').innerHTML=`Glutenfrei gebacken an den Backtagen <b>Mo, Di und Do</b>, Versand mit A-Post Priority – meist am nächsten Tag bei Ihnen. Für Montag bis Freitag 16:00 bestellen. Ab 8 kg Versand CHF 25.`;
+  const nb=nextBack();$('[data-bi]').innerHTML=`${mitG?'Gebacken':'Glutenfrei gebacken'} an den Backtagen <b>Mo, Di und Do</b>, Versand mit A-Post Priority – meist am nächsten Tag bei Ihnen. Für Montag bis Freitag 16:00 bestellen. Ab 8 kg Versand CHF 25.`;
   $('.paketfab').classList.toggle('zeig',n>0||scrollY>innerHeight*.8);stp()}
 function add(id,fromImg){korb[id]=(korb[id]||0)+1;save();render();
   const tgt=innerWidth<768?$('.paketfab'):$('header .paketbtn');
@@ -875,7 +895,7 @@ $('#kats').innerHTML=KAT.map(([k,l])=>`<button class="kat${k===kat?' sel':''}" d
 $('#kats').onclick=e=>{const b=e.target.closest('.kat');if(!b)return;kat=b.dataset.k;q='';$('#such').value='';$$('.kat').forEach(x=>x.classList.toggle('sel',x===b));shop()};
 $('#such').oninput=e=>{q=e.target.value.trim().toLowerCase();$$('.kat').forEach(x=>x.classList.toggle('sel',!q&&x.dataset.k===kat));shop()};
 function shop(){const list=q?P.filter(p=>p[1].toLowerCase().includes(q)):P.filter(p=>p[3]===kat);const r=$('#regal');
-  r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">${ear}glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div class="nm">${p[1]}</div><div class="zr"><span class="pr">${chf(p[2])}</span>${knopf(p[0],p[1])}</div></div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
+  r.innerHTML=list.length?list.map(p=>{const f=String(p[0]).padStart(3,'0'),gf=p[3]!=='biber'&&p[0]!==0;return `<article class="karte"><div class="bild" data-zoom="img/pl/${f}.webp" data-cap="${p[1]} · ${chf(p[2])}"><img src="img/p/${f}.webp" alt="${p[1]}" loading="lazy">${gf?`<span class="badge">glutenfrei</span>`:p[3]==='biber'?'<span class="badge nogf">mit Gluten</span>':''}</div><div class="unt"><div class="nm">${p[1]}</div><div class="zr"><span class="pr">${chf(p[2])}</span>${knopf(p[0],p[1])}</div></div></article>`}).join(''):'<div class="leer">Nichts gefunden – versuchen Sie «Brot», «Biber» oder «Torte».</div>';
   r.scrollLeft=0;reihen();upd('regal');stp()}
 /* wenige Produkte: eine volle Reihe statt halb leerer Doppelreihe (Prüfer 25.11) */
 function reihen(){const r=$('#regal');r.style.gridTemplateRows='';if(innerWidth<768)return;const c=r.firstElementChild;if(!c||!c.classList.contains('karte'))return;const g=parseFloat(getComputedStyle(r).columnGap)||16;const cols=Math.max(1,Math.round((r.clientWidth+g)/(c.getBoundingClientRect().width+g)));if(r.children.length<=cols)r.style.gridTemplateRows='auto'}
