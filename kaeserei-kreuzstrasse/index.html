@@ -13,7 +13,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Rethink+Sans:wght@400;500;600;700;800&family=Grenze+Gotisch:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Rethink+Sans:wght@400;500;600;700;800&family=Grenze+Gotisch:wght@500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
 :root{
   --milk:#FBF5E8; --milk2:#F3E8CF; --rind:#7A4E25; --rind2:#4A2E16; --cellar:#1B1712; --cellar2:#2A231A;
@@ -587,6 +587,21 @@ h2,h3,.hero p.lead,.sec p{text-wrap:pretty}
 .days .day{padding-left:1px!important;padding-right:1px!important;overflow:visible}
 @media (max-width:420px){.days{gap:3px!important;margin-left:-10px!important;margin-right:-10px!important}.days .day small span{letter-spacing:-.06em}}
 @media (max-width:380px){.days{gap:2px!important;margin-left:-13px!important;margin-right:-13px!important}.days .day{border-radius:10px!important}}
+/* Юля 25.11: «Seit 2006 in den Händen der Familie Jud» auch auf Telefon und Tablet */
+.hero .kick.h-line{display:block!important}
+@media (max-width:700px){.hero .kick.h-line{font-size:13px!important;line-height:1.3;margin-bottom:6px}}
+/* Kreide-Schrift auf dem Holzschild */
+.chalk{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;font-family:"Caveat",var(--f-body);font-weight:600;line-height:1.02;color:rgba(250,247,238,.9);text-shadow:0 0 1px rgba(255,255,255,.45),0 1px 0 rgba(60,40,20,.25);transform:rotate(-1.2deg);z-index:0}
+.chalk span{display:block;white-space:nowrap}.chalk span+span{font-size:.92em}
+/* saisonaler Geschenk-Hinweis */
+.geschenk{padding:clamp(28px,4vw,56px) 0 clamp(36px,3.4vw,48px)}
+.geschenk .gcard{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);background:rgba(255,255,255,.82);border:1.5px solid rgba(122,78,37,.18);border-radius:22px;padding:clamp(18px,2.4vw,30px) clamp(20px,3vw,40px);box-shadow:0 14px 34px -18px rgba(74,46,22,.35);transition:transform .25s,box-shadow .25s}
+@media (hover:hover){.geschenk .gcard:hover{transform:translateY(-3px);box-shadow:0 20px 40px -18px rgba(74,46,22,.45)}}
+.geschenk .gico{flex:0 0 auto;width:clamp(44px,5vw,64px);height:auto;color:var(--red)}
+.geschenk .gtxt{flex:1}.geschenk h2{font-size:clamp(28px,3vw,42px);margin:2px 0 6px}.geschenk p{margin:0;color:var(--mute)}
+.geschenk .btn{flex:0 0 auto;white-space:nowrap}
+@media (max-width:700px){.geschenk .gcard{flex-wrap:wrap}.geschenk .gtxt{flex:1 1 calc(100% - 80px)}.geschenk .btn{width:100%;justify-content:center;min-height:44px}}
+@media (min-width:701px) and (max-aspect-ratio:3/2) and (min-aspect-ratio:3/4){.hero .kick.h-line{font-size:14px!important;margin-bottom:0!important;line-height:1.2}.hero .lead{margin-top:6px!important;margin-bottom:0!important}.hero .ctas{margin-top:6px!important;width:max-content;max-width:100%}}
 /*RUNDE-G-END*/
 
 
@@ -641,6 +656,7 @@ h2,h3,.hero p.lead,.sec p{text-wrap:pretty}
   <div class="ph"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/bank_appenzeller_m.webp"><img src="img/bank_appenzeller_l.webp" alt="Drei Holzfiguren in Appenzeller Tracht auf der Bank vor der Käserei"></picture></div>
   <div class="shade"></div>
   <div class="figs" id="figs">
+    <div class="chalk" id="chalk" aria-hidden="true"><span></span><span></span></div>
     <button class="fig" data-k="0" aria-label="Wann offen?"><span class="ring"></span><span class="bub"><b>Offen?</b>Mittwuch bis Samstig ab achti – Mittwuch bis Fritig au znacht ab füfi.</span></button>
     <button class="fig" data-k="1" aria-label="Goldmedaille"><span class="ring"></span><span class="bub"><b>Gold!</b>Euse Appezeller hät 2008 Gold gholt.</span></button>
     <button class="fig" data-k="2" aria-label="Einladung"><span class="ring"></span><span class="bub"><b>Grüezi!</b>Chömed verbii – probiere isch erlaubt!</span></button>
@@ -714,6 +730,15 @@ h2,h3,.hero p.lead,.sec p{text-wrap:pretty}
       <div class="result"><div class="g" id="gres">800 <small>g</small></div><p id="gtxt"></p></div>
     </div>
   </div>
+</section>
+
+<!-- GESCHENK (saisonal 15.11.–31.12.; JR/Юля 25.11: neutral, ohne erfundene Produkte/Preise – Quellen: Website, Google, local.ch, search.ch ohne Geschenkangebot) -->
+<section class="geschenk" id="geschenk" hidden>
+  <div class="wrap"><div class="gcard rv">
+    <svg class="gico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="18" width="34" height="23" rx="3"/><path d="M5 18h38v-6H5z"/><path d="M24 12v29"/><path d="M24 12c-3-6-11-7-11-2 0 3 6 2 11 2zM24 12c3-6 11-7 11-2 0 3-6 2-11 2z"/></svg>
+    <div class="gtxt"><span class="kick">Bald ist Weihnachten</span><h2>Käse als Geschenk</h2><p>Für Familie, Freunde oder das Team: Fragen Sie im Chäsilädeli – Stefan und Franziska beraten Sie&nbsp;gern.</p></div>
+    <a class="btn btn-dark" href="tel:+41713711116">071 371 11 16</a>
+  </div></div>
 </section>
 
 <!-- FAMILIE -->
@@ -820,7 +845,13 @@ function state(){
   for(const [a] of sl){ if(m<a) return {open:false,txt:'Jetzt geschlossen',sub:'heute wieder ab '+fmt(a)+' Uhr'}; }
   for(let i=1;i<=7;i++){ const dd=(d+i)%7; if(HOURS[dd].length) return {open:false,txt:'Jetzt geschlossen',sub:(i===1?'morgen':NAMES[dd])+' ab '+fmt(HOURS[dd][0][0])+' Uhr'}; }
 }
-function paintStatus(){ const s=state();
+function paintChalk(){ const ck=Q('#chalk'); if(!ck) return; const {d,m}=zh(), sl=HOURS[d], sp=ck.querySelectorAll('span'); let a,b;
+  if(!sl.length){ a='Heute'; b='geschlossen'; }
+  else if(m<sl[sl.length-1][1]){ a='Heute offen'; b='bis '+fmt(sl[sl.length-1][1]); }
+  else { a='Für heute zu'; let n=''; for(let i=1;i<=7;i++){ const dd=(d+i)%7; if(HOURS[dd].length){ n=(i===1?'morgen':NAMES[dd])+' ab '+fmt(HOURS[dd][0][0])+' Uhr'; break; } } b=n; }
+  sp[0].textContent=a; sp[1].textContent=b; }
+function paintGift(){ const g=Q('#geschenk'); if(!g) return; const n=new Date(), mo=n.getMonth()+1, dd=n.getDate(); g.hidden=!((mo===11&&dd>=15)||mo===12); }
+function paintStatus(){ paintChalk(); paintGift(); const s=state();
   QA('.js-status').forEach(e=>e.innerHTML='<span class="dot'+(s.open?' on':'')+'"></span>'+s.txt+' · '+s.sub);
   Q('.js-status2').innerHTML='<span class="dot'+(s.open?' on':'')+'"></span>'+s.txt+' <small>'+s.sub+'</small>'; }
 const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
@@ -848,13 +879,15 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
       let fx=f.querySelector('.fx'); if(!fx){ fx=document.createElement('span'); fx.className='fx'; fx.setAttribute('aria-hidden','true'); f.insertBefore(fx,f.firstChild); }
       const w=parseFloat(f.style.width), h=parseFloat(f.style.height), ox=(hd.l+hd.r)/2-w/2-.45*w, oy=hd.t-.24*h;
       const sh=Q('#hero .shade'), sb=sh?getComputedStyle(sh).backgroundImage:'none', n=sb==='none'?0:(sb.match(/gradient\(/g)||[]).length;
-      fx.style.backgroundImage=(n?sb+', ':'')+'url("'+(img.currentSrc||img.src)+'")'; fx.style.backgroundSize=Array(n).fill(W+'px '+H+'px').concat([(iw*zs)+'px '+(ih*zs)+'px']).join(', '); fx.style.backgroundPosition=Array(n).fill((-ox)+'px '+(-oy)+'px').concat([(X(0)-ox)+'px '+(Y(0)-oy)+'px']).join(', '); }); };
+      fx.style.backgroundImage=(n?sb+', ':'')+'url("'+(img.currentSrc||img.src)+'")'; fx.style.backgroundSize=Array(n).fill(W+'px '+H+'px').concat([(iw*zs)+'px '+(ih*zs)+'px']).join(', '); fx.style.backgroundPosition=Array(n).fill((-ox)+'px '+(-oy)+'px').concat([(X(0)-ox)+'px '+(Y(0)-oy)+'px']).join(', '); });
+    /* Юля 25.11: Kreide auf dem leeren Holzschild (nur Foto quer, dort ist das Schild sichtbar) */
+    const ck=Q('#chalk'); if(ck){ if(port){ ck.style.display='none'; } else { const B=[.6423,.4959,.7432,.5863], l=X(B[0]), t=Y(B[1]), r=X(B[2]), bt=Y(B[3]); ck.style.display=''; ck.style.left=l+'px'; ck.style.top=t+'px'; ck.style.width=(r-l)+'px'; ck.style.height=(bt-t)+'px'; ck.style.fontSize=((bt-t)*.3)+'px'; } } };
   place(); addEventListener('resize',place); addEventListener('load',place);
   setTimeout(()=>heroEl.classList.add('ready'),150);
-  /* Юля 24.11 (2): Klick wirkt sofort – auch während der Begrüssung; Hover zeigt nichts, nur Hand-Cursor */
+  /* Юля 24.11 (2): Klick wirkt sofort – auch während der Begrüssung; 25.11 abends: Hover lässt die Figur wieder sprechen */
   const T=[]; let intro=true;
   const PH=()=>matchMedia('(max-width:700px), (orientation:landscape) and (max-height:500px)').matches;
-  if(!PH()) figs.forEach((f,i)=>T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700)));
+  if(!PH()) figs.forEach((f,i)=>T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); if(typeof idx!=='undefined'&&idx[i]<0) idx[i]=0; },1300+i*1700)));
   const endIntro=()=>{ if(!intro) return; intro=false; T.forEach(clearTimeout); heroEl.classList.add('done'); };
   T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); endIntro(); },1300+3*1700+300));
     /* Юля 24.11: jeder Klick/Tap/Hover = nächster neuer Satz, keine Wiederholung bis alle durch */
@@ -862,7 +895,7 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
       [['Offen?','Mittwuch bis Samstig ab achti – Mittwuch bis Fritig au znacht ab füfi.'],['Wo?','Chrüzstrasse 781 in Degersheim – grad bi de Käserei.'],['Lüüte Si aa!','071 371 11 16 – Stefan und Franziska säged Ine gärn, was grad reif isch.'],['Sit 2006','Stefan und Franziska Jud füehred d’Käserei sit em 1. November 2006.'],['S’Lädeli','Sit 2008 gits s’Chäsilädeli diräkt i de Käserei.']],
       [['Gold!','Euse Appezeller hät 2008 Gold gholt.'],['Bronze!','2010 hämmer Bronze am World Championship Cheese Contest gholt.'],['Im Chäller','Euse Chäs lagered im eigene Chäschäller.'],['Acht Sorte','8 Chäs s’ganze Jahr – und no saisonali Spezialitäte.'],['Schwarz Wolf','Händ Si de Schwarz Wolf scho probiert?']],
       [['Grüezi!','Chömed verbii – probiere isch erlaubt!'],['Fondue?','Üsi hausgmachti Fondue-Mischig gits im Lädeli – rund 200 g pro Person.'],['Raclette!','Rächned mit 200 bis 250 g Chäs pro Person.'],['Klosterchäs','De Magdenauer isch en Rahmchäs nach altem Rezept.'],['Mutschli','S’Wolfensberg-Mutschli gits au mit Bärlauch, Thymian oder Basilikum.']]];
-    const idx=matchMedia('(max-width:700px), (orientation:landscape) and (max-height:500px)').matches?[-1,-1,-1]:[0,0,0]; /* Telefon: erster Tipp = erster Satz */
+    const idx=[-1,-1,-1]; /* erster Hover/Tipp = erster Satz; die Begrüssung zählt als gesagt */
     const mb=document.createElement('div'); mb.className='mbub'; mb.setAttribute('role','status'); heroEl.appendChild(mb); let mbT=null, mbI=-1;
     const mbHide=()=>{ mb.classList.remove('on'); mbI=-1; clearTimeout(mbT); };
     const say=(f,i)=>{ endIntro();
@@ -871,8 +904,12 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
       idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]]; const b=f.querySelector('.bub');
       figs.forEach(x=>x.classList.remove('show')); b.innerHTML='<b>'+h+'</b>'+t; void f.offsetWidth; f.classList.add('show'); };
     figs.forEach((f,i)=>{ f.addEventListener('pointerdown',e=>{ if(e.button>0) return; if(e.pointerType==='mouse') e.preventDefault(); f.__d=[e.clientX,e.clientY]; });
-      f.addEventListener('pointerup',e=>{ const d=f.__d; f.__d=null; if(!d||Math.hypot(e.clientX-d[0],e.clientY-d[1])>12) return; say(f,i); f.__pd=Date.now(); });
-      f.addEventListener('click',e=>{ if(Date.now()-(f.__pd||0)<800) return; say(f,i); }); });
+      f.addEventListener('pointerup',e=>{ const d=f.__d; f.__d=null; if(!d||Math.hypot(e.clientX-d[0],e.clientY-d[1])>12) return; f.__pd=Date.now(); if(Date.now()-(f.__hv||0)<300) return; say(f,i); });
+      f.addEventListener('click',e=>{ if(Date.now()-(f.__pd||0)<800) return; say(f,i); });
+      /* Юля 25.11 abends: «das Coolste – die Figuren reden»: Maus drüber = Figur spricht (wie vor 24.11), Tipp am Telefon wie bisher */
+      const fine=matchMedia('(hover:hover) and (pointer:fine)');
+      f.addEventListener('mouseenter',()=>{ if(!fine.matches||PH()) return; clearTimeout(f.__lv); if(!f.classList.contains('show')){ say(f,i); f.__hv=Date.now(); } });
+      f.addEventListener('mouseleave',()=>{ if(!fine.matches||PH()) return; clearTimeout(f.__lv); f.__lv=setTimeout(()=>f.classList.remove('show'),1800); }); });
     document.addEventListener('pointerdown',e=>{ if(!e.target.closest('.fig')&&!intro){ figs.forEach(x=>x.classList.remove('show')); if(!e.target.closest('.mbub')) mbHide(); } });
 }
 
