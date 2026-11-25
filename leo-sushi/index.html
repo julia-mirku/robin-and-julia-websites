@@ -743,11 +743,11 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 @media (min-width:761px) and (max-width:1100px) and (min-height:821px){.sheet{height:calc(5 * 92px + 34px)}.sheet .half{grid-auto-rows:92px}}
 @media (min-width:761px) and (max-width:1100px) and (max-height:820px){.sheet{height:calc(5 * 76px + 34px)}.sheet .half{grid-auto-rows:76px}}
 </style>
-</head>
+<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
 <body>
 
 <!-- ENTWURF-LEISTE (nur Leo, Kiku entfernt sie beim Bauen) -->
-<div class="draftbar" id="draftbar" role="note">Website-Entwurf von Julia &amp; Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+<div class="draftbar" id="draftbar" role="note" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 <!-- /ENTWURF-LEISTE -->
 <header class="hdr" id="hdr">
   <div class="wrap">
