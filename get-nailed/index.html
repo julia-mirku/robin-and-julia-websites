@@ -791,6 +791,72 @@ header.top{z-index:90!important}
   #atelier .ctrl{margin-bottom:3px}
 }
 </style>
+
+<style id="runde-25-11-d">
+/* Set-Studio: «+ Palette» weg (Flieder steht in der Reihe) */
+#palBtn{display:none!important}
+/* Hand am Laptop grösser */
+@media (min-width:901px){#atelier .set-grid>.stage{width:min(100%,calc((100svh - 262px)*.8),420px)!important}}
+/* Aktionen unter der Hand */
+.set-acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+.set-acts .btn{min-height:44px;padding:0 18px;font-size:12px;letter-spacing:.14em}
+.sa-note{flex-basis:100%;text-align:center;font-size:13px;color:var(--tinte-2);min-height:0;margin:0}
+.sa-note:empty{display:none}
+@media (min-width:901px){#atelier .sec-head{align-items:center}#atelier .sec-head .set-acts{margin:0 0 0 auto;justify-content:flex-end;max-width:520px}#atelier .sec-head .sa-note{position:absolute;right:0;top:100%;margin-top:6px;white-space:nowrap;background:var(--papier);padding:2px 8px;border-radius:8px;z-index:2}#atelier .sec-head .set-acts{position:relative;flex-wrap:nowrap}#atelier .sec-head .lead{display:none}#atelier .sec-head .set-acts .btn{min-height:38px;height:38px}}
+@media (max-width:900px){.set-acts{margin-top:14px}.set-acts .btn{flex:1 1 100%}}
+#saPic.btn-line{color:var(--tinte);border-color:rgba(43,35,32,.35)}
+@media (hover:hover){#saPic.btn-line:hover{border-color:var(--lack);color:var(--lack)}}
+.sheet .sheet-cta a{font:600 12px "Josefin Sans";letter-spacing:.16em;text-transform:uppercase;padding:0 20px;flex:1 1 0;display:inline-flex;align-items:center;justify-content:center}
+.sheet .sheet-cta a.btn-gold{color:var(--samt)}
+@media (max-width:900px){#kontakt .hero-cta .btn{flex:1 1 calc(50% - 6px);padding:0 10px}}
+h2.t,.lead,.fin-big,.sec-head p{text-wrap:balance}
+p{text-wrap:pretty}
+.fin-adr b{white-space:nowrap}
+.days{flex-wrap:nowrap}.days button{flex:1 1 0;min-width:0;width:auto;max-width:56px}
+@media (min-width:901px) and (max-width:1180px){.infocard .acts .btn{padding:0 14px;font-size:11px;letter-spacing:.1em}}
+@media (max-width:420px){.ac-cta .btn{padding:0 14px;letter-spacing:.1em;flex:1 1 0}}
+@media (max-width:1100px){.sheet .lang{display:flex!important;align-self:flex-start;margin-top:18px}.sheet .lang button{min-width:56px;min-height:44px}}
+@media (max-width:900px){#atelier .ctrl h3{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis}}
+/* Telefon: Mini-Bild neben dem Preis */
+.res-th{display:none}
+@media (max-width:900px){#atelier .result{grid-template-columns:52px minmax(0,1fr) auto!important}
+  .res-th{display:block;width:52px;height:64px;object-fit:cover;border-radius:10px;box-shadow:0 0 0 2px rgba(241,223,182,.5)}}
+/* Team */
+.tm-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.tm{margin:0;background:rgba(255,255,255,.55);border:1px solid var(--linie);border-radius:22px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.tm img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:999px 999px 0 0;transition:transform .6s var(--ease)}
+.tm figcaption{padding:14px 16px 16px;display:flex;flex-direction:column;gap:3px}
+.tm b{font:400 22px "Playfair Display";color:var(--tinte)}
+.tm span{font-size:13.5px;color:var(--tinte-2);line-height:1.35}
+.tm small{font:600 11px "Josefin Sans";letter-spacing:.2em;color:var(--gold);margin-top:4px}
+@media (hover:hover){.tm:hover{transform:translateY(-4px);border-color:var(--gold-2);box-shadow:0 0 0 6px rgba(241,223,182,.45)}.tm:hover img{transform:scale(1.04)}}
+@media (max-width:1100px){.tm-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.tm-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px}.tm{flex:0 0 62%;scroll-snap-align:start}}
+@media (pointer:coarse){.tm:active{border-color:var(--gold-2)}}
+/* Gutschein: Theaterticket */
+.gs-ticket{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 260px;background:var(--samt);color:var(--papier);border-radius:24px;overflow:hidden;box-shadow:0 0 0 1px rgba(217,189,132,.55),0 30px 60px -34px rgba(42,14,23,.8);transition:transform .35s var(--ease),box-shadow .35s}
+.gs-ticket:before,.gs-ticket:after{content:"";position:absolute;right:248px;width:24px;height:24px;border-radius:50%;background:var(--papier,#F4ECE4)}
+.gs-ticket:before{top:-12px}.gs-ticket:after{bottom:-12px}
+.gs-l{padding:clamp(26px,3vw,44px)}
+.gs-l .kicker{color:var(--gold-2)}
+.gs-l h2.t{color:var(--papier)}.gs-l h2.t em{color:var(--gold-2)}
+.gs-l p{color:rgba(246,238,230,.8);max-width:52ch;margin-top:10px}
+.gs-amt{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.gs-amt button{min-height:44px;padding:0 16px;border-radius:99px;border:1px solid rgba(217,189,132,.5);color:var(--papier);font:500 13px "Josefin Sans";letter-spacing:.12em;transition:background .2s,color .2s,border-color .2s}
+.gs-amt button.on{background:var(--gold-2);color:var(--samt);border-color:var(--gold-2)}
+@media (hover:hover){.gs-amt button:not(.on):hover{border-color:var(--gold-3);background:rgba(217,189,132,.14)}.gs-ticket:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--gold-2),0 36px 70px -34px rgba(42,14,23,.85)}}
+.gs-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:20px}
+.gs-tel{color:var(--gold-3);font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+.gs-r{border-left:2px dashed rgba(217,189,132,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;background:linear-gradient(160deg,rgba(217,189,132,.12),rgba(217,189,132,0))}
+.gs-adm{font:600 11px "Josefin Sans";letter-spacing:.34em;text-transform:uppercase;color:var(--gold-2)}
+.gs-val{font:400 44px "Playfair Display";color:var(--gold-3);transition:transform .25s}
+.gs-sal{font:400 15px "Playfair Display";font-style:italic;color:var(--papier)}
+.gs-no{font:500 11px "Josefin Sans";letter-spacing:.3em;color:rgba(246,238,230,.55)}
+@media (max-width:760px){.gs-ticket{grid-template-columns:1fr}.gs-r{border-left:0;border-top:2px dashed rgba(217,189,132,.5);flex-direction:row;flex-wrap:wrap;gap:8px 16px;padding:18px}
+  .gs-ticket:before,.gs-ticket:after{right:auto;top:auto;bottom:auto}.gs-ticket:before,.gs-ticket:after{display:none}.gs-val{font-size:32px}}
+/* Abstände der neuen Blöcke am Laptop wie die anderen */
+@media (min-width:901px){#team.sec{padding-top:14px!important;padding-bottom:40px!important}#gutschein.sec{padding-top:20px!important;padding-bottom:40px!important}}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mkHinweis" data-en="Website draft by Julia &amp; Robin Mirku · preview only – some links and features are not active yet." data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -834,7 +900,7 @@ header.top{z-index:90!important}
       <h1 class="rise d1">Our reputation is<br><em>on your hands.</em></h1>
       <p class="sub rise d2" data-en="Hundreds of colours on the wall, one standard on every hand: careful prep, clean work and nails that last.">Hunderte Farben an der Wand, ein Standard an jeder Hand: sorgfältige Vorbereitung, saubere Arbeit, Nägel, die halten.</p>
       <div class="hero-cta rise d3"><a class="btn btn-gold" href="#salons" data-en="Book now">Termin buchen</a><a class="btn btn-line" href="#atelier" data-en="Design your set">Set entwerfen</a></div>
-      <div class="facts rise d4"><div><b>5,0</b>Fresha · 1000+</div><div><b>23</b><span data-en="years of experience">Jahre Erfahrung</span></div><div><b>2</b><span data-en="salons + academy">Salons + Academy</span></div></div>
+      <div class="facts rise d4"><div><b>6</b><span data-en="languages">Sprachen</span></div><div><b>23</b><span data-en="years of experience">Jahre Erfahrung</span></div><div><b>2</b><span data-en="salons + academy">Salons + Academy</span></div></div>
     </div>
     <div class="buehne rise d2">
       <div class="portal"><img src="img/hand_dunkel_leder.webp" alt="Dunkle Nägel aus dem Salon Get Nailed!" fetchpriority="high"></div>
@@ -849,7 +915,7 @@ header.top{z-index:90!important}
     </div>
   </div>
 <div class="regal" id="regal">
-    <span class="regal-k"><span class="rk-d" data-en="The wall of polish — glide over it and pick your colour">Die Lackwand — fahren Sie darüber und wählen Sie Ihre Farbe</span><span class="rk-m" data-en="The wall of polish · swipe to pick your colour">Die Lackwand · wischen und Farbe wählen</span></span>
+    <span class="regal-k"><span class="rk-d" data-en="The wall of polish — glide over it, one click takes the colour to the Set Studio">Die Lackwand — fahren Sie darüber, ein Klick nimmt die Farbe ins Set-Studio</span><span class="rk-m" data-en="The wall of polish · swipe and tap your colour">Die Lackwand · wischen und Farbe antippen</span></span>
     <div class="regal-in" id="regalIn"><img src="img/lackwand_regal_v4.webp" alt="Regal mit Nagellacken" draggable="false" width="2200" height="188"></div><span class="needle" aria-hidden="true"></span>
     <div class="regal-tip" id="regalTip" aria-hidden="true"><i></i><b data-en="Click = into the Set Studio">Klick = ins Set-Studio</b></div>
   </div>
@@ -863,7 +929,7 @@ header.top{z-index:90!important}
       <h1 class="rise d1">Our reputation is<br><em>on your hands.</em></h1>
       <p class="sub rise d2" data-en="Russian manicure, X-Build BIAB, X-Press Nails and nail art – in Seefeld by the Opera House and at Schaffhauserplatz.">Russian Manicure, X-Build BIAB, X-Press Nails und Nail Art – im Seefeld am Opernhaus und am Schaffhauserplatz.</p>
       <div class="hero-cta rise d3"><a class="btn btn-gold" href="#salons" data-en="Book now">Termin buchen</a><a class="btn btn-line" href="#atelier" data-en="Design your set">Set entwerfen</a></div>
-      <div class="facts rise d4"><div><b>5,0</b>Fresha · 1000+</div><div><b>23</b><span data-en="years of experience">Jahre Erfahrung</span></div><div><b>2</b><span data-en="salons + academy">Salons + Academy</span></div></div>
+      <div class="facts rise d4"><div><b>6</b><span data-en="languages">Sprachen</span></div><div><b>23</b><span data-en="years of experience">Jahre Erfahrung</span></div><div><b>2</b><span data-en="salons + academy">Salons + Academy</span></div></div>
     </div>
     <div class="buehne rise d2">
       <div class="portal"><img src="img/hand_nude.webp" alt="Nude Mandelnägel aus dem Salon Get Nailed!" fetchpriority="high"></div>
@@ -886,14 +952,14 @@ header.top{z-index:90!important}
     <div class="sec-head reveal">
       <div><span class="kicker" data-en="Two salons · one signature">Zwei Salons · eine Handschrift</span>
       <h2 class="t" data-en="Choose your <em>salon.</em>">Wählen Sie Ihren <em>Salon.</em></h2></div>
-      <p class="lead" data-en="Two addresses, the same care and the same team spirit. Pick the place that suits your day.">Zwei Adressen, dieselbe Sorgfalt. Wählen Sie den Ort, der zu Ihrem Tag passt.</p>
+      <p class="lead" data-en="Two addresses, the same care – and always the place that suits your day.">Zwei Adressen, dieselbe Sorgfalt – und immer der Ort, der zu Ihrem Tag passt.</p>
     </div>
     <div class="stages reveal" role="tablist" aria-label="Salon wählen">
       <button class="stagecard on" data-s="seefeld" role="tab" aria-selected="true">
         <img loading="lazy" src="img/seefeld_raum.webp" alt="Salon Seefeld: Empfang aus Nussbaum, Wand mit Nagellacken">
         <span class="sel" data-en="Selected">Gewählt</span>
-        <span class="no" data-en="I · The original · since 2016">I · Das Original · seit 2016</span>
-        <h3>Seefeld <em style="font-style:italic;color:var(--gold-2)">am Opernhaus</em></h3>
+        <span class="no" data-en="I · The original">I · Das Original</span>
+        <h3 data-en="Seefeld <em style=&quot;font-style:italic;color:var(--gold-2)&quot;>by the Opera</em>">Seefeld <em style="font-style:italic;color:var(--gold-2)">am Opernhaus</em></h3>
         <p data-en="Where it all started. Full nail menu plus hair, make-up and Hydralips.">Hier hat alles angefangen. Das volle Nagel-Programm, dazu Hair, Make-up und Hydralips.</p>
       </button>
       <button class="stagecard" data-s="schaffhauserplatz" role="tab" aria-selected="false">
@@ -943,6 +1009,7 @@ header.top{z-index:90!important}
           <img class="ph" id="phB" alt="" aria-hidden="true">
         </div>
         <p class="stage-cap"><span id="stageKind">Ihr Set</span> <b id="stageCap">Medium · mit Farbe · Mandel</b></p>
+        <div class="set-acts" id="setActs"><button type="button" class="btn btn-gold" id="saBook" data-en="Book with this set">Mit diesem Set buchen</button><button type="button" class="btn btn-line" id="saPic" data-en="Save as image">Als Bild speichern</button><p class="sa-note" id="saNote" aria-live="polite"></p></div>
       </div>
       <div class="reveal">
         <div class="ctrl-pair">
@@ -959,7 +1026,7 @@ header.top{z-index:90!important}
         <div class="ctrl"><h3>Form <span class="fin-hint" data-hint="form"></span></h3><div class="seg" id="segForm">
           <button data-v="mandel">Mandel</button><button data-v="eckig">Eckig</button>
         </div></div>
-        <div class="ctrl" id="colCtrl"><h3><span id="colTitle">Farbe</span> <span class="fin-cur" id="colName"></span> <span class="fin-hint" data-hint="col"></span></h3><div class="colrow"><div class="seg cols" id="segCol"><div class="pgrp"><span class="pg">Nude</span><div class="pgb"><button data-v="nude" class="pin" style="--c:#CA867C" aria-label="Nude" title="Nude"></button><button data-v="milky" class="pin" style="--c:#D4BCBB" aria-label="Milky" title="Milky"></button><button data-v="sand" data-w="2" style="--c:#D8B99A" aria-label="Sand" title="Sand"></button><button data-v="champagner" data-w="2" style="--c:#E6CDB4" aria-label="Champagner" title="Champagner"></button><button data-v="pfirsich" data-w="2" style="--c:#E3A98F" aria-label="Pfirsich-Nude" title="Pfirsich-Nude"></button><button data-v="karamell" data-w="3" style="--c:#B47A55" aria-label="Karamell" title="Karamell"></button></div></div><div class="pgrp"><span class="pg">Rosa</span><div class="pgb"><button data-v="rosa" class="pin" style="--c:#DA9898" aria-label="Rosa" title="Rosa"></button><button data-v="babyrosa" data-w="1" style="--c:#F2C4CC" aria-label="Babyrosa" title="Babyrosa"></button><button data-v="puderrosa" data-w="1" style="--c:#E0AEB0" aria-label="Puderrosa" title="Puderrosa"></button><button data-v="altrosa" data-w="1" style="--c:#C08585" aria-label="Altrosa" title="Altrosa"></button><button data-v="pink" data-w="2" style="--c:#E0457B" aria-label="Pink" title="Pink"></button><button data-v="fuchsia" data-w="3" style="--c:#C2185B" aria-label="Fuchsia" title="Fuchsia"></button></div></div><div class="pgrp"><span class="pg">Rot</span><div class="pgb"><button data-v="rot" class="pin" style="--c:#910B1E" aria-label="Rot" title="Rot"></button><button data-v="kirschrot" data-w="1" style="--c:#B0102A" aria-label="Kirschrot" title="Kirschrot"></button><button data-v="tomatenrot" data-w="3" style="--c:#D7322B" aria-label="Tomatenrot" title="Tomatenrot"></button><button data-v="koralle" data-w="2" style="--c:#F06A5A" aria-label="Koralle" title="Koralle"></button><button data-v="ziegelrot" data-w="3" style="--c:#A8442F" aria-label="Ziegelrot" title="Ziegelrot"></button></div></div><div class="pgrp"><span class="pg">Bordeaux</span><div class="pgb"><button data-v="bordeaux" class="pin" style="--c:#531A20" aria-label="Bordeaux" title="Bordeaux"></button><button data-v="weinrot" data-w="1" style="--c:#6E1423" aria-label="Weinrot" title="Weinrot"></button><button data-v="beere" data-w="2" style="--c:#8C2A4B" aria-label="Beere" title="Beere"></button><button data-v="pflaume" data-w="3" style="--c:#5B2A3E" aria-label="Pflaume" title="Pflaume"></button></div></div><div class="pgrp"><span class="pg">Braun</span><div class="pgb"><button data-v="mokka" data-w="1" style="--c:#6B4A3A" aria-label="Mokka" title="Mokka"></button><button data-v="schokolade" data-w="3" style="--c:#4A2C22" aria-label="Schokolade" title="Schokolade"></button><button data-v="cappuccino" data-w="2" style="--c:#A88672" aria-label="Cappuccino" title="Cappuccino"></button><button data-v="taupe" data-w="2" style="--c:#8E7C74" aria-label="Taupe" title="Taupe"></button></div></div><div class="pgrp"><span class="pg">Flieder</span><div class="pgb"><button data-v="flieder" style="--c:#B1899F" aria-label="Flieder" title="Flieder"></button><button data-v="mauve" class="pin" style="--c:#9E6062" aria-label="Mauve" title="Mauve"></button><button data-v="lavendel" data-w="1" style="--c:#C3B1DA" aria-label="Lavendel" title="Lavendel"></button><button data-v="violett" data-w="3" style="--c:#6A3FA0" aria-label="Violett" title="Violett"></button><button data-v="aubergine" data-w="4" style="--c:#3F1F3A" aria-label="Aubergine" title="Aubergine"></button></div></div><div class="pgrp"><span class="pg">Blau</span><div class="pgb"><button data-v="aqua" class="pin" style="--c:#87ADAA" aria-label="Aqua" title="Aqua"></button><button data-v="babyblau" data-w="1" style="--c:#B9D3EE" aria-label="Babyblau" title="Babyblau"></button><button data-v="himmelblau" data-w="2" style="--c:#6FA8DC" aria-label="Himmelblau" title="Himmelblau"></button><button data-v="jeansblau" data-w="4" style="--c:#3F5F8A" aria-label="Jeansblau" title="Jeansblau"></button><button data-v="navy" data-w="3" style="--c:#1E2A4A" aria-label="Navy" title="Navy"></button><button data-v="petrol" data-w="4" style="--c:#1F5F6B" aria-label="Petrol" title="Petrol"></button></div></div><div class="pgrp"><span class="pg">Grün</span><div class="pgb"><button data-v="mint" data-w="1" style="--c:#A8DCC5" aria-label="Mint" title="Mint"></button><button data-v="salbei" data-w="2" style="--c:#9CAF94" aria-label="Salbei" title="Salbei"></button><button data-v="pistazie" data-w="3" style="--c:#B9C98A" aria-label="Pistazie" title="Pistazie"></button><button data-v="olive" data-w="4" style="--c:#6B6B3A" aria-label="Olive" title="Olive"></button><button data-v="smaragd" data-w="4" style="--c:#1F6E52" aria-label="Smaragd" title="Smaragd"></button></div></div><div class="pgrp"><span class="pg">Weiss & Schwarz</span><div class="pgb"><button data-v="weiss" data-w="1" style="--c:#F4F1EC" aria-label="Weiss" title="Weiss"></button><button data-v="schwarz" class="pin p8" style="--c:#221916" aria-label="Schwarz" title="Schwarz"></button><button data-v="grau" data-w="3" style="--c:#9A9A9E" aria-label="Grau" title="Grau"></button><button data-v="anthrazit" data-w="4" style="--c:#3A3B3F" aria-label="Anthrazit" title="Anthrazit"></button></div></div><div class="pgrp"><span class="pg">Bunt</span><div class="pgb"><button data-v="gelb" data-w="4" style="--c:#F3D25B" aria-label="Gelb" title="Gelb"></button><button data-v="orange" data-w="4" style="--c:#F08A2E" aria-label="Orange" title="Orange"></button><button data-v="neonpink" data-w="4" style="--c:#FF3FA4" aria-label="Neon-Pink" title="Neon-Pink"></button><button data-v="neongruen" data-w="4" style="--c:#7CF25A" aria-label="Neon-Grün" title="Neon-Grün"></button></div></div></div><button type="button" class="palbtn" id="palBtn" aria-expanded="false" aria-controls="segCol">+ Palette</button></div><div class="frbox" id="frBox" hidden><span class="frl">Basis</span><div class="seg cols" id="segFb"><button data-v="nude" style="--c:#CA867C" aria-label="Nude" title="Basis Nude"></button><button data-v="milky" style="--c:#D5B2B0" aria-label="Milky" title="Basis Milky"></button><button data-v="rosa" style="--c:#DA9093" aria-label="Rosa" title="Basis Rosa"></button></div><span class="frl">Spitze</span><div class="seg cols" id="segFt"><button data-v="weiss" style="--c:#F6F1EF" aria-label="Weiss" title="Spitze Weiss"></button><button data-v="rot" style="--c:#910B1E" aria-label="Rot" title="Spitze Rot"></button><button data-v="schwarz" style="--c:#221916" aria-label="Schwarz" title="Spitze Schwarz"></button></div></div><p class="farbe-note" id="farbeNote">Beispiele – weitere Farben im Salon.</p></div>
+        <div class="ctrl" id="colCtrl"><h3><span id="colTitle">Farbe</span> <span class="fin-cur" id="colName"></span> <span class="fin-hint" data-hint="col"></span></h3><div class="colrow"><div class="seg cols" id="segCol"><div class="pgrp"><span class="pg">Nude</span><div class="pgb"><button data-v="nude" class="pin" style="--c:#D08E84" aria-label="Nude" title="Nude"></button><button data-v="milky" class="pin" style="--c:#D4BCBB" aria-label="Milky" title="Milky"></button><button data-v="sand" data-w="2" style="--c:#D8B99A" aria-label="Sand" title="Sand"></button><button data-v="champagner" data-w="2" style="--c:#E6CDB4" aria-label="Champagner" title="Champagner"></button><button data-v="pfirsich" data-w="2" style="--c:#E3A98F" aria-label="Pfirsich-Nude" title="Pfirsich-Nude"></button><button data-v="karamell" data-w="3" style="--c:#B47A55" aria-label="Karamell" title="Karamell"></button></div></div><div class="pgrp"><span class="pg">Rosa</span><div class="pgb"><button data-v="rosa" class="pin" style="--c:#EDAFB4" aria-label="Rosa" title="Rosa"></button><button data-v="babyrosa" data-w="1" style="--c:#F2C4CC" aria-label="Babyrosa" title="Babyrosa"></button><button data-v="puderrosa" data-w="1" style="--c:#E0AEB0" aria-label="Puderrosa" title="Puderrosa"></button><button data-v="altrosa" data-w="1" style="--c:#C08585" aria-label="Altrosa" title="Altrosa"></button><button data-v="pink" data-w="2" style="--c:#E0457B" aria-label="Pink" title="Pink"></button><button data-v="fuchsia" data-w="3" style="--c:#C2185B" aria-label="Fuchsia" title="Fuchsia"></button></div></div><div class="pgrp"><span class="pg">Rot</span><div class="pgb"><button data-v="rot" class="pin" style="--c:#84101D" aria-label="Rot" title="Rot"></button><button data-v="kirschrot" data-w="1" style="--c:#B0102A" aria-label="Kirschrot" title="Kirschrot"></button><button data-v="tomatenrot" data-w="3" style="--c:#D7322B" aria-label="Tomatenrot" title="Tomatenrot"></button><button data-v="koralle" data-w="2" style="--c:#F06A5A" aria-label="Koralle" title="Koralle"></button><button data-v="ziegelrot" data-w="3" style="--c:#A8442F" aria-label="Ziegelrot" title="Ziegelrot"></button></div></div><div class="pgrp"><span class="pg">Bordeaux</span><div class="pgb"><button data-v="bordeaux" class="pin" style="--c:#582427" aria-label="Bordeaux" title="Bordeaux"></button><button data-v="weinrot" data-w="1" style="--c:#6E1423" aria-label="Weinrot" title="Weinrot"></button><button data-v="beere" data-w="2" style="--c:#8C2A4B" aria-label="Beere" title="Beere"></button><button data-v="pflaume" data-w="3" style="--c:#5B2A3E" aria-label="Pflaume" title="Pflaume"></button></div></div><div class="pgrp"><span class="pg">Braun</span><div class="pgb"><button data-v="mokka" data-w="1" style="--c:#6B4A3A" aria-label="Mokka" title="Mokka"></button><button data-v="schokolade" data-w="3" style="--c:#4A2C22" aria-label="Schokolade" title="Schokolade"></button><button data-v="cappuccino" data-w="2" style="--c:#A88672" aria-label="Cappuccino" title="Cappuccino"></button><button data-v="taupe" data-w="2" style="--c:#8E7C74" aria-label="Taupe" title="Taupe"></button></div></div><div class="pgrp"><span class="pg">Flieder</span><div class="pgb"><button data-v="flieder" class="pin" style="--c:#BF98B6" aria-label="Flieder" title="Flieder"></button><button data-v="mauve" class="pin" style="--c:#A2656C" aria-label="Mauve" title="Mauve"></button><button data-v="lavendel" data-w="1" style="--c:#C3B1DA" aria-label="Lavendel" title="Lavendel"></button><button data-v="violett" data-w="3" style="--c:#6A3FA0" aria-label="Violett" title="Violett"></button><button data-v="aubergine" data-w="4" style="--c:#3F1F3A" aria-label="Aubergine" title="Aubergine"></button></div></div><div class="pgrp"><span class="pg">Blau</span><div class="pgb"><button data-v="aqua" class="pin" style="--c:#8FB1B1" aria-label="Aqua" title="Aqua"></button><button data-v="babyblau" data-w="1" style="--c:#B9D3EE" aria-label="Babyblau" title="Babyblau"></button><button data-v="himmelblau" data-w="2" style="--c:#6FA8DC" aria-label="Himmelblau" title="Himmelblau"></button><button data-v="jeansblau" data-w="4" style="--c:#3F5F8A" aria-label="Jeansblau" title="Jeansblau"></button><button data-v="navy" data-w="3" style="--c:#1E2A4A" aria-label="Navy" title="Navy"></button><button data-v="petrol" data-w="4" style="--c:#1F5F6B" aria-label="Petrol" title="Petrol"></button></div></div><div class="pgrp"><span class="pg">Grün</span><div class="pgb"><button data-v="mint" data-w="1" style="--c:#A8DCC5" aria-label="Mint" title="Mint"></button><button data-v="salbei" data-w="2" style="--c:#9CAF94" aria-label="Salbei" title="Salbei"></button><button data-v="pistazie" data-w="3" style="--c:#B9C98A" aria-label="Pistazie" title="Pistazie"></button><button data-v="olive" data-w="4" style="--c:#6B6B3A" aria-label="Olive" title="Olive"></button><button data-v="smaragd" data-w="4" style="--c:#1F6E52" aria-label="Smaragd" title="Smaragd"></button></div></div><div class="pgrp"><span class="pg">Weiss & Schwarz</span><div class="pgb"><button data-v="weiss" data-w="1" style="--c:#F4F1EC" aria-label="Weiss" title="Weiss"></button><button data-v="schwarz" class="pin p8" style="--c:#2A1E1E" aria-label="Schwarz" title="Schwarz"></button><button data-v="grau" data-w="3" style="--c:#9A9A9E" aria-label="Grau" title="Grau"></button><button data-v="anthrazit" data-w="4" style="--c:#3A3B3F" aria-label="Anthrazit" title="Anthrazit"></button></div></div><div class="pgrp"><span class="pg">Bunt</span><div class="pgb"><button data-v="gelb" data-w="4" style="--c:#F3D25B" aria-label="Gelb" title="Gelb"></button><button data-v="orange" data-w="4" style="--c:#F08A2E" aria-label="Orange" title="Orange"></button><button data-v="neonpink" data-w="4" style="--c:#FF3FA4" aria-label="Neon-Pink" title="Neon-Pink"></button><button data-v="neongruen" data-w="4" style="--c:#7CF25A" aria-label="Neon-Grün" title="Neon-Grün"></button></div></div></div><button type="button" class="palbtn" id="palBtn" aria-expanded="false" aria-controls="segCol">+ Palette</button></div><div class="frbox" id="frBox" hidden><span class="frl">Basis</span><div class="seg cols" id="segFb"><button data-v="nude" style="--c:#D08E84" aria-label="Nude" title="Basis Nude"></button><button data-v="milky" style="--c:#D5B2B0" aria-label="Milky" title="Basis Milky"></button><button data-v="rosa" style="--c:#DA9093" aria-label="Rosa" title="Basis Rosa"></button></div><span class="frl">Spitze</span><div class="seg cols" id="segFt"><button data-v="weiss" style="--c:#F6F1EF" aria-label="Weiss" title="Spitze Weiss"></button><button data-v="rot" style="--c:#84101D" aria-label="Rot" title="Spitze Rot"></button><button data-v="schwarz" style="--c:#2A1E1E" aria-label="Schwarz" title="Spitze Schwarz"></button></div></div><p class="farbe-note" id="farbeNote">Beispiele – weitere Farben im Salon.</p></div>
         <div class="ctrl fxctrl"><h3>Effekt <span class="fin-hint" data-hint="fx"></span></h3><div class="seg extras" id="segFx">
           <button data-v="none">Ohne</button><button data-v="chrome" data-p="20" data-t="15">Chrome · Glazed <span>+20</span></button><button data-v="cat" data-p="15" data-t="15">Cat Eye <span>+15</span></button><button data-v="glitzer" data-p="15" data-t="15">Glitzer <span>+15</span></button>
         </div></div>
@@ -967,7 +1034,7 @@ header.top{z-index:90!important}
           <button data-v="steine" data-p="5">Strass <span>+5</span></button>
           <button data-v="charms" data-p="5">Charms <span>+5</span></button>
         </div></div></div>
-                <div class="result">
+                <div class="result"><img class="res-th" id="resTh" alt="" aria-hidden="true">
           <div>
             <div class="name" id="resName">Neues Set · Medium mit Farbe · 60 Min.</div>
             <div class="ex" id="resEx"></div>
@@ -986,7 +1053,7 @@ header.top{z-index:90!important}
   <div class="wrap">
     <div class="sec-head reveal">
       <div><span class="kicker" data-en="The programme · prices in CHF">Das Programm · Preise in CHF</span>
-      <h2 class="t" data-en="Five acts, <em>full house.</em>">Fünf Akte, <em>volles Haus.</em></h2></div>
+      <h2 class="t" data-en="Five acts. <em>You play the lead.</em>">Fünf Akte. <em>Die Hauptrolle spielen Sie.</em></h2></div>
       <p class="lead" data-en="All prices as on the Get Nailed booking page. Manicures with colour are always gel polish.">Alle Preise wie auf der Get-Nailed-Buchungsseite. Manicure mit Farbe ist bei uns immer Gellack.</p>
     </div>
     <div class="prog reveal">
@@ -1002,9 +1069,9 @@ header.top{z-index:90!important}
           <h3>Manicure</h3><p class="sub" data-en="Russian manicure with the e-file: precise cuticle work, without harsh cutting.">Russian Manicure mit E-File: präzise Nagelhautpflege, ohne grobes Schneiden.</p>
           <div class="akt-cols">
           <div class="grp"><h5 data-en="With gel polish">Mit Gellack</h5>
-          <div class="prow"><span>Quick Russian Mani + Gellack, inkl. Ablösen</span><small>60 Min.</small><b>105.–</b></div>
+          <div class="prow"><span data-en="Quick Russian Mani + gel polish, incl. removal">Quick Russian Mani + Gellack, inkl. Ablösen</span><small>60 Min.</small><b>105.–</b></div>
           <div class="prow"><span>LUX Russian Mani + Gellack</span><small>60 Min.</small><b><em data-en="from">ab</em>110.–</b></div>
-          <div class="prow"><span>LUX Russian Mani + Gellack, inkl. Ablösen</span><small>70 Min.</small><b>130.–</b></div>
+          <div class="prow"><span data-en="LUX Russian Mani + gel polish, incl. removal">LUX Russian Mani + Gellack, inkl. Ablösen</span><small>70 Min.</small><b>130.–</b></div>
           <div class="prow"><span>Sculpted Russian Manicure</span><small>105 Min.</small><b>180.–</b></div>
           <div class="prow"><span>Japanese Manicure</span><small>60 Min.</small><b>80.–</b></div></div>
           <div class="grp"><h5 data-en="Without colour">Ohne Farbe</h5>
@@ -1025,9 +1092,9 @@ header.top{z-index:90!important}
           <div class="prow"><span>X-Build BIAB Russian Manicure M (bis 4 mm)</span><small>75 Min.</small><b>150.–</b></div>
           <div class="prow"><span>BIAB Infill S (bis 2 mm)</span><small>75 Min.</small><b>130.–</b></div></div>
           <div class="grp"><h5 data-en="New set">Neues Set</h5>
-          <div class="prow"><span>X-Press, neues Set mit Verlängerung</span><small>90 Min.</small><b>185.–</b></div>
-          <div class="prow"><span>X-Press, neues Set inkl. Ablösen</span><small>120 Min.</small><b>200.–</b></div>
-          <div class="prow"><span>Gel, neues Set mit Schablone</span><small>120 Min.</small><b>220.–</b></div></div>
+          <div class="prow"><span data-en="X-Press, new set with extension">X-Press, neues Set mit Verlängerung</span><small>90 Min.</small><b>185.–</b></div>
+          <div class="prow"><span data-en="X-Press, new set incl. removal">X-Press, neues Set inkl. Ablösen</span><small>120 Min.</small><b>200.–</b></div>
+          <div class="prow"><span data-en="Gel, new set with forms">Gel, neues Set mit Schablone</span><small>120 Min.</small><b>220.–</b></div></div>
           <div class="grp"><h5 data-en="Infill">Auffüllen</h5>
           <div class="prow"><span>Infill S (bis 3 Wochen)</span><small>90 Min.</small><b>120.–</b></div>
           <div class="prow"><span>Infill M (4–5 Wochen)</span><small>90 Min.</small><b>130.–</b></div>
@@ -1075,9 +1142,9 @@ header.top{z-index:90!important}
           <div class="akt-cols">
           <div class="grp"><h5>Lashes</h5>
           <div class="prow"><span>Lash Lift, Tint &amp; Keratin</span><small>60 Min.</small><b><em data-en="from">ab</em>88.–</b></div>
-          <div class="prow"><span>1:1 Natural Look, neues Set</span><small>90 Min.</small><b>150.–</b></div>
-          <div class="prow"><span>2D Discreet Volume, neues Set</span><small>90 Min.</small><b>150.–</b></div>
-          <div class="prow"><span>Auffüllen nach 2 Wochen</span><small>60 Min.</small><b>100.–</b></div></div>
+          <div class="prow"><span data-en="1:1 Natural Look, new set">1:1 Natural Look, neues Set</span><small>90 Min.</small><b>150.–</b></div>
+          <div class="prow"><span data-en="2D Discreet Volume, new set">2D Discreet Volume, neues Set</span><small>90 Min.</small><b>150.–</b></div>
+          <div class="prow"><span data-en="Infill after 2 weeks">Auffüllen nach 2 Wochen</span><small>60 Min.</small><b>100.–</b></div></div>
           <div class="grp"><h5>Brows &amp; Lips</h5>
           <div class="prow"><span>Brow Shape &amp; Tint</span><small>30 Min.</small><b>50.–</b></div>
           <div class="prow"><span>Brow Lamination &amp; Tint</span><small>30 Min.</small><b>90.–</b></div>
@@ -1115,14 +1182,14 @@ header.top{z-index:90!important}
     </div>
     <div class="logen reveal" id="logen">
       <a class="loge" href="https://www.instagram.com/getnailedch/" target="_blank" rel="noopener" aria-label="Get Nailed! auf Instagram">
-        <span class="lg-k">Loge I · Instagram</span>
+        <span class="lg-k" data-en="Box I · Instagram">Loge I · Instagram</span>
         <span class="lg-h" data-en="@getnailedch – <em>the audience</em>">@getnailedch – <em>das Publikum</em></span>
         <span class="lg-count"><b id="lgZahl" data-n="13000">13 000</b><span data-en="followers watch every new set">Follower sehen jedes neue Set</span></span>
         <span class="lg-thumbs"><img loading="lazy" src="img/ig_feed_peace.webp" alt=""><img loading="lazy" src="img/ig_feed_team.webp" alt=""><img loading="lazy" src="img/ig_feed_lash.webp" alt=""></span>
         <span class="lg-go" data-en="To the profile →">Zum Profil →</span>
       </a>
       <a class="loge" href="https://www.tiktok.com/@getnailedch" target="_blank" rel="noopener" aria-label="Get Nailed! auf TikTok">
-        <span class="lg-k">Loge II · TikTok &amp; Reels</span>
+        <span class="lg-k" data-en="Box II · TikTok &amp; Reels">Loge II · TikTok &amp; Reels</span>
         <span class="lg-h" data-en="Behind the scenes, <em>in&nbsp;motion</em>">Hinter den Kulissen, <em>in&nbsp;Bewegung</em></span>
         <span class="lg-reels"><span class="lg-reel"><img loading="lazy" src="img/ig_reel_booked.webp" alt="Reel: He asked to go back to his place"><i></i></span><span class="lg-reel"><img loading="lazy" src="img/ig_reel_workplace.webp" alt="Reel: Your new Workplace"><i></i></span></span>
         <span class="lg-go" data-en="@getnailedch on TikTok →">@getnailedch auf TikTok →</span>
@@ -1154,12 +1221,28 @@ header.top{z-index:90!important}
 </section>
 
 <!-- ACADEMY -->
+<section class="sec grain" id="team">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="kicker" data-en="The team">Das Team</span>
+      <h2 class="t" data-en="The hands <em>behind your nails.</em>">Die Hände <em>hinter Ihren Nägeln.</em></h2></div>
+      <p class="lead" data-en="Five artists, each with a speciality of her own – from nail art to the lash lift.">Fünf Artists, jede mit eigener Spezialität – von Nail Art bis Lash Lift.</p>
+    </div>
+    <div class="tm-grid reveal">
+      <figure class="tm"><img loading="lazy" src="img/team_kali.webp" alt="Kali, Gründerin von Get Nailed!"><figcaption><b>Kali</b><span data-en="Founder · Master Nail Artist">Gründerin · Master Nail Artist</span><small>ES · EN · DE · PT</small></figcaption></figure>
+      <figure class="tm"><img loading="lazy" src="img/team_madalina.webp" alt="Madalina, Salon-Managerin"><figcaption><b>Madalina</b><span data-en="Manager · nails, pedicure, lashes">Managerin · Nägel, Pedicure, Lashes</span><small>RO · EN · DE</small></figcaption></figure>
+      <figure class="tm"><img loading="lazy" src="img/team_africa.webp" alt="Africa, Beauty Expert"><figcaption><b>Africa</b><span data-en="Face massage · lash lift · Hydralips">Gesichtsmassage · Lash Lift · Hydralips</span><small>ES · EN</small></figcaption></figure>
+      <figure class="tm"><img loading="lazy" src="img/team_anelise.webp" alt="Anelise, Nail Educator"><figcaption><b>Anelise</b><span data-en="Nail educator · BIAB">Nail Educator · BIAB</span><small>EN · PT</small></figcaption></figure>
+      <figure class="tm"><img loading="lazy" src="img/team_alex.webp" alt="Alex, Nail Artist"><figcaption><b>Alex</b><span data-en="Nail art · Russian manicure">Nail Art · Russian Manicure</span><small>UK · RU</small></figcaption></figure>
+    </div>
+  </div>
+</section>
 <section class="sec grain" id="academy">
   <div class="wrap">
     <div class="sec-head reveal">
       <div><span class="kicker">Koolelo × Get Nailed! Academy</span>
       <h2 class="t" data-en="From nail tech <em>to nail boss.</em>">Vom Nail Tech <em>zum Nail Boss.</em></h2></div>
-      <p class="lead" data-en="Founder Kali has more than 23 years in nails and has trained many of the artists who now run their own salons in Zurich. Courses in English and Spanish.">Gründerin Kali arbeitet seit über 23 Jahren mit Nägeln und hat viele der Nail Artists ausgebildet, die heute eigene Salons in Zürich führen. Kurse auf Englisch und Spanisch.</p>
+      <p class="lead" data-en="Founder Kali has trained many of the artists who now run their own salons in Zurich. Courses in English and Spanish.">Gründerin Kali hat viele der Nail Artists ausgebildet, die heute eigene Salons in Zürich führen. Kurse auf Englisch und Spanisch.</p>
     </div>
     <div class="ac-grid reveal">
       <div>
@@ -1171,8 +1254,8 @@ header.top{z-index:90!important}
           <div class="pass"><span class="lv" data-en="Systems · 2 days">Systeme · 2 Tage</span><h4>X-Press Nails, Gel System &amp; BIAB</h4><p data-en="For beginners with some experience who want to go further.">Für den Einstieg mit etwas Erfahrung, zum Weiterkommen.</p><div class="pm"><small data-en="2 days">2 Tage</small><b>CHF 1500</b></div></div>
           <div class="pass"><span class="lv" data-en="Pros · 5 hours">Profis · 5 Stunden</span><h4>X-Press Nails (Gel X)</h4><p data-en="For nail techs switching to the X-Press system.">Für Nail Techs, die auf das X-Press-System umsteigen.</p><div class="pm"><small data-en="5 hrs">5 Std.</small><b>CHF 500</b></div></div>
           <div class="pass"><span class="lv" data-en="Feet · 2 days">Füsse · 2 Tage</span><h4 data-en="Aesthetic Pedicure with Pododisc">Aesthetic Pedicure mit Pododisc</h4><p data-en="Modern dry pedicure technique.">Moderne Pedicure-Technik mit Pododisc.</p><div class="pm"><small data-en="2 days">2 Tage</small><b>CHF 1500</b></div></div>
-          <div class="pass"><span class="lv" data-en="All in one · 6 days">Alles in einem · 6 Tage</span><h4>All-in-one Nail Professional</h4><p data-en="Six days, including certificates – to become a nail professional.">Sechs Tage inkl. Zertifikaten – der Weg zum Nail Professional.</p><div class="pm"><small>6 Tage</small><b>CHF 4000</b></div></div>
-          <div class="pass boss"><span class="lv">Masterclass · 2 Tage</span><h4>Nail Boss Masterclass</h4><p data-en="Become self-employed and open your own beauty salon.">Selbstständig werden und den eigenen Beauty-Salon eröffnen.</p><div class="pm"><small data-en="2 days">2 Tage</small><b>CHF 2000</b></div></div>
+          <div class="pass"><span class="lv" data-en="All in one · 6 days">Alles in einem · 6 Tage</span><h4>All-in-one Nail Professional</h4><p data-en="Six days, including certificates – to become a nail professional.">Sechs Tage inkl. Zertifikaten – der Weg zum Nail Professional.</p><div class="pm"><small data-en="6 days">6 Tage</small><b>CHF 4000</b></div></div>
+          <div class="pass boss"><span class="lv" data-en="Masterclass · 2 days">Masterclass · 2 Tage</span><h4>Nail Boss Masterclass</h4><p data-en="Become self-employed and open your own beauty salon.">Selbstständig werden und den eigenen Beauty-Salon eröffnen.</p><div class="pm"><small data-en="2 days">2 Tage</small><b>CHF 2000</b></div></div>
         </div>
         <div class="ac-cta"><a class="btn btn-ink" href="https://www.getnailedx.com/courses" target="_blank" rel="noopener" data-en="All courses">Alle Kurse</a><a class="btn btn-ghost" href="tel:+41435118008" data-en="Ask Kali">Kali fragen</a></div>
       </div>
@@ -1186,7 +1269,7 @@ header.top{z-index:90!important}
     <div class="sec-head reveal">
       <div><span class="kicker" data-en="Our own brand">Die eigene Marke</span>
       <h2 class="t">KOOLELO <em>Beauty.</em></h2></div>
-      <p class="lead" data-en="The care we use in the salon – for the days in between. In the salons and online.">Die Pflege aus dem Salon – für die Tage dazwischen. Im Salon und online.</p>
+      <p class="lead" data-en="Professional care for the days between appointments – in the salons and online.">Profi-Pflege für die Tage zwischen den Terminen – im Salon und online.</p>
     </div>
     <div class="shop reveal">
       <div class="prod"><div class="im"><img loading="lazy" src="img/koolelo_oil.webp" alt="KOOLELO Nagelöl Jasmine und Lavender"></div><div class="t"><h4>Cuticle Oil</h4><p data-en="Jasmine · Lavender · dropper">Jasmine · Lavender · mit Pipette</p></div></div>
@@ -1199,6 +1282,25 @@ header.top{z-index:90!important}
 </section>
 
 <!-- FINALE -->
+<section class="sec grain" id="gutschein">
+  <div class="wrap">
+    <div class="gs-ticket reveal">
+      <div class="gs-l">
+        <span class="kicker" data-en="Gift voucher">Gutschein</span>
+        <h2 class="t" data-en="A front-row seat – <em>to give away.</em>">Ein Platz in der ersten Reihe – <em>zum Verschenken.</em></h2>
+        <p data-en="For a manicure, a new set or a pedicure. Pick an amount – we prepare the voucher in the salon.">Für eine Manicure, ein neues Set oder eine Pedicure. Betrag wählen – den Gutschein bereiten wir im Salon vor.</p>
+        <div class="gs-amt" role="group" aria-label="Betrag"><button type="button" class="on" data-a="CHF 50">CHF 50</button><button type="button" data-a="CHF 100">CHF 100</button><button type="button" data-a="CHF 150">CHF 150</button><button type="button" data-a="CHF ?" data-en="Any amount">Wunschbetrag</button></div>
+        <div class="gs-cta"><a class="btn btn-gold" href="tel:+41435118008" data-en="Order by phone">Gutschein bestellen</a><a class="gs-tel" href="tel:+41435118008">043 511 80 08</a></div>
+      </div>
+      <div class="gs-r" aria-hidden="true">
+        <span class="gs-adm">Admit one</span>
+        <b class="gs-val" id="gsVal">CHF 50</b>
+        <span class="gs-sal">Get Nailed! · Zürich</span>
+        <span class="gs-no">Nº 2016</span>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="finale grain" id="kontakt">
   <div class="wrap">
     <div class="fin-grid reveal">
@@ -1206,8 +1308,8 @@ header.top{z-index:90!important}
         <span class="kicker" data-en="Curtain call">Vorhang</span>
         <p class="fin-big" style="margin-top:12px" data-en="Until the next <em>performance.</em>">Bis zur nächsten <em>Vorstellung.</em></p>
         <div class="fin-adr">
-          <a href="https://www.google.com/maps/search/?api=1&query=Get+Nailed+Seefeldstrasse+7+8008+Z%C3%BCrich" target="_blank" rel="noopener"><small>Seefeld</small><b>Seefeldstrasse 7</b><span data-en="8008 Zurich · Mon–Fri 9–19, Sat 9–16">8008 Zürich · Mo–Fr 9–19, Sa 9–16</span></a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Get+Nailed+Schaffhauserstrasse+30+8006+Z%C3%BCrich" target="_blank" rel="noopener"><small>Schaffhauserplatz</small><b>Schaffhauserstrasse 30</b><span data-en="8006 Zurich · Mon–Fri 9–19, Sat 9–16">8006 Zürich · Mo–Fr 9–19, Sa 9–16</span></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Get+Nailed+Seefeldstrasse+7+8008+Z%C3%BCrich" target="_blank" rel="noopener"><small>Seefeld</small><b>Seefeldstrasse 7</b><span data-en="8008 Zurich · Mon–Fri&nbsp;9–19, Sat&nbsp;9–16">8008 Zürich · Mo–Fr&nbsp;9–19, Sa&nbsp;9–16</span></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Get+Nailed+Schaffhauserstrasse+30+8006+Z%C3%BCrich" target="_blank" rel="noopener"><small>Schaffhauserplatz</small><b>Schaffhauserstrasse 30</b><span data-en="8006 Zurich · Mon–Fri&nbsp;9–19, Sat&nbsp;9–16">8006 Zürich · Mo–Fr&nbsp;9–19, Sa&nbsp;9–16</span></a>
         </div>
         <div class="hero-cta" style="margin-top:18px"><a class="btn btn-gold" href="#salons" data-en="Book now">Termin buchen</a><a class="btn btn-ink" href="tel:+41435118008">043 511 80 08</a><a class="btn btn-ghost" href="https://www.instagram.com/getnailedch/" target="_blank" rel="noopener">Instagram</a><a class="btn btn-ghost" href="https://www.tiktok.com/@getnailedch" target="_blank" rel="noopener">TikTok</a></div>
       </div>
@@ -1260,7 +1362,7 @@ const SAL={
    book:'https://www.fresha.com/a/get-nailed-seefeld-zurich-seefeldstrasse-7-ybhqqpfa',
    map:'https://www.google.com/maps/search/?api=1&query=Get+Nailed+Seefeldstrasse+7+8008+Z%C3%BCrich',hours:WK},
  schaffhauserplatz:{name:'Get Nailed! Schaffhauserplatz',addr:'Schaffhauserstrasse 30, 8006 Zürich',short:'Schaffhauserstr. 30',
-   chips:{de:['Gratis-Parkplatz Nr. 2 und 3','Tram-Halt Schaffhauserplatz','Nails · Pedicure · Lashes','Koolelo Academy im Haus','EN · DE · ES'],en:['Free parking no. 2 and 3','Schaffhauserplatz tram stop','Nails · Pedicure · Lashes','Koolelo Academy on site','EN · DE · ES']},
+   chips:{de:['Gratis-Parkplätze Nr. 2 und 3','Tram-Halt Schaffhauserplatz','Nails · Pedicure · Lashes','Koolelo Academy im Haus','EN · DE · ES'],en:['Free parking no. 2 and 3','Schaffhauserplatz tram stop','Nails · Pedicure · Lashes','Koolelo Academy on site','EN · DE · ES']},
    book:'https://salonkee.ch/salon/get-nailed-schaffhauserplatz',
    map:'https://www.google.com/maps/search/?api=1&query=Get+Nailed+Schaffhauserstrasse+30+8006+Z%C3%BCrich',hours:WK},
  zuhause:{name:'Get Nailed! Hausbesuch',name_en:'Get Nailed! House call',addr:'In Zürich und Umgebung – nach Absprache',addr_en:'Zurich and surroundings – by arrangement',short:'Hausbesuch',
@@ -3650,7 +3752,7 @@ function hint(ax){
   const btns=$$('#'+AX[ax]+' button').filter(b=>!b.hidden),off=btns.filter(b=>b.disabled);if(!off.length)return '';
   const on=btns.filter(b=>!b.disabled).map(b=>lab(ax,b.dataset.v)),offL=off.map(b=>lab(ax,b.dataset.v));if(!on.length)return '';
   const by=AXES.filter(o=>o!==ax&&st[o]!=null&&!isOff(o)&&o!=='fb'&&o!=='ft'&&!(o==='tn'&&st.tn==='T1')).map(o=>o==='tn'?'Hautton '+st.tn.slice(1):o==='fin'&&st.fin==='french'&&ax!=='fb'&&ax!=='ft'?'French'+(st.fb&&!isOff('fb')?' '+lab('fb',st.fb):'')+(st.ft&&!isOff('ft')?'/'+lab('ft',st.ft):''):lab(o,st[o]));
-  return '– '+(by.length?'bei '+by.join(' + ')+': ':'')+(on.length<offL.length?'nur '+on.join(', '):'kein '+offL.join(', '));
+  return '– '+(on.length<offL.length?'Foto: nur '+on.join(', '):'ohne Foto: '+offL.join(', '))+' · im Salon möglich';
 }
 /* Hautton: nur echte Fotos; Stufen ohne Foto werden übersprungen, die Wahl bleibt sonst stehen */
 const TN=['T1','T2','T3','T4','T5'];
@@ -3710,7 +3812,7 @@ function update(user){
   const desC=st.fin==='french'?['French',st.fb&&lab('fb',st.fb),st.ft&&'/ '+lab('ft',st.ft)].filter(Boolean).join(' '):st.fin==='geo'?['Gold-Linien',st.col&&lab('col',st.col)].filter(Boolean).join(' · '):st.fin&&st.fin!=='farbe'?lab('fin',st.fin):(st.col&&lab('col',st.col)),fxC=st.fx&&st.fx!=='none'&&lab('fx',st.fx);
   const capParts=nat()?(NATD&&natDes()?['Kurz natur',desC,fxC].filter(Boolean):['Kurz natur','Overlay']):[st.len&&LEN[st.len],desC,st.form&&(st.form==='eckig'?'Eckig':'Mandel'),fxC].filter(Boolean);
   $('#stageKind').textContent=capParts.length?'Ihr Set':'Vorschau';
-  $('#stageCap').textContent=capParts.length?capParts.join(' · '):'Wählen Sie Ihr Set';
+  $('#stageCap').textContent=capParts.length?capParts.join(' · '):'Ihr Set erscheint hier';
   showPhoto();
 }
 /* Bildwechsel: neues Foto blendet über dem alten ein, das alte bleibt stehen – kein Aufhellen, kein Abdunkeln */
@@ -3748,14 +3850,14 @@ setIO.observe($('#setgrid'));
 
 
 /* ---------- Konfigurator auf Englisch ---------- */
-const KEN=[['Beispiele – weitere Farben im Salon.','Examples – more colours in the salon.'],['Wählen Sie die Länge – der Preis erscheint sofort.','Choose a length – the price appears instantly.'],['Für den Preis noch: Länge','For the price: choose a length'],
- ['Wählen Sie Ihr Set','Choose your set'],['genauer Preis mit Design','exact price with design'],
+const KEN=[['Auffüllen ab\u00a0CHF','Infill from\u00a0CHF'],['ab\u00a0CHF','from\u00a0CHF'],['\u00a0Min.','\u00a0min'],['Beispiele – weitere Farben im Salon.','Examples – more colours in the salon.'],['Wählen Sie die Länge – der Preis erscheint sofort.','Choose a length – the price appears instantly.'],['Für den Preis noch: Länge','For the price: choose a length'],
+ ['Ihr Set erscheint hier','Your set appears here'],['genauer Preis mit Design','exact price with design'],
  ['Kurz natur (Russian Mani + Gellack)','Short natural (Russian mani + gel polish)'],['Russian Mani mit Gellack','Russian mani with gel polish'],['Auffüllen ab CHF','Infill from CHF'],['Preis im Salon','price in the salon'],
  ['Neues Set','New set'],['Kurz natur','Short natural'],['Extra lang','Extra long'],['einfarbig','one colour'],['Einfarbig','One colour'],['mit Baby Boomer','with baby boomer'],
  ['mit French','with French'],['mit Gold-Linien','with gold lines'],['Gold-Linien','Gold lines'],['Glitzer','Glitter'],['Mandel','Almond'],['Eckig','Square'],['Strass','Rhinestones'],
  ['Hautton','Skin tone'],['Länge','Length'],['Form','Shape'],['Farbe','Colour'],['Effekt','Finish'],['Ohne','None'],['Spitze','tip'],['Basis','base'],['Ihr Set','Your set'],['Vorschau','Preview'],
  ['Schliessen','Close'],['Palette','Palette'],['ab CHF','from CHF'],['Kurz','Short'],['Lang','Long'],['Min.','min'],[' nur bei ',' only with '],[' – nur ',' – only '],[': nur ',': only '],['kein ','no '],['bei ','with '],
- ['Weiss & Schwarz','White & black'],['Bordeaux','Burgundy'],['Blau','Blue'],['Braun','Brown'],['Bunt','Colourful'],['Grün','Green'],['Weiss','White'],['Rot','Red'],['Rosa','Pink'],['Schwarz','Black'],['Flieder','Lilac']];
+ ['Foto: nur ','photo: only '],['ohne Foto: ','no photo: '],[' · im Salon möglich',' · possible in the salon'],['Weiss & Schwarz','White & black'],['Bordeaux','Burgundy'],['Blau','Blue'],['Braun','Brown'],['Bunt','Colourful'],['Grün','Green'],['Weiss','White'],['Rot','Red'],['Rosa','Pink'],['Schwarz','Black'],['Flieder','Lilac']];
 let kLang='de';
 function trK(){const root=$('#atelier');const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
   while(n=w.nextNode()){if(!n.nodeValue.trim())continue;if(n.__de===undefined||(n.__en!==undefined&&n.nodeValue!==n.__en))n.__de=n.nodeValue;
@@ -3808,9 +3910,49 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
   const regal=document.getElementById('regal'),rin=document.getElementById('regalIn'),tip=document.getElementById('regalTip');if(!regal||!rin)return;
   const mid=()=>regal.style.setProperty('--rm',(rin.offsetTop+rin.offsetHeight/2)+'px');mid();addEventListener('resize',mid);addEventListener('load',mid);
   const mobile=()=>matchMedia('(max-width:900px)').matches;
-  const go=()=>{setTimeout(()=>{const ch=document.getElementById('wandChip');if(ch){ch.click();ch.hidden=true}
+  const go=()=>{setTimeout(()=>{const ch=document.getElementById('wandChip');if(ch){ch.click();ch.hidden=true;window.__wandNote&&window.__wandNote()}
       const a=document.querySelector('.nav a[href="#atelier"]');if(a)a.click();else document.getElementById('atelier').scrollIntoView({behavior:'smooth'})},750)};
   window.__wandGo=go;})();
+</script>
+
+<script id="runde-25-11-d-js">
+(()=>{const $=s=>document.querySelector(s);const en=()=>document.documentElement.lang==='en';
+  /* Mini-Bild im Ergebnis = aktuelles Foto */
+  const mp=$('#miniP'),rn=$('#resName');if(mp&&rn){const f=()=>{if(/Wählen Sie die Länge|Choose a length/.test(rn.textContent))mp.innerHTML=''};new MutationObserver(f).observe(mp,{childList:true,subtree:true,characterData:true});f()}
+  const mi=$('#miniImg'),th=$('#resTh');if(mi&&th){const s=()=>{th.src=mi.src};new MutationObserver(s).observe(mi,{attributes:true,attributeFilter:['src']});s()}
+  /* Aktionen am Telefon unter das Ergebnis */
+  const acts=$('#setActs'),res=$('#atelier .result'),head=$('#atelier .sec-head');
+  const place=()=>{if(!acts||!res)return;if(matchMedia('(max-width:900px)').matches){if(acts.previousElementSibling!==res)res.after(acts)}else if(acts.parentNode!==head)head.appendChild(acts)};
+  place();addEventListener('resize',place);
+  const setText=()=>{const cap=$('#stageCap').textContent.trim(),nm=$('#resName').textContent.trim(),pr=[...$('#resPrice').childNodes].map(n=>n.textContent.trim()).filter(Boolean).join(' '),ex=$('#resEx').textContent.trim();
+    return (en()?'My set (Get Nailed! Set Studio): ':'Mein Set (Get Nailed! Set-Studio): ')+nm+(ex?' · '+ex:'')+' · '+pr};
+  const note=t=>{const n=$('#saNote');n.textContent=t;clearTimeout(note.t);note.t=setTimeout(()=>{n.textContent=''},9000)};
+  /* Buchen: Set kopieren, echte Buchungsseite des gewählten Salons öffnen – dort wird nichts automatisch abgeschickt */
+  window.__wandNote=()=>note(en()?'Closest shade in the picture – your exact colour from the wall is waiting in the salon.':'Im Bild der ähnlichste Ton – Ihre genaue Farbe von der Wand gibt es im Salon.');
+  $('#saBook')&&$('#saBook').addEventListener('click',()=>{const t=setText(),url=($('#tBook')||{}).href||'https://www.fresha.com/a/get-nailed-seefeld-zurich-seefeldstrasse-7-ybhqqpfa';
+    const done=()=>note(en()?'Set copied – paste it into the note when booking.':'Set kopiert – bei der Buchung einfach in die Bemerkung einfügen.');
+    try{navigator.clipboard.writeText(t).then(done,done)}catch(e){done()}
+    window.open(url,'_blank','noopener')});
+  /* Als Bild speichern */
+  $('#saPic')&&$('#saPic').addEventListener('click',async()=>{const ph=$('#miniImg')||document.querySelector('#stage .ph.on');const W=1080,H=1350;const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
+    try{await document.fonts.ready}catch(e){}
+    const img=new Image();img.crossOrigin='anonymous';img.src=ph.src+(ph.src.includes('?')?'&':'?')+'cors=1';
+    try{await img.decode()}catch(e){note(en()?'Image could not be loaded – please try again.':'Bild konnte nicht geladen werden – bitte nochmals versuchen.');return}
+    g.fillStyle='#F4ECE4';g.fillRect(0,0,W,H);
+    g.fillStyle='#2A0E17';g.fillRect(0,0,W,120);g.fillStyle='#E6CF9E';g.font='300 34px "Josefin Sans"';g.textAlign='center';g.fillText('G E T   N A I L E D !   ·   Z Ü R I C H',W/2,74);
+    const aw=640,ah=800,ax=(W-aw)/2,ay=170;g.save();g.beginPath();g.moveTo(ax,ay+aw/2);g.arc(ax+aw/2,ay+aw/2,aw/2,Math.PI,0);g.lineTo(ax+aw,ay+ah);g.lineTo(ax,ay+ah);g.closePath();g.clip();
+    const r=Math.max(aw/img.naturalWidth,ah/img.naturalHeight),iw=img.naturalWidth*r,ih=img.naturalHeight*r;g.drawImage(img,ax+(aw-iw)/2,ay+(ah-ih)/2,iw,ih);g.restore();
+    g.strokeStyle='#B8924F';g.lineWidth=3;g.beginPath();g.moveTo(ax-12,ay+aw/2);g.arc(ax+aw/2,ay+aw/2,aw/2+12,Math.PI,0);g.lineTo(ax+aw+12,ay+ah+12);g.lineTo(ax-12,ay+ah+12);g.closePath();g.stroke();
+    g.fillStyle='#2B2320';g.font='400 44px "Playfair Display"';const cap=$('#stageCap').textContent.trim();g.fillText(cap,W/2,ay+ah+90,W-120);
+    g.fillStyle='#6E1A2E';g.font='400 64px "Playfair Display"';const rp=$('#resPrice');g.fillText([...rp.childNodes].map(n=>n.textContent.trim()).filter(Boolean).join(' '),W/2,ay+ah+170);
+    g.fillStyle='#7A6A62';g.font='400 26px "Libre Franklin"';g.fillText(en()?'Show it at the desk or paste it into your booking':'Am Empfang zeigen oder bei der Buchung angeben',W/2,H-60);
+    c.toBlob(async b=>{const f=new File([b],'GetNailed_Set.png',{type:'image/png'});
+      if(matchMedia('(pointer:coarse)').matches&&navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:'Get Nailed! Set'});return}catch(e){}}
+      const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='GetNailed_Set.png';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
+      note(en()?'Image saved.':'Bild gespeichert.')},'image/png')});
+  /* Gutschein: Betrag wählen */
+  document.querySelectorAll('.gs-amt button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.gs-amt button').forEach(x=>x.classList.toggle('on',x===b));const v=$('#gsVal');v.textContent=b.dataset.a==='CHF ?'?(en()?'Any':'Wunsch'):b.dataset.a;v.animate&&v.animate([{transform:'scale(.85)'},{transform:'scale(1)'}],{duration:260,easing:'ease-out'})}));
+})();
 </script>
 </body>
 </html>
