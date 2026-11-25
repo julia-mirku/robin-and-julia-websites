@@ -1857,13 +1857,32 @@ body.skB .bk .bk-cv-t{font-family:"Libre Caslon Display",serif!important;font-st
 body.skC .bk .bk-cv-t{font-family:"EB Garamond",serif!important;font-style:italic!important;font-weight:500!important;letter-spacing:.01em!important;font-size:clamp(2.4rem,11.5vw,3.5rem)!important}
 body.skA .bk .bk-cv-t,body.skB .bk .bk-cv-t,body.skC .bk .bk-cv-t{line-height:1.05!important;background-image:linear-gradient(180deg,#F7E9C4 0%,#E6C27C 45%,#B48A45 78%,#8E6A32 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important;filter:drop-shadow(0 -1px 0 rgba(0,0,0,.55)) drop-shadow(0 1px 0 rgba(255,236,200,.25))!important}
 </style>
+<style id="karte-exponat-css">
+/* Julia 25.11 «Мне нравится второй блок»: Buch als Exponat, Auszug links (Schriften der Hauptfassung) */
+#karte .auszug{list-style:none;margin:18px 0 0;padding:0;max-width:420px}
+#karte .auszug li{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:8px 0;font-size:1.12rem}
+#karte .auszug li i{font-style:italic;opacity:.7;font-size:.88em;margin-left:4px}
+#karte .auszug li b{font-weight:600;color:#C9A464;white-space:nowrap}
+#karte .auszug-n{display:block;margin-top:14px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.65}
+#karte .bk-cover::after{content:"";position:absolute;left:62%;bottom:-38px;width:16px;height:60px;background:linear-gradient(90deg,#6b4a22,#8a6430 50%,#6b4a22);clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);transform:translateZ(1px);box-shadow:0 2px 4px rgba(0,0,0,.4);z-index:-1}
+#karte .bk[data-state="open"] .bk-cover::after{display:none}
+#karte .bk-cv-btn{background:transparent!important;border:1px solid rgba(201,164,100,.85)!important;color:#E6C27C!important;border-radius:2px!important;font-weight:600!important;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem!important;box-shadow:none!important}
+@media (min-width:1100px){
+  #karte .wrap{position:relative}
+  #karte .sec-head{position:absolute;left:0;top:50%;transform:translateY(-50%);width:400px;z-index:5;margin:0!important;transition:opacity .35s ease}
+  #karte .bk-stage{transform:translateX(250px);transition:transform .6s cubic-bezier(.4,.08,.2,1)}
+  #karte:has(.bk[data-state="open"]) .sec-head{opacity:0;pointer-events:none}
+  #karte .bk[data-state="open"] .bk-stage{transform:none}
+}
+@media (max-width:1099px){#karte .auszug{margin-top:10px}#karte .auszug li{padding:5px 0;font-size:1rem}#karte .sec-head{margin-bottom:14px!important}}
+</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
 <span class="vw-l">Variante wählen</span>
 <span class="vw-b"><a class="vw-a" href="keyff_dunkel.html" aria-current="true">Dunkel</a><a class="vw-a" href="keyff_hell.html">Hell</a></span>
 <span class="vw-x" role="group" aria-label="Varianten"><label>Sand <select id="vx-sand" aria-label="Sand"><option value="">Jetzt</option><option value="a">Wind</option><option value="b">Wischen</option><option value="c">Sonne</option></select></label><label>Schrift <select id="vx-font" aria-label="Schrift «Speisekarte»"><option value="">Jetzt</option><option value="A">A Cinzel</option><option value="B">B Libre Caslon</option><option value="C">C EB Garamond</option></select></label></span>
-<span class="vw-ix" role="group" aria-label="Ideen der Prüfer">Ideen <button type="button" data-ix="1" aria-pressed="false">1 Erster Bildschirm</button><button type="button" data-ix="2" aria-pressed="false">2 Karte</button><button type="button" data-ix="3" aria-pressed="false">3 Bewertungen</button></span>
+<span class="vw-ix" role="group" aria-label="Ideen der Prüfer">Ideen <button type="button" data-ix="1" aria-pressed="false">1 Erster Bildschirm</button><button type="button" data-ix="3" aria-pressed="false">3 Bewertungen</button></span>
 <span class="vw-n">Zwei Varianten zur Wahl: Sie können eine wählen oder beide behalten – am Preis ändert das nichts.</span>
 </div>
 
@@ -1959,7 +1978,7 @@ body.skA .bk .bk-cv-t,body.skB .bk .bk-cv-t,body.skC .bk .bk-cv-t{line-height:1.
       <div class="sec-head">
         <p class="kicker">Essen und Trinken</p>
         <h2 id="h-karte">Döner, Pizza <em>&amp; mehr</em></h2>
-        <p>17 Kategorien, 110 Gerichte und Getränke. Alle Preise in Schweizer Franken.</p>
+        <ul class="auszug" aria-label="Auszug aus der Karte"><li><span>Lammfilet <i>vom Grill</i></span><b>28.50</b></li><li><span>Pide Kalbfleisch</span><b>17.50</b></li><li><span>Pizza <i>Ø 32 cm</i></span><b>ab 16.50</b></li><li><span>Baklava <i>3 Stück</i></span><b>8.–</b></li></ul><span class="auszug-n">Preise in CHF · ganze Karte im Buch</span>
       </div>
 
       <!-- Das Buch (wird vom Skript eingeschaltet; ohne Skript steht darunter die ganze Karte als Liste) -->
