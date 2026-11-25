@@ -571,6 +571,16 @@ body::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.04);pointer
 .pc{display:none}
 @media (hover:hover) and (pointer:fine){.pc{display:inline}.tp{display:none}}
 </style>
+<style id="luft-26-11">
+/* Prüfung 26.11 (2. Runde): Luft zwischen den Blöcken ≥56 px – nur Abstand unten, Blöcke bleiben ganz im Bildschirm */
+@media (min-width:768px) and (max-height:800px){
+  #zeiten{padding-bottom:48px!important}
+  #shop{padding-bottom:68px!important}
+  #glutenfrei{padding-bottom:36px!important}
+  #cafes{padding-bottom:64px!important}
+  #catering{padding-bottom:36px!important}
+}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
