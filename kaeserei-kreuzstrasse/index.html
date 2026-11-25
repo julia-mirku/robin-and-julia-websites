@@ -551,6 +551,21 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 @media (orientation:landscape) and (max-height:500px){.entwurf{font-size:11px!important;padding:3px 12px!important;line-height:1.25!important}:root{--hdr:52px}}
 @media (orientation:landscape) and (max-height:500px){.mbub{left:auto!important;right:14px!important;max-width:44%}}
 /*RUNDE-E-END*/
+/*RUNDE-F 25.11 – Endprüfung*/
+/* Telefon: Blase lässt Tipps zu den Figuren durch */
+.mbub.on{pointer-events:none!important}
+/* Telefon: Adresse/Telefon unten mit grösserer Tippfläche */
+@media (max-width:700px){.mapcard a:not(.btn),footer a{display:inline-block;padding:11px 0;margin:-11px 0}}
+/* Telefon quer: Einleitungstext aus (lag über der Figur), Blase oben rechts, Wiesenblock höher, Zeiten ≥ 12 px */
+@media (orientation:landscape) and (max-height:500px){
+  .hero p.lead{display:none!important}
+  .hero h1{font-size:30px!important}.hero .kick{font-size:13px!important}.hero .btn{padding:8px 14px!important;font-size:13px!important;min-height:0!important}
+  .mbub{top:calc(var(--bar,0px) + var(--hdr) + 10px)!important;bottom:auto!important;max-width:36%!important}
+  .weg{min-height:560px!important}
+  .days .day small,.days .day small span{font-size:12px!important;line-height:1.15!important}.days .day small span{white-space:normal!important;display:block;text-align:center}
+}
+/*RUNDE-F-END*/
+
 
 
 
@@ -586,6 +601,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
 <body>
 <div class="entwurf" id="entwurf" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+<script>(function(){var b=document.getElementById("entwurf");if(b)document.documentElement.style.setProperty("--bar",b.offsetHeight+"px")})();</script>
 
 <header class="hdr" id="hdr">
   <div class="wrap">
@@ -823,7 +839,7 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
     const mbHide=()=>{ mb.classList.remove('on'); mbI=-1; clearTimeout(mbT); };
     const say=(f,i)=>{ endIntro();
       if(PH()){ if(mbI===i&&mb.classList.contains('on')){ mbHide(); return; } idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]];
-        const hb=Q('.hero-bar'); mb.style.bottom=((hb?hb.offsetHeight:0)+10)+'px'; mb.innerHTML='<b>'+h+'</b>'+t; mbI=i; mb.classList.add('on'); clearTimeout(mbT); mbT=setTimeout(mbHide,4500); return; }
+        const hb=Q('.hero-bar'); mb.style.bottom=matchMedia('(orientation:landscape) and (max-height:500px)').matches?'':((hb?hb.offsetHeight:0)+10)+'px'; mb.innerHTML='<b>'+h+'</b>'+t; mbI=i; mb.classList.add('on'); clearTimeout(mbT); mbT=setTimeout(mbHide,4500); return; }
       idx[i]=(idx[i]+1)%SAY[i].length; const [h,t]=SAY[i][idx[i]]; const b=f.querySelector('.bub');
       figs.forEach(x=>x.classList.remove('show')); b.innerHTML='<b>'+h+'</b>'+t; void f.offsetWidth; f.classList.add('show'); };
     figs.forEach((f,i)=>{ f.addEventListener('pointerdown',e=>{ if(e.button>0) return; if(e.pointerType==='mouse') e.preventDefault(); f.__d=[e.clientX,e.clientY]; });
