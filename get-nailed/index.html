@@ -746,6 +746,10 @@ header.top{z-index:90!important}
 /* Telefon: Buchen-Leiste nur beim Hochscrollen und im Kontakt */
 @media (max-width:700px){.bookbar.show:not(.up):not(.kontakt){transform:translateY(140%)}}
 </style>
+<style id="runde-25-11-b">
+@media (max-height:500px) and (orientation:landscape){#mini{display:none!important}}
+#atelier .stage-cap span{white-space:nowrap;flex:none}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mkHinweis" data-en="Website draft by Julia &amp; Robin Mirku · preview only – some links and features are not active yet." data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -3586,11 +3590,11 @@ $$('#segCol button[data-w]').forEach(b=>{const v=b.dataset.v,have=new Set(FRAMES
 Object.entries(AX).forEach(([ax,id])=>$$('#'+id+' button').forEach(b=>b.addEventListener('click',()=>{
   if(b.disabled)return;st[ax]=st[ax]===b.dataset.v?null:b.dataset.v;
   /* Abwählen darf nie zu einem Zustand ohne Foto führen: dann ruhende Wahl (z. B. Farbe hinter Milky) lösen */
-  for(const o of ['col','fb','ft','fx','dz','tn','form']){if(frame()&&FRAMES.filter(f=>fits(f,st)).some(f=>f.len!=='natur'||st.len==='natur'))break;if(o!==ax)st[o]=o==='tn'?'T1':null}
+  for(const o of ['col','fb','ft','fx','dz','tn','form','fin']){if(frame()&&FRAMES.filter(f=>fits(f,st)).some(f=>f.len!=='natur'||st.len==='natur'))break;if(o!==ax)st[o]=o==='tn'?'T1':null}
   update(true)})));
 /* Palette: öffnet an Stelle von Effekt/Extras, Auswahl schliesst sie */
 const palBtn=$('#palBtn'),colCtrl=$('#colCtrl'),atel=$('#atelier');
-function pal(open){colCtrl.classList.toggle('pal',open);atel.classList.toggle('pal-open',open);palBtn.setAttribute('aria-expanded',open);palBtn.textContent=open?'Schliessen ×':'+ Palette'}
+function pal(open){colCtrl.classList.toggle('pal',open);atel.classList.toggle('pal-open',open);palBtn.setAttribute('aria-expanded',open);palBtn.textContent=open?'Schliessen ×':'+ Palette';try{if(kLang==='en')trK()}catch(e){}}
 palBtn.addEventListener('click',()=>pal(!colCtrl.classList.contains('pal')));
 $$('#segCol button').forEach(b=>b.addEventListener('click',()=>{if(colCtrl.classList.contains('pal')&&!b.disabled)pal(false)}));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&colCtrl.classList.contains('pal'))pal(false)});
@@ -3602,7 +3606,7 @@ function hint(ax){
   if(ax==='ex')return '';
   if(ax==='fr')return hint('fb')||hint('ft');
   const btns=$$('#'+AX[ax]+' button').filter(b=>!b.hidden),off=btns.filter(b=>b.disabled);if(!off.length)return '';
-  const on=btns.filter(b=>!b.disabled).map(b=>lab(ax,b.dataset.v)),offL=off.map(b=>lab(ax,b.dataset.v));
+  const on=btns.filter(b=>!b.disabled).map(b=>lab(ax,b.dataset.v)),offL=off.map(b=>lab(ax,b.dataset.v));if(!on.length)return '';
   const by=AXES.filter(o=>o!==ax&&st[o]!=null&&!isOff(o)&&o!=='fb'&&o!=='ft'&&!(o==='tn'&&st.tn==='T1')).map(o=>o==='tn'?'Hautton '+st.tn.slice(1):o==='fin'&&st.fin==='french'&&ax!=='fb'&&ax!=='ft'?'French'+(st.fb&&!isOff('fb')?' '+lab('fb',st.fb):'')+(st.ft&&!isOff('ft')?'/'+lab('ft',st.ft):''):lab(o,st[o]));
   return '– '+(by.length?'bei '+by.join(' + ')+': ':'')+(on.length<offL.length?'nur '+on.join(', '):'kein '+offL.join(', '));
 }
@@ -3709,7 +3713,7 @@ const KEN=[['Beispiele – weitere Farben im Salon.','Examples – more colours 
  ['mit French','with French'],['mit Gold-Linien','with gold lines'],['Gold-Linien','Gold lines'],['Glitzer','Glitter'],['Mandel','Almond'],['Eckig','Square'],['Strass','Rhinestones'],
  ['Hautton','Skin tone'],['Länge','Length'],['Form','Shape'],['Farbe','Colour'],['Effekt','Finish'],['Ohne','None'],['Spitze','tip'],['Basis','base'],['Ihr Set','Your set'],['Vorschau','Preview'],
  ['Schliessen','Close'],['Palette','Palette'],['ab CHF','from CHF'],['Kurz','Short'],['Lang','Long'],['Min.','min'],[' nur bei ',' only with '],[' – nur ',' – only '],[': nur ',': only '],['kein ','no '],['bei ','with '],
- ['Weiss','White'],['Rot','Red'],['Rosa','Pink'],['Schwarz','Black'],['Flieder','Lilac']];
+ ['Weiss & Schwarz','White & black'],['Bordeaux','Burgundy'],['Blau','Blue'],['Braun','Brown'],['Bunt','Colourful'],['Grün','Green'],['Weiss','White'],['Rot','Red'],['Rosa','Pink'],['Schwarz','Black'],['Flieder','Lilac']];
 let kLang='de';
 function trK(){const root=$('#atelier');const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
   while(n=w.nextNode()){if(!n.nodeValue.trim())continue;if(n.__de===undefined||(n.__en!==undefined&&n.nodeValue!==n.__en))n.__de=n.nodeValue;
