@@ -2085,6 +2085,26 @@ body{background:transparent!important}
 .bk-det>.bk-ph-m{grid-column:1/-1;grid-row:auto;margin:2px 0 0;width:100%}.bk-ph-m img{height:auto;aspect-ratio:4/3;max-height:none}
 .bk-dv-ph figcaption{margin-top:6px;font-size:.72rem;opacity:.55;letter-spacing:.02em}
 </style>
+<style id="gaeste-neu-css">
+/* Vorschlag 25.11: «Was Gäste sagen» (Hell) – ruhige Karten statt schräger Zettel, ein grosses Zitat, Messing statt Linienpapier */
+#stimmen.gaeste{background:radial-gradient(60% 70% at 50% 0%,rgba(255,236,200,.55),rgba(255,236,200,0) 70%) !important}
+#stimmen .gb-kopf h2{font:italic 600 40px/1.1 var(--serif) !important;letter-spacing:.005em}
+#stimmen .gb-kopf h2::after{content:"";display:block;width:64px;height:2px;margin:12px auto 0;background:linear-gradient(90deg,#B08A4A00,#B08A4A,#B08A4A00)}
+#stimmen .gb-wrap{grid-template-columns:minmax(0,1fr) 230px !important;gap:34px !important;margin-top:26px !important;align-items:stretch !important}
+#stimmen .gbuch{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:16px !important;align-items:stretch !important}
+#stimmen .zettel{transform:none !important;margin:0 !important;animation:none !important;opacity:1 !important;
+  background:#FFFBF3 !important;background-image:none !important;border:1px solid rgba(176,138,74,.28);border-top:2px solid #B08A4A;border-radius:14px !important;
+  padding:22px 22px 18px !important;box-shadow:0 18px 34px -24px rgba(60,38,14,.55),0 1px 0 rgba(255,255,255,.9) inset !important;display:flex;flex-direction:column;position:relative}
+#stimmen .zettel blockquote{font:400 17px/1.45 var(--serif) !important;color:var(--espresso);margin:14px 0 0 !important;flex:1}
+#stimmen .zettel cite{font:600 13px/1 var(--serif) !important;font-style:normal !important;letter-spacing:.14em;text-transform:uppercase;color:#8A6A36 !important;text-align:left !important;margin-top:14px;display:flex !important;align-items:center;gap:10px}
+#stimmen .zettel cite::before{content:"";width:22px;height:1.5px;background:#B08A4A}
+#stimmen .gbuch .zettel:nth-child(2){grid-column:1/-1;order:-1;padding:26px 30px 22px !important}
+#stimmen .gbuch .zettel:nth-child(2) blockquote{font:italic 500 25px/1.38 var(--serif) !important;margin-top:18px !important}
+#stimmen .gbuch .zettel:hover{transform:translateY(-4px) !important;box-shadow:0 24px 40px -24px rgba(60,38,14,.6) !important}
+#stimmen .wertung{justify-content:center;gap:12px !important;padding:22px 18px;border-radius:16px;background:linear-gradient(180deg,#FFFBF3,#F7EEDC);border:1px solid rgba(176,138,74,.3)}
+#stimmen .wertung p{font-size:15px;margin:0}
+@media (max-width:899px){#stimmen .gb-wrap{grid-template-columns:1fr !important}#stimmen .gbuch{grid-template-columns:1fr !important}#stimmen .gbuch .zettel:nth-child(2) blockquote{font-size:21px !important}}
+</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
