@@ -560,8 +560,8 @@ p,li,small{text-wrap:pretty}.lead,.h2,h3{text-wrap:balance}
 .info li.tap,.chips span.tap{box-shadow:inset 0 0 0 1.5px var(--magenta),0 2px 8px rgba(180,0,90,.14)}
 .plus button.tap,.kbtn.tap{box-shadow:inset 0 0 0 1.5px var(--magenta)}
 /* Kopfleiste: nach unten scrollen = weich weg, nach oben = weich zurück (Julia 25.11) */
-header.top{transition:transform .32s cubic-bezier(.3,.7,.3,1),box-shadow .32s}
-header.top.weg{transform:translateY(-100%);box-shadow:none}
+header.top{transition:transform .7s cubic-bezier(.4,0,.2,1),box-shadow .7s}
+header.top.weg{transform:translateY(-100%);box-shadow:none;transition:transform .85s cubic-bezier(.4,0,.2,1),box-shadow .85s}
 @media (prefers-reduced-motion:reduce){header.top{transition:none}}
 /* Konfetti zum 35-Jahr-Jubiläum */
 .konfetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;border-radius:inherit;z-index:3}
