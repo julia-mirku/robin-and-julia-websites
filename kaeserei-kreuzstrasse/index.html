@@ -522,10 +522,14 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 /* Юля 25.11: Rinde links und rechts immer sauber – keine Unterlage/Schleier eines Blocks auf der Rinde (Fon C: Rinde ≈ 0–4 % der Breite) */
 @media (min-width:701px){.preise .kbg{left:4.5%!important;right:4.5%!important}}
 /* Юля 25.11: unter «Heute offen?» Käse und Rinde lang und weich ins Creme, kein harter Abbruch vor dem Wiesenbild */
-.laden:after{height:min(520px,70%)!important;background:linear-gradient(180deg,rgba(251,245,232,0) 0,rgba(251,245,232,.18) 30%,rgba(251,245,232,.55) 62%,#FBF5E8 100%)!important}
+.laden:after{display:none!important}
+/* Käse (gleiche Lage wie der Seitenhintergrund, --wegY) läuft in den Kopf des Wiesenblocks weiter und schmilzt weich ins Creme, danach ins Wiesenbild */
+.weg.weg:before{background:linear-gradient(180deg,rgba(251,245,232,0) 0,rgba(251,245,232,.22) 16%,rgba(251,245,232,.7) 40%,#FBF5E8 58%,#FBF5E8 100%),linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_c_band_l.webp) center var(--wegY,0px)/100% auto repeat-y!important;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 70%,transparent 100%)!important;mask-image:linear-gradient(180deg,#000 0,#000 70%,transparent 100%)!important}
+@media (max-aspect-ratio:3/4){.weg.weg:before{background:linear-gradient(180deg,rgba(251,245,232,0) 0,rgba(251,245,232,.22) 16%,rgba(251,245,232,.7) 40%,#FBF5E8 58%,#FBF5E8 100%),linear-gradient(rgba(251,245,232,.5),rgba(251,245,232,.5)),url(img/fon_a_band_m.webp) center var(--wegY,0px)/100% auto repeat-y!important}}
 /* Telefon: Sprechblase der Figuren unten über der Infoleiste, nichts überdeckt; Blasen an den Figuren auf dem Telefon aus */
 .mbub{display:none}
-@media (max-width:700px){
+@media (max-width:700px), (orientation:landscape) and (max-height:500px){
   .fig .bub{display:none!important}
   .mbub{display:block;position:absolute;left:14px;right:14px;z-index:6;background:var(--milk);color:var(--ink);border-radius:16px;padding:10px 14px;font-size:14px;line-height:1.35;box-shadow:0 10px 26px -12px rgba(20,14,8,.55);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility 0s linear .25s;pointer-events:none}
   .mbub.on{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s,visibility 0s;pointer-events:auto}
@@ -536,6 +540,18 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 /* Reife-Punkte: Tippfläche ≥ 44 px, Aussehen gleich */
 .stop{position:relative}.stop:after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%}
 /*RUNDE-D-END*/
+/*RUNDE-E 25.11*/
+/* Юля 25.11: Bänder der Medaillen neutral in den Farben der Seite (keine echten Fotos der Bänder gefunden; rot-weiss wirkte wie Österreich-Flagge) */
+.disc:before{background:linear-gradient(90deg,var(--rind2) 0 36%,var(--gold2) 36% 64%,var(--rind2) 64%)!important}
+/* Telefon: Zeiten in den Tageskacheln lesbar (≥ 12 px), Umbruch nach dem Strich */
+@media (max-width:700px){.days .day small,.days .day.zu small,.days .day.sel small,.days .day.istoday small,.days .day small span{font-size:12px!important;line-height:1.15!important}.days .day small span{white-space:normal!important;overflow-wrap:normal;display:block;text-align:center}}
+/* 360–420: Status «Jetzt geschlossen · heute wieder ab …» als eine Spalte */
+@media (max-width:420px){.hero-bar .js-status{display:block!important;flex:1 1 100%}.hero-bar .js-status .dot{display:inline-block;vertical-align:middle;margin-right:6px}}
+/* Telefon quer: Entwurf-Leiste und Kopf kompakter */
+@media (orientation:landscape) and (max-height:500px){.entwurf{font-size:11px!important;padding:3px 12px!important;line-height:1.25!important}:root{--hdr:52px}}
+@media (orientation:landscape) and (max-height:500px){.mbub{left:auto!important;right:14px!important;max-width:44%}}
+/*RUNDE-E-END*/
+
 
 
 /* Юля 25.11: Luft zwischen den Blöcken wie bei Dober (60–82 px): Hero→Medaillen, Medaillen→Käse, Käse→Fondue waren 40–60 px */
@@ -771,7 +787,7 @@ function paintStatus(){ const s=state();
 const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
 [1,2,3,4,5,6,0].forEach(d=>{ const b=document.createElement('button'); const zu=!HOURS[d].length;
   b.className='day'+(zu?' zu':''); b.dataset.d=d;
-  b.classList.toggle('istoday',d===today); b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+'<b class="dn">'+SH[d]+'</b><small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt(x)+'–'+fmt(y)+'</span>').join(''))+'</small>';
+  b.classList.toggle('istoday',d===today); b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+'<b class="dn">'+SH[d]+'</b><small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt(x)+'–<wbr>'+fmt(y)+'</span>').join(''))+'</small>';
   b.addEventListener('click',()=>sel(d)); daysEl.appendChild(b); });
 function sel(d){ QA('.day').forEach(x=>x.classList.toggle('sel',+x.dataset.d===d)); const sl=HOURS[d];
   info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<div class="slots">'+sl.map(([a,b])=>'<span class="slot">'+fmt(a)+'–'+fmt(b)+'</span>').join('')+'</div><p>'+(sl.length>1?'Mittags geschlossen.':'Nachmittags geschlossen.')+'</p>':'<p style="margin:0;font-size:17px">Am '+NAMES[d]+' ist der Laden geschlossen. '+(()=>{for(let i=1;i<=7;i++){const dd=(d+i)%7;if(HOURS[dd].length)return 'Nächster Verkauf: '+NAMES[dd]+' ab '+fmt(HOURS[dd][0][0])+' Uhr.';}})()+'</p>'); }
@@ -793,7 +809,7 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
   setTimeout(()=>heroEl.classList.add('ready'),150);
   /* Юля 24.11 (2): Klick wirkt sofort – auch während der Begrüssung; Hover zeigt nichts, nur Hand-Cursor */
   const T=[]; let intro=true;
-  const PH=()=>matchMedia('(max-width:700px)').matches;
+  const PH=()=>matchMedia('(max-width:700px), (orientation:landscape) and (max-height:500px)').matches;
   if(!PH()) figs.forEach((f,i)=>T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); f.classList.add('show'); },1300+i*1700)));
   const endIntro=()=>{ if(!intro) return; intro=false; T.forEach(clearTimeout); heroEl.classList.add('done'); };
   T.push(setTimeout(()=>{ figs.forEach(x=>x.classList.remove('show')); endIntro(); },1300+3*1700+300));
@@ -894,5 +910,7 @@ const lay=()=>{const H=document.body.scrollHeight;h.style.setProperty('--doch',H
 let t=0;const wp=()=>{t=0;if(!w)return;const r=w.getBoundingClientRect(),vh=innerHeight;const p=Math.min(1,Math.max(0,(vh-r.top)/(vh*.85)));w.style.setProperty('--wp',p.toFixed(3))};
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(wp)},{passive:true});addEventListener('resize',()=>{lay();wp()});addEventListener('load',()=>{lay();wp()});
 if(window.ResizeObserver)new ResizeObserver(lay).observe(document.body);lay();wp()})()</script><!--FONA-JS-END-->
+<script>/* 25.11: Lage des Wiesenblocks für den nahtlosen Käse-Übergang */(function(){var w=document.querySelector('.weg');if(!w)return;function s(){w.style.setProperty('--wegY',-(w.getBoundingClientRect().top+scrollY-document.body.getBoundingClientRect().top-scrollY)+'px')}
+s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(s);if(window.ResizeObserver)new ResizeObserver(s).observe(document.body);})();</script>
 </body>
 </html>
