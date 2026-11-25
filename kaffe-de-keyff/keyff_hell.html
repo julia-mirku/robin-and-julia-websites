@@ -2044,6 +2044,12 @@ body{background:transparent!important}
 /* Julia 25.11 «книжка когда увеличивается при открытии, надо это плавнее сделать»: Buchgrösse gleitet statt zu springen */
 @property --bkh{syntax:"<length>";inherits:true;initial-value:520px}
 @media (min-width:700px) and (prefers-reduced-motion:no-preference){#buch.bk{transition:--bkh 1s cubic-bezier(.4,.08,.2,1)}}
+/* Julia 25.11 «надо чтобы книжка закрывалась красиво»: beim Zuklappen keine gespiegelte Deckelschrift (Safari) – Vorderseite erst sichtbar, wenn der Deckel über 90° ist; Rückseite = Vorsatzpapier */
+.bk[data-state="open"] .bk-front{opacity:0;transition:opacity 0s linear .45s}
+.bk[data-state="closed"] .bk-front{opacity:1;transition:opacity .12s linear .2s}
+.bk[data-state="open"] .bk-inner{visibility:visible}
+@media (max-width:699px) and (prefers-reduced-motion:no-preference){.bk[data-state="closed"] .bk-book{animation:bkzu .55s cubic-bezier(.3,.7,.2,1) both}}
+@keyframes bkzu{from{opacity:0;transform:translateY(14px) rotateX(13deg) rotateY(-6deg) rotateZ(-1.5deg)}}
 /* kleineres Buch auf niedrigen Bildschirmen: Deckel-Inhalt luftig, Zierlinie berührt die Taste nicht */
 @media (min-width:700px) and (max-height:820px){
   .bk-cv .bk-plate{width:150px!important;height:104px!important}
