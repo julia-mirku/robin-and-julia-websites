@@ -496,6 +496,15 @@ html{overflow-x:clip}
 #haus .h2{margin-bottom:10px}
 @media (max-width:700px){.karteBox .route{bottom:24px}}
 </style>
+<style id="final-25-11">
+body{overflow-x:clip}
+@media (min-width:861px) and (max-height:820px){#sortiment .zettel h3{font-size:20px;margin-bottom:2px}#sortiment .zettel p{font-size:15px;line-height:1.42}}
+.stepper button{width:44px;height:44px;border:3px solid transparent;background-clip:padding-box;margin:-3px}
+@media (max-height:500px) and (orientation:landscape){.karten .khead{padding:8px 18px 0}.karten .khead .kicker{display:none}.karten h3{font-size:24px}.karten .ktabs{padding:4px 18px 6px}.karten .kbody{padding:8px 18px 10px}.karten .kfoot{flex-direction:row;align-items:center;padding:6px 18px 8px;text-align:left}}
+.tag.zu[aria-pressed=true]{color:#fff}
+.zeit small{line-height:1.45;margin-top:4px}
+@media (max-width:700px){.karteBox .haus-foto{bottom:auto;top:12px}.karteBox .route{bottom:56px}}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -585,10 +594,10 @@ html{overflow-x:clip}
     <div class="foto rv"><img src="img/konditorzmorge1_4x_sat20.webp" alt="Der Chef kocht am Buffet" decoding="async" width="308" height="286"><span class="tag">Sa, So &amp; Feiertage · 8.30–11.30 Uhr</span></div>
     <div>
       <div class="kicker rv">Ein Highlight unseres Hauses</div>
-      <h2 class="h2 rv">Konditor-Zmorge <span class="script">à discretion</span></h2>
+      <h2 class="h2 rv">Konditor-Zmorge <span class="script">à&nbsp;discretion</span></h2>
       <p class="lead rv">Samstags, sonntags und an Feiertagen treffen sich Paare, Familien oder Gruppen zum ausgedehnten Schlemmen an unserem reichhaltigen Buffet – auf Wunsch mit prickelndem Cüpli. Von Dienstag bis Freitag servieren wir den Konditor-Zmorge gerne an den Tisch.</p>
       <div class="rechner rv" id="rechner">
-        <div class="reihe"><div class="l">Erwachsene<small>Genusspreis CHF 36.00</small></div>
+        <div class="reihe"><div class="l">Erwachsene<small>Genusspreis CHF&nbsp;36.00</small></div>
           <div class="stepper"><button type="button" data-d="-1" aria-label="weniger">−</button><output id="erw">2</output><button type="button" data-d="1" aria-label="mehr">+</button></div></div>
         <div class="reihe"><div class="l">Kinder bis 12 Jahre<small>CHF 2.00 pro Altersjahr</small><div class="kidsWrap" id="kidsWrap"><div class="kids" id="kids"></div></div></div>
           <div class="stepper"><button type="button" id="kidSub" aria-label="Kind entfernen" class="weg">−</button><output id="kidN" class="weg">0</output><button type="button" id="kidAdd" aria-label="Kind hinzufügen">+</button></div></div>
@@ -645,7 +654,7 @@ html{overflow-x:clip}
       <button class="pfeil r" id="hNext" aria-label="später"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
     <div>
-      <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt 1853</div>
+      <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
       <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
       <div class="hausLauf"><div class="jahrgross" id="jahr">1853</div>
       <p class="jahrtxt" id="jahrtxt"></p>
@@ -895,7 +904,7 @@ G.forEach((g,i)=>{const li=document.createElement('li');li.innerHTML='<b>'+g[0]+
  li.addEventListener('click',wahl);li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();wahl()}});gE.appendChild(li)});
 document.querySelectorAll('.plus button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.plus button').forEach(x=>x.classList.toggle('an',x===b));
  const betrag=+b.dataset.b,pz=+b.dataset.p,bonus=betrag*pz/100;document.getElementById('plusTxt').innerHTML='Beispiel: Sie laden CHF '+betrag+' auf – Ihr Guthaben: <b>CHF '+(betrag+bonus).toFixed(2)+'</b> (+'+pz+'%).'}));
-function karte(){const chfW=+wo.value,pw=Math.floor(chfW/2),p12=pw*12;
+function karte(){const chfW=+wo.value,pw=Math.floor(chfW/2),p12=pw*13;
  document.getElementById('wocheOut').textContent='CHF '+chfW;
  document.getElementById('punkteTxt').innerHTML='= <b>'+pw+' Punkte</b> pro Woche · nach 3 Monaten rund <b style="color:var(--magenta)">'+p12+' Punkte</b>';
  gE.querySelectorAll('li').forEach((li,i)=>{const w=Math.ceil(G[i][0]/pw);li.classList.toggle('ja',G[i][0]<=p12);li.classList.toggle('ziel',i===ziel);li.setAttribute('aria-pressed',i===ziel);li.querySelector('em').textContent='nach '+w+' Woche'+(w>1?'n':'')});
