@@ -571,6 +571,8 @@ h2,h3,.hero p.lead,.sec p{text-wrap:pretty}
 .day .today{font-size:11px!important}
 @media (max-width:700px){.hero-bar a{display:inline-block;padding:11px 0;margin:-11px 0}}
 @media (min-width:701px) and (max-width:1020px){#kaese.sec{padding-bottom:28px!important}#fondue.sec{padding-top:52px!important}#knum{display:inline-block;margin-top:12px}}
+#dots i{position:relative;cursor:pointer}#dots i:after{content:"";position:absolute;left:-12px;right:-12px;top:-18px;bottom:-18px}
+.arr:disabled{opacity:.3!important;cursor:default!important;pointer-events:none}
 /*RUNDE-G-END*/
 
 
@@ -842,7 +844,7 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
       [['Offen?','Mittwuch bis Samstig ab achti – Mittwuch bis Fritig au znacht ab füfi.'],['Wo?','Chrüzstrasse 781 in Degersheim – grad bi de Käserei.'],['Lüüte Si aa!','071 371 11 16 – Stefan und Franziska säged Ine gärn, was grad reif isch.'],['Sit 2006','Stefan und Franziska Jud füehred d’Käserei sit em 1. November 2006.'],['S’Lädeli','Sit 2008 gits s’Chäsilädeli diräkt i de Käserei.']],
       [['Gold!','Euse Appezeller hät 2008 Gold gholt.'],['Bronze!','2010 hämmer Bronze am World Championship Cheese Contest gholt.'],['Im Chäller','Euse Chäs lagered im eigene Chäschäller.'],['Acht Sorte','8 Chäs s’ganze Jahr – und no saisonali Spezialitäte.'],['Schwarz Wolf','Händ Si de Schwarz Wolf scho probiert?']],
       [['Grüezi!','Chömed verbii – probiere isch erlaubt!'],['Fondue?','Üsi hausgmachti Fondue-Mischig gits im Lädeli – rund 200 g pro Person.'],['Raclette!','Rächned mit 200 bis 250 g Chäs pro Person.'],['Klosterchäs','De Magdenauer isch en Rahmchäs nach altem Rezept.'],['Mutschli','S’Wolfensberg-Mutschli gits au mit Bärlauch, Thymian oder Basilikum.']]];
-    const idx=[0,0,0];
+    const idx=matchMedia('(max-width:700px), (orientation:landscape) and (max-height:500px)').matches?[-1,-1,-1]:[0,0,0]; /* Telefon: erster Tipp = erster Satz */
     const mb=document.createElement('div'); mb.className='mbub'; mb.setAttribute('role','status'); heroEl.appendChild(mb); let mbT=null, mbI=-1;
     const mbHide=()=>{ mb.classList.remove('on'); mbI=-1; clearTimeout(mbT); };
     const say=(f,i)=>{ endIntro();
@@ -913,12 +915,12 @@ calc();
 
 /* --- Stimmen: Leiste (eine Karte pro Schritt) --- */
 const rail=Q('#rail'), cards=QA('.card'), dots=Q('#dots');
-cards.forEach((c,i)=>{const d=document.createElement('i'); dots.appendChild(d);});
+cards.forEach((c,i)=>{const d=document.createElement('i'); d.setAttribute('role','button'); d.setAttribute('aria-label','Bewertung '+(i+1)); d.addEventListener('click',()=>smooth(Math.min(rail.scrollWidth-rail.clientWidth,i*stepW()))); dots.appendChild(d);});
 const stepW=()=>cards[1].offsetLeft-cards[0].offsetLeft;
 const smooth=(to)=>{ const from=rail.scrollLeft, t0=performance.now(), D=500; rail.style.scrollSnapType='none';
   const st=t=>{const p=Math.min(1,(t-t0)/D), e=1-Math.pow(1-p,3); rail.scrollLeft=from+(to-from)*e; if(p<1) requestAnimationFrame(st); else rail.style.scrollSnapType='';}; requestAnimationFrame(st); };
-const upd=()=>{ const i=Math.round(rail.scrollLeft/stepW()); QA('#dots i').forEach((d,j)=>d.classList.toggle('on',j===i));
-  Q('#al').disabled=rail.scrollLeft<4; Q('#ar').disabled=rail.scrollLeft>rail.scrollWidth-rail.clientWidth-4; };
+const upd=()=>{ const atEnd=rail.scrollLeft>rail.scrollWidth-rail.clientWidth-10; const i=atEnd?cards.length-1:Math.round(rail.scrollLeft/stepW()); QA('#dots i').forEach((d,j)=>d.classList.toggle('on',j===i));
+  Q('#al').disabled=rail.scrollLeft<10; Q('#ar').disabled=rail.scrollLeft>rail.scrollWidth-rail.clientWidth-10; };
 Q('#al').addEventListener('click',()=>smooth(Math.max(0,Math.round(rail.scrollLeft/stepW()-1)*stepW())));
 Q('#ar').addEventListener('click',()=>smooth(Math.min(rail.scrollWidth-rail.clientWidth,Math.round(rail.scrollLeft/stepW()+1)*stepW())));
 rail.addEventListener('scroll',upd,{passive:true}); upd();
