@@ -857,6 +857,13 @@ p{text-wrap:pretty}
 /* Abstände der neuen Blöcke am Laptop wie die anderen */
 @media (min-width:901px){#team.sec{padding-top:14px!important;padding-bottom:40px!important}#gutschein.sec{padding-top:20px!important;padding-bottom:40px!important}}
 </style>
+<style id="runde-25-11-e">
+.days button small{font-size:10.5px;opacity:.75}
+.lb .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(217,189,132,.5);color:var(--gold-2);font-size:26px;display:flex;align-items:center;justify-content:center;background:rgba(20,6,11,.4)}
+.lb .lb-prev{left:18px;right:auto}.lb .lb-next{right:18px;left:auto}
+@media (hover:hover){.lb .lb-nav:hover,.lb #lbClose:hover{background:rgba(217,189,132,.18);color:var(--gold-3)}}
+html.lb-lock,html.lb-lock body{overflow:hidden}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mkHinweis" data-en="Website draft by Julia &amp; Robin Mirku · preview only – some links and features are not active yet." data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -1406,8 +1413,8 @@ $$('.akte button').forEach(b=>b.addEventListener('click',()=>{if(b.classList.con
 
 /* ---------- Galerie: eine Karte pro Pfeil, Pfeile seitlich ---------- */
 const strip=$('#strip'),fig=$$('#strip figure'),dots=$('#dots');
-fig.forEach((f,i)=>{const d=document.createElement('i');dots.appendChild(d)});
 const step=()=>fig[1].offsetLeft-fig[0].offsetLeft;
+const mkDots=()=>{const n=Math.max(1,Math.round((strip.scrollWidth-strip.clientWidth)/step())+1);if(dots.children.length===n)return;dots.innerHTML='';for(let i=0;i<n;i++)dots.appendChild(document.createElement('i'))};mkDots();addEventListener('resize',mkDots);
 $('.arr.l').onclick=()=>strip.scrollBy({left:-step(),behavior:'smooth'});$('.arr.r').onclick=()=>strip.scrollBy({left:step(),behavior:'smooth'});
 const upd=()=>{const i=Math.round(strip.scrollLeft/step());$$('#dots i').forEach((d,k)=>d.classList.toggle('on',k===i));$('.arr.l').disabled=strip.scrollLeft<4;$('.arr.r').disabled=strip.scrollLeft>strip.scrollWidth-strip.clientWidth-4};
 strip.addEventListener('scroll',upd,{passive:true});upd();addEventListener('resize',upd);
@@ -1495,7 +1502,7 @@ if(H.classList.contains('sv')){(()=>{const stg=$('#aktStage');if(!stg)return;con
       const c=st[N];const eo=Math.max(0,Math.min(1,(cur-.45)/.4));const cy=Hh*.56;
       c.style.opacity=eo.toFixed(3);c.style.top=cy+'px';c.style.width=(W*G*1.05)+'px';c.style.transform=`translateX(${EX.toFixed(2)}px) scaleX(${(.3+.7*eo).toFixed(3)})`})}
   addEventListener('resize',()=>{N=0;draw()});
-  function tick(){raf=0;tgt=force!==null?force:(rm?1:target());const k=force!==null?.2:.075;const d=tgt-cur;const st=Math.max(-.022,Math.min(.022,d*k));cur=Math.abs(d)<.0008?tgt:cur+(force!==null?d*k:st);draw();if(cur!==tgt)raf=requestAnimationFrame(tick)}
+  let opened=false;function tick(){raf=0;const tg=rm?1:target();if(!opened&&tg>.12)opened=true;tgt=force!==null?force:(opened?1:tg);const k=force!==null?.2:.075;const d=tgt-cur;const lim=opened?.012:.022;const st=Math.max(-lim,Math.min(lim,d*k));cur=Math.abs(d)<.0008?tgt:cur+(force!==null?d*k:st);draw();if(cur!==tgt)raf=requestAnimationFrame(tick)}
   const kick=()=>{if(!raf)raf=requestAnimationFrame(tick)};
   addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);draw();kick();
   /* Aktwechsel: kurz zu, dann wieder offen – weich, ohne Klassen-Sprung */
@@ -3714,7 +3721,7 @@ const COLFIN=v=>v==='farbe'||v==='geo';
 const fits=(f,s)=>!(s.col!=null&&(s.fin==null||COLFIN(s.fin))&&!COLFIN(f.fin)&&f.fin!=='*')&&AXES.every(a=>s[a]==null||f[a]==='*'||f[a]===s[a]);
 const nat=()=>st.len==='natur';
 /* natur mit Design: nur wenn es echte natur-Designfotos gibt */
-const NATD=FRAMES.some(f=>f.len==='natur'&&!f.plain),natDes=()=>['fin','col','fb','ft'].some(a=>st[a]!=null)||(st.fx!=null&&st.fx!=='none');
+const NATD=FRAMES.some(f=>f.len==='natur'&&!f.plain),natDes=()=>['col','fb','ft'].some(a=>st[a]!=null)||(st.fx!=null&&st.fx!=='none');
 const colOff=()=>(nat()&&!NATD)||(st.fin&&!COLFIN(st.fin));
 const frOff=()=>(nat()&&!NATD)||st.fin!=='french';
 const isOff=a=>(a==='col'&&colOff())||((a==='fb'||a==='ft')&&frOff());
@@ -3838,7 +3845,7 @@ let stageVis=true,setVis=false;
 const upMini=()=>$('#mini').classList.toggle('show',setVis&&!stageVis);
 addEventListener('scroll',upMini,{passive:true});
 new IntersectionObserver(es=>es.forEach(e=>{stageVis=e.isIntersecting;upMini()}),{threshold:.15}).observe($('#stage .frame'));
-new IntersectionObserver(es=>es.forEach(e=>{setVis=e.isIntersecting;upMini()}),{threshold:0}).observe($('#setgrid>div:last-child'));
+new IntersectionObserver(es=>es.forEach(e=>{setVis=e.isIntersecting;upMini()}),{threshold:0,rootMargin:'-160px 0px -40px 0px'}).observe($('#setgrid>div:last-child'));
 // alle Fotos vorladen und dekodieren, damit beim Wechsel nichts aufblitzt
 /* sofort nur helle Haut vorladen; Hautton-Fotos beim ersten Griff zum Schieber */
 const preload=f=>Object.entries(FR).forEach(([k,n])=>{if(f(k)){const i=new Image();i.src=SRC(n);i.decode&&i.decode().catch(()=>{})}});
@@ -3953,6 +3960,18 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
   /* Gutschein: Betrag wählen */
   document.querySelectorAll('.gs-amt button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.gs-amt button').forEach(x=>x.classList.toggle('on',x===b));const v=$('#gsVal');v.textContent=b.dataset.a==='CHF ?'?(en()?'Any':'Wunsch'):b.dataset.a;v.animate&&v.animate([{transform:'scale(.85)'},{transform:'scale(1)'}],{duration:260,easing:'ease-out'})}));
 })();
+</script>
+<script id="runde-25-11-e-js">
+(()=>{const lb=document.getElementById('lb'),im=document.getElementById('lbImg'),cap=document.getElementById('lbCap');if(!lb)return;
+  const figs=[...document.querySelectorAll('#strip figure')];let i=0;
+  const show=k=>{i=(k+figs.length)%figs.length;const f=figs[i];im.src=f.querySelector('img').src;cap.textContent=f.querySelector('figcaption').textContent};
+  figs.forEach((f,k)=>f.addEventListener('click',()=>{i=k}));
+  const mk=(c,l,t,fn)=>{const b=document.createElement('button');b.className='lb-nav '+c;b.setAttribute('aria-label',l);b.textContent=t;b.addEventListener('click',e=>{e.stopPropagation();fn()});lb.appendChild(b)};
+  mk('lb-prev','Zurück','‹',()=>show(i-1));mk('lb-next','Weiter','›',()=>show(i+1));
+  addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});
+  let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(i+(dx<0?1:-1));x0=null});
+  new MutationObserver(()=>document.documentElement.classList.toggle('lb-lock',lb.classList.contains('open'))).observe(lb,{attributes:true,attributeFilter:['class']});
+  lb.addEventListener('wheel',e=>e.preventDefault(),{passive:false});})();
 </script>
 </body>
 </html>
