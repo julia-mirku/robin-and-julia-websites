@@ -566,9 +566,9 @@ body::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.04);pointer
 /* Prüfung 26.11: Pfeile der Ladenreihe liegen nicht auf dem «+» */
 @media (min-width:768px) and (max-width:1400px){.regalwrap .pfeil{width:34px;height:34px}.regalwrap .pfeil svg{width:18px;height:18px}}
 </style>
-</head>
+<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
 <body>
-<div class="draft" id="draft">Website-Entwurf von <b>Julia &amp; Robin Mirku</b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+<div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
 
 <header class="top">
   <div class="wrap">
