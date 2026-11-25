@@ -864,6 +864,30 @@ p{text-wrap:pretty}
 @media (hover:hover){.lb .lb-nav:hover,.lb #lbClose:hover{background:rgba(217,189,132,.18);color:var(--gold-3)}}
 html.lb-lock,html.lb-lock body{overflow:hidden}
 </style>
+<style id="runde-25-11-f">
+/* Hero Desktop: Karte «Ihr Platz» neben dem Foto, nicht auf den Nägeln */
+@media (min-width:1200px){
+  .hero.b .buehne,.hero .buehne{display:flex;align-items:flex-end;gap:22px;justify-self:end;width:auto!important}
+  .hero .buehne .portal{flex:none;width:min(calc((100svh - 300px)*.8),460px)}
+  .hero .buehne .ticket{position:relative!important;left:auto!important;bottom:auto!important;right:auto!important;order:-1;flex:none;width:300px!important;margin-bottom:6%}
+}
+@media (min-width:901px) and (max-width:1199px){
+  .hero .buehne{display:flex;flex-direction:column;align-items:center;width:auto!important;justify-self:center}
+  .hero .buehne .portal{width:min(calc((100svh - 400px)*.8),380px)}
+  .hero .buehne .ticket{position:relative!important;left:auto!important;bottom:auto!important;margin-top:-18px;width:min(330px,100%)!important}
+}
+/* Telefon: «Termin buchen» sofort sichtbar – Knöpfe direkt unter dem Titel */
+@media (max-width:600px){.hero .hero-cta{order:3;margin-top:16px}.hero .portal{order:4}.hero .ticket{order:5}.hero p.sub{order:6}.hero .facts{order:7}}
+/* Kontrast: kleine Goldschrift auf hellem Grund dunkler (gleicher Goldton, ≥4.5:1) */
+:root{--gold-text:#7A5A1E}
+.sec .kicker,.ticket .tk,.pass .lv,.grp h5,.fin-adr small,.tm small,.stage-cap span,#atelier .fin-hint,.kq .st,.mini-t small,.days button small,.akte button span,.score span,.prow small,.lg-k{color:var(--gold-text)!important}
+.hero .kicker,.gs-l .kicker{color:var(--gold-2)!important}
+.finale .kicker{color:var(--gold-text)!important}
+#atelier .seg button span{color:var(--gold-text)}
+.days button.on small{color:var(--gold-3)!important;opacity:1}
+.akte button.on span{color:var(--gold-2)!important}
+.pass.boss .lv{color:var(--gold-2)!important}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mkHinweis" data-en="Website draft by Julia &amp; Robin Mirku · preview only – some links and features are not active yet." data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
