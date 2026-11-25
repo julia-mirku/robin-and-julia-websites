@@ -8,7 +8,7 @@
 <title>Käserei Kreuzstrasse · Degersheim</title>
 <meta name="description" content="Käserei Kreuzstrasse in Degersheim – Käse aus der eigenen Käserei, Familie Jud. Appenzeller mit Gold ausgezeichnet, Magdenauer Klosterkäse, Wolfensberg-Mutschli, Fondue-Mischung.">
 <meta property="og:title" content="Käserei Kreuzstrasse · Degersheim">
-<meta property="og:description" content="Käse aus der eigenen Käserei. Familie Jud, Chrüzstrasse 781, 9113 Degersheim.">
+<meta property="og:description" content="Käse aus der eigenen Käserei. Familie Jud, Chrüzstrasse 781, 9113&nbsp;Degersheim.">
 <meta property="og:image" content="img/og.jpg">
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -460,7 +460,7 @@ body:before{background:var(--tex) 0 0/var(--texsz) var(--texsz) repeat!important
    Länge: Foto gespiegelt fortgesetzt (fon_a_band_*), Naht spiegelgleich. Unten: Käse löst sich beim Scrollen ins Wiesenbild auf (--wp). */
 body{position:relative}
 :root{--fon:linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_c_band_l.webp) center top/100% auto repeat-y} /* Юля 25.11: Fon C fest (Originalkäse + Verlauf, dünne helle Rinde) */
-@media (max-aspect-ratio:3/4){:root{--fon:linear-gradient(rgba(251,245,232,.5),rgba(251,245,232,.5)),url(img/fon_a_band_m.webp) center top/100% auto repeat-y}}
+/* 25.11 abends: Telefon/Tablet hoch ebenfalls Fon C (wie in der Fon-Wahl, die Юля gewählt hat) – A-Telefonband entfernt */
 body:before{position:absolute!important;inset:0!important;z-index:-1;background:var(--fon)!important;opacity:1!important}
 .ftex i{position:absolute!important;left:0!important;right:0!important;top:var(--ftop,0px)!important;height:var(--doch,100vh)!important;bottom:auto!important;background:var(--fon)!important;opacity:1!important}
 .weg .ftex{display:none!important}
@@ -526,7 +526,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 /* Käse (gleiche Lage wie der Seitenhintergrund, --wegY) läuft in den Kopf des Wiesenblocks weiter und schmilzt weich ins Creme, danach ins Wiesenbild */
 .weg.weg:before{background:linear-gradient(180deg,rgba(251,245,232,0) 0,rgba(251,245,232,.22) 16%,rgba(251,245,232,.7) 40%,#FBF5E8 58%,#FBF5E8 100%),linear-gradient(90deg,rgba(251,245,232,.12) 0%,rgba(251,245,232,.3) 8%,rgba(251,245,232,1) 22%,rgba(251,245,232,1) 78%,rgba(251,245,232,.3) 92%,rgba(251,245,232,.12) 100%),url(img/fon_c_band_l.webp) center var(--wegY,0px)/100% auto repeat-y!important;
   -webkit-mask-image:linear-gradient(180deg,#000 0,#000 70%,transparent 100%)!important;mask-image:linear-gradient(180deg,#000 0,#000 70%,transparent 100%)!important}
-@media (max-aspect-ratio:3/4){.weg.weg:before{background:linear-gradient(180deg,rgba(251,245,232,0) 0,rgba(251,245,232,.22) 16%,rgba(251,245,232,.7) 40%,#FBF5E8 58%,#FBF5E8 100%),linear-gradient(rgba(251,245,232,.5),rgba(251,245,232,.5)),url(img/fon_a_band_m.webp) center var(--wegY,0px)/100% auto repeat-y!important}}
+
 /* Telefon: Sprechblase der Figuren unten über der Infoleiste, nichts überdeckt; Blasen an den Figuren auf dem Telefon aus */
 .mbub{display:none}
 @media (max-width:700px), (orientation:landscape) and (max-height:500px){
@@ -565,6 +565,14 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
   .days .day small,.days .day small span{font-size:12px!important;line-height:1.15!important}.days .day small span{white-space:normal!important;display:block;text-align:center}
 }
 /*RUNDE-F-END*/
+/*RUNDE-G 25.11 – dritte Prüfung*/
+section[id]{scroll-margin-top:calc(var(--bar,0px) + var(--hdr) + 10px)}
+h2,h3,.hero p.lead,.sec p{text-wrap:pretty}
+.day .today{font-size:11px!important}
+@media (max-width:700px){.hero-bar a{display:inline-block;padding:11px 0;margin:-11px 0}}
+@media (min-width:701px) and (max-width:1020px){#kaese.sec{padding-bottom:28px!important}#fondue.sec{padding-top:52px!important}#knum{display:inline-block;margin-top:12px}}
+/*RUNDE-G-END*/
+
 
 
 
@@ -629,7 +637,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
   </div></div>
   <div class="hero-bar"><div class="ftex" aria-hidden="true"><i></i></div><div class="wrap">
     <span class="js-status"><span class="dot"></span>…</span>
-    <a href="https://maps.google.com/?q=K%C3%A4serei+Kreuzstrasse,+Chr%C3%BCzstrasse+781,+9113+Degersheim" target="_blank" rel="noopener">Chrüzstrasse 781, 9113 Degersheim</a>
+    <a href="https://maps.google.com/?q=K%C3%A4serei+Kreuzstrasse,+Chr%C3%BCzstrasse+781,+9113+Degersheim" target="_blank" rel="noopener">Chrüzstrasse 781, 9113&nbsp;Degersheim</a>
     <a href="tel:+41713711116">071 371 11 16</a>
   </div></div>
 </section>
@@ -748,7 +756,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
     <div class="mapbox rv">
       <a class="karte" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener" aria-label="Route zur Käserei Kreuzstrasse planen"><img src="img/karte.svg" alt="Karte: Käserei Kreuzstrasse, Chrüzstrasse 781, Degersheim" loading="lazy">
         <span class="pin" aria-hidden="true"><svg viewBox="0 0 48 64"><defs><radialGradient id="pinK" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FBDD8A"/><stop offset=".6" stop-color="#F2C766"/><stop offset="1" stop-color="#E3A72F"/></radialGradient><radialGradient id="pinL" cx="40%" cy="35%" r="65%"><stop offset="0" stop-color="#B97F1E"/><stop offset="1" stop-color="#D9A33A"/></radialGradient><radialGradient id="pinD" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#1E130A"/><stop offset=".7" stop-color="#3A2412"/><stop offset="1" stop-color="#5A3A1C"/></radialGradient></defs><path d="M24 61C24 61 5 37.5 5 23.5A19 19 0 1 1 43 23.5C43 37.5 24 61 24 61Z" fill="url(#pinK)" stroke="#7A4E25" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="23" r="7.2" fill="url(#pinD)" stroke="#7A4E25" stroke-width="1.2"/><circle cx="12.5" cy="17" r="2.6" fill="url(#pinL)"/><circle cx="35" cy="14" r="2" fill="url(#pinL)"/><circle cx="35.5" cy="31" r="2.8" fill="url(#pinL)"/><circle cx="15" cy="33" r="1.8" fill="url(#pinL)"/><circle cx="24" cy="44" r="2.1" fill="url(#pinL)"/><circle cx="21" cy="9" r="1.5" fill="url(#pinL)"/></svg></span></a>
-      <div class="mapcard"><b>Käserei Kreuzstrasse</b><span>Chrüzstrasse 781 · 9113 Degersheim</span><a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>Route planen</a></div>
+      <div class="mapcard"><b>Käserei Kreuzstrasse</b><span>Chrüzstrasse 781 · 9113&nbsp;Degersheim</span><a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>Route planen</a></div>
     </div>
   </div>
 </section>
@@ -759,13 +767,13 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
   <picture><source media="(max-aspect-ratio:3/4)" srcset="img/huegel_m.webp"><img src="img/huegel_l.webp" alt="Hügel bei Degersheim am Morgen"></picture>
   <div class="wrap">
     <span class="kick" style="color:var(--gold2)">Luftkurort Degersheim</span>
-    <h2>Kommen Sie vorbei – probieren ist erlaubt</h2>
+    <h2>Kommen Sie vorbei&nbsp;– probieren ist erlaubt</h2>
     <p>Wir freuen uns, Sie in unserem kleinen Chäsilädeli begrüssen zu dürfen.</p>
     <div class="ctas" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px"><a class="btn btn-gold" href="tel:+41713711116">Anrufen</a><a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&destination=47.391402,9.194627" target="_blank" rel="noopener">Route planen</a></div>
   </div>
 </section>
 </main>
-<footer><div class="wrap"><span>Käserei Kreuzstrasse · Stefan &amp; Franziska Jud · Chrüzstrasse 781 · 9113 Degersheim</span><a href="tel:+41713711116">071 371 11 16</a><span>Website-Entwurf · nur zur Ansicht</span></div></footer>
+<footer><div class="wrap"><span>Käserei Kreuzstrasse · Stefan &amp; Franziska Jud · Chrüzstrasse 781 · 9113&nbsp;Degersheim</span><a href="tel:+41713711116">071 371 11 16</a><span>Website-Entwurf · nur zur Ansicht</span></div></footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true"><img alt=""><button aria-label="Schliessen">×</button></div>
 
@@ -781,7 +789,7 @@ const bar=Q('#entwurf'), hdr=Q('#hdr');
 const size=()=>{const h=bar.offsetHeight; html.style.setProperty('--bar0',h+'px'); if(!html.classList.contains('bar-off')) html.style.setProperty('--bar',h+'px');};
 size(); addEventListener('resize',size); addEventListener('load',size); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(size); if(window.ResizeObserver) new ResizeObserver(size).observe(bar);
 const barOff=()=>{ if(html.classList.contains('bar-off')) return; html.classList.add('bar-off'); html.style.setProperty('--bar','0px'); };
-const onScroll=()=>{ const y=scrollY; if(y>8) barOff(); hdr.classList.toggle('solid', y>innerHeight*.6); };
+const onScroll=()=>{ const y=scrollY; if(y>8) barOff(); const hw=document.querySelector('.hero-in .wrap'); const tt=hw?hw.getBoundingClientRect().top+y-hdr.offsetHeight-12:1e9; hdr.classList.toggle('solid', y>Math.min(innerHeight*.6, Math.max(40,tt))); };
 addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
 /* --- Öffnungszeiten (Google, 24.11.2026) --- */
@@ -856,11 +864,11 @@ QA('.rv').forEach(e=>io.observe(e));
 /* --- Käse / Reife-Regler (Texte von kaeserei-kreuzstrasse.ch, Archiv 2025) --- */
 const K=[
  {n:'Wolfensberg-Mutschli',s:'Symphonie aus frischer Milch, klarer Luft und Käsermeisterkunst',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer',tag:'',img:'mutschli_kraeuter',
-  herbs:[['Nature',''],['Basilikum','Kombiniert mit dem Aroma des Basilikums, der einen sehr eigenwilligen pfeffrig-süssen Geschmack mit einem Hauch Gewürznelken aufweist.'],['Thymian','Kombiniert mit dem Geschmack des Thymians, der stark würzig riecht und herb-aromatisch schmeckt, mit einer milden, pfeffrigen Schärfe.'],['Bärlauch','Vereint mit dem Geschmack des Bärlauchs, dessen ätherisches Öl das charakteristische knoblauchähnliche Aroma entfaltet.'],['Orangenblüten','Kombiniert mit dem zartblumigen Geschmack der Orangenblüte und einer leichten Zitrusnote.']]},
+  herbs:[['Nature',''],['Basilikum','Kombiniert mit dem Aroma des Basilikums, das einen sehr eigenwilligen pfeffrig-süssen Geschmack mit einem Hauch Gewürznelken aufweist.'],['Thymian','Kombiniert mit dem Geschmack des Thymians, der stark würzig riecht und herb-aromatisch schmeckt, mit einer milden, pfeffrigen Schärfe.'],['Bärlauch','Vereint mit dem Geschmack des Bärlauchs, dessen ätherisches Öl das charakteristische knoblauchähnliche Aroma entfaltet.'],['Orangenblüten','Kombiniert mit dem zartblumigen Geschmack der Orangenblüte und einer leichten Zitrusnote.']]},
  {n:'Magdenauer Klosterkäse',s:'Rahmkäse nach altem Rezept der Klosterkäserei',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer, sauber im Abgang',tag:'Rahmkäse',img:'magdenauer'},
  {n:'Roter Pfeffer Käse',s:'Frische Milch, klare Luft, Käsermeisterkunst und die blumige Schärfe des Pfeffers',t:'mild, würzig, cremig; mit fortgeschrittener Reifung aromatischer – mit der blumigen Schärfe des roten Pfeffers',tag:'mit rotem Pfeffer',img:'roter_pfeffer'},
  {n:'Appenzeller',s:'Würzig – unser ausgezeichneter Klassiker',t:'Vom würzigen Appenzeller bis zum milden Wolfensberger: bei uns finden Sie alles, was das Käseherz begehrt.',tag:'★ Gold · Swiss Cheese Award 2008',img:'appenzeller_stueck'},
- {n:'Schwarzer Wolf',s:'Wolfensberg Chäs extra reif – Vollmilchkäse aus dem Luftkurort Degersheim',t:'zeichnet sich aus durch sein würzig-fruchtiges Aroma, brennt nicht auf der Zunge, cremig',tag:'extra reif',img:'schwarzer_wolf'}
+ {n:'Schwarzer Wolf',s:'Wolfensberg Chäs extra reif – Vollmilchkäse aus dem Luftkurort Degersheim',t:'würzig-fruchtiges Aroma, cremig – brennt nicht auf der Zunge',tag:'extra reif',img:'schwarzer_wolf'}
 ];
 const kpic=Q('#kpic'), stops=Q('#stops'), harp=Q('#harp'), track=Q('#track'); let cur=-1, herbI=0;
 K.forEach((k,i)=>{ const im=document.createElement('img'); im.src='img/'+k.img+'_k.webp'; im.alt=k.n; im.loading='lazy'; im.addEventListener('error',()=>{im.style.visibility='hidden'}); kpic.appendChild(im);
@@ -893,7 +901,7 @@ kpic.addEventListener('click',()=>openLb('img/'+K[cur].img+'_l.webp'));
 const pot=Q('#pot'); const FC=['#3c6e9e','#b5272d','#5b7a35','#e3a72f','#7a4e25','#8a5aa8','#2f8f86','#d06a2c','#455a64','#c2185b','#6d8b2f','#1f6fb2'];
 for(let i=0;i<12;i++){ const f=document.createElement('div'); f.className='fork'; f.style.transform='rotate('+(i*30+15)+'deg)'; f.style.setProperty('--fc',FC[i]); f.innerHTML='<i></i>'; pot.appendChild(f); }
 let n=4, mode='f'; const G={f:200,r:200};
-function calc(){ Q('#gnum').textContent=n; QA('.fork').forEach((f,i)=>f.classList.toggle('on',i<n));
+function calc(){ Q('#gnum').textContent=n; { const gl=Q('.gl'); if(gl) gl.innerHTML=(n===1?'Person':'Personen')+'<br>am Tisch'; } QA('.fork').forEach((f,i)=>f.classList.toggle('on',i<n));
   const w=g=>g>=1000?(g/1000).toLocaleString('de-CH'):g, u=g=>g>=1000?'kg':'g';
   if(mode==='f'){ const g=n*200; Q('#gres').innerHTML=w(g)+' <small>'+u(g)+'</small>'; }
   else { const a=n*200,b=n*250; Q('#gres').innerHTML=w(a)+(u(a)===u(b)?'':' <small>'+u(a)+'</small>')+'–'+w(b)+' <small>'+u(b)+'</small>'; }
