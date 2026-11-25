@@ -566,6 +566,24 @@ header.top.weg{transform:translateY(-100%);box-shadow:none}
 /* Konfetti zum 35-Jahr-Jubiläum */
 .konfetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;border-radius:inherit;z-index:3}
 </style>
+<style id="rosa-25-11b">
+/* Rosa Plaketten überall (Julia 25.11, dringend): in Ruhe sichtbarer weicher Schatten + feiner heller Rand;
+   bei Hover/Tap 2 px Magenta-Kontur RUNDHERUM, Hintergrund bleibt gleich */
+.info li,.chips span,.kidchip,.karten .kpreise div,.facts .ic,.kont .ic{box-shadow:0 2px 8px rgba(0,0,0,.12),inset 0 0 0 1px rgba(255,255,255,.8);transition:box-shadow .2s}
+.plus button,.kbtn,.stepper button{box-shadow:inset 0 0 0 1px rgba(255,255,255,.8);filter:drop-shadow(0 2px 4px rgba(0,0,0,.14));transition:box-shadow .2s}
+.plus button.an{box-shadow:inset 0 0 0 2px var(--magenta)}
+@media (hover:hover){
+ .info li:hover,.chips span:hover,.kidchip:hover,.karten .kpreise div:hover,li:hover>.ic{box-shadow:0 0 0 2px var(--magenta),0 2px 8px rgba(0,0,0,.12)}
+ .plus button:hover,.kbtn:hover,.stepper button:hover{box-shadow:inset 0 0 0 2px var(--magenta)}
+ .info li:hover{background:var(--rosa2)}.chips span:hover{background:var(--creme);color:inherit}
+ .plus button:hover{background:var(--rosa2)}.plus button.an:hover{background:var(--rosa)}.kbtn:hover{background:var(--rosa2)}.stepper button:hover{background:var(--rosa2)}}
+.info li.tap,.chips span.tap,.kidchip.tap,.karten .kpreise div.tap{box-shadow:0 0 0 2px var(--magenta),0 2px 8px rgba(0,0,0,.12)}
+.plus button.tap,.kbtn.tap,.stepper button.tap{box-shadow:inset 0 0 0 2px var(--magenta)}
+/* Zmorge-Rechner: nur EINE ruhige Linie vor dem Total, Zeilen nur durch Luft getrennt (Julia 25.11) */
+#rechner .reihe{border-bottom:0}
+#rechner .reihe+.reihe{margin-top:4px}
+#rechner .total{border-top:1.5px solid var(--sand)}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
@@ -658,7 +676,7 @@ header.top.weg{transform:translateY(-100%);box-shadow:none}
         <h2 class="h2 rv">Advent <span class="script">bei Dober</span></h2>
         <p class="lead rv">Kleine Freuden aus unserer eigenen Herstellung, festlich verpackt – zum Verschenken oder für den eigenen Adventskaffee.</p>
       </div>
-      <div class="kranz rv" id="kranz" aria-live="polite"><span class="kerzen"><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><svg class="zweig" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8c12-6 22 4 32-1s20-5 32 0 20 5 32-2" fill="none" stroke="#5C7A4A" stroke-width="5" stroke-linecap="round"/><path d="M4 7c10-3 18 3 28 0m6 0c10-4 18 2 28 1m6-1c9-3 17 3 26 0" fill="none" stroke="#7E9C62" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="9" r="1.8" fill="#C8102E"/><circle cx="52" cy="6" r="1.8" fill="#C8102E"/><circle cx="82" cy="8" r="1.8" fill="#C8102E"/></svg></span><small id="kranzTxt"></small></div>
+      <div class="kranz rv" id="kranz" aria-live="polite"><span class="kerzen"><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><i class="kerze"><svg viewBox="0 0 14 30" aria-hidden="true"><path class="fl" d="M7 1c2 3 3 4.5 3 6.3A3 3 0 0 1 7 10.4 3 3 0 0 1 4 7.3C4 5.5 5 4 7 1z"/><path class="docht" d="M7 10.5v2"/><rect x="3" y="12.5" width="8" height="16.5" rx="2"/></svg></i><svg class="zweig" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8c12-6 22 4 32-1s20-5 32 0 20 5 32-2" fill="none" stroke="#5C7A4A" stroke-width="5" stroke-linecap="round"/><path d="M4 7c10-3 18 3 28 0m6 0c10-4 18 2 28 1m6-1c9-3 17 3 26 0" fill="none" stroke="#7E9C62" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="9" r="1.8" fill="#C8102E"/><circle cx="52" cy="6" r="1.8" fill="#C8102E"/><circle cx="82" cy="8" r="1.8" fill="#C8102E"/></svg></span><small id="kranzTxt"></small></div>
     </div>
     <div class="gaben">
       <article class="gabe rv"><div class="gb"><img src="img/advent_truffes.webp" alt="Champagner-Truffes in festlicher Verpackung" decoding="async" loading="lazy" width="308" height="286"></div><div class="gt"><h3>Champagner-Truffes</h3><p>Aus eigener Fabrikation, mit Schleife und Karte.</p></div></article>
@@ -1046,11 +1064,11 @@ else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting||e
 (function(){const K=[...document.querySelectorAll('#kranz .kerze')],T=document.getElementById('kranzTxt');if(!K.length)return;
  const d=new Date(),y=d.getFullYear(),w=new Date(y,11,24);w.setDate(24-w.getDay());const A=[0,1,2,3].map(i=>{const x=new Date(w);x.setDate(w.getDate()-7*(3-i));return x});
  const heute=new Date(y,d.getMonth(),d.getDate());let n=A.filter(x=>x<=heute).length;if(heute>new Date(y,11,26))n=0;
- K.forEach((k,i)=>k.classList.toggle('an',i<n));
+ K.forEach((k,i)=>k.classList.toggle('an',i<Math.min(n,K.length)));/* 3 Kerzen (Julia 25.11): ab dem 3. Advent brennen alle drei */
  const MO=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
  if(n===0){const t=Math.round((A[0]-heute)/864e5);T.textContent=(t>=0&&t<=30)?(t===1?'Morgen ist 1. Advent':'1. Advent: '+A[0].getDate()+'. '+MO[A[0].getMonth()]):'Adventszeit'}else T.textContent=n+'. Advent';})();
 /* 25.11: Tap-Hervorhebung der rosa Plaketten auf Touch */
-(function(){if(matchMedia('(hover:hover)').matches)return;document.addEventListener('touchstart',e=>{const el=e.target.closest&&e.target.closest('.info li,.chips span,.plus button,.kbtn');if(!el)return;el.classList.add('tap');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('tap'),700)},{passive:true})})();
+(function(){if(matchMedia('(hover:hover)').matches)return;document.addEventListener('touchstart',e=>{const el=e.target.closest&&e.target.closest('.info li,.chips span,.plus button,.kbtn,.stepper button,.kidchip,.karten .kpreise div');if(!el)return;el.classList.add('tap');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('tap'),700)},{passive:true})})();
 /* 25.11: Kopfleiste weicht beim Runterscrollen, kommt beim Hochscrollen (Schwelle 10 px) */
 (function(){const h=document.querySelector('header.top'),nv=document.getElementById('nav');if(!h)return;let last=scrollY,tk=0;
  function chk(){tk=0;const y=scrollY,d=y-last;if(y<90){h.classList.remove('weg');last=y;return}if(nv&&nv.classList.contains('open')){last=y;return}
