@@ -637,10 +637,10 @@ a[href^="mailto:"]{white-space:nowrap}
       <p class="lead rv">Samstags, sonntags und an Feiertagen treffen sich Paare, Familien oder Gruppen zum ausgedehnten Schlemmen an unserem reichhaltigen Buffet – auf Wunsch mit prickelndem Cüpli. Von Dienstag bis Freitag servieren wir den Konditor-Zmorge gerne an den Tisch.</p>
       <div class="rechner rv" id="rechner">
         <div class="reihe"><div class="l">Erwachsene<small>Genusspreis CHF&nbsp;36.00</small></div>
-          <div class="stepper"><button type="button" data-d="-1" aria-label="weniger">−</button><output id="erw">2</output><button type="button" data-d="1" aria-label="mehr">+</button></div></div>
+          <div class="stepper"><button type="button" data-d="-1" aria-label="weniger">−</button><output id="erw">0</output><button type="button" data-d="1" aria-label="mehr">+</button></div></div>
         <div class="reihe"><div class="l">Kinder bis 12 Jahre<small>CHF 2.00 pro Altersjahr</small><div class="kidsWrap" id="kidsWrap"><div class="kids" id="kids"></div></div></div>
           <div class="stepper"><button type="button" id="kidSub" aria-label="Kind entfernen">−</button><output id="kidN">0</output><button type="button" id="kidAdd" aria-label="Kind hinzufügen">+</button></div></div>
-        <div class="total"><span>Ihr Zmorge</span><b id="summe">CHF 72.00</b></div>
+        <div class="total"><span>Ihr Zmorge</span><b id="summe">CHF 0.00</b></div>
       </div>
       <ul class="info rv"><li>Reservation empfohlen</li><li>Für Firmen &amp; Vereine auch unter der Woche</li><li>Als Geschenkgutschein</li></ul>
       <div class="ctas rv" style="margin-top:18px">
@@ -787,6 +787,10 @@ a[href^="mailto:"]{white-space:nowrap}
       <figure class="stimme rv"><div class="sterne">★★★★★</div><p>«Schöner Innenraum und kleiner, gepflegter Aussenbereich. Grosse Auswahl an Kuchen, Torten, Salat. Service aufmerksam, zuvorkommend und kompetent.»</p><figcaption class="wer">Brix</figcaption></figure>
     </div>
     <div class="punkteNav" id="sNav"></div>
+    <div class="team rv">
+      <img src="img/ueberuns3.webp" alt="Das Team der Confiserie Dober" decoding="async" width="308" height="286">
+      <p><b>Ein Familienbetrieb mit rund 20 Mitarbeitenden.</b> Erika und Armin Dober mit dem gesamten Confiserie Dober Team. Lust mitzuwirken? Senden Sie Ihre Bewerbung mit aktuellem Bild an <a href="mailto:info@confiserie-dober.ch" style="color:var(--magenta);font-weight:600">info@confiserie-dober.ch</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -809,10 +813,6 @@ a[href^="mailto:"]{white-space:nowrap}
         <div class="haus-foto"><img src="img/home2.webp" alt="Das orange Haus der Confiserie Dober" decoding="async" width="308" height="286"><small>Hier sind wir</small></div>
         <div class="route"><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Confiserie+Dober+Wilerstrasse+73+9230+Flawil" target="_blank" rel="noopener">Route planen</a></div>
       </div>
-    </div>
-    <div class="team rv">
-      <img src="img/ueberuns3.webp" alt="Das Team der Confiserie Dober" decoding="async" width="308" height="286">
-      <p><b>Ein Familienbetrieb mit rund 20 Mitarbeitenden.</b> Erika und Armin Dober mit dem gesamten Confiserie Dober Team. Lust mitzuwirken? Senden Sie Ihre Bewerbung mit aktuellem Bild an <a href="mailto:info@confiserie-dober.ch" style="color:var(--magenta);font-weight:600">info@confiserie-dober.ch</a>.</p>
     </div>
   </div>
 </section>
@@ -877,7 +877,7 @@ if(shot||matchMedia('(prefers-reduced-motion: reduce)').matches){deckel.style.di
 else{setTimeout(()=>{deckel.classList.add('weg');deckel.addEventListener('animationend',()=>{deckel.style.display='none';auf()},{once:true})},700)}
 
 /* Zmorge-Rechner */
-let erw=2;const kids=[];const kE=document.getElementById('kids');
+let erw=0;const kids=[];const kE=document.getElementById('kids');
 const chf=n=>'CHF '+n.toFixed(2);
 function rechne(){document.getElementById('erw').textContent=erw;
  kE.innerHTML='';kids.forEach((a,i)=>{const c=document.createElement('span');c.className='kidchip';
