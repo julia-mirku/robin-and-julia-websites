@@ -958,11 +958,11 @@ const fmt=s=>s.length?s.map(x=>hm(x[0])+'–'+hm(x[1])).join(' · '):'geschlosse
 const now=new Date();const today=now.getDay();const nm=now.getHours()*60+now.getMinutes();
 const CAFU={1:[[360,735],[840,1110]],2:[[360,735],[840,1110]],3:[[360,735]],4:[[360,735],[840,1110]],5:[[360,735],[840,1110]],6:[[360,900]]};
 const sl2=(o,d,dt)=>o==='u'&&CAFU[d]?CAFU[d]:slots(o,d,dt);
-function status(o){const s=sl2(o,today);for(const x of s){if(nm>=x[0]&&nm<x[1])return{open:true,t:'offen bis '+hm(x[1])};if(nm<x[0])return{open:false,t:'öffnet '+hm(x[0])}}
-  for(let i=1;i<8;i++){const d=(today+i)%7,dt=new Date(now.getTime()+i*864e5),s2=sl2(o,d,dt);if(s2.length)return{open:false,t:'öffnet '+(i===1?'morgen':TN[d])+' '+hm(s2[0][0])}}return{open:false,t:'geschlossen'}}
+function status(o){const s=sl2(o,today);for(const x of s){if(nm>=x[0]&&nm<x[1])return{open:true,t:'offen bis '+hm(x[1]),c:o==='u'&&!!CAFU[today]};if(nm<x[0])return{open:false,t:'öffnet '+hm(x[0]),c:o==='u'&&!!CAFU[today]}}
+  for(let i=1;i<8;i++){const d=(today+i)%7,dt=new Date(now.getTime()+i*864e5),s2=sl2(o,d,dt);if(s2.length)return{open:false,t:'öffnet '+(i===1?'morgen':TN[d])+' '+hm(s2[0][0]),c:o==='u'&&!!CAFU[d]}}return{open:false,t:'geschlossen'}}
 function nextBack(){for(let i=0;i<8;i++){const d=(today+i)%7;if(BACK.includes(d)){const dt=new Date(now.getTime()+i*864e5);return {i,d,txt:(i===0?'heute':i===1?'morgen':TL[d])+', '+dt.getDate()+'.'+(dt.getMonth()+1)+'.'}}}}
 $$('[data-heute]').forEach(el=>{const w=status('w'),u=status('u');
-  el.innerHTML=`<a class="pill" href="#zeiten"><span class="dot ${w.open?'':'zu'}"></span><b>Waldstatt</b> ${w.t}</a><a class="pill" href="#zeiten"><span class="dot ${u.open?'':'zu'}"></span><b>Urnäsch</b> ${u.t}</a>`});
+  el.innerHTML=`<a class="pill" href="#zeiten"><span class="dot ${w.open?'':'zu'}"></span><b>Waldstatt</b> ${w.t}</a><a class="pill" href="#zeiten"><span class="dot ${u.open?'':'zu'}"></span><b>${u.c?'Café Urnäsch':'Urnäsch'}</b> ${u.t}</a>`});
 const woche=$('#woche');[1,2,3,4,5,6,0].forEach(d=>{const b=document.createElement('button');b.className='tag'+(BACK.includes(d)?' bt':'')+(d===today?' sel':'');b.dataset.d=d;b.innerHTML=`<b>${TN[d]}</b><span>${d===today?'heute':BACK.includes(d)?'Backtag':'&nbsp;'}</span>`;b.onclick=()=>zeigTag(d);woche.appendChild(b)});
 function zeigTag(d){$$('.tag').forEach(t=>t.classList.toggle('sel',+t.dataset.d===d));
   const extra=d===6?'<div class="x">Café bis 15.00</div>':d===0?'<div class="x">nur November–April</div>':'';
