@@ -2565,7 +2565,14 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
       if(sum(hs, i, Math.min(hs.length, i + size)) > avail) ok = false;
       even.push([i, Math.min(hs.length, i + size)]);
     }
-    return ok && even.length === n ? even : out;
+    return two(ok && even.length === n ? even : out, hs, avail);
+  }
+  /* 26.11 (Julia): auf einer neuen Seite stehen mindestens 2 Positionen, nie eine allein */
+  function two(p, hs, avail){
+    for(var k = p.length - 1; k > 0; k--){
+      while(p[k][1] - p[k][0] < 2 && p[k-1][1] - p[k-1][0] > 1 && sum(hs, p[k][0] - 1, p[k][1]) <= avail){ p[k-1][1]--; p[k][0]--; }
+    }
+    return p;
   }
   function build(){
     pages = []; catPage = [];
@@ -2623,7 +2630,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
   }
   function tocHTML(from, to, sub, tip, num){
     var h = (num ? runLine(tr('Inhalt'), num) : '') + '<h3 class="bk-h" tabindex="-1">' + tr('Inhalt') + '' + '</h3>' +
-        (sub ? '<p class="bk-sub">' + MENU.length + ' ' + tr('Kategorien') + ' · ' + total + ' ' + tr('Gerichte und Getränke').replace(/ (\S+)$/, '\u00a0$1') + '</p>' : '') + '<ol class="bk-toc">';
+        (sub ? '<p class="bk-sub">' + MENU.length + ' ' + tr('Kategorien') + ' · ' + total + ' ' + tr('Gerichte und Getränke') + '</p>' : '') + '<ol class="bk-toc">';
     for(var i = from; i < to; i++){
       var c = MENU[i];
       h += '<li><a href="#karte-' + c.s + '" data-cat="' + i + '"><span class="n">' + esc(catT(c)) + (c.n ? ' <small>(' + esc(c.n) + ')</small>' : '') +
@@ -3336,7 +3343,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
     paint();
     setState(true, instant);
     /* 26.11: Seiten nach dem Aufklappen neu einteilen (vorher wurde mit der Grösse des geschlossenen Buchs gerechnet) */
-    if(wide){ relayout(false); setTimeout(function(){ if(isOpen) relayout(false); }, 520); }
+    if(wide){ relayout(false); setTimeout(function(){ if(isOpen) relayout(false); }, 520); setTimeout(function(){ if(isOpen && wide) relayout(true); }, 1100); }
     if(!wide && !instant && !rm.matches){
       R.classList.remove('in-next','in-prev'); R.classList.add('in-open');
       setTimeout(function(){ R.classList.remove('in-open'); }, 900);
@@ -3704,7 +3711,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
           <footer><b>Marcel</b></footer>
         </blockquote>
         <blockquote class="quote">
-          <p>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches&nbsp;Personal.»</p>
+          <p>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches Personal.»</p>
           <footer><b>Bruno</b></footer>
         </blockquote>
         <blockquote class="quote">
@@ -4115,7 +4122,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
         <figcaption>Christian <span>· Google</span></figcaption></figure>
       <div class="r3-more">
         <figure><blockquote>«Top Essen, Top Service, sehr freundliches Personal.»</blockquote><figcaption>Marcel</figcaption></figure>
-        <figure><blockquote>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches&nbsp;Personal.»</blockquote><figcaption>Bruno</figcaption></figure>
+        <figure><blockquote>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches Personal.»</blockquote><figcaption>Bruno</figcaption></figure>
         <figure><blockquote>«Sehr netter Bediener, und das Essen ist immer top.»</blockquote><figcaption>Nico</figcaption></figure>
       </div>
       <a class="textlink r3-link" href="#">Alle Bewertungen ansehen <span aria-hidden="true">→</span></a>
@@ -4213,7 +4220,7 @@ addEventListener('resize',rs);rs();
   /* 26.11 (Julia): beim Drehen des Tablets / Breitenwechsel bleibt man auf demselben Block (Block + Anteil gemerkt, danach wiederhergestellt) */
   var L = [].slice.call(document.querySelectorAll('main > section, main > .sec, footer.foot')); if(!L.length) return;
   var a = null, z = true, f = 0, w = window.innerWidth, h = window.innerHeight, busy = 0, tok = 0;
-  function bookOpen(){ var b = document.getElementById('buch'); return !!(b && (b.classList.contains('is-open') || b.classList.contains('open'))); }
+  function bookOpen(){ var b = document.getElementById('buch'); return !!(b && b.getAttribute('data-state') === 'open'); }
   function save(){
     if(busy || window.innerWidth !== w) return;
     z = (window.pageYOffset || document.documentElement.scrollTop) <= 1; var y = line();
