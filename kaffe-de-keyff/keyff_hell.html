@@ -4330,5 +4330,29 @@ body{background:transparent!important}
 })();</script>
 <nav class="tbar" id="tbar" aria-label="Schnellzugriff"><a class="btn btn-amber" href="tel:+41715544224"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a><a class="btn btn-ghost" href="#karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>Karte</a><a class="btn btn-cream" href="https://www.just-eat.ch/speisekarte/kaffe-de-keyff" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Bestellen</a></nav>
 <script>(function(){var t=document.getElementById("tbar");if(!t)return;var mq=matchMedia("(max-width:700px)"),last=scrollY,tk=false;function upd(){tk=false;var y=scrollY,dy=y-last;last=y;if(!mq.matches){t.classList.remove("on");return;}var h=document.querySelector(".hero"),hb=h?h.offsetTop+h.offsetHeight:innerHeight,f=document.querySelector("footer.foot"),fv=f?f.getBoundingClientRect().top<innerHeight:false,b=document.getElementById("buch"),bo=b&&b.dataset.state==="open";if(y<hb||fv||bo||dy>3)t.classList.remove("on");else if(dy<-3)t.classList.add("on");}addEventListener("scroll",function(){if(!tk){tk=true;requestAnimationFrame(upd);}},{passive:true});t.querySelector("a[href='#karte']").addEventListener("click",function(){t.classList.remove("on");});})();</script>
+<script>(function(){
+  /* 26.11 (Julia): beim Drehen des Tablets / Breitenwechsel bleibt man auf demselben Block (Block + Anteil gemerkt, danach wiederhergestellt) */
+  var L = [].slice.call(document.querySelectorAll('main > section, main > .sec, footer.foot')); if(!L.length) return;
+  var a = null, z = true, f = 0, w = window.innerWidth, h = window.innerHeight, busy = 0, tok = 0;
+  function bookOpen(){ var b = document.getElementById('buch'); return !!(b && (b.classList.contains('is-open') || b.classList.contains('open'))); }
+  function save(){
+    if(busy || window.innerWidth !== w) return;
+    z = (window.pageYOffset || document.documentElement.scrollTop) <= 1; var y = line();
+    for(var i = 0; i < L.length; i++){ var r = L[i].getBoundingClientRect(); if(r.height < 1) continue; if(r.bottom > y || i === L.length - 1){ a = L[i]; f = (y - r.top) / r.height; return; } }
+  }
+  function line(){ var t = document.querySelector('.top'), b = t ? Math.max(0, t.getBoundingClientRect().bottom) : 0; return Math.round(b + (window.innerHeight - b) / 4); }
+  function put(){ if(!a) return; if(z){ if((window.pageYOffset || document.documentElement.scrollTop) > 0) window.scrollTo(0, 0); return; } var r = a.getBoundingClientRect(), d = r.top + f * r.height - line(); if(Math.abs(d) > .5) window.scrollTo(0, Math.max(0, Math.round((window.pageYOffset || document.documentElement.scrollTop) + d))); }
+  function changed(){
+    var nw = window.innerWidth, nh = window.innerHeight;
+    if(nw === w && Math.abs(nh - h) < 160){ h = nh; return; }
+    w = nw; h = nh; if(!a || bookOpen()) return;
+    var my = ++tok, n = 0; busy = 1;
+    (function loop(){ if(my !== tok) return; put(); if(++n < 45) window.requestAnimationFrame(loop); else { busy = 0; save(); } })();
+  }
+  window.addEventListener('scroll', save, {passive:true});
+  window.addEventListener('resize', changed);
+  window.addEventListener('orientationchange', function(){ setTimeout(changed, 60); });
+  window.addEventListener('load', save); save();
+})();</script>
 </body>
 </html>
