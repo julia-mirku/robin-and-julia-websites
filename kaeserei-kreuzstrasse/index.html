@@ -934,15 +934,13 @@ go(0); addEventListener('resize',()=>go(cur));
   new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ o.disconnect(); setTimeout(play,500); } }),{threshold:.45}).observe(bg);
 }
 /* Юля 26.11: «анимация должна сама начинаться … человек, если что, может сам туда нажать, тогда она останавливается» – Käse wechseln von selbst, solange der Block sichtbar ist; Maus drüber = Pause, eigener Klick = stoppt */
-{ const sec=Q('#kaese'); let vis=false, hov=false, stop=false, t=0;
-  const tick=()=>{ clearTimeout(t); if(stop||!vis) return; t=setTimeout(()=>{ if(!stop&&vis&&!hov) go((cur+1)%K.length,true); tick(); },3200); };
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; tick(); }),{threshold:.45}).observe(sec);
-    const st=sec.querySelector('.scale')||sec; st.addEventListener('mouseenter',()=>{hov=true}); st.addEventListener('mouseleave',()=>{hov=false});
-    const halt=()=>{ stop=true; clearTimeout(t); };
-    [harp,track,stops,Q('#herbs'),kpic].forEach(el=>el&&el.addEventListener('pointerdown',halt));
-    harp.addEventListener('keydown',halt);
-  } }
+{ const sec=Q('#kaese'); let vis=false, stop=false, t=0;
+  const tick=()=>{ clearTimeout(t); if(stop||!vis) return; t=setTimeout(()=>{ if(!stop&&vis) go((cur+1)%K.length,true); tick(); },3000); };
+  new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; tick(); }),{threshold:.3}).observe(sec);
+  const halt=()=>{ stop=true; clearTimeout(t); };
+  [track,stops,Q('#herbs'),kpic].forEach(el=>el&&el.addEventListener('click',halt));
+  harp.addEventListener('pointerdown',halt); harp.addEventListener('keydown',halt);
+}
 
 /* --- Fondue-Rechner --- */
 const pot=Q('#pot'); const FC=['#3c6e9e','#b5272d','#5b7a35','#e3a72f','#7a4e25','#8a5aa8','#2f8f86','#d06a2c','#455a64','#c2185b','#6d8b2f','#1f6fb2'];
