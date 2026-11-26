@@ -855,6 +855,19 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
   .hero .buehne .ticket{position:relative!important;left:auto!important;bottom:auto!important;margin-top:-18px;width:min(330px,100%)!important}
 }
 </style>
+<style id="preis-unter-hand-26-11">
+/* Julia 26.11: Preisfeld unter der Hand, kürzer, in den Farben der Seite */
+#atelier .stage .result{background:var(--papier);color:var(--tinte);border:1px solid var(--gold-2)}
+#atelier .stage .result .name{color:var(--tinte-2)}
+#atelier .stage .result .ex{color:var(--gold);height:auto;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.35}
+#atelier .stage .result .price{color:var(--tinte)}
+#atelier .stage .result .price small{color:var(--tinte-2)}
+@media (min-width:901px){
+  #atelier .set-grid>div:last-child .result{opacity:0!important;pointer-events:none}
+  #atelier .stage .result.res-kopie{position:absolute;top:100%;margin-top:12px!important;left:calc(-1*clamp(0px,(100vw - 1000px)*.25,80px));right:calc(-1*clamp(0px,(100vw - 1000px)*.25,80px))}
+}
+@media (max-width:900px){#atelier .stage .result.res-kopie{display:none}}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mkHinweis" data-en="Website draft by Julia &amp; Robin Mirku · preview only." data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht.</div>
@@ -3960,6 +3973,19 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
   let x0=null;lb.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(i+(dx<0?1:-1));x0=null});
   new MutationObserver(()=>document.documentElement.classList.toggle('lb-lock',lb.classList.contains('open'))).observe(lb,{attributes:true,attributeFilter:['class']});
   lb.addEventListener('wheel',e=>e.preventDefault(),{passive:false});})();
+</script>
+<script id="preis-unter-hand-26-11-js">
+(()=>{const res=document.querySelector('#atelier .set-grid>div:last-child .result'),stage=document.querySelector('#stage'),cap=stage&&stage.querySelector('.stage-cap');if(!res||!cap)return;
+  const home=res.parentNode,next=res.nextSibling;
+  const kopie=document.createElement('div');kopie.className='result res-kopie';kopie.setAttribute('aria-hidden','true');cap.after(kopie);
+  const sync=()=>{kopie.innerHTML=res.innerHTML.replace(/ id="[^"]*"/g,'')};sync();
+  new MutationObserver(sync).observe(res,{subtree:true,childList:true,characterData:true,attributes:true});
+  const mq=matchMedia('(max-width:900px)');
+  const grid=document.querySelector('#setgrid');
+  /* Telefon/Tablet: gleiche Breite wie vorher (ganze Rasterbreite), damit darunter nichts verrutscht */
+  const place=()=>{if(mq.matches){if(res.parentNode!==stage)kopie.after(res);const gw=grid.clientWidth,sw=stage.clientWidth;res.style.width=gw+'px';res.style.marginLeft=((sw-gw)/2)+'px';const acts=document.querySelector('#setActs');if(acts&&acts.parentNode===stage)home.appendChild(acts)}else{res.style.width='';res.style.marginLeft='';if(res.parentNode!==home)home.insertBefore(res,next)}};
+  place();mq.addEventListener('change',place);addEventListener('resize',place);
+})();
 </script>
 </body>
 </html>
