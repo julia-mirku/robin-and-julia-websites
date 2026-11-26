@@ -934,17 +934,19 @@ go(0); addEventListener('resize',()=>go(cur));
   new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ o.disconnect(); setTimeout(play,500); } }),{threshold:.45}).observe(bg);
 }
 /* Юля 26.11: «анимация должна сама начинаться … человек, если что, может сам туда нажать, тогда она останавливается» – Käse wechseln von selbst, solange der Block sichtbar ist; Maus drüber = Pause, eigener Klick = stoppt */
-{ const sec=Q('#kaese'), kt=Q('#kaese .ktxt'); let vis=false, stop=false, t=0, first=true;
+{ const sec=Q('#kaese'), kt=Q('#kaese .ktxt'); let vis=false, stop=false, t=0, first=true, hov=false;
   /* Юля 26.11: «когда я мышкой листаю, она начинает со мной спорить» – Textblock immer gleich hoch (höchster Käse), damit die Seite beim Wechsel nicht springt */
   const lockH=()=>{ const c=cur; kt.style.minHeight=''; let m=0; for(let i=0;i<K.length;i++){ cur=-1; show(i); m=Math.max(m,kt.offsetHeight); } cur=-1; show(c); kt.style.minHeight=m+'px'; };
   lockH(); addEventListener('resize',lockH); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(lockH);
   /* Юля 26.11: «вот 1 секунда, и он переводит. И потом он уже не торопится» */
-  const tick=()=>{ clearTimeout(t); if(stop||!vis) return; t=setTimeout(()=>{ if(!stop&&vis) go((cur+1)%K.length,true); first=false; tick(); },first?1000:3000); };
+  const tick=(d)=>{ clearTimeout(t); if(stop||!vis||hov) return; t=setTimeout(()=>{ if(!stop&&vis&&!hov) go((cur+1)%K.length,true); first=false; tick(); },d||(first?1000:3000)); };
   new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; tick(); }),{threshold:.3}).observe(sec);
   const halt=()=>{ stop=true; clearTimeout(t); };
   [track,stops,Q('#herbs'),kpic].forEach(el=>el&&el.addEventListener('click',halt));
   harp.addEventListener('pointerdown',halt); harp.addEventListener('keydown',halt);
   Q('#kaese .scale').addEventListener('wheel',halt,{passive:true});
+  /* Юля 26.11: «когда курсор вот наводится там, да, чтобы он не двигался» – Maus über der Skala = Pause, weg = nach 1 s weiter */
+  { const sc=Q('#kaese .scale'); sc.addEventListener('mouseenter',()=>{ hov=true; clearTimeout(t); }); sc.addEventListener('mouseleave',()=>{ hov=false; tick(1000); }); }
 }
 
 /* --- Fondue-Rechner --- */
