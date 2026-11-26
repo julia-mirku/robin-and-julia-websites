@@ -635,7 +635,7 @@ dialog.gesch{width:min(980px,96vw)}
 #haus #hkurzA{min-height:124px}
 #hkurzA .bjahr{display:block;font:400 34px/1.1 "Young Serif";color:var(--magenta);margin-bottom:4px}
 @media (min-width:861px){#haus .hausA{grid-template-columns:minmax(0,520px) 1fr;gap:48px}#haus .hausA .hkreis{height:300.5625px}}
-@media (max-width:860px){#haus .hausA .hkreis{height:290px}#haus .hausA .hkreis .hslot{width:58%}#haus .hausA .hkreis .bj{font-size:12px;padding:4px 5px}#hkurzA .bjahr{font-size:28px}#haus #hkurzA{min-height:145px}}
+@media (max-width:860px){#haus .hausA .hkreis{height:290px}#haus .hausA .hkreis .hslot{width:min(58%,250px)}#haus .hausA .hkreis .bj{font-size:clamp(11px,3.45vw,13.5px);padding:5px 6px}#haus .hausA .hkreis .bj::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,42px);height:42px;transform:translate(-50%,-50%)}@media (max-width:345px){#haus .hausA .hkreis .bj{padding:4px 4px}}#hkurzA .bjahr{font-size:28px}#haus #hkurzA{min-height:145px}}
 </style>
 <style id="einzelwort-26-11">
 /* Julia: kein einzelnes Wort allein auf einer Zeile; bis 3 pro Reihe oder gleichmässiges Raster (26.11) */
@@ -1140,6 +1140,18 @@ else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting||e
   let t0=0;function f(t){if(!t0)t0=t;const dt=Math.min(.033,(t-(f.l||t))/1000);f.l=t;const e=(t-t0)/1000;x.clearRect(0,0,W,H);
    const a=e<1?1:Math.max(0,1-(e-1)/.35);P.forEach(p=>{p.vy+=p.g*dt;p.vx*=.985;p.x+=p.vx*dt;p.y+=p.vy*dt;p.r+=p.vr*dt;x.save();x.globalAlpha=a;x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.abs(Math.cos(p.r*1.3)));x.restore()});
    if(e<1.35&&c.isConnected)requestAnimationFrame(f);else c.remove()}requestAnimationFrame(f)};})();
+</script>
+<script id="drehen-js">
+/* Julia 26.11: Tablet drehen / Breite ändern – die Seite bleibt beim selben Block (Block + Stelle darin merken, danach wiederherstellen) */
+(function(){const S=[...document.querySelectorAll('main>section,footer')];if(!S.length)return;let w=innerWidth,a=null,tk=0,halt=null,T=[];
+ function merk(){tk=0;const y=scrollY;if(y<2){a=null;return}let s=null;for(const e of S){if(e.getBoundingClientRect().top<=1)s=e;else break}
+  if(!s){a=null;return}const r=s.getBoundingClientRect();a={s:s,f:-r.top/Math.max(1,r.height)}}
+ addEventListener('scroll',()=>{if(!tk&&!halt)tk=requestAnimationFrame(merk)},{passive:true});
+ const stop=()=>{T.forEach(clearTimeout);T=[];halt=null};['wheel','touchstart','keydown'].forEach(t=>addEventListener(t,stop,{passive:true}));
+ function zurueck(){if(innerWidth===w)return;w=innerWidth;const z=halt||a;if(!z)return;halt=z;T.forEach(clearTimeout);
+  const go=()=>{const r=z.s.getBoundingClientRect();scrollTo(0,Math.round(r.top+scrollY+z.f*r.height))};
+  go();requestAnimationFrame(go);T=[150,400,800,1300].map(ms=>setTimeout(go,ms));T.push(setTimeout(()=>{halt=null;merk()},1400))}
+ addEventListener('resize',zurueck);addEventListener('orientationchange',()=>setTimeout(zurueck,80));merk()})();
 </script>
 <script id="tageskarte-js">
 /* Julia 26.11: «Tageskarte» öffnet ihr echtes PDF im Fenster der Seite; zu mit ×, Klick daneben oder Esc. Android zeigt PDFs nicht eingebettet – dort bleibt der normale Link. */
