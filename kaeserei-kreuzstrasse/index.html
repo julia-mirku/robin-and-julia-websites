@@ -934,12 +934,17 @@ go(0); addEventListener('resize',()=>go(cur));
   new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ o.disconnect(); setTimeout(play,500); } }),{threshold:.45}).observe(bg);
 }
 /* Юля 26.11: «анимация должна сама начинаться … человек, если что, может сам туда нажать, тогда она останавливается» – Käse wechseln von selbst, solange der Block sichtbar ist; Maus drüber = Pause, eigener Klick = stoppt */
-{ const sec=Q('#kaese'); let vis=false, stop=false, t=0;
-  const tick=()=>{ clearTimeout(t); if(stop||!vis) return; t=setTimeout(()=>{ if(!stop&&vis) go((cur+1)%K.length,true); tick(); },3000); };
+{ const sec=Q('#kaese'), kt=Q('#kaese .ktxt'); let vis=false, stop=false, t=0, first=true;
+  /* Юля 26.11: «когда я мышкой листаю, она начинает со мной спорить» – Textblock immer gleich hoch (höchster Käse), damit die Seite beim Wechsel nicht springt */
+  const lockH=()=>{ const c=cur; kt.style.minHeight=''; let m=0; for(let i=0;i<K.length;i++){ cur=-1; show(i); m=Math.max(m,kt.offsetHeight); } cur=-1; show(c); kt.style.minHeight=m+'px'; };
+  lockH(); addEventListener('resize',lockH); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(lockH);
+  /* Юля 26.11: «вот 1 секунда, и он переводит. И потом он уже не торопится» */
+  const tick=()=>{ clearTimeout(t); if(stop||!vis) return; t=setTimeout(()=>{ if(!stop&&vis) go((cur+1)%K.length,true); first=false; tick(); },first?1000:3000); };
   new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; tick(); }),{threshold:.3}).observe(sec);
   const halt=()=>{ stop=true; clearTimeout(t); };
   [track,stops,Q('#herbs'),kpic].forEach(el=>el&&el.addEventListener('click',halt));
   harp.addEventListener('pointerdown',halt); harp.addEventListener('keydown',halt);
+  Q('#kaese .scale').addEventListener('wheel',halt,{passive:true});
 }
 
 /* --- Fondue-Rechner --- */
@@ -1008,6 +1013,8 @@ s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&d
 </style>
 <style>/* Юля 26.11: «убрать лупу» – kein Lupen-Cursor über dem Käsefoto */
 .kpic{cursor:default!important}
+/* Юля 26.11: «она должна без вот этих приближений фотки» – nur weiches Überblenden */
+.kpic img,.kpic img.on,.kpic:hover img.on{transform:none!important;transition:opacity .6s ease!important}
 </style>
 <style>/* Юля 26.11: «вариант, который вырезан в дереве, он лучше … немножечко побольше на этой штуке» – Schrift ins Holz geschnitten, etwas grösser */
 .chalk{font-family:"Abril Fatface",serif!important;font-weight:400!important;line-height:1.05!important;letter-spacing:.02em;color:rgba(62,38,18,.72)!important;text-shadow:0 -1px 0 rgba(20,10,2,.85),0 1.5px 0 rgba(255,240,212,.62),0 0 1px rgba(40,20,6,.35)!important}
