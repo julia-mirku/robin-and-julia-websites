@@ -729,7 +729,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 <!-- FAMILIE -->
 <section class="familie sec fade-top" id="familie">
   <div class="wrap famgrid">
-    <div class="famimg rv" data-lb="img/familie_stefan.webp"><img src="img/familie_stefan.webp" alt="Stefan Jud mit einem Magdenauer Klosterkäse" style="object-position:28% 30%"></div>
+    <div class="famimg"><img src="img/familie_stefan.webp" alt="Stefan Jud mit einem Magdenauer Klosterkäse" style="object-position:28% 30%"></div>
     <div class="rv">
       <span class="kick">Familie Jud</span>
       <h2>In langer Familientradition</h2>
@@ -989,6 +989,8 @@ s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&d
 <style>/* Юля 26.11: «а можно его поменьше сделать, чтобы чуть больше сыра попало, и при этом его не урезать … фото получается горизонтальное» – Familienfoto im Originalformat (quer), ganz sichtbar, leicht nachgeschärft */
 @media (min-width:1021px){.famimg{aspect-ratio:1016/556!important;max-height:none!important}}
 .famimg img{object-position:50% 50%!important;filter:url(#famsharp)}
+/* Юля 26.11: «Фотографию Штефана не надо ни лупой делать, ни шевелить» */
+.famimg{cursor:default!important}.famimg img{transition:none!important;transform:none!important}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="famsharp" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" kernelMatrix="0 -0.22 0 -0.22 1.88 -0.22 0 -0.22 0" preserveAlpha="true"/></filter></svg>
 <style>/* Юля 26.11: «Давай, покажи лопатки» – bei Raclette statt Gabeln kleine Raclette-Schäufeli aus dunklem Holz mit farbigem Ring */
