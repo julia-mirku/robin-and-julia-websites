@@ -637,6 +637,12 @@ html:not(.menu) body:not(.menu) .mmenu{visibility:hidden;transition:transform .4
 </style>
 <style id="tel-hover-26-11">/* Julia 26.11: «сливается при наведении» – Telefon in den Kontaktkarten bleibt beim Hover lesbar */@media (hover:hover){.kk a.tel:hover{color:var(--rot)}}</style>
 <style id="links-26-11">.glink{color:inherit;text-decoration:underline;text-decoration-color:rgba(58,35,23,.3);text-underline-offset:3px}@media (hover:hover){.glink:hover{color:var(--rot);text-decoration-color:var(--rot)}}</style>
+<style id="cafe-26-11">
+/* Julia 26.11: Öffnungszeiten nur unten in «Kontakt»; Café-Foto quadratischer */
+.cafe .oz{align-self:flex-start;font-size:15px;font-weight:700;color:var(--rot);text-decoration:none;border-bottom:1.5px solid rgba(181,48,42,.35);padding-bottom:1px;transition:border-color .2s}
+@media (hover:hover){.cafe .oz:hover{border-color:var(--rot)}}
+@media (min-width:1101px){.cafe .cb{min-height:0}}
+</style>
 </head>
 <body>
 <div class="draft" id="draft" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')">Website-Entwurf von <b><a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – Bestellen und Bezahlen sind noch nicht aktiv.</div>
@@ -763,12 +769,12 @@ html:not(.menu) body:not(.menu) .mmenu{visibility:hidden;transition:transform .4
     <div class="sh fade"><h2>Zwei Bäckercafés.<br><em>Znüni, Mittagssnack, Zmorge.</em></h2><p>Saisonale und regionale Znüni, kleine Mittagssnacks und ein feines Morgenessen – direkt aus der eigenen Backstube.</p></div>
     <div class="cgrid">
       <article class="cafe fade">
-        <div class="cb" data-zoom="img/cafe_waldstatt.webp"><img src="img/cafe_waldstatt.webp" alt="Isa und Danis BäckerCafé in Waldstatt" loading="lazy"></div>
+        <div class="cb" data-zoom="img/cafe_waldstatt_9_serie.webp"><img src="img/cafe_waldstatt_9_serie.webp" alt="Isa und Danis BäckerCafé in Waldstatt" loading="lazy" style="object-position:55% 50%"></div>
         <div class="ci">
           <span class="ort2">Waldstatt · Dorfstrasse 26</span>
           <h3>Isa und Danis BäckerCafé</h3>
           <div class="pl"><span>16 Plätze</span><span>2 Stehtische</span><span>seit 2019</span></div>
-          <p data-cafe="w"></p>
+          <a class="oz" href="#kontakt">Öffnungszeiten ↓</a>
           <div class="zit">Feinste Backwaren und sehr freundliches Personal. Danke fürs dürfen verweilen.<small>Wanda Schwarz, Google</small></div>
           <div class="acts"><a class="btn rot" href="tel:+41713512126">Anrufen</a><a class="btn hell" href="https://maps.google.com/?q=Dorfstrasse+26,+9104+Waldstatt" target="_blank" rel="noopener">Route</a></div>
         </div>
@@ -779,7 +785,7 @@ html:not(.menu) body:not(.menu) .mmenu{visibility:hidden;transition:transform .4
           <span class="ort2">Urnäsch · Tüfenbergstrasse 2</span>
           <h3>Bäcker-Kaffe Urnäsch</h3>
           <div class="pl"><span>14 Plätze</span><span>seit Dez. 2023</span><span>Sa bis 15:00</span></div>
-          <p data-cafe="u"></p>
+          <a class="oz" href="#kontakt">Öffnungszeiten ↓</a>
           <div class="zit">Trotz Megaansturm wegen altem Silvester blieb das Personal äusserst freundlich.<small>Elisabeth Eberle, Google</small></div>
           <div class="acts"><a class="btn rot" href="tel:+41713641804">Anrufen</a><a class="btn hell" href="https://maps.google.com/?q=T%C3%BCfenbergstrasse+2,+9107+Urn%C3%A4sch" target="_blank" rel="noopener">Route</a></div>
         </div>
@@ -917,8 +923,6 @@ function zeigTag(d){$$('.tag').forEach(t=>t.classList.toggle('sel',+t.dataset.d=
   const nb=nextBack();$('#bthint').innerHTML=`<span><i></i>${BACK.includes(d)?'<b>'+TL[d]+' ist glutenfreier Backtag.</b>':TL[d]+': kein glutenfreier Backtag.'}</span><span>Nächster Backtag: <b>${nb.txt}</b></span><span>Bis Freitag 16:00 bestellt – am Montag gebacken&nbsp;und&nbsp;verschickt.</span>`}
 zeigTag(today);
 $$('[data-std]').forEach(ul=>{const o=ul.dataset.std;ul.innerHTML=[[1,'Mo, Di, Do, Fr'],[3,'Mittwoch'],[6,'Samstag'],[0,'Sonntag']].map(([d,l])=>`<li><span>${l}</span><span>${d===0&&o==='u'?'Nov–Apr 7:00–11:00':fmt(slots(o,d,new Date(2026,5,1)))}</span></li>`).join('')});
-$('[data-cafe="w"]').textContent='Mo, Di, Do, Fr 6:00–18:30 · Mi und Sa 6:00–13:00 · So geschlossen.';
-$('[data-cafe="u"]').textContent='Mo, Di, Do, Fr 6:15–12:15 und 14:00–18:30 · Mi 6:15–12:15 · Sa 6:15–15:00 · So (Nov–Apr) 7:00–11:00.';
 
 /* Paket */
 let korb={};try{korb=JSON.parse(localStorage.getItem('gerigPaket')||'{}')}catch(e){}
