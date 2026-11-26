@@ -2044,7 +2044,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
         <img class="main" src="keyff_k1.jpg"
              alt="Foto aus dem Kaffe de Keyff: grilliertes Fleisch auf Fladenbrot, dazu Salat und Pommes frites"
              width="900" height="1125" referrerpolicy="no-referrer">
-        <picture class="room-pic"><source media="(min-width:900px)" srcset="keyff_k5.jpg"><img class="room" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" loading="lazy"
+        <picture class="room-pic"><source media="(min-width:900px)" srcset="keyff_k5_rund.jpg"><img class="room" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" loading="lazy"
              alt="Innenraum des Kaffe de Keyff: Theke mit Menütafeln, Holzwand im Fischgrätmuster, Pendelleuchten"
              width="136" height="136" referrerpolicy="no-referrer"></picture>
       </div>
@@ -4090,7 +4090,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
   var mqw = window.matchMedia('(min-width:900px)');
   function place(){
     if(mqw.matches){ if(toc) tl.appendChild(toc); if(close) tr.appendChild(close); if(lang) tr.appendChild(lang); }
-    else { if(toc) top.insertBefore(toc, gap); if(lang) top.insertBefore(lang, close || null); if(close) top.insertBefore(close, st || null); }
+    else { if(toc) top.insertBefore(toc, gap); if(close) top.insertBefore(close, st && st.parentNode === top ? st : null); if(lang) top.insertBefore(lang, close && close.parentNode === top ? close : null); }
   }
   place(); if(mqw.addEventListener) mqw.addEventListener('change', place); else if(mqw.addListener) mqw.addListener(place);
   window.dispatchEvent(new Event('resize'));
