@@ -1313,6 +1313,13 @@ function go(){if(d.classList.contains('ld-on'))return;calc();d.classList.add('ld
 function on(){if(scrollY>2)go();}
 function init(){d.classList.add('ld-js');calc();if(scrollY>2)requestAnimationFrame(go);else addEventListener('scroll',on,{passive:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();})();</script>
+<style id="sa-so-rahmen-26-11">
+/* Julia 26.11: Samstag beim Darüberfahren – auch die obere Kante leuchtet (die Linie oben überdeckte sie) */
+@media (hover:hover){html body .tile.done[data-days="6"]:not(.is-sel):not(.is-today):hover::before{display:none}}
+/* Julia 26.11: Sonntag (geschlossen) – gestrichelter Rahmen etwas heller, damit er neben der Leuchte nicht verschwimmt */
+html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.42)}
+@media (hover:hover){html body .tile.done.off:not(.is-sel):not(.is-today):hover{border-color:var(--acc)}}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mk-hinweis" role="note" lang="de" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht.</div>
