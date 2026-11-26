@@ -1476,19 +1476,19 @@ html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.4
   <section class="hours" id="zeiten" aria-labelledby="h-zeit">
     <div class="wrap">
       <h2 class="h2 r" id="h-zeit">Öffnungszeiten</h2>
-      <p class="pick r" id="pick" aria-live="polite"><span class="pick-d" id="pick-d">Montag</span><span class="pick-t" id="pick-t">09:00–19:00</span></p>
+      <p class="pick r" id="pick" aria-live="polite"><span class="pick-d" id="pick-d">Montag</span><span class="pick-t" id="pick-t">09.00–19.00</span></p>
       <ul class="tiles">
         <li class="tile wk r" data-days="1 2 3 4 5">
           <span class="now">Heute</span>
           <ul class="days" aria-label="Montag bis Freitag">
             <li data-d="1"><button type="button" class="dbtn" data-d="1" aria-pressed="false" aria-label="Montag">Mo</button></li><li data-d="2"><button type="button" class="dbtn" data-d="2" aria-pressed="false" aria-label="Dienstag">Di</button></li><li data-d="3"><button type="button" class="dbtn" data-d="3" aria-pressed="false" aria-label="Mittwoch">Mi</button></li><li data-d="4"><button type="button" class="dbtn" data-d="4" aria-pressed="false" aria-label="Donnerstag">Do</button></li><li data-d="5"><button type="button" class="dbtn" data-d="5" aria-pressed="false" aria-label="Freitag">Fr</button></li>
           </ul>
-          <p class="time">09:00–19:00</p>
+          <p class="time">09.00–19.00</p>
         </li>
         <li class="tile r" data-days="6" style="--d:.08s">
           <span class="now">Heute</span>
           <ul class="days" aria-label="Samstag"><li data-d="6"><button type="button" class="dbtn" data-d="6" aria-pressed="false" aria-label="Samstag">Sa</button></li></ul>
-          <p class="time">08:00–18:00</p>
+          <p class="time">08.00–18.00</p>
         </li>
         <li class="tile off r" data-days="0" style="--d:.16s">
           <span class="now">Heute</span>
@@ -1507,7 +1507,7 @@ html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.4
         <div class="c-main">
           <a class="tel" href="tel:+41412188696">041 218 86 96</a>
           <address class="addr">Wilerstrasse 164<br>9230 Flawil</address>
-          <p class="tk-h"><span>Mo–Fr 09:00–19:00</span><span>Sa 08:00–18:00</span><span>So geschlossen</span></p>
+          <p class="tk-h"><span>Mo–Fr 09.00–19.00</span><span>Sa 08.00–18.00</span><span>So geschlossen</span></p>
           <div class="c-btns">
             <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Coiffeurking1+Wilerstrasse+164+Flawil" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -1639,7 +1639,7 @@ html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.4
     [Y,Y+1].forEach(function(yy){var E=easter(yy);["1-1","1-2","8-1","11-1","12-25","12-26"].forEach(function(k){FT[yy+"-"+k]=1;});[-2,1,39,50].forEach(function(n){var x=plus(E,n);FT[yy+"-"+ds(x)]=1;});});
     function isFT(x){return !!FT[x.getFullYear()+"-"+ds(x)];}
     var HRS={1:[9,19],2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[8,18]},hh=Z.h+Z.mi/60,o=HRS[d];
-    function two(x){return (x<10?"0":"")+x+":00";}
+    function two(x){return (x<10?"0":"")+x+".00";}
     function nextOpen(){for(var n=1;n<9;n++){var x=plus(now,n),w=x.getDay();if(HRS[w]&&!isFT(x)){return (n===1?"Morgen":DN[w])+" ab "+two(HRS[w][0]);}}return "";}
     if(isFT(now)){var no=nextOpen();ht.textContent=no?"Feiertag · "+no:"Öffnungszeiten";hl.classList.add("zu");}
     else if(o&&hh<o[0]){ht.textContent="Heute ab "+two(o[0])+" geöffnet";}
