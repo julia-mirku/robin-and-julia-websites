@@ -921,7 +921,7 @@ K.forEach((k,i)=>{ const im=document.createElement('img'); im.src='img/'+k.img+'
 const pos=i=>{ const r=track.getBoundingClientRect(); const pad=11; return pad+(r.width-2*pad)*i/(K.length-1); };
 function show(i){ if(i===cur) return; cur=i; const k=K[i];
   QA('#kpic > img').forEach((im,j)=>im.classList.toggle('on',j===i)); QA('.stop').forEach((s,j)=>s.classList.toggle('on',j===i));
-  Q('#knum').textContent='Sorte '+(i+1)+' von 5'; Q('#kname').textContent=k.n; Q('#ksub').textContent=k.s; Q('#ktag').textContent=k.tag;
+  Q('#knum').textContent='Sorte '+(i+1)+' von 5'; { /* Юля 26.11 «вписывать по ширине»: Sortenname einzeilig, nur wenn zu breit kleiner */ const kn=Q('#kname'); kn.textContent=k.n.replace(/ /g,'\u00a0'); kn.style.fontSize=''; kn.style.lineHeight=''; if(kn.scrollWidth>kn.clientWidth+1){ kn.style.lineHeight=kn.offsetHeight+'px'; kn.style.fontSize=(parseFloat(getComputedStyle(kn).fontSize)*kn.clientWidth/kn.scrollWidth*.98).toFixed(2)+'px'; } } Q('#ksub').textContent=k.s; Q('#ktag').textContent=k.tag;
   const hb=Q('#herbs'); hb.innerHTML='';
   if(k.herbs){ k.herbs.forEach(([h,txt],j)=>{ const b=document.createElement('button'); b.className='herb'+(j===herbI?' on':''); b.textContent=h; b.addEventListener('click',()=>{herbI=j; QA('.herb').forEach((x,q)=>x.classList.toggle('on',q===j)); Q('#ktaste').innerHTML='<b>Geschmack</b>'+k.t+(txt?'. '+txt.replace(/\.$/,''):'');}); hb.appendChild(b); }); Q('#ktaste').innerHTML='<b>Geschmack</b>'+k.t+(k.herbs[herbI][1]?'. '+k.herbs[herbI][1].replace(/\.$/,''):''); }
   else Q('#ktaste').innerHTML='<b>Geschmack</b>'+k.t;
