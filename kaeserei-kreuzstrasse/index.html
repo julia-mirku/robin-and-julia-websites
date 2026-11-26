@@ -211,6 +211,8 @@ section{position:relative}
 .disc small{display:block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
 .disc b{display:block;font-family:var(--f-head);font-size:58px;font-weight:900;line-height:.9;margin:4px 0}
 /* JR 26.11 «Weltmeisterschaft»: am Handy auf 2 Zeilen, nicht über den Rand */
+/* JR 26.11 (A): am Handy kurzes Zeitformat 8–12 / 17–18.30, am Computer 8.00–12.00 */
+.tS{display:none}@media (max-width:700px){.tL{display:none}.tS{display:inline}}
 @media (max-width:700px){.disc.b .in{max-width:80%}.disc.b small:last-child{letter-spacing:.08em}}
 .medal.swing .disc{animation:swing 1.6s var(--ease) 1}
 @keyframes swing{0%{transform:rotate(0)}25%{transform:rotate(7deg)}55%{transform:rotate(-4deg)}80%{transform:rotate(1.5deg)}100%{transform:rotate(0)}}
@@ -835,7 +837,7 @@ function state(){
 }
 function paintChalk(){ const ck=Q('#chalk'); if(!ck) return; const {d,m}=zh(), sl=HOURS[d], sp=ck.querySelectorAll('span'); let a,b;
   if(!sl.length){ a='Heute'; b='geschlossen'; }
-  else if(m<sl[sl.length-1][1]){ const nx=sl.find(([x,y])=>m<y); if(m>=nx[0]){ a='Heute offen'; b='bis '+fmt(sl[sl.length-1][1])+' Uhr'; } else { a='Heute wieder'; b='ab '+fmt(nx[0])+' Uhr'; } }
+  else if(m<sl[sl.length-1][1]){ const nx=sl.find(([x,y])=>m<y); if(m>=nx[0]){ a='Heute offen'; b='bis '+fmt(nx[1])+' Uhr'; } else { a='Heute wieder'; b='ab '+fmt(nx[0])+' Uhr'; } }
   else { a='Für heute zu'; let n=''; for(let i=1;i<=7;i++){ const dd=(d+i)%7; if(HOURS[dd].length){ n=(i===1?'morgen':NAMES[dd])+' ab '+fmt(HOURS[dd][0][0])+' Uhr'; break; } } b=n; }
   sp[0].textContent=a; sp[1].textContent=b; }
 function paintGift(){ const g=Q('#geschenk'); if(!g) return; const n=new Date(), mo=n.getMonth()+1, dd=n.getDate(); g.hidden=!((mo===11&&dd>=15)||mo===12); const gk=g.querySelector('.kick'); if(gk) gk.style.visibility=(mo===12&&dd>24)?'hidden':''; }
@@ -845,10 +847,10 @@ function paintStatus(){ paintChalk(); paintGift(); const s=state();
 const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
 [1,2,3,4,5,6,0].forEach(d=>{ const b=document.createElement('button'); const zu=!HOURS[d].length;
   b.className='day'+(zu?' zu':''); b.dataset.d=d;
-  b.classList.toggle('istoday',d===today); b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+'<b class="dn">'+SH[d]+'</b><small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span>'+fmt2(x)+'–<wbr>'+fmt2(y)+'</span>').join(''))+'</small>';
+  b.classList.toggle('istoday',d===today); b.innerHTML=(d===today?'<span class="today">Heute</span>':'')+'<b class="dn">'+SH[d]+'</b><small>'+(zu?'zu':HOURS[d].map(([x,y])=>'<span><time class="tL">'+fmt2(x)+'–<wbr>'+fmt2(y)+'</time><time class="tS">'+fmt(x)+'–<wbr>'+fmt(y)+'</time></span>').join(''))+'</small>';
   b.addEventListener('click',()=>sel(d)); daysEl.appendChild(b); });
 function sel(d){ QA('.day').forEach(x=>x.classList.toggle('sel',+x.dataset.d===d)); const sl=HOURS[d];
-  info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<div class="slots">'+sl.map(([a,b])=>'<span class="slot">'+fmt2(a)+'–'+fmt2(b)+'</span>').join('')+'</div><p>'+(sl.length>1?'Mittags geschlossen.':'Nachmittags geschlossen.')+'</p>':'<p style="margin:0;font-size:17px">Am '+NAMES[d]+' ist der Laden geschlossen. '+(()=>{for(let i=1;i<=7;i++){const dd=(d+i)%7;if(HOURS[dd].length)return 'Nächster Verkauf: '+NAMES[dd]+' ab '+fmt(HOURS[dd][0][0])+' Uhr.';}})()+'</p>'); }
+  info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<div class="slots">'+sl.map(([a,b])=>'<span class="slot"><time class="tL">'+fmt2(a)+'–'+fmt2(b)+'</time><time class="tS">'+fmt(a)+'–'+fmt(b)+'</time></span>').join('')+'</div><p>'+(sl.length>1?'Mittags geschlossen.':'Nachmittags geschlossen.')+'</p>':'<p style="margin:0;font-size:17px">Am '+NAMES[d]+' ist der Laden geschlossen. '+(()=>{for(let i=1;i<=7;i++){const dd=(d+i)%7;if(HOURS[dd].length)return 'Nächster Verkauf: '+NAMES[dd]+' ab '+fmt(HOURS[dd][0][0])+' Uhr.';}})()+'</p>'); }
 sel(today); paintStatus(); setInterval(paintStatus,30000);
 
 /* --- Hero: Bänkli – Sprechblasen einmal nacheinander, danach Hover/Tap --- */
@@ -942,11 +944,10 @@ go(0); addEventListener('resize',()=>go(cur));
   lockH(); addEventListener('resize',lockH); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(lockH);
   /* Юля 26.11: «вот 1 секунда, и он переводит. И потом он уже не торопится» */
   const tick=(d)=>{ clearTimeout(t); if(stop||!vis||hov) return; t=setTimeout(()=>{ if(!stop&&vis&&!hov) go((cur+1)%K.length,true); first=false; tick(); },d||(first?1000:3000)); };
-  new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; tick(); }),{threshold:.3}).observe(sec);
+  new IntersectionObserver(es=>es.forEach(e=>{ const was=vis; vis=e.isIntersecting; tick(vis&&!was&&!first?1000:0); }),{threshold:.3}).observe(sec);
   const halt=()=>{ stop=true; clearTimeout(t); };
   [track,stops,Q('#herbs'),kpic].forEach(el=>el&&el.addEventListener('click',halt));
   harp.addEventListener('pointerdown',halt); harp.addEventListener('keydown',halt);
-  Q('#kaese .scale').addEventListener('wheel',halt,{passive:true});
   /* Юля 26.11: «когда курсор вот наводится там, да, чтобы он не двигался» – Maus über der Skala = Pause, weg = nach 1 s weiter */
   { const sc=Q('#kaese .scale'); sc.addEventListener('mouseenter',()=>{ hov=true; clearTimeout(t); }); sc.addEventListener('mouseleave',()=>{ hov=false; tick(1000); }); }
 }
@@ -1026,6 +1027,8 @@ s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&d
 </style>
 <style>/* Юля 26.11: «когда я долистываю фото до самого низа, я видела всю картинку» – Schleier oben am Wiesenfoto wird am Seitenende schmal, weicher Übergang bleibt */
 .weg.weg:before{height:calc(170px - var(--wb,0) * 116px)!important}</style>
-<script>/* Юля 26.11: Wiesenfoto am Seitenende ganz sichtbar */(function(){var w=document.querySelector('#weg');if(!w)return;var t=0;function f(){t=0;var d=document.documentElement,rest=d.scrollHeight-(scrollY+innerHeight),r=220;w.style.setProperty('--wb',Math.min(1,Math.max(0,1-rest/r)).toFixed(3))}addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(f)},{passive:true});addEventListener('resize',f);addEventListener('load',f);f();})();</script>
+<script>/* Юля 26.11: Wiesenfoto am Seitenende ganz sichtbar */(function(){var w=document.querySelector('#weg');if(!w)return;var t=0;function f(){t=0;var d=document.documentElement,rest=d.scrollHeight-(scrollY+innerHeight),r=220;w.style.setProperty('--wb',Math.min(1,Math.max(0,1-rest/r)).toFixed(3))}addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(f)},{passive:true});addEventListener('resize',f);addEventListener('load',f);f();})();/* JR 26.11 (Юля: «чтобы не перескакивало на другой блок»): beim Drehen/Breite ändern gleicher Block */
+(()=>{const secs=()=>[...document.querySelectorAll('main > section[id], footer')];let A=null,busy=false,lw=innerWidth;const off=()=>{const t=document.getElementById('hdr');return t?t.getBoundingClientRect().bottom:0};const merk=()=>{if(busy)return;const y=scrollY+off()+1;for(const s of secs()){const t=s.getBoundingClientRect().top+scrollY,h=s.offsetHeight;if(h&&y>=t&&y<t+h){A={s,r:(y-t)/Math.max(1,h)};return}}A=null};let q=0;addEventListener('scroll',()=>{if(!q){q=requestAnimationFrame(()=>{q=0;merk()})}},{passive:true});const hin=()=>{if(!A)return;const t=A.s.getBoundingClientRect().top+scrollY,h=A.s.offsetHeight,de=document.documentElement,sb=de.style.scrollBehavior;de.style.scrollBehavior='auto';scrollTo(0,Math.max(0,t+A.r*h-off()-1));de.style.scrollBehavior=sb};const neu=()=>{if(innerWidth===lw)return;lw=innerWidth;busy=true;hin();requestAnimationFrame(()=>{hin();setTimeout(hin,150);setTimeout(()=>{hin();busy=false;merk()},450)})};addEventListener('resize',neu);addEventListener('orientationchange',()=>setTimeout(neu,60));merk()})();
+</script>
 </body>
 </html>
