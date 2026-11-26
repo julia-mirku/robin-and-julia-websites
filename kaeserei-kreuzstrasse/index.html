@@ -706,7 +706,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 <!-- FONDUE -->
 <section class="fondue sec" id="fondue">
   <div class="wrap fgrid">
-    <div class="pot rv" id="pot"><div class="potimg" role="button" tabindex="0" aria-label="Foto gross anzeigen" style="cursor:zoom-in"><img id="pimgF" class="on" src="img/fondue_1x1.webp" alt="Fondue im Caquelon"><img id="pimgR" src="img/raclette_1x1.webp" alt="Raclette"></div></div>
+    <div class="pot rv" id="pot"><div class="potimg"><img id="pimgF" class="on" src="img/fondue_1x1.webp" alt="Fondue im Caquelon"><img id="pimgR" src="img/raclette_1x1.webp" alt="Raclette"></div></div>
     <div class="calc rv">
       <span class="kick">Hausgemachte Mischung</span>
       <h2>Wie viel Käse für Ihre Runde?</h2>
@@ -955,7 +955,7 @@ function calc(){ Q('#gnum').textContent=n; QA('.fork').forEach((f,i)=>f.classLis
   Q('#gtxt').textContent= mode==='f' ? 'Pro Person rechnet man mit rund 200 g Käse. Unsere hausgemachte Fondue-Mischung gibt es im Laden.' : 'Für Raclette rechnet man mit 200 bis 250 g Käse pro Person. Für grössere Runden am besten vorher anrufen: 071 371 11 16.'; }
 Q('#plus').addEventListener('click',()=>{n=Math.min(12,n+1);calc();}); Q('#minus').addEventListener('click',()=>{n=Math.max(1,n-1);calc();});
 QA('.mode button').forEach(b=>b.addEventListener('click',()=>{ mode=b.dataset.m; QA('.mode button').forEach(x=>x.classList.toggle('on',x===b)); Q('#pimgF').classList.toggle('on',mode==='f'); Q('#pimgR').classList.toggle('on',mode==='r'); calc(); }));
-Q('.potimg').addEventListener('click',()=>openLb(mode==='f'?'img/fondue_1x1.webp':'img/raclette_1x1.webp'));
+
 calc();
 
 /* --- Stimmen: Leiste (eine Karte pro Schritt) --- */
@@ -994,6 +994,9 @@ s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&d
 /* Юля 26.11: «при наведении, чтобы она как тень появлялась … либо увеличивалась, но при этом никакой лупы» */
 .famimg{transition:transform .3s ease,box-shadow .3s ease}
 @media (hover:hover){.famimg:hover{transform:scale(1.02);box-shadow:0 18px 40px -14px rgba(74,46,22,.45)}}
+/* Юля 26.11: «не должны эти фото открываться … делайте как с ними, как со Штефаном» – Fondue/Raclette-Foto: keine Lupe, Hover wie bei Stefan */
+.pot .potimg{cursor:default;transition:transform .3s ease,box-shadow .3s ease}
+@media (hover:hover){.pot .potimg:hover{transform:scale(1.02);box-shadow:0 18px 40px -14px rgba(74,46,22,.45)!important}}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="famsharp" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" kernelMatrix="0 -0.22 0 -0.22 1.88 -0.22 0 -0.22 0" preserveAlpha="true"/></filter></svg>
 <style>/* Юля 26.11: «Давай, покажи лопатки» – bei Raclette statt Gabeln kleine Raclette-Schäufeli aus dunklem Holz mit farbigem Ring */
