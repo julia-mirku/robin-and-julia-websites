@@ -2206,6 +2206,8 @@ body{background:transparent!important}
 <meta property="og:image:height" content="675">
 <meta name="twitter:card" content="summary_large_image">
 <style id="julia-26-11b">.tbar{display:none}@media (max-width:700px){.tbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(250,243,230,.97);border-top:1px solid rgba(181,135,43,.45);transform:translateY(110%);transition:transform .3s ease;visibility:hidden}.tbar.on{transform:none;visibility:visible}.tbar .btn{flex:1;min-height:48px;padding:0 6px;font-size:15px;gap:6px;white-space:nowrap;margin:0}.tbar .btn svg{width:17px;height:17px}}</style>
+<style>/* 26.11 (Julia): beim Öffnen erscheint der Text links und rechts gleichzeitig, nach dem Aufklappen */
+@media (min-width:900px){.bk.bk-opening .bk-spread>.bk-page>*,.bk.bk-opening .bk-leaf{opacity:0}.bk.bk-reveal .bk-spread>.bk-page>*,.bk.bk-reveal .bk-leaf{animation:bk-fade .25s ease both}}.bk.bk-opened .bk-inner{visibility:hidden!important}</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
@@ -3594,6 +3596,7 @@ body{background:transparent!important}
   function setState(v, instant){
     if(instant) bk.classList.add('bk-instant');
     isOpen = v;
+    if(!v) bk.classList.remove('bk-opened');
     bk.setAttribute('data-state', v ? 'open' : 'closed');
     cover.setAttribute('aria-expanded', v ? 'true' : 'false');
     cover.tabIndex = v ? -1 : 0;
@@ -3604,10 +3607,18 @@ body{background:transparent!important}
   }
   function openBook(instant, then){
     if(isOpen){ if(then) then(); return; }
+    /* 26.11 (Julia): beim Aufklappen kein Zwischenbild – der Text erscheint erst, wenn das Buch offen und neu eingeteilt ist, links und rechts zugleich */
+    var veil = wide && !instant && !rm.matches;
+    if(veil){ bk.classList.remove('bk-reveal'); bk.classList.add('bk-opening'); }
     paint();
     setState(true, instant);
-    /* 26.11: Seiten nach dem Aufklappen neu einteilen (vorher wurde mit der Grösse des geschlossenen Buchs gerechnet) */
-    if(wide){ relayout(false); setTimeout(function(){ if(isOpen) relayout(false); }, 520); setTimeout(function(){ if(isOpen && wide) relayout(true); }, 1100); }
+    /* 26.11: Innenseite des Deckels nach dem Aufklappen endgültig weg (sonst lag sie nach dem Neueinteilen wieder über der linken Seite) */
+    setTimeout(function(){ if(isOpen) bk.classList.add('bk-opened'); }, instant ? 0 : 1060);
+    if(wide) relayout(false);
+    if(veil){
+      setTimeout(function(){ if(isOpen && wide) relayout(true); }, 1000);
+      setTimeout(function(){ bk.classList.remove('bk-opening'); bk.classList.add('bk-reveal'); setTimeout(function(){ bk.classList.remove('bk-reveal'); }, 400); }, 1250);
+    }
     if(!wide && !instant && !rm.matches){
       R.classList.remove('in-next','in-prev'); R.classList.add('in-open');
       setTimeout(function(){ R.classList.remove('in-open'); }, 900);
