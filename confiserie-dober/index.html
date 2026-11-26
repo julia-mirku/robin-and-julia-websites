@@ -528,6 +528,27 @@ footer a{color:inherit;text-decoration:none}footer a:hover{color:var(--magenta)}
 /* Julia 26.11: Kopfleiste aus demselben Stoff wie der Seitenhintergrund, in Rosa; feine Kante oben */
 header.top{background:#F9E9EC url(img/bg_stoff.webp) repeat 0 0/640px 640px;background-blend-mode:multiply;box-shadow:inset 0 2px 0 rgba(180,0,90,.35),0 1px 0 rgba(180,0,90,.10),0 6px 18px -14px rgba(58,37,34,.35)}
 </style>
+<style id="haus-a-26-11">
+/* Julia 26.11: «Das orange Haus» ohne Regler – Haus und Jahresfenster bleiben stehen, die Jahre laufen beim Scrollen durch das Fenster */
+#haus .haus{position:sticky;top:80px;align-items:start}
+.hausWeg{height:0}
+.jfenster{position:relative;overflow:hidden;margin-top:10px;-webkit-mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent)}
+.zeitband{list-style:none;margin:0;padding:0 0 0 34px;position:relative;transition:transform .3s ease-out}
+.zeitband::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--sand)}
+.zeitband li{position:relative;padding:5px 0;color:var(--kakao2);opacity:.5;cursor:pointer}
+.zeitband li::before{content:"";position:absolute;left:-30px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--papier);box-shadow:inset 0 0 0 2px var(--sand)}
+.zeitband li>b{font:400 20px/1.2 "Young Serif";color:var(--kakao2);margin-right:10px}
+.zeitband li>em{font-style:normal;font-size:15px}
+.zeitband li>span{display:none}
+.zeitband li.war{opacity:.85}.zeitband li.war::before{background:var(--kakao2);box-shadow:none}
+.zeitband li.an{opacity:1;color:var(--kakao);padding:8px 0}
+.zeitband li.an>b{display:block;color:var(--magenta);font-size:34px;line-height:1.1}
+.zeitband li.an>em{display:none}.zeitband li.an>span{display:block;font-size:16px;line-height:1.5;margin-top:4px}
+.zeitband li.an>span b{font-weight:700;color:var(--kakao)}
+.zeitband li.an::before{background:var(--magenta);box-shadow:0 0 0 5px var(--rosa);width:14px;height:14px;left:-31px;top:22px}
+@media (max-width:860px){#haus .haus{top:8px}.jfenster{height:200px}.zeitband li.an>b{font-size:28px}}
+@media (prefers-reduced-motion:reduce){.zeitband{transition:none}}
+</style>
 <style id="einzelwort-26-11">
 /* Julia: kein einzelnes Wort allein auf einer Zeile; bis 3 pro Reihe oder gleichmässiges Raster (26.11) */
 #feste p,#heute p,#heute li,.team p{text-wrap:pretty}
@@ -660,60 +681,6 @@ a[href^="mailto:"]{white-space:nowrap}
   </div>
 </section>
 
-<!-- HAUS -->
-<section id="haus">
-  <div class="wrap haus">
-    <div class="buehne rv">
-      <button class="pfeil l" id="hPrev" aria-label="früher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <svg viewBox="0 0 520 330" role="img" aria-label="Das Haus an der Wilerstrasse 73">
-        <defs><linearGradient id="dach" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7b4a3a"/><stop offset="1" stop-color="#5a3329"/></linearGradient></defs>
-        <!-- ZauberGarten -->
-        <g id="garten" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out">
-          <rect x="372" y="186" width="128" height="104" rx="6" fill="#e9f1ee" stroke="#9fb7ad" stroke-width="3"/>
-          <path d="M372 186 L436 150 L500 186" fill="#d7e6e0" stroke="#9fb7ad" stroke-width="3"/>
-          <path d="M404 186v104M436 186v104M468 186v104" stroke="#9fb7ad" stroke-width="2"/>
-          <circle cx="388" cy="282" r="9" fill="#6fa36b"/><circle cx="486" cy="280" r="11" fill="#7cb276"/>
-        </g>
-        <!-- Anbau -->
-        <g id="anbau" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out">
-          <rect x="22" y="120" width="96" height="170" fill="#e8dccb" stroke="#bda98f" stroke-width="2"/>
-          <path d="M14 122 L70 82 L126 122z" fill="url(#dach)"/>
-          <rect x="42" y="150" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/><rect x="78" y="150" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/>
-          <rect x="42" y="210" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/><rect x="78" y="210" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/>
-        </g>
-        <!-- Haupthaus -->
-        <path d="M108 110 L240 34 L372 110z" fill="url(#dach)"/>
-        <rect id="fassade" x="118" y="106" width="244" height="184" fill="#e8dccb" stroke="#bda98f" stroke-width="2"/>
-        <g fill="#cfe0e8" stroke="#fff" stroke-width="4">
-          <rect x="142" y="124" width="34" height="42"/><rect x="223" y="124" width="34" height="42"/><rect x="304" y="124" width="34" height="42"/>
-        </g>
-        <g stroke="#a88f74" stroke-width="2"><path d="M159 124v42M240 124v42M321 124v42"/></g>
-        <!-- Schild -->
-        <rect x="150" y="180" width="180" height="34" rx="6" fill="#fffbf4" stroke="#3A2522" stroke-width="2"/>
-        <g id="schild"></g>
-        <!-- Laden -->
-        <rect x="140" y="226" width="78" height="64" fill="#cfe0e8" stroke="#fff" stroke-width="4"/>
-        <rect x="262" y="226" width="78" height="64" fill="#cfe0e8" stroke="#fff" stroke-width="4"/>
-        <rect x="224" y="232" width="32" height="58" fill="#6b4a3a"/>
-        <path id="markise" d="M136 222 h208 l-10 14 h-188z" fill="#B4005A" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out"/>
-        <rect x="0" y="290" width="520" height="40" fill="#d9d2c6"/>
-        <rect x="0" y="290" width="520" height="4" fill="#bfb6a8"/>
-      </svg>
-      <button class="pfeil r" id="hNext" aria-label="später"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-    </div>
-    <div>
-      <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
-      <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
-      <div class="hausLauf"><div class="jahrgross" id="jahr">1853</div>
-      <p class="jahrtxt" id="jahrtxt"></p>
-      <div class="leiste">
-        <input type="range" id="zeit" min="0" max="12" value="0" step="0.01" aria-label="Jahr wählen">
-        <div class="skala"><span>1853</span><span>2026</span></div>
-      </div></div>
-    </div>
-  </div>
-</section>
-
 <!-- DOBERCARD -->
 <section id="dobercard">
   <div class="wrap card2">
@@ -781,6 +748,54 @@ a[href^="mailto:"]{white-space:nowrap}
       </article>
     </div>
   </div>
+</section>
+
+<!-- HAUS -->
+<section id="haus">
+  <div class="wrap haus">
+    <div class="buehne rv">
+      <svg viewBox="0 0 520 330" role="img" aria-label="Das Haus an der Wilerstrasse 73">
+        <defs><linearGradient id="dach" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7b4a3a"/><stop offset="1" stop-color="#5a3329"/></linearGradient></defs>
+        <!-- ZauberGarten -->
+        <g id="garten" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out">
+          <rect x="372" y="186" width="128" height="104" rx="6" fill="#e9f1ee" stroke="#9fb7ad" stroke-width="3"/>
+          <path d="M372 186 L436 150 L500 186" fill="#d7e6e0" stroke="#9fb7ad" stroke-width="3"/>
+          <path d="M404 186v104M436 186v104M468 186v104" stroke="#9fb7ad" stroke-width="2"/>
+          <circle cx="388" cy="282" r="9" fill="#6fa36b"/><circle cx="486" cy="280" r="11" fill="#7cb276"/>
+        </g>
+        <!-- Anbau -->
+        <g id="anbau" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out">
+          <rect x="22" y="120" width="96" height="170" fill="#e8dccb" stroke="#bda98f" stroke-width="2"/>
+          <path d="M14 122 L70 82 L126 122z" fill="url(#dach)"/>
+          <rect x="42" y="150" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/><rect x="78" y="150" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/>
+          <rect x="42" y="210" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/><rect x="78" y="210" width="22" height="30" fill="#cfe0e8" stroke="#fff" stroke-width="3"/>
+        </g>
+        <!-- Haupthaus -->
+        <path d="M108 110 L240 34 L372 110z" fill="url(#dach)"/>
+        <rect id="fassade" x="118" y="106" width="244" height="184" fill="#e8dccb" stroke="#bda98f" stroke-width="2"/>
+        <g fill="#cfe0e8" stroke="#fff" stroke-width="4">
+          <rect x="142" y="124" width="34" height="42"/><rect x="223" y="124" width="34" height="42"/><rect x="304" y="124" width="34" height="42"/>
+        </g>
+        <g stroke="#a88f74" stroke-width="2"><path d="M159 124v42M240 124v42M321 124v42"/></g>
+        <!-- Schild -->
+        <rect x="150" y="180" width="180" height="34" rx="6" fill="#fffbf4" stroke="#3A2522" stroke-width="2"/>
+        <g id="schild"></g>
+        <!-- Laden -->
+        <rect x="140" y="226" width="78" height="64" fill="#cfe0e8" stroke="#fff" stroke-width="4"/>
+        <rect x="262" y="226" width="78" height="64" fill="#cfe0e8" stroke="#fff" stroke-width="4"/>
+        <rect x="224" y="232" width="32" height="58" fill="#6b4a3a"/>
+        <path id="markise" d="M136 222 h208 l-10 14 h-188z" fill="#B4005A" opacity="0" style="transition:opacity var(--fade,.6s) ease-in-out"/>
+        <rect x="0" y="290" width="520" height="40" fill="#d9d2c6"/>
+        <rect x="0" y="290" width="520" height="4" fill="#bfb6a8"/>
+      </svg>
+    </div>
+    <div>
+      <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
+      <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
+      <div class="jfenster" id="jfenster"><ol class="zeitband" id="zeitband"></ol></div>
+    </div>
+  </div>
+  <div class="hausWeg" id="hausWeg" aria-hidden="true"></div>
 </section>
 
 <!-- STIMMEN -->
@@ -915,33 +930,29 @@ const J=[
  [2010,'Confiserie Dober','Laden, Café, Atelier und Küche werden umgebaut.'],
  [2026,'Confiserie Dober','Am 1. Juni <b>vor 35 Jahren</b> haben Erika und Armin Dober in Flawil Fuss gefasst.']
 ];
-const zr=document.getElementById('zeit'),jE=document.getElementById('jahr'),jT=document.getElementById('jahrtxt'),sch=document.getElementById('schild');
-const fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
-const hp=document.getElementById('hPrev'),hn=document.getElementById('hNext');
-/* Kreuzblende statt Hineinschieben (Julia №121): alle Jahre/Texte/Schilder liegen übereinander, nur Deckkraft wechselt */
-const FADE=600,DAUER=1100;/* ms: Blende; Fahrzeit pro Jahr, durchgehend ohne Halt (Julia №131; «noch etwas schneller» → 1,1 s) */
-document.getElementById('haus').style.setProperty('--fade',FADE+'ms');
-jE.classList.add('blende');jT.classList.add('blende');jE.innerHTML=J.map(r=>'<span class="'+(r[0]>=2005?'y5':'y0')+'">'+r[0]+'</span>').join('');jT.innerHTML=J.map(r=>'<span>'+r[2]+'</span>').join('');
+const sch=document.getElementById('schild'),fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
+/* Julia 26.11 (Variante A): kein Regler – Haus steht, die Jahre laufen beim Scrollen durch ein Fenster so hoch wie das Haus */
+const FADE=300,STEP=90;const hausSec=document.getElementById('haus');hausSec.style.setProperty('--fade',FADE+'ms');
 const SN=[...new Set(J.map(r=>r[1]))];sch.innerHTML=SN.map(n=>'<text class="schildtxt" x="240" y="203" text-anchor="middle" font-size="'+(n.length>15?15:17)+'" fill="#3A2522" opacity="0">'+n+'</text>').join('');
-const jEs=[...jE.children],jTs=[...jT.children],schs=[...sch.children];
-function jahr(i,keep){const [y,s]=J[i];jEs.forEach((e,k)=>e.classList.toggle('an',k===i));jTs.forEach((e,k)=>e.classList.toggle('an',k===i));schs.forEach((e,k)=>e.style.opacity=SN[k]===s?1:0);
+const schs=[...sch.children],zb=document.getElementById('zeitband'),fen=document.getElementById('jfenster'),weg=document.getElementById('hausWeg'),pin=hausSec.querySelector('.haus');
+zb.innerHTML=J.map(r=>'<li><b>'+r[0]+'</b><em>'+r[1]+'</em><span>'+r[2]+'</span></li>').join('');const zl=[...zb.children];
+const bue=hausSec.querySelector('.buehne'),bsv=bue.querySelector('svg');
+function ton(i){const q=i/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';bue.style.setProperty('--alt',(1-q).toFixed(3))}
+let ai=-1;
+function band(){const e=zl[ai];if(e)zb.style.transform='translateY('+Math.round(fen.clientHeight/2-(e.offsetTop+e.offsetHeight/2))+'px)'}
+function jahr(i){if(i===ai)return;ai=i;const [y,s]=J[i];schs.forEach((e,k)=>e.style.opacity=SN[k]===s?1:0);
  fas.setAttribute('fill',y>=2005?'#E9A23E':'#e8dccb');fas.setAttribute('stroke',y>=2005?'#c98426':'#bda98f');
  gar.style.opacity=y>=2005?1:(y>=1999?.55:0);anb.style.opacity=y>=1908?1:0;mk.style.opacity=y>=1991?1:0;
- hp.disabled=i===0;hn.disabled=i===J.length-1;if(!keep)zr.value=i}
-let ai=-1,auto=true,raf=0,t0=0,v0=0;
-function stopAuto(){auto=false;cancelAnimationFrame(raf);document.getElementById('haus').classList.add('hand')}
-const bue=document.querySelector('.buehne'),bsv=bue.querySelector('svg');
-function ton(v){const q=Math.round(v)/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';bue.style.setProperty('--alt',(1-q).toFixed(3))}/* 25.11: nur beim Jahreswechsel, Hintergrund per Deckkraft – Safari ruckelte */
-function hzeig(v){zr.value=v;const i=Math.round(v);if(i!==ai){ai=i;jahr(i,true);ton(i);if(i===J.length-1&&window.dobKonfetti)setTimeout(window.dobKonfetti,FADE)}}
-/* Autolauf durchgehend (Julia №131): Regler gleitet gleichmässig, beim Überfahren eines Jahres blendet alles weich über */
-function lauf(t){if(!auto)return;if(!t0){t0=t;v0=+zr.value}const v=Math.min(J.length-1,v0+(t-t0)/DAUER);hzeig(v);if(v<J.length-1)raf=requestAnimationFrame(lauf);else auto=false}
-['pointerdown','keydown','touchstart'].forEach(e=>zr.addEventListener(e,stopAuto,{passive:true}));
-zr.addEventListener('input',()=>{stopAuto();hzeig(+zr.value)});zr.addEventListener('change',()=>{zr.value=Math.round(+zr.value)});
-hp.onclick=()=>{stopAuto();hzeig(Math.max(0,Math.round(+zr.value)-1))};hn.onclick=()=>{stopAuto();hzeig(Math.min(J.length-1,Math.round(+zr.value)+1))};
-ai=0;jahr(0);ton(0);
-const hausSec=document.getElementById('haus');
-if(shot||matchMedia('(prefers-reduced-motion: reduce)').matches){auto=false}
-else if('IntersectionObserver' in window){const hio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.45&&auto){t0=0;raf=requestAnimationFrame(lauf)}else{cancelAnimationFrame(raf)}})},{threshold:[0,.45,.7]});hio.observe(hausSec)}
+ zl.forEach((e,k)=>{e.classList.toggle('an',k===i);e.classList.toggle('war',k<i)});ton(i);band();
+ if(i===J.length-1&&window.dobKonfetti)setTimeout(window.dobKonfetti,FADE)}
+function masse(){weg.style.height=((J.length-1)*STEP)+'px';
+ const breit=matchMedia('(min-width:861px)').matches;fen.style.height=breit?Math.max(160,bue.offsetTop+bue.offsetHeight-fen.offsetTop)+'px':'';
+ pin.style.top=Math.max(breit?80:8,Math.round((innerHeight-pin.offsetHeight)/2))+'px';band()}
+function hausWahl(){hausTk=0;const p=pin.getBoundingClientRect(),w=weg.getBoundingClientRect();const lauf=p.bottom-w.top;
+ jahr(Math.max(0,Math.min(J.length-1,Math.round(lauf/STEP))))}
+let hausTk=0;addEventListener('scroll',()=>{if(!hausTk)hausTk=requestAnimationFrame(hausWahl)},{passive:true});addEventListener('resize',()=>{masse();hausWahl()});
+zl.forEach((e,k)=>e.addEventListener('click',()=>{const p=pin.getBoundingClientRect(),w=weg.getBoundingClientRect();scrollTo({top:scrollY+(k*STEP-(p.bottom-w.top)),behavior:'smooth'})}));
+jahr(0);masse();hausWahl();if(document.fonts)document.fonts.ready.then(()=>{masse();hausWahl()});
 
 /* DoberCard */
 const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
