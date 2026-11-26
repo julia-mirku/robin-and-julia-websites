@@ -991,6 +991,9 @@ s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&d
 .famimg img{object-position:50% 50%!important;filter:url(#famsharp)}
 /* Юля 26.11: «Фотографию Штефана не надо ни лупой делать, ни шевелить» */
 .famimg{cursor:default!important}.famimg img{transition:none!important;transform:none!important}
+/* Юля 26.11: «при наведении, чтобы она как тень появлялась … либо увеличивалась, но при этом никакой лупы» */
+.famimg{transition:transform .3s ease,box-shadow .3s ease}
+@media (hover:hover){.famimg:hover{transform:scale(1.02);box-shadow:0 18px 40px -14px rgba(74,46,22,.45)}}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="famsharp" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" kernelMatrix="0 -0.22 0 -0.22 1.88 -0.22 0 -0.22 0" preserveAlpha="true"/></filter></svg>
 <style>/* Юля 26.11: «Давай, покажи лопатки» – bei Raclette statt Gabeln kleine Raclette-Schäufeli aus dunklem Holz mit farbigem Ring */
