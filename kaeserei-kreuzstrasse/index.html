@@ -521,6 +521,8 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 /*RUNDE-D 25.11*/
 /* Юля 25.11: Rinde links und rechts immer sauber – keine Unterlage/Schleier eines Blocks auf der Rinde (Fon C: Rinde ≈ 0–4 % der Breite) */
 @media (min-width:701px){.preise .kbg{left:4.5%!important;right:4.5%!important}}
+/* Юля 26.11: «размыть» – linker und rechter Rand des Käsekeller-Fotos weich auslaufen lassen */
+@media (min-width:701px){.preise .kbg{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 3%,#000 9%,#000 91%,rgba(0,0,0,.35) 97%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 3%,#000 9%,#000 91%,rgba(0,0,0,.35) 97%,transparent 100%)}}
 /* Юля 25.11: unter «Heute offen?» Käse und Rinde lang und weich ins Creme, kein harter Abbruch vor dem Wiesenbild */
 .laden:after{display:none!important}
 /* Käse (gleiche Lage wie der Seitenhintergrund, --wegY) läuft in den Kopf des Wiesenblocks weiter und schmilzt weich ins Creme, danach ins Wiesenbild */
