@@ -2887,7 +2887,7 @@ body{background:transparent!important}
   }
   function tocHTML(from, to, sub, tip, num){
     var h = (num ? runLine(tr('Inhalt'), num) : '') + '<h3 class="bk-h" tabindex="-1">' + tr('Inhalt') + '' + '</h3>' +
-        (sub ? '<p class="bk-sub">' + MENU.length + ' ' + tr('Kategorien') + ' · ' + total + ' ' + tr('Gerichte und Getränke') + '</p>' : '') + '<ol class="bk-toc">';
+        (sub ? '<p class="bk-sub">' + MENU.length + ' ' + tr('Kategorien') + ' · ' + total + ' ' + tr('Gerichte und Getränke').replace(/ (\S+)$/, '\u00a0$1') + '</p>' : '') + '<ol class="bk-toc">';
     for(var i = from; i < to; i++){
       var c = MENU[i];
       h += '<li><a href="#karte-' + c.s + '" data-cat="' + i + '"><span class="n">' + esc(catT(c)) + (c.n ? ' <small>(' + esc(c.n) + ')</small>' : '') +
@@ -3599,6 +3599,8 @@ body{background:transparent!important}
     if(isOpen){ if(then) then(); return; }
     paint();
     setState(true, instant);
+    /* 26.11: Seiten nach dem Aufklappen neu einteilen (vorher wurde mit der Grösse des geschlossenen Buchs gerechnet) */
+    if(wide){ relayout(false); setTimeout(function(){ if(isOpen) relayout(false); }, 520); }
     if(!wide && !instant && !rm.matches){
       R.classList.remove('in-next','in-prev'); R.classList.add('in-open');
       setTimeout(function(){ R.classList.remove('in-open'); }, 900);
@@ -3948,13 +3950,13 @@ body{background:transparent!important}
         <div class="gbuch">
           <figure class="zettel"><blockquote>«Top Essen, Top Service, sehr freundliches Personal.»</blockquote><cite>Marcel</cite></figure>
           <figure class="zettel"><blockquote>«Essen immer frisch, immer warm. Service freundlich, aufmerksam. Cooler Laden, gemütliches Ambiente. Immer wieder gerne.»</blockquote><cite>Christian</cite></figure>
-          <figure class="zettel"><blockquote>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches Personal.»</blockquote><cite>Bruno</cite></figure>
+          <figure class="zettel"><blockquote>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches&nbsp;Personal.»</blockquote><cite>Bruno</cite></figure>
           <figure class="zettel"><blockquote>«Sehr netter Bediener, und das Essen ist immer top.»</blockquote><cite>Nico</cite></figure>
         </div>
         <div class="wertung">
           <span class="st-wrap"><svg class="stempel" viewBox="0 0 120 120" role="img" aria-label="Stempel: 4,5 von 5"><use href="#st"/></svg></span>
           <p>197 Bewertungen auf Google</p>
-          <p class="je">Just Eat: 4,9 von 5 (über 360 Bewertungen)</p>
+          <p class="je">Just Eat: 4,9 von 5 (über 360&nbsp;Bewertungen)</p>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Kaffe+de+Keyff+Degersheimerstrasse+1+Flawil" target="_blank" rel="noopener">Alle Bewertungen ansehen</a>
         </div>
       </div>

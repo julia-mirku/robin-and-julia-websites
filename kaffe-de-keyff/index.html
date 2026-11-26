@@ -2623,7 +2623,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
   }
   function tocHTML(from, to, sub, tip, num){
     var h = (num ? runLine(tr('Inhalt'), num) : '') + '<h3 class="bk-h" tabindex="-1">' + tr('Inhalt') + '' + '</h3>' +
-        (sub ? '<p class="bk-sub">' + MENU.length + ' ' + tr('Kategorien') + ' · ' + total + ' ' + tr('Gerichte und Getränke') + '</p>' : '') + '<ol class="bk-toc">';
+        (sub ? '<p class="bk-sub">' + MENU.length + ' ' + tr('Kategorien') + ' · ' + total + ' ' + tr('Gerichte und Getränke').replace(/ (\S+)$/, '\u00a0$1') + '</p>' : '') + '<ol class="bk-toc">';
     for(var i = from; i < to; i++){
       var c = MENU[i];
       h += '<li><a href="#karte-' + c.s + '" data-cat="' + i + '"><span class="n">' + esc(catT(c)) + (c.n ? ' <small>(' + esc(c.n) + ')</small>' : '') +
@@ -3335,6 +3335,8 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
     if(isOpen){ if(then) then(); return; }
     paint();
     setState(true, instant);
+    /* 26.11: Seiten nach dem Aufklappen neu einteilen (vorher wurde mit der Grösse des geschlossenen Buchs gerechnet) */
+    if(wide){ relayout(false); setTimeout(function(){ if(isOpen) relayout(false); }, 520); }
     if(!wide && !instant && !rm.matches){
       R.classList.remove('in-next','in-prev'); R.classList.add('in-open');
       setTimeout(function(){ R.classList.remove('in-open'); }, 900);
@@ -3702,7 +3704,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
           <footer><b>Marcel</b></footer>
         </blockquote>
         <blockquote class="quote">
-          <p>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches Personal.»</p>
+          <p>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches&nbsp;Personal.»</p>
           <footer><b>Bruno</b></footer>
         </blockquote>
         <blockquote class="quote">
@@ -4113,7 +4115,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
         <figcaption>Christian <span>· Google</span></figcaption></figure>
       <div class="r3-more">
         <figure><blockquote>«Top Essen, Top Service, sehr freundliches Personal.»</blockquote><figcaption>Marcel</figcaption></figure>
-        <figure><blockquote>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches Personal.»</blockquote><figcaption>Bruno</figcaption></figure>
+        <figure><blockquote>«Sehr gutes Essen, vor allem das Lammfleisch. Sehr freundliches&nbsp;Personal.»</blockquote><figcaption>Bruno</figcaption></figure>
         <figure><blockquote>«Sehr netter Bediener, und das Essen ist immer top.»</blockquote><figcaption>Nico</figcaption></figure>
       </div>
       <a class="textlink r3-link" href="#">Alle Bewertungen ansehen <span aria-hidden="true">→</span></a>
