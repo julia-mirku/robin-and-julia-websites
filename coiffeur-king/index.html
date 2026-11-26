@@ -1732,6 +1732,10 @@ html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.4
       },{rootMargin:"0px 0px -8% 0px",threshold:0.01});
       var rs=document.querySelectorAll(".r");
       for(var m=0;m<rs.length;m++){io.observe(rs[m]);}
+      /* 26.11: bei schnellem Scrollen (Handy) übersprungene Elemente sofort zeigen – alles oberhalb der Bildschirm-Unterkante */
+      var rq=0;function catchUp(){rq=0;var lim=innerHeight*.92,left=0;for(var k=0;k<rs.length;k++){var e=rs[k];if(e.classList.contains("in"))continue;left++;if(e.getBoundingClientRect().top<lim){e.classList.add("in");io.unobserve(e);}}if(!left){removeEventListener("scroll",onSc);}}
+      function onSc(){if(!rq){rq=requestAnimationFrame(catchUp);}}
+      addEventListener("scroll",onSc,{passive:true});addEventListener("scrollend",catchUp,{passive:true});
     }catch(e){root.classList.add("rv-all");}
   }
 })();
