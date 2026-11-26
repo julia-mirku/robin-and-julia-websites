@@ -2207,7 +2207,8 @@ body{background:transparent!important}
 <meta name="twitter:card" content="summary_large_image">
 <style id="julia-26-11b">.tbar{display:none}@media (max-width:700px){.tbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(250,243,230,.97);border-top:1px solid rgba(181,135,43,.45);transform:translateY(110%);transition:transform .3s ease;visibility:hidden}.tbar.on{transform:none;visibility:visible}.tbar .btn{flex:1;min-height:48px;padding:0 6px;font-size:15px;gap:6px;white-space:nowrap;margin:0}.tbar .btn svg{width:17px;height:17px}}</style>
 <style>/* 26.11 (Julia): beim Öffnen erscheint der Text links und rechts gleichzeitig, nach dem Aufklappen */
-@media (min-width:900px){.bk.bk-opening .bk-spread>.bk-page>*,.bk.bk-opening .bk-leaf{opacity:0}.bk.bk-reveal .bk-spread>.bk-page>*,.bk.bk-reveal .bk-leaf{animation:bk-fade .25s ease both}}.bk.bk-opened .bk-inner{visibility:hidden!important}</style>
+@media (min-width:900px){.bk.bk-opening .bk-spread>.bk-page>*,.bk.bk-opening .bk-leaf{opacity:0}.bk.bk-reveal .bk-spread>.bk-page>*,.bk.bk-reveal .bk-leaf{animation:bk-fade .25s ease both}}.bk.bk-opened .bk-inner{visibility:hidden!important}
+@media (min-width:900px){.bk.bk-opened .bk-spread>.bk-page.l,.bk.bk-opened .bk-board.l{opacity:1;visibility:visible;transition:none}}</style>
 <style>/* 26.11 (Julia): «Speisekarte schliessen» klein am unteren Rand der letzten Seite */
 .bk-endx{position:relative;z-index:2;align-self:flex-end;margin:auto -2px -15px auto;padding:12px 2px 7px;border:0;background:none;font-family:var(--display);font-weight:700;font-size:.72rem;line-height:1.1;letter-spacing:.06em;color:var(--pcopper);opacity:.8;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:opacity .2s ease,text-decoration-color .2s ease}
 .bk-endx:hover,.bk-endx:focus-visible{opacity:1;text-decoration-color:currentColor}
@@ -2959,7 +2960,7 @@ span.bk-endx{cursor:default}
   function pageHTML(idx, pfx){ return pageHTML0(idx, pfx) + endX(idx, pfx); }
   function endX(idx, pfx){
     if(idx !== pages.length - 1 || !pages[idx]) return '';
-    var t = esc(tr('Speisekarte schliessen')) + (lang === 'en' ? '' : '<span class="bk-endx-en" lang="en"> · Close menu</span>');
+    var t = esc(tr('Speisekarte schliessen')) + (lang === 'en' ? '' : '<span class="bk-endx-en" lang="en">&nbsp;· Close menu</span>');
     return pfx === 'd' ? '<button type="button" class="bk-endx">' + t + '</button>' : '<span class="bk-endx" aria-hidden="true">' + t + '</span>';
   }
   function pageHTML0(idx, pfx){
@@ -3423,7 +3424,7 @@ span.bk-endx{cursor:default}
   }
   function go(newPos, done, opt){
     opt = opt || {};
-    reveal();
+    if(!opt.hint) reveal();
     newPos = Math.max(0, Math.min(pages.length - 1, newPos));
     if(flip && flip.peek && !opt.peek) flip.cancelNow();
     var now = Date.now(), quick = now - lastReq < 1200;
@@ -3619,7 +3620,7 @@ span.bk-endx{cursor:default}
     if(instant){ void bk.offsetWidth; bk.classList.remove('bk-instant'); }
     else if(rm.matches){ fade(stage); }
   }
-  function reveal(){ if(!bk.classList.contains('bk-opening')) return; bk.classList.remove('bk-opening'); bk.classList.add('bk-reveal'); setTimeout(function(){ bk.classList.remove('bk-reveal'); }, 400); }
+  function reveal(){ if(!bk.classList.contains('bk-opening')) return; if(isOpen) bk.classList.add('bk-opened'); bk.classList.remove('bk-opening'); bk.classList.add('bk-reveal'); setTimeout(function(){ bk.classList.remove('bk-reveal'); }, 400); }
   function openBook(instant, then){
     if(isOpen){ if(then) then(); return; }
     /* 26.11: Seiten schon vor dem Zeigen mit der Grösse des offenen Buchs einteilen (unsichtbar, Übergänge bleiben unberührt).
@@ -3635,9 +3636,14 @@ span.bk-endx{cursor:default}
     if(veil){ bk.classList.remove('bk-reveal'); bk.classList.add('bk-opening'); }
     paint();
     setState(true, instant);
-    /* Innenseite des Deckels nach dem Aufklappen endgültig weg */
-    setTimeout(function(){ if(isOpen) bk.classList.add('bk-opened'); }, instant ? 0 : 1060);
-    if(veil) setTimeout(reveal, 1250);
+    /* 26.11: Text links und rechts zeigen, sobald der Deckel wirklich aufliegt (Ende seiner Drehung) – nicht nach fester Zeit, so auch auf langsamen Geräten gleichzeitig */
+    if(veil){
+      var cv = bk.querySelector('.bk-cover'), fired = false;
+      var onEnd = function(e){ if(e.target === cv && e.propertyName === 'transform') fin(); };
+      var fin = function(){ if(fired) return; fired = true; if(cv) cv.removeEventListener('transitionend', onEnd); reveal(); };
+      if(cv) cv.addEventListener('transitionend', onEnd);
+      setTimeout(fin, 1700);
+    } else setTimeout(function(){ if(isOpen) bk.classList.add('bk-opened'); }, instant ? 0 : 1060);
     if(!wide && !instant && !rm.matches){
       R.classList.remove('in-next','in-prev'); R.classList.add('in-open');
       setTimeout(function(){ R.classList.remove('in-open'); }, 900);
@@ -3902,6 +3908,8 @@ span.bk-endx{cursor:default}
     skipTurn(); gen++; wide = mq.matches; busy = false; leaf.hidden = true; bk.classList.remove('is-turning');
     if(!wide && M){ M.innerHTML = ''; }
     relayout(true);
+    /* 26.11: gleich danach noch einmal – beim Wechsel Telefon → Doppelseite stehen die neuen Masse erst einen Augenblick später (sonst 20 statt 22 Seiten, unten abgeschnitten) */
+    if(wide) setTimeout(function(){ if(wide) relayout(true); }, 120);
     refit();
   }
   /* nach Drehen oder Wechsel Telefon/Doppelseite: steht das offene Buch (auch nur teilweise) im Bild, wird es sauber hingestellt */
@@ -3917,7 +3925,7 @@ span.bk-endx{cursor:default}
   var rz = 0;
   window.addEventListener('resize', function(){
     if(!wide) return;
-    clearTimeout(rz); rz = setTimeout(function(){ relayout(false); }, 160);
+    clearTimeout(rz); rz = setTimeout(function(){ relayout(false); rz = setTimeout(function(){ relayout(false); }, 650); }, 160);
   });
   if(document.fonts && document.fonts.ready && document.fonts.ready.then) document.fonts.ready.then(function(){ relayout(true); });
   window.addEventListener('load', function(){ relayout(true); });
