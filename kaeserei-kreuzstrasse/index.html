@@ -551,6 +551,11 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 @media (max-width:420px){.hero-bar .js-status{display:block!important;flex:1 1 100%}.hero-bar .js-status .dot{display:inline-block;vertical-align:middle;margin-right:6px}}
 /* Telefon quer: Entwurf-Leiste und Kopf kompakter */
 @media (orientation:landscape) and (max-height:500px){.entwurf{font-size:11px!important;padding:3px 12px!important;line-height:1.25!important}:root{--hdr:52px}}
+/* Юля 26.11 (Links): Leiste behält ihre bisherige Höhe, damit nichts darunter verrutscht */
+@media (max-width:354.98px){.entwurf{min-height:64.5px;padding-top:14.75px!important}}
+@media (min-width:357px) and (max-width:653.98px){.entwurf{min-height:47px;padding-top:14.75px!important}}
+@media (orientation:landscape) and (max-height:500px){.entwurf{min-height:0;padding-top:3px!important}}
+@media (orientation:landscape) and (max-height:500px) and (max-width:570.98px){.entwurf{min-height:33.5px;padding-top:9.875px!important}}
 @media (orientation:landscape) and (max-height:500px){.mbub{left:auto!important;right:14px!important;max-width:44%}}
 /*RUNDE-E-END*/
 /*RUNDE-F 25.11 – Endprüfung*/
@@ -619,7 +624,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
 <body>
-<div class="entwurf" id="entwurf" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+<div class="entwurf" id="entwurf" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht.</div>
 <script>(function(){var b=document.getElementById("entwurf");if(b)document.documentElement.style.setProperty("--bar",b.offsetHeight+"px")})();</script>
 
 <header class="hdr" id="hdr">
