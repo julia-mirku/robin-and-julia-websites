@@ -635,7 +635,7 @@ dialog.gesch{width:min(980px,96vw)}
 #haus #hkurzA{min-height:124px}
 #hkurzA .bjahr{display:block;font:400 34px/1.1 "Young Serif";color:var(--magenta);margin-bottom:4px}
 @media (min-width:861px){#haus .hausA{grid-template-columns:minmax(0,520px) 1fr;gap:48px}#haus .hausA .hkreis{height:300.5625px}}
-@media (max-width:860px){#haus .hausA .hkreis{height:290px}#haus .hausA .hkreis .hslot{width:min(58%,250px)}#haus .hausA .hkreis .bj{font-size:clamp(11px,3.45vw,13.5px);padding:5px 6px}#haus .hausA .hkreis .bj::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,42px);height:42px;transform:translate(-50%,-50%)}@media (max-width:345px){#haus .hausA .hkreis .bj{padding:4px 4px}}#hkurzA .bjahr{font-size:28px}#haus #hkurzA{min-height:145px}}
+@media (max-width:860px){#haus .hausA .hkreis{height:290px}#haus .hausA .hkreis .hslot{width:min(58%,250px)}#haus .hausA .hkreis .bj{font-size:clamp(11.5px,3.5vw,14.5px);padding:5px 6px}#haus .hausA .hkreis .bj::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}@media (max-width:345px){#haus .hausA .hkreis .bj{padding:4px 4px}}#hkurzA .bjahr{font-size:28px}#haus #hkurzA{min-height:145px}}
 </style>
 <style id="einzelwort-26-11">
 /* Julia: kein einzelnes Wort allein auf einer Zeile; bis 3 pro Reihe oder gleichmässiges Raster (26.11) */
@@ -673,9 +673,9 @@ a[href^="mailto:"]{white-space:nowrap}
       <a href="#sortiment">Sortiment</a>
       <a href="#heute">Heute</a>
       <a href="#zmorge">Konditor-Zmorge</a>
-      <a href="#haus">Das Haus</a>
       <a href="#dobercard">DoberCard</a>
       <a href="#feste">Feste</a>
+      <a href="#haus">Das Haus</a>
       <a href="#besuch">Besuch</a>
     </nav>
     <a class="btn" href="tel:+41713931189"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>071 393 11 89</a>
@@ -987,7 +987,7 @@ P.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.cla
  b.onclick=()=>zeig(i,true);fach.appendChild(b)});
 function zeig(i,anim){fach.querySelectorAll('.praline').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
  zet.innerHTML='<h3>'+P[i][1]+'</h3><p>'+P[i][2]+'</p>';if(anim){zet.classList.remove('neu');void zet.offsetWidth;zet.classList.add('neu')}}
-zet.innerHTML='<h3>Unser Sortiment – 100% hausgemacht</h3><p>Tippen Sie auf ein Fach und sehen Sie, was in jedem Fach steckt.</p>';
+zet.innerHTML='<h3>Unser Sortiment – 100% hausgemacht</h3><p>'+(matchMedia('(hover:hover) and (pointer:fine)').matches?'Klicken':'Tippen')+' Sie auf ein Fach und sehen Sie, was in jedem Fach steckt.</p>';
 const deckel=document.getElementById('deckel'),bw=document.getElementById('boxWrap');
 function auf(){bw.classList.add('ready')}
 if(shot||matchMedia('(prefers-reduced-motion: reduce)').matches){deckel.style.display='none';auf()}
@@ -1045,7 +1045,13 @@ function jahr(i){if(i===ai)return;ai=i;const [y,s]=J[i];schs.forEach((e,k)=>e.st
  if(i===LETZT)konfetti(FADE)}
 /* Jahre auf einem Bogen um das Haus (etwas mehr als ein Halbkreis) */
 function bogen(){const W=kr.clientWidth,H=kr.clientHeight,n=bjs.length,k0=W<600,cx=W/2,cy=H*(k0?.7:.68),rx=W/2-(k0?24:34),ry=H*(k0?.6:.58),A0=Math.PI*(k0?1.08:1.1),A1=-Math.PI*(k0?.08:.1);
- bjs.forEach((b,k)=>{const t=A0+(A1-A0)*k/(n-1);b.style.left=Math.round(cx+rx*Math.cos(t))+'px';b.style.top=Math.round(cy-ry*Math.sin(t))+'px'})}
+ let T=bjs.map((b,k)=>A0+(A1-A0)*k/(n-1));
+ /* Telefon: gleich grosse Lücken zwischen den Jahren (oben drängen sie sich sonst) */
+ if(matchMedia('(max-width:860px)').matches){const B=bjs.map(b=>[Math.max(b.offsetWidth,44),44]),P=t=>[rx*Math.cos(t),-ry*Math.sin(t)],L=(i,s,j,u)=>{const p=P(s),q=P(u);return Math.max(Math.abs(q[0]-p[0])-(B[i][0]+B[j][0])/2,Math.abs(q[1]-p[1])-(B[i][1]+B[j][1])/2)},d=(A1-A0)/900;
+  const leg=g=>{const t=[A0];for(let k=1;k<n;k++){let x=t[k-1],m=0;do{x+=d;m++}while(L(k-1,t[k-1],k,x)<g&&m<1100);t.push(x)}return t};
+  let lo=-30,hi=60;for(let it=0;it<18;it++){const g=(lo+hi)/2,t=leg(g);if((t[n-1]-A1)*Math.sign(A0-A1)>=0)lo=g;else hi=g}
+  T=leg(lo);T[n-1]=A1}
+ bjs.forEach((b,k)=>{const t=T[k];b.style.left=Math.round(cx+rx*Math.cos(t))+'px';b.style.top=Math.round(cy-ry*Math.sin(t))+'px'})}
 bjs.forEach(b=>b.addEventListener('click',()=>{const k=+b.dataset.j;if(k===ai){if(k===LETZT)konfetti(0)}else jahr(k)}));
 /* A: Fenster «Unsere Geschichte» – Haus bleibt links stehen, rechts laufen alle Jahre; Jahr in der Mitte ist aktiv */
 let gTk=0;
