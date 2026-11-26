@@ -580,6 +580,52 @@ header.top{background:#F9E9EC url(img/bg_stoff.webp) repeat 0 0/640px 640px;back
 .karten .khead{background:#F9E9EC url(img/bg_stoff.webp) repeat 0 0/640px 640px;background-blend-mode:multiply;box-shadow:inset 0 2px 0 rgba(180,0,90,.35)}
 #besuch .besuch .card{background:#F9E9EC url(img/bg_stoff.webp) repeat 0 0/640px 640px;background-blend-mode:multiply;box-shadow:inset 0 2px 0 rgba(180,0,90,.35),0 14px 36px -24px rgba(58,37,34,.45)}
 </style>
+<style id="haus-ab-26-11">
+/* Julia 26.11: Haus – zwei Varianten (Umschalter A/B nur im Entwurf) */
+.hausWahl{display:flex;align-items:center;gap:6px;justify-content:flex-end;margin:0 0 10px;font:600 12px/1 "Public Sans";letter-spacing:.06em;text-transform:uppercase;color:var(--kakao2)}
+.hausWahl button{all:unset;cursor:pointer;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 13px/1 "Public Sans";color:var(--magenta);background:var(--rosa2);box-shadow:inset 0 0 0 1px rgba(180,0,90,.2)}
+.hausWahl button[aria-pressed="true"]{background:var(--magenta);color:#fff}
+#haus .hausA{align-items:center}
+@media (min-width:861px){#haus .hausA{grid-template-columns:minmax(0,420px) 1fr;gap:48px}}
+@media (max-width:860px){#haus .hausA{gap:14px}#hslotA{width:min(280px,80%);margin:0 auto}.hkurz{min-height:0;margin-bottom:14px}.hmarken{margin:10px 0 8px}}
+#haus [data-var][hidden]{display:none!important}
+.hslot .buehne{margin:0}
+.hmarken{display:flex;align-items:center;gap:10px;margin:14px 0 10px;color:var(--sand)}
+.hmarken button{all:unset;cursor:pointer;font:400 24px/1 "Young Serif";color:var(--kakao2);padding:6px 12px;border-radius:999px;background:var(--rosa2);transition:background .2s,color .2s}
+.hmarken button:hover{box-shadow:inset 0 0 0 2px var(--magenta)}
+.hmarken button.an{background:var(--magenta);color:#fff}
+.hkurz{font-size:17px;color:var(--kakao2);margin:0 0 18px;min-height:3em}
+.hkurz b{color:var(--kakao)}
+.hausB{text-align:center}
+.hausB .h2{margin-bottom:6px}
+.hkreis{position:relative;max-width:900px;height:470px;margin:0 auto}
+.hkreis .hslot{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:min(430px,70%)}
+.hkreis .bj{all:unset;cursor:pointer;position:absolute;transform:translate(-50%,-50%);font:400 17px/1 "Young Serif";color:var(--kakao2);padding:6px 10px;border-radius:999px;background:var(--papier);box-shadow:0 2px 8px rgba(0,0,0,.10);transition:background .3s,color .3s,transform .3s}
+.hkreis .bj:hover{box-shadow:0 0 0 2px var(--magenta)}
+.hkreis .bj.an{background:var(--magenta);color:#fff;transform:translate(-50%,-50%) scale(1.18)}
+.hkurzB{max-width:640px;margin:4px auto 0}
+.hkurzB .bjahr{display:block;font:400 34px/1.1 "Young Serif";color:var(--magenta);margin-bottom:4px}
+dialog.gesch{width:min(980px,96vw)}
+.gesch .gbody{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:10px 34px 24px}
+.gesch .gslot{align-self:center}
+.gesch .glist{list-style:none;margin:0;padding:38vh 6px 38vh 34px;overflow:auto;position:relative;overscroll-behavior:contain;-webkit-mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.gesch .glist li{position:relative;padding:12px 0;opacity:.45;cursor:pointer;transition:opacity .3s}
+.gesch .glist li::before{content:"";position:absolute;left:-26px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--papier);box-shadow:inset 0 0 0 2px var(--sand)}
+.gesch .glist li.war{opacity:.75}.gesch .glist li.war::before{background:var(--kakao2);box-shadow:none}
+.gesch .glist li.an{opacity:1}.gesch .glist li.an::before{background:var(--magenta);box-shadow:0 0 0 5px var(--rosa)}
+.gesch .glist b{display:block;font:400 28px/1.1 "Young Serif";color:var(--kakao2)}
+.gesch .glist li.an>b{color:var(--magenta);font-size:36px}
+.gesch .glist span{display:block;font-size:16px;line-height:1.5;color:var(--kakao);margin-top:4px}
+.gesch .glist span b{display:inline;font:inherit;font-weight:700}
+@media (min-width:861px){dialog.gesch{margin:0 0 0 auto;height:100vh;height:100dvh;max-height:none}.gesch .kk{border-radius:22px 0 0 22px}dialog.gesch[open] .kk{animation:gvonrechts .4s cubic-bezier(.2,.8,.2,1) both}}
+@keyframes gvonrechts{from{transform:translateX(100%)}to{transform:none}}
+@media (max-width:860px){
+ .hkreis{height:400px}.hkreis .hslot{top:63%;width:54%}.hkreis .bj{font-size:12px;padding:4px 5px}
+ .gesch .gbody{grid-template-columns:1fr;grid-template-rows:auto 1fr;padding:6px 18px 16px;gap:8px}
+ .gesch .gslot{width:min(320px,80%);margin:0 auto}.gesch .glist{padding:20vh 6px 20vh 30px}
+}
+@media (prefers-reduced-motion:reduce){dialog.gesch[open] .kk{animation:none}}
+</style>
 <style id="einzelwort-26-11">
 /* Julia: kein einzelnes Wort allein auf einer Zeile; bis 3 pro Reihe oder gleichmässiges Raster (26.11) */
 #feste p,#heute p,#heute li,.team p{text-wrap:pretty}
@@ -783,8 +829,11 @@ a[href^="mailto:"]{white-space:nowrap}
 
 <!-- HAUS -->
 <section id="haus">
-  <div class="wrap haus">
-    <div class="buehne rv">
+  <div class="wrap">
+    <div class="hausWahl" role="group" aria-label="Entwurf: Variante wählen"><span>Entwurf · Variante</span><button type="button" data-v="A" aria-pressed="true">A</button><button type="button" data-v="B" aria-pressed="false">B</button></div>
+    <div class="haus hausA" data-var="A">
+      <div class="hslot" id="hslotA">
+    <div class="buehne">
       <svg viewBox="0 0 520 330" role="img" aria-label="Das Haus an der Wilerstrasse 73">
         <defs><linearGradient id="dach" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7b4a3a"/><stop offset="1" stop-color="#5a3329"/></linearGradient></defs>
         <!-- ZauberGarten -->
@@ -820,13 +869,24 @@ a[href^="mailto:"]{white-space:nowrap}
         <rect x="0" y="290" width="520" height="4" fill="#bfb6a8"/>
       </svg>
     </div>
-    <div>
-      <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
-      <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
-      <div class="jfenster" id="jfenster"><ol class="zeitband" id="zeitband"></ol></div>
+      </div>
+      <div>
+        <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
+        <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
+        <div class="hmarken" id="hmarken" role="group" aria-label="Jahr wählen"></div>
+        <p class="hkurz" id="hkurzA" aria-live="polite"></p>
+        <button type="button" class="btn ghost hgesch" id="hgesch">Unsere Geschichte →</button>
+      </div>
+    </div>
+    <div class="hausB" data-var="B" hidden>
+      <div class="kicker">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
+      <h2 class="h2">Das <span class="script">orange</span> Haus</h2>
+      <div class="hkreis" id="hkreis"><div class="hslot" id="hslotB"></div></div>
+      <p class="hkurz hkurzB" id="hkurzB" aria-live="polite"></p>
     </div>
   </div>
 </section>
+<dialog id="geschichte" class="karten gesch" aria-labelledby="geschT"><div class="kk"><div class="khead"><div><div class="kicker">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div><h3 id="geschT">Unsere <span class="script">Geschichte</span></h3></div><button type="button" class="kx" aria-label="Schliessen" data-gclose><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><div class="gbody"><div class="hslot gslot" id="hslotG"></div><ol class="glist" id="glist"></ol></div></div></dialog>
 
 <!-- STIMMEN -->
 <section id="stimmen">
@@ -961,29 +1021,51 @@ const J=[
  [2026,'Confiserie Dober','Am 1. Juni <b>vor 35 Jahren</b> haben Erika und Armin Dober in Flawil Fuss gefasst.']
 ];
 const sch=document.getElementById('schild'),fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
-/* Julia 26.11 (Variante A): kein Regler – Haus steht, die Jahre laufen beim Scrollen durch ein Fenster so hoch wie das Haus */
-const FADE=300,STEP=90;const hausSec=document.getElementById('haus');hausSec.style.setProperty('--fade',FADE+'ms');
+/* Julia 26.11: zwei Varianten zum Ansehen (Umschalter, nur im Entwurf).
+   A – kompakter Block (3 Jahre) + Fenster «Unsere Geschichte» mit allen Jahren; B – Haus in der Mitte, Jahre im Bogen, das Haus fliesst von selbst von Jahr zu Jahr */
+const hausSec=document.getElementById('haus'),bue=hausSec.querySelector('.buehne'),bsv=bue.querySelector('svg');let FADE=300;
+function fade(ms){FADE=ms;bue.style.setProperty('--fade',ms+'ms')}
 const SN=[...new Set(J.map(r=>r[1]))];sch.innerHTML=SN.map(n=>'<text class="schildtxt" x="240" y="203" text-anchor="middle" font-size="'+(n.length>15?15:17)+'" fill="#3A2522" opacity="0">'+n+'</text>').join('');
-const schs=[...sch.children],zb=document.getElementById('zeitband'),fen=document.getElementById('jfenster'),pin=hausSec.querySelector('.haus');
-zb.innerHTML=J.map(r=>'<li><b>'+r[0]+'</b><em>'+r[1]+'</em><span>'+r[2]+'</span></li>').join('');const zl=[...zb.children];
-const bue=hausSec.querySelector('.buehne'),bsv=bue.querySelector('svg');
+const schs=[...sch.children];
 function ton(i){const q=i/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';bue.style.setProperty('--alt',(1-q).toFixed(3))}
-let ai=-1;
-function band(){const e=zl[ai];if(e)zb.style.transform='translateY('+Math.round(fen.clientHeight/2-(e.offsetTop+e.offsetHeight/2))+'px)'}
+const kA=document.getElementById('hkurzA'),kB=document.getElementById('hkurzB'),mE=document.getElementById('hmarken'),kr=document.getElementById('hkreis'),gl=document.getElementById('glist'),gd=document.getElementById('geschichte');
+const MARKEN=[0,J.findIndex(r=>r[0]===1991),J.length-1];
+mE.innerHTML=MARKEN.map(i=>'<button type="button" data-j="'+i+'">'+J[i][0]+'</button>').join('<span aria-hidden="true">·</span>');
+kr.insertAdjacentHTML('beforeend',J.map((r,i)=>'<button type="button" class="bj" data-j="'+i+'">'+r[0]+'</button>').join(''));
+gl.innerHTML=J.map((r,i)=>'<li data-j="'+i+'"><b>'+r[0]+'</b><span>'+r[2]+'</span></li>').join('');
+const mbs=[...mE.querySelectorAll('button')],bjs=[...kr.querySelectorAll('.bj')],gls=[...gl.children];
+let ai=-1,hv='A';
 function jahr(i){if(i===ai)return;ai=i;const [y,s]=J[i];schs.forEach((e,k)=>e.style.opacity=SN[k]===s?1:0);
  fas.setAttribute('fill',y>=2005?'#E9A23E':'#e8dccb');fas.setAttribute('stroke',y>=2005?'#c98426':'#bda98f');
  gar.style.opacity=y>=2005?1:(y>=1999?.55:0);anb.style.opacity=y>=1908?1:0;mk.style.opacity=y>=1991?1:0;
- zl.forEach((e,k)=>{e.classList.toggle('an',k===i);e.classList.toggle('war',k<i)});ton(i);band();
+ kA.innerHTML=J[i][2];kB.innerHTML='<b class="bjahr">'+y+'</b>'+J[i][2];
+ mbs.forEach(b=>b.classList.toggle('an',+b.dataset.j===i));bjs.forEach(b=>b.classList.toggle('an',+b.dataset.j===i));
+ gls.forEach((e,k)=>{e.classList.toggle('an',k===i);e.classList.toggle('war',k<i)});ton(i);
  if(i===J.length-1&&window.dobKonfetti)setTimeout(window.dobKonfetti,FADE)}
-function masse(){
- const breit=matchMedia('(min-width:861px)').matches;fen.style.height=breit?Math.max(160,bue.offsetTop+bue.offsetHeight-fen.offsetTop)+'px':'';band()}
-/* Julia 26.11: Jahre laufen von selbst (ca. 1,5 s pro Jahr), sobald der Block mind. zur Hälfte sichtbar ist; Klick auf ein Jahr springt dorthin; Scrollen steuert nichts */
-const TAKT=1500;let hausT=0,hausSicht=false;
-function weiter(){clearTimeout(hausT);if(!hausSicht||ai>=J.length-1)return;hausT=setTimeout(()=>{jahr(ai+1);weiter()},TAKT)}
-if('IntersectionObserver' in window){new IntersectionObserver(es=>{es.forEach(e=>{hausSicht=e.intersectionRatio>=0.5;if(hausSicht)weiter();else clearTimeout(hausT)})},{threshold:[0,0.5,1]}).observe(pin)}else{hausSicht=true;weiter()}
-addEventListener('resize',masse);
-zl.forEach((e,k)=>e.addEventListener('click',()=>{jahr(k);weiter()}));
-jahr(0);masse();if(document.fonts)document.fonts.ready.then(masse);
+/* B: Jahre auf einem Bogen um das Haus */
+function bogen(){const W=kr.clientWidth,H=kr.clientHeight,n=bjs.length,cx=W/2,cy=H*0.64,rx=W/2-(W<600?24:34),ry=H*(W<600?0.6:0.56);
+ bjs.forEach((b,k)=>{const t=Math.PI*(1-k/(n-1));b.style.left=Math.round(cx+rx*Math.cos(t))+'px';b.style.top=Math.round(cy-ry*Math.sin(t))+'px'})}
+let bT=0,bSicht=false,bHalt=false;
+function weiterB(){clearTimeout(bT);if(hv!=='B'||!bSicht||bHalt||ai>=J.length-1)return;bT=setTimeout(()=>{jahr(ai+1);weiterB()},2200)}
+if('IntersectionObserver' in window)new IntersectionObserver(es=>es.forEach(e=>{bSicht=e.intersectionRatio>=0.5;weiterB()}),{threshold:[0,0.5,1]}).observe(kr);else bSicht=true;
+kr.addEventListener('pointerenter',e=>{if(e.pointerType!=='mouse')return;bHalt=true;clearTimeout(bT)});kr.addEventListener('pointerleave',e=>{if(e.pointerType!=='mouse')return;bHalt=false;weiterB()});
+bjs.forEach(b=>b.addEventListener('click',()=>{jahr(+b.dataset.j);weiterB()}));
+mbs.forEach(b=>b.addEventListener('click',()=>jahr(+b.dataset.j)));
+function variante(v){hv=v;hausSec.querySelectorAll('[data-var]').forEach(e=>e.hidden=e.dataset.var!==v);
+ hausSec.querySelectorAll('.hausWahl button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
+ clearTimeout(bT);if(v==='A'){document.getElementById('hslotA').appendChild(bue);fade(300)}else{document.getElementById('hslotB').appendChild(bue);fade(900);bogen();jahr(0);weiterB()}}
+hausSec.querySelectorAll('.hausWahl button').forEach(b=>b.addEventListener('click',()=>variante(b.dataset.v)));
+/* A: Fenster «Unsere Geschichte» – Haus bleibt links stehen, rechts laufen alle Jahre; Jahr in der Mitte ist aktiv */
+let gTk=0;
+function gMitte(){gTk=0;const m=gl.scrollTop+gl.clientHeight/2;let best=0,bd=1e9;gls.forEach((e,k)=>{const d=Math.abs(e.offsetTop+e.offsetHeight/2-m);if(d<bd){bd=d;best=k}});jahr(best)}
+function gZu(k,glatt){const e=gls[k];gl.scrollTo({top:e.offsetTop-gl.clientHeight/2+e.offsetHeight/2,behavior:glatt?'smooth':'auto'})}
+gl.addEventListener('scroll',()=>{if(!gTk)gTk=requestAnimationFrame(gMitte)},{passive:true});
+gls.forEach((e,k)=>e.addEventListener('click',()=>gZu(k,true)));
+document.getElementById('hgesch').addEventListener('click',()=>{if(!gd.showModal)return;document.getElementById('hslotG').appendChild(bue);fade(300);gd.showModal();document.documentElement.style.overflow='hidden';gZu(Math.max(0,ai),false)});
+gd.addEventListener('close',()=>{document.documentElement.style.overflow='';document.getElementById(hv==='A'?'hslotA':'hslotB').appendChild(bue);if(hv==='B')fade(900)});
+gd.addEventListener('click',e=>{if(e.target===gd||e.target.closest('[data-gclose]'))gd.close()});
+addEventListener('resize',bogen);
+fade(300);jahr(0);
 
 /* DoberCard */
 const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
