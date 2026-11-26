@@ -530,8 +530,7 @@ header.top{background:#F9E9EC url(img/bg_stoff.webp) repeat 0 0/640px 640px;back
 </style>
 <style id="haus-a-26-11">
 /* Julia 26.11: «Das orange Haus» ohne Regler – Haus und Jahresfenster bleiben stehen, die Jahre laufen beim Scrollen durch das Fenster */
-#haus .haus{position:sticky;top:80px;align-items:start}
-.hausWeg{height:0}
+#haus .haus{align-items:start}
 .jfenster{position:relative;overflow:hidden;margin-top:10px;-webkit-mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(transparent,#000 22%,#000 78%,transparent)}
 .zeitband{list-style:none;margin:0;padding:0 0 0 34px;position:relative;transition:transform .3s ease-out}
 .zeitband::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--sand)}
@@ -546,7 +545,7 @@ header.top{background:#F9E9EC url(img/bg_stoff.webp) repeat 0 0/640px 640px;back
 .zeitband li.an>em{display:none}.zeitband li.an>span{display:block;font-size:16px;line-height:1.5;margin-top:4px}
 .zeitband li.an>span b{font-weight:700;color:var(--kakao)}
 .zeitband li.an::before{background:var(--magenta);box-shadow:0 0 0 5px var(--rosa);width:14px;height:14px;left:-31px;top:22px}
-@media (max-width:860px){#haus .haus{top:8px}.jfenster{height:200px}.zeitband li.an>b{font-size:28px}}
+@media (max-width:860px){.jfenster{height:200px}.zeitband li.an>b{font-size:28px}}
 @media (prefers-reduced-motion:reduce){.zeitband{transition:none}}
 </style>
 <style id="einzelwort-26-11">
@@ -795,7 +794,6 @@ a[href^="mailto:"]{white-space:nowrap}
       <div class="jfenster" id="jfenster"><ol class="zeitband" id="zeitband"></ol></div>
     </div>
   </div>
-  <div class="hausWeg" id="hausWeg" aria-hidden="true"></div>
 </section>
 
 <!-- STIMMEN -->
@@ -934,7 +932,7 @@ const sch=document.getElementById('schild'),fas=document.getElementById('fassade
 /* Julia 26.11 (Variante A): kein Regler – Haus steht, die Jahre laufen beim Scrollen durch ein Fenster so hoch wie das Haus */
 const FADE=300,STEP=90;const hausSec=document.getElementById('haus');hausSec.style.setProperty('--fade',FADE+'ms');
 const SN=[...new Set(J.map(r=>r[1]))];sch.innerHTML=SN.map(n=>'<text class="schildtxt" x="240" y="203" text-anchor="middle" font-size="'+(n.length>15?15:17)+'" fill="#3A2522" opacity="0">'+n+'</text>').join('');
-const schs=[...sch.children],zb=document.getElementById('zeitband'),fen=document.getElementById('jfenster'),weg=document.getElementById('hausWeg'),pin=hausSec.querySelector('.haus');
+const schs=[...sch.children],zb=document.getElementById('zeitband'),fen=document.getElementById('jfenster'),pin=hausSec.querySelector('.haus');
 zb.innerHTML=J.map(r=>'<li><b>'+r[0]+'</b><em>'+r[1]+'</em><span>'+r[2]+'</span></li>').join('');const zl=[...zb.children];
 const bue=hausSec.querySelector('.buehne'),bsv=bue.querySelector('svg');
 function ton(i){const q=i/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';bue.style.setProperty('--alt',(1-q).toFixed(3))}
@@ -945,14 +943,15 @@ function jahr(i){if(i===ai)return;ai=i;const [y,s]=J[i];schs.forEach((e,k)=>e.st
  gar.style.opacity=y>=2005?1:(y>=1999?.55:0);anb.style.opacity=y>=1908?1:0;mk.style.opacity=y>=1991?1:0;
  zl.forEach((e,k)=>{e.classList.toggle('an',k===i);e.classList.toggle('war',k<i)});ton(i);band();
  if(i===J.length-1&&window.dobKonfetti)setTimeout(window.dobKonfetti,FADE)}
-function masse(){weg.style.height=((J.length-1)*STEP)+'px';
- const breit=matchMedia('(min-width:861px)').matches;fen.style.height=breit?Math.max(160,bue.offsetTop+bue.offsetHeight-fen.offsetTop)+'px':'';
- pin.style.top=Math.max(breit?80:8,Math.round((innerHeight-pin.offsetHeight)/2))+'px';band()}
-function hausWahl(){hausTk=0;const p=pin.getBoundingClientRect(),w=weg.getBoundingClientRect();const lauf=p.bottom-w.top;
- jahr(Math.max(0,Math.min(J.length-1,Math.round(lauf/STEP))))}
-let hausTk=0;addEventListener('scroll',()=>{if(!hausTk)hausTk=requestAnimationFrame(hausWahl)},{passive:true});addEventListener('resize',()=>{masse();hausWahl()});
-zl.forEach((e,k)=>e.addEventListener('click',()=>{const p=pin.getBoundingClientRect(),w=weg.getBoundingClientRect();scrollTo({top:scrollY+(k*STEP-(p.bottom-w.top)),behavior:'smooth'})}));
-jahr(0);masse();hausWahl();if(document.fonts)document.fonts.ready.then(()=>{masse();hausWahl()});
+function masse(){
+ const breit=matchMedia('(min-width:861px)').matches;fen.style.height=breit?Math.max(160,bue.offsetTop+bue.offsetHeight-fen.offsetTop)+'px':'';band()}
+/* Julia 26.11: Jahre laufen von selbst (ca. 1,5 s pro Jahr), sobald der Block mind. zur Hälfte sichtbar ist; Klick auf ein Jahr springt dorthin; Scrollen steuert nichts */
+const TAKT=1500;let hausT=0,hausSicht=false;
+function weiter(){clearTimeout(hausT);if(!hausSicht||ai>=J.length-1)return;hausT=setTimeout(()=>{jahr(ai+1);weiter()},TAKT)}
+if('IntersectionObserver' in window){new IntersectionObserver(es=>{es.forEach(e=>{hausSicht=e.intersectionRatio>=0.5;if(hausSicht)weiter();else clearTimeout(hausT)})},{threshold:[0,0.5,1]}).observe(pin)}else{hausSicht=true;weiter()}
+addEventListener('resize',masse);
+zl.forEach((e,k)=>e.addEventListener('click',()=>{jahr(k);weiter()}));
+jahr(0);masse();if(document.fonts)document.fonts.ready.then(masse);
 
 /* DoberCard */
 const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
