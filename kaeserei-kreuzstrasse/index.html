@@ -684,7 +684,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
       <p>8 Käse machen wir das ganze Jahr, dazu saisonale Spezialitäten. Ziehen Sie die Käseharfe – von jung &amp; mild bis extra reif.</p>
     </div>
     <div class="stage rv">
-      <div class="kpic" id="kpic" role="button" tabindex="0" aria-label="Foto gross anzeigen"></div>
+      <div class="kpic" id="kpic"></div>
       <div class="ktxt">
         <span class="num" id="knum"></span>
         <h3 id="kname"></h3>
@@ -933,7 +933,16 @@ go(0); addEventListener('resize',()=>go(cur));
   const play=()=>{ if(done) return; done=true; whole.style.transition='opacity 1.6s ease'; whole.style.opacity='0'; setTimeout(()=>{whole.style.visibility='hidden'},1700); };
   new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ o.disconnect(); setTimeout(play,500); } }),{threshold:.45}).observe(bg);
 }
-kpic.addEventListener('click',()=>openLb('img/'+K[cur].img+'_l.webp'));
+/* Юля 26.11: «анимация должна сама начинаться … человек, если что, может сам туда нажать, тогда она останавливается» – Käse wechseln von selbst, solange der Block sichtbar ist; Maus drüber = Pause, eigener Klick = stoppt */
+{ const sec=Q('#kaese'); let vis=false, hov=false, stop=false, t=0;
+  const tick=()=>{ clearTimeout(t); if(stop||!vis) return; t=setTimeout(()=>{ if(!stop&&vis&&!hov) go((cur+1)%K.length,true); tick(); },3200); };
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; tick(); }),{threshold:.45}).observe(sec);
+    const st=sec.querySelector('.scale')||sec; st.addEventListener('mouseenter',()=>{hov=true}); st.addEventListener('mouseleave',()=>{hov=false});
+    const halt=()=>{ stop=true; clearTimeout(t); };
+    [harp,track,stops,Q('#herbs'),kpic].forEach(el=>el&&el.addEventListener('pointerdown',halt));
+    harp.addEventListener('keydown',halt);
+  } }
 
 /* --- Fondue-Rechner --- */
 const pot=Q('#pot'); const FC=['#3c6e9e','#b5272d','#5b7a35','#e3a72f','#7a4e25','#8a5aa8','#2f8f86','#d06a2c','#455a64','#c2185b','#6d8b2f','#1f6fb2'];
@@ -974,6 +983,13 @@ addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(wp)},{passive:true}
 if(window.ResizeObserver)new ResizeObserver(lay).observe(document.body);lay();wp()})()</script><!--FONA-JS-END-->
 <script>/* 25.11: Lage des Wiesenblocks für den nahtlosen Käse-Übergang */(function(){var w=document.querySelector('.weg');if(!w)return;function s(){w.style.setProperty('--wegY',-(w.getBoundingClientRect().top+scrollY-document.body.getBoundingClientRect().top-scrollY)+'px')}
 s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(s);if(window.ResizeObserver)new ResizeObserver(s).observe(document.body);})();</script>
+<style>/* Юля 26.11: «вторая фотка … контрастнее и ярче» / «Я хотела раклет поярче, который их» – Farbkorrektur der Originalfotos */
+#kpic img[src*="magdenauer_k"]{filter:contrast(1.28) brightness(1.1) saturate(1.06)}
+#pimgR,.lb img[src*="raclette_1x1"]{filter:contrast(1.24) saturate(1.14)}
+</style>
+<style>/* Юля 26.11: «убрать лупу» – kein Lupen-Cursor über dem Käsefoto */
+.kpic{cursor:default!important}
+</style>
 <style>/* Юля 26.11: «вариант, который вырезан в дереве, он лучше … немножечко побольше на этой штуке» – Schrift ins Holz geschnitten, etwas grösser */
 .chalk{font-family:"Abril Fatface",serif!important;font-weight:400!important;line-height:1.05!important;letter-spacing:.02em;color:rgba(62,38,18,.72)!important;text-shadow:0 -1px 0 rgba(20,10,2,.85),0 1.5px 0 rgba(255,240,212,.62),0 0 1px rgba(40,20,6,.35)!important}
 .chalk span{font-size:.9em}.chalk span+span{font-size:.8em!important;white-space:normal!important;max-width:88%;text-wrap:balance}
