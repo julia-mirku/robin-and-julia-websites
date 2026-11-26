@@ -626,6 +626,17 @@ dialog.gesch{width:min(980px,96vw)}
 }
 @media (prefers-reduced-motion:reduce){dialog.gesch[open] .kk{animation:none}}
 </style>
+<style id="haus-bogen-26-11">
+/* Julia 26.11: Variante A, das kleine Haus links mit allen Jahren im Bogen darum; rechts der Text des gewählten Jahres */
+#haus .hausA .hkreis{max-width:none;width:100%;height:300px;margin:0}
+#haus .hausA .hkreis .hslot{top:auto;bottom:0;transform:translateX(-50%);width:60%;margin:0}
+#haus .hausA .hkreis .buehne{padding:12px 16px 4px}
+#haus .hausA .hkreis .bj{font-size:15px;padding:6px 9px}
+#haus #hkurzA{min-height:124px}
+#hkurzA .bjahr{display:block;font:400 34px/1.1 "Young Serif";color:var(--magenta);margin-bottom:4px}
+@media (min-width:861px){#haus .hausA{grid-template-columns:minmax(0,520px) 1fr;gap:48px}#haus .hausA .hkreis{height:300.5625px}}
+@media (max-width:860px){#haus .hausA .hkreis{height:290px}#haus .hausA .hkreis .hslot{width:58%}#haus .hausA .hkreis .bj{font-size:12px;padding:4px 5px}#hkurzA .bjahr{font-size:28px}#haus #hkurzA{min-height:145px}}
+</style>
 <style id="einzelwort-26-11">
 /* Julia: kein einzelnes Wort allein auf einer Zeile; bis 3 pro Reihe oder gleichmässiges Raster (26.11) */
 #feste p,#heute p,#heute li,.team p{text-wrap:pretty}
@@ -830,9 +841,8 @@ a[href^="mailto:"]{white-space:nowrap}
 <!-- HAUS -->
 <section id="haus">
   <div class="wrap">
-    <div class="hausWahl" role="group" aria-label="Entwurf: Variante wählen"><span>Entwurf · Variante</span><button type="button" data-v="A" aria-pressed="true">A</button><button type="button" data-v="B" aria-pressed="false">B</button></div>
-    <div class="haus hausA" data-var="A">
-      <div class="hslot" id="hslotA">
+    <div class="haus hausA">
+      <div class="hkreis" id="hkreis" role="group" aria-label="Jahr wählen"><div class="hslot" id="hslotA">
     <div class="buehne">
       <svg viewBox="0 0 520 330" role="img" aria-label="Das Haus an der Wilerstrasse 73">
         <defs><linearGradient id="dach" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7b4a3a"/><stop offset="1" stop-color="#5a3329"/></linearGradient></defs>
@@ -869,20 +879,13 @@ a[href^="mailto:"]{white-space:nowrap}
         <rect x="0" y="290" width="520" height="4" fill="#bfb6a8"/>
       </svg>
     </div>
-      </div>
+      </div></div>
       <div>
         <div class="kicker rv">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
         <h2 class="h2 rv">Das <span class="script">orange</span> Haus</h2>
-        <div class="hmarken" id="hmarken" role="group" aria-label="Jahr wählen"></div>
         <p class="hkurz" id="hkurzA" aria-live="polite"></p>
         <button type="button" class="btn ghost hgesch" id="hgesch">Unsere Geschichte →</button>
       </div>
-    </div>
-    <div class="hausB" data-var="B" hidden>
-      <div class="kicker">Wilerstrasse 73 · erstmals erwähnt&nbsp;1853</div>
-      <h2 class="h2">Das <span class="script">orange</span> Haus</h2>
-      <div class="hkreis" id="hkreis"><div class="hslot" id="hslotB"></div></div>
-      <p class="hkurz hkurzB" id="hkurzB" aria-live="polite"></p>
     </div>
   </div>
 </section>
@@ -1021,51 +1024,40 @@ const J=[
  [2026,'Confiserie Dober','Am 1. Juni <b>vor 35 Jahren</b> haben Erika und Armin Dober in Flawil Fuss gefasst.']
 ];
 const sch=document.getElementById('schild'),fas=document.getElementById('fassade'),gar=document.getElementById('garten'),anb=document.getElementById('anbau'),mk=document.getElementById('markise');
-/* Julia 26.11: zwei Varianten zum Ansehen (Umschalter, nur im Entwurf).
-   A – kompakter Block (3 Jahre) + Fenster «Unsere Geschichte» mit allen Jahren; B – Haus in der Mitte, Jahre im Bogen, das Haus fliesst von selbst von Jahr zu Jahr */
+/* Julia 26.11: Variante A – kleines Haus links, alle Jahre im Bogen darum; Klick auf ein Jahr = Haus wechselt (weich), rechts der Text dieses Jahres */
 const hausSec=document.getElementById('haus'),bue=hausSec.querySelector('.buehne'),bsv=bue.querySelector('svg');let FADE=300;
 function fade(ms){FADE=ms;bue.style.setProperty('--fade',ms+'ms')}
 const SN=[...new Set(J.map(r=>r[1]))];sch.innerHTML=SN.map(n=>'<text class="schildtxt" x="240" y="203" text-anchor="middle" font-size="'+(n.length>15?15:17)+'" fill="#3A2522" opacity="0">'+n+'</text>').join('');
 const schs=[...sch.children];
 function ton(i){const q=i/(J.length-1);bsv.style.filter='sepia('+(0.55*(1-q)).toFixed(3)+') saturate('+(0.8+0.25*q).toFixed(3)+')';bue.style.setProperty('--alt',(1-q).toFixed(3))}
-const kA=document.getElementById('hkurzA'),kB=document.getElementById('hkurzB'),mE=document.getElementById('hmarken'),kr=document.getElementById('hkreis'),gl=document.getElementById('glist'),gd=document.getElementById('geschichte');
-const MARKEN=[0,J.findIndex(r=>r[0]===1991),J.length-1];
-mE.innerHTML=MARKEN.map(i=>'<button type="button" data-j="'+i+'">'+J[i][0]+'</button>').join('<span aria-hidden="true">·</span>');
+const kA=document.getElementById('hkurzA'),kr=document.getElementById('hkreis'),gl=document.getElementById('glist'),gd=document.getElementById('geschichte');
 kr.insertAdjacentHTML('beforeend',J.map((r,i)=>'<button type="button" class="bj" data-j="'+i+'">'+r[0]+'</button>').join(''));
 gl.innerHTML=J.map((r,i)=>'<li data-j="'+i+'"><b>'+r[0]+'</b><span>'+r[2]+'</span></li>').join('');
-const mbs=[...mE.querySelectorAll('button')],bjs=[...kr.querySelectorAll('.bj')],gls=[...gl.children];
-let ai=-1,hv='A';
+const bjs=[...kr.querySelectorAll('.bj')],gls=[...gl.children],LETZT=J.length-1;
+let ai=-1;
+function konfetti(v){if(window.dobKonfetti)setTimeout(window.dobKonfetti,v)}
 function jahr(i){if(i===ai)return;ai=i;const [y,s]=J[i];schs.forEach((e,k)=>e.style.opacity=SN[k]===s?1:0);
  fas.setAttribute('fill',y>=2005?'#E9A23E':'#e8dccb');fas.setAttribute('stroke',y>=2005?'#c98426':'#bda98f');
  gar.style.opacity=y>=2005?1:(y>=1999?.55:0);anb.style.opacity=y>=1908?1:0;mk.style.opacity=y>=1991?1:0;
- kA.innerHTML=J[i][2];kB.innerHTML='<b class="bjahr">'+y+'</b>'+J[i][2];
- mbs.forEach(b=>b.classList.toggle('an',+b.dataset.j===i));bjs.forEach(b=>b.classList.toggle('an',+b.dataset.j===i));
+ kA.innerHTML='<b class="bjahr">'+y+'</b>'+J[i][2];
+ bjs.forEach(b=>b.classList.toggle('an',+b.dataset.j===i));
  gls.forEach((e,k)=>{e.classList.toggle('an',k===i);e.classList.toggle('war',k<i)});ton(i);
- if(i===J.length-1&&window.dobKonfetti)setTimeout(window.dobKonfetti,FADE)}
-/* B: Jahre auf einem Bogen um das Haus */
-function bogen(){const W=kr.clientWidth,H=kr.clientHeight,n=bjs.length,cx=W/2,cy=H*0.64,rx=W/2-(W<600?24:34),ry=H*(W<600?0.6:0.56);
- bjs.forEach((b,k)=>{const t=Math.PI*(1-k/(n-1));b.style.left=Math.round(cx+rx*Math.cos(t))+'px';b.style.top=Math.round(cy-ry*Math.sin(t))+'px'})}
-let bT=0,bSicht=false,bHalt=false;
-function weiterB(){clearTimeout(bT);if(hv!=='B'||!bSicht||bHalt||ai>=J.length-1)return;bT=setTimeout(()=>{jahr(ai+1);weiterB()},2200)}
-if('IntersectionObserver' in window)new IntersectionObserver(es=>es.forEach(e=>{bSicht=e.intersectionRatio>=0.5;weiterB()}),{threshold:[0,0.5,1]}).observe(kr);else bSicht=true;
-kr.addEventListener('pointerenter',e=>{if(e.pointerType!=='mouse')return;bHalt=true;clearTimeout(bT)});kr.addEventListener('pointerleave',e=>{if(e.pointerType!=='mouse')return;bHalt=false;weiterB()});
-bjs.forEach(b=>b.addEventListener('click',()=>{jahr(+b.dataset.j);weiterB()}));
-mbs.forEach(b=>b.addEventListener('click',()=>jahr(+b.dataset.j)));
-function variante(v){hv=v;hausSec.querySelectorAll('[data-var]').forEach(e=>e.hidden=e.dataset.var!==v);
- hausSec.querySelectorAll('.hausWahl button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
- clearTimeout(bT);if(v==='A'){document.getElementById('hslotA').appendChild(bue);fade(300)}else{document.getElementById('hslotB').appendChild(bue);fade(900);bogen();jahr(0);weiterB()}}
-hausSec.querySelectorAll('.hausWahl button').forEach(b=>b.addEventListener('click',()=>variante(b.dataset.v)));
+ if(i===LETZT)konfetti(FADE)}
+/* Jahre auf einem Bogen um das Haus (etwas mehr als ein Halbkreis) */
+function bogen(){const W=kr.clientWidth,H=kr.clientHeight,n=bjs.length,k0=W<600,cx=W/2,cy=H*(k0?.7:.68),rx=W/2-(k0?24:34),ry=H*(k0?.6:.58),A0=Math.PI*(k0?1.08:1.1),A1=-Math.PI*(k0?.08:.1);
+ bjs.forEach((b,k)=>{const t=A0+(A1-A0)*k/(n-1);b.style.left=Math.round(cx+rx*Math.cos(t))+'px';b.style.top=Math.round(cy-ry*Math.sin(t))+'px'})}
+bjs.forEach(b=>b.addEventListener('click',()=>{const k=+b.dataset.j;if(k===ai){if(k===LETZT)konfetti(0)}else jahr(k)}));
 /* A: Fenster «Unsere Geschichte» – Haus bleibt links stehen, rechts laufen alle Jahre; Jahr in der Mitte ist aktiv */
 let gTk=0;
-function gMitte(){gTk=0;const m=gl.scrollTop+gl.clientHeight/2;let best=0,bd=1e9;gls.forEach((e,k)=>{const d=Math.abs(e.offsetTop+e.offsetHeight/2-m);if(d<bd){bd=d;best=k}});jahr(best)}
+function gMitte(){gTk=0;const m=gl.scrollTop+gl.clientHeight/2;let best=0,bd=1e9;gls.forEach((e,k)=>{const d=Math.abs(e.offsetTop+e.offsetHeight/2-m);if(d<bd){bd=d;best=k}});if(gl.scrollTop+gl.clientHeight>=gl.scrollHeight-2)best=LETZT;jahr(best)}
 function gZu(k,glatt){const e=gls[k];gl.scrollTo({top:e.offsetTop-gl.clientHeight/2+e.offsetHeight/2,behavior:glatt?'smooth':'auto'})}
 gl.addEventListener('scroll',()=>{if(!gTk)gTk=requestAnimationFrame(gMitte)},{passive:true});
-gls.forEach((e,k)=>e.addEventListener('click',()=>gZu(k,true)));
-document.getElementById('hgesch').addEventListener('click',()=>{if(!gd.showModal)return;document.getElementById('hslotG').appendChild(bue);fade(300);gd.showModal();document.documentElement.style.overflow='hidden';gZu(Math.max(0,ai),false)});
-gd.addEventListener('close',()=>{document.documentElement.style.overflow='';document.getElementById(hv==='A'?'hslotA':'hslotB').appendChild(bue);if(hv==='B')fade(900)});
+gls.forEach((e,k)=>e.addEventListener('click',()=>{if(k===ai&&k===LETZT)konfetti(0);gZu(k,true)}));
+document.getElementById('hgesch').addEventListener('click',()=>{if(!gd.showModal)return;document.getElementById('hslotG').appendChild(bue);fade(300);gd.showModal();document.documentElement.style.overflow='hidden';gZu(Math.max(0,ai),false);if(ai===LETZT)konfetti(450)});
+gd.addEventListener('close',()=>{document.documentElement.style.overflow='';document.getElementById('hslotA').appendChild(bue);fade(900)});
 gd.addEventListener('click',e=>{if(e.target===gd||e.target.closest('[data-gclose]'))gd.close()});
 addEventListener('resize',bogen);
-fade(300);jahr(0);
+fade(900);bogen();jahr(0);
 
 /* DoberCard */
 const G=[[100,'1 Patisserie'],[200,'1 Paillasse-Brot'],[300,'1 Dober-Zopf 490 g'],[400,'Kaffee + Tortenstück'],[500,'4 Flawilerzüngli'],[600,'kleiner Bananenstollen'],[800,'1 Mittagsmenü'],[1000,'Konditor-Zmorge (Buffet)']];
@@ -1138,16 +1130,16 @@ else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting||e
   if(d>10){h.classList.add('weg');last=y}else if(d<-10){h.classList.remove('weg');last=y}}
  addEventListener('scroll',()=>{if(!tk)tk=requestAnimationFrame(chk)},{passive:true});
  h.addEventListener('focusin',()=>h.classList.remove('weg'));})();
-/* 25.11: Konfetti, wenn der Regler 2026 (35 Jahre Dober) erreicht – einmal */
-(function(){const bue=document.querySelector('.buehne');if(!bue)return;let done=false;
- window.dobKonfetti=function(){if(done||matchMedia('(prefers-reduced-motion: reduce)').matches)return;done=true;
+/* Julia 26.11: Konfetti jedes Mal, wenn 2026 (35 Jahre Dober) gezeigt wird */
+(function(){const bue=document.querySelector('.buehne');if(!bue)return;
+ window.dobKonfetti=function(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const bue=document.querySelector('.buehne');bue.querySelectorAll('canvas.konfetti').forEach(e=>e.remove());
   const c=document.createElement('canvas');c.className='konfetti';c.setAttribute('aria-hidden','true');bue.appendChild(c);
   const r=bue.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);c.width=r.width*dpr;c.height=r.height*dpr;const x=c.getContext('2d');x.scale(dpr,dpr);
   const W=r.width,H=r.height,N=W<600?22:46,F=['#E09A3B','#F3C27A','#C98426','#6B4532','#3A2522','#FFF6EC'];
   const P=Array.from({length:N},(_,i)=>{const s=i%2?1:-1;return{x:W*(.5+s*(.18+Math.random()*.25)),y:H*(.18+Math.random()*.1),vx:-s*(40+Math.random()*120),vy:-(170+Math.random()*170),g:420,w:3+Math.random()*3.5,h:6+Math.random()*4,r:Math.random()*6.3,vr:(Math.random()-.5)*12,c:F[i%F.length]}});
   let t0=0;function f(t){if(!t0)t0=t;const dt=Math.min(.033,(t-(f.l||t))/1000);f.l=t;const e=(t-t0)/1000;x.clearRect(0,0,W,H);
    const a=e<1?1:Math.max(0,1-(e-1)/.35);P.forEach(p=>{p.vy+=p.g*dt;p.vx*=.985;p.x+=p.vx*dt;p.y+=p.vy*dt;p.r+=p.vr*dt;x.save();x.globalAlpha=a;x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.abs(Math.cos(p.r*1.3)));x.restore()});
-   if(e<1.35)requestAnimationFrame(f);else c.remove()}requestAnimationFrame(f)};})();
+   if(e<1.35&&c.isConnected)requestAnimationFrame(f);else c.remove()}requestAnimationFrame(f)};})();
 </script>
 <script id="tageskarte-js">
 /* Julia 26.11: «Tageskarte» öffnet ihr echtes PDF im Fenster der Seite; zu mit ×, Klick daneben oder Esc. Android zeigt PDFs nicht eingebettet – dort bleibt der normale Link. */
