@@ -866,7 +866,7 @@ sel(today); paintStatus(); setInterval(paintStatus,30000);
     window.__heads=F.h.map(b=>({l:X(b[0]),t:Y(b[1]),r:X(b[2]),b:Y(b[3])}));
     figs.forEach((f,i)=>{ const hd=window.__heads[i]; f.style.left=((hd.l+hd.r)/2)+'px'; f.style.top=hd.t+'px'; f.style.width=Math.max(60,(hd.r-hd.l)*1.6)+'px'; f.style.height=Math.max(F.body*ih*zs,Y(.96)-hd.t)+'px'; });
     /* Юля 25.11: Kreide auf dem leeren Holzschild (nur Foto quer, dort ist das Schild sichtbar) */
-    const ck=Q('#chalk'); if(ck){ if(port){ ck.style.display='none'; } else { const B=[.6423,.4959,.7432,.5863], l=X(B[0]), t=Y(B[1]), r=X(B[2]), bt=Y(B[3]); ck.style.display=''; ck.style.left=l+'px'; ck.style.top=t+'px'; ck.style.width=(r-l)+'px'; ck.style.height=(bt-t)+'px'; ck.style.fontSize=((bt-t)*.3)+'px'; } } };
+    const ck=Q('#chalk'); if(ck){ /* JR 26.11 (Юля: «Поставьте, конечно, на табличку на телефоне, да и на планшете»): hochkant-Foto – stehendes Schild */ const B=port?[.556,.448,.672,.618]:[.6423,.4959,.7432,.5863], l=X(B[0]), t=Y(B[1]), r=X(B[2]), bt=Y(B[3]); ck.classList.toggle('vert',port); ck.style.display=''; ck.style.left=l+'px'; ck.style.top=t+'px'; ck.style.width=(r-l)+'px'; ck.style.height=(bt-t)+'px'; ck.style.fontSize=(port?(r-l)*.24:(bt-t)*.3)+'px'; } };
   place(); addEventListener('resize',place); addEventListener('load',place);
   setTimeout(()=>heroEl.classList.add('ready'),150);
   /* Юля 24.11 (2): Klick wirkt sofort – auch während der Begrüssung; Hover zeigt nichts, nur Hand-Cursor */
@@ -1023,7 +1023,7 @@ s();addEventListener('load',s);addEventListener('resize',s);if(document.fonts&&d
 </style>
 <style>/* Юля 26.11: «вариант, который вырезан в дереве, он лучше … немножечко побольше на этой штуке» – Schrift ins Holz geschnitten, etwas grösser */
 .chalk{font-family:"Abril Fatface",serif!important;font-weight:400!important;line-height:1.05!important;letter-spacing:.02em;color:rgba(62,38,18,.72)!important;text-shadow:0 -1px 0 rgba(20,10,2,.85),0 1.5px 0 rgba(255,240,212,.62),0 0 1px rgba(40,20,6,.35)!important}
-.chalk span{font-size:.9em}.chalk span+span{font-size:.8em!important;white-space:normal!important;max-width:88%;text-wrap:balance}
+.chalk span{font-size:.9em}.chalk.vert{transform:none}.chalk.vert span{white-space:normal!important;max-width:92%;text-wrap:balance;overflow-wrap:normal}.chalk.vert span+span{margin-top:.35em}.chalk span+span{font-size:.8em!important;white-space:normal!important;max-width:88%;text-wrap:balance}
 </style>
 <style>/* Юля 26.11: «когда я долистываю фото до самого низа, я видела всю картинку» – Schleier oben am Wiesenfoto wird am Seitenende schmal, weicher Übergang bleibt */
 .weg.weg:before{height:calc(170px - var(--wb,0) * 116px)!important}</style>
