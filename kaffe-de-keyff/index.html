@@ -1958,12 +1958,12 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
 <meta property="og:image:width" content="900">
 <meta property="og:image:height" content="675">
 <meta name="twitter:card" content="summary_large_image">
+<style id="julia-26-11b">a.score{color:inherit;text-decoration:none;cursor:pointer}.score .st-anim{position:relative;display:block;width:120px;height:23px}.score .st-anim .stars{position:absolute;left:0;top:0;margin:0}@keyframes stIn{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@media (hover:hover) and (prefers-reduced-motion:no-preference){a.score:hover .st-fg{animation:stIn .6s steps(5,start)}}.tbar{display:none}@media (max-width:700px){.tbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(20,14,10,.96);border-top:1px solid rgba(255,210,138,.26);transform:translateY(110%);transition:transform .3s ease;visibility:hidden}.tbar.on{transform:none;visibility:visible}.tbar .btn{flex:1;min-height:48px;padding:0 6px;font-size:15px;gap:6px;white-space:nowrap;margin:0}.tbar .btn svg{width:17px;height:17px}}</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
 <span class="vw-l">Variante wählen</span>
 <span class="vw-b"><a class="vw-a" href="keyff_dunkel.html" aria-current="true">Dunkel</a><a class="vw-a" href="keyff_hell.html">Hell</a></span>
-<span class="vw-x" role="group" aria-label="Varianten"><label>Sand <select id="vx-sand" aria-label="Sand"><option value="">Jetzt</option><option value="c">Sonne</option></select></label></span>
 <span class="vw-ix" role="group" aria-label="Ideen der Prüfer">Ideen <button type="button" data-ix="1" aria-pressed="false">1 Erster Bildschirm</button><button type="button" data-ix="3" aria-pressed="false">3 Bewertungen</button></span>
 <span class="vw-n">Zwei Varianten zur Wahl: Sie können eine wählen oder beide behalten – am Preis ändert das nichts.</span>
 </div>
@@ -3683,14 +3683,14 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
         <h2 id="h-stimmen">Was Gäste <em>sagen</em></h2>
       </div>
 
-      <div class="score">
+      <a class="score" href="https://www.google.com/maps/search/?api=1&amp;query=Kaffe+de+Keyff+Degersheimerstrasse+1+Flawil" target="_blank" rel="noopener" aria-label="4,5 von 5 – alle Bewertungen auf Google">
         <div class="neon" aria-hidden="true"><span class="big">4,5</span></div>
         <div class="meta">
-          <svg class="stars" aria-hidden="true"><use href="#s45"/></svg>
+          <span class="st-anim"><svg class="stars st-bg" aria-hidden="true" viewBox="0 0 120 23"><use href="#sg" fill="#6b5440"/></svg><svg class="stars st-fg" aria-hidden="true"><use href="#s45"/></svg></span>
           <span><span class="sr">4,5 </span>von 5 · 197 Bewertungen auf Google</span>
           <span class="je">4,9 von 5 · über 360 Bewertungen auf Just Eat</span>
         </div>
-      </div>
+      </a>
 
       <div class="quotes">
         <blockquote class="quote">
@@ -4135,7 +4135,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
     var n=+b.getAttribute('data-ix'), on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on?'true':'false'); B.classList.toggle('ix'+n,on); F[n](on); }); });
 })();</script>
 <script>(function(){
-  var Q=new URLSearchParams(location.search), SAND=Q.get('sand')||'', IX=(Q.get('ideen')||'').split('').filter(function(c){return /[123]/.test(c)});
+  var Q=new URLSearchParams(location.search), SAND='c', IX=(Q.get('ideen')||'').split('').filter(function(c){return /[123]/.test(c)});
   var B=document.body, ss=document.getElementById('vx-sand')||{value:'',addEventListener:function(){}};
   function q(){ var p=new URLSearchParams(location.search); p.delete('schrift'); [['sand',ss.value]].forEach(function(a){ if(a[1]) p.set(a[0],a[1]); else p.delete(a[0]); });
     var on=[].slice.call(document.querySelectorAll('.vw-ix button[aria-pressed="true"]')).map(function(b){return b.getAttribute('data-ix')}).join(''); if(on) p.set('ideen',on); else p.delete('ideen'); return p.toString(); }
@@ -4206,5 +4206,7 @@ addEventListener('resize',rs);rs();
     var keep=L.filter(function(l){l=l.trim();return !(/^linear-gradient/.test(l)&&!/rgba\([^)]*,\s*0?\.\d+\)|transparent/.test(l));});
     if(keep.length!==L.length){e.style.backgroundImage=keep.length?keep.join(', '):'none';}});
 })();</script>
+<nav class="tbar" id="tbar" aria-label="Schnellzugriff"><a class="btn btn-amber" href="tel:+41715544224"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a><a class="btn btn-ghost" href="#karte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>Karte</a><a class="btn btn-cream" href="https://www.just-eat.ch/speisekarte/kaffe-de-keyff" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Bestellen</a></nav>
+<script>(function(){var t=document.getElementById("tbar");if(!t)return;var mq=matchMedia("(max-width:700px)"),last=scrollY,tk=false;function upd(){tk=false;var y=scrollY,dy=y-last;last=y;if(!mq.matches){t.classList.remove("on");return;}var h=document.querySelector(".hero"),hb=h?h.offsetTop+h.offsetHeight:innerHeight,f=document.querySelector("footer.foot"),fv=f?f.getBoundingClientRect().top<innerHeight:false,b=document.getElementById("buch"),bo=b&&b.dataset.state==="open";if(y<hb||fv||bo||dy>3)t.classList.remove("on");else if(dy<-3)t.classList.add("on");}addEventListener("scroll",function(){if(!tk){tk=true;requestAnimationFrame(upd);}},{passive:true});t.querySelector("a[href='#karte']").addEventListener("click",function(){t.classList.remove("on");});})();</script>
 </body>
 </html>
