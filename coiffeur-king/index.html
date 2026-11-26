@@ -1271,6 +1271,25 @@ html body .crops::before,html body .crops::after{-webkit-mask-image:linear-gradi
   html body .crops::after,html body .reviews::after,html body .hours::after,html body .contact::after,html body footer.foot::after{background:linear-gradient(to left,rgba(232,222,200,.1) 0,#FFF6E4 6px,#FFF6E4 9px,rgba(248,238,214,.55) 10px,rgba(238,226,200,.26) 16px,rgba(230,214,190,.1) 40%,rgba(222,206,180,0) 100%)}
 }
 </style>
+<style id="kontakt-gruen-route-26-11">
+/* Julia 26.11: Grün der Leiste oben (#1F3A2E) unten wiederholen – Kontaktkarte etwas grüner */
+html body .contact .card{background:linear-gradient(135deg,rgba(31,58,46,.78) 0%,rgba(31,58,46,.5) 55%,rgba(31,58,46,.62) 100%),var(--raised);border-color:rgba(98,140,114,.45)}
+/* Julia 26.11: Waben so deutlich wie früher auf Braun */
+html body .contact .card .honey{background:rgba(206,214,170,.22)}
+/* Julia 26.11: «Route planen» unten glänzt beim Darüberfahren wie «Anrufen» */
+@keyframes routeglint{0%{background-position:100% 0,0 0}100%{background-position:0% 0,0 0}}
+html body .contact .c-btns .btn{transition:transform .18s ease,filter .25s ease}
+/* Julia 26.11: «Route planen» auch ohne Darüberfahren – weiches goldenes Leuchten und ruhiger Glanz */
+html body .contact .c-btns .btn{filter:drop-shadow(0 0 5px rgba(240,196,98,.4)) drop-shadow(0 0 14px rgba(240,190,80,.22))}
+html body .contact .c-btns .btn::after{background:var(--glint-soft),var(--metal-btn);background-size:400% 100%,100% 100%;background-repeat:no-repeat;background-position:100% 0,0 0;animation:glint2 10s ease-in-out 4s infinite}
+html body .contact .c-btns .btn::before{background:linear-gradient(135deg,#B48C45,#F3DA9C 45%,#C9A057 70%,#E9CC86)}
+@media (hover:hover){
+  html body .contact .c-btns .btn:hover{filter:drop-shadow(0 0 9px rgba(246,206,110,.85)) drop-shadow(0 0 26px rgba(240,190,80,.6));color:#17120A}
+  html body .contact .c-btns .btn:hover::before{background:linear-gradient(135deg,#B48C45,#FBE6AE 45%,#C9A057 70%,#F4D68E)}
+  html body .contact .c-btns .btn:hover::after{background:var(--glint-soft),linear-gradient(135deg,#EAC56E 0%,#FCE8B2 30%,#ECC977 55%,#FAE3A2 80%,#E2B85C 100%);background-size:400% 100%,100% 100%;background-repeat:no-repeat;animation:routeglint .9s ease-out 1 both}
+}
+html body .contact .c-btns .btn:active{filter:drop-shadow(0 0 9px rgba(246,206,110,.85)) drop-shadow(0 0 26px rgba(240,190,80,.6))}
+</style>
 </head>
 <body>
 <div class="mk-hinweis" id="mk-hinweis" role="note" lang="de" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht.</div>
