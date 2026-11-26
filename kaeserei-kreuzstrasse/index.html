@@ -626,7 +626,10 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 @media (hover:none) and (pointer:coarse) and (max-width:1100px){.arr{display:none!important}.rail-wrap{padding:0!important}.dots{display:flex!important}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 </style>
-<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style></head>
+<style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><style>/* Юля 26.11: «я про полосу с адресом и телефоном над блоком сыров» – Leiste weg; Höhe bleibt, Foto geht weich in den Hintergrund über (nichts verschiebt sich) */
+.hero-bar>.wrap{visibility:hidden}.hero-bar:before{display:none!important}.hero-bar .ftex{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 92%);mask-image:linear-gradient(180deg,transparent 0,#000 92%)}
+</style>
+</head>
 <body>
 <div class="entwurf" id="entwurf" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht.</div>
 <script>(function(){var b=document.getElementById("entwurf");if(b)document.documentElement.style.setProperty("--bar",b.offsetHeight+"px")})();</script>
