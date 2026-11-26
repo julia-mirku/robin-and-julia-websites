@@ -1961,6 +1961,12 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
 <style id="julia-26-11b">a.score{color:inherit;text-decoration:none;cursor:pointer}.score .st-anim{position:relative;display:block;width:120px;height:23px}.score .st-anim .stars{position:absolute;left:0;top:0;margin:0}@keyframes stIn{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@media (hover:hover) and (prefers-reduced-motion:no-preference){a.score:hover .st-fg{animation:stIn .6s steps(5,start)}}.tbar{display:none}@media (max-width:700px){.tbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(20,14,10,.96);border-top:1px solid rgba(255,210,138,.26);transform:translateY(110%);transition:transform .3s ease;visibility:hidden}.tbar.on{transform:none;visibility:visible}.tbar .btn{flex:1;min-height:48px;padding:0 6px;font-size:15px;gap:6px;white-space:nowrap;margin:0}.tbar .btn svg{width:17px;height:17px}}</style>
 <style>/* 26.11 (Julia): beim Öffnen erscheint der Text links und rechts gleichzeitig, nach dem Aufklappen */
 @media (min-width:900px){.bk.bk-opening .bk-spread>.bk-page>*,.bk.bk-opening .bk-leaf{opacity:0}.bk.bk-reveal .bk-spread>.bk-page>*,.bk.bk-reveal .bk-leaf{animation:bk-fade .25s ease both}}.bk.bk-opened .bk-inner{visibility:hidden!important}</style>
+<style>/* 26.11 (Julia): «Speisekarte schliessen» klein am unteren Rand der letzten Seite */
+.bk-endx{position:relative;z-index:2;align-self:flex-end;margin:auto -2px -15px auto;padding:12px 2px 7px;border:0;background:none;font-family:var(--display);font-weight:700;font-size:.72rem;line-height:1.1;letter-spacing:.06em;color:var(--pcopper);opacity:.8;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px;transition:opacity .2s ease,text-decoration-color .2s ease}
+.bk-endx:hover,.bk-endx:focus-visible{opacity:1;text-decoration-color:currentColor}
+.bk-endx-en{font-weight:400;letter-spacing:.02em;opacity:.8}
+span.bk-endx{cursor:default}
+@media (max-width:899px){.bk-endx{min-height:44px;display:flex;align-items:flex-end;margin-bottom:-16px}}</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
@@ -2685,7 +2691,14 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
         '<button type="button" class="bk-back">' + BACK + tr('Zurück zur Liste') + '</button>' +
       '</div></div></div></li>';
   }
-  function pageHTML(idx, pfx){
+  /* 26.11 (Julia): auf der letzten Seite, klein am unteren Rand: «Speisekarte schliessen» – schliesst wie × */
+  function pageHTML(idx, pfx){ return pageHTML0(idx, pfx) + endX(idx, pfx); }
+  function endX(idx, pfx){
+    if(idx !== pages.length - 1 || !pages[idx]) return '';
+    var t = esc(tr('Speisekarte schliessen')) + (lang === 'en' ? '' : '<span class="bk-endx-en" lang="en"> · Close menu</span>');
+    return pfx === 'd' ? '<button type="button" class="bk-endx">' + t + '</button>' : '<span class="bk-endx" aria-hidden="true">' + t + '</span>';
+  }
+  function pageHTML0(idx, pfx){
     var p = pages[idx], h, j;
     if(!p) return '';
     if(p.k === 'toc'){
@@ -3146,6 +3159,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
   }
   function go(newPos, done, opt){
     opt = opt || {};
+    reveal();
     newPos = Math.max(0, Math.min(pages.length - 1, newPos));
     if(flip && flip.peek && !opt.peek) flip.cancelNow();
     var now = Date.now(), quick = now - lastReq < 1200;
@@ -3341,20 +3355,25 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
     if(instant){ void bk.offsetWidth; bk.classList.remove('bk-instant'); }
     else if(rm.matches){ fade(stage); }
   }
+  function reveal(){ if(!bk.classList.contains('bk-opening')) return; bk.classList.remove('bk-opening'); bk.classList.add('bk-reveal'); setTimeout(function(){ bk.classList.remove('bk-reveal'); }, 400); }
   function openBook(instant, then){
     if(isOpen){ if(then) then(); return; }
-    /* 26.11 (Julia): beim Aufklappen kein Zwischenbild – der Text erscheint erst, wenn das Buch offen und neu eingeteilt ist, links und rechts zugleich */
+    /* 26.11: Seiten schon vor dem Zeigen mit der Grösse des offenen Buchs einteilen (unsichtbar, Übergänge bleiben unberührt).
+       Kein spätes Neueinteilen mehr – das hielt das Blättern in der ersten Sekunde an und sprang zurück */
+    if(wide){
+      bk.classList.add('bk-instant'); bk.setAttribute('data-state', 'open');
+      var nb = spread.clientWidth + 'x' + spread.clientHeight;
+      if(nb !== lastBox){ lastBox = nb; build(); }
+      bk.setAttribute('data-state', 'closed'); void bk.offsetWidth; bk.classList.remove('bk-instant');
+    }
+    /* 26.11 (Julia): beim Aufklappen erscheint «Inhalt» links und rechts zugleich, wenn der Deckel aufliegt – nie zuerst nur rechts */
     var veil = wide && !instant && !rm.matches;
     if(veil){ bk.classList.remove('bk-reveal'); bk.classList.add('bk-opening'); }
     paint();
     setState(true, instant);
-    /* 26.11: Innenseite des Deckels nach dem Aufklappen endgültig weg (sonst lag sie nach dem Neueinteilen wieder über der linken Seite) */
+    /* Innenseite des Deckels nach dem Aufklappen endgültig weg */
     setTimeout(function(){ if(isOpen) bk.classList.add('bk-opened'); }, instant ? 0 : 1060);
-    if(wide) relayout(false);
-    if(veil){
-      setTimeout(function(){ if(isOpen && wide) relayout(true); }, 1000);
-      setTimeout(function(){ bk.classList.remove('bk-opening'); bk.classList.add('bk-reveal'); setTimeout(function(){ bk.classList.remove('bk-reveal'); }, 400); }, 1250);
-    }
+    if(veil) setTimeout(reveal, 1250);
     if(!wide && !instant && !rm.matches){
       R.classList.remove('in-next','in-prev'); R.classList.add('in-open');
       setTimeout(function(){ R.classList.remove('in-open'); }, 900);
@@ -3438,6 +3457,7 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
     });
   });
   bClose.addEventListener('click', closeBook);
+  spread.addEventListener('click', function(e){ var x = e.target.closest ? e.target.closest('button.bk-endx') : null; if(x){ e.preventDefault(); e.stopPropagation(); closeBook(); } });
   /* Ganze Karte als Liste (dieselbe Liste wie ohne JavaScript): auf und zu, das Buch bleibt, wie es ist */
   var bList = document.getElementById('bk-list');
   function setList(on){
