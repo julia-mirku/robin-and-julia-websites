@@ -404,6 +404,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
   .stunde{aspect-ratio:4/5}
   .s-karte{padding:52px 0 36px}
   .karte-grid{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start}
+  .karte-grid>.zimmer{will-change:translate}
   .karte-links .lead{margin-bottom:0}
   .reiter{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:8px;margin:26px 0 0}
   .rt{min-height:54px;padding:0 20px 0 12px;font-size:17px;border-radius:12px}
@@ -602,7 +603,7 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
           </div>
         </article>
         <article class="fk rise">
-          <figure data-big="img/pizzaiolo.webp"><img src="img/pizzaiolo.webp" alt="Der Pizzaiolo wirft den Teig für die grosse Tischpizza in die Luft" loading="lazy" style="object-position:50% 24%"></figure>
+          <figure data-big="img/feiern_tische.webp"><img src="img/feiern_tische.webp" alt="Gedeckte Tische mit roten Servietten vor der bemalten Wand im Bodan" loading="lazy" style="object-position:50% 72%"></figure>
           <div class="in">
             <h3>Gruppen &amp; Feiern</h3>
             <p>Firmenfeier, Geburtstag oder Hochzeit: grosse Gruppen sind willkommen. Für den langen Tisch gibt es Pizza mit 50 cm Durchmesser.</p>
@@ -913,5 +914,9 @@ function top(el){var y=0;while(el){y+=el.offsetTop;el=el.offsetParent}return y}
 function setz(){var e=top(b)+40,t=Math.min(top(a),e-760),r=D.documentElement.style;r.setProperty('--nacht-top',t+'px');r.setProperty('--nacht-y',(-t)+'px');r.setProperty('--nf',Math.max(240,e-t)+'px')}
 setz();W.addEventListener('load',setz);W.addEventListener('resize',setz);if(D.fonts&&D.fonts.ready)D.fonts.ready.then(setz);if('ResizeObserver' in W)new ResizeObserver(setz).observe(D.body)})();
 </script>
+<script>(()=>{const g=document.querySelector('.karte-grid'),z=document.getElementById('zimmer'),r=document.getElementById('reiter'),L=document.querySelector('.karte-links'),k=document.querySelector('.kopf');if(!g||!z||!r)return;let sh=0,on=false,q=0;
+const mass=()=>{on=innerWidth>=900;if(!on){z.style.translate='';g.style.paddingBottom='';return}sh=Math.max(0,Math.round(r.offsetTop-z.offsetTop));const res=Math.max(0,z.offsetHeight+sh-L.offsetHeight)+'px';if(g.style.paddingBottom!==res){g.style.paddingBottom=res;dispatchEvent(new Event('resize'))}lauf()};
+const lauf=()=>{q=0;if(!on)return;const hh=(k?k.getBoundingClientRect().bottom:0)+18;const gt=g.getBoundingClientRect().top;sh=Math.max(0,Math.round(r.offsetTop-z.offsetTop));const past=hh-gt;const ty=Math.max(0,Math.min(sh,past));z.style.translate='0 '+ty+'px'};
+addEventListener('scroll',()=>{if(!q)q=requestAnimationFrame(lauf)},{passive:true});addEventListener('resize',mass);addEventListener('load',mass);new ResizeObserver(mass).observe(z);mass()})()</script>
 </body>
 </html>
