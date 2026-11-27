@@ -41,6 +41,6 @@ html[lang^="en"] [lang="de"], html[lang^="de"] [lang="en"]{display:none}
 <p>Julia &amp; Robin Mirku · <a href="https://webstudio-mirku.ch" target="_blank" rel="noopener">webstudio-mirku.ch</a></p>
 <p class="draft"><span lang="de">Entwurf · nur zur Ansicht</span><span lang="en">Draft · preview only</span></p></main>
 <script>(function(){const K="leo-lang";let l="de";try{const q=new URLSearchParams(location.search).get("lang");l=(q==="en"||q==="de")?q:(localStorage.getItem(K)||"de");}catch(_){}
-const set=x=>{document.documentElement.lang=x==="en"?"en-GB":"de-CH";document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===x));try{localStorage.setItem(K,x);}catch(_){}};
+const T0=document.title,TE=T0.replace(/^(Impressum|Datenschutz)/,"Legal notice");const set=x=>{document.documentElement.lang=x==="en"?"en-GB":"de-CH";document.title=x==="en"?TE:T0;document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===x));try{localStorage.setItem(K,x);}catch(_){}};
 set(l);document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>set(b.dataset.l));})();</script>
 </body></html>

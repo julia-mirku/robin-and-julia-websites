@@ -742,6 +742,9 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 @media (max-width:760px){.sheet{height:auto;min-height:calc(5 * 76px + 34px)}.sheet .half{grid-auto-rows:minmax(76px,auto)}.sheet .row .rd{font-size:12px;line-height:1.18}.sheet .row{gap:0 8px}#karte{scroll-margin-top:calc(var(--hdr) - 42px)}}
 @media (min-width:761px) and (max-width:1100px) and (min-height:821px){.sheet{height:calc(5 * 92px + 34px)}.sheet .half{grid-auto-rows:92px}}
 @media (min-width:761px) and (max-width:1100px) and (max-height:820px){.sheet{height:calc(5 * 76px + 34px)}.sheet .half{grid-auto-rows:76px}}
+/* Preise nie abschneiden (EN «CHF 18» ist breiter als «Fr. 18») */
+.sheet .row{grid-template-columns:58px minmax(0,1fr) 70px}.sheet .rp{white-space:nowrap;text-align:right}
+@media (max-width:760px){.sheet .row{grid-template-columns:52px minmax(0,1fr) 60px}.sheet .rt{white-space:normal;overflow:visible}}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -797,7 +800,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   <div class="wrap">
     <div class="head reveal">
       <h2>Leos <i>Lieblinge</i></h2>
-      <p class="lead">Auf schwarzem Schiefer serviert – mit den Nummern unserer Küche.</p>
+      <p class="lead">Unsere Lieblinge – mit den Nummern unserer Küche.</p>
     </div>
     <div class="sidewrap"><div class="dishes" id="dishes"></div><button class="arrow ga sa-prev" id="dPrev" type="button" aria-label="Vorherige Gerichte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button><button class="arrow ga sa-next" id="dNext" type="button" aria-label="Weitere Gerichte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button></div>
     <div class="dnav"><span class="ddots" id="ddots" aria-hidden="true"></span></div>
@@ -874,7 +877,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 <section class="salon" id="salon">
   <div class="wrap">
     <h2 class="reveal">Der Salon an der <i>Engelgasse</i></h2>
-    <p class="moved reveal" id="moved">Sie finden uns an der <a class="addr-u" href="https://www.google.com/maps/search/?api=1&amp;query=Engelgasse+2,+9000+St.+Gallen" target="_blank" rel="noopener">Engelgasse 2</a>, mitten in der Altstadt. Grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.</p>
+    <p class="moved reveal" id="moved">Mitten in der Altstadt: grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.</p>
     <div class="wall">
       <figure class="frame f1 reveal"><span class="lamp"></span><div class="mat"><img src="img/s/salon_quer.jpg" srcset="img/s/salon_quer_m.jpg 900w, img/s/salon_quer.jpg 1500w" sizes="(max-width:760px) 100vw, 1180px" width="1500" height="837" alt="Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen" loading="lazy" decoding="async" style="aspect-ratio:16/8.4"><span class="lit"></span></div></figure>
       <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/s/salon_hoch.jpg" srcset="img/s/salon_hoch_m.jpg 720w, img/s/salon_hoch.jpg 900w" sizes="(max-width:760px) 100vw, 580px" width="900" height="1125" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
@@ -891,9 +894,9 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   <div class="wrap">
     <p class="neon-kick">Signature</p>
     <h2 class="neon" id="neon">Sake Cocktails</h2>
-    <p class="lead reveal">Hausgemachte Sake-Kreationen, passend zu Sushi – und unser eigenes Bier, das Leo Lager.</p>
+    <p class="lead reveal">Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.</p>
     <div class="drinks">
-      <article class="drink big reveal"><img src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Aperitif vor dem Sushi oder der letzte Drink um elf.</p></div></article>
+      <article class="drink big reveal"><img src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Apéro vor dem Sushi oder ein letzter Drink zum Schluss.</p></div></article>
       <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/yuzu_sakura.jpg" width="700" height="700" alt="Cocktail Yuzu Sakura" loading="lazy" decoding="async"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
       <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
     </div>
@@ -901,11 +904,11 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
       <div class="list reveal"><h3>Signature Sake</h3>
         <div class="li"><span>Sake Blossom<small>Sake, Holunder, Tonic, Limettenzeste</small></span><b>Fr. 17</b></div>
         <div class="li"><span>Yuzu Fizz<small>Sake, Yuzu, Soda – Zitrus &amp; Spritz</small></span><b>Fr. 17</b></div>
-        <div class="li"><span>Hakutsuru Sake<small>4 cl</small></span><b>Fr. 8</b></div>
       </div>
-      <div class="list reveal"><h3>Bier &amp; Bläschen</h3>
+      <div class="list reveal"><h3>Bier, Sake &amp; Champagner</h3>
         <div class="li"><span>Leo Lager<small>Thailand · 5,0 % · 3,3 dl</small></span><b>Fr. 6.90</b></div>
         <div class="li"><span>Asahi Super Dry<small>Japan · 5,0 % · 3,3 dl</small></span><b>Fr. 6.90</b></div>
+        <div class="li"><span>Hakutsuru Sake<small>4 cl</small></span><b>Fr. 8</b></div>
         <div class="li"><span>Dom Pérignon 2012<small>7,5 dl</small></span><b>Fr. 270</b></div>
       </div>
     </div>
@@ -949,7 +952,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   <div class="wrap fgrid">
     <div class="fbrand"><b>Leo · Sushi Bar</b><span>Engelgasse 2<br>9000 St. Gallen</span></div>
     <div><h4>Kontakt</h4><a href="tel:+41767661747">076 766 17 47</a><a href="mailto:sushibarleo@gmx.ch">sushibarleo@gmx.ch</a><a href="https://www.instagram.com/sushibarleo/" target="_blank" rel="noopener">@sushibarleo</a></div>
-    <div><h4>Öffnungszeiten</h4><ul class="fhours" id="fhours"></ul></div>
+    <div><h4>Öffnungszeiten</h4><a href="#besuch">Alle Tage und Zeiten ansehen ↑</a></div>
     <div><h4>Rechtliches</h4><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
   </div>
   <div class="wrap fbot"><span>Entwurf · nur zur Ansicht</span><span class="by">Website: <a href="https://webstudio-mirku.ch" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></span></div>
@@ -968,13 +971,14 @@ const KARTE=[
   [12,"Maguro Yaki Trüffel","Geflämmter Thunfisch – Trüffel-Mayo – Trüffel",12,"fl"]]},
  {id:"maki",t:"Hosomaki",u:"8 Stück",items:[
   [14,"Gurken Maki","",8,"v"],[15,"Avocado Maki","",8,"v"],[16,"Rettich Maki","",8,"v"],[17,"Kürbis Maki","",8,"v"],
-  [19,"Surimi Maki","",8,""],[20,"Lachs Maki","",9,"r"],[21,"Thunfisch Maki","",9,"r"],[24,"Crevetten Maki","",9,""],
-  [76,"Hoso Tempura Avocado","Crunchy Maki in Tempura",12,"v t"],[77,"Hoso Tempura Gurke","Crunchy Maki in Tempura",12,"v t"],
-  [78,"Hoso Tempura Rettich","Crunchy Maki in Tempura",12,"v t"],[79,"Hoso Tempura Kürbis","Crunchy Maki in Tempura",12,"v t"]]},
+  [19,"Surimi Maki","",8,""],[20,"Lachs Maki","",9,"r"],[21,"Thunfisch Maki","",9,"r"],[24,"Crevetten Maki","",9,""]]},
+ {id:"tmaki",t:"Crunchy Maki in Tempura",u:"8 Stück",items:[
+  [76,"Hoso Tempura Avocado","",12,"v t"],[77,"Hoso Tempura Gurke","",12,"v t"],
+  [78,"Hoso Tempura Rettich","",12,"v t"],[79,"Hoso Tempura Kürbis","",12,"v t"]]},
  {id:"futo",t:"Futomaki",u:"6 Stück",items:[
   [25,"Vegi Futomaki","Gurke – Avocado – Rettich – Kürbis",16,"v"],[26,"Lachs Futomaki","Lachs – Gurke – Avocado",17,"r"],
   [28,"Thunfisch Futomaki","Thunfisch – Gurke – eingelegter Rettich – eingelegtes Gemüse – Sesam",18,"r"],[29,"Ebi Futomaki","Crevette – Gurke – Avocado – Sesam – Mayonnaise – Kürbis",17,""],
-  [31,"Yasai Philadelphia","Frischkäse – Gurke – Avocado – Kanpyo – Mango",18,"v"],[33,"Lachs Philadelphia","Lachs – Frischkäse – Gurke – Avocado – Kürbis – Mango",20,"r"],
+  [31,"Yasai Philadelphia","Frischkäse – Gurke – Avocado – eingelegter Kürbis – Mango",18,"v"],[33,"Lachs Philadelphia","Lachs – Frischkäse – Gurke – Avocado – Kürbis – Mango",20,"r"],
   [34,"Thunfisch Philadelphia","Thunfisch – Frischkäse – Gurke – eingelegtes Gemüse – Sesam",22,"r"],[35,"Thunfisch Tataki","Geflämmter Thunfisch mit Togarashi – Avocado – Gurke – eingelegter Rettich",22,"fl s"],
   [36,"Rainbow","Lachs – Thunfisch – Crevette – Tobiko – Gurke",22,"r"],[37,"Sweet Lachs","Lachs – Mango – Avocado – eingelegter Kürbis – Frischkäse – Teriyaki – Sesam",20,"r"],
   [38,"Lachs Citrus","Lachs mariniert in Ponzu – Gurke – eingelegter Rettich",20,"r"],[39,"Lachs Spicy Futo","Lachs – Jalapeños – Mango – eingelegter Rettich – Gurke",19,"r s"],
@@ -992,14 +996,14 @@ const KARTE=[
   [58,"Maguro Uramaki","Thunfisch – Gurke – Spicy Mayo – Rettich – Sesam",22,"r s"],[60,"Sake Spicy Uramaki","Lachs – Rettich – eingelegtes Gemüse – Gurke – Sriracha – Sesam",21,"r s"],
   [61,"Maguro Spicy Uramaki","Thunfisch – eingelegtes Gemüse – Rettich – Sriracha – Tobiko – Sesam",23,"r s"],[62,"Ebi Uramaki","Crevette – Gurke – eingelegter Kürbis – Avocado – Mayonnaise – Sesam",22,""],
   [63,"Yasai Caterpillar","Avocado in Tempura – Gurke – Rettich – Mayonnaise – aussen Avocado – Teriyaki – Sesam",28,"v t"],[64,"Citrus Lachs","Crevette in Tempura – Gurke – Avocado – Mango – aussen Lachs in Ponzu – Sesam",32,"r t"],
-  [65,"Dragon Tempura","Lachs – Avocado – Kanpyo – Mayonnaise – aussen Aal in Tempura – Teriyaki – Schnittlauch – Sesam",34,"r t"],[66,"Tuna Tataki","Crevette in Tempura – Gurke – Rettich – Fuku Jin Zuke – aussen geflämmter Thunfisch mit Togarashi – Gochujang-Mayo",34,"fl t s"],
-  [67,"Ebi Ten Special","Crevette in Tempura – Gurke – Lauch – Rettich – Spicy Mayo – aussen Tobiko – Sesam",32,"t s"],[68,"Red Dragon Trüffel","Crevette in Tempura – Gurke – Fuku Jin Zuke – aussen Thunfisch, Trüffel-Mayo, Trüffel",36,"r t"],
+  [65,"Dragon Tempura","Lachs – Avocado – eingelegter Kürbis – Mayonnaise – aussen Aal in Tempura – Teriyaki – Schnittlauch – Sesam",34,"r t"],[66,"Tuna Tataki","Crevette in Tempura – Gurke – Rettich – mariniertes Gemüse – Mayonnaise – aussen geflämmter Thunfisch mit Togarashi – Gochujang-Mayo – Sesam",34,"fl t s"],
+  [67,"Ebi Ten Special","Crevette in Tempura – Gurke – Lauch – Rettich – Spicy Mayo – aussen Tobiko – Sesam",32,"t s"],[68,"Red Dragon Trüffel","Crevette in Tempura – Gurke – mariniertes Gemüse – aussen Thunfisch, Trüffel-Mayo, Trüffel",36,"r t"],
   [69,"Ebi Cream Uramaki","Crevette in Tempura – Gurke – Avocado – aussen Sojabohnenflocke – Frischkäse – Teriyaki – Sesam",34,"t"],[70,"Avocado Sake Yaki","Avocado in Tempura – Gurke – Avocado – Mayonnaise – aussen geflämmter Lachs – Teriyaki – Sesam",32,"fl t"],
-  [71,"Dragon Roll","Crevette in Tempura – Gurke – Kanpyo – Avocado – aussen gegrillter Aal – Teriyaki – Sesam",35,"fl t"],[72,"Ebi Caterpillar","Crevette in Tempura – Oshinko – Mango – Gurke – Mayonnaise – aussen Avocado – Teriyaki – Sesam",32,"t"],
+  [71,"Dragon Roll","Crevette in Tempura – Gurke – eingelegter Kürbis – Avocado – aussen gegrillter Aal – Teriyaki – Sesam",35,"fl t"],[72,"Ebi Caterpillar","Crevette in Tempura – eingelegter Rettich – Mango – Gurke – Mayonnaise – aussen Avocado – Teriyaki – Sesam",32,"t"],
   [73,"Red Dragon","Crevette in Tempura – Rettich – Mango – Jalapeños – Gurke – Sriracha – aussen Thunfisch – Tobiko – Sesam",35,"r t s"],[74,"Ebi Ten Rainbow","Crevette in Tempura – Gurke – Rettich – Spicy Mayo – aussen Lachs – Thunfisch – Crevette",34,"r t s"],
   [75,"Ebi Sake Tatar","Crevette in Tempura – Gurke – Rettich – aussen Lachstatar – Spicy Mayo – Lauch",34,"r t s"]]},
  {id:"crunchy",t:"Crunchy Rollen",u:"6 Stück",items:[
-  [80,"Vegi Crunchy Tempura Rolle","Gurke – Avocado – Oshinko – Kanpyo – aussen Spicy Mayo – Lauch",20,"v t s"],[81,"Lachs Tatar Crunchy Rolle","Lachstatar in Tempura – aussen Spicy Mayo – Lauch",25,"t s"],
+  [80,"Vegi Crunchy Tempura Rolle","Gurke – Avocado – eingelegter Rettich – eingelegter Kürbis – aussen Spicy Mayo – Lauch",20,"v t s"],[81,"Lachs Tatar Crunchy Rolle","Lachstatar in Tempura – aussen Spicy Mayo – Lauch",25,"t s"],
   [82,"Thunfisch Tatar Crunchy Rolle","Thunfischtatar in Tempura – aussen Spicy Mayo – Lauch",25,"t s"],[83,"Tunamusse Crunchy Rolle","Tunamusse in Tempura – aussen Spicy Mayo – Lauch",22,"t s"]]},
  {id:"sashimi",t:"Sashimi",u:"4 Stück",items:[
   [84,"Sashimi Thunfisch","",9,"r"],["","Sashimi Lachs","",9,"r"],["","Sashimi Aal","",10,"fl"],["","Sashimi Crevetten","",10,""]]},
@@ -1013,17 +1017,20 @@ const KARTE=[
   ["","Bao Crispy Salmon","Lachs – Avocado – eingelegte Gurken – Schnittlauch – Koriander – Mango-Sauce – Wasabi-Mayo",11,"r"],
   ["","Bao Crispy Tofu","Gebratener Tofu – Haus-Dressing – rote Zwiebeln – eingelegte Gurken – Schnittlauch – Chili-Mayo",11,"v s"]]},
  {id:"ramen",t:"Ramen & Suppen",u:"",items:[
-  ["","Shoyu Ramen","Hühnerbrühe – Ramen-Nudeln – Chashu – Ajitama-Ei – Frühlingszwiebel – Nori – Narutomaki – Babymais – Sojasauce",24,""],
-  ["","Tantanmen Ramen","Hühnerbrühe – Ramen-Nudeln – Schweine- oder Rindfleisch – Menma – Pak Choi – Ajitama-Ei – Sojasprossen – Nüsse – Sesam – Chiliöl",24,"s"],
+  ["","Shoyu Ramen","Hühnerbrühe – Ramen-Nudeln – Schweinefleisch (Chashu) – Ajitama-Ei – Frühlingszwiebel – Nori – Narutomaki (Fischkuchen) – Babymais – Sojasauce",24,""],
+  ["","Tantanmen Ramen","Hühnerbrühe – Ramen-Nudeln – Schweine- oder Rindfleisch – marinierter Bambus – Pak Choi – Ajitama-Ei – Sojasprossen – Nüsse – Sesam – Chiliöl – Paprikapaste",24,"s"],
   [90,"Miso Shiro","Wakame – Tofu – Zwiebel – Sesam",8,"v"],[91,"Miso no Sake","Wakame – Lachs – Zwiebel – Sesam",10,""],
-  [92,"Osuimono","Meeresfrüchte – Udon – Zwiebel – Erbsen – Sesamöl – Sesam",12,""],[93,"Kimchi Suppe","Kimchi – Rindfleisch – gebratene vegetarische Gyoza",12,"s"]]}
+  [92,"Osuimono","Meeresfrüchte – Udon – Zwiebel – Erbsen – Sesamöl – Sesam",12,""],[93,"Kimchi Suppe","Kimchi – Rindfleisch – gebratene vegetarische Gyoza",12,"s"]]},
+ {id:"beilagen",t:"Beilagen",u:"",items:[
+  [128,"Reis","",5,"v"],[129,"Teriyaki","",2,""],[130,"Spicy Mayo","",2,"s"],[131,"Sojasauce","","Gratis","v"],
+  [132,"Rosa Ingwer","",2,"v"],[133,"Wasabi","","Gratis","v"],[134,"Sweet Chili","",2,""],[135,"Truffle Mayo","",4,""],[136,"Sesam Dip","",3,""]]}
 ];
 const LIEB=[
- {img:"nigiri_sake_yaki",nr:9,n:"Sake Yaki",d:"Geflämmter Lachs, Avocado, Teriyaki · 2 Stück",p:10,hot:"Beliebt auf Google"},
+ {img:"nigiri_sake_yaki",nr:9,n:"Sake Yaki",d:"Geflämmter Lachs, Avocado, Teriyaki · 2 Stück",p:10},
  {img:"red_dragon",nr:73,n:"Red Dragon",d:"Crevette in Tempura, aussen Thunfisch & Tobiko · 8 Stück",p:35},
  {img:"caterpillar",nr:72,n:"Ebi Caterpillar",d:"Crevette in Tempura, aussen Avocado, Teriyaki · 8 Stück",p:32},
  {img:"crunchy_tempura",nr:81,n:"Lachs Tatar Crunchy",d:"In Tempura, Spicy Mayo, Lauch · 6 Stück",p:25},
- {img:"ramen",nr:"",n:"Shoyu Ramen",d:"Chashu, Ajitama-Ei, Narutomaki, Hühnerbrühe",p:24},
+ {img:"ramen",nr:"",n:"Shoyu Ramen",d:"Chashu (Schweinefleisch), Ajitama-Ei, Narutomaki, Hühnerbrühe",p:24},
  {img:"bao",nr:"",n:"Bao Crispy Chicken",d:"Teriyaki, Gurke, Koriander, Gochujang-Mayo",p:11},
  {img:"sashimi",nr:"",n:"Sashimi",d:"Lachs, Thunfisch oder Crevetten · je 4 Stück",p:"9–10"},
  {img:"gyoza",nr:85,n:"Gyoza",d:"8 vegetarische Teigtaschen, Sweet-Soja-Dip",p:12},
@@ -1107,15 +1114,16 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 
 /* ================= Karte (Variante Noren) ================= */
 (function(){
-  const ACC={"nigiri": "#ff8f70", "maki": "#9ed36a", "futo": "#f4e3b5", "ura": "#ff6f91", "crunchy": "#e8cf8f", "sashimi": "#ff5e5e", "vor": "#c9a0ff", "ramen": "#ffb347"}; KARTE.forEach(c=>c.acc=ACC[c.id]||"#e8cf8f");
+  const ACC={"nigiri": "#ff8f70", "maki": "#9ed36a", "tmaki": "#d9b36c", "futo": "#f4e3b5", "ura": "#ff6f91", "crunchy": "#e8cf8f", "sashimi": "#ff5e5e", "vor": "#c9a0ff", "ramen": "#ffb347", "beilagen": "#b9c7a6"}; KARTE.forEach(c=>c.acc=ACC[c.id]||"#e8cf8f");
   const q=$("#q"), sheet=$("#sheet"), sw=$("#sw"), board=$("#board"), act=new Set();
   let mode="cat";
   const TG={v:'<i class="v">VEGI</i>',s:'<i class="s">SCHARF</i>',fl:'<i class="fl">GEFLÄMMT</i>',t:'<i class="t">TEMPURA</i>'};
   const row=(it,acc)=>{ const [nr,n,d,p,tg]=it; const tags=tg.split(" ").filter(x=>TG[x]).map(x=>TG[x]).join("");
-    return `<div class="row" style="--acc:${acc}"><span class="rn">${nr?("Nr. "+nr):"·"}</span><span class="rt" title="${esc(n)}">${esc(n)}${tags?`<span class="tg">${tags}</span>`:""}</span><span class="rp">Fr. ${fr(p)}</span>${d?`<span class="rd">${esc(d)}</span>`:""}</div>`; };
+    return `<div class="row" style="--acc:${acc}"><span class="rn">${nr?("Nr. "+nr):"·"}</span><span class="rt" title="${esc(n)}">${esc(n)}${tags?`<span class="tg">${tags}</span>`:""}</span><span class="rp">${typeof p==="number"?"Fr. "+fr(p):esc(p)}</span>${d?`<span class="rd">${esc(d)}</span>`:""}</div>`; };
   const match=(it,s)=>{ const [nr,n,d,,tg]=it; const T=tg.split(" ");
     for(const f of act){ if(f==="nr"){ if(T.includes("r")) return false; } else if(!T.includes(f)) return false; }
-    if(!s) return true; s=s.toLowerCase(); return String(nr)===s || (n+" "+d+" "+(window.LANG==="en"?window.__trDesc(d):"")).toLowerCase().includes(s); };
+    if(!s) return true; s=s.toLowerCase(); const enN=(window.__D&&window.__D[n]||"")+" "+n.replace(/Lachs|Thunfisch|Crevetten|Crevette|Gurken|Gurke|Kürbis|Rettich|Gemüse|Trüffel|Aal/g,m=>({Lachs:"salmon",Thunfisch:"tuna",Crevetten:"prawn",Crevette:"prawn",Gurken:"cucumber",Gurke:"cucumber","Kürbis":"pumpkin",Rettich:"radish","Gemüse":"vegetable","Trüffel":"truffle",Aal:"eel"})[m]);
+    return String(nr)===s || (n+" "+d+" "+(window.__trDesc?window.__trDesc(d)||"":"")+" "+enN).toLowerCase().includes(s); };
   /* ---- Buch: jede Kategorie in Seiten zu 5 Gerichten; die Seiten laufen durch die ganze Karte.
      Computer: Doppelseite = zwei Seiten nebeneinander (kurze Kategorien teilen sich eine Doppelseite, keine leeren Seiten).
      Telefon: eine Seite. ---- */
@@ -1254,7 +1262,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
 
 /* ================= Gruss nach Tageszeit (Zuercher Zeit, echte Oeffnungszeiten aus DAYS) ================= */
 (function(){ const h2=$("#gruss"); if(!h2) return;
-  const z=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Zurich"})), wd=z.getDay(), now=z.getHours()*60+z.getMinutes();
+  const zp=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Zurich",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(x=>[x.type,x.value])), wd=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(zp.weekday), now=(+zp.hour)*60+(+zp.minute);
   const mins=t=>{ const [a,b]=t.split(":"); return +a*60+ +b; };
   const sess=i=>(DAYS[i][2]||"").split(" · ").filter(Boolean).map(x=>x.split("–").map(mins));
   const today=sess(wd), tomorrow=sess((wd+1)%7); let w="bald?";
@@ -1263,7 +1271,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
     else if(now<end) w=(now<eve[0]||now<eve[1])?"heute Abend?":"bald?";
     else w=tomorrow.length?"morgen?":"bald?";
     if(now<first && first>=15*60) w="heute Abend?"; }
-  else w=tomorrow.length?"morgen?":"bald?";
+  else w="bald?";
   const i=h2.querySelector("i"); if(i) i.textContent=w;
 })();
 
@@ -1312,7 +1320,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Leo – nach oben":"Leo – back to top","Hauptmenü":"Main menu","Lieblinge":"Favourites","Karte":"Menu","Platten":"Platters",
 "Sushi-Platte auf Schiefer im warmen Licht einer Tischlampe bei Leo":"Sushi platter on slate in the warm light of a table lamp at Leo",
 "Licht einschalten":"Switch the light on",
-"Frisches Sushi, Ramen und Sake-Cocktails in unserem Salon an der Engelgasse 2 – mitten in der St. Galler Altstadt.":"Fresh sushi, ramen and sake cocktails in our salon on Engelgasse 2 – right in the heart of St. Gallen’s old town.",
+"Frisches Sushi, Ramen und Sake-Cocktails in unserem Salon an der Engelgasse 2 – mitten in der St. Galler Altstadt.":"Fresh sushi, ramen and sake cocktails in our salon at Engelgasse 2 – right in the heart of St. Gallen’s old town.",
 "Tisch reservieren":"Book a table","Zur Karte":"See the menu","Leos":"Leo’s",
 "Auf schwarzem Schiefer serviert – mit den Nummern unserer Küche.":"Served on black slate – with our kitchen numbers.",
 "Beliebt auf Google":"Popular on Google","Die":"The",
@@ -1328,7 +1336,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Suchergebnis":"Search results","Gut zu wissen":"Good to know","Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.":"Nothing found – try “salmon”, “avocado” or a number.",
 "Crunchy Rollen":"Crunchy Rolls","Vorspeisen & Bao":"Starters & Bao","Ramen & Suppen":"Ramen & Soups",
 "Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
-"Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose people, appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
+"Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose how many people, your appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
 "So funktioniert es":"How it works","Personen":"People","Hunger":"Appetite","Stil":"Style","Ihre Platte":"Your platter",
 "Grosse Sushi-Platte auf Schiefer, von oben":"Large sushi platter on slate, seen from above",
 "Stück":"pieces","pro Person":"per person","Eine Person weniger":"One person fewer","Eine Person mehr":"One more person",
@@ -1343,7 +1351,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen":"Leo’s salon in the evening: green velvet banquettes, paintings in gilt frames",
 "Der lange Salon mit roten Teppichen und Tischlampen":"The long salon with red rugs and table lamps",
 "Hosomaki mit Lachs und Gurke auf Schiefer":"Hosomaki with salmon and cucumber on slate","Sashimi von Lachs und Thunfisch auf Eis":"Salmon and tuna sashimi on ice",
-"Hausgemachte Sake-Kreationen, passend zu Sushi – und unser eigenes Bier, das Leo Lager.":"Home-made sake creations to go with sushi – and our own beer, Leo Lager.",
+"Hausgemachte Sake-Kreationen, passend zu Sushi – und unser eigenes Bier, das Leo Lager.":"House-made sake cocktails to go with sushi – plus Leo Lager from Thailand.",
 "Die Bar von Leo im Neonlicht":"Leo’s bar in neon light","Die Bar":"The bar","Aperitif vor dem Sushi oder der letzte Drink um elf.":"An aperitif before the sushi, or a last drink at eleven.",
 "Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral & frisch":"Sake, yuzu, lemon juice, sakura syrup – floral & fresh",
 "Sake, Matcha, Zitrone, Zucker – umami & erfrischend":"Sake, matcha, lemon, sugar – umami & refreshing",
@@ -1353,7 +1361,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Vorherige Bewertung":"Previous review","Vorherige Gerichte":"Previous dishes","Weitere Gerichte":"More dishes","Nächste Bewertung":"Next review",
 "Bis":"See you","heute Abend?":"this evening?","heute Mittag?":"at lunchtime?","morgen?":"tomorrow?","bald?":"soon?","Tisch reservieren & Bestellungen":"Table bookings & orders","Route planen":"Get directions",
 "Anfragen für Gruppen & Feste":"Enquiries for groups & parties","7’840 Follower auf Instagram":"7,840 followers on Instagram",
-"Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl":"Map of St. Gallen’s old town: Leo on Engelgasse 2, near Marktplatz and Bohl",
+"Karte der St. Galler Altstadt: Leo an der Engelgasse 2, nahe Marktplatz und Bohl":"Map of St. Gallen’s old town: Leo at Engelgasse 2, near Marktplatz and Bohl",
 "Route in Google Maps":"Directions in Google Maps","Entwurf · nur zur Ansicht":"Draft · preview only","Website-Entwurf von Julia & Robin Mirku · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.":"Website draft by Julia & Robin Mirku · preview only – some links and features are not active yet.",
 "Schnellzugriff":"Quick access","Anrufen":"Call","Platte":"Platter","Route":"Directions",
 
@@ -1365,13 +1373,37 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Chashu, Ajitama-Ei, Narutomaki, Hühnerbrühe":"Chashu, ajitama egg, narutomaki, chicken broth",
 "Teriyaki, Gurke, Koriander, Gochujang-Mayo":"Teriyaki, cucumber, coriander, gochujang mayo",
 "Lachs, Thunfisch oder Crevetten · je 4 Stück":"Salmon, tuna or prawns · 4 pieces each",
-"8 vegetarische Teigtaschen, Sweet-Soja-Dip":"8 vegetarian dumplings, sweet soy dip","In der Schale mit Meersalz":"In the pod with sea salt"
+"8 vegetarische Teigtaschen, Sweet-Soja-Dip":"8 vegetarian dumplings, sweet soy dip","In der Schale mit Meersalz":"In the pod with sea salt",
+  "Unsere Lieblinge – mit den Nummern unserer Küche.":"Our favourites – with our kitchen numbers.",
+  "Apéro vor dem Sushi oder ein letzter Drink zum Schluss.":"An apéro before the sushi, or one last drink to finish.",
+  "Mitten in der Altstadt: grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.":"Right in the old town: green velvet, paintings in gilt frames and a little lamp on every table.",
+  "Alle Tage und Zeiten ansehen ↑":"See all days and times ↑",
+  "Chashu (Schweinefleisch), Ajitama-Ei, Narutomaki, Hühnerbrühe":"Chashu (pork), ajitama egg, narutomaki, chicken broth",
+  "Beilagen":"Sides",
+  "Gratis":"free",
+  "Sake – Lachs":"Sake – Salmon",
+  "Maguro – Thunfisch":"Maguro – Tuna",
+  "Ebi – Crevette":"Ebi – Prawn",
+  "Reis":"Rice",
+  "Sojasauce":"Soy sauce",
+  "Rosa Ingwer":"Pink ginger",
+  "Sesam Dip":"Sesame dip",
+  "4,4":"4.4",
+  "Website-Entwurf von":"Website draft by",
+  "· nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.":"· preview only – some links and features are not active yet.",
+  "Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in Fr. incl. 8.1% VAT.",
+  "Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.":"House-made sake cocktails to go with sushi – plus Leo Lager from Thailand.",
+  "Bier, Sake & Champagner":"Beer, sake & champagne",
+  "Crunchy Maki in Tempura":"Crunchy tempura maki",
+  "Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in CHF incl. 8.1% VAT.",
+  "GEFLÄMMT":"SEARED",
+  "Geflämmt":"Seared"
   };
-  const ING={
+  const ING={"Paprikapaste":"paprika paste","eingelegter Kürbis":"pickled pumpkin","eingelegter Rettich":"pickled radish","mariniertes Gemüse":"marinated vegetables","marinierter Bambus":"marinated bamboo shoots","Schweinefleisch (Chashu)":"pork (chashu)","Narutomaki (Fischkuchen)":"narutomaki (fish cake)",
 "1 Stück":"1 piece","5 Stück":"5 pieces","5 Calamari":"5 calamari","5 Crevetten":"5 prawns","8 Teigtaschen":"8 dumplings","Aal in Tempura":"tempura eel","Ajitama-Ei":"ajitama egg",
 "Avocado":"avocado","Avocado in Tempura":"tempura avocado","Babymais":"baby corn","Chashu":"chashu","Chili-Mayo":"chilli mayo","Chiliöl":"chilli oil","Crevette":"prawn",
 "Crevette in Tempura":"tempura prawn","Crunchy Maki in Tempura":"crunchy maki in tempura","Erbsen":"peas","Frischkäse":"cream cheese","Frühlingszwiebel":"spring onion",
-"Fuku Jin Zuke":"fukujinzuke pickle","Gebratener Tofu":"fried tofu","Geflämmter Lachs":"flamed salmon","Geflämmter Thunfisch":"flamed tuna","Geflämmter Thunfisch mit Togarashi":"flamed tuna with togarashi",
+"Fuku Jin Zuke":"fukujinzuke pickle","Gebratener Tofu":"fried tofu","Geflämmter Lachs":"flame-seared salmon","Geflämmter Thunfisch":"flame-seared tuna","Geflämmter Thunfisch mit Togarashi":"flame-seared tuna with togarashi",
 "Gegrillter Aal":"grilled eel","Gegrillter Lachs":"grilled salmon","Gochujang-Mayo":"gochujang mayo","Goma Wakame":"goma wakame","Gurke":"cucumber","Haus-Dressing":"house dressing",
 "Home Style Fries mit Spicy Mayo":"home-style chips with spicy mayo","Honig-Knoblauch-Crevette":"honey-garlic prawn","Hühnerbrühe":"chicken broth","Ingwer":"ginger","Jalapeños":"jalapeños",
 "Kalmar in Tempura":"tempura squid","Kanpyo":"kanpyo","Karotten":"carrots","Kimchi":"kimchi","Koriander":"coriander","Kürbis":"pumpkin","Lachs":"salmon","Lachs in Ponzu":"salmon in ponzu",
@@ -1380,10 +1412,10 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Narutomaki":"narutomaki","Nori":"nori","Nüsse":"nuts","Oshinko":"oshinko","Pak Choi":"pak choi","Paprika":"peppers","Ramen-Nudeln":"ramen noodles","Rettich":"radish","Rindfleisch":"beef",
 "Salat":"lettuce","Schnittlauch":"chives","Schweine- oder Rindfleisch":"pork or beef","Sesam":"sesame","Sesamöl":"sesame oil","Sojabohnenflocke":"soybean flakes","Sojasauce":"soy sauce",
 "Sojasprossen":"bean sprouts","Spicy Mayo":"spicy mayo","Sriracha":"sriracha","Surimi":"surimi","Teriyaki":"teriyaki","Thunfisch":"tuna","Thunfischtatar in Tempura":"tuna tartare in tempura",
-"Toasts":"toasts","Tobiko":"tobiko","Tofu":"tofu","Trüffel":"truffle","Trüffel-Mayo":"truffle mayo","Trüffel-Mayo oder Sweet Chili":"truffle mayo or sweet chilli","Tunamusse":"tuna mousse",
+"Toasts":"toast","Tobiko":"tobiko","Tofu":"tofu","Trüffel":"truffle","Trüffel-Mayo":"truffle mayo","Trüffel-Mayo oder Sweet Chili":"truffle mayo or sweet chilli","Tunamusse":"tuna mousse",
 "Tunamusse in Tempura":"tuna mousse in tempura","Udon":"udon","Wakame":"wakame","Wasabi-Mayo":"wasabi mayo","Zucchini in Tempurateig":"courgette in tempura batter","Zwiebel":"onion",
 "eingelegte Gurken":"pickled cucumber","eingelegter Kürbis":"pickled pumpkin","eingelegter Rettich":"pickled radish","eingelegtes Gemüse":"pickled vegetables",
-"gebratene vegetarische Gyoza":"fried vegetarian gyoza","geflämmter Lachs":"flamed salmon","geflämmter Thunfisch mit Togarashi":"flamed tuna with togarashi","gegrillter Aal":"grilled eel",
+"gebratene vegetarische Gyoza":"fried vegetarian gyoza","geflämmter Lachs":"flame-seared salmon","geflämmter Thunfisch mit Togarashi":"flame-seared tuna with togarashi","gegrillter Aal":"grilled eel",
 "in der Schale mit Meersalz":"in the pod with sea salt","marinierte Karotte":"marinated carrot","mit Sweet-Soja- oder Sesam-Dip":"with sweet soy or sesame dip","rote Zwiebeln":"red onions","vegetarisch":"vegetarian"
   };
   const DAY={Sonntag:"Sunday",Montag:"Monday",Dienstag:"Tuesday",Mittwoch:"Wednesday",Donnerstag:"Thursday",Freitag:"Friday",Samstag:"Saturday"};
@@ -1401,24 +1433,26 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     [/^Seite (\d+) \/ (\d+)$/, (m,a,b)=>"Page "+a+" / "+b],
     [/^Seiten (\d+)–(\d+) \/ (\d+)$/, (m,a,b,c)=>"Pages "+a+"–"+b+" / "+c],
     [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)],
+    [/^Fr\. ([\d.–]+)$/, (m,a)=>"CHF "+a],
     [/^Nr\. (.+)$/, (m,a)=>"No. "+a],
     [/^Heute · (\S+)$/, (m,a)=>"Today · "+(DAY[a]||a)],
     [/^(Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag)$/, (m,a)=>DAY[a]],
     [/^Google · vor (\d+) (\S+)$/, (m,n,u)=>"Google · "+n+" "+(UNIT[u]||u)+" ago"],
     [/^Anrufen: (.+)$/, (m,a)=>"Call: "+a],
     [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)],
+    [/^Fr\. ([\d.–]+)$/, (m,a)=>"CHF "+a],
     [/^(Mo|Di|Mi|Do|Fr|Sa|So)((?:[–&]| & )(Mo|Di|Mi|Do|Fr|Sa|So))*$/, m=>m.replace(/Mo|Di|Mi|Do|Fr|Sa|So/g,x=>D[x]||x)]
   ];
-  const tr=s=>{ if(D[s]!=null) return D[s]; if(s.includes(" – ")||ING[s]){ const x=desc(s); if(x) return x; }
+  window.__D=D; const tr=s=>{ if(D[s]!=null) return D[s]; if(s.includes(" – ")||ING[s]){ const x=desc(s); if(x) return x; }
     for(const [re,f] of R){ const m=s.match(re); if(m) return f(...m); } return null; };
 
   const SKIP=".dish h3,.sleeve blockquote,.who b,.neon,.lang,script,style,svg";
   const ATTR=["alt","aria-label","title","placeholder"];
   const TX=new WeakMap(), AT=new WeakMap();
   let lang="de";
-  function doText(n){ const v=n.nodeValue; if(!v||!/[A-Za-zÄÖÜäöü]/.test(v)) return; const p=n.parentElement; if(!p||p.classList.contains("rt")||p.closest(SKIP)) return;
+  function doText(n){ const v=n.nodeValue; if(!v||!(/[A-Za-zÄÖÜäöü]/.test(v)||/^\s*\d+,\d+\s*$/.test(v))) return; const p=n.parentElement; if(!p||p.closest(SKIP)) return; const nm=p.classList.contains("rt");
     const rec=TX.get(n);
-    if(lang==="en"){ if(rec&&v===rec.en) return; const core=v.trim(), t=tr(core); if(t==null||t===core) return;
+    if(lang==="en"){ if(rec&&v===rec.en) return; const core=v.trim(), t=nm?(D[core]??null):tr(core); if(t==null||t===core) return;
       const en=v.replace(core,t); TX.set(n,{de:v,en}); n.nodeValue=en; }
     else if(rec){ if(v===rec.en) n.nodeValue=rec.de; TX.delete(n); } }
   function doEl(el){ if(el.closest&&el.closest(".lang")) return; let rec=AT.get(el);
@@ -1432,7 +1466,8 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
       if(m.type==="childList") m.addedNodes.forEach(walk); else if(m.type==="characterData") doText(m.target); else if(m.type==="attributes") doEl(m.target); } });
   mo.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:ATTR});
 
-  const H=document.documentElement, TITLE={de:document.title,en:"Leo · Sushi Bar St. Gallen – Sushi, Ramen & Cocktails on Engelgasse 2"};
+  const H=document.documentElement, TITLE={de:document.title,en:"Leo · Sushi Bar St. Gallen – Sushi, Ramen & Cocktails at Engelgasse 2"};
+  const META=[['meta[name="description"]',"Leo Sushi Bar in St. Gallen: fresh sushi, ramen, bao buns and sake cocktails. Engelgasse 2, 9000 St. Gallen. Book a table: 076 766 17 47."],['meta[property="og:description"]',"Sushi, ramen & cocktails at Engelgasse 2 – Good food. Good mood."]].map(([q,en])=>{ const m=document.querySelector(q); return m?{m,de:m.content,en}:null; }).filter(Boolean);
   const btns=[...document.querySelectorAll(".lang button")];
   const held=[]; addEventListener("resize",()=>{ held.forEach(e=>e.style.minHeight=""); held.length=0; });
   function set(l,keep){
@@ -1444,7 +1479,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     /* Texte, die in der anderen Sprache kuerzer werden, behalten ihre Hoehe – so rutscht darunter nichts */
     held.forEach(e=>e.style.minHeight=""); held.length=0;
     const tx=keep==="init"?[]:[...document.querySelectorAll("main *, footer *")].filter(e=>!e.closest("#sheet,.sheet")&&getComputedStyle(e).display!=="inline").map(e=>[e,e.getBoundingClientRect().height]);
-    lang=l; walk(document.body); H.lang=l==="en"?"en-GB":"de-CH"; document.title=TITLE[l];
+    lang=l; walk(document.body); H.lang=l==="en"?"en-GB":"de-CH"; document.title=TITLE[l]; META.forEach(x=>x.m.content=x[l]);
     tx.forEach(([e,h0])=>{ if(e.getBoundingClientRect().height<h0-1){ e.style.minHeight=h0+"px"; held.push(e); } });
     btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
     if(anc&&anc.isConnected){ const d=anc.getBoundingClientRect().top-top0; if(Math.abs(d)>0.5){ H.style.scrollBehavior="auto"; window.scrollBy(0,d); H.style.scrollBehavior=""; } }

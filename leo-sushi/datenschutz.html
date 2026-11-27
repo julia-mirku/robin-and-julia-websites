@@ -33,6 +33,8 @@ html[lang^="en"] [lang="de"], html[lang^="de"] [lang="en"]{display:none}
 <h2><span lang="de">Welche Daten wir bearbeiten</span><span lang="en">What data we process</span></h2>
 <p lang="de">Diese Website hat kein Kontaktformular und setzt keine Tracking- oder Werbe-Cookies. Wenn Sie anrufen oder eine E-Mail schreiben, verwenden wir Ihre Angaben nur, um Ihre Reservation oder Bestellung zu bearbeiten.</p>
 <p lang="en">This website has no contact form and sets no tracking or advertising cookies. If you call or email us, we use your details only to handle your booking or order.</p>
+<p lang="de">Für eine anonyme Besucherstatistik nutzt diese Seite Umami (cloud.umami.is). Umami setzt keine Cookies und speichert keine IP-Adressen; gezählt werden nur Seitenaufrufe, die verweisende Seite, Browser, Gerätetyp und Land.</p>
+<p lang="en">For anonymous visitor statistics this site uses Umami (cloud.umami.is). Umami sets no cookies and stores no IP addresses; it only counts page views, the referring page, browser, device type and country.</p>
 <p lang="de">Im Browser wird nur Ihre Sprachwahl (DE/EN) gespeichert.</p><p lang="en">Only your language choice (DE/EN) is stored in your browser.</p>
 <h2><span lang="de">Hosting und Server-Protokolle</span><span lang="en">Hosting and server logs</span></h2>
 <p lang="de">Beim Aufruf der Seiten speichert der Hosting-Anbieter technisch notwendige Daten (z.&nbsp;B. IP-Adresse, Zeitpunkt, Browser). Anbieter: [wird ergänzt].</p>
@@ -45,6 +47,6 @@ html[lang^="en"] [lang="de"], html[lang^="de"] [lang="en"]{display:none}
 <p lang="en">Under the Swiss Data Protection Act (FADP) you can request access to, correction or deletion of your data. Write to us at <a href="mailto:sushibarleo@gmx.ch">sushibarleo@gmx.ch</a>.</p>
 <p class="draft"><span lang="de">Entwurf · nur zur Ansicht</span><span lang="en">Draft · preview only</span></p></main>
 <script>(function(){const K="leo-lang";let l="de";try{const q=new URLSearchParams(location.search).get("lang");l=(q==="en"||q==="de")?q:(localStorage.getItem(K)||"de");}catch(_){}
-const set=x=>{document.documentElement.lang=x==="en"?"en-GB":"de-CH";document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===x));try{localStorage.setItem(K,x);}catch(_){}};
+const T0=document.title,TE=T0.replace(/^(Impressum|Datenschutz)/,"Privacy policy");const set=x=>{document.documentElement.lang=x==="en"?"en-GB":"de-CH";document.title=x==="en"?TE:T0;document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===x));try{localStorage.setItem(K,x);}catch(_){}};
 set(l);document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>set(b.dataset.l));})();</script>
 </body></html>
