@@ -889,6 +889,7 @@ function lage(){
 pfZ.addEventListener('click',function(){gleite(Math.round(karten.scrollLeft/schritt()-1)*schritt())});
 pfV.addEventListener('click',function(){gleite(Math.round(karten.scrollLeft/schritt()+1)*schritt())});
 punkte.addEventListener('click',function(e){var b=e.target.closest('button');if(b)gleite(+b.dataset.i*schritt())});
+karten.addEventListener('wheel',function(e){if(e.deltaX!==0&&Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();var k=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1;window.scrollBy(0,e.deltaY*k)}},{passive:false});
 var lr=0;karten.addEventListener('scroll',function(){if(!lr)lr=requestAnimationFrame(function(){lr=0;lage()})},{passive:true});
 W.addEventListener('resize',lage);lage();
 
