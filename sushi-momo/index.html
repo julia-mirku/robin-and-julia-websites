@@ -495,12 +495,31 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-b
 #besuch.pad{background:linear-gradient(to bottom,#1a0e12 0%,#170d10 50%,#120a0d 100%)}
 footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
 /*NAHT-END*/
+
+/* ===== 27.11 Fehler aus der Pruefung (ЛАГИ) ===== */
+/* Karte am Computer: Kopf und Bestellen bleiben stehen, nur die Liste rollt; am Listenende rollt die Seite weiter */
+@media (min-width:900px){
+  .blatt{display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:auto}
+  .blatt>.blatt-hd,.blatt>.blatt-ft,.blatt>.blatt-foto{flex:none}
+  .blatt>.items{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:auto;scrollbar-width:thin;scrollbar-color:rgba(23,13,16,.35) transparent;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 46px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 46px),transparent)}
+  .blatt>.items.ende{-webkit-mask-image:none;mask-image:none}
+  .blatt>.items::-webkit-scrollbar{width:6px}
+  .blatt>.items::-webkit-scrollbar-thumb{background:rgba(23,13,16,.3);border-radius:3px}
+}
+/* Hinweis «Scrollen» am Handy in der Mitte */
+@media (max-width:899px){.hint{left:50%;right:auto;transform:translateX(-50%);white-space:nowrap}}
+/* Hover: Adresse im ersten Bildschirm und Zitat bei den Boxen */
+.addr a{transition:color .2s,border-color .2s}
+@media (hover:hover){.addr a:hover{color:var(--rice);border-bottom-color:var(--sakura)}}
+.boxquote{transition:background-color .25s,box-shadow .25s,transform .25s var(--ease)}
+@media (hover:hover){.boxquote:hover{background:rgba(255,236,210,.1);box-shadow:inset 0 0 0 1px rgba(243,163,181,.45);transform:translateY(-2px)}}
+
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
 <body>
 
-<div class="entwurf" id="entwurf" role="note" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+<div class="entwurf" id="entwurf" role="note" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht&nbsp;– einige Links und Funktionen sind noch nicht aktiv.</div>
 <script>(function(){var b=document.getElementById("entwurf"),h=b.offsetHeight+"px",r=document.documentElement;r.style.setProperty("--bar",h);r.style.setProperty("--bar0",h);})();</script>
 
 <header class="hdr" id="hdr">
@@ -524,14 +543,14 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
       <h1><span class="h1a">Das beste Sushi</span>
         <span class="ending" id="ending" aria-live="polite">
           <span class="e on"><q>… in der Region!</q><cite>Fabian I. auf Google</cite></span>
-          <span class="e"><q>… was wir je gegessen haben.</q><cite>Moriz U. auf Google</cite></span>
+          <span class="e"><q>… was wir je gegessen&nbsp;haben.</q><cite>Moriz U. auf Google</cite></span>
           <span class="e"><q>… in Gossau SG!</q><cite>Zhui W. auf Google</cite></span>
         </span>
       </h1>
       <div class="score" aria-label="5,0 Sterne aus 170 Google-Bewertungen">
         <span class="stars" aria-hidden="true">★★★★★<span>★★★★★</span></span>
         <b id="cnt" data-n="170" aria-hidden="true">170</b>
-        <small>von 170 Gästen<br>5,0 Sterne auf Google</small>
+        <small>von 170 Gästen<br>5,0 Sterne auf&nbsp;Google</small>
       </div>
       <div class="hcta">
         <a class="btn red" href="https://www.bbqsushimomo-sg.ch/menue" target="_blank" rel="noopener">Online bestellen</a>
@@ -617,8 +636,8 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
   <div class="wrap">
     <div class="head reveal">
       <p class="kick">Die ganze Karte</p>
-      <h2 class="sh">Eine Bento-Box voller Fächer</h2>
-      <p class="lead">Tippen Sie auf ein Fach – daneben öffnet sich alles, was drin ist, mit Preis. Grüner Punkt: vegan nach Zutatenliste.</p>
+      <h2 class="sh">Eine Bento-Box voller&nbsp;Fächer</h2>
+      <p class="lead">Tippen Sie auf ein Fach – daneben öffnet sich alles, was drin ist, mit Preis. Grüner Punkt: vegan nach&nbsp;Zutatenliste.</p>
     </div>
     <div class="karte-grid">
       <div class="bento" id="bento" role="group" aria-label="Kategorien der Karte"></div>
@@ -641,7 +660,7 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
     </div>
     <div class="boxen-r reveal">
       <figure class="boxfoto" id="boxfoto"><img id="boxbild" src="" width="1600" height="1200" alt="" loading="lazy" hidden><div class="platzhalter" id="boxplatz"><b>C</b><span>Foto von Box C folgt</span></div></figure>
-      <p class="boxquote"><q>Wir haben die Sushi Box A &amp; B vorbestellt und konnten es pünktlich abholen. Es war einfach himmlisch, extrem frisch.</q> <cite>– Fabienne B. auf Google</cite></p>
+      <p class="boxquote"><q>Wir haben die Sushi Box A &amp; B vorbestellt und konnten es pünktlich abholen. Es war einfach himmlisch, extrem frisch.</q> <cite>–&nbsp;Fabienne&nbsp;B. auf&nbsp;Google</cite></p>
     </div>
   </div>
 </section>
@@ -650,7 +669,7 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
   <div class="wrap">
     <div class="head reveal">
       <p class="kick">5,0 aus 170 Bewertungen auf Google</p>
-      <h2 class="sh">Sterne an der Wand</h2>
+      <h2 class="sh">Sterne an der&nbsp;Wand</h2>
       <p class="lead">Hier hängen die schönsten Stimmen unserer Gäste. Tippen Sie einen Stern an – er erzählt Ihnen, was geschrieben wurde.</p>
     </div>
     <div class="stimmen-grid">
@@ -672,7 +691,7 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
     <div class="head reveal">
       <p class="kick">Besuch</p>
       <h2 class="sh">Klein, warm, mit Kirschblüten</h2>
-      <p class="lead">Holz an den Wänden, rote Stühle, Blumen auf jedem Tisch – und hinten die Theke, an der gerollt wird. Essen Sie bei uns, holen Sie ab oder bestellen Sie online.</p>
+      <p class="lead">Holz an den Wänden, rote Stühle, Blumen auf jedem Tisch – und hinten die Theke, an der gerollt wird. Essen Sie bei uns, holen Sie ab oder bestellen Sie&nbsp;online.</p>
     </div>
     <div class="besuch-grid">
       <figure class="saal reveal"><img src="img/saal-900.webp" srcset="img/saal-900.webp 900w, img/saal-1600.webp 1600w" sizes="(max-width:1180px) 100vw, 1180px" width="1600" height="700" alt="Gastraum von BBQ Sushi Momo mit Holzwänden und roten Stühlen" loading="lazy"></figure>
@@ -693,7 +712,7 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
       </div>
       <div class="card wide">
         <h3>Bestellen &amp; reservieren</h3>
-        <p style="margin-top:10px;font-size:15px;color:rgba(246,240,229,.8)">Online bestellen und abholen. Ein Gast schreibt: «Wir mussten nur 10 min warten.»</p>
+        <p style="margin-top:10px;font-size:15px;color:rgba(246,240,229,.8)">Online bestellen und abholen. Ein Gast schreibt: «Wir mussten nur 10&nbsp;min&nbsp;warten.»</p>
         <div class="actions">
           <a class="btn red" href="https://www.bbqsushimomo-sg.ch/menue" target="_blank" rel="noopener">Online bestellen</a>
           <a class="btn rice" href="https://www.bbqsushimomo-sg.ch/im-voraus-bestellen" target="_blank" rel="noopener">Im Voraus bestellen</a>
@@ -788,7 +807,7 @@ const STIMMEN=[
  ["TakeAway Sushi und Momo waren sehr lecker und liebevoll angerichtet. Koch und Köchin sind sehr freundlich.","Mona","vor einem Jahr"],
  ["Beste Sushi der Schweiz.","Nils U.","vor 11 Monaten"],
  ["Wir bestellen 1x pro Monat – es gibt nichts Vergleichbares.","Janine S.","vor einem Jahr"],
- ["Das Sushi gehört zu den besten, die ich je gegessen habe.","Simone B.","vor 2 Monaten"],,,
+ ["Das Sushi gehört zu den besten, die ich je gegessen habe.","Simone B.","vor 2 Monaten"]
 ];
 // Di–Fr 11–14 + 17–21, Sa–So 17–21, Mo zu (Google-Profil, geprüft 24.11.2026)
 const HOURS={0:[[17,21]],1:[],2:[[11,14],[17,21]],3:[[11,14],[17,21]],4:[[11,14],[17,21]],5:[[11,14],[17,21]],6:[[17,21]]};
@@ -833,7 +852,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   let ty=null, lockedGesture=false;
   addEventListener("touchstart",e=>{ ty=e.touches[0].clientY; lockedGesture=!done; },{passive:true});
   addEventListener("touchmove",e=>{ if(ty==null) return; const y=e.touches[0].clientY;
-    if(!done){ e.preventDefault(); if(ty-y>6) play(); return; }
+    if(!done){ e.preventDefault(); if(playing||ty-y>6){ play(); ty=y; } return; }
     if(lockedGesture){ e.preventDefault(); scrollBy(0,ty-y); ty=y; } },{passive:false});
   addEventListener("touchend",()=>{ ty=null; lockedGesture=false; },{passive:true});
   addEventListener("keydown",e=>{ if(done) return; if(["ArrowDown","PageDown"," ","End"].includes(e.key)){ e.preventDefault(); play(); } if(["ArrowUp","PageUp","Home"].includes(e.key)) e.preventDefault(); });
@@ -949,6 +968,8 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
     if(nx) stat.lastElementChild.textContent=`Geschlossen · öffnet heute ${t(nx[0])}`;
     else{ let d=now.d; for(let i=1;i<8;i++){ d=(now.d+i)%7; if(HOURS[d].length) break; } stat.lastElementChild.textContent=`Geschlossen · öffnet ${(d===(now.d+1)%7)?"morgen":DL[d]} ${t(HOURS[d][0][0])}`; } }
 })();
+/* 27.11: Karte – Verlauf unten weg, wenn die Liste zu Ende ist */
+(function(){ const b=document.getElementById("blatt"); if(!b) return; const chk=()=>{ const l=b.querySelector(".items"); if(l) l.classList.toggle("ende",l.scrollTop+l.clientHeight>=l.scrollHeight-4); }; b.addEventListener("scroll",chk,true); new MutationObserver(chk).observe(b,{childList:true}); addEventListener("resize",chk); chk(); })();
 </script>
 </body>
 </html>
