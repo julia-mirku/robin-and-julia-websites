@@ -49,7 +49,7 @@ h1 em,h2 em{font-style:italic;font-weight:500;color:var(--acc);background:linear
 
 
 /* header */
-.top{position:sticky;top:0;z-index:50;background:rgba(246,250,249,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top{position:sticky;top:0;z-index:500;background:rgba(246,250,249,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
 .top.scrolled{border-color:var(--line)}
 .top .wrap{display:flex;align-items:center;gap:26px;height:78px}
 .logo{display:flex;flex-direction:column;line-height:1}
@@ -93,7 +93,7 @@ h1 em,h2 em{font-style:italic;font-weight:500;color:var(--acc);background:linear
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .stage{position:relative;aspect-ratio:auto;height:clamp(420px,calc(100vh - 130px),800px);height:clamp(420px,calc(100dvh - 130px),800px);border-radius:34px;overflow:hidden;background:#E3EEEB;box-shadow:0 50px 90px -50px rgba(31,43,42,.55);opacity:0;cursor:zoom-in;transition:box-shadow .3s}
 .stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;z-index:0;transition:opacity .6s ease}
-.stage>img.top{z-index:1}
+.stage>img.is-front{z-index:1}
 .stage>img.off{opacity:0}
 @media (hover:hover){.ready .stage:hover{box-shadow:0 0 0 6px rgba(255,255,255,.85),0 50px 90px -50px rgba(31,43,42,.6)}}
 .stage-cap{position:absolute;z-index:2;left:18px;bottom:18px;display:flex;align-items:center;gap:10px;padding:8px 16px 8px 8px;border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:13px;font-weight:500;pointer-events:none}
@@ -282,13 +282,13 @@ footer .soc{margin-left:auto;display:flex;gap:22px}
 .st-ctl .pk{flex:none}
 .st-num{font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink2);min-width:4.5em;text-align:center}
 .st-wa{margin-top:26px}
-.deck{position:relative;height:clamp(340px,calc(100vh - 210px),660px);height:clamp(340px,calc(100dvh - 210px),660px);display:grid;place-items:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.deck{position:relative;isolation:isolate;height:clamp(340px,calc(100vh - 210px),660px);height:clamp(340px,calc(100dvh - 210px),660px);display:grid;place-items:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .card{position:absolute;height:88%;aspect-ratio:4/5;max-width:86%;border-radius:26px;overflow:hidden;background:#E3EEEB;border:7px solid #fff;box-shadow:0 30px 60px -36px rgba(31,43,42,.55),0 2px 6px rgba(31,43,42,.08);transform:translate(var(--x,0px),var(--y,0px)) rotate(var(--r,0deg)) scale(var(--s,1));transition:transform .55s var(--ease),opacity .45s,box-shadow .3s;will-change:transform}
 .card img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
-.card.top{cursor:grab}
+.card.is-top{cursor:grab}
 .card.drag{transition:none;cursor:grabbing}
 .card.hide{opacity:0}
-@media (hover:hover){.ready .card.top:not(.drag):hover{box-shadow:0 40px 70px -34px rgba(31,43,42,.6),0 0 0 3px rgba(79,166,156,.45)}}
+@media (hover:hover){.ready .card.is-top:not(.drag):hover{box-shadow:0 40px 70px -34px rgba(31,43,42,.6),0 0 0 3px rgba(79,166,156,.45)}}
 .deck-hint{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.92);font-size:13px;font-weight:500;color:var(--ink2);pointer-events:none;white-space:nowrap;transition:opacity .4s;box-shadow:0 6px 16px -10px rgba(31,43,42,.4)}
 @media (max-width:900px){.stapel.sec{padding:36px 0}.st-grid{grid-template-columns:1fr;grid-template-areas:"t" "d" "s";grid-template-rows:auto;row-gap:14px}.st-lead{margin:10px 0 0;font-size:16px}.deck{height:clamp(170px,calc(100vh - 490px),480px);height:clamp(170px,calc(100dvh - 490px),480px)}.card{height:94%}.deck-hint{display:none}.st-side{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}.st-cap{width:100%;text-align:center;font-size:22px}.st-ctl{margin:0;gap:8px}.st-wa{margin:0;height:44px;padding:0 20px}}
 @media (max-width:900px) and (max-height:620px){.st-lead{display:none}.stapel.sec{padding:24px 0}}
@@ -357,6 +357,31 @@ footer .soc{margin-left:auto;display:flex;gap:22px}
 }
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01s!important;animation:none!important}}
 
+/* 24.11: 5,0 as a calm card with caption; soft seams between blocks */
+.score{display:inline-flex;flex-direction:column;gap:12px;padding:26px 30px 24px;border-radius:28px;background:linear-gradient(150deg,rgba(255,255,255,.92),rgba(226,242,238,.78));-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:currentColor;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.4;font-weight:400;box-shadow:0 30px 60px -44px rgba(31,43,42,.55),inset 0 0 0 1px rgba(47,127,121,.12);transition:box-shadow .25s,transform .25s}
+.sc-kick{margin-bottom:14px}
+.sc-row{display:flex;align-items:baseline;gap:12px}
+.sc-num{font-family:var(--serif);font-weight:600;font-size:clamp(58px,6vw,84px);line-height:.9;background:linear-gradient(120deg,#2F7F79,#6CC0B4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-right:.04em}
+.sc-of{font-family:var(--serif);font-style:italic;font-size:clamp(20px,1.8vw,24px);color:var(--ink2)}
+.sc-stars{display:flex;gap:6px;font-size:24px;line-height:1}
+.sc-stars i{font-style:normal;color:#CFE3DF;position:relative}
+.sc-stars i::after{content:"★";position:absolute;left:0;top:0;color:#E2A93B;clip-path:inset(0 100% 0 0);transition:clip-path .5s ease}
+.in .sc-stars i::after{clip-path:inset(0 0 0 0)}
+.sc-stars i:nth-child(2)::after{transition-delay:.15s}.sc-stars i:nth-child(3)::after{transition-delay:.3s}.sc-stars i:nth-child(4)::after{transition-delay:.45s}.sc-stars i:nth-child(5)::after{transition-delay:.6s}
+.sc-src{font-size:15px;color:var(--ink2)}.sc-src b{color:var(--ink);font-weight:600}
+.sc-go{display:block;margin-top:4px;font-size:13.5px;font-weight:600;color:var(--acc);transition:transform .25s}
+@media (hover:hover){.ready .score:hover{transform:translateY(-3px);box-shadow:0 36px 64px -40px rgba(31,43,42,.6),inset 0 0 0 1px rgba(47,127,121,.35);text-shadow:none}.ready .score:hover .sc-go{transform:translateX(4px)}}
+@media (prefers-reduced-motion:reduce){.sc-stars i::after{transition:none}}
+.score + .car-count{margin-top:22px}
+:root{--edge:linear-gradient(180deg,var(--bg) 0,rgba(246,250,249,0) 140px,rgba(246,250,249,0) calc(100% - 140px),var(--bg) 100%)}
+.hero::before{-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 160px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 160px),transparent)}
+.svc{background:var(--edge),radial-gradient(50% 45% at 0% 12%,rgba(159,211,204,.38),transparent 70%),radial-gradient(45% 45% at 100% 88%,rgba(205,232,226,.55),transparent 70%),var(--paper)}
+#arbeiten{background-image:var(--edge)}
+.stapel{background:var(--edge),radial-gradient(45% 55% at 100% 30%,rgba(176,222,214,.4),transparent 70%),radial-gradient(40% 50% at 0% 80%,rgba(205,232,226,.55),transparent 70%),var(--bg)}
+.visit{background:var(--edge),radial-gradient(45% 50% at 100% 12%,rgba(190,226,220,.45),transparent 70%),radial-gradient(40% 50% at 0% 88%,rgba(170,220,212,.38),transparent 70%),var(--paper)}
+footer{background:var(--bg);border-top:0}
+@media (max-width:900px){.score{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:6px 18px;padding:18px 22px;width:100%}.sc-row{grid-row:1/3}.sc-num{font-size:56px}.sc-stars{font-size:20px;gap:4px}.sc-src{font-size:14px}.sc-kick{margin-bottom:10px}}
+@media (max-width:900px){:root{--edge:linear-gradient(180deg,var(--bg) 0,rgba(246,250,249,0) 90px,rgba(246,250,249,0) calc(100% - 90px),var(--bg) 100%)}}
 /* 24.11 Plaschke «Entwurf» über der Kopfzeile (Regel 22) */
 .mk-hinweis{position:relative;z-index:60;display:block;background:var(--acc,#2F7F79);color:#FFFFFF;border-bottom:1px solid rgba(0,0,0,.08);font-family:'Be Vietnam Pro',system-ui,sans-serif;font-weight:500;font-size:13px;line-height:1.4;text-align:center;padding:7px 16px;max-height:90px;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.7,.2,1),padding .5s cubic-bezier(.2,.7,.2,1),opacity .35s}
 .mk-hinweis i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blush,#DDF0EC);margin-right:8px;vertical-align:1px}
@@ -487,8 +512,8 @@ footer .soc{margin-left:auto;display:flex;gap:22px}
 <section class="sec voices gate" id="stimmen">
   <div class="wrap v-grid">
     <div class="rv">
-      <a class="score" href="https://www.google.com/maps/place/Minh+nailsalon+%2F+Gossau/@47.4164892,9.2543195,17z/data=!4m6!3m5!1s0x479ae1b55eec8a79:0x6523f2b16365e45!8m2!3d47.4164892!4d9.2543195" target="_blank" rel="noopener" aria-label="5,0 – Bewertungen auf Google ansehen">5,0</a>
-      <p class="score-sub">Durchschnitt aus <b>212 Bewertungen</b> auf Google</p>
+      <p class="kicker sc-kick">Google-Bewertungen</p>
+      <a class="score" href="https://www.google.com/maps/place/Minh+nailsalon+%2F+Gossau/@47.4164892,9.2543195,17z/data=!4m6!3m5!1s0x479ae1b55eec8a79:0x6523f2b16365e45!8m2!3d47.4164892!4d9.2543195" target="_blank" rel="noopener" aria-label="5,0 von 5 Sternen, Durchschnitt aus 212 Bewertungen – auf Google ansehen"><span class="sc-row"><b class="sc-num">5,0</b><span class="sc-of">von 5</span></span><span class="sc-stars" aria-hidden="true"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span><span class="sc-src">Durchschnitt aus <b>212 Bewertungen</b><span class="sc-go">Auf Google ansehen →</span></span></a>
       <p class="car-count" id="carCount">1 / 14</p>
       <div class="car-nav"><button type="button" class="car-btn" id="carPrev" aria-label="Vorherige Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="car-btn" id="carNext" aria-label="Nächste Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
@@ -517,7 +542,7 @@ footer .soc{margin-left:auto;display:flex;gap:22px}
         <a href="https://www.facebook.com/minhnailsalon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v7h4v-7h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>Facebook</a>
       </div>
     </div>
-    <div class="v-photo rv" id="vphoto" role="button" tabindex="0" aria-label="Foto gross ansehen"><img src="img/w/h2.jpg" alt="Nude-Ombré mit Margeriten – Arbeit aus dem Minh Nail Salon" loading="lazy"></div>
+    <div class="v-photo rv" id="vphoto" role="button" tabindex="0" aria-label="Foto gross ansehen"><img src="img/w/h2_hell.jpg" alt="Nude-Ombré mit Margeriten – Arbeit aus dem Minh Nail Salon" loading="lazy"></div>
   </div>
 </section>
 </main>
@@ -556,7 +581,7 @@ COLORS.forEach(c=>{
   b.addEventListener('click',()=>choose(c.k));sws.appendChild(b);
 });
 const sA=$('#sA'),sB=$('#sB');let sTop=sA,fading=false,want=null;
-sA.classList.add('top');
+sA.classList.add('is-front');
 function setStage(c){
   if(fading){want=c;return}
   if(sTop.dataset.src===c.img)return;
@@ -564,7 +589,7 @@ function setStage(c){
   const show=()=>{
     if(cur!==c){fading=false;return}
     fading=true;
-    nxt.classList.add('off','top');old.classList.remove('top');
+    nxt.classList.add('off','is-front');old.classList.remove('is-front');
     void nxt.offsetWidth;nxt.classList.remove('off');
     setTimeout(()=>{old.classList.add('off');sTop=nxt;fading=false;if(want&&want!==c){const w=want;want=null;setStage(w)}else want=null},650);
   };
@@ -682,7 +707,7 @@ const cards=DECK.map(([f,n],i)=>{const c=document.createElement('div');c.classNa
 const TILT=[-2.5,3.2,-4.5,5,-1.2,3.8,-5.4,1.8];
 let order=cards.map((c,i)=>i),busy=false;
 function layDeck(){order.forEach((ci,pos)=>{const c=cards[ci];const t=TILT[ci%TILT.length];
-  c.style.zIndex=100-pos;c.classList.toggle('top',pos===0);c.classList.toggle('hide',pos>4);
+  c.style.zIndex=100-pos;c.classList.toggle('is-top',pos===0);c.classList.toggle('hide',pos>4);
   c.style.setProperty('--r',(pos===0?0:t*1.5)+'deg');c.style.setProperty('--x',(pos===0?0:t*5)+'px');c.style.setProperty('--y',(pos*-4)+'px');c.style.setProperty('--s',(1-pos*.03).toFixed(3));c.setAttribute('aria-hidden',pos?'true':'false')});
   const ci=order[0];stCap.classList.add('out');setTimeout(()=>{stCap.textContent=DECK[ci][1];stCap.classList.remove('out')},180);
   stNum.textContent=(ci+1)+' / '+DECK.length;
@@ -697,7 +722,7 @@ function hint(v){$('#deckHint').style.opacity=v}
 $('#stNext').addEventListener('click',()=>sendBack(1));
 $('#stPrev').addEventListener('click',bringBack);
 let dx0=null,dy0=0,dX=0,dragC=null,moved=false;
-deck.addEventListener('pointerdown',e=>{if(!deck.classList.contains('ready')||busy)return;const c=e.target.closest('.card.top');if(!c)return;dragC=c;dx0=e.clientX;dy0=e.clientY;dX=0;moved=false});
+deck.addEventListener('pointerdown',e=>{if(!deck.classList.contains('ready')||busy)return;const c=e.target.closest('.card.is-top');if(!c)return;dragC=c;dx0=e.clientX;dy0=e.clientY;dX=0;moved=false});
 addEventListener('pointermove',e=>{if(!dragC)return;dX=e.clientX-dx0;const dy=e.clientY-dy0;
   if(!moved){if(Math.abs(dX)<6)return;if(Math.abs(dy)>Math.abs(dX)){dragC=null;return}moved=true;dragC.classList.add('drag');try{dragC.setPointerCapture(e.pointerId)}catch(_){}}
   dragC.style.setProperty('--x',dX+'px');dragC.style.setProperty('--r',(dX/18)+'deg')});
