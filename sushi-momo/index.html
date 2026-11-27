@@ -556,7 +556,7 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
 @media (max-width:520px){.vwahl>b i{display:none}}
 
 /* Sterne -> Kirschzweig: die Bluete an ihrer gemalten Wand ist der Knopf */
-html[data-sterne="ast"] .wand{display:block;position:relative;aspect-ratio:2400/1150;border-radius:22px;overflow:hidden;background:#1b1214 url(img/sakura-900.webp) center/cover no-repeat;box-shadow:inset 0 0 0 1px rgba(246,240,229,.08);container-type:inline-size}
+html[data-sterne="ast"] .wand{display:block;position:relative;aspect-ratio:2100/1360;border-radius:22px;overflow:hidden;background:#d9cfc6 url(img/sakura-900.webp) center/cover no-repeat;box-shadow:inset 0 0 0 1px rgba(246,240,229,.08);container-type:inline-size}
 @media (min-width:900px){html[data-sterne="ast"] .wand{background-image:url(img/sakura-1600.webp)}}
 html[data-sterne="ast"] .wand button{position:absolute;left:var(--x);top:var(--y);width:var(--d);height:var(--d);margin:calc(var(--d) / -2) 0 0 calc(var(--d) / -2);aspect-ratio:auto;border-radius:50%;background:transparent!important;color:transparent;opacity:1!important;transition:transform .35s var(--ease),box-shadow .3s,backdrop-filter .3s}
 html[data-sterne="ast"] .wand button svg{display:none}
@@ -627,6 +627,18 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
 .schild .hinten li:last-child{border-bottom:0}
 .schild .hinten li.heute{font-weight:900;color:var(--lack)}
 .schild .hinten li.zu span{color:#8a7178}
+
+/* ===== 27.11 Texte/Kirschzweig/1920 ===== */
+.v-ast{display:none}
+html[data-sterne="ast"] .v-ast{display:inline}
+html[data-sterne="ast"] .v-raster{display:none}
+@media (hover:hover){html[data-sterne="ast"] .wand.ready button:hover{-webkit-backdrop-filter:saturate(1.7) contrast(1.12);backdrop-filter:saturate(1.7) contrast(1.12)}}
+html[data-sterne="ast"] .wand button[aria-pressed="true"]{-webkit-backdrop-filter:saturate(1.8) contrast(1.15);backdrop-filter:saturate(1.8) contrast(1.15);box-shadow:0 0 0 2px rgba(122,34,50,.85),0 0 22px rgba(122,34,50,.45)}
+.blatt-fall{background:#e8737f}
+.pay a{font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;background:rgba(246,240,229,.08);color:inherit;text-decoration:none;transition:background-color .2s,color .2s}
+@media (hover:hover){.pay a:hover{background:rgba(243,163,181,.22);color:var(--rice)}}
+/* Julia 27.11: auf breiten Bildschirmen Titelspalte breiter – «Das beste Sushi» in 2 Zeilen, Schrift gleich */
+@media (min-width:1600px){.wrap.hero-in{width:min(1300px,100% - 32px)}}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 <script>/* 27.11 Entwurf: Varianten je Block */(function(){var D={"theke": "fotos", "stuehle": "an", "sterne": "ast", "schild": "schild"},h=document.documentElement;for(var k in D){var v=D[k];try{v=localStorage.getItem("momo-"+k)||v}catch(e){}var q=new RegExp("[?&]"+k+"=(\\w+)").exec(location.search);if(q)v=q[1];h.setAttribute("data-"+k,v)}})();</script>
@@ -640,7 +652,7 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
   <div class="wrap">
     <a class="logo" href="#hero" aria-label="BBQ Sushi Momo – nach oben"><i></i><span><b>BBQ SUSHI MOMO</b><small>Gossau SG</small></span></a>
     <nav class="nav" aria-label="Seiten">
-      <a href="#beides">Sushi &amp; Momo</a><a href="#theke">Theke</a><a href="#karte">Karte</a><a href="#boxen">Boxen</a><a href="#stimmen">Gäste</a><a href="#besuch">Besuch</a>
+      <a href="#beides">Sushi &amp; Momo</a><a href="#theke">Geschichten</a><a href="#karte">Karte</a><a href="#boxen">Boxen</a><a href="#stimmen">Gäste</a><a href="#besuch">Besuch</a>
     </nav>
     <div class="right">
       <a class="btn line tel" href="tel:+41766800066"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>076 680 00 66</a>
@@ -707,13 +719,13 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
       <div class="pane on" id="p-sushi" role="tabpanel">
         <figure><img src="img/nigiri-800.webp" srcset="img/nigiri-800.webp 800w, img/nigiri-1400.webp 1400w" sizes="(max-width:900px) 100vw, 600px" width="1400" height="1050" alt="Nigiri mit Lachs, Thunfisch und Crevetten auf rotem Lacktablett" loading="lazy"></figure>
         <div>
-          <h3>Gerollt, wenn Sie bestellen.</h3>
-          <p>Maki, Nigiri und Rainbow Rolls werden erst zubereitet, wenn Sie bestellen – das loben unsere Gäste am meisten. Lachs aus Schottland, Thunfisch und Crevetten aus Vietnam und von den Philippinen – und für Vegi-Gäste Avocado, Mango und Inari.</p>
+          <h3>Frisch gemacht, wenn Sie bestellen.</h3>
+          <p>Maki, Nigiri und Rainbow Rolls – das loben unsere Gäste am meisten. Für Vegi-Gäste gibt es Avocado, Mango und Inari.</p>
           <ul class="favs">
-            <li><span>Rainbow Salmon<small>Lachs, Avocado, Gurke, Frischkäse, Ikura</small></span><b class="price">11.–</b></li>
+            <li><span>Rainbow Salmon<small>Lachs, Avocado, Gurke, Frischkäse, Ikura</small></span><b class="price">ab 11.–</b></li>
             <li><span>BBQ Salmon Nigiri<small>Lachs mit Knoblauch-Panko und Teriyaki</small></span><b class="price">8.50</b></li>
-            <li><span>Crunchy Roll<small>Ebi Fry, Avocado, Panko, Teriyaki</small></span><b class="price">8.50</b></li>
-            <li><span>777 Spicy Tuna<small>Futomaki mit Thunfischtatar und Gurke</small></span><b class="price">8.–</b></li>
+            <li><span>Crunchy Roll<small>Ebi Fry, Avocado, Panko, Teriyaki</small></span><b class="price">ab 8.50</b></li>
+            <li><span>777 Spicy Tuna<small>Futomaki mit Thunfischtatar und Gurke</small></span><b class="price">ab 8.–</b></li>
           </ul>
         </div>
       </div>
@@ -721,11 +733,11 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
         <figure><img src="img/momo-700.webp" srcset="img/momo-700.webp 700w, img/momo-1200.webp 1200w" sizes="(max-width:900px) 100vw, 600px" width="1200" height="1294" alt="Gedämpfte Momo im Kreis angerichtet" loading="lazy" style="object-position:50% 40%"></figure>
         <div>
           <h3>Von Hand gefaltet, gedämpft.</h3>
-          <p>Momo sind tibetische Teigtaschen – bei uns mit Schweizer Rindfleisch oder als Vegi-Variante mit Spinat, Karotten, Champignons und Käse. Dazu gibt es Gemüse und, wer mag, die scharfe Sauce.</p>
+          <p>Momo sind tibetische Teigtaschen – bei uns mit Schweizer Rindfleisch oder als Vegi-Variante mit Spinat, Karotten, Champignons und Käse. Dazu gibt es Gemüse.</p>
           <ul class="favs">
             <li><span>Rindfleisch-Momo<small>Rindfleisch aus der Schweiz, mit Gemüse</small></span><b class="price">ab 9.–</b></li>
             <li><span>Vegi-Momo<small>Spinat, Karotten, Zwiebeln, Champignons, Käse</small></span><b class="price">ab 9.–</b></li>
-            <li><span>Edamame<small>als Auftakt, lauwarm</small></span><b class="price">5.50</b></li>
+            <li><span>Edamame<small>als Auftakt</small></span><b class="price">5.50</b></li>
           </ul>
         </div>
       </div>
@@ -739,11 +751,11 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
     <div class="head reveal">
       <p class="kick">Von der Theke</p>
       <h2 class="sh">Kleiner Laden, grosses Herz</h2>
-      <p class="lead">«Der Laden ist klein und unscheinbar, aber ein Besuch lohnt sich auf jeden Fall.» So schreibt es Rahel L. – und drei Gäste erzählen, warum.</p>
+      <p class="lead">«Der Laden ist klein und unscheinbar, aber ein Besuch lohnt sich auf jeden Fall.» So schreibt Rahel L. Drei Geschichten von der&nbsp;Theke.</p>
     </div>
     <div class="theke-grid">
       <div class="theke-l">
-      <figure class="theke-foto reveal"><img src="img/bbq-700.webp" srcset="img/bbq-700.webp 700w, img/bbq-1160.webp 1160w" sizes="(max-width:900px) 100vw, 560px" width="1160" height="880" alt="Rainbow Rolls und BBQ-Sushi vor der gemalten Kirschblüte an der Wand, daneben eine Flasche Sake" loading="lazy"><figcaption>Die Kirschblüte hängt bei uns an der Wand</figcaption></figure>
+      <figure class="theke-foto reveal"><img src="img/bbq-700.webp" srcset="img/bbq-700.webp 700w, img/bbq-1160.webp 1160w" sizes="(max-width:900px) 100vw, 560px" width="1160" height="880" alt="Rainbow Rolls und BBQ-Sushi vor der gemalten Kirschblüte an der Wand, daneben eine Flasche Sake" loading="lazy"><figcaption>Die Kirschblüte ist bei uns an die Wand gemalt</figcaption></figure>
       <div class="antwort reveal">
       <div class="zahl"><b>170</b><span>Bewertungen,<br>170 Antworten</span></div>
       <span class="bubble">Danke viel mal 💫🙏🏻</span>
@@ -764,7 +776,7 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
     <div class="head reveal">
       <p class="kick">Die ganze Karte</p>
       <h2 class="sh">Eine Bento-Box voller&nbsp;Fächer</h2>
-      <p class="lead">Tippen Sie auf ein Fach – daneben öffnet sich alles, was drin ist, mit Preis. Grüner Punkt: vegan nach&nbsp;Zutatenliste.</p>
+      <p class="lead">Tippen Sie auf ein Fach – es öffnet sich, was drin ist, mit Preis. Grüner Punkt: vegan nach&nbsp;Zutatenliste.</p>
     </div>
     <div class="karte-grid">
       <div class="bento" id="bento" role="group" aria-label="Kategorien der Karte"></div>
@@ -796,19 +808,19 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
 <section id="stimmen" class="pad">
   <div class="wrap">
     <div class="head reveal">
-      <p class="kick">5,0 aus 170 Bewertungen auf Google</p>
-      <h2 class="sh">Sterne an der&nbsp;Wand</h2>
-      <p class="lead">Hier hängen die schönsten Stimmen unserer Gäste. Tippen Sie einen Stern an – er erzählt Ihnen, was geschrieben wurde.</p>
+      <p class="kick">Was Gäste schreiben</p>
+      <h2 class="sh"><span class="v-raster">Sterne an der&nbsp;Wand</span><span class="v-ast">Blüten an der&nbsp;Wand</span></h2>
+      <p class="lead">Hier hängen die schönsten Stimmen unserer Gäste. <span class="v-raster">Tippen Sie einen Stern an</span><span class="v-ast">Tippen Sie eine Blüte an</span> – und lesen Sie, was sie geschrieben haben.</p>
     </div>
     <div class="stimmen-grid">
       <div class="karte-q" id="quote">
         <span class="st" aria-hidden="true">★★★★★</span>
-        <blockquote id="qtext">«Das beste Sushi in der Region! Ihr macht einen super Job – danke.»</blockquote>
-        <footer><span id="qwho">Fabian I.</span><span id="qwhen">Google · vor 7 Monaten</span></footer>
+        <blockquote id="qtext">«Ich bin ein grosser Sushi-Esser. Doch keines war so frisch und geschmacklich überzeugend wie bei BBQ-Sushi, ein absoluter Geheimtipp! Alles wird erst bei Bestellung frisch zubereitet.»</blockquote>
+        <footer><span id="qwho">Luke K.</span><span id="qwhen">Google · vor einem Jahr</span></footer>
       </div>
       <div>
         <div class="wand pre" id="wand" role="group" aria-label="Stimmen unserer Gäste"></div>
-        <div class="wand-info"><span id="wandnr">Tippen Sie einen Stern an</span><a href="https://g.page/r/CYa2fnp2aaqqEB0/review" target="_blank" rel="noopener">Eigene Bewertung schreiben →</a></div>
+        <div class="wand-info"><span id="wandnr"><span class="v-raster">Tippen Sie einen Stern an</span><span class="v-ast">Tippen Sie eine Blüte an</span></span><a href="https://g.page/r/CYa2fnp2aaqqEB0/review" target="_blank" rel="noopener">Eigene Bewertung schreiben →</a></div>
       </div>
     </div>
   </div>
@@ -819,7 +831,7 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
     <div class="head reveal">
       <p class="kick">Besuch</p>
       <h2 class="sh">Klein, warm, mit Kirschblüten</h2>
-      <p class="lead">Holz an den Wänden, rote Stühle, Blumen auf jedem Tisch – und hinten die Theke, an der gerollt wird. Essen Sie bei uns, holen Sie ab oder bestellen Sie&nbsp;online.</p>
+      <p class="lead">Holz an den Wänden, rote Stühle, Blumen auf jedem Tisch – und hinten die Theke, an der gerollt&nbsp;wird.</p>
     </div>
     <div class="besuch-grid">
       <figure class="saal reveal"><img src="img/saal-900.webp" srcset="img/saal-900.webp 900w, img/saal-1600.webp 1600w" sizes="(max-width:1180px) 100vw, 1180px" width="1600" height="700" alt="Gastraum von BBQ Sushi Momo mit Holzwänden und roten Stühlen" loading="lazy"></figure>
@@ -833,11 +845,11 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
       <div class="card">
         <h3>So erreichen Sie uns</h3>
         <ul class="kontakt">
-          <li><a href="tel:+41766800066"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>076 680 00 66<small>Anrufen, vorbestellen, Allergene fragen</small></span></a></li>
+          <li><a href="tel:+41766800066"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>076 680 00 66<small>Anrufen, vorbestellen</small></span></a></li>
           <li><a href="https://www.google.com/maps/dir/?api=1&destination=BBQ+SUSHI+MOMO+St.+Gallerstrasse+66+9200+Gossau" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>St. Gallerstrasse 66, 9200 Gossau<small>Route in Google Maps</small></span></a></li>
           <li><a href="mailto:bbqsushimomo.sg@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>bbqsushimomo.sg@gmail.com<small>E-Mail</small></span></a></li>
         </ul>
-        <div class="pay"><span>TWINT</span><span>Abholung</span><span>Vor Ort essen</span><span>App fürs iPhone</span></div>
+        <div class="pay"><span>TWINT</span><a href="https://apps.apple.com/ch/app/bbq-sushi-momo/id6472249607" target="_blank" rel="noopener">App für iPhone</a><a href="https://play.google.com/store/apps/details?id=com.foodbooking.bbqsushimomo" target="_blank" rel="noopener">App für Android</a></div>
       </div>
       <div class="card wide">
         <h3>Bestellen &amp; reservieren</h3>
@@ -863,7 +875,8 @@ html[data-schild="schild"] .schild-wrap{display:block;margin-top:14px;perspectiv
 const KARTE=[
  {id:"rainbow",n:"Rainbow Rolls",w:2,items:[
   ["Rainbow Salmon","Lachs, Avocado, Gurke, Frischkäse, Ikura","ab 11.–",""],
-  ["Rainbow BBQ Salmon","Frischkäse, Gurke, Essiggurke, Lachs, Teriyaki, Panko","ab 11.–","b"],
+  ["Rainbow Lachs","Frischkäse, Gurke, Lachs, Ikura","ab 11.–",""],
+  ["Rainbow BBQ Salmon","Frischkäse, Gurke, gegrillter Lachs, Teriyaki, Panko","ab 11.–","b"],
   ["Rainbow Salmon Mango","Lachs, Mango, Avocado","ab 11.–",""],
   ["Rainbow Tuna","Thunfisch, Avocado","ab 11.–",""]]},
  {id:"nigiri",n:"Nigiri",items:[
@@ -873,11 +886,11 @@ const KARTE=[
   ["Ebi Nigiri","Crevette","7.50",""],["Ebi Avocado","Crevette, Avocado","7.90",""],
   ["Inari Nigiri","Tofutasche","7.–","v"],["Avocado Nigiri","Avocado","7.–","v"],["Tamago","japanisches Omelett","7.50","vg"]]},
  {id:"uramaki",n:"Uramaki",items:[
-  ["Crunchy Roll","Ebi Fry, Avocado, Mayonnaise, Panko, Teriyaki","ab 8.50","b"],
+  ["Crunchy Roll","Ebi Fry, Avocado, Mayonnaise, Panko, Teriyaki","ab 8.50",""],
   ["Surimi Roll","Krebsfleisch, Avocado, Mayonnaise, Tobiko","ab 8.–",""],
   ["Mango Flowers Roll","Mango, Avocado, Lachs","ab 8.–",""],
   ["Power Salmon Roll","Frischkäse, Lachs, Avocado, Schnittlauch","ab 8.–",""],
-  ["Tuna Mousse Roll","gekochter Thunfisch, Gurke, Sesam","ab 8.–","b"],
+  ["Tuna Mousse Roll","gekochter Thunfisch, Gurke, Sesam","ab 8.–",""],
   ["Spicy Tuna Roll","Thunfischtatar, Gurke, Sesam","ab 8.–","s"],
   ["Peace Boy Roll","Mango, Avocado, Gurke, Sesam","ab 7.50","v"]]},
  {id:"maki",n:"Maki",items:[
@@ -915,23 +928,18 @@ const TAGN={v:"vegan",vg:"vegi",s:"scharf",b:"BBQ"};
 const FOTO={};
 const BOXEN=[
  {k:"A",p:15,n:["2 Lachs-Nigiri","4 Gurken-Maki","4 Surimi-Rolls"]},
- {k:"B",p:25,n:["1 Thunfisch-Nigiri","1 Tamago-Nigiri","2 Lachs-Nigiri","4 Surimi-Rolls","2 Futomaki","6 Gurken-Maki"]},
+ {k:"B",p:25,n:["1 Thunfisch-Nigiri","1 Ebi-Nigiri","2 Lachs-Nigiri","4 Surimi-Rolls","2 Futomaki","6 Gurken-Maki"]},
  {k:"C",p:69,n:["3 Lachs-Nigiri","2 Thunfisch-Nigiri","3 Ebi-Nigiri","6 Thunfisch-Maki","4 Crunchy Rolls","4 Lachs-Sashimi","4 Rainbow Salmon","4 Lachs-Futomaki"]},
  {k:"D",p:89,n:["2 Lachs-Nigiri","2 Lachs-Avocado-Nigiri","2 Thunfisch-Avocado-Nigiri","3 Ebi-Nigiri","4 Thunfisch-Maki","4 Gurken-Maki","4 Crunchy Rolls","4 Rainbow Salmon","4 Lachs-Futomaki","4 Lachs-Sashimi","4 Salmon Summer Rolls"]},
  {k:"E",p:120,n:["2 Lachs-Nigiri","2 Lachs-Avocado-Nigiri","2 BBQ-Lachs-Nigiri","2 Thunfisch-Avocado-Nigiri","2 Ebi-Nigiri","2 Thunfisch-Nigiri","4 Thunfisch-Maki","4 Gurken-Maki","4 Lachs-Avocado-Maki","4 Surimi-Rolls","4 Crunchy Rolls","4 BBQ Salmon Rainbow","4 Rainbow Salmon","4 Lachs-Futomaki","4 Lachs-Sashimi"]},
  {k:"F",p:130,n:["2 Lachs-Nigiri","2 BBQ-Lachs-Nigiri","2 Thunfisch-Nigiri","2 Thunfisch-Avocado-Nigiri","2 Ebi-Nigiri","2 Ebi-Avocado-Nigiri","2 Avocado-Nigiri","2 Inari-Nigiri","4 Gurken-Maki","6 Lachs-Avocado-Maki","6 Avocado-Maki","8 Crunchy Rolls","8 Rainbow Salmon Mango","4 Lachs-Sashimi","4 Lachs-Futomaki","4 Salmon Summer Rolls"]}
 ];
 const STIMMEN=[
- ["Das beste Sushi in der Region! Ihr macht einen super Job – danke.","Fabian I.","vor 7 Monaten"],
  ["Ich bin ein grosser Sushi-Esser. Doch keines war so frisch und geschmacklich überzeugend wie bei BBQ-Sushi, ein absoluter Geheimtipp! Alles wird erst bei Bestellung frisch zubereitet.","Luke K.","vor einem Jahr"],
  ["Das beste Sushi und die besten Momos, die ich je gegessen habe!","Lisa K.","vor einem Jahr"],
- ["Wir haben die Sushi Box A & B vorbestellt und konnten es pünktlich abholen. Es war einfach himmlisch, extrem frisch & wurde direkt vor Ort zubereitet.","Fabienne B.","vor 2 Monaten"],
  ["Die Rindfleisch-Momos waren einfach herausragend – vermutlich die besten in der Umgebung.","Andreas K.","vor einem Jahr"],
- ["Der ‹Koch› war extrem nett!! Wir mussten nur 10 min warten. Er bestand dann sogar noch darauf, uns ein Getränk gratis mitzugeben.","Laurin","vor 4 Monaten"],
- ["In Gossau SG das beste Sushi!","Zhui W.","vor 2 Jahren"],
  ["Super handgemachte Momo’s zu fairen Preisen!","Joel H.","vor 10 Monaten"],
  ["Es ist super frisch und immer so schön angerichtet. Wir sind sehr begeistert und empfehlen es von Herzen weiter.","Sabrina S.","vor einem Jahr"],
- ["Bestes Sushi, was wir je gegessen haben.","Moriz U.","vor einem Jahr"],
  ["Die Momo’s haben eine wundervolle Grösse. Die Rindfleisch-Momo sind schön saftig und super gewürzt.","Amicia A.","vor einem Jahr"],
  ["TakeAway Sushi und Momo waren sehr lecker und liebevoll angerichtet. Koch und Köchin sind sehr freundlich.","Mona","vor einem Jahr"],
  ["Beste Sushi der Schweiz.","Nils U.","vor 11 Monaten"],
@@ -1115,7 +1123,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   Object.keys(VAR).forEach(id=>{ const s=document.getElementById(id); if(s) io.observe(s); });
 })();
 /* Kirschzweig: Blueten-Positionen auf ihrer gemalten Wand (Prozent im Bild) */
-(function(){ const w=document.getElementById("wand"); if(!w) return; const P=[[25.0, 15.3, 1], [29.33, 39.13, 1], [37.92, 33.91, 1], [33.33, 60.0, 1], [17.08, 56.0, 1], [19.0, 84.87, 1], [26.5, 78.26, 1], [7.33, 58.78, 1], [1.83, 50.43, 1], [52.92, 15.65, 1], [57.5, 22.61, 1], [46.25, 33.91, 1], [77.5, 40.35, 1], [83.33, 26.09, 1], [88.75, 24.35, 1], [87.08, 41.74, 1], [57.5, 7.83, 1], [29.17, 8.35, 0], [32.5, 29.57, 0], [37.5, 46.96, 0], [35.83, 42.09, 0], [21.67, 36.0, 0], [17.33, 38.96, 0], [14.83, 35.65, 0], [1.25, 36.52, 0], [25.0, 46.61, 0], [11.67, 85.57, 0], [13.33, 90.43, 0], [44.17, 33.39, 0], [50.83, 42.61, 0], [62.67, 10.43, 0], [63.75, 3.48, 0], [66.67, 4.87, 0], [80.83, 50.43, 0], [79.58, 57.74, 0], [76.67, 53.57, 0], [94.17, 44.87, 0], [92.92, 23.48, 0], [98.33, 50.43, 0], [95.83, 51.3, 0], [91.25, 57.39, 0], [89.17, 49.57, 0], [80.0, 33.91, 0]]; const btns=[...w.children];
+(function(){ const w=document.getElementById("wand"); if(!w) return; const P=[[43.79, 60.91, 1], [50.65, 74.18, 1], [40.67, 73.01, 1], [30.51, 36.14, 1], [37.72, 82.6, 1], [49.73, 6.46, 1], [43.99, 92.24, 1], [24.86, 38.64, 1], [44.83, 78.69, 1], [39.29, 10.5, 1], [34.14, 20.8, 1], [36.34, 44.59, 1], [53.84, 31.82, 1], [59.7, 32.02, 1], [32.3, 90.48, 1], [55.79, 71.09, 1], [35.97, 51.03, 1], [25.59, 45.17, 1], [32.22, 73.1, 1], [42.54, 98.12, 0], [52.07, 89.09, 0], [31.18, 65.97, 0], [33.27, 96.22, 0], [41.67, 40.4, 0], [35.62, 89.89, 0], [28.63, 75.52, 0], [44.15, 3.03, 0], [55.56, 94.58, 0], [47.66, 14.2, 0], [58.61, 40.16, 0], [54.49, 65.73, 0], [37.32, 56.28, 0], [35.22, 70.46, 0], [49.33, 84.85, 0], [67.61, 23.98, 0], [36.88, 5.17, 0], [43.2, 45.57, 0], [58.88, 73.31, 0], [28.22, 67.23, 0], [30.57, 24.31, 0], [28.08, 21.43, 0], [34.08, 9.44, 0], [54.28, 26.3, 0], [58.58, 27.95, 0], [26.56, 24.45, 0], [27.34, 63.17, 0], [63.24, 72.29, 0], [55.44, 88.06, 0], [21.17, 48.86, 0], [64.78, 73.42, 0], [61.68, 72.59, 0], [60.75, 24.54, 0], [52.44, 25.79, 0], [18.69, 49.24, 0], [22.49, 44.83, 0], [78.44, 68.78, 0], [31.41, 10.02, 0], [25.05, 64.25, 0], [51.92, 22.82, 0], [23.19, 48.2, 0], [54.55, 86.09, 0], [24.75, 22.03, 0], [44.83, 49.07, 0], [57.4, 41.75, 0], [71.24, 5.88, 1], [79.81, 4.71, 1], [73.9, 1.76, 0], [87.43, 26.47, 1], [92.95, 32.94, 1], [88.1, 19.12, 0], [84.76, 18.24, 0], [76.76, 70.0, 0], [94.1, 26.47, 0]]; const btns=[...w.children];
   btns.forEach((b,i)=>{ const q=P[i]; if(!q){ b.classList.add("weg"); return; } b.style.setProperty("--x",q[0]+"%"); b.style.setProperty("--y",q[1]+"%"); b.classList.add(q[2]?"gross":"knospe"); });
   w.addEventListener("click",e=>{ if(document.documentElement.getAttribute("data-sterne")!=="ast"||reduce) return; const b=e.target.closest("button"); if(!b) return;
     for(let k=0;k<3;k++){ const f=document.createElement("i"); f.className="blatt-fall"; f.style.left=b.style.getPropertyValue("--x"); f.style.top=b.style.getPropertyValue("--y"); f.style.setProperty("--dx",(Math.random()*60-30)+"px"); f.style.setProperty("--dy",(60+Math.random()*70)+"px"); f.style.animationDelay=(k*.12)+"s"; w.appendChild(f); setTimeout(()=>f.remove(),2100); } });
@@ -1135,7 +1143,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const paint=(n,cls)=>bs.forEach((b,i)=>b.classList.toggle(cls,i<n));
   row.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; sel=+b.dataset.n; paint(sel,"an");
     const box=byP.find(x=>pers(x)>=sel)||byP[byP.length-1]; const n=box.n.reduce((s,x)=>s+parseInt(x),0);
-    msg.textContent=`Box ${box.k} · ${n} Stück · reicht für ${sel===1?"1 Person":sel+" Personen"}`;
+    msg.textContent=`Box ${box.k} · ${n} Stück · reicht für ${sel===1?"1 Person":"ca. "+sel+" Personen"}`;
     const k=st.querySelector(`.kiste[data-k="${box.k}"]`); if(k) k.click(); });
   row.addEventListener("mouseover",e=>{ const b=e.target.closest("button"); if(b) paint(+b.dataset.n,"vor"); });
   row.addEventListener("mouseleave",()=>paint(0,"vor"));
