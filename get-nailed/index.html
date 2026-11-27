@@ -867,6 +867,20 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
   #atelier .stage .result.res-kopie{position:absolute;top:100%;margin-top:12px!important;left:calc(-1*clamp(0px,(100vw - 1000px)*.25,80px));right:calc(-1*clamp(0px,(100vw - 1000px)*.25,80px))}
 }
 @media (max-width:900px){#atelier .stage .result.res-kopie{display:none}}
+
+/* 27.11 patch25 Konfigurator */
+#atelier .seg button:disabled{pointer-events:none}
+#atelier .fin-hint{border-radius:6px;transition:background .3s}
+#atelier .fin-hint.flash{animation:hintFlash 1.4s ease-out}
+@keyframes hintFlash{0%,55%{background:rgba(184,146,79,.32);color:var(--lack)}100%{background:transparent}}
+#atelier .st-note{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;width:max-content;max-width:86%;padding:7px 14px;border-radius:14px;background:rgba(255,250,244,.92);color:var(--tinte);font-size:12.5px;line-height:1.35;text-align:center;box-shadow:0 6px 18px -10px rgba(42,14,23,.5)}
+#atelier .st-note[hidden]{display:none}
+@media (min-width:901px){#atelier .stage-cap{width:max-content;max-width:min(590px,calc(100% + 260px));position:relative;left:50%;transform:translateX(-50%);margin-top:5px}
+  #atelier .stage-cap.cap-lang span{display:none}
+  #atelier #stage .result{margin-top:5px}}
+@media (min-width:901px) and (min-height:700px){#atelier .set-grid>.stage{width:min(100%,calc((100svh - 280px)*.8),420px)!important}}
+
+/* 27.11 patch26 */#atelier #farbeNote{text-wrap:balance}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -1018,6 +1032,7 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
         <div class="frame">
           <img class="ph on" id="phA" alt="Beispielbild Nagelset" src="https://julia-mirku.github.io/custom-nails/img/set_02.webp">
           <img class="ph" id="phB" alt="" aria-hidden="true">
+          <span class="st-note" id="stNote" hidden></span>
         </div>
         <p class="stage-cap"><span id="stageKind">Ihr Set</span> <b id="stageCap">Medium · mit Farbe · Mandel</b></p>
         <div class="set-acts" id="setActs"><button type="button" class="btn btn-gold" id="saBook" data-en="Book with this set">Mit diesem Set buchen</button><button type="button" class="btn btn-line" id="saPic" data-en="Save as image">Als Bild speichern</button><p class="sa-note" id="saNote" aria-live="polite"></p></div>
@@ -1037,7 +1052,7 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
         <div class="ctrl"><h3>Form <span class="fin-hint" data-hint="form"></span></h3><div class="seg" id="segForm">
           <button data-v="mandel">Mandel</button><button data-v="eckig">Eckig</button>
         </div></div>
-        <div class="ctrl" id="colCtrl"><h3><span id="colTitle">Farbe</span> <span class="fin-cur" id="colName"></span> <span class="fin-hint" data-hint="col"></span></h3><div class="colrow"><div class="seg cols" id="segCol"><div class="pgrp"><span class="pg">Nude</span><div class="pgb"><button data-v="nude" class="pin" style="--c:#D08E84" aria-label="Nude" title="Nude"></button><button data-v="milky" class="pin" style="--c:#D4BCBB" aria-label="Milky" title="Milky"></button><button data-v="sand" data-w="2" style="--c:#D8B99A" aria-label="Sand" title="Sand"></button><button data-v="champagner" data-w="2" style="--c:#E6CDB4" aria-label="Champagner" title="Champagner"></button><button data-v="pfirsich" data-w="2" style="--c:#E3A98F" aria-label="Pfirsich-Nude" title="Pfirsich-Nude"></button><button data-v="karamell" data-w="3" style="--c:#B47A55" aria-label="Karamell" title="Karamell"></button></div></div><div class="pgrp"><span class="pg">Rosa</span><div class="pgb"><button data-v="rosa" class="pin" style="--c:#EDAFB4" aria-label="Rosa" title="Rosa"></button><button data-v="babyrosa" data-w="1" style="--c:#F2C4CC" aria-label="Babyrosa" title="Babyrosa"></button><button data-v="puderrosa" data-w="1" style="--c:#E0AEB0" aria-label="Puderrosa" title="Puderrosa"></button><button data-v="altrosa" data-w="1" style="--c:#C08585" aria-label="Altrosa" title="Altrosa"></button><button data-v="pink" data-w="2" style="--c:#E0457B" aria-label="Pink" title="Pink"></button><button data-v="fuchsia" data-w="3" style="--c:#C2185B" aria-label="Fuchsia" title="Fuchsia"></button></div></div><div class="pgrp"><span class="pg">Rot</span><div class="pgb"><button data-v="rot" class="pin" style="--c:#84101D" aria-label="Rot" title="Rot"></button><button data-v="kirschrot" data-w="1" style="--c:#B0102A" aria-label="Kirschrot" title="Kirschrot"></button><button data-v="tomatenrot" data-w="3" style="--c:#D7322B" aria-label="Tomatenrot" title="Tomatenrot"></button><button data-v="koralle" data-w="2" style="--c:#F06A5A" aria-label="Koralle" title="Koralle"></button><button data-v="ziegelrot" data-w="3" style="--c:#A8442F" aria-label="Ziegelrot" title="Ziegelrot"></button></div></div><div class="pgrp"><span class="pg">Bordeaux</span><div class="pgb"><button data-v="bordeaux" class="pin" style="--c:#582427" aria-label="Bordeaux" title="Bordeaux"></button><button data-v="weinrot" data-w="1" style="--c:#6E1423" aria-label="Weinrot" title="Weinrot"></button><button data-v="beere" data-w="2" style="--c:#8C2A4B" aria-label="Beere" title="Beere"></button><button data-v="pflaume" data-w="3" style="--c:#5B2A3E" aria-label="Pflaume" title="Pflaume"></button></div></div><div class="pgrp"><span class="pg">Braun</span><div class="pgb"><button data-v="mokka" data-w="1" style="--c:#6B4A3A" aria-label="Mokka" title="Mokka"></button><button data-v="schokolade" data-w="3" style="--c:#4A2C22" aria-label="Schokolade" title="Schokolade"></button><button data-v="cappuccino" data-w="2" style="--c:#A88672" aria-label="Cappuccino" title="Cappuccino"></button><button data-v="taupe" data-w="2" style="--c:#8E7C74" aria-label="Taupe" title="Taupe"></button></div></div><div class="pgrp"><span class="pg">Flieder</span><div class="pgb"><button data-v="flieder" class="pin" style="--c:#BF98B6" aria-label="Flieder" title="Flieder"></button><button data-v="mauve" class="pin" style="--c:#A2656C" aria-label="Mauve" title="Mauve"></button><button data-v="lavendel" data-w="1" style="--c:#C3B1DA" aria-label="Lavendel" title="Lavendel"></button><button data-v="violett" data-w="3" style="--c:#6A3FA0" aria-label="Violett" title="Violett"></button><button data-v="aubergine" data-w="4" style="--c:#3F1F3A" aria-label="Aubergine" title="Aubergine"></button></div></div><div class="pgrp"><span class="pg">Blau</span><div class="pgb"><button data-v="aqua" class="pin" style="--c:#8FB1B1" aria-label="Aqua" title="Aqua"></button><button data-v="babyblau" data-w="1" style="--c:#B9D3EE" aria-label="Babyblau" title="Babyblau"></button><button data-v="himmelblau" data-w="2" style="--c:#6FA8DC" aria-label="Himmelblau" title="Himmelblau"></button><button data-v="jeansblau" data-w="4" style="--c:#3F5F8A" aria-label="Jeansblau" title="Jeansblau"></button><button data-v="navy" data-w="3" style="--c:#1E2A4A" aria-label="Navy" title="Navy"></button><button data-v="petrol" data-w="4" style="--c:#1F5F6B" aria-label="Petrol" title="Petrol"></button></div></div><div class="pgrp"><span class="pg">Grün</span><div class="pgb"><button data-v="mint" data-w="1" style="--c:#A8DCC5" aria-label="Mint" title="Mint"></button><button data-v="salbei" data-w="2" style="--c:#9CAF94" aria-label="Salbei" title="Salbei"></button><button data-v="pistazie" data-w="3" style="--c:#B9C98A" aria-label="Pistazie" title="Pistazie"></button><button data-v="olive" data-w="4" style="--c:#6B6B3A" aria-label="Olive" title="Olive"></button><button data-v="smaragd" data-w="4" style="--c:#1F6E52" aria-label="Smaragd" title="Smaragd"></button></div></div><div class="pgrp"><span class="pg">Weiss & Schwarz</span><div class="pgb"><button data-v="weiss" data-w="1" style="--c:#F4F1EC" aria-label="Weiss" title="Weiss"></button><button data-v="schwarz" class="pin p8" style="--c:#2A1E1E" aria-label="Schwarz" title="Schwarz"></button><button data-v="grau" data-w="3" style="--c:#9A9A9E" aria-label="Grau" title="Grau"></button><button data-v="anthrazit" data-w="4" style="--c:#3A3B3F" aria-label="Anthrazit" title="Anthrazit"></button></div></div><div class="pgrp"><span class="pg">Bunt</span><div class="pgb"><button data-v="gelb" data-w="4" style="--c:#F3D25B" aria-label="Gelb" title="Gelb"></button><button data-v="orange" data-w="4" style="--c:#F08A2E" aria-label="Orange" title="Orange"></button><button data-v="neonpink" data-w="4" style="--c:#FF3FA4" aria-label="Neon-Pink" title="Neon-Pink"></button><button data-v="neongruen" data-w="4" style="--c:#7CF25A" aria-label="Neon-Grün" title="Neon-Grün"></button></div></div></div><button type="button" class="palbtn" id="palBtn" aria-expanded="false" aria-controls="segCol">+ Palette</button></div><div class="frbox" id="frBox" hidden><span class="frl">Basis</span><div class="seg cols" id="segFb"><button data-v="nude" style="--c:#D08E84" aria-label="Nude" title="Basis Nude"></button><button data-v="milky" style="--c:#D5B2B0" aria-label="Milky" title="Basis Milky"></button><button data-v="rosa" style="--c:#DA9093" aria-label="Rosa" title="Basis Rosa"></button></div><span class="frl">Spitze</span><div class="seg cols" id="segFt"><button data-v="weiss" style="--c:#F6F1EF" aria-label="Weiss" title="Spitze Weiss"></button><button data-v="rot" style="--c:#84101D" aria-label="Rot" title="Spitze Rot"></button><button data-v="schwarz" style="--c:#2A1E1E" aria-label="Schwarz" title="Spitze Schwarz"></button></div></div><p class="farbe-note" id="farbeNote">Beispiele – weitere Farben im Salon.</p></div>
+        <div class="ctrl" id="colCtrl"><h3><span id="colTitle">Farbe</span> <span class="fin-cur" id="colName"></span> <span class="fin-hint" data-hint="col"></span></h3><div class="colrow"><div class="seg cols" id="segCol"><div class="pgrp"><span class="pg">Nude</span><div class="pgb"><button data-v="nude" class="pin" style="--c:#D08E84" aria-label="Nude" title="Nude"></button><button data-v="milky" class="pin" style="--c:#D4BCBB" aria-label="Milky" title="Milky"></button><button data-v="sand" data-w="2" style="--c:#D8B99A" aria-label="Sand" title="Sand"></button><button data-v="champagner" data-w="2" style="--c:#E6CDB4" aria-label="Champagner" title="Champagner"></button><button data-v="pfirsich" data-w="2" style="--c:#E3A98F" aria-label="Pfirsich-Nude" title="Pfirsich-Nude"></button><button data-v="karamell" data-w="3" style="--c:#B47A55" aria-label="Karamell" title="Karamell"></button></div></div><div class="pgrp"><span class="pg">Rosa</span><div class="pgb"><button data-v="rosa" class="pin" style="--c:#EDAFB4" aria-label="Rosa" title="Rosa"></button><button data-v="babyrosa" data-w="1" style="--c:#F2C4CC" aria-label="Babyrosa" title="Babyrosa"></button><button data-v="puderrosa" data-w="1" style="--c:#E0AEB0" aria-label="Puderrosa" title="Puderrosa"></button><button data-v="altrosa" data-w="1" style="--c:#C08585" aria-label="Altrosa" title="Altrosa"></button><button data-v="pink" data-w="2" style="--c:#E0457B" aria-label="Pink" title="Pink"></button><button data-v="fuchsia" data-w="3" style="--c:#C2185B" aria-label="Fuchsia" title="Fuchsia"></button></div></div><div class="pgrp"><span class="pg">Rot</span><div class="pgb"><button data-v="rot" class="pin" style="--c:#84101D" aria-label="Rot" title="Rot"></button><button data-v="kirschrot" data-w="1" style="--c:#B0102A" aria-label="Kirschrot" title="Kirschrot"></button><button data-v="tomatenrot" data-w="3" style="--c:#D7322B" aria-label="Tomatenrot" title="Tomatenrot"></button><button data-v="koralle" data-w="2" style="--c:#F06A5A" aria-label="Koralle" title="Koralle"></button><button data-v="ziegelrot" data-w="3" style="--c:#A8442F" aria-label="Ziegelrot" title="Ziegelrot"></button></div></div><div class="pgrp"><span class="pg">Bordeaux</span><div class="pgb"><button data-v="bordeaux" class="pin" style="--c:#582427" aria-label="Bordeaux" title="Bordeaux"></button><button data-v="weinrot" data-w="1" style="--c:#6E1423" aria-label="Weinrot" title="Weinrot"></button><button data-v="beere" data-w="2" style="--c:#8C2A4B" aria-label="Beere" title="Beere"></button><button data-v="pflaume" data-w="3" style="--c:#5B2A3E" aria-label="Pflaume" title="Pflaume"></button></div></div><div class="pgrp"><span class="pg">Braun</span><div class="pgb"><button data-v="mokka" data-w="1" style="--c:#6B4A3A" aria-label="Mokka" title="Mokka"></button><button data-v="schokolade" data-w="3" style="--c:#4A2C22" aria-label="Schokolade" title="Schokolade"></button><button data-v="cappuccino" data-w="2" style="--c:#A88672" aria-label="Cappuccino" title="Cappuccino"></button><button data-v="taupe" data-w="2" style="--c:#8E7C74" aria-label="Taupe" title="Taupe"></button></div></div><div class="pgrp"><span class="pg">Flieder</span><div class="pgb"><button data-v="flieder" class="pin" style="--c:#BF98B6" aria-label="Flieder" title="Flieder"></button><button data-v="mauve" class="pin" style="--c:#A2656C" aria-label="Mauve" title="Mauve"></button><button data-v="lavendel" data-w="1" style="--c:#C3B1DA" aria-label="Lavendel" title="Lavendel"></button><button data-v="violett" data-w="3" style="--c:#6A3FA0" aria-label="Violett" title="Violett"></button><button data-v="aubergine" data-w="4" style="--c:#3F1F3A" aria-label="Aubergine" title="Aubergine"></button></div></div><div class="pgrp"><span class="pg">Blau</span><div class="pgb"><button data-v="aqua" class="pin" style="--c:#8FB1B1" aria-label="Aqua" title="Aqua"></button><button data-v="babyblau" data-w="1" style="--c:#B9D3EE" aria-label="Babyblau" title="Babyblau"></button><button data-v="himmelblau" data-w="2" style="--c:#6FA8DC" aria-label="Himmelblau" title="Himmelblau"></button><button data-v="jeansblau" data-w="4" style="--c:#3F5F8A" aria-label="Jeansblau" title="Jeansblau"></button><button data-v="navy" data-w="3" style="--c:#1E2A4A" aria-label="Navy" title="Navy"></button><button data-v="petrol" data-w="4" style="--c:#1F5F6B" aria-label="Petrol" title="Petrol"></button></div></div><div class="pgrp"><span class="pg">Grün</span><div class="pgb"><button data-v="mint" data-w="1" style="--c:#A8DCC5" aria-label="Mint" title="Mint"></button><button data-v="salbei" data-w="2" style="--c:#9CAF94" aria-label="Salbei" title="Salbei"></button><button data-v="pistazie" data-w="3" style="--c:#B9C98A" aria-label="Pistazie" title="Pistazie"></button><button data-v="olive" data-w="4" style="--c:#6B6B3A" aria-label="Olive" title="Olive"></button><button data-v="smaragd" data-w="4" style="--c:#1F6E52" aria-label="Smaragd" title="Smaragd"></button></div></div><div class="pgrp"><span class="pg">Weiss & Schwarz</span><div class="pgb"><button data-v="weiss" data-w="1" style="--c:#F4F1EC" aria-label="Weiss" title="Weiss"></button><button data-v="schwarz" class="pin p8" style="--c:#2A1E1E" aria-label="Schwarz" title="Schwarz"></button><button data-v="grau" data-w="3" style="--c:#9A9A9E" aria-label="Grau" title="Grau"></button><button data-v="anthrazit" data-w="4" style="--c:#3A3B3F" aria-label="Anthrazit" title="Anthrazit"></button></div></div><div class="pgrp"><span class="pg">Bunt</span><div class="pgb"><button data-v="gelb" data-w="4" style="--c:#F3D25B" aria-label="Gelb" title="Gelb"></button><button data-v="orange" data-w="4" style="--c:#F08A2E" aria-label="Orange" title="Orange"></button><button data-v="neonpink" data-w="4" style="--c:#FF3FA4" aria-label="Neon-Pink" title="Neon-Pink"></button><button data-v="neongruen" data-w="4" style="--c:#7CF25A" aria-label="Neon-Grün" title="Neon-Grün"></button></div></div></div><button type="button" class="palbtn" id="palBtn" aria-expanded="false" aria-controls="segCol">+ Palette</button></div><div class="frbox" id="frBox" hidden><span class="frl">Basis</span><div class="seg cols" id="segFb"><button data-v="nude" style="--c:#D08E84" aria-label="Nude" title="Basis Nude"></button><button data-v="milky" style="--c:#D5B2B0" aria-label="Milky" title="Basis Milky"></button><button data-v="rosa" style="--c:#DA9093" aria-label="Rosa" title="Basis Rosa"></button></div><span class="frl">Spitze</span><div class="seg cols" id="segFt"><button data-v="weiss" style="--c:#F6F1EF" aria-label="Weiss" title="Spitze Weiss"></button><button data-v="rot" style="--c:#84101D" aria-label="Rot" title="Spitze Rot"></button><button data-v="schwarz" style="--c:#2A1E1E" aria-label="Schwarz" title="Spitze Schwarz"></button></div></div><p class="farbe-note" id="farbeNote">Muster zum Ausprobieren – weitere Formen und Details auf Wunsch.</p></div>
         <div class="ctrl fxctrl"><h3>Effekt <span class="fin-hint" data-hint="fx"></span></h3><div class="seg extras" id="segFx">
           <button data-v="none">Ohne</button><button data-v="chrome" data-p="20" data-t="15">Chrome · Glazed <span>+20</span></button><button data-v="cat" data-p="15" data-t="15">Cat Eye <span>+15</span></button><button data-v="glitzer" data-p="15" data-t="15">Glitzer <span>+15</span></button>
         </div></div>
@@ -3509,10 +3524,6 @@ const FR={natur:'11',
  'xl|mandel|farbe|rosa|none||||T3':'k_xl-mandel-rosa_T3.webp',
  'xl|mandel|farbe|rosa|none||||T4':'k_xl-mandel-rosa_T4.webp',
  'xl|mandel|farbe|rosa|none||||T5':'k_xl-mandel-rosa_T5.webp',
- 'kurz|eckig|milky|-|none||||T2':'k_kurz-eckig-milky_T2.webp',
- 'kurz|eckig|milky|-|none||||T3':'k_kurz-eckig-milky_T3.webp',
- 'kurz|eckig|milky|-|none||||T4':'k_kurz-eckig-milky_T4.webp',
- 'kurz|eckig|milky|-|none||||T5':'k_kurz-eckig-milky_T5.webp',
  'kurz|eckig|farbe|schwarz|none||||T2':'k_kurz-eckig-schwarz_T2.webp',
  'kurz|eckig|farbe|schwarz|none||||T3':'k_kurz-eckig-schwarz_T3.webp',
  'kurz|eckig|farbe|schwarz|none||||T4':'k_kurz-eckig-schwarz_T4.webp',
@@ -3525,18 +3536,6 @@ const FR={natur:'11',
  'kurz|eckig|farbe|mauve|none||||T3':'k_kurz-eckig-mauve_T3.webp',
  'kurz|eckig|farbe|mauve|none||||T4':'k_kurz-eckig-mauve_T4.webp',
  'kurz|eckig|farbe|mauve|none||||T5':'k_kurz-eckig-mauve_T5.webp',
- 'kurz|eckig|farbe|bordeaux|none||||T2':'k_kurz-eckig-bordeaux_T2.webp',
- 'kurz|eckig|farbe|bordeaux|none||||T3':'k_kurz-eckig-bordeaux_T3.webp',
- 'kurz|eckig|farbe|bordeaux|none||||T4':'k_kurz-eckig-bordeaux_T4.webp',
- 'kurz|eckig|farbe|bordeaux|none||||T5':'k_kurz-eckig-bordeaux_T5.webp',
- 'kurz|eckig|farbe|rot|none||||T2':'k_kurz-eckig-rot_T2.webp',
- 'kurz|eckig|farbe|rot|none||||T3':'k_kurz-eckig-rot_T3.webp',
- 'kurz|eckig|farbe|rot|none||||T4':'k_kurz-eckig-rot_T4.webp',
- 'kurz|eckig|farbe|rot|none||||T5':'k_kurz-eckig-rot_T5.webp',
- 'kurz|eckig|farbe|rosa|none||||T2':'k_kurz-eckig-rosa_T2.webp',
- 'kurz|eckig|farbe|rosa|none||||T3':'k_kurz-eckig-rosa_T3.webp',
- 'kurz|eckig|farbe|rosa|none||||T4':'k_kurz-eckig-rosa_T4.webp',
- 'kurz|eckig|farbe|rosa|none||||T5':'k_kurz-eckig-rosa_T5.webp',
  'medium|eckig|farbe|bordeaux|none||||T2':'k_medium-eckig-bordeaux_T2.webp',
  'medium|eckig|farbe|bordeaux|none||||T3':'k_medium-eckig-bordeaux_T3.webp',
  'medium|eckig|farbe|bordeaux|none||||T4':'k_medium-eckig-bordeaux_T4.webp',
@@ -3696,13 +3695,9 @@ const FR={natur:'11',
  'kurz|mandel|farbe|bordeaux|none':'c_kurz-mandel-bordeaux.webp',
  'kurz|mandel|farbe|rot|none':'c_kurz-mandel-rot.webp',
  'kurz|mandel|farbe|rosa|none':'c_kurz-mandel-rosa.webp',
- 'kurz|eckig|milky|-|none':'c_kurz-eckig-milky.webp',
  'kurz|eckig|farbe|schwarz|none':'c_kurz-eckig-schwarz.webp',
  'kurz|eckig|farbe|flieder|none':'c_kurz-eckig-flieder.webp',
  'kurz|eckig|farbe|mauve|none':'c_kurz-eckig-mauve.webp',
- 'kurz|eckig|farbe|bordeaux|none':'c_kurz-eckig-bordeaux.webp',
- 'kurz|eckig|farbe|rot|none':'c_kurz-eckig-rot.webp',
- 'kurz|eckig|farbe|rosa|none':'c_kurz-eckig-rosa.webp',
  'kurz|mandel|farbe|nude|none':'01','medium|mandel|farbe|nude|none':'02','lang|mandel|farbe|nude|none':'03','xl|mandel|farbe|nude|none':'04','medium|eckig|farbe|nude|none':'05','kurz|eckig|farbe|nude|none':'22','lang|eckig|farbe|nude|none':'23','xl|eckig|farbe|nude|none':'24',
  'medium|mandel|milky|-|none':'06','medium|mandel|french|-|none|nude|weiss':'07','medium|mandel|ombre|-|none':'08',
  'medium|mandel|farbe|mauve|cat':'09','medium|mandel|farbe|nude|chrome':'10','medium|mandel|farbe|nude|glitzer':'18',
@@ -3721,7 +3716,7 @@ const AX={len:'segLen',fin:'segFin',form:'segForm',col:'segCol',fx:'segFx',fb:'s
 const lab=(ax,v)=>{const b=$(`#${AX[ax]} [data-v="${v}"]`);return b?(b.getAttribute('aria-label')||b.childNodes[0].textContent.trim()):v};
 /* eine gewählte Farbe gilt nur für Fotos mit Farbe (nicht für Milky/French/Ombré), solange Finish offen oder Farbe ist */
 const COLFIN=v=>v==='farbe'||v==='geo';
-const fits=(f,s)=>!(s.col!=null&&(s.fin==null||COLFIN(s.fin))&&!COLFIN(f.fin)&&f.fin!=='*')&&AXES.every(a=>s[a]==null||f[a]==='*'||f[a]===s[a]);
+const fits=(f,s)=>!(s.col!=null&&(s.fin==null||COLFIN(s.fin))&&!COLFIN(f.fin)&&f.fin!=='*')&&(s.fx!=null||f.fx==='none'||f.fx==='*')&&AXES.every(a=>s[a]==null||f[a]==='*'||f[a]===s[a]);
 const nat=()=>st.len==='natur';
 /* natur mit Design: nur wenn es echte natur-Designfotos gibt */
 const NATD=FRAMES.some(f=>f.len==='natur'&&!f.plain),natDes=()=>['col','fb','ft'].some(a=>st[a]!=null)||(st.fx!=null&&st.fx!=='none');
@@ -3761,6 +3756,7 @@ function hint(ax){
   if(ax==='fr')return hint('fb')||hint('ft');
   const btns=$$('#'+AX[ax]+' button').filter(b=>!b.hidden),off=btns.filter(b=>b.disabled);if(!off.length)return '';
   const on=btns.filter(b=>!b.disabled).map(b=>lab(ax,b.dataset.v)),offL=off.map(b=>lab(ax,b.dataset.v));if(!on.length)return '';
+  if(ax==='fx'&&on.length===1&&btns.find(b=>!b.disabled).dataset.v==='none')return '– '+(st.fin&&st.fin!=='farbe'?'bei '+lab('fin',st.fin)+': ':'')+'Effekte nur im Salon (kein Foto)';
   const by=AXES.filter(o=>o!==ax&&st[o]!=null&&!isOff(o)&&o!=='fb'&&o!=='ft'&&!(o==='tn'&&st.tn==='T1')).map(o=>o==='tn'?'Hautton '+st.tn.slice(1):o==='fin'&&st.fin==='french'&&ax!=='fb'&&ax!=='ft'?'French'+(st.fb&&!isOff('fb')?' '+lab('fb',st.fb):'')+(st.ft&&!isOff('ft')?'/'+lab('ft',st.ft):''):lab(o,st[o]));
   return '– '+(on.length<offL.length?'Foto: nur '+on.join(', '):'ohne Foto: '+offL.join(', '))+' · im Salon möglich';
 }
@@ -3774,6 +3770,7 @@ toneR.addEventListener('input',()=>{let v=+toneR.value;const dir=Math.sign(v-ton
 const fmtP=n=>Number.isInteger(n)?String(n):n.toFixed(2);
 let colH=0;addEventListener('resize',()=>{colH=0});
 function update(user){
+  /* 27.11 patch25 */if(nat()){st.ex=[];for(const a of ['form','fin','col','fx','fb','ft'])if(st[a]!=null&&!ok(a,st[a]))st[a]=null}if(st.col&&colOff())st.col=null;if(st.fin!=='french'){st.fb=null;st.ft=null}
   Object.entries(AX).forEach(([ax,id])=>$$('#'+id+' button').forEach(b=>{
     b.hidden=!HAS[ax].has(b.dataset.v);b.classList.toggle('on',st[ax]===b.dataset.v);
     b.disabled=st[ax]!==b.dataset.v&&!ok(ax,b.dataset.v)}));
@@ -3809,9 +3806,9 @@ function update(user){
   const baseOf=k=>{if(!st.len)return null;if(nat()){if(NATD&&natDes())studio=true;return P[k].natur}const r=P[k][st.len];if(!r)return null;if(!r[finKey]){if(!r.farbe)return null;studio=true;return r.farbe}const m=milkyT(k);return m?[r[finKey][0],m[1]]:r[finKey]};
   const add=(p,t)=>[p+(fxb?+(fxb.dataset.p||0):0)+(geoB?+geoB.dataset.p:0)+exs.reduce((a,b)=>a+(+b.dataset.p),0),t+(fxb?+(fxb.dataset.t||0):0)+(geoB?+geoB.dataset.t:0)];
   const bN=baseOf('neu'),bA=baseOf('auf');
-  const pe=$('#resPrice'),el=$('#resPrice span'),ab=(!nat()&&!st.fin)||studio;
+  const pe=$('#resPrice'),el=$('#resPrice span'),ab=(!nat()&&!st.fin)||studio||exs.length>0;
   if(bN){const [pr,min]=add(bN[0],bN[1]);
-    $('#resName').textContent='Neues Set · '+parts.join(' · ')+(studio?'':' · '+min+' Min.');
+    $('#resName').textContent=(nat()?'':'Neues Set · ')+parts.join(' · ')+(studio?'':' · '+min+' Min.');
     pe.style.visibility='visible';$('#resPrice small').textContent=ab?'ab CHF':'CHF';const txt=fmtP(pr);if(el.textContent!==txt){el.textContent=txt;el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop')}
     $('#resEx').textContent=[bA&&'Auffüllen ab CHF '+fmtP(add(bA[0],bA[1])[0]),studio?'Preis im Salon':(ab&&'genauer Preis mit Design')].filter(Boolean).join(' · ');
   }else{
@@ -3820,7 +3817,8 @@ function update(user){
     $('#resEx').textContent=parts.length?'Für den Preis noch: Länge':'';
   }
   const desC=st.fin==='french'?['French',st.fb&&lab('fb',st.fb),st.ft&&'/ '+lab('ft',st.ft)].filter(Boolean).join(' '):st.fin==='geo'?['Gold-Linien',st.col&&lab('col',st.col)].filter(Boolean).join(' · '):st.fin&&st.fin!=='farbe'?lab('fin',st.fin):(st.col&&lab('col',st.col)),fxC=st.fx&&st.fx!=='none'&&lab('fx',st.fx);
-  const capParts=nat()?(NATD&&natDes()?['Kurz natur',desC,fxC].filter(Boolean):['Kurz natur','Overlay']):[st.len&&LEN[st.len],desC,st.form&&(st.form==='eckig'?'Eckig':'Mandel'),fxC].filter(Boolean);
+  const capParts=nat()?(NATD&&natDes()?['Kurz natur',desC,fxC].filter(Boolean):['Kurz natur','Russian Mani + Gellack']):[st.len&&LEN[st.len],desC,st.form&&(st.form==='eckig'?'Eckig':'Mandel'),fxC,...exs.map(b=>b.childNodes[0].textContent.trim())].filter(Boolean);
+  {const sn=$('#stNote');if(sn){const e=nat()?[]:st.ex;sn.hidden=!e.length;sn.textContent=(e.includes('steine')&&e.includes('charms')?'Steine und Charms':e.includes('charms')?'Charms':'Steine')+' setzen wir im Studio nach Ihrem Wunsch – Nail Art nach Zeit, ab CHF 5'}}
   $('#stageKind').textContent=capParts.length?'Ihr Set':'Vorschau';
   $('#stageCap').textContent=capParts.length?capParts.join(' · '):'Ihr Set erscheint hier';
   showPhoto();
@@ -3860,7 +3858,7 @@ setIO.observe($('#setgrid'));
 
 
 /* ---------- Konfigurator auf Englisch ---------- */
-const KEN=[['Auffüllen ab\u00a0CHF','Infill from\u00a0CHF'],['ab\u00a0CHF','from\u00a0CHF'],['\u00a0Min.','\u00a0min'],['Beispiele – weitere Farben im Salon.','Examples – more colours in the salon.'],['Wählen Sie die Länge – der Preis erscheint sofort.','Choose a length – the price appears instantly.'],['Für den Preis noch: Länge','For the price: choose a length'],
+const KEN=[['Steine und Charms setzen wir im Studio nach Ihrem Wunsch – Nail Art nach Zeit, ab CHF 5','Stones and charms are set in the studio as you wish – nail art by time, from CHF 5'],['Charms setzen wir im Studio nach Ihrem Wunsch – Nail Art nach Zeit, ab CHF 5','Charms are set in the studio as you wish – nail art by time, from CHF 5'],['Steine setzen wir im Studio nach Ihrem Wunsch – Nail Art nach Zeit, ab CHF 5','Stones are set in the studio as you wish – nail art by time, from CHF 5'],['Effekte nur im Salon (kein Foto)','finishes in the salon only (no photo)'],['Russian Mani + Gellack','Russian mani + gel polish'],['Foto: nur ','photo: only '],['ohne Foto: ','no photo: '],['Auffüllen ab\u00a0CHF','Infill from\u00a0CHF'],['ab\u00a0CHF','from\u00a0CHF'],['\u00a0Min.','\u00a0min'],['Muster zum Ausprobieren – weitere Formen und Details auf Wunsch.','Sample to try out – more shapes and details on request.'],['Wählen Sie die Länge – der Preis erscheint sofort.','Choose a length – the price appears instantly.'],['Für den Preis noch: Länge','For the price: choose a length'],
  ['Ihr Set erscheint hier','Your set appears here'],['genauer Preis mit Design','exact price with design'],
  ['Kurz natur (Russian Mani + Gellack)','Short natural (Russian mani + gel polish)'],['Russian Mani mit Gellack','Russian mani with gel polish'],['Auffüllen ab CHF','Infill from CHF'],['Preis im Salon','price in the salon'],
  ['Neues Set','New set'],['Kurz natur','Short natural'],['Extra lang','Extra long'],['einfarbig','one colour'],['Einfarbig','One colour'],['mit Baby Boomer','with baby boomer'],
@@ -3877,6 +3875,15 @@ window.__konfLang=l=>{kLang=l;trK();update();trK()};
 if(document.documentElement.lang==='en')window.__konfLang('en');
 
 
+
+/* 27.11 patch25: Unterschrift am Computer einzeilig halten (sonst rutscht der Preis unter den Bildschirmrand) */
+(()=>{const p=document.querySelector('#atelier .stage-cap'),b=document.getElementById('stageCap');if(!p||!b)return;
+  const fit=()=>{p.classList.remove('cap-lang');if(innerWidth<901)return;if(p.offsetHeight>b.offsetHeight*1.6||b.getClientRects().length>1||p.offsetHeight>44)p.classList.add('cap-lang')};
+  new MutationObserver(fit).observe(b,{childList:true,characterData:true,subtree:true});addEventListener('resize',fit);fit()})();
+/* 27.11 patch25: Tippen auf grauen Knopf → Hinweis leuchtet auf */
+(()=>{document.querySelectorAll('#atelier .seg').forEach(seg=>seg.addEventListener('click',e=>{if(e.target!==seg)return;
+  const b=[...seg.querySelectorAll('button:disabled')].find(x=>{const r=x.getBoundingClientRect();return e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom});if(!b)return;
+  const h=seg.closest('.ctrl')&&seg.closest('.ctrl').querySelector('.fin-hint');if(!h||!h.textContent.trim())return;h.classList.remove('flash');void h.offsetWidth;h.classList.add('flash')}))})();
 /* ===== 24.11 №124: «+»-Option nochmals tippen = entfernen ===== */
 (()=>{const back={segFin:'farbe',segFx:'none'};
   Object.keys(back).forEach(id=>{const seg=document.getElementById(id);if(!seg)return;
@@ -3934,12 +3941,13 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
   const acts=$('#setActs'),res=$('#atelier .result'),head=$('#atelier .sec-head');
   const place=()=>{if(!acts||!res)return;if(matchMedia('(max-width:900px)').matches){if(acts.previousElementSibling!==res)res.after(acts)}else if(acts.parentNode!==head)head.appendChild(acts)};
   place();addEventListener('resize',place);
-  const setText=()=>{const cap=$('#stageCap').textContent.trim(),nm=$('#resName').textContent.trim(),pr=[...$('#resPrice').childNodes].map(n=>n.textContent.trim()).filter(Boolean).join(' '),ex=$('#resEx').textContent.trim();
-    return (en()?'My set (Get Nailed! Set Studio): ':'Mein Set (Get Nailed! Set-Studio): ')+nm+(ex?' · '+ex:'')+' · '+pr};
+  const setText=()=>{const cap=$('#stageCap').textContent.trim(),nm=$('#resName').textContent.trim(),pr=$('#resPrice').style.visibility==='hidden'?'':[...$('#resPrice').childNodes].map(n=>n.textContent.trim()).filter(Boolean).join(' '),ex=$('#resEx').textContent.trim();
+    return (en()?'My set (Get Nailed! Set Studio): ':'Mein Set (Get Nailed! Set-Studio): ')+nm+(ex?' · '+ex:'')+(pr?' · '+pr:'')};
   const note=t=>{const n=$('#saNote');n.textContent=t;clearTimeout(note.t);note.t=setTimeout(()=>{n.textContent=''},9000)};
   /* Buchen: Set kopieren, echte Buchungsseite des gewählten Salons öffnen – dort wird nichts automatisch abgeschickt */
   $('#saBook')&&$('#saBook').addEventListener('click',()=>{const t=setText(),url=($('#tBook')||{}).href||'https://www.fresha.com/a/get-nailed-seefeld-zurich-seefeldstrasse-7-ybhqqpfa';
     const done=()=>note(en()?'Set copied – paste it into the note when booking.':'Set kopiert – bei der Buchung einfach in die Bemerkung einfügen.');
+    if($('#stageKind').textContent.trim()===(en()?'Preview':'Vorschau')){window.open(url,'_blank','noopener');return}
     try{navigator.clipboard.writeText(t).then(done,done)}catch(e){done()}
     window.open(url,'_blank','noopener')});
   /* Als Bild speichern */
@@ -3954,6 +3962,7 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
     g.strokeStyle='#B8924F';g.lineWidth=3;g.beginPath();g.moveTo(ax-12,ay+aw/2);g.arc(ax+aw/2,ay+aw/2,aw/2+12,Math.PI,0);g.lineTo(ax+aw+12,ay+ah+12);g.lineTo(ax-12,ay+ah+12);g.closePath();g.stroke();
     g.fillStyle='#2B2320';g.font='400 44px "Playfair Display"';const cap=$('#stageCap').textContent.trim();g.fillText(cap,W/2,ay+ah+90,W-120);
     g.fillStyle='#6E1A2E';g.font='400 64px "Playfair Display"';const rp=$('#resPrice');g.fillText([...rp.childNodes].map(n=>n.textContent.trim()).filter(Boolean).join(' '),W/2,ay+ah+170);
+    {const sn=$('#stNote');if(sn&&!sn.hidden){g.fillStyle='#6E1A2E';g.font='italic 400 27px "Libre Franklin"';g.fillText(sn.textContent.trim(),W/2,ay+ah+225,W-100)}}
     g.fillStyle='#7A6A62';g.font='400 26px "Libre Franklin"';g.fillText(en()?'Show it at the desk or paste it into your booking':'Am Empfang zeigen oder bei der Buchung angeben',W/2,H-60);
     c.toBlob(async b=>{const f=new File([b],'GetNailed_Set.png',{type:'image/png'});
       if(matchMedia('(pointer:coarse)').matches&&navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:'Get Nailed! Set'});return}catch(e){}}
