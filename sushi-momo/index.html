@@ -1650,5 +1650,10 @@ if(lang==="en"){ if(document.readyState==="loading") document.addEventListener("
   addEventListener("scroll",()=>{ if(!tick){ tick=true; requestAnimationFrame(upd); } },{passive:true});
   hdr.addEventListener("focusin",()=>set(false));
 })();</script>
+<script>/* 28.11 Baender halten die Seite nicht */
+addEventListener("wheel",e=>{ if(e.ctrlKey||e.defaultPrevented) return; const t=e.target.closest&&e.target.closest(".galerie,.gn-spur"); if(!t) return;
+  const dx=Math.abs(e.deltaX), dy=Math.abs(e.deltaY); if(dy<=dx||dy===0) return;
+  e.preventDefault(); const k=e.deltaMode===1?16:(e.deltaMode===2?innerHeight:1); scrollBy(0,e.deltaY*k); if(dx>0) t.scrollLeft+=e.deltaX*k; },{passive:false});
+</script>
 </body>
 </html>
