@@ -745,6 +745,12 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 /* Preise nie abschneiden (EN «CHF 18» ist breiter als «Fr. 18») */
 .sheet .row{grid-template-columns:58px minmax(0,1fr) 70px}.sheet .rp{white-space:nowrap;text-align:right}
 @media (max-width:760px){.sheet .row{grid-template-columns:52px minmax(0,1fr) 60px}.sheet .rt{white-space:normal;overflow:visible}}
+/* Design 27.11: keine Luecken, keine duennen Rahmen */
+@media (min-width:761px){ .wall .stack .mat{position:relative} .wall .stack img{position:absolute!important;left:4px;top:4px;width:calc(100% - 8px)!important;height:calc(100% - 8px)!important;object-fit:cover} }
+.muster{border:0;background:rgba(201,164,92,.09)}
+@media (max-width:760px){ .steps li:not(:last-child)::after{content:none} }
+.contact a{border-color:transparent;background:rgba(244,236,220,.035)}
+.rev{padding-bottom:calc(clamp(8px,1.4vw,18px) + 10px)!important}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -831,7 +837,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 <!-- ===== Plattenplaner ===== -->
 <section class="plan" id="platte">
   <div class="wrap">
-    <h2 class="reveal">Sushi-Platte für <i>Ihre Gruppe</i><span class="h2sub">in 10 Sekunden zusammengestellt</span></h2>
+    <h2 class="reveal">Sushi-Platte für <i>Ihre Gruppe</i><span class="h2sub">in 10 Sekunden zusammengestellt</span></h2>
     <p class="lead reveal" style="margin-top:14px">Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.</p>
     <ol class="steps reveal" id="pSteps" aria-label="So funktioniert es"><li data-s="1"><b>1</b>Personen</li><li data-s="2"><b>2</b>Hunger</li><li data-s="3"><b>3</b>Stil</li><li data-s="4" class="goal"><b>✓</b>Ihre Platte</li></ol>
     <div class="grid">
@@ -876,11 +882,11 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 <!-- ===== Salon ===== -->
 <section class="salon" id="salon">
   <div class="wrap">
-    <h2 class="reveal">Der Salon an der <i>Engelgasse</i></h2>
+    <h2 class="reveal">Der Salon an der <i>Engelgasse</i></h2>
     <p class="moved reveal" id="moved">Mitten in der Altstadt: grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.</p>
     <div class="wall">
       <figure class="frame f1 reveal"><span class="lamp"></span><div class="mat"><img src="img/s/salon_quer.jpg" srcset="img/s/salon_quer_m.jpg 900w, img/s/salon_quer.jpg 1500w" sizes="(max-width:760px) 100vw, 1180px" width="1500" height="837" alt="Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen" loading="lazy" decoding="async" style="aspect-ratio:16/8.4"><span class="lit"></span></div></figure>
-      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/s/salon_hoch.jpg" srcset="img/s/salon_hoch_m.jpg 720w, img/s/salon_hoch.jpg 900w" sizes="(max-width:760px) 100vw, 580px" width="900" height="1125" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
+      <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/s/salon_hoch.jpg" srcset="img/s/salon_hoch_m.jpg 580w, img/s/salon_hoch.jpg 725w" sizes="(max-width:760px) 100vw, 580px" width="900" height="1125" alt="Der lange Salon mit roten Teppichen und Tischlampen" loading="lazy" decoding="async" style="aspect-ratio:4/5"><span class="lit"></span></div></figure>
       <div class="stack">
         <figure class="frame reveal"><span class="lamp"></span><div class="mat"><img src="img/s/hosomaki.jpg" width="700" height="700" alt="Hosomaki mit Lachs und Gurke auf Schiefer" loading="lazy" decoding="async"><span class="lit"></span></div></figure>
       </div>
@@ -894,11 +900,11 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   <div class="wrap">
     <p class="neon-kick">Signature</p>
     <h2 class="neon" id="neon">Sake Cocktails</h2>
-    <p class="lead reveal">Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.</p>
+    <p class="lead reveal">Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.</p>
     <div class="drinks">
       <article class="drink big reveal"><img src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Apéro vor dem Sushi oder ein letzter Drink zum Schluss.</p></div></article>
-      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/yuzu_sakura.jpg" width="700" height="700" alt="Cocktail Yuzu Sakura" loading="lazy" decoding="async"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
-      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
+      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/yuzu_sakura.jpg" width="700" height="700" alt="Cocktail Yuzu Sakura" loading="lazy" decoding="async"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
+      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
     </div>
     <div class="drinks two">
       <div class="list reveal"><h3>Signature Sake</h3>
@@ -919,7 +925,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 <section class="rev" id="stimmen">
   <div class="wrap">
     <div class="top reveal">
-      <h2>Was unsere Gäste <i>sagen</i></h2>
+      <h2>Was unsere Gäste <i>sagen</i></h2>
       <a class="score" href="https://www.google.com/maps/search/?api=1&amp;query=Leo+Caf%C3%A9+Bar+Restaurant+Engelgasse+2+St.+Gallen" target="_blank" rel="noopener"><b>4,4</b><span><span class="stars">★★★★</span><span class="stars" style="opacity:.3">★</span><br>302 Bewertungen auf Google</span></a>
     </div>
     <div class="sidewrap"><div class="sleeves" id="sleeves"></div><button class="arrow ga sa-prev" id="rPrev" aria-label="Vorherige Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button><button class="arrow ga sa-next" id="rNext" aria-label="Nächste Bewertung"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button></div>
@@ -1029,20 +1035,20 @@ const LIEB=[
  {img:"nigiri_sake_yaki",nr:9,n:"Sake Yaki",d:"Geflämmter Lachs, Avocado, Teriyaki · 2 Stück",p:10},
  {img:"red_dragon",nr:73,n:"Red Dragon",d:"Crevette in Tempura, aussen Thunfisch & Tobiko · 8 Stück",p:35},
  {img:"caterpillar",nr:72,n:"Ebi Caterpillar",d:"Crevette in Tempura, aussen Avocado, Teriyaki · 8 Stück",p:32},
- {img:"crunchy_tempura",nr:81,n:"Lachs Tatar Crunchy",d:"In Tempura, Spicy Mayo, Lauch · 6 Stück",p:25},
+ {img:"crunchy_tempura",nr:81,n:"Lachs Tatar Crunchy",d:"In Tempura, Spicy Mayo, Lauch · 6 Stück",p:25},
  {img:"ramen",nr:"",n:"Shoyu Ramen",d:"Chashu (Schweinefleisch), Ajitama-Ei, Narutomaki, Hühnerbrühe",p:24},
- {img:"bao",nr:"",n:"Bao Crispy Chicken",d:"Teriyaki, Gurke, Koriander, Gochujang-Mayo",p:11},
+ {img:"bao",nr:"",n:"Bao Crispy Chicken",d:"Teriyaki, Gurke, Koriander, Gochujang-Mayo",p:11},
  {img:"sashimi",nr:"",n:"Sashimi",d:"Lachs, Thunfisch oder Crevetten · je 4 Stück",p:"9–10"},
  {img:"gyoza",nr:85,n:"Gyoza",d:"8 vegetarische Teigtaschen, Sweet-Soja-Dip",p:12},
  {img:"edamame",nr:127,n:"Edamame",d:"In der Schale mit Meersalz",p:7}
 ];
 const REV=[
  {n:"e m",t:"vor 3 Monaten",q:"The best sushi in Sankt Gallen and I think my favourite restaurant in the city. Everything we’ve tried is amazing, the sushi, bao buns, the ramen, wonderful sashimi."},
- {n:"Sameer Ismail",t:"vor 6 Monaten",q:"Delicious food.. especially the rolls which are beautifully presented and the ramen. Cool decor, fun and lively vibe with music and a special and generous host that serves with passion."},
+ {n:"Sameer Ismail",t:"vor 6 Monaten",q:"Delicious food.. especially the rolls which are beautifully presented and the ramen. Cool decor, fun and lively vibe with music and a special and generous host that serves with passion."},
  {n:"Pin Reviews",t:"vor 5 Monaten",q:"The sushi was really good and fresh. We ordered: Dragon Tempura, Sashimi Lachs, Nigiri Ika Ten, Futomaki Maguro sweet and spicy. For drinks we had Yuzu Sakura and Yuzu Fizz. We will definately go again!"},
  {n:"Iwona Beauty",t:"vor 1 Jahr",q:"The food was absolutely fantastic! Sushi platter was amazing and great value!! The staff were friendly and attentive:) Top of the top! 11/10 …and great Cocktails!!!!"},
  {n:"Li Sha van der Logt",t:"vor 1 Jahr",q:"We go out to eat for sushi often, and we can tell it’s fresh and the quality is good. We also tried ramen here, which was also nice. I would totally recommend 😃"},
- {n:"Selena Stein",t:"vor 4 Monaten",q:"Top Restaurant wenn man wirklich gutes Essen geniessen möchte. Das Personal ist super freundlich und zuvorkommend und auch das Ambiente ist gemütlich. Wirklich empfehlenswert!"},
+ {n:"Selena Stein",t:"vor 4 Monaten",q:"Top Restaurant wenn man wirklich gutes Essen geniessen möchte. Das Personal ist super freundlich und zuvorkommend und auch das Ambiente ist gemütlich. Wirklich empfehlenswert!"},
  {n:"Samar Nageen",t:"vor 2 Jahren",q:"The best sushi 🍣 the atmosphere was so good so fresh and beautiful will definitely go again ♥️ Thanku for the beautiful evening"}
 ];
 const DAYS=[["So","Sonntag",null],["Mo","Montag",null],["Di","Dienstag","12:00–14:00 · 17:00–22:00"],["Mi","Mittwoch","12:00–14:00 · 17:00–22:00"],["Do","Donnerstag","12:00–14:00 · 17:00–22:00"],["Fr","Freitag","12:00–14:00 · 17:00–23:00"],["Sa","Samstag","12:00–23:00"]];
@@ -1089,7 +1095,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   on("wheel",e=>{ if(swallow(e)) return;
     const dy=e.deltaMode===1?e.deltaY*32:e.deltaMode===2?e.deltaY*600:e.deltaY; push(Math.max(-.34,Math.min(.34,dy/700)));
     /* kraeftiges Weiterdrehen nach vollem Licht: sofort fertig, der Rest der Bewegung scrollt die Seite weiter */
-    if(!done && extra>.25){ pass=true; finish(); } },{passive:false});
+    if(!done && extra>.15){ pass=true; const rest=extra*700; finish(); requestAnimationFrame(()=>scrollBy(0,rest)); } },{passive:false});
   let ty=null;
   on("touchstart",e=>{ ty=e.touches[0].clientY; },{passive:true});
   on("touchmove",e=>{ if(swallow(e)||ty==null) return; const y=e.touches[0].clientY; push((ty-y)/420); ty=y; },{passive:false});
@@ -1228,7 +1234,8 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
   seg("#hunger",v=>{hung=+v; start(); mark(2);}); seg("#stil",v=>{stil=v; start(); mark(3);});
   $("#copy").onclick=async e=>{ const en=window.LANG==="en"; const txt=(en?"Platter for "+pers+(pers===1?" person":" people"):"Platte für "+pers+(pers===1?" Person":" Personen"))+" – Leo Sushi Bar\n"+lines.map(l=>`${l.k}× ${en?"No.":"Nr."} ${l.nr} ${l.n}`).join("\n");
     try{ await navigator.clipboard.writeText(txt); e.target.textContent="Kopiert ✓"; }catch(_){ e.target.textContent="Bitte markieren"; } setTimeout(()=>e.target.textContent="Liste kopieren",1800); };
-  $("#pTot").classList.add("off"); $("#pOrder").classList.add("idle"); calc();
+  /* gleich eine fertige Platte zeigen (4 Personen · Normal · Gemischt) statt leerem Kasten */
+  start(); calc();
 })();
 
 /* ================= Salon / Neon ================= */
@@ -1322,8 +1329,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Licht einschalten":"Switch the light on",
 "Frisches Sushi, Ramen und Sake-Cocktails in unserem Salon an der Engelgasse 2 – mitten in der St. Galler Altstadt.":"Fresh sushi, ramen and sake cocktails in our salon at Engelgasse 2 – right in the heart of St. Gallen’s old town.",
 "Tisch reservieren":"Book a table","Zur Karte":"See the menu","Leos":"Leo’s",
-"Auf schwarzem Schiefer serviert – mit den Nummern unserer Küche.":"Served on black slate – with our kitchen numbers.",
-"Beliebt auf Google":"Popular on Google","Die":"The",
+"Die":"The",
 "Mit unseren Küchennummern – am Telefon einfach «Nr. 73» sagen.":"With our kitchen numbers – on the phone, just say “No. 73”.",
 "Suchen: Lachs, Avocado, Ramen, 73 …":"Search: salmon, avocado, ramen, 73 …","Karte durchsuchen":"Search the menu",
 "Vegi":"Veggie","Fisch & Meeresfrüchte gegart, flambiert oder frittiert":"Fish & seafood cooked, flambéed or fried","Gegart":"Cooked","Scharf":"Spicy","Geflämmt":"Flamed",
@@ -1335,7 +1341,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Allergien? Bitte beim Bestellen sagen.":"Allergies? Please tell us when you order.",
 "Suchergebnis":"Search results","Gut zu wissen":"Good to know","Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.":"Nothing found – try “salmon”, “avocado” or a number.",
 "Crunchy Rollen":"Crunchy Rolls","Vorspeisen & Bao":"Starters & Bao","Ramen & Suppen":"Ramen & Soups",
-"Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
+"Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
 "Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose how many people, your appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
 "So funktioniert es":"How it works","Personen":"People","Hunger":"Appetite","Stil":"Style","Ihre Platte":"Your platter",
 "Grosse Sushi-Platte auf Schiefer, von oben":"Large sushi platter on slate, seen from above",
@@ -1351,12 +1357,10 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen":"Leo’s salon in the evening: green velvet banquettes, paintings in gilt frames",
 "Der lange Salon mit roten Teppichen und Tischlampen":"The long salon with red rugs and table lamps",
 "Hosomaki mit Lachs und Gurke auf Schiefer":"Hosomaki with salmon and cucumber on slate","Sashimi von Lachs und Thunfisch auf Eis":"Salmon and tuna sashimi on ice",
-"Hausgemachte Sake-Kreationen, passend zu Sushi – und unser eigenes Bier, das Leo Lager.":"House-made sake cocktails to go with sushi – plus Leo Lager from Thailand.",
-"Die Bar von Leo im Neonlicht":"Leo’s bar in neon light","Die Bar":"The bar","Aperitif vor dem Sushi oder der letzte Drink um elf.":"An aperitif before the sushi, or a last drink at eleven.",
-"Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral & frisch":"Sake, yuzu, lemon juice, sakura syrup – floral & fresh",
-"Sake, Matcha, Zitrone, Zucker – umami & erfrischend":"Sake, matcha, lemon, sugar – umami & refreshing",
+"Die Bar von Leo im Neonlicht":"Leo’s bar in neon light","Die Bar":"The bar","Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral & frisch":"Sake, yuzu, lemon juice, sakura syrup – floral & fresh",
+"Sake, Matcha, Zitrone, Zucker – umami & erfrischend":"Sake, matcha, lemon, sugar – umami & refreshing",
 "Sake, Holunder, Tonic, Limettenzeste":"Sake, elderflower, tonic, lime zest","Sake, Yuzu, Soda – Zitrus & Spritz":"Sake, yuzu, soda – citrus & spritz",
-"Bier & Bläschen":"Beer & bubbles","Thailand · 5,0 % · 3,3 dl":"Thailand · 5.0% · 33 cl","Japan · 5,0 % · 3,3 dl":"Japan · 5.0% · 33 cl","7,5 dl":"75 cl",
+"Thailand · 5,0 % · 3,3 dl":"Thailand · 5.0% · 33 cl","Japan · 5,0 % · 3,3 dl":"Japan · 5.0% · 33 cl","7,5 dl":"75 cl",
 "Was unsere Gäste":"What our guests","sagen":"say","302 Bewertungen auf Google":"302 reviews on Google",
 "Vorherige Bewertung":"Previous review","Vorherige Gerichte":"Previous dishes","Weitere Gerichte":"More dishes","Nächste Bewertung":"Next review",
 "Bis":"See you","heute Abend?":"this evening?","heute Mittag?":"at lunchtime?","morgen?":"tomorrow?","bald?":"soon?","Tisch reservieren & Bestellungen":"Table bookings & orders","Route planen":"Get directions",
@@ -1392,12 +1396,13 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
   "Website-Entwurf von":"Website draft by",
   "· nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.":"· preview only – some links and features are not active yet.",
   "Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in Fr. incl. 8.1% VAT.",
-  "Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.":"House-made sake cocktails to go with sushi – plus Leo Lager from Thailand.",
+  "Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.":"House-made sake cocktails to go with sushi – plus Leo Lager from Thailand.",
   "Bier, Sake & Champagner":"Beer, sake & champagne",
   "Crunchy Maki in Tempura":"Crunchy tempura maki",
   "Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in CHF incl. 8.1% VAT.",
   "GEFLÄMMT":"SEARED",
-  "Geflämmt":"Seared"
+  "Geflämmt":"Seared",
+  "1 Person":"1 person"
   };
   const ING={"Paprikapaste":"paprika paste","eingelegter Kürbis":"pickled pumpkin","eingelegter Rettich":"pickled radish","mariniertes Gemüse":"marinated vegetables","marinierter Bambus":"marinated bamboo shoots","Schweinefleisch (Chashu)":"pork (chashu)","Narutomaki (Fischkuchen)":"narutomaki (fish cake)",
 "1 Stück":"1 piece","5 Stück":"5 pieces","5 Calamari":"5 calamari","5 Crevetten":"5 prawns","8 Teigtaschen":"8 dumplings","Aal in Tempura":"tempura eel","Ajitama-Ei":"ajitama egg",
@@ -1433,6 +1438,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     [/^Seite (\d+) \/ (\d+)$/, (m,a,b)=>"Page "+a+" / "+b],
     [/^Seiten (\d+)–(\d+) \/ (\d+)$/, (m,a,b,c)=>"Pages "+a+"–"+b+" / "+c],
     [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)],
+    [/^(\d+) Personen?$/, (m,a)=>a+(a==="1"?" person":" people")],
     [/^Fr\. ([\d.–]+)$/, (m,a)=>"CHF "+a],
     [/^Nr\. (.+)$/, (m,a)=>"No. "+a],
     [/^Heute · (\S+)$/, (m,a)=>"Today · "+(DAY[a]||a)],
@@ -1440,6 +1446,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
     [/^Google · vor (\d+) (\S+)$/, (m,n,u)=>"Google · "+n+" "+(UNIT[u]||u)+" ago"],
     [/^Anrufen: (.+)$/, (m,a)=>"Call: "+a],
     [/^Weiter: (.+)$/, (m,a)=>"Next: "+(D[a]||a)],
+    [/^(\d+) Personen?$/, (m,a)=>a+(a==="1"?" person":" people")],
     [/^Fr\. ([\d.–]+)$/, (m,a)=>"CHF "+a],
     [/^(Mo|Di|Mi|Do|Fr|Sa|So)((?:[–&]| & )(Mo|Di|Mi|Do|Fr|Sa|So))*$/, m=>m.replace(/Mo|Di|Mi|Do|Fr|Sa|So/g,x=>D[x]||x)]
   ];
