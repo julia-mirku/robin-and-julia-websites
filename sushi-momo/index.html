@@ -527,7 +527,9 @@ footer.ft{background:linear-gradient(to bottom,#120a0d 0%,#0e080a 100%)}
 .plate .rot>*{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .plate .rot{position:relative}
 .tw-c{transform:rotate(calc(var(--p,0) * -300deg));will-change:transform}
-.tw-top{-webkit-mask-image:conic-gradient(from 0deg,transparent 0 calc(var(--p,0) * 360deg),#000 calc(var(--p,0) * 360deg + 2deg));mask-image:conic-gradient(from 0deg,transparent 0 calc(var(--p,0) * 360deg),#000 calc(var(--p,0) * 360deg + 2deg))}
+.tw-top{-webkit-mask-image:conic-gradient(from 0deg,transparent 0 calc(var(--p,0) * 363deg - 3deg),#000 calc(var(--p,0) * 363deg));mask-image:conic-gradient(from 0deg,transparent 0 calc(var(--p,0) * 363deg - 3deg),#000 calc(var(--p,0) * 363deg))}
+#hero:not(.lauf) .tw-top{-webkit-mask-image:none;mask-image:none}
+#hero.momo-ende:not(.lauf) .tw-top{opacity:0}
 .tw-f{opacity:0}.tw-f.on{opacity:1}
 
 /* ===== 27.11 Dyry: Box-Inhalt als Liste, Foto «Sushi oder Momo?» volle Hoehe ===== */
@@ -639,13 +641,30 @@ html[data-sterne="ast"] .wand button[aria-pressed="true"]{-webkit-backdrop-filte
 @media (hover:hover){.pay a:hover{background:rgba(243,163,181,.22);color:var(--rice)}}
 /* Julia 27.11: auf breiten Bildschirmen Titelspalte breiter – «Das beste Sushi» in 2 Zeilen, Schrift gleich */
 @media (min-width:1600px){.wrap.hero-in{width:min(1300px,100% - 32px)}}
+
+/* ===== 27.11 Julia: Teller groesser, etwas links; Schalter Sushi · Momo ===== */
+@media (min-width:900px){
+  .plate{width:min(50vw,calc(100svh - var(--hdr) - var(--bar0,0px) - 44px),100%,720px)!important;justify-self:center;margin-right:0}
+}
+@media (min-width:1600px){.wrap.hero-in{width:min(1360px,100% - 32px);grid-template-columns:1fr 1fr}}
+@media (max-width:899px){
+  .plate{padding:2px 0 36px}
+  .plate .rot{width:min(calc(100cqw - 20px),calc(100cqh - 20px),640px);height:min(calc(100cqw - 20px),calc(100cqh - 20px),640px)}
+  .hint{bottom:10px}
+  .tw-b button{line-height:16px}
+}
+.tw-tog{position:absolute;z-index:3;transform:translate(-50%,-100%);display:inline-flex;padding:3px;border-radius:999px;background:rgba(23,13,16,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 4px 16px rgba(0,0,0,.35),inset 0 0 0 1px rgba(246,240,229,.16)}
+.tw-tog[hidden]{display:none}
+.tw-tog button{font:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1;padding:7px 12px;border-radius:999px;color:rgba(246,240,229,.75);transition:background-color .25s,color .25s}
+.tw-tog button[aria-pressed="true"]{background:var(--rice);color:var(--ink)}
+@media (hover:hover){.tw-tog button[aria-pressed="false"]:hover{color:var(--rice);background:rgba(246,240,229,.12)}}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 <script>/* 27.11 Entwurf: Varianten je Block */(function(){var D={"theke": "fotos", "stuehle": "an", "sterne": "ast", "schild": "schild"},h=document.documentElement;for(var k in D){var v=D[k];try{v=localStorage.getItem("momo-"+k)||v}catch(e){}var q=new RegExp("[?&]"+k+"=(\\w+)").exec(location.search);if(q)v=q[1];h.setAttribute("data-"+k,v)}})();</script>
 </head>
 <body>
 
-<div class="entwurf" id="entwurf" role="note" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht&nbsp;– einige Links und Funktionen sind noch nicht aktiv.<span class="tw-w" id="tw-w" lang="de"><span class="tw-l">Variante wählen</span><span class="tw-b" role="group" aria-label="Teller-Variante wählen"><button type="button" data-v="1" aria-pressed="true">1 Mandala</button><button type="button" data-v="2" aria-pressed="false">2 Ringe</button><button type="button" data-v="3" aria-pressed="false">3 Sushi → Momo</button></span></span></div>
+<div class="entwurf" id="entwurf" role="note" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i><b>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht&nbsp;– einige Links und Funktionen sind noch nicht aktiv.<span class="tw-w" id="tw-w" lang="de"><span class="tw-l">Variante wählen</span><span class="tw-b" role="group" aria-label="Teller-Variante wählen"><button type="button" data-v="3" aria-pressed="true">1 Sushi → Momo</button><button type="button" data-v="2" aria-pressed="false">2 Ringe</button></span></span></div>
 <script>(function(){var b=document.getElementById("entwurf"),h=b.offsetHeight+"px",r=document.documentElement;r.style.setProperty("--bar",h);r.style.setProperty("--bar0",h);})();</script>
 
 <header class="hdr" id="hdr">
@@ -684,9 +703,9 @@ html[data-sterne="ast"] .wand button[aria-pressed="true"]{-webkit-backdrop-filte
       </div>
       <p class="addr"><a href="https://www.google.com/maps/dir/?api=1&destination=BBQ+SUSHI+MOMO+St.+Gallerstrasse+66+9200+Gossau" target="_blank" rel="noopener">St. Gallerstrasse 66, 9200 Gossau</a><span>Di–So geöffnet</span></p>
     </div>
-    <div class="plate" aria-hidden="true"><div class="rot" id="rot"></div></div>
+    <div class="plate"><div class="rot" id="rot" aria-hidden="true"></div><div class="tw-tog" id="twtog" role="group" aria-label="Sushi oder Momo zeigen" hidden><button type="button" data-z="0" aria-pressed="true">Sushi</button><button type="button" data-z="1" aria-pressed="false">Momo</button></div></div>
     <script>/* 27.11 Teller-Variante: 1 Mandala · 2 zwei Ringe gegenlaeufig · 3 Sushi -> Momo (Sektor-Maske) · 4 Aufbau Bild fuer Bild */
-    (function(){var v=1,q=/[?&]teller=([1-4])/.exec(location.search);try{v=+(localStorage.getItem("momo-teller")||1)}catch(e){}if(q){v=+q[1];try{localStorage.setItem("momo-teller",v)}catch(e){}}if(!(v>=1&&v<=3))v=1;
+    (function(){var v=3,q=/[?&]teller=([1-4])/.exec(location.search);try{v=+(localStorage.getItem("momo-teller")||1)}catch(e){}if(q){v=+q[1];try{localStorage.setItem("momo-teller",v)}catch(e){}}if(v!==2)v=3;
     var r=document.getElementById("rot"),SZ=' sizes="(max-width:900px) 92vw, 46vw" width="1000" height="1000" alt="" decoding="async"';
     var im=function(n,c,x){return '<img class="'+(c||'')+'" src="img/'+n+'-560.webp" srcset="img/'+n+'-560.webp 560w, img/'+n+'-1000.webp 1000w"'+SZ+(x||'')+'>';};
     var h=v==2?im("mandala_ring","",' fetchpriority="high"')+im("mandala_center","tw-c"):v==3?im("momo-teller","")+im("mandala","tw-top",' fetchpriority="high"'):"";
@@ -970,12 +989,25 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const hero=$("#hero"), cnt=$("#cnt"), ends=$$("#ending .e"), now=()=>performance.now();
   let p=0,playing=false,done=false,t0=0,raf=0,shown=0;
   const DUR=1300;
+  const tog=document.getElementById("twtog"), tb=tog?[...tog.children]:[], rotEl=document.getElementById("rot"), sorte=document.documentElement.getAttribute("data-teller")==="3";
   const set=v=>{ hero.style.setProperty("--p",v.toFixed(4)); if(window.__tellerFrame) __tellerFrame(v);
+    hero.classList.toggle("lauf",v>0.0005&&v<0.9995); hero.classList.toggle("momo-ende",v>=0.9995);
+    if(tb.length){ const m=v>.5; tb[0].setAttribute("aria-pressed",!m); tb[1].setAttribute("aria-pressed",m); }
     const i=v<.36?0:v<.72?1:2; if(i!==shown){ ends[shown].classList.remove("on"); ends[i].classList.add("on"); shown=i; } };
   const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
   function finish(){ if(done) return; done=true; playing=false; p=1; set(1); cancelAnimationFrame(raf); hero.classList.add("done"); }
   function loop(){ const k=Math.min(1,(now()-t0)/DUR); p=ease(k); set(p); if(k>=1) finish(); else raf=requestAnimationFrame(loop); }
   function play(){ if(playing||done) return; playing=true; t0=now(); raf=requestAnimationFrame(loop); setTimeout(()=>{ if(!done) finish(); },DUR+250); }
+  /* 27.11: frei hin und her (zurueckscrollen oben, Schalter) */
+  function anim(to,cb){ cancelAnimationFrame(raf); playing=true; const p0=p; const t1=now(); const lp=()=>{ const k=Math.min(1,(now()-t1)/DUR); p=p0+(to-p0)*ease(k); set(p); if(k<1) raf=requestAnimationFrame(lp); else { playing=false; p=to; set(to); if(cb) cb(); } }; raf=requestAnimationFrame(lp); }
+  const zurueck=()=>{ if(playing||p<.99||scrollY>1) return; anim(0,()=>{ done=false; hero.classList.remove("done"); }); };
+  if(tog&&sorte){ tog.hidden=false;
+    const place=()=>{ tog.style.left=(rotEl.offsetLeft+rotEl.offsetWidth/2)+"px"; tog.style.top=(rotEl.offsetTop+rotEl.offsetHeight-14)+"px"; };
+    place(); addEventListener("resize",place); if(document.fonts) document.fonts.ready.then(place);
+    tog.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; const to=+b.dataset.z;
+      if(reduce){ p=to; set(to); return; }
+      if(!done){ if(to===1) play(); return; }
+      if(Math.abs(p-to)>.01) anim(to); }); }
   /* Zahl und Sterne laufen gleich nach dem Laden selbst hoch – nie «0» stehen lassen (V6, 25.11) */
   const N=+cnt.dataset.n, sc=cnt.closest(".score");
   const zaehl=v=>{ cnt.textContent=Math.round(v*N); sc.style.setProperty("--s",v.toFixed(3)); };
@@ -984,13 +1016,14 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   scrollTo(0,0);
   /* Scrollen ohne unsere Geste (Link, Script, Bildlaufleiste): Teller sofort fertig, Seite frei */
   addEventListener("scroll",()=>{ if(!done && scrollY>0) finish(); },{passive:true});
-  addEventListener("wheel",e=>{ if(done) return; e.preventDefault(); if(e.deltaY>0) play(); },{passive:false});
+  addEventListener("wheel",e=>{ if(done){ if(e.deltaY<0) zurueck(); return; } e.preventDefault(); if(e.deltaY>0) play(); },{passive:false});
   /* Touch: derselbe Wisch laeuft nach 170 sofort als normales Scrollen weiter */
   let ty=null, lockedGesture=false;
   addEventListener("touchstart",e=>{ ty=e.touches[0].clientY; lockedGesture=!done; },{passive:true});
   addEventListener("touchmove",e=>{ if(ty==null) return; const y=e.touches[0].clientY;
     if(!done){ e.preventDefault(); if(playing||ty-y>6){ play(); ty=y; } return; }
-    if(lockedGesture){ e.preventDefault(); scrollBy(0,ty-y); ty=y; } },{passive:false});
+    if(lockedGesture){ e.preventDefault(); scrollBy(0,ty-y); ty=y; return; }
+    if(y-ty>30) zurueck(); },{passive:false});
   addEventListener("touchend",()=>{ ty=null; lockedGesture=false; },{passive:true});
   addEventListener("keydown",e=>{ if(done) return; if(["ArrowDown","PageDown"," ","End"].includes(e.key)){ e.preventDefault(); play(); } if(["ArrowUp","PageUp","Home"].includes(e.key)) e.preventDefault(); });
   $$('a[href^="#"]').forEach(a=>a.addEventListener("click",()=>{ if(!done) finish(); }));
