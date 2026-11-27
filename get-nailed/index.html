@@ -881,6 +881,34 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
 @media (min-width:901px) and (min-height:700px){#atelier .set-grid>.stage{width:min(100%,calc((100svh - 280px)*.8),420px)!important}}
 
 /* 27.11 patch26 */#atelier #farbeNote{text-wrap:balance}
+
+/* 27.11 patch29 French klassisch/fein */
+#atelier .frbox{flex-wrap:wrap}
+#atelier #segFw{display:flex;gap:6px}
+#atelier #segFw button{padding:6px 12px;font-size:13.5px}
+
+/* 28.11 patch34 wahl: Hintergrund Mitte zwischen wie jetzt / heller */
+.hero.b .bgwall img{opacity:.74!important;filter:brightness(1.03) saturate(1.09)}
+.hero.b .bgwall:after{background:linear-gradient(90deg,rgba(28,9,16,.90) 0,rgba(28,9,16,.60) 44%,rgba(28,9,16,.15) 100%)!important}
+@media (max-width:900px){.hero.b .bgwall:after{background:linear-gradient(180deg,rgba(28,9,16,.43),rgba(28,9,16,.90) 52%)!important}}
+/* 28.11 patch34 wahl: Preis links als heller Rechner, Hand bis unten (nur Computer ≥1200 px) */
+#layPreis{display:none}
+@media (min-width:1200px){
+ #atelier .stage-cap{display:none!important}
+ #atelier .set-grid>.stage{width:min(calc((100svh - 150px)*.8),470px)!important;align-self:start}
+ #atelier .stage .result.res-kopie{display:none!important}
+ #atelier .set-grid{align-items:start;grid-template-columns:230px auto minmax(0,1fr);gap:30px}
+ #atelier .set-grid>div:last-child .result{display:none!important}
+ #layPreis{display:flex;order:-1;flex-direction:column;justify-content:flex-end;align-self:start;height:calc(min(calc((100svh - 150px)*.8),470px)*1.25)}
+ #layPreis .lp-k{font:500 11px/1 "Josefin Sans",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+ #layPreis .result{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin:0!important;padding:20px!important;background:var(--papier)!important;color:var(--tinte)!important;border:1px solid var(--gold-2)!important;box-shadow:none}
+ #layPreis .result>div{min-width:0!important;width:100%}
+ #layPreis .result .name,#layPreis .result .ex{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere}
+ #layPreis .result .name{height:auto!important;max-height:none!important;-webkit-line-clamp:unset!important;display:block!important;font-size:14px!important;line-height:1.45;color:var(--tinte-2)!important}
+ #layPreis .result .ex{height:auto!important;font-size:13px!important;color:var(--gold)!important;line-height:1.35}
+ #layPreis .result .price{color:var(--tinte)!important}
+ #layPreis .result .price small{color:var(--tinte-2)!important}
+}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -1052,7 +1080,7 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
         <div class="ctrl"><h3>Form <span class="fin-hint" data-hint="form"></span></h3><div class="seg" id="segForm">
           <button data-v="mandel">Mandel</button><button data-v="eckig">Eckig</button>
         </div></div>
-        <div class="ctrl" id="colCtrl"><h3><span id="colTitle">Farbe</span> <span class="fin-cur" id="colName"></span> <span class="fin-hint" data-hint="col"></span></h3><div class="colrow"><div class="seg cols" id="segCol"><div class="pgrp"><span class="pg">Nude</span><div class="pgb"><button data-v="nude" class="pin" style="--c:#D08E84" aria-label="Nude" title="Nude"></button><button data-v="milky" class="pin" style="--c:#D4BCBB" aria-label="Milky" title="Milky"></button><button data-v="sand" data-w="2" style="--c:#D8B99A" aria-label="Sand" title="Sand"></button><button data-v="champagner" data-w="2" style="--c:#E6CDB4" aria-label="Champagner" title="Champagner"></button><button data-v="pfirsich" data-w="2" style="--c:#E3A98F" aria-label="Pfirsich-Nude" title="Pfirsich-Nude"></button><button data-v="karamell" data-w="3" style="--c:#B47A55" aria-label="Karamell" title="Karamell"></button></div></div><div class="pgrp"><span class="pg">Rosa</span><div class="pgb"><button data-v="rosa" class="pin" style="--c:#EDAFB4" aria-label="Rosa" title="Rosa"></button><button data-v="babyrosa" data-w="1" style="--c:#F2C4CC" aria-label="Babyrosa" title="Babyrosa"></button><button data-v="puderrosa" data-w="1" style="--c:#E0AEB0" aria-label="Puderrosa" title="Puderrosa"></button><button data-v="altrosa" data-w="1" style="--c:#C08585" aria-label="Altrosa" title="Altrosa"></button><button data-v="pink" data-w="2" style="--c:#E0457B" aria-label="Pink" title="Pink"></button><button data-v="fuchsia" data-w="3" style="--c:#C2185B" aria-label="Fuchsia" title="Fuchsia"></button></div></div><div class="pgrp"><span class="pg">Rot</span><div class="pgb"><button data-v="rot" class="pin" style="--c:#84101D" aria-label="Rot" title="Rot"></button><button data-v="kirschrot" data-w="1" style="--c:#B0102A" aria-label="Kirschrot" title="Kirschrot"></button><button data-v="tomatenrot" data-w="3" style="--c:#D7322B" aria-label="Tomatenrot" title="Tomatenrot"></button><button data-v="koralle" data-w="2" style="--c:#F06A5A" aria-label="Koralle" title="Koralle"></button><button data-v="ziegelrot" data-w="3" style="--c:#A8442F" aria-label="Ziegelrot" title="Ziegelrot"></button></div></div><div class="pgrp"><span class="pg">Bordeaux</span><div class="pgb"><button data-v="bordeaux" class="pin" style="--c:#582427" aria-label="Bordeaux" title="Bordeaux"></button><button data-v="weinrot" data-w="1" style="--c:#6E1423" aria-label="Weinrot" title="Weinrot"></button><button data-v="beere" data-w="2" style="--c:#8C2A4B" aria-label="Beere" title="Beere"></button><button data-v="pflaume" data-w="3" style="--c:#5B2A3E" aria-label="Pflaume" title="Pflaume"></button></div></div><div class="pgrp"><span class="pg">Braun</span><div class="pgb"><button data-v="mokka" data-w="1" style="--c:#6B4A3A" aria-label="Mokka" title="Mokka"></button><button data-v="schokolade" data-w="3" style="--c:#4A2C22" aria-label="Schokolade" title="Schokolade"></button><button data-v="cappuccino" data-w="2" style="--c:#A88672" aria-label="Cappuccino" title="Cappuccino"></button><button data-v="taupe" data-w="2" style="--c:#8E7C74" aria-label="Taupe" title="Taupe"></button></div></div><div class="pgrp"><span class="pg">Flieder</span><div class="pgb"><button data-v="flieder" class="pin" style="--c:#BF98B6" aria-label="Flieder" title="Flieder"></button><button data-v="mauve" class="pin" style="--c:#A2656C" aria-label="Mauve" title="Mauve"></button><button data-v="lavendel" data-w="1" style="--c:#C3B1DA" aria-label="Lavendel" title="Lavendel"></button><button data-v="violett" data-w="3" style="--c:#6A3FA0" aria-label="Violett" title="Violett"></button><button data-v="aubergine" data-w="4" style="--c:#3F1F3A" aria-label="Aubergine" title="Aubergine"></button></div></div><div class="pgrp"><span class="pg">Blau</span><div class="pgb"><button data-v="aqua" class="pin" style="--c:#8FB1B1" aria-label="Aqua" title="Aqua"></button><button data-v="babyblau" data-w="1" style="--c:#B9D3EE" aria-label="Babyblau" title="Babyblau"></button><button data-v="himmelblau" data-w="2" style="--c:#6FA8DC" aria-label="Himmelblau" title="Himmelblau"></button><button data-v="jeansblau" data-w="4" style="--c:#3F5F8A" aria-label="Jeansblau" title="Jeansblau"></button><button data-v="navy" data-w="3" style="--c:#1E2A4A" aria-label="Navy" title="Navy"></button><button data-v="petrol" data-w="4" style="--c:#1F5F6B" aria-label="Petrol" title="Petrol"></button></div></div><div class="pgrp"><span class="pg">Grün</span><div class="pgb"><button data-v="mint" data-w="1" style="--c:#A8DCC5" aria-label="Mint" title="Mint"></button><button data-v="salbei" data-w="2" style="--c:#9CAF94" aria-label="Salbei" title="Salbei"></button><button data-v="pistazie" data-w="3" style="--c:#B9C98A" aria-label="Pistazie" title="Pistazie"></button><button data-v="olive" data-w="4" style="--c:#6B6B3A" aria-label="Olive" title="Olive"></button><button data-v="smaragd" data-w="4" style="--c:#1F6E52" aria-label="Smaragd" title="Smaragd"></button></div></div><div class="pgrp"><span class="pg">Weiss & Schwarz</span><div class="pgb"><button data-v="weiss" data-w="1" style="--c:#F4F1EC" aria-label="Weiss" title="Weiss"></button><button data-v="schwarz" class="pin p8" style="--c:#2A1E1E" aria-label="Schwarz" title="Schwarz"></button><button data-v="grau" data-w="3" style="--c:#9A9A9E" aria-label="Grau" title="Grau"></button><button data-v="anthrazit" data-w="4" style="--c:#3A3B3F" aria-label="Anthrazit" title="Anthrazit"></button></div></div><div class="pgrp"><span class="pg">Bunt</span><div class="pgb"><button data-v="gelb" data-w="4" style="--c:#F3D25B" aria-label="Gelb" title="Gelb"></button><button data-v="orange" data-w="4" style="--c:#F08A2E" aria-label="Orange" title="Orange"></button><button data-v="neonpink" data-w="4" style="--c:#FF3FA4" aria-label="Neon-Pink" title="Neon-Pink"></button><button data-v="neongruen" data-w="4" style="--c:#7CF25A" aria-label="Neon-Grün" title="Neon-Grün"></button></div></div></div><button type="button" class="palbtn" id="palBtn" aria-expanded="false" aria-controls="segCol">+ Palette</button></div><div class="frbox" id="frBox" hidden><span class="frl">Basis</span><div class="seg cols" id="segFb"><button data-v="nude" style="--c:#D08E84" aria-label="Nude" title="Basis Nude"></button><button data-v="milky" style="--c:#D5B2B0" aria-label="Milky" title="Basis Milky"></button><button data-v="rosa" style="--c:#DA9093" aria-label="Rosa" title="Basis Rosa"></button></div><span class="frl">Spitze</span><div class="seg cols" id="segFt"><button data-v="weiss" style="--c:#F6F1EF" aria-label="Weiss" title="Spitze Weiss"></button><button data-v="rot" style="--c:#84101D" aria-label="Rot" title="Spitze Rot"></button><button data-v="schwarz" style="--c:#2A1E1E" aria-label="Schwarz" title="Spitze Schwarz"></button></div></div><p class="farbe-note" id="farbeNote">Muster zum Ausprobieren – weitere Formen und Details auf Wunsch.</p></div>
+        <div class="ctrl" id="colCtrl"><h3><span id="colTitle">Farbe</span> <span class="fin-cur" id="colName"></span> <span class="fin-hint" data-hint="col"></span></h3><div class="colrow"><div class="seg cols" id="segCol"><div class="pgrp"><span class="pg">Nude</span><div class="pgb"><button data-v="nude" class="pin" style="--c:#D08E84" aria-label="Nude" title="Nude"></button><button data-v="milky" class="pin" style="--c:#D4BCBB" aria-label="Milky" title="Milky"></button><button data-v="sand" data-w="2" style="--c:#D8B99A" aria-label="Sand" title="Sand"></button><button data-v="champagner" data-w="2" style="--c:#E6CDB4" aria-label="Champagner" title="Champagner"></button><button data-v="pfirsich" data-w="2" style="--c:#E3A98F" aria-label="Pfirsich-Nude" title="Pfirsich-Nude"></button><button data-v="karamell" data-w="3" style="--c:#B47A55" aria-label="Karamell" title="Karamell"></button></div></div><div class="pgrp"><span class="pg">Rosa</span><div class="pgb"><button data-v="rosa" class="pin" style="--c:#EDAFB4" aria-label="Rosa" title="Rosa"></button><button data-v="babyrosa" data-w="1" style="--c:#F2C4CC" aria-label="Babyrosa" title="Babyrosa"></button><button data-v="puderrosa" data-w="1" style="--c:#E0AEB0" aria-label="Puderrosa" title="Puderrosa"></button><button data-v="altrosa" data-w="1" style="--c:#C08585" aria-label="Altrosa" title="Altrosa"></button><button data-v="pink" data-w="2" style="--c:#E0457B" aria-label="Pink" title="Pink"></button><button data-v="fuchsia" data-w="3" style="--c:#C2185B" aria-label="Fuchsia" title="Fuchsia"></button></div></div><div class="pgrp"><span class="pg">Rot</span><div class="pgb"><button data-v="rot" class="pin" style="--c:#84101D" aria-label="Rot" title="Rot"></button><button data-v="kirschrot" data-w="1" style="--c:#B0102A" aria-label="Kirschrot" title="Kirschrot"></button><button data-v="tomatenrot" data-w="3" style="--c:#D7322B" aria-label="Tomatenrot" title="Tomatenrot"></button><button data-v="koralle" data-w="2" style="--c:#F06A5A" aria-label="Koralle" title="Koralle"></button><button data-v="ziegelrot" data-w="3" style="--c:#A8442F" aria-label="Ziegelrot" title="Ziegelrot"></button></div></div><div class="pgrp"><span class="pg">Bordeaux</span><div class="pgb"><button data-v="bordeaux" class="pin" style="--c:#582427" aria-label="Bordeaux" title="Bordeaux"></button><button data-v="weinrot" data-w="1" style="--c:#6E1423" aria-label="Weinrot" title="Weinrot"></button><button data-v="beere" data-w="2" style="--c:#8C2A4B" aria-label="Beere" title="Beere"></button><button data-v="pflaume" data-w="3" style="--c:#5B2A3E" aria-label="Pflaume" title="Pflaume"></button></div></div><div class="pgrp"><span class="pg">Braun</span><div class="pgb"><button data-v="mokka" data-w="1" style="--c:#6B4A3A" aria-label="Mokka" title="Mokka"></button><button data-v="schokolade" data-w="3" style="--c:#4A2C22" aria-label="Schokolade" title="Schokolade"></button><button data-v="cappuccino" data-w="2" style="--c:#A88672" aria-label="Cappuccino" title="Cappuccino"></button><button data-v="taupe" data-w="2" style="--c:#8E7C74" aria-label="Taupe" title="Taupe"></button></div></div><div class="pgrp"><span class="pg">Flieder</span><div class="pgb"><button data-v="flieder" class="pin" style="--c:#BF98B6" aria-label="Flieder" title="Flieder"></button><button data-v="mauve" class="pin" style="--c:#A2656C" aria-label="Mauve" title="Mauve"></button><button data-v="lavendel" data-w="1" style="--c:#C3B1DA" aria-label="Lavendel" title="Lavendel"></button><button data-v="violett" data-w="3" style="--c:#6A3FA0" aria-label="Violett" title="Violett"></button><button data-v="aubergine" data-w="4" style="--c:#3F1F3A" aria-label="Aubergine" title="Aubergine"></button></div></div><div class="pgrp"><span class="pg">Blau</span><div class="pgb"><button data-v="aqua" class="pin" style="--c:#8FB1B1" aria-label="Aqua" title="Aqua"></button><button data-v="babyblau" data-w="1" style="--c:#B9D3EE" aria-label="Babyblau" title="Babyblau"></button><button data-v="himmelblau" data-w="2" style="--c:#6FA8DC" aria-label="Himmelblau" title="Himmelblau"></button><button data-v="jeansblau" data-w="4" style="--c:#3F5F8A" aria-label="Jeansblau" title="Jeansblau"></button><button data-v="navy" data-w="3" style="--c:#1E2A4A" aria-label="Navy" title="Navy"></button><button data-v="petrol" data-w="4" style="--c:#1F5F6B" aria-label="Petrol" title="Petrol"></button></div></div><div class="pgrp"><span class="pg">Grün</span><div class="pgb"><button data-v="mint" data-w="1" style="--c:#A8DCC5" aria-label="Mint" title="Mint"></button><button data-v="salbei" data-w="2" style="--c:#9CAF94" aria-label="Salbei" title="Salbei"></button><button data-v="pistazie" data-w="3" style="--c:#B9C98A" aria-label="Pistazie" title="Pistazie"></button><button data-v="olive" data-w="4" style="--c:#6B6B3A" aria-label="Olive" title="Olive"></button><button data-v="smaragd" data-w="4" style="--c:#1F6E52" aria-label="Smaragd" title="Smaragd"></button></div></div><div class="pgrp"><span class="pg">Weiss & Schwarz</span><div class="pgb"><button data-v="weiss" data-w="1" style="--c:#F4F1EC" aria-label="Weiss" title="Weiss"></button><button data-v="schwarz" class="pin p8" style="--c:#2A1E1E" aria-label="Schwarz" title="Schwarz"></button><button data-v="grau" data-w="3" style="--c:#9A9A9E" aria-label="Grau" title="Grau"></button><button data-v="anthrazit" data-w="4" style="--c:#3A3B3F" aria-label="Anthrazit" title="Anthrazit"></button></div></div><div class="pgrp"><span class="pg">Bunt</span><div class="pgb"><button data-v="gelb" data-w="4" style="--c:#F3D25B" aria-label="Gelb" title="Gelb"></button><button data-v="orange" data-w="4" style="--c:#F08A2E" aria-label="Orange" title="Orange"></button><button data-v="neonpink" data-w="4" style="--c:#FF3FA4" aria-label="Neon-Pink" title="Neon-Pink"></button><button data-v="neongruen" data-w="4" style="--c:#7CF25A" aria-label="Neon-Grün" title="Neon-Grün"></button></div></div></div><button type="button" class="palbtn" id="palBtn" aria-expanded="false" aria-controls="segCol">+ Palette</button></div><div class="frbox" id="frBox" hidden><span class="frl">Basis</span><div class="seg cols" id="segFb"><button data-v="nude" style="--c:#D08E84" aria-label="Nude" title="Basis Nude"></button><button data-v="milky" style="--c:#D5B2B0" aria-label="Milky" title="Basis Milky"></button><button data-v="rosa" style="--c:#DA9093" aria-label="Rosa" title="Basis Rosa"></button></div><span class="frl">Spitze</span><div class="seg cols" id="segFt"><button data-v="weiss" style="--c:#F6F1EF" aria-label="Weiss" title="Spitze Weiss"></button><button data-v="rot" style="--c:#84101D" aria-label="Rot" title="Spitze Rot"></button><button data-v="schwarz" style="--c:#2A1E1E" aria-label="Schwarz" title="Spitze Schwarz"></button></div><span class="frl">Linie</span><div class="seg fwseg" id="segFw"><button data-v="klassisch">klassisch</button><button data-v="fein">fein</button></div></div><p class="farbe-note" id="farbeNote">Muster zum Ausprobieren – weitere Formen und Details auf Wunsch.</p></div>
         <div class="ctrl fxctrl"><h3>Effekt <span class="fin-hint" data-hint="fx"></span></h3><div class="seg extras" id="segFx">
           <button data-v="none">Ohne</button><button data-v="chrome" data-p="20" data-t="15">Chrome · Glazed <span>+20</span></button><button data-v="cat" data-p="15" data-t="15">Cat Eye <span>+15</span></button><button data-v="glitzer" data-p="15" data-t="15">Glitzer <span>+15</span></button>
         </div></div>
@@ -1544,6 +1572,371 @@ const LEN={natur:'Kurz natur (Russian Mani + Gellack)',kurz:'Kurz',medium:'Mediu
 const FIN={farbe:'einfarbig',french:'mit French',ombre:'mit Baby Boomer',geo:'mit Gold-Linien'};
 /* Jedes wählbare Set ist ein echtes Foto dieser Hand: Länge|Form|Finish|Farbe|Effekt → Bild */
 const FR={natur:'11',
+ 'xl|mandel|french|-|none|milky|rot':'c_xl-mandel-french-milky-rot_v2.webp',
+ 'xl|mandel|french|-|none|milky|rot||T2':'k_xl-mandel-french-milky-rot_T2_v2.webp',
+ 'xl|mandel|french|-|none|milky|rot||T3':'k_xl-mandel-french-milky-rot_T3_v2.webp',
+ 'xl|mandel|french|-|none|milky|rot||T4':'k_xl-mandel-french-milky-rot_T4_v2.webp',
+ 'xl|mandel|french|-|none|milky|rot||T5':'k_xl-mandel-french-milky-rot_T5_v2.webp',
+ 'kurz|eckig|french|-|none|milky|rot|fein':'c_kurz-eckig-frenchfein-milky-rot.webp',
+ 'kurz|eckig|french|-|none|milky|schwarz|fein':'c_kurz-eckig-frenchfein-milky-schwarz.webp',
+ 'kurz|eckig|french|-|none|milky|weiss|fein':'c_kurz-eckig-frenchfein-milky-weiss.webp',
+ 'kurz|eckig|french|-|none|nude|rot|fein':'c_kurz-eckig-frenchfein-nude-rot.webp',
+ 'kurz|eckig|french|-|none|nude|schwarz|fein':'c_kurz-eckig-frenchfein-nude-schwarz.webp',
+ 'kurz|eckig|french|-|none|nude|weiss|fein':'c_kurz-eckig-frenchfein-nude-weiss.webp',
+ 'kurz|eckig|french|-|none|rosa|rot|fein':'c_kurz-eckig-frenchfein-rosa-rot.webp',
+ 'kurz|eckig|french|-|none|rosa|schwarz|fein':'c_kurz-eckig-frenchfein-rosa-schwarz.webp',
+ 'kurz|eckig|french|-|none|rosa|weiss|fein':'c_kurz-eckig-frenchfein-rosa-weiss.webp',
+ 'kurz|mandel|french|-|none|milky|rot|fein':'c_kurz-mandel-frenchfein-milky-rot.webp',
+ 'kurz|mandel|french|-|none|milky|schwarz|fein':'c_kurz-mandel-frenchfein-milky-schwarz.webp',
+ 'kurz|mandel|french|-|none|milky|weiss|fein':'c_kurz-mandel-frenchfein-milky-weiss.webp',
+ 'kurz|mandel|french|-|none|nude|rot|fein':'c_kurz-mandel-frenchfein-nude-rot.webp',
+ 'kurz|mandel|french|-|none|nude|schwarz|fein':'c_kurz-mandel-frenchfein-nude-schwarz.webp',
+ 'kurz|mandel|french|-|none|nude|weiss|fein':'c_kurz-mandel-frenchfein-nude-weiss.webp',
+ 'kurz|mandel|french|-|none|rosa|rot|fein':'c_kurz-mandel-frenchfein-rosa-rot.webp',
+ 'kurz|mandel|french|-|none|rosa|schwarz|fein':'c_kurz-mandel-frenchfein-rosa-schwarz.webp',
+ 'kurz|mandel|french|-|none|rosa|weiss|fein':'c_kurz-mandel-frenchfein-rosa-weiss.webp',
+ 'lang|eckig|french|-|none|milky|rot|fein':'c_lang-eckig-frenchfein-milky-rot.webp',
+ 'lang|eckig|french|-|none|milky|schwarz|fein':'c_lang-eckig-frenchfein-milky-schwarz.webp',
+ 'lang|eckig|french|-|none|milky|weiss|fein':'c_lang-eckig-frenchfein-milky-weiss.webp',
+ 'lang|eckig|french|-|none|nude|rot|fein':'c_lang-eckig-frenchfein-nude-rot.webp',
+ 'lang|eckig|french|-|none|nude|schwarz|fein':'c_lang-eckig-frenchfein-nude-schwarz.webp',
+ 'lang|eckig|french|-|none|nude|weiss|fein':'c_lang-eckig-frenchfein-nude-weiss.webp',
+ 'lang|eckig|french|-|none|rosa|rot|fein':'c_lang-eckig-frenchfein-rosa-rot.webp',
+ 'lang|eckig|french|-|none|rosa|schwarz|fein':'c_lang-eckig-frenchfein-rosa-schwarz.webp',
+ 'lang|eckig|french|-|none|rosa|weiss|fein':'c_lang-eckig-frenchfein-rosa-weiss.webp',
+ 'lang|mandel|french|-|none|milky|rot|fein':'c_lang-mandel-frenchfein-milky-rot.webp',
+ 'lang|mandel|french|-|none|milky|schwarz|fein':'c_lang-mandel-frenchfein-milky-schwarz.webp',
+ 'lang|mandel|french|-|none|milky|weiss|fein':'c_lang-mandel-frenchfein-milky-weiss.webp',
+ 'lang|mandel|french|-|none|nude|rot|fein':'c_lang-mandel-frenchfein-nude-rot.webp',
+ 'lang|mandel|french|-|none|nude|schwarz|fein':'c_lang-mandel-frenchfein-nude-schwarz.webp',
+ 'lang|mandel|french|-|none|nude|weiss|fein':'c_lang-mandel-frenchfein-nude-weiss.webp',
+ 'lang|mandel|french|-|none|rosa|rot|fein':'c_lang-mandel-frenchfein-rosa-rot.webp',
+ 'lang|mandel|french|-|none|rosa|schwarz|fein':'c_lang-mandel-frenchfein-rosa-schwarz.webp',
+ 'lang|mandel|french|-|none|rosa|weiss|fein':'c_lang-mandel-frenchfein-rosa-weiss.webp',
+ 'medium|eckig|french|-|none|milky|rot|fein':'c_medium-eckig-frenchfein-milky-rot.webp',
+ 'medium|eckig|french|-|none|milky|schwarz|fein':'c_medium-eckig-frenchfein-milky-schwarz.webp',
+ 'medium|eckig|french|-|none|milky|weiss|fein':'c_medium-eckig-frenchfein-milky-weiss.webp',
+ 'medium|eckig|french|-|none|nude|rot|fein':'c_medium-eckig-frenchfein-nude-rot.webp',
+ 'medium|eckig|french|-|none|nude|schwarz|fein':'c_medium-eckig-frenchfein-nude-schwarz.webp',
+ 'medium|eckig|french|-|none|nude|weiss|fein':'c_medium-eckig-frenchfein-nude-weiss.webp',
+ 'medium|eckig|french|-|none|rosa|rot|fein':'c_medium-eckig-frenchfein-rosa-rot.webp',
+ 'medium|eckig|french|-|none|rosa|schwarz|fein':'c_medium-eckig-frenchfein-rosa-schwarz.webp',
+ 'medium|eckig|french|-|none|rosa|weiss|fein':'c_medium-eckig-frenchfein-rosa-weiss.webp',
+ 'medium|mandel|french|-|none|milky|rot|fein':'c_medium-mandel-frenchfein-milky-rot.webp',
+ 'medium|mandel|french|-|none|milky|schwarz|fein':'c_medium-mandel-frenchfein-milky-schwarz.webp',
+ 'medium|mandel|french|-|none|milky|weiss|fein':'c_medium-mandel-frenchfein-milky-weiss.webp',
+ 'medium|mandel|french|-|none|nude|rot|fein':'c_medium-mandel-frenchfein-nude-rot.webp',
+ 'medium|mandel|french|-|none|nude|schwarz|fein':'c_medium-mandel-frenchfein-nude-schwarz.webp',
+ 'medium|mandel|french|-|none|nude|weiss|fein':'c_medium-mandel-frenchfein-nude-weiss.webp',
+ 'medium|mandel|french|-|none|rosa|rot|fein':'c_medium-mandel-frenchfein-rosa-rot.webp',
+ 'medium|mandel|french|-|none|rosa|schwarz|fein':'c_medium-mandel-frenchfein-rosa-schwarz.webp',
+ 'medium|mandel|french|-|none|rosa|weiss|fein':'c_medium-mandel-frenchfein-rosa-weiss.webp',
+ 'xl|eckig|french|-|none|milky|rot|fein':'c_xl-eckig-frenchfein-milky-rot.webp',
+ 'xl|eckig|french|-|none|milky|schwarz|fein':'c_xl-eckig-frenchfein-milky-schwarz.webp',
+ 'xl|eckig|french|-|none|milky|weiss|fein':'c_xl-eckig-frenchfein-milky-weiss.webp',
+ 'xl|eckig|french|-|none|nude|rot|fein':'c_xl-eckig-frenchfein-nude-rot.webp',
+ 'xl|eckig|french|-|none|nude|schwarz|fein':'c_xl-eckig-frenchfein-nude-schwarz.webp',
+ 'xl|eckig|french|-|none|nude|weiss|fein':'c_xl-eckig-frenchfein-nude-weiss.webp',
+ 'xl|eckig|french|-|none|rosa|rot|fein':'c_xl-eckig-frenchfein-rosa-rot.webp',
+ 'xl|eckig|french|-|none|rosa|schwarz|fein':'c_xl-eckig-frenchfein-rosa-schwarz.webp',
+ 'xl|eckig|french|-|none|rosa|weiss|fein':'c_xl-eckig-frenchfein-rosa-weiss.webp',
+ 'xl|mandel|french|-|none|milky|rot|fein':'c_xl-mandel-frenchfein-milky-rot.webp',
+ 'xl|mandel|french|-|none|milky|schwarz|fein':'c_xl-mandel-frenchfein-milky-schwarz.webp',
+ 'xl|mandel|french|-|none|milky|weiss|fein':'c_xl-mandel-frenchfein-milky-weiss.webp',
+ 'xl|mandel|french|-|none|nude|rot|fein':'c_xl-mandel-frenchfein-nude-rot.webp',
+ 'xl|mandel|french|-|none|nude|schwarz|fein':'c_xl-mandel-frenchfein-nude-schwarz.webp',
+ 'xl|mandel|french|-|none|nude|weiss|fein':'c_xl-mandel-frenchfein-nude-weiss.webp',
+ 'xl|mandel|french|-|none|rosa|rot|fein':'c_xl-mandel-frenchfein-rosa-rot.webp',
+ 'xl|mandel|french|-|none|rosa|schwarz|fein':'c_xl-mandel-frenchfein-rosa-schwarz.webp',
+ 'xl|mandel|french|-|none|rosa|weiss|fein':'c_xl-mandel-frenchfein-rosa-weiss.webp',
+ 'kurz|eckig|french|-|none|milky|rot|fein|T2':'k_kurz-eckig-frenchfein-milky-rot_T2.webp',
+ 'kurz|eckig|french|-|none|milky|rot|fein|T3':'k_kurz-eckig-frenchfein-milky-rot_T3.webp',
+ 'kurz|eckig|french|-|none|milky|rot|fein|T4':'k_kurz-eckig-frenchfein-milky-rot_T4.webp',
+ 'kurz|eckig|french|-|none|milky|rot|fein|T5':'k_kurz-eckig-frenchfein-milky-rot_T5.webp',
+ 'kurz|eckig|french|-|none|milky|schwarz|fein|T2':'k_kurz-eckig-frenchfein-milky-schwarz_T2.webp',
+ 'kurz|eckig|french|-|none|milky|schwarz|fein|T3':'k_kurz-eckig-frenchfein-milky-schwarz_T3.webp',
+ 'kurz|eckig|french|-|none|milky|schwarz|fein|T4':'k_kurz-eckig-frenchfein-milky-schwarz_T4.webp',
+ 'kurz|eckig|french|-|none|milky|schwarz|fein|T5':'k_kurz-eckig-frenchfein-milky-schwarz_T5.webp',
+ 'kurz|eckig|french|-|none|milky|weiss|fein|T2':'k_kurz-eckig-frenchfein-milky-weiss_T2.webp',
+ 'kurz|eckig|french|-|none|milky|weiss|fein|T3':'k_kurz-eckig-frenchfein-milky-weiss_T3.webp',
+ 'kurz|eckig|french|-|none|milky|weiss|fein|T4':'k_kurz-eckig-frenchfein-milky-weiss_T4.webp',
+ 'kurz|eckig|french|-|none|milky|weiss|fein|T5':'k_kurz-eckig-frenchfein-milky-weiss_T5.webp',
+ 'kurz|eckig|french|-|none|nude|rot|fein|T2':'k_kurz-eckig-frenchfein-nude-rot_T2.webp',
+ 'kurz|eckig|french|-|none|nude|rot|fein|T3':'k_kurz-eckig-frenchfein-nude-rot_T3.webp',
+ 'kurz|eckig|french|-|none|nude|rot|fein|T4':'k_kurz-eckig-frenchfein-nude-rot_T4.webp',
+ 'kurz|eckig|french|-|none|nude|rot|fein|T5':'k_kurz-eckig-frenchfein-nude-rot_T5.webp',
+ 'kurz|eckig|french|-|none|nude|schwarz|fein|T2':'k_kurz-eckig-frenchfein-nude-schwarz_T2.webp',
+ 'kurz|eckig|french|-|none|nude|schwarz|fein|T3':'k_kurz-eckig-frenchfein-nude-schwarz_T3.webp',
+ 'kurz|eckig|french|-|none|nude|schwarz|fein|T4':'k_kurz-eckig-frenchfein-nude-schwarz_T4.webp',
+ 'kurz|eckig|french|-|none|nude|schwarz|fein|T5':'k_kurz-eckig-frenchfein-nude-schwarz_T5.webp',
+ 'kurz|eckig|french|-|none|nude|weiss|fein|T2':'k_kurz-eckig-frenchfein-nude-weiss_T2.webp',
+ 'kurz|eckig|french|-|none|nude|weiss|fein|T3':'k_kurz-eckig-frenchfein-nude-weiss_T3.webp',
+ 'kurz|eckig|french|-|none|nude|weiss|fein|T4':'k_kurz-eckig-frenchfein-nude-weiss_T4.webp',
+ 'kurz|eckig|french|-|none|nude|weiss|fein|T5':'k_kurz-eckig-frenchfein-nude-weiss_T5.webp',
+ 'kurz|eckig|french|-|none|rosa|rot|fein|T2':'k_kurz-eckig-frenchfein-rosa-rot_T2.webp',
+ 'kurz|eckig|french|-|none|rosa|rot|fein|T3':'k_kurz-eckig-frenchfein-rosa-rot_T3.webp',
+ 'kurz|eckig|french|-|none|rosa|rot|fein|T4':'k_kurz-eckig-frenchfein-rosa-rot_T4.webp',
+ 'kurz|eckig|french|-|none|rosa|rot|fein|T5':'k_kurz-eckig-frenchfein-rosa-rot_T5.webp',
+ 'kurz|eckig|french|-|none|rosa|schwarz|fein|T2':'k_kurz-eckig-frenchfein-rosa-schwarz_T2.webp',
+ 'kurz|eckig|french|-|none|rosa|schwarz|fein|T3':'k_kurz-eckig-frenchfein-rosa-schwarz_T3.webp',
+ 'kurz|eckig|french|-|none|rosa|schwarz|fein|T4':'k_kurz-eckig-frenchfein-rosa-schwarz_T4.webp',
+ 'kurz|eckig|french|-|none|rosa|schwarz|fein|T5':'k_kurz-eckig-frenchfein-rosa-schwarz_T5.webp',
+ 'kurz|eckig|french|-|none|rosa|weiss|fein|T2':'k_kurz-eckig-frenchfein-rosa-weiss_T2.webp',
+ 'kurz|eckig|french|-|none|rosa|weiss|fein|T3':'k_kurz-eckig-frenchfein-rosa-weiss_T3.webp',
+ 'kurz|eckig|french|-|none|rosa|weiss|fein|T4':'k_kurz-eckig-frenchfein-rosa-weiss_T4.webp',
+ 'kurz|eckig|french|-|none|rosa|weiss|fein|T5':'k_kurz-eckig-frenchfein-rosa-weiss_T5.webp',
+ 'kurz|mandel|french|-|none|milky|rot|fein|T2':'k_kurz-mandel-frenchfein-milky-rot_T2.webp',
+ 'kurz|mandel|french|-|none|milky|rot|fein|T3':'k_kurz-mandel-frenchfein-milky-rot_T3.webp',
+ 'kurz|mandel|french|-|none|milky|rot|fein|T4':'k_kurz-mandel-frenchfein-milky-rot_T4.webp',
+ 'kurz|mandel|french|-|none|milky|rot|fein|T5':'k_kurz-mandel-frenchfein-milky-rot_T5.webp',
+ 'kurz|mandel|french|-|none|milky|schwarz|fein|T2':'k_kurz-mandel-frenchfein-milky-schwarz_T2.webp',
+ 'kurz|mandel|french|-|none|milky|schwarz|fein|T3':'k_kurz-mandel-frenchfein-milky-schwarz_T3.webp',
+ 'kurz|mandel|french|-|none|milky|schwarz|fein|T4':'k_kurz-mandel-frenchfein-milky-schwarz_T4.webp',
+ 'kurz|mandel|french|-|none|milky|schwarz|fein|T5':'k_kurz-mandel-frenchfein-milky-schwarz_T5.webp',
+ 'kurz|mandel|french|-|none|milky|weiss|fein|T2':'k_kurz-mandel-frenchfein-milky-weiss_T2.webp',
+ 'kurz|mandel|french|-|none|milky|weiss|fein|T3':'k_kurz-mandel-frenchfein-milky-weiss_T3.webp',
+ 'kurz|mandel|french|-|none|milky|weiss|fein|T4':'k_kurz-mandel-frenchfein-milky-weiss_T4.webp',
+ 'kurz|mandel|french|-|none|milky|weiss|fein|T5':'k_kurz-mandel-frenchfein-milky-weiss_T5.webp',
+ 'kurz|mandel|french|-|none|nude|rot|fein|T2':'k_kurz-mandel-frenchfein-nude-rot_T2.webp',
+ 'kurz|mandel|french|-|none|nude|rot|fein|T3':'k_kurz-mandel-frenchfein-nude-rot_T3.webp',
+ 'kurz|mandel|french|-|none|nude|rot|fein|T4':'k_kurz-mandel-frenchfein-nude-rot_T4.webp',
+ 'kurz|mandel|french|-|none|nude|rot|fein|T5':'k_kurz-mandel-frenchfein-nude-rot_T5.webp',
+ 'kurz|mandel|french|-|none|nude|schwarz|fein|T2':'k_kurz-mandel-frenchfein-nude-schwarz_T2.webp',
+ 'kurz|mandel|french|-|none|nude|schwarz|fein|T3':'k_kurz-mandel-frenchfein-nude-schwarz_T3.webp',
+ 'kurz|mandel|french|-|none|nude|schwarz|fein|T4':'k_kurz-mandel-frenchfein-nude-schwarz_T4.webp',
+ 'kurz|mandel|french|-|none|nude|schwarz|fein|T5':'k_kurz-mandel-frenchfein-nude-schwarz_T5.webp',
+ 'kurz|mandel|french|-|none|nude|weiss|fein|T2':'k_kurz-mandel-frenchfein-nude-weiss_T2.webp',
+ 'kurz|mandel|french|-|none|nude|weiss|fein|T3':'k_kurz-mandel-frenchfein-nude-weiss_T3.webp',
+ 'kurz|mandel|french|-|none|nude|weiss|fein|T4':'k_kurz-mandel-frenchfein-nude-weiss_T4.webp',
+ 'kurz|mandel|french|-|none|nude|weiss|fein|T5':'k_kurz-mandel-frenchfein-nude-weiss_T5.webp',
+ 'kurz|mandel|french|-|none|rosa|rot|fein|T2':'k_kurz-mandel-frenchfein-rosa-rot_T2.webp',
+ 'kurz|mandel|french|-|none|rosa|rot|fein|T3':'k_kurz-mandel-frenchfein-rosa-rot_T3.webp',
+ 'kurz|mandel|french|-|none|rosa|rot|fein|T4':'k_kurz-mandel-frenchfein-rosa-rot_T4.webp',
+ 'kurz|mandel|french|-|none|rosa|rot|fein|T5':'k_kurz-mandel-frenchfein-rosa-rot_T5.webp',
+ 'kurz|mandel|french|-|none|rosa|schwarz|fein|T2':'k_kurz-mandel-frenchfein-rosa-schwarz_T2.webp',
+ 'kurz|mandel|french|-|none|rosa|schwarz|fein|T3':'k_kurz-mandel-frenchfein-rosa-schwarz_T3.webp',
+ 'kurz|mandel|french|-|none|rosa|schwarz|fein|T4':'k_kurz-mandel-frenchfein-rosa-schwarz_T4.webp',
+ 'kurz|mandel|french|-|none|rosa|schwarz|fein|T5':'k_kurz-mandel-frenchfein-rosa-schwarz_T5.webp',
+ 'kurz|mandel|french|-|none|rosa|weiss|fein|T2':'k_kurz-mandel-frenchfein-rosa-weiss_T2.webp',
+ 'kurz|mandel|french|-|none|rosa|weiss|fein|T3':'k_kurz-mandel-frenchfein-rosa-weiss_T3.webp',
+ 'kurz|mandel|french|-|none|rosa|weiss|fein|T4':'k_kurz-mandel-frenchfein-rosa-weiss_T4.webp',
+ 'kurz|mandel|french|-|none|rosa|weiss|fein|T5':'k_kurz-mandel-frenchfein-rosa-weiss_T5.webp',
+ 'lang|eckig|french|-|none|milky|rot|fein|T2':'k_lang-eckig-frenchfein-milky-rot_T2.webp',
+ 'lang|eckig|french|-|none|milky|rot|fein|T3':'k_lang-eckig-frenchfein-milky-rot_T3.webp',
+ 'lang|eckig|french|-|none|milky|rot|fein|T4':'k_lang-eckig-frenchfein-milky-rot_T4.webp',
+ 'lang|eckig|french|-|none|milky|rot|fein|T5':'k_lang-eckig-frenchfein-milky-rot_T5.webp',
+ 'lang|eckig|french|-|none|milky|schwarz|fein|T2':'k_lang-eckig-frenchfein-milky-schwarz_T2.webp',
+ 'lang|eckig|french|-|none|milky|schwarz|fein|T3':'k_lang-eckig-frenchfein-milky-schwarz_T3.webp',
+ 'lang|eckig|french|-|none|milky|schwarz|fein|T4':'k_lang-eckig-frenchfein-milky-schwarz_T4.webp',
+ 'lang|eckig|french|-|none|milky|schwarz|fein|T5':'k_lang-eckig-frenchfein-milky-schwarz_T5.webp',
+ 'lang|eckig|french|-|none|milky|weiss|fein|T2':'k_lang-eckig-frenchfein-milky-weiss_T2.webp',
+ 'lang|eckig|french|-|none|milky|weiss|fein|T3':'k_lang-eckig-frenchfein-milky-weiss_T3.webp',
+ 'lang|eckig|french|-|none|milky|weiss|fein|T4':'k_lang-eckig-frenchfein-milky-weiss_T4.webp',
+ 'lang|eckig|french|-|none|milky|weiss|fein|T5':'k_lang-eckig-frenchfein-milky-weiss_T5.webp',
+ 'lang|eckig|french|-|none|nude|rot|fein|T2':'k_lang-eckig-frenchfein-nude-rot_T2.webp',
+ 'lang|eckig|french|-|none|nude|rot|fein|T3':'k_lang-eckig-frenchfein-nude-rot_T3.webp',
+ 'lang|eckig|french|-|none|nude|rot|fein|T4':'k_lang-eckig-frenchfein-nude-rot_T4.webp',
+ 'lang|eckig|french|-|none|nude|rot|fein|T5':'k_lang-eckig-frenchfein-nude-rot_T5.webp',
+ 'lang|eckig|french|-|none|nude|schwarz|fein|T2':'k_lang-eckig-frenchfein-nude-schwarz_T2.webp',
+ 'lang|eckig|french|-|none|nude|schwarz|fein|T3':'k_lang-eckig-frenchfein-nude-schwarz_T3.webp',
+ 'lang|eckig|french|-|none|nude|schwarz|fein|T4':'k_lang-eckig-frenchfein-nude-schwarz_T4.webp',
+ 'lang|eckig|french|-|none|nude|schwarz|fein|T5':'k_lang-eckig-frenchfein-nude-schwarz_T5.webp',
+ 'lang|eckig|french|-|none|nude|weiss|fein|T2':'k_lang-eckig-frenchfein-nude-weiss_T2.webp',
+ 'lang|eckig|french|-|none|nude|weiss|fein|T3':'k_lang-eckig-frenchfein-nude-weiss_T3.webp',
+ 'lang|eckig|french|-|none|nude|weiss|fein|T4':'k_lang-eckig-frenchfein-nude-weiss_T4.webp',
+ 'lang|eckig|french|-|none|nude|weiss|fein|T5':'k_lang-eckig-frenchfein-nude-weiss_T5.webp',
+ 'lang|eckig|french|-|none|rosa|rot|fein|T2':'k_lang-eckig-frenchfein-rosa-rot_T2.webp',
+ 'lang|eckig|french|-|none|rosa|rot|fein|T3':'k_lang-eckig-frenchfein-rosa-rot_T3.webp',
+ 'lang|eckig|french|-|none|rosa|rot|fein|T4':'k_lang-eckig-frenchfein-rosa-rot_T4.webp',
+ 'lang|eckig|french|-|none|rosa|rot|fein|T5':'k_lang-eckig-frenchfein-rosa-rot_T5.webp',
+ 'lang|eckig|french|-|none|rosa|schwarz|fein|T2':'k_lang-eckig-frenchfein-rosa-schwarz_T2.webp',
+ 'lang|eckig|french|-|none|rosa|schwarz|fein|T3':'k_lang-eckig-frenchfein-rosa-schwarz_T3.webp',
+ 'lang|eckig|french|-|none|rosa|schwarz|fein|T4':'k_lang-eckig-frenchfein-rosa-schwarz_T4.webp',
+ 'lang|eckig|french|-|none|rosa|schwarz|fein|T5':'k_lang-eckig-frenchfein-rosa-schwarz_T5.webp',
+ 'lang|eckig|french|-|none|rosa|weiss|fein|T2':'k_lang-eckig-frenchfein-rosa-weiss_T2.webp',
+ 'lang|eckig|french|-|none|rosa|weiss|fein|T3':'k_lang-eckig-frenchfein-rosa-weiss_T3.webp',
+ 'lang|eckig|french|-|none|rosa|weiss|fein|T4':'k_lang-eckig-frenchfein-rosa-weiss_T4.webp',
+ 'lang|eckig|french|-|none|rosa|weiss|fein|T5':'k_lang-eckig-frenchfein-rosa-weiss_T5.webp',
+ 'lang|mandel|french|-|none|milky|rot|fein|T2':'k_lang-mandel-frenchfein-milky-rot_T2.webp',
+ 'lang|mandel|french|-|none|milky|rot|fein|T3':'k_lang-mandel-frenchfein-milky-rot_T3.webp',
+ 'lang|mandel|french|-|none|milky|rot|fein|T4':'k_lang-mandel-frenchfein-milky-rot_T4.webp',
+ 'lang|mandel|french|-|none|milky|rot|fein|T5':'k_lang-mandel-frenchfein-milky-rot_T5.webp',
+ 'lang|mandel|french|-|none|milky|schwarz|fein|T2':'k_lang-mandel-frenchfein-milky-schwarz_T2.webp',
+ 'lang|mandel|french|-|none|milky|schwarz|fein|T3':'k_lang-mandel-frenchfein-milky-schwarz_T3.webp',
+ 'lang|mandel|french|-|none|milky|schwarz|fein|T4':'k_lang-mandel-frenchfein-milky-schwarz_T4.webp',
+ 'lang|mandel|french|-|none|milky|schwarz|fein|T5':'k_lang-mandel-frenchfein-milky-schwarz_T5.webp',
+ 'lang|mandel|french|-|none|milky|weiss|fein|T2':'k_lang-mandel-frenchfein-milky-weiss_T2.webp',
+ 'lang|mandel|french|-|none|milky|weiss|fein|T3':'k_lang-mandel-frenchfein-milky-weiss_T3.webp',
+ 'lang|mandel|french|-|none|milky|weiss|fein|T4':'k_lang-mandel-frenchfein-milky-weiss_T4.webp',
+ 'lang|mandel|french|-|none|milky|weiss|fein|T5':'k_lang-mandel-frenchfein-milky-weiss_T5.webp',
+ 'lang|mandel|french|-|none|nude|rot|fein|T2':'k_lang-mandel-frenchfein-nude-rot_T2.webp',
+ 'lang|mandel|french|-|none|nude|rot|fein|T3':'k_lang-mandel-frenchfein-nude-rot_T3.webp',
+ 'lang|mandel|french|-|none|nude|rot|fein|T4':'k_lang-mandel-frenchfein-nude-rot_T4.webp',
+ 'lang|mandel|french|-|none|nude|rot|fein|T5':'k_lang-mandel-frenchfein-nude-rot_T5.webp',
+ 'lang|mandel|french|-|none|nude|schwarz|fein|T2':'k_lang-mandel-frenchfein-nude-schwarz_T2.webp',
+ 'lang|mandel|french|-|none|nude|schwarz|fein|T3':'k_lang-mandel-frenchfein-nude-schwarz_T3.webp',
+ 'lang|mandel|french|-|none|nude|schwarz|fein|T4':'k_lang-mandel-frenchfein-nude-schwarz_T4.webp',
+ 'lang|mandel|french|-|none|nude|schwarz|fein|T5':'k_lang-mandel-frenchfein-nude-schwarz_T5.webp',
+ 'lang|mandel|french|-|none|nude|weiss|fein|T2':'k_lang-mandel-frenchfein-nude-weiss_T2.webp',
+ 'lang|mandel|french|-|none|nude|weiss|fein|T3':'k_lang-mandel-frenchfein-nude-weiss_T3.webp',
+ 'lang|mandel|french|-|none|nude|weiss|fein|T4':'k_lang-mandel-frenchfein-nude-weiss_T4.webp',
+ 'lang|mandel|french|-|none|nude|weiss|fein|T5':'k_lang-mandel-frenchfein-nude-weiss_T5.webp',
+ 'lang|mandel|french|-|none|rosa|rot|fein|T2':'k_lang-mandel-frenchfein-rosa-rot_T2.webp',
+ 'lang|mandel|french|-|none|rosa|rot|fein|T3':'k_lang-mandel-frenchfein-rosa-rot_T3.webp',
+ 'lang|mandel|french|-|none|rosa|rot|fein|T4':'k_lang-mandel-frenchfein-rosa-rot_T4.webp',
+ 'lang|mandel|french|-|none|rosa|rot|fein|T5':'k_lang-mandel-frenchfein-rosa-rot_T5.webp',
+ 'lang|mandel|french|-|none|rosa|schwarz|fein|T2':'k_lang-mandel-frenchfein-rosa-schwarz_T2.webp',
+ 'lang|mandel|french|-|none|rosa|schwarz|fein|T3':'k_lang-mandel-frenchfein-rosa-schwarz_T3.webp',
+ 'lang|mandel|french|-|none|rosa|schwarz|fein|T4':'k_lang-mandel-frenchfein-rosa-schwarz_T4.webp',
+ 'lang|mandel|french|-|none|rosa|schwarz|fein|T5':'k_lang-mandel-frenchfein-rosa-schwarz_T5.webp',
+ 'lang|mandel|french|-|none|rosa|weiss|fein|T2':'k_lang-mandel-frenchfein-rosa-weiss_T2.webp',
+ 'lang|mandel|french|-|none|rosa|weiss|fein|T3':'k_lang-mandel-frenchfein-rosa-weiss_T3.webp',
+ 'lang|mandel|french|-|none|rosa|weiss|fein|T4':'k_lang-mandel-frenchfein-rosa-weiss_T4.webp',
+ 'lang|mandel|french|-|none|rosa|weiss|fein|T5':'k_lang-mandel-frenchfein-rosa-weiss_T5.webp',
+ 'medium|eckig|french|-|none|milky|rot|fein|T2':'k_medium-eckig-frenchfein-milky-rot_T2.webp',
+ 'medium|eckig|french|-|none|milky|rot|fein|T3':'k_medium-eckig-frenchfein-milky-rot_T3.webp',
+ 'medium|eckig|french|-|none|milky|rot|fein|T4':'k_medium-eckig-frenchfein-milky-rot_T4.webp',
+ 'medium|eckig|french|-|none|milky|rot|fein|T5':'k_medium-eckig-frenchfein-milky-rot_T5.webp',
+ 'medium|eckig|french|-|none|milky|schwarz|fein|T2':'k_medium-eckig-frenchfein-milky-schwarz_T2.webp',
+ 'medium|eckig|french|-|none|milky|schwarz|fein|T3':'k_medium-eckig-frenchfein-milky-schwarz_T3.webp',
+ 'medium|eckig|french|-|none|milky|schwarz|fein|T4':'k_medium-eckig-frenchfein-milky-schwarz_T4.webp',
+ 'medium|eckig|french|-|none|milky|schwarz|fein|T5':'k_medium-eckig-frenchfein-milky-schwarz_T5.webp',
+ 'medium|eckig|french|-|none|milky|weiss|fein|T2':'k_medium-eckig-frenchfein-milky-weiss_T2.webp',
+ 'medium|eckig|french|-|none|milky|weiss|fein|T3':'k_medium-eckig-frenchfein-milky-weiss_T3.webp',
+ 'medium|eckig|french|-|none|milky|weiss|fein|T4':'k_medium-eckig-frenchfein-milky-weiss_T4.webp',
+ 'medium|eckig|french|-|none|milky|weiss|fein|T5':'k_medium-eckig-frenchfein-milky-weiss_T5.webp',
+ 'medium|eckig|french|-|none|nude|rot|fein|T2':'k_medium-eckig-frenchfein-nude-rot_T2.webp',
+ 'medium|eckig|french|-|none|nude|rot|fein|T3':'k_medium-eckig-frenchfein-nude-rot_T3.webp',
+ 'medium|eckig|french|-|none|nude|rot|fein|T4':'k_medium-eckig-frenchfein-nude-rot_T4.webp',
+ 'medium|eckig|french|-|none|nude|rot|fein|T5':'k_medium-eckig-frenchfein-nude-rot_T5.webp',
+ 'medium|eckig|french|-|none|nude|schwarz|fein|T2':'k_medium-eckig-frenchfein-nude-schwarz_T2.webp',
+ 'medium|eckig|french|-|none|nude|schwarz|fein|T3':'k_medium-eckig-frenchfein-nude-schwarz_T3.webp',
+ 'medium|eckig|french|-|none|nude|schwarz|fein|T4':'k_medium-eckig-frenchfein-nude-schwarz_T4.webp',
+ 'medium|eckig|french|-|none|nude|schwarz|fein|T5':'k_medium-eckig-frenchfein-nude-schwarz_T5.webp',
+ 'medium|eckig|french|-|none|nude|weiss|fein|T2':'k_medium-eckig-frenchfein-nude-weiss_T2.webp',
+ 'medium|eckig|french|-|none|nude|weiss|fein|T3':'k_medium-eckig-frenchfein-nude-weiss_T3.webp',
+ 'medium|eckig|french|-|none|nude|weiss|fein|T4':'k_medium-eckig-frenchfein-nude-weiss_T4.webp',
+ 'medium|eckig|french|-|none|nude|weiss|fein|T5':'k_medium-eckig-frenchfein-nude-weiss_T5.webp',
+ 'medium|eckig|french|-|none|rosa|rot|fein|T2':'k_medium-eckig-frenchfein-rosa-rot_T2.webp',
+ 'medium|eckig|french|-|none|rosa|rot|fein|T3':'k_medium-eckig-frenchfein-rosa-rot_T3.webp',
+ 'medium|eckig|french|-|none|rosa|rot|fein|T4':'k_medium-eckig-frenchfein-rosa-rot_T4.webp',
+ 'medium|eckig|french|-|none|rosa|rot|fein|T5':'k_medium-eckig-frenchfein-rosa-rot_T5.webp',
+ 'medium|eckig|french|-|none|rosa|schwarz|fein|T2':'k_medium-eckig-frenchfein-rosa-schwarz_T2.webp',
+ 'medium|eckig|french|-|none|rosa|schwarz|fein|T3':'k_medium-eckig-frenchfein-rosa-schwarz_T3.webp',
+ 'medium|eckig|french|-|none|rosa|schwarz|fein|T4':'k_medium-eckig-frenchfein-rosa-schwarz_T4.webp',
+ 'medium|eckig|french|-|none|rosa|schwarz|fein|T5':'k_medium-eckig-frenchfein-rosa-schwarz_T5.webp',
+ 'medium|eckig|french|-|none|rosa|weiss|fein|T2':'k_medium-eckig-frenchfein-rosa-weiss_T2.webp',
+ 'medium|eckig|french|-|none|rosa|weiss|fein|T3':'k_medium-eckig-frenchfein-rosa-weiss_T3.webp',
+ 'medium|eckig|french|-|none|rosa|weiss|fein|T4':'k_medium-eckig-frenchfein-rosa-weiss_T4.webp',
+ 'medium|eckig|french|-|none|rosa|weiss|fein|T5':'k_medium-eckig-frenchfein-rosa-weiss_T5.webp',
+ 'medium|mandel|french|-|none|milky|rot|fein|T2':'k_medium-mandel-frenchfein-milky-rot_T2.webp',
+ 'medium|mandel|french|-|none|milky|rot|fein|T3':'k_medium-mandel-frenchfein-milky-rot_T3.webp',
+ 'medium|mandel|french|-|none|milky|rot|fein|T4':'k_medium-mandel-frenchfein-milky-rot_T4.webp',
+ 'medium|mandel|french|-|none|milky|rot|fein|T5':'k_medium-mandel-frenchfein-milky-rot_T5.webp',
+ 'medium|mandel|french|-|none|milky|schwarz|fein|T2':'k_medium-mandel-frenchfein-milky-schwarz_T2.webp',
+ 'medium|mandel|french|-|none|milky|schwarz|fein|T3':'k_medium-mandel-frenchfein-milky-schwarz_T3.webp',
+ 'medium|mandel|french|-|none|milky|schwarz|fein|T4':'k_medium-mandel-frenchfein-milky-schwarz_T4.webp',
+ 'medium|mandel|french|-|none|milky|schwarz|fein|T5':'k_medium-mandel-frenchfein-milky-schwarz_T5.webp',
+ 'medium|mandel|french|-|none|milky|weiss|fein|T2':'k_medium-mandel-frenchfein-milky-weiss_T2.webp',
+ 'medium|mandel|french|-|none|milky|weiss|fein|T3':'k_medium-mandel-frenchfein-milky-weiss_T3.webp',
+ 'medium|mandel|french|-|none|milky|weiss|fein|T4':'k_medium-mandel-frenchfein-milky-weiss_T4.webp',
+ 'medium|mandel|french|-|none|milky|weiss|fein|T5':'k_medium-mandel-frenchfein-milky-weiss_T5.webp',
+ 'medium|mandel|french|-|none|nude|rot|fein|T2':'k_medium-mandel-frenchfein-nude-rot_T2.webp',
+ 'medium|mandel|french|-|none|nude|rot|fein|T3':'k_medium-mandel-frenchfein-nude-rot_T3.webp',
+ 'medium|mandel|french|-|none|nude|rot|fein|T4':'k_medium-mandel-frenchfein-nude-rot_T4.webp',
+ 'medium|mandel|french|-|none|nude|rot|fein|T5':'k_medium-mandel-frenchfein-nude-rot_T5.webp',
+ 'medium|mandel|french|-|none|nude|schwarz|fein|T2':'k_medium-mandel-frenchfein-nude-schwarz_T2.webp',
+ 'medium|mandel|french|-|none|nude|schwarz|fein|T3':'k_medium-mandel-frenchfein-nude-schwarz_T3.webp',
+ 'medium|mandel|french|-|none|nude|schwarz|fein|T4':'k_medium-mandel-frenchfein-nude-schwarz_T4.webp',
+ 'medium|mandel|french|-|none|nude|schwarz|fein|T5':'k_medium-mandel-frenchfein-nude-schwarz_T5.webp',
+ 'medium|mandel|french|-|none|nude|weiss|fein|T2':'k_medium-mandel-frenchfein-nude-weiss_T2.webp',
+ 'medium|mandel|french|-|none|nude|weiss|fein|T3':'k_medium-mandel-frenchfein-nude-weiss_T3.webp',
+ 'medium|mandel|french|-|none|nude|weiss|fein|T4':'k_medium-mandel-frenchfein-nude-weiss_T4.webp',
+ 'medium|mandel|french|-|none|nude|weiss|fein|T5':'k_medium-mandel-frenchfein-nude-weiss_T5.webp',
+ 'medium|mandel|french|-|none|rosa|rot|fein|T2':'k_medium-mandel-frenchfein-rosa-rot_T2.webp',
+ 'medium|mandel|french|-|none|rosa|rot|fein|T3':'k_medium-mandel-frenchfein-rosa-rot_T3.webp',
+ 'medium|mandel|french|-|none|rosa|rot|fein|T4':'k_medium-mandel-frenchfein-rosa-rot_T4.webp',
+ 'medium|mandel|french|-|none|rosa|rot|fein|T5':'k_medium-mandel-frenchfein-rosa-rot_T5.webp',
+ 'medium|mandel|french|-|none|rosa|schwarz|fein|T2':'k_medium-mandel-frenchfein-rosa-schwarz_T2.webp',
+ 'medium|mandel|french|-|none|rosa|schwarz|fein|T3':'k_medium-mandel-frenchfein-rosa-schwarz_T3.webp',
+ 'medium|mandel|french|-|none|rosa|schwarz|fein|T4':'k_medium-mandel-frenchfein-rosa-schwarz_T4.webp',
+ 'medium|mandel|french|-|none|rosa|schwarz|fein|T5':'k_medium-mandel-frenchfein-rosa-schwarz_T5.webp',
+ 'medium|mandel|french|-|none|rosa|weiss|fein|T2':'k_medium-mandel-frenchfein-rosa-weiss_T2.webp',
+ 'medium|mandel|french|-|none|rosa|weiss|fein|T3':'k_medium-mandel-frenchfein-rosa-weiss_T3.webp',
+ 'medium|mandel|french|-|none|rosa|weiss|fein|T4':'k_medium-mandel-frenchfein-rosa-weiss_T4.webp',
+ 'medium|mandel|french|-|none|rosa|weiss|fein|T5':'k_medium-mandel-frenchfein-rosa-weiss_T5.webp',
+ 'xl|eckig|french|-|none|milky|rot|fein|T2':'k_xl-eckig-frenchfein-milky-rot_T2.webp',
+ 'xl|eckig|french|-|none|milky|rot|fein|T3':'k_xl-eckig-frenchfein-milky-rot_T3.webp',
+ 'xl|eckig|french|-|none|milky|rot|fein|T4':'k_xl-eckig-frenchfein-milky-rot_T4.webp',
+ 'xl|eckig|french|-|none|milky|rot|fein|T5':'k_xl-eckig-frenchfein-milky-rot_T5.webp',
+ 'xl|eckig|french|-|none|milky|schwarz|fein|T2':'k_xl-eckig-frenchfein-milky-schwarz_T2.webp',
+ 'xl|eckig|french|-|none|milky|schwarz|fein|T3':'k_xl-eckig-frenchfein-milky-schwarz_T3.webp',
+ 'xl|eckig|french|-|none|milky|schwarz|fein|T4':'k_xl-eckig-frenchfein-milky-schwarz_T4.webp',
+ 'xl|eckig|french|-|none|milky|schwarz|fein|T5':'k_xl-eckig-frenchfein-milky-schwarz_T5.webp',
+ 'xl|eckig|french|-|none|milky|weiss|fein|T2':'k_xl-eckig-frenchfein-milky-weiss_T2.webp',
+ 'xl|eckig|french|-|none|milky|weiss|fein|T3':'k_xl-eckig-frenchfein-milky-weiss_T3.webp',
+ 'xl|eckig|french|-|none|milky|weiss|fein|T4':'k_xl-eckig-frenchfein-milky-weiss_T4.webp',
+ 'xl|eckig|french|-|none|milky|weiss|fein|T5':'k_xl-eckig-frenchfein-milky-weiss_T5.webp',
+ 'xl|eckig|french|-|none|nude|rot|fein|T2':'k_xl-eckig-frenchfein-nude-rot_T2.webp',
+ 'xl|eckig|french|-|none|nude|rot|fein|T3':'k_xl-eckig-frenchfein-nude-rot_T3.webp',
+ 'xl|eckig|french|-|none|nude|rot|fein|T4':'k_xl-eckig-frenchfein-nude-rot_T4.webp',
+ 'xl|eckig|french|-|none|nude|rot|fein|T5':'k_xl-eckig-frenchfein-nude-rot_T5.webp',
+ 'xl|eckig|french|-|none|nude|schwarz|fein|T2':'k_xl-eckig-frenchfein-nude-schwarz_T2.webp',
+ 'xl|eckig|french|-|none|nude|schwarz|fein|T3':'k_xl-eckig-frenchfein-nude-schwarz_T3.webp',
+ 'xl|eckig|french|-|none|nude|schwarz|fein|T4':'k_xl-eckig-frenchfein-nude-schwarz_T4.webp',
+ 'xl|eckig|french|-|none|nude|schwarz|fein|T5':'k_xl-eckig-frenchfein-nude-schwarz_T5.webp',
+ 'xl|eckig|french|-|none|nude|weiss|fein|T2':'k_xl-eckig-frenchfein-nude-weiss_T2.webp',
+ 'xl|eckig|french|-|none|nude|weiss|fein|T3':'k_xl-eckig-frenchfein-nude-weiss_T3.webp',
+ 'xl|eckig|french|-|none|nude|weiss|fein|T4':'k_xl-eckig-frenchfein-nude-weiss_T4.webp',
+ 'xl|eckig|french|-|none|nude|weiss|fein|T5':'k_xl-eckig-frenchfein-nude-weiss_T5.webp',
+ 'xl|eckig|french|-|none|rosa|rot|fein|T2':'k_xl-eckig-frenchfein-rosa-rot_T2.webp',
+ 'xl|eckig|french|-|none|rosa|rot|fein|T3':'k_xl-eckig-frenchfein-rosa-rot_T3.webp',
+ 'xl|eckig|french|-|none|rosa|rot|fein|T4':'k_xl-eckig-frenchfein-rosa-rot_T4.webp',
+ 'xl|eckig|french|-|none|rosa|rot|fein|T5':'k_xl-eckig-frenchfein-rosa-rot_T5.webp',
+ 'xl|eckig|french|-|none|rosa|schwarz|fein|T2':'k_xl-eckig-frenchfein-rosa-schwarz_T2.webp',
+ 'xl|eckig|french|-|none|rosa|schwarz|fein|T3':'k_xl-eckig-frenchfein-rosa-schwarz_T3.webp',
+ 'xl|eckig|french|-|none|rosa|schwarz|fein|T4':'k_xl-eckig-frenchfein-rosa-schwarz_T4.webp',
+ 'xl|eckig|french|-|none|rosa|schwarz|fein|T5':'k_xl-eckig-frenchfein-rosa-schwarz_T5.webp',
+ 'xl|eckig|french|-|none|rosa|weiss|fein|T2':'k_xl-eckig-frenchfein-rosa-weiss_T2.webp',
+ 'xl|eckig|french|-|none|rosa|weiss|fein|T3':'k_xl-eckig-frenchfein-rosa-weiss_T3.webp',
+ 'xl|eckig|french|-|none|rosa|weiss|fein|T4':'k_xl-eckig-frenchfein-rosa-weiss_T4.webp',
+ 'xl|eckig|french|-|none|rosa|weiss|fein|T5':'k_xl-eckig-frenchfein-rosa-weiss_T5.webp',
+ 'xl|mandel|french|-|none|milky|rot|fein|T2':'k_xl-mandel-frenchfein-milky-rot_T2.webp',
+ 'xl|mandel|french|-|none|milky|rot|fein|T3':'k_xl-mandel-frenchfein-milky-rot_T3.webp',
+ 'xl|mandel|french|-|none|milky|rot|fein|T4':'k_xl-mandel-frenchfein-milky-rot_T4.webp',
+ 'xl|mandel|french|-|none|milky|rot|fein|T5':'k_xl-mandel-frenchfein-milky-rot_T5.webp',
+ 'xl|mandel|french|-|none|milky|schwarz|fein|T2':'k_xl-mandel-frenchfein-milky-schwarz_T2.webp',
+ 'xl|mandel|french|-|none|milky|schwarz|fein|T3':'k_xl-mandel-frenchfein-milky-schwarz_T3.webp',
+ 'xl|mandel|french|-|none|milky|schwarz|fein|T4':'k_xl-mandel-frenchfein-milky-schwarz_T4.webp',
+ 'xl|mandel|french|-|none|milky|schwarz|fein|T5':'k_xl-mandel-frenchfein-milky-schwarz_T5.webp',
+ 'xl|mandel|french|-|none|milky|weiss|fein|T2':'k_xl-mandel-frenchfein-milky-weiss_T2.webp',
+ 'xl|mandel|french|-|none|milky|weiss|fein|T3':'k_xl-mandel-frenchfein-milky-weiss_T3.webp',
+ 'xl|mandel|french|-|none|milky|weiss|fein|T4':'k_xl-mandel-frenchfein-milky-weiss_T4.webp',
+ 'xl|mandel|french|-|none|milky|weiss|fein|T5':'k_xl-mandel-frenchfein-milky-weiss_T5.webp',
+ 'xl|mandel|french|-|none|nude|rot|fein|T2':'k_xl-mandel-frenchfein-nude-rot_T2.webp',
+ 'xl|mandel|french|-|none|nude|rot|fein|T3':'k_xl-mandel-frenchfein-nude-rot_T3.webp',
+ 'xl|mandel|french|-|none|nude|rot|fein|T4':'k_xl-mandel-frenchfein-nude-rot_T4.webp',
+ 'xl|mandel|french|-|none|nude|rot|fein|T5':'k_xl-mandel-frenchfein-nude-rot_T5.webp',
+ 'xl|mandel|french|-|none|nude|schwarz|fein|T2':'k_xl-mandel-frenchfein-nude-schwarz_T2.webp',
+ 'xl|mandel|french|-|none|nude|schwarz|fein|T3':'k_xl-mandel-frenchfein-nude-schwarz_T3.webp',
+ 'xl|mandel|french|-|none|nude|schwarz|fein|T4':'k_xl-mandel-frenchfein-nude-schwarz_T4.webp',
+ 'xl|mandel|french|-|none|nude|schwarz|fein|T5':'k_xl-mandel-frenchfein-nude-schwarz_T5.webp',
+ 'xl|mandel|french|-|none|nude|weiss|fein|T2':'k_xl-mandel-frenchfein-nude-weiss_T2.webp',
+ 'xl|mandel|french|-|none|nude|weiss|fein|T3':'k_xl-mandel-frenchfein-nude-weiss_T3.webp',
+ 'xl|mandel|french|-|none|nude|weiss|fein|T4':'k_xl-mandel-frenchfein-nude-weiss_T4.webp',
+ 'xl|mandel|french|-|none|nude|weiss|fein|T5':'k_xl-mandel-frenchfein-nude-weiss_T5.webp',
+ 'xl|mandel|french|-|none|rosa|rot|fein|T2':'k_xl-mandel-frenchfein-rosa-rot_T2.webp',
+ 'xl|mandel|french|-|none|rosa|rot|fein|T3':'k_xl-mandel-frenchfein-rosa-rot_T3.webp',
+ 'xl|mandel|french|-|none|rosa|rot|fein|T4':'k_xl-mandel-frenchfein-rosa-rot_T4.webp',
+ 'xl|mandel|french|-|none|rosa|rot|fein|T5':'k_xl-mandel-frenchfein-rosa-rot_T5.webp',
+ 'xl|mandel|french|-|none|rosa|schwarz|fein|T2':'k_xl-mandel-frenchfein-rosa-schwarz_T2.webp',
+ 'xl|mandel|french|-|none|rosa|schwarz|fein|T3':'k_xl-mandel-frenchfein-rosa-schwarz_T3.webp',
+ 'xl|mandel|french|-|none|rosa|schwarz|fein|T4':'k_xl-mandel-frenchfein-rosa-schwarz_T4.webp',
+ 'xl|mandel|french|-|none|rosa|schwarz|fein|T5':'k_xl-mandel-frenchfein-rosa-schwarz_T5.webp',
+ 'xl|mandel|french|-|none|rosa|weiss|fein|T2':'k_xl-mandel-frenchfein-rosa-weiss_T2.webp',
+ 'xl|mandel|french|-|none|rosa|weiss|fein|T3':'k_xl-mandel-frenchfein-rosa-weiss_T3.webp',
+ 'xl|mandel|french|-|none|rosa|weiss|fein|T4':'k_xl-mandel-frenchfein-rosa-weiss_T4.webp',
+ 'xl|mandel|french|-|none|rosa|weiss|fein|T5':'k_xl-mandel-frenchfein-rosa-weiss_T5.webp',
  'medium|mandel|farbe|flieder|none|||geo':'c_medium-mandel-geo-flieder_v2.webp',
  'medium|mandel|farbe|flieder|none|||geo|T2':'k_medium-mandel-geo-flieder_T2_v2.webp',
  'medium|mandel|farbe|flieder|none|||geo|T3':'k_medium-mandel-geo-flieder_T3_v2.webp',
@@ -3733,16 +4126,16 @@ const FR={natur:'11',
  'medium|mandel|farbe|mauve|cat':'09','medium|mandel|farbe|nude|chrome':'10','medium|mandel|farbe|nude|glitzer':'18',
  'medium|mandel|farbe|rot|none':'c_medium-mandel-rot.webp','medium|mandel|farbe|bordeaux|none':'13','medium|mandel|farbe|rosa|none':'14','medium|mandel|farbe|schwarz|none':'15','medium|mandel|farbe|flieder|none':'16','medium|mandel|farbe|aqua|none':'set_17_v3.webp'};
 /* Nichts ist vorausgewählt; ein zweiter Klick nimmt die Wahl zurück. Nichts wird zwischen Besuchen gespeichert. */
-const AXES=['len','form','fin','col','fx','fb','ft','dz','tn'];
-const PREF={len:'medium',form:'mandel',fin:'farbe',col:'nude',fx:'none',fb:'nude',ft:'weiss',dz:'none'};   /* nur für das Bild, solange nichts gewählt ist */
-const W={len:128,form:64,fin:32,col:16,fx:8,dz:4,fb:2,ft:1};
-let st={art:null,len:null,form:null,fin:null,col:null,fx:null,fb:null,ft:null,dz:null,tn:'T1',ex:[]};
+const AXES=['len','form','fin','col','fx','fb','ft','dz','tn','fw'];
+const PREF={len:'medium',form:'mandel',fin:'farbe',col:'nude',fx:'none',fb:'nude',ft:'weiss',dz:'none',fw:'klassisch'};   /* nur für das Bild, solange nichts gewählt ist */
+const W={len:128,form:64,fin:32,col:16,fx:8,dz:4,fb:2,ft:1,fw:3};
+let st={art:null,len:null,form:null,fin:null,col:null,fx:null,fb:null,ft:null,dz:null,fw:null,tn:'T1',ex:[]};
 
 const setLive=()=>$('#setgrid').classList.contains('set-live');
 /* Fotos als Merkmale; '*' = egal (Farbe bei Milky/French/Ombré, alles ausser Länge bei Kurz natur) */
-const FRAMES=Object.entries(FR).map(([k,n])=>{if(k==='natur')return {len:'natur',form:'*',fin:'*',col:'*',fx:'*',fb:'*',ft:'*',dz:'*',tn:'T1',n,plain:1};if(/^natur\|T\d$/.test(k))return {len:'natur',form:'*',fin:'*',col:'*',fx:'*',fb:'*',ft:'*',dz:'*',tn:k.split('|')[1],n,plain:1};
-  let [len,form,fin,col,fx,fb,ft,dz,tn]=k.split('|');if(fin==='milky'){fin='farbe';col='milky'}if(dz==='geo'){fin='geo'}if(len==='natur')form='*';return {len,form,fin,col:col==='-'?'*':col,fx,fb:fb||'*',ft:ft||'*',dz:'none',tn:tn||'T1',n}});
-const AX={len:'segLen',fin:'segFin',form:'segForm',col:'segCol',fx:'segFx',fb:'segFb',ft:'segFt',dz:'segDz'};
+const FRAMES=Object.entries(FR).map(([k,n])=>{if(k==='natur')return {len:'natur',form:'*',fin:'*',col:'*',fx:'*',fb:'*',ft:'*',dz:'*',fw:'*',tn:'T1',n,plain:1};if(/^natur\|T\d$/.test(k))return {len:'natur',form:'*',fin:'*',col:'*',fx:'*',fb:'*',ft:'*',dz:'*',fw:'*',tn:k.split('|')[1],n,plain:1};
+  let [len,form,fin,col,fx,fb,ft,dz,tn]=k.split('|');const fw=fin==='french'?(dz==='fein'?'fein':'klassisch'):'*';if(dz==='fein')dz='';if(fin==='milky'){fin='farbe';col='milky'}if(dz==='geo'){fin='geo'}if(len==='natur')form='*';return {len,form,fin,col:col==='-'?'*':col,fx,fb:fb||'*',ft:ft||'*',dz:'none',fw,tn:tn||'T1',n}});
+const AX={len:'segLen',fin:'segFin',form:'segForm',col:'segCol',fx:'segFx',fb:'segFb',ft:'segFt',dz:'segDz',fw:'segFw'};
 const lab=(ax,v)=>{const b=$(`#${AX[ax]} [data-v="${v}"]`);return b?(b.getAttribute('aria-label')||b.childNodes[0].textContent.trim()):v};
 /* eine gewählte Farbe gilt nur für Fotos mit Farbe (nicht für Milky/French/Ombré), solange Finish offen oder Farbe ist */
 const COLFIN=v=>v==='farbe'||v==='geo';
@@ -3752,7 +4145,7 @@ const nat=()=>st.len==='natur';
 const NATD=FRAMES.some(f=>f.len==='natur'&&!f.plain),natDes=()=>['col','fb','ft'].some(a=>st[a]!=null)||(st.fx!=null&&st.fx!=='none');
 const colOff=()=>(nat()&&!NATD)||(st.fin&&!COLFIN(st.fin));
 const frOff=()=>(nat()&&!NATD)||st.fin!=='french';
-const isOff=a=>(a==='col'&&colOff())||((a==='fb'||a==='ft')&&frOff());
+const isOff=a=>(a==='col'&&colOff())||((a==='fb'||a==='ft'||a==='fw')&&frOff());
 function ok(ax,v){const s=Object.assign({},st,{[ax]:v});if(isOff(ax))return false;if(nat()&&ax!=='len'&&ax!=='tn'){if(!NATD||ax==='form'||ax==='dz')return false;return FRAMES.some(f=>f.len==='natur'&&!f.plain&&fits(f,s)&&f[ax]===v)}return FRAMES.some(f=>fits(f,s)&&(f.len!=='natur'||s.len==='natur'))}
 /* Beim Hautton bleibt alles Nicht-Gewählte so, wie es gerade auf dem Foto ist – nur die Haut ändert sich */
 let curF=null,stick=false;
@@ -3760,8 +4153,8 @@ function frame(){const c=FRAMES.filter(f=>fits(f,st));let best=null,bs=-1;c.forE
   if(f.len==='natur'&&st.len!=='natur')sc-=100;if(sc>bs){bs=sc;best=f}});return best}
 /* Werte, für die es gar kein Foto gibt, nicht zeigen */
 const HAS={len:new Set(),form:new Set(),fin:new Set(),col:new Set(),fx:new Set()};
-HAS.fb=new Set();HAS.ft=new Set();HAS.dz=new Set();HAS.tn=new Set();
-FRAMES.forEach(f=>AXES.forEach(a=>{if(f[a]!=='*'&&!(a==='dz'&&f[a]==='none')&&!(a==='col'&&!COLFIN(f.fin))&&!((a==='fb'||a==='ft')&&f.fin!=='french'))HAS[a].add(f[a])}));
+HAS.fb=new Set();HAS.ft=new Set();HAS.fw=new Set();HAS.dz=new Set();HAS.tn=new Set();
+FRAMES.forEach(f=>AXES.forEach(a=>{if(f[a]!=='*'&&!(a==='dz'&&f[a]==='none')&&!(a==='col'&&!COLFIN(f.fin))&&!((a==='fb'||a==='ft'||a==='fw')&&f.fin!=='french'))HAS[a].add(f[a])}));
 /* Palettenfarben erst zeigen, wenn alle 8 Formen × (Einfarbig, Gold-Linien) × (ohne, Chrome, Cat Eye, Glitzer) als Foto da sind */
 $$('#segCol button[data-w]').forEach(b=>{const v=b.dataset.v,have=new Set(FRAMES.filter(f=>f.col===v&&f.tn==='T1').map(f=>[f.len,f.form,f.fin,f.fx].join()));
   const full=['kurz','medium','lang','xl'].every(l=>['mandel','eckig'].every(fo=>['farbe','geo'].every(fi=>['none','chrome','cat','glitzer'].every(x=>have.has([l,fo,fi,x].join())))));if(!full)HAS.col.delete(v)});
@@ -3800,7 +4193,7 @@ toneR.addEventListener('input',()=>{let v=+toneR.value;const dir=Math.sign(v-ton
 const fmtP=n=>Number.isInteger(n)?String(n):n.toFixed(2);
 let colH=0;addEventListener('resize',()=>{colH=0});
 function update(user){
-  /* 27.11 patch25 */if(nat()){st.ex=[];for(const a of ['form','fin','col','fx','fb','ft'])if(st[a]!=null&&!ok(a,st[a]))st[a]=null}if(st.col&&colOff())st.col=null;if(st.fin!=='french'){st.fb=null;st.ft=null}
+  /* 27.11 patch25 */if(nat()){st.ex=[];for(const a of ['form','fin','col','fx','fb','ft'])if(st[a]!=null&&!ok(a,st[a]))st[a]=null}if(st.col&&colOff())st.col=null;if(st.fin!=='french'){st.fb=null;st.ft=null;st.fw=null}
   Object.entries(AX).forEach(([ax,id])=>$$('#'+id+' button').forEach(b=>{
     b.hidden=!HAS[ax].has(b.dataset.v);b.classList.toggle('on',st[ax]===b.dataset.v);
     b.disabled=st[ax]!==b.dataset.v&&!ok(ax,b.dataset.v)}));
@@ -3826,7 +4219,7 @@ function update(user){
   /* Text und Preis nur aus dem, was wirklich gewählt ist; Preis = neues Set, Auffüllen darunter (Preisliste) */
   const parts=[];
   if(st.len)parts.push(nat()?LEN.natur:LEN[st.len]);
-  if(!nat()||NATD){if(st.fin==='french'&&(st.fb||st.ft))parts.push('mit French'+(st.fb?' '+lab('fb',st.fb):''),...(st.ft?['Spitze '+lab('ft',st.ft)]:[]));else if(st.fin)parts.push(FIN[st.fin]);if(st.col&&!colOff())parts.push(lab('col',st.col));if(st.form)parts.push(st.form==='eckig'?'Eckig':'Mandel');if(st.fx&&st.fx!=='none')parts.push(lab('fx',st.fx))}
+  if(!nat()||NATD){if(st.fin==='french'&&(st.fb||st.ft))parts.push('mit French'+(st.fw==='fein'?' fein':'')+(st.fb?' '+lab('fb',st.fb):''),...(st.ft?['Spitze '+lab('ft',st.ft)]:[]));else if(st.fin)parts.push(FIN[st.fin]+(st.fin==='french'&&st.fw==='fein'?' fein':''));if(st.col&&!colOff())parts.push(lab('col',st.col));if(st.form)parts.push(st.form==='eckig'?'Eckig':'Mandel');if(st.fx&&st.fx!=='none')parts.push(lab('fx',st.fx))}
   const exs=nat()?[]:st.ex.map(v=>$(`#segEx [data-v="${v}"]`));exs.forEach(b=>parts.push(b.childNodes[0].textContent.trim()));
   const fxb=st.fx&&!nat()?$(`#segFx [data-v="${st.fx}"]`):null;
   const geoB=st.fin==='geo'&&!nat()?$('#segFin [data-v="geo"]'):null;
@@ -3846,7 +4239,7 @@ function update(user){
     $('#resName').textContent=parts.length?parts.join(' · '):'Wählen Sie die Länge – der Preis erscheint sofort.';
     $('#resEx').textContent=parts.length?'Für den Preis noch: Länge':'';
   }
-  const desC=st.fin==='french'?['French',st.fb&&lab('fb',st.fb),st.ft&&'/ '+lab('ft',st.ft)].filter(Boolean).join(' '):st.fin==='geo'?['Gold-Linien',st.col&&lab('col',st.col)].filter(Boolean).join(' · '):st.fin&&st.fin!=='farbe'?lab('fin',st.fin):(st.col&&lab('col',st.col)),fxC=st.fx&&st.fx!=='none'&&lab('fx',st.fx);
+  const desC=st.fin==='french'?['French'+(st.fw==='fein'?' fein':''),st.fb&&lab('fb',st.fb),st.ft&&'/ '+lab('ft',st.ft)].filter(Boolean).join(' '):st.fin==='geo'?['Gold-Linien',st.col&&lab('col',st.col)].filter(Boolean).join(' · '):st.fin&&st.fin!=='farbe'?lab('fin',st.fin):(st.col&&lab('col',st.col)),fxC=st.fx&&st.fx!=='none'&&lab('fx',st.fx);
   const capParts=nat()?(NATD&&natDes()?['Kurz natur',desC,fxC].filter(Boolean):['Kurz natur','Russian Mani + Gellack']):[st.len&&LEN[st.len],desC,st.form&&(st.form==='eckig'?'Eckig':'Mandel'),fxC,...exs.map(b=>b.childNodes[0].textContent.trim())].filter(Boolean);
   {const sn=$('#stNote');if(sn){const e=nat()?[]:st.ex;sn.hidden=!e.length;sn.textContent=(e.includes('steine')&&e.includes('charms')?'Steine und Charms':e.includes('charms')?'Charms':'Steine')+' setzen wir im Studio nach Ihrem Wunsch – Nail Art nach Zeit, ab CHF 5'}}
   $('#stageKind').textContent=capParts.length?'Ihr Set':'Vorschau';
@@ -3895,7 +4288,7 @@ const KEN=[['Steine und Charms setzen wir im Studio nach Ihrem Wunsch – Nail A
  ['mit French','with French'],['mit Gold-Linien','with gold lines'],['Gold-Linien','Gold lines'],['Glitzer','Glitter'],['Mandel','Almond'],['Eckig','Square'],['Strass','Rhinestones'],
  ['Hautton','Skin tone'],['Länge','Length'],['Form','Shape'],['Farbe','Colour'],['Effekt','Finish'],['Ohne','None'],['Spitze','tip'],['Basis','base'],['Ihr Set','Your set'],['Vorschau','Preview'],
  ['Schliessen','Close'],['Palette','Palette'],['ab CHF','from CHF'],['Kurz','Short'],['Lang','Long'],['Min.','min'],[' nur bei ',' only with '],[' – nur ',' – only '],[': nur ',': only '],['kein ','no '],['bei ','with '],
- ['Foto: nur ','photo: only '],['ohne Foto: ','no photo: '],[' · im Salon möglich',' · possible in the salon'],['Weiss & Schwarz','White & black'],['Bordeaux','Burgundy'],['Blau','Blue'],['Braun','Brown'],['Bunt','Colourful'],['Grün','Green'],['Weiss','White'],['Rot','Red'],['Rosa','Pink'],['Schwarz','Black'],['Flieder','Lilac']];
+ ['Foto: nur ','photo: only '],['ohne Foto: ','no photo: '],[' · im Salon möglich',' · possible in the salon'],['Weiss & Schwarz','White & black'],['Bordeaux','Burgundy'],['Blau','Blue'],['Braun','Brown'],['Bunt','Colourful'],['Grün','Green'],['Weiss','White'],['Rot','Red'],['Rosa','Pink'],['Schwarz','Black'],['Flieder','Lilac'],['klassisch','classic'],['Linie','Line'],[' fein',' fine'],['>fein<','>fine<']];
 let kLang='de';
 function trK(){const root=$('#atelier');const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;
   while(n=w.nextNode()){if(!n.nodeValue.trim())continue;if(n.__de===undefined||(n.__en!==undefined&&n.nodeValue!==n.__en))n.__de=n.nodeValue;
@@ -4026,6 +4419,13 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
   const place=()=>{if(mq.matches){if(res.parentNode!==stage)kopie.after(res);const gw=grid.clientWidth,sw=stage.clientWidth;res.style.width=gw+'px';res.style.marginLeft=((sw-gw)/2)+'px';const acts=document.querySelector('#setActs');if(acts&&acts.parentNode===stage)home.appendChild(acts)}else{res.style.width='';res.style.marginLeft='';if(res.parentNode!==home)home.insertBefore(res,next)}};
   place();mq.addEventListener('change',place);addEventListener('resize',place);
 })();
+</script>
+
+<script>/* 28.11 patch34 wahl: Preis links (heller Rechner) */
+(()=>{const at=document.getElementById('atelier'),grid=document.getElementById('setgrid'),src=at&&at.querySelector('.set-grid>div:last-child .result');if(!at||!grid||!src)return;
+ const lp=document.createElement('div');lp.id='layPreis';lp.innerHTML='<div class="lp-k">Ihr Set</div><div class="result" aria-hidden="true"></div>';grid.insertBefore(lp,grid.children[1]);
+ const card=lp.querySelector('.result');const sync=()=>{card.innerHTML=src.innerHTML.replace(/ id="[^"]*"/g,'')};sync();
+ new MutationObserver(sync).observe(src,{subtree:true,childList:true,characterData:true,attributes:true})})();
 </script>
 </body>
 </html>
