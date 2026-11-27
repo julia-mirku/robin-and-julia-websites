@@ -118,8 +118,8 @@ body{position:relative}
 .s-wand{display:flex;flex-direction:column;padding:64px 0 0}
 .s-wand .wand-inhalt{order:1}
 .s-wand .wandfoto{order:2;display:block;margin-top:30px}
-.s-wand .wandfoto img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 50%}
-.s-wand .wandfoto{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 14px),transparent 100%)}
+.s-wand .wandfoto img{width:100%;aspect-ratio:873/1520;object-fit:cover;object-position:50% 50%}
+.s-wand .wandfoto{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 46px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 40px,#000 calc(100% - 46px),transparent 100%)}
 .uebergang{position:absolute;left:0;right:0;top:0;height:72px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(24,30,36,.92) 0,rgba(24,30,36,.42) 32%,rgba(24,30,36,.1) 68%,rgba(24,30,36,0) 100%)}
 .wand-text p{margin:0 0 16px;max-width:44ch;color:#3f362f}
 .zeiten{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;max-width:520px}
@@ -511,8 +511,9 @@ footer .logo{width:86px;height:26px;color:var(--creme)}
 
 <section class="s-wand putz" id="wand">
   <picture class="wandfoto">
+    <source media="(max-width:599px)" srcset="img/wand_ton_hoch_600.webp 600w, img/wand_ton_hoch_873.webp 873w" sizes="100vw">
     <source media="(max-width:899px)" srcset="img/wand_blaetter_q_900.webp 900w, img/wand_blaetter_q_1536.webp 1536w" sizes="100vw">
-    <img src="img/wand_blaetter_1600.webp" srcset="img/wand_blaetter_1600.webp 1600w, img/wand_blaetter_2752.webp 2752w" sizes="100vw" alt="Die bemalte Wand im Bodan: Kalkputz mit Zweigen und goldenen Blättern, eine Eichennische mit Licht" loading="lazy">
+    <img src="img/wand_ton_1600.webp" srcset="img/wand_ton_1600.webp 1600w, img/wand_ton_2752.webp 2752w" sizes="100vw" alt="Die bemalte Wand im Bodan: Kalkputz mit Zweigen und goldenen Blättern, eine Eichennische mit Licht" loading="lazy">
   </picture>
   <div class="uebergang" aria-hidden="true"></div>
   <div class="wrap wand-inhalt">
