@@ -751,6 +751,10 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 @media (max-width:760px){ .steps li:not(:last-child)::after{content:none} }
 .contact a{border-color:transparent;background:rgba(244,236,220,.035)}
 .rev{padding-bottom:calc(clamp(8px,1.4vw,18px) + 10px)!important}
+/* 27.11 final: Fuss auf 375 ohne Ueberlauf; Namen in der Karte bis 1100 px umbrechen statt «…» */
+@media (max-width:420px){ footer .wrap.fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} .fgrid h4{letter-spacing:.1em} .fgrid a{max-width:100%;white-space:normal} }
+@media (max-width:1100px){ .sheet .rt{white-space:normal;overflow:visible} }
+@media (min-width:761px) and (max-width:1100px) and (min-height:821px){ .sheet{height:auto;min-height:calc(5 * 92px + 34px)} .sheet .half{grid-auto-rows:minmax(92px,auto)} }
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -806,7 +810,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   <div class="wrap">
     <div class="head reveal">
       <h2>Leos <i>Lieblinge</i></h2>
-      <p class="lead">Unsere Lieblinge – mit den Nummern unserer Küche.</p>
+      <p class="lead">Unsere Lieblinge – mit den Nummern unserer Küche.</p>
     </div>
     <div class="sidewrap"><div class="dishes" id="dishes"></div><button class="arrow ga sa-prev" id="dPrev" type="button" aria-label="Vorherige Gerichte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg></button><button class="arrow ga sa-next" id="dNext" type="button" aria-label="Weitere Gerichte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg></button></div>
     <div class="dnav"><span class="ddots" id="ddots" aria-hidden="true"></span></div>
@@ -818,7 +822,7 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   <div class="wrap">
     <div class="khead">
       <h2>Die <i>Karte</i></h2>
-      <p class="sub">Mit unseren Küchennummern – am Telefon einfach «Nr. 73» sagen.</p>
+      <p class="sub">Mit unseren Küchennummern – am Telefon einfach «Nr. 73» sagen.</p>
       <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Suchen: Lachs, Avocado, Ramen, 73 …" autocomplete="off" aria-label="Karte durchsuchen"></label>
     </div>
     <div class="filters kfilters" id="filters">
@@ -838,8 +842,8 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 <section class="plan" id="platte">
   <div class="wrap">
     <h2 class="reveal">Sushi-Platte für <i>Ihre Gruppe</i><span class="h2sub">in 10 Sekunden zusammengestellt</span></h2>
-    <p class="lead reveal" style="margin-top:14px">Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.</p>
-    <ol class="steps reveal" id="pSteps" aria-label="So funktioniert es"><li data-s="1"><b>1</b>Personen</li><li data-s="2"><b>2</b>Hunger</li><li data-s="3"><b>3</b>Stil</li><li data-s="4" class="goal"><b>✓</b>Ihre Platte</li></ol>
+    <p class="lead reveal" style="margin-top:14px">Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.</p>
+    <ol class="steps reveal" id="pSteps" aria-label="So funktioniert es"><li data-s="1"><b>1</b>Personen</li><li data-s="2"><b>2</b>Hunger</li><li data-s="3"><b>3</b>Stil</li><li data-s="4" class="goal"><b>✓</b>Ihre Platte</li></ol>
     <div class="grid">
       <div class="lcol">
         <div class="pers"><span class="lb"><b class="no">1</b>Personen</span>
@@ -902,16 +906,16 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
     <h2 class="neon" id="neon">Sake Cocktails</h2>
     <p class="lead reveal">Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.</p>
     <div class="drinks">
-      <article class="drink big reveal"><img src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Apéro vor dem Sushi oder ein letzter Drink zum Schluss.</p></div></article>
+      <article class="drink big reveal"><img src="img/s/bar_neon.jpg" srcset="img/s/bar_neon_m.jpg 720w, img/s/bar_neon.jpg 900w" sizes="(max-width:900px) 100vw, 460px" width="900" height="1125" alt="Die Bar von Leo im Neonlicht" loading="lazy" decoding="async"><div class="cap"><h3>Die Bar</h3><p>Apéro vor dem Sushi oder ein letzter Drink zum Schluss.</p></div></article>
       <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/yuzu_sakura.jpg" width="700" height="700" alt="Cocktail Yuzu Sakura" loading="lazy" decoding="async"><div class="cap"><h3>Yuzu Sakura</h3><p>Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral &amp; frisch</p></div></article>
-      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
+      <article class="drink reveal"><span class="pr">Fr. 18</span><img src="img/s/matcha_sour.jpg" width="700" height="700" alt="Cocktail Matcha Sake Sour" loading="lazy" decoding="async"><div class="cap"><h3>Matcha Sake Sour</h3><p>Sake, Matcha, Zitrone, Zucker – umami &amp; erfrischend</p></div></article>
     </div>
     <div class="drinks two">
       <div class="list reveal"><h3>Signature Sake</h3>
-        <div class="li"><span>Sake Blossom<small>Sake, Holunder, Tonic, Limettenzeste</small></span><b>Fr. 17</b></div>
-        <div class="li"><span>Yuzu Fizz<small>Sake, Yuzu, Soda – Zitrus &amp; Spritz</small></span><b>Fr. 17</b></div>
+        <div class="li"><span>Sake Blossom<small>Sake, Holunder, Tonic, Limettenzeste</small></span><b>Fr. 17</b></div>
+        <div class="li"><span>Yuzu Fizz<small>Sake, Yuzu, Soda – Zitrus &amp; Spritz</small></span><b>Fr. 17</b></div>
       </div>
-      <div class="list reveal"><h3>Bier, Sake &amp; Champagner</h3>
+      <div class="list reveal"><h3>Bier, Sake &amp; Champagner</h3>
         <div class="li"><span>Leo Lager<small>Thailand · 5,0 % · 3,3 dl</small></span><b>Fr. 6.90</b></div>
         <div class="li"><span>Asahi Super Dry<small>Japan · 5,0 % · 3,3 dl</small></span><b>Fr. 6.90</b></div>
         <div class="li"><span>Hakutsuru Sake<small>4 cl</small></span><b>Fr. 8</b></div>
@@ -1330,7 +1334,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Frisches Sushi, Ramen und Sake-Cocktails in unserem Salon an der Engelgasse 2 – mitten in der St. Galler Altstadt.":"Fresh sushi, ramen and sake cocktails in our salon at Engelgasse 2 – right in the heart of St. Gallen’s old town.",
 "Tisch reservieren":"Book a table","Zur Karte":"See the menu","Leos":"Leo’s",
 "Die":"The",
-"Mit unseren Küchennummern – am Telefon einfach «Nr. 73» sagen.":"With our kitchen numbers – on the phone, just say “No. 73”.",
+"Mit unseren Küchennummern – am Telefon einfach «Nr. 73» sagen.":"With our kitchen numbers – on the phone, just say “No. 73”.",
 "Suchen: Lachs, Avocado, Ramen, 73 …":"Search: salmon, avocado, ramen, 73 …","Karte durchsuchen":"Search the menu",
 "Vegi":"Veggie","Fisch & Meeresfrüchte gegart, flambiert oder frittiert":"Fish & seafood cooked, flambéed or fried","Gegart":"Cooked","Scharf":"Spicy","Geflämmt":"Flamed",
 "Ohne Rohes":"Nothing raw","Ohne roh":"Nothing raw",
@@ -1342,8 +1346,8 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Suchergebnis":"Search results","Gut zu wissen":"Good to know","Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.":"Nothing found – try “salmon”, “avocado” or a number.",
 "Crunchy Rollen":"Crunchy Rolls","Vorspeisen & Bao":"Starters & Bao","Ramen & Suppen":"Ramen & Soups",
 "Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
-"Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose how many people, your appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
-"So funktioniert es":"How it works","Personen":"People","Hunger":"Appetite","Stil":"Style","Ihre Platte":"Your platter",
+"Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose how many people, your appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
+"So funktioniert es":"How it works","Personen":"People","Hunger":"Appetite","Stil":"Style","Ihre Platte":"Your platter","Ihre Platte":"Your platter",
 "Grosse Sushi-Platte auf Schiefer, von oben":"Large sushi platter on slate, seen from above",
 "Stück":"pieces","pro Person":"per person","Eine Person weniger":"One person fewer","Eine Person mehr":"One more person",
 "Klein":"Light","Normal":"Regular","Gross":"Hearty","Gemischt":"Mixed",
@@ -1357,9 +1361,9 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Der Salon von Leo am Abend: grüne Samtbänke, Bilder in Goldrahmen":"Leo’s salon in the evening: green velvet banquettes, paintings in gilt frames",
 "Der lange Salon mit roten Teppichen und Tischlampen":"The long salon with red rugs and table lamps",
 "Hosomaki mit Lachs und Gurke auf Schiefer":"Hosomaki with salmon and cucumber on slate","Sashimi von Lachs und Thunfisch auf Eis":"Salmon and tuna sashimi on ice",
-"Die Bar von Leo im Neonlicht":"Leo’s bar in neon light","Die Bar":"The bar","Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral & frisch":"Sake, yuzu, lemon juice, sakura syrup – floral & fresh",
-"Sake, Matcha, Zitrone, Zucker – umami & erfrischend":"Sake, matcha, lemon, sugar – umami & refreshing",
-"Sake, Holunder, Tonic, Limettenzeste":"Sake, elderflower, tonic, lime zest","Sake, Yuzu, Soda – Zitrus & Spritz":"Sake, yuzu, soda – citrus & spritz",
+"Die Bar von Leo im Neonlicht":"Leo’s bar in neon light","Die Bar":"The bar","Sake, Yuzu, Zitronensaft, Sakura-Sirup – floral & frisch":"Sake, yuzu, lemon juice, sakura syrup – floral & fresh",
+"Sake, Matcha, Zitrone, Zucker – umami & erfrischend":"Sake, matcha, lemon, sugar – umami & refreshing",
+"Sake, Holunder, Tonic, Limettenzeste":"Sake, elderflower, tonic, lime zest","Sake, Yuzu, Soda – Zitrus & Spritz":"Sake, yuzu, soda – citrus & spritz",
 "Thailand · 5,0 % · 3,3 dl":"Thailand · 5.0% · 33 cl","Japan · 5,0 % · 3,3 dl":"Japan · 5.0% · 33 cl","7,5 dl":"75 cl",
 "Was unsere Gäste":"What our guests","sagen":"say","302 Bewertungen auf Google":"302 reviews on Google",
 "Vorherige Bewertung":"Previous review","Vorherige Gerichte":"Previous dishes","Weitere Gerichte":"More dishes","Nächste Bewertung":"Next review",
@@ -1378,8 +1382,8 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Teriyaki, Gurke, Koriander, Gochujang-Mayo":"Teriyaki, cucumber, coriander, gochujang mayo",
 "Lachs, Thunfisch oder Crevetten · je 4 Stück":"Salmon, tuna or prawns · 4 pieces each",
 "8 vegetarische Teigtaschen, Sweet-Soja-Dip":"8 vegetarian dumplings, sweet soy dip","In der Schale mit Meersalz":"In the pod with sea salt",
-  "Unsere Lieblinge – mit den Nummern unserer Küche.":"Our favourites – with our kitchen numbers.",
-  "Apéro vor dem Sushi oder ein letzter Drink zum Schluss.":"An apéro before the sushi, or one last drink to finish.",
+  "Unsere Lieblinge – mit den Nummern unserer Küche.":"Our favourites – with our kitchen numbers.",
+  "Apéro vor dem Sushi oder ein letzter Drink zum Schluss.":"An apéro before the sushi, or one last drink to finish.",
   "Mitten in der Altstadt: grüner Samt, Bilder in Goldrahmen und eine kleine Lampe auf jedem Tisch.":"Right in the old town: green velvet, paintings in gilt frames and a little lamp on every table.",
   "Alle Tage und Zeiten ansehen ↑":"See all days and times ↑",
   "Chashu (Schweinefleisch), Ajitama-Ei, Narutomaki, Hühnerbrühe":"Chashu (pork), ajitama egg, narutomaki, chicken broth",
@@ -1397,12 +1401,13 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
   "· nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.":"· preview only – some links and features are not active yet.",
   "Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in Fr. incl. 8.1% VAT.",
   "Hausgemachte Sake-Kreationen, passend zu Sushi – und dazu das thailändische Leo Lager.":"House-made sake cocktails to go with sushi – plus Leo Lager from Thailand.",
-  "Bier, Sake & Champagner":"Beer, sake & champagne",
+  "Bier, Sake & Champagner":"Beer, sake & champagne",
   "Crunchy Maki in Tempura":"Crunchy tempura maki",
   "Alle Preise in Fr. inkl. 8,1 % MwSt.":"All prices in CHF incl. 8.1% VAT.",
   "GEFLÄMMT":"SEARED",
   "Geflämmt":"Seared",
-  "1 Person":"1 person"
+  "1 Person":"1 person",
+  "Fr.":"CHF","≈ Fr.":"≈ CHF"
   };
   const ING={"Paprikapaste":"paprika paste","eingelegter Kürbis":"pickled pumpkin","eingelegter Rettich":"pickled radish","mariniertes Gemüse":"marinated vegetables","marinierter Bambus":"marinated bamboo shoots","Schweinefleisch (Chashu)":"pork (chashu)","Narutomaki (Fischkuchen)":"narutomaki (fish cake)",
 "1 Stück":"1 piece","5 Stück":"5 pieces","5 Calamari":"5 calamari","5 Crevetten":"5 prawns","8 Teigtaschen":"8 dumplings","Aal in Tempura":"tempura eel","Ajitama-Ei":"ajitama egg",
