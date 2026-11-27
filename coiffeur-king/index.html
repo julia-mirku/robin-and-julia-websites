@@ -1319,6 +1319,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 /* Julia 26.11: Sonntag (geschlossen) – gestrichelter Rahmen etwas heller, damit er neben der Leuchte nicht verschwimmt */
 html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.42)}
 @media (hover:hover){html body .tile.done.off:not(.is-sel):not(.is-today):hover{border-color:var(--acc)}}
+
+/* Logo des Salons (aus Instagram king1coiffeur nachgezeichnet), Juli 27.11; alter Schriftzug oben rechts */
+html .mark.has-logo{gap:0}
+html .mark .k1logo{display:block;height:68px;width:auto;flex:none;margin:-4px 0}
+@media (min-width:900px){html .mark.has-logo{min-width:134px}}
+@media (max-width:899px){html .mark .k1logo{height:56px;margin:0}}
+html .tools .mark-alt{grid-row:auto;grid-column:auto;min-height:0;cursor:default}
+@media (min-width:1100px){html .tools{position:relative}html .tools .mark-alt{position:absolute;right:100%;top:50%;transform:translateY(-50%);margin-right:22px}}
+@media (min-width:1100px) and (max-width:1279px){html .tools .mark-alt{display:none}}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -1330,9 +1339,8 @@ html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.4
 
 <header class="head">
   <div class="wrap head-in">
-    <a class="mark" href="#top" aria-label="Coiffeur King 1 – Startseite">
-      <svg viewBox="0 0 100 112" aria-hidden="true" focusable="false"><path class="hx" d="M50 4 L95 30 L95 82 L50 108 L5 82 L5 30 Z"/><path class="cr" d="M28 70 L24 42 L38 54 L50 36 L62 54 L76 42 L72 70 Z M28 74 H72 V80 H28 Z"/></svg>
-      <span><small>Coiffeur</small><b>King 1</b></span>
+    <a class="mark has-logo" href="#top" aria-label="Coiffeur King 1 – Startseite">
+      <img class="k1logo" src="king1_logo.svg" alt="Coiffeur King 1 – Shaves and Haircuts" width="128" height="100">
     </a>
     <nav class="nav" aria-label="Hauptnavigation">
       <a href="#top">Startseite</a>
@@ -1341,6 +1349,10 @@ html body .tile.off:not(.is-sel):not(.is-today){border-color:rgba(236,226,204,.4
       <a href="#kontakt">Kontakt<span class="nav-x">&nbsp;&amp; Standort</span></a>
     </nav>
     <div class="tools">
+      <span class="mark mark-alt" aria-hidden="true">
+        <svg viewBox="0 0 100 112" aria-hidden="true" focusable="false"><path class="hx" d="M50 4 L95 30 L95 82 L50 108 L5 82 L5 30 Z"/><path class="cr" d="M28 70 L24 42 L38 54 L50 36 L62 54 L76 42 L72 70 Z M28 74 H72 V80 H28 Z"/></svg>
+        <span><small>Coiffeur</small><b>King 1</b></span>
+      </span>
       <a class="btn callpill" href="tel:+41412188696">Anrufen</a>
     </div>
   </div>
