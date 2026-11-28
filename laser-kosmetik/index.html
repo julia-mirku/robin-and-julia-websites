@@ -347,6 +347,15 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .care li{background:rgba(255,255,255,.55);border:1px solid transparent;transition:background .25s,border-color .25s,transform .25s}
 @media (hover:hover){.care li:hover{background:#fff;border-color:var(--blush2);transform:translateX(4px)}}
 @media (max-width:640px){.care .ct small{display:none}.acc details p{padding-left:16px}}
+
+/* Julia 28.11: statt Dunkel beim Auswählen ein zartes Rosé (wie «Vor Ihrem Termin») */
+.mk.on .nm,.chips button.on,.toggle button[aria-pressed="true"],.claim[aria-selected="true"],.days .day[aria-pressed="true"]{background:var(--blush2);color:var(--ink);border-color:rgba(183,119,106,.45);box-shadow:0 8px 20px -14px rgba(150,90,75,.55)}
+.claim[aria-selected="true"] small{color:var(--rose)}
+.days .day.today[aria-pressed="true"]::after{background:var(--rose)}
+.tab-ind{background:var(--blush2);box-shadow:inset 0 0 0 1px rgba(183,119,106,.45),0 8px 20px -12px rgba(150,90,75,.5)}
+.tabs .tab[aria-selected="true"]{color:var(--ink)}
+/* Vor Ihrem Termin bleibt stehen, solange links die Fragen laufen */
+@media (min-width:901px){.know .care{position:sticky;top:104px}}
 /* ---------- Gutschein ---------- */
 .gift{display:grid;grid-template-columns:1.1fr .9fr;border-radius:26px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(74,56,38,.5)}
 .gift .t{padding:52px}
@@ -759,7 +768,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
         <div class="mate"><div class="mono">C</div><b>Camilla</b><span>Kosmetikerin · ästhetische Laserbehandlungen</span></div>
       </div>
       <div class="dots" id="crewDots"><i class="on"></i><i></i><i></i></div>
-      <figure class="laugh"><img src="img/olivera_kundin_1400.webp" srcset="img/olivera_kundin_800.webp 800w, img/olivera_kundin_1400.webp 1400w" sizes="(max-width:900px) 100vw, 760px" alt="Olivera Ivkovic im Gespräch mit einer Kundin im Studio" width="1400" height="788" loading="lazy" decoding="async"><figcaption>Olivera im Gespräch mit einer Kundin</figcaption></figure>
+      <figure class="laugh"><img src="img/olivera_kundin_1400.webp" srcset="img/olivera_kundin_800.webp 800w, img/olivera_kundin_1400.webp 1400w" sizes="(max-width:900px) 100vw, 760px" alt="Olivera Ivkovic im Studio an der Ullmannstrasse" width="1400" height="788" loading="lazy" decoding="async"><figcaption>Im Studio an der Ullmannstrasse</figcaption></figure>
     </div>
   </div>
 </section>
