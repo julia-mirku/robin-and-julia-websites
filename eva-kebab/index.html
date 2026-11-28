@@ -24,7 +24,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Spline Sans",system-ui,sans-serif;
   transition:background-color .6s var(--ease),color .6s var(--ease);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 /* Steinfaktur (fein, ohne Naht – liegt auf dem ganzen Body) */
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;will-change:transform;transform:translateZ(0);
   background:url("img/hintergrund.webp") center/cover no-repeat;opacity:.72}
 @media (max-width:900px) and (orientation:portrait){body::before{background-image:url("img/hintergrund-hoch.webp")}}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1200px 700px at 85% -10%,rgba(110,81,64,.10),transparent 60%)}
@@ -42,7 +42,7 @@ button{font:inherit;color:inherit}
 .bar{background:#120d0a;color:#E6D9BC;font-size:13px;line-height:1.45;text-align:center;padding:7px 16px;border-bottom:1px solid rgba(238,227,200,.12)}
 .bar b{font-weight:600}
 .head{display:flex;align-items:center;gap:18px;padding:14px clamp(18px,4vw,56px);
-  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:color-mix(in srgb,var(--bg) 99%,transparent);
   border-bottom:1px solid var(--line);transition:background-color .6s var(--ease)}
 .logo{font-family:Cinzel,serif;font-weight:700;font-size:26px;letter-spacing:.34em;text-decoration:none;margin-right:auto;padding-left:.1em}
 .logo small{display:block;font:500 10.5px/1 "Spline Sans",sans-serif;letter-spacing:.32em;color:var(--ink-2);margin-top:3px}
@@ -101,6 +101,13 @@ section{padding:clamp(72px,9vw,110px) clamp(18px,5vw,72px) 0;max-width:1320px;ma
 .hero .cta{justify-content:center}
 .facts{justify-content:center;width:min(640px,100%)}
 @media (max-width:640px){.hero{min-height:0}.hero-txt{padding-top:calc(var(--top-h,110px) + 44px);padding-bottom:40px}.hero h1{font-size:78px;letter-spacing:.26em;margin-left:.26em}.hero h1 span{letter-spacing:.28em}}
+/* Sprachumschalter DE/EN */
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:3px}
+.lang button{border:0;background:transparent;font:600 13.5px/1 "Spline Sans",sans-serif;letter-spacing:.06em;padding:8px 11px;border-radius:999px;cursor:pointer;color:var(--ink-2);transition:background-color .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (hover:hover){.lang button:not([aria-pressed="true"]):hover{background:var(--red-soft);color:var(--ink)}}
+html[lang|="en"] .hrow.today .d::after{content:"Today"}
+@media (max-width:640px){.lang button{padding:8px 9px;font-size:13px}}
 /* ---------- Speisekarte ---------- */
 .menu-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}
@@ -133,7 +140,7 @@ section{padding:clamp(72px,9vw,110px) clamp(18px,5vw,72px) 0;max-width:1320px;ma
 .shot figcaption{margin-top:12px;font-size:15.5px;color:var(--ink-2)}
 .shot figcaption b{color:var(--ink);font-weight:600}
 @media (hover:hover){.shot:hover img{transform:scale(1.035)}}
-.arrow{position:absolute;top:calc(50% - 22px);transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(6px);cursor:pointer;display:grid;place-items:center;z-index:2;transition:background-color .2s,border-color .2s,opacity .2s}
+.arrow{position:absolute;top:calc(50% - 22px);transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 95%,transparent);cursor:pointer;display:grid;place-items:center;z-index:2;transition:background-color .2s,border-color .2s,opacity .2s}
 .arrow svg{width:20px;height:20px}
 .arrow.l{left:-25px}.arrow.r{right:-25px}
 .arrow[disabled]{opacity:.3;cursor:default}
@@ -253,6 +260,7 @@ footer .logo{font-size:22px;margin:0;color:var(--ink);font-weight:700}
       <a href="#bilder">Bilder</a>
       <a href="#zeiten">Öffnungszeiten</a>
     </nav>
+    <div class="lang" role="group" aria-label="Sprache"><button type="button" data-lang="de" aria-pressed="true" lang="de">DE</button><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button></div>
     <a class="btn btn-red" href="tel:+41412401447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Anrufen</span></a>
   </header>
 </div>
@@ -357,7 +365,7 @@ footer .logo{font-size:22px;margin:0;color:var(--ink);font-weight:700}
 <section id="bilder" aria-labelledby="bilder-h">
   <div class="rv">
     <p class="kicker">Bei EVA</p>
-    <h2 class="h2" id="bilder-h">Drinnen, draussen, auf dem Teller</h2>
+    <h2 class="h2" id="bilder-h">Drinnen und auf dem Teller</h2>
   </div>
   <div class="rail-wrap rv">
     <button class="arrow l" type="button" aria-label="Vorheriges Bild" data-dir="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -365,7 +373,7 @@ footer .logo{font-size:22px;margin:0;color:var(--ink);font-weight:700}
       <figure class="shot"><div class="f"><img src="img/steinwand-700.webp" data-full="img/steinwand.webp" alt="Sitzplätze vor der Steinwand mit braunem Sofa" loading="lazy"></div><figcaption><b>Gemütlich drinnen</b> – Steinwand und Sofa</figcaption></figure>
       <figure class="shot"><div class="f"><img src="img/theke-700.webp" data-full="img/theke.webp" alt="Theke mit den Menütafeln" loading="lazy"></div><figcaption><b>Die Theke</b> – Fleisch frisch vom Spiess</figcaption></figure>
       <figure class="shot"><div class="f"><img src="img/dueruem-700.webp" data-full="img/dueruem.webp" alt="Gerollter Dürüm" loading="lazy"></div><figcaption><b>Gerollt</b> – im Fladenbrot</figcaption></figure>
-      <figure class="shot"><div class="f"><img src="img/teller-700.webp" data-full="img/teller.webp" alt="Kebab mit Karotten, Salat und Pommes" loading="lazy"></div><figcaption><b>Auf dem Teller</b> – mit Salat und Pommes</figcaption></figure>
+      <figure class="shot"><div class="f"><img src="img/teller-700.webp" data-full="img/teller.webp" alt="Kebab im Taschenbrot mit Karotten und Salat, dahinter Pommes" loading="lazy"></div><figcaption><b>Auf dem Teller</b> – mit Salat und Pommes</figcaption></figure>
       <figure class="shot"><div class="f"><img src="img/cheddar-700.webp" data-full="img/cheddar.webp" alt="Kebab mit Cheddar" loading="lazy"></div><figcaption><b>Mit Cheddar</b> – für Käse-Fans</figcaption></figure>
       <figure class="shot"><div class="f"><img src="img/pizza-700.webp" data-full="img/pizza.webp" alt="Pizza aus dem Ofen" loading="lazy"></div><figcaption><b>Pizza</b> – aus dem Ofen</figcaption></figure>
     </div>
@@ -381,10 +389,10 @@ footer .logo{font-size:22px;margin:0;color:var(--ink);font-weight:700}
   <div class="quotes rv">
     <button class="arrow l" type="button" aria-label="Vorherige Bewertung" data-q="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
     <div class="qtrack" id="qtrack">
-      <figure class="q"><blockquote>«Sehr leckerer Döner und super Service; die Mitarbeiter sind freundlich und man fühlt sich direkt willkommen»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
+      <figure class="q"><blockquote>«Sehr leckerer Döner und super Service; die Mitarbeiter sind freundlich und man fühlt sich direkt&nbsp;willkommen»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
       <figure class="q"><blockquote>«Bester Döner in Luzern! Sind für ein paar Tage hier zum Urlaub machen und wurden sehr nett Empfangen. Kommen aufjedenfall wieder.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
       <figure class="q"><blockquote>«Kebab, einer der besten in Europa, hilfsbereiter und freundlicher Besitzer, extrem sauber.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
-      <figure class="q"><blockquote>«Sehr gutes und leckeres, qualitativ hochwertiges Essen; sehr faire Preise; sehr nettes Personal und sehr sauber; sehr gute Öffnungszeiten.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
+      <figure class="q"><blockquote>«Sehr gutes und leckeres, qualitativ hochwertiges Essen; sehr faire Preise; sehr nettes Personal und sehr sauber; sehr gute&nbsp;Öffnungszeiten.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
       <figure class="q"><blockquote>«Einer der besten döner den ich je gegessen habe»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
     </div>
     <button class="arrow r" type="button" aria-label="Nächste Bewertung" data-q="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -405,7 +413,7 @@ footer .logo{font-size:22px;margin:0;color:var(--ink);font-weight:700}
       <p class="lead" style="font-size:16px">Zum Mitnehmen oder vor Ort – drinnen und auf der Terrasse.</p>
     </div>
     <div class="rv">
-      <div class="map"><iframe src="https://www.google.com/maps?q=Eva+Kebab+Pizza,+Pilatusstrasse+46A,+6003+Luzern&amp;z=16&amp;output=embed" title="Karte: EVA Kebab Pizza, Pilatusstrasse 46A, Luzern" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="map"><iframe data-src="https://www.google.com/maps?q=Eva+Kebab+Pizza,+Pilatusstrasse+46A,+6003+Luzern&amp;z=16&amp;output=embed" title="Karte: EVA Kebab Pizza, Pilatusstrasse 46A, Luzern" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       <div class="addr">
         <strong>EVA Kebab · Pizza</strong><br>Pilatusstrasse&nbsp;46A, 6003&nbsp;Luzern
         <div class="cta">
@@ -450,7 +458,15 @@ $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttri
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});
 $$('.rv').forEach(el=>io.observe(el));
 // Sicherheitsnetz: nichts bleibt unsichtbar, auch bei sehr schnellem Scrollen
-addEventListener('scroll',()=>{$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});},{passive:true});
+let rvPend=false; function rvNet(){ if(rvPend) return; rvPend=true; requestAnimationFrame(()=>{rvPend=false; const left=$$('.rv:not(.in)');
+  left.forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');}); if(!left.length) removeEventListener('scroll',rvNet);});}
+addEventListener('scroll',rvNet,{passive:true});
+/* Karte: laden, wenn sie nah ist und 250 ms nicht gescrollt wurde (kein Ruckeln beim Scrollen) */
+(function(){const f=$('.map iframe'); if(!f) return; let near=false, t=0;
+  const go=()=>{ if(near && !f.src){ f.src=f.dataset.src; removeEventListener('scroll',onS); } };
+  const onS=()=>{clearTimeout(t); t=setTimeout(go,250);};
+  new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ near=true; o.disconnect(); addEventListener('scroll',onS,{passive:true}); onS(); } }),{rootMargin:'900px 0px'}).observe(f);
+})();
 
 /* ---------- Speisekarte: Tabs ---------- */
 const tabs=$$('.tab'), panels=$('#panels');
@@ -470,10 +486,17 @@ rail.addEventListener('scroll',()=>requestAnimationFrame(railUI),{passive:true})
 $$('.rail-wrap .arrow').forEach(a=>a.addEventListener('click',()=>rail.scrollTo({left:(idx()+ +a.dataset.dir)*step(),behavior:'smooth'})));
 
 /* ---------- Ein schräger Wisch über Bänder: mehr senkrecht als waagrecht = Seite scrollt (vertikalVorrang) ---------- */
-[$('#rail'),$('#qtrack')].forEach(el=>el.addEventListener('wheel',e=>{
-  if(Math.abs(e.deltaY)>Math.abs(e.deltaX) && e.deltaX!==0){ e.preventDefault();
-    const k=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1; window.scrollBy(0,e.deltaY*k); }
-},{passive:false}));
+[$('#rail'),$('#qtrack')].forEach(el=>{ let acc=0, locked=false, quiet=0;
+  const stepW=()=>el===rail?step():qt.clientWidth, cur=()=>Math.round(el.scrollLeft/stepW());
+  el.addEventListener('wheel',e=>{
+    const k=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1;
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ if(e.deltaX!==0){ e.preventDefault(); window.scrollBy(0,e.deltaY*k); } return; }
+    if(e.deltaX===0) return;
+    e.preventDefault(); clearTimeout(quiet); quiet=setTimeout(()=>{acc=0; locked=false;},220);
+    if(locked) return; acc+=e.deltaX*k;
+    if(Math.abs(acc)>=30){ locked=true; const n=Math.max(0,Math.min((el===rail?shots:qs).length-1,cur()+(acc>0?1:-1)));
+      el.scrollTo({left:n*stepW(),behavior:'smooth'}); }
+  },{passive:false}); });
 
 /* ---------- Lightbox (schliesst beim Scrollen, hält die Seite nie fest) ---------- */
 const lb=$('#lb'), lbImg=$('img',lb);
@@ -516,6 +539,30 @@ const today=st.open?st.day:st.z.d;
   const pick=()=>{$$('.hrow',hours).forEach(x=>x.classList.toggle('sel',x===li));};
   li.addEventListener('click',pick); li.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
   hours.appendChild(li);});
+
+/* ---------- Sprache DE/EN (Auswahl wird gespeichert) ---------- */
+const EN={"Website-Entwurf von Julia & Robin Mirku": "Website draft by Julia & Robin Mirku", "· nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.": "· preview only – some links and features are not active yet.", "Speisekarte": "Menu", "Bewertungen": "Reviews", "Bilder": "Photos", "Öffnungszeiten": "Opening hours", "Anrufen": "Call", "Kebab · Pizza · Luzern": "Kebab · Pizza · Lucerne", "Tag und Nacht an der Pilatusstrasse.": "Day and night on Pilatusstrasse.", "Öffnungszeiten werden geladen": "Loading opening hours", "Jetzt offen · bis 24 Uhr": "Open now · until midnight", "Jetzt offen · bis 5 Uhr früh": "Open now · until 5 am", "Geschlossen · öffnet um 10 Uhr": "Closed · opens at 10 am", "Route": "Directions", "4,7 · 1'202 Google-Bewertungen": "4.7 · 1,202 Google reviews", "Was auf den Tafeln steht": "What’s on the menu boards", "Kurz erklärt, was drin ist – Kebab wahlweise mit Kalb- oder Pouletfleisch vom Spiess.": "What’s in each dish at a glance – kebabs come with your choice of veal or chicken from the spit.", "Rot markiert:": "Marked in red:", "was Gäste in ihren Bewertungen besonders loben.": "what guests praise most in their reviews.", "Kebab Spezial": "Special kebabs", "Box & Pommes": "Boxes & chips", "Kebab Taschenbrot": "Kebab in Pitta", "Im Taschenbrot, Kalb- oder Pouletfleisch": "In pitta bread, veal or chicken", "Fladenbrot": "Flatbread Wrap", "Gerollt im Fladenbrot, Kalb- oder Pouletfleisch": "Rolled in flatbread, veal or chicken", "Kleiner Kebab": "Small Kebab", "Die kleine Portion, Kalb- oder Pouletfleisch": "Small portion, veal or chicken", "Von Gästen gelobt": "Guest favourite", "Die grosse Portion, Kalb- oder Pouletfleisch": "Large portion, veal or chicken", "Vegi Falafel": "Veggie Falafel", "Falafel mit Salat": "Falafel with salad", "Sucuk Taschenbrot": "Sucuk in Pitta", "Mit Sucuk, der türkischen Wurst": "With sucuk, a Turkish sausage", "Schnitzelbrot": "Schnitzel Sandwich", "Schnitzel im Brot, mit Salat": "Schnitzel in bread, with salad", "Lahmacun gerollt": "Lahmacun Wrap", "Mit Salat · mit Kebabfleisch + 3.00": "With salad · add kebab meat + 3.00", "Mit Gyrosfleisch": "With gyros meat", "Mit Jalapeños und Mais": "With jalapeños and sweetcorn", "Luzerner Kebab": "Lucerne Kebab", "Mit Mozzarella und Pommes frites": "With mozzarella and chips", "Schweizer Kebab": "Swiss Kebab", "Mit Raclettekäse und Speck": "With raclette cheese and bacon", "Mit Ei und Raclettekäse": "With egg and raclette cheese", "Mit Cheddarkäse": "With cheddar cheese", "Griechischer Kebab": "Greek Kebab", "Mit Fetakäse": "With feta cheese", "Mit Ananas": "With pineapple", "Vegi Kebab": "Veggie Kebab", "Falafel und Käse mit Salat": "Falafel and cheese with salad", "Pide – das türkische Schiffchen aus dem Ofen.": "Pide – the Turkish boat-shaped flatbread, baked in the oven.", "Mit Mozzarella": "With mozzarella", "Pide Feta & Spinat": "Pide Feta & Spinach", "Mit Fetakäse und Spinat": "With feta cheese and spinach", "Pide Hackfleisch": "Pide Minced Meat", "Mit Hackfleisch und Mozzarella": "With minced meat and mozzarella", "Pide Kalbfleisch": "Pide Veal", "Mit Kalbfleisch und Mozzarella": "With veal and mozzarella", "Pide Poulet": "Pide Chicken", "Mit Pouletfleisch, Spinat und Fetakäse": "With chicken, spinach and feta cheese", "Mit Sucuk, Fetakäse und Ei": "With sucuk, feta cheese and egg", "Pizza-Combo: jede Pizza mit einem Getränk (0,33 l).": "Pizza combo: every pizza comes with a drink (0.33 l).", "Die scharfe Pizza": "The spicy pizza", "Mit Salami": "With salami", "Rind-Salami": "Beef Salami", "Mit Rindssalami": "With beef salami", "Mit Schinken und Champignons": "With ham and mushrooms", "Mit Pouletfleisch": "With chicken", "120 g, mit Salat, Zwiebeln, Tomaten und Haussauce": "120 g, with lettuce, onions, tomatoes and house sauce", "120 g, mit Salat, Zwiebeln, Tomaten, Käse und Haussauce": "120 g, with lettuce, onions, tomatoes, cheese and house sauce", "120 g, mit grilliertem Poulet, Salat, Tomaten und Haussauce": "120 g, with grilled chicken, lettuce, tomatoes and house sauce", "120 g, mit Salat, Zwiebeln, Tomaten, Raclettekäse, Speck und Haussauce": "120 g, with lettuce, onions, tomatoes, raclette cheese, bacon and house sauce", "Haus Burger": "House Burger", "2 × 120 g, Doppelburger mit Speck, Salat, Zwiebeln, Tomaten, Raclettekäse, Ei und Haussauce": "2 × 120 g, double burger with bacon, lettuce, onions, tomatoes, raclette cheese, egg and house sauce", "Kebab-Box": "Kebab Box", "Mit Pommes frites, Kalb- oder Pouletfleisch": "With chips, veal or chicken", "Vegi-Box Käse": "Veggie Box with Cheese", "Mit Salat und Pommes frites": "With salad and chips", "Vegi-Box Falafel": "Veggie Box with Falafel", "Chicken-Nuggets": "Chicken Nuggets", "6 Stück, mit Pommes frites": "6 pieces, with chips", "Fischknusperli": "Crispy Fish Bites", "Mit Pommes frites": "With chips", "Portion Pommes klein": "Small Portion of Chips", "Pommes frites": "Chips", "Portion Pommes gross": "Large Portion of Chips", "Bei EVA": "At EVA", "Drinnen und auf dem Teller": "Inside and on the plate", "Gemütlich drinnen": "Cosy inside", "– Steinwand und Sofa": "– stone wall and sofa", "Die Theke": "The counter", "– Fleisch frisch vom Spiess": "– meat fresh from the spit", "Gerollt": "Rolled", "– im Fladenbrot": "– in flatbread", "Auf dem Teller": "On the plate", "– mit Salat und Pommes": "– with salad and chips", "Mit Cheddar": "With cheddar", "– für Käse-Fans": "– for cheese lovers", "– aus dem Ofen": "– fresh from the oven", "Was Gäste sagen": "What guests say", "Willkommen": "Welcome", "Google-Bewertung": "Google review · original in German", "Alle Bewertungen auf": "All reviews on", "Öffnungszeiten & Anfahrt": "Opening hours & directions", "Wann und wo": "When and where", "Montag": "Monday", "Dienstag": "Tuesday", "Mittwoch": "Wednesday", "Donnerstag": "Thursday", "Freitag": "Friday", "Samstag": "Saturday", "Sonntag": "Sunday", "10.00 – 24.00": "10 am – midnight", "10.00 – 05.00": "10 am – 5 am", "Zum Mitnehmen oder vor Ort – drinnen und auf der Terrasse.": "Takeaway or eat in – inside or on the terrace.", "Route planen": "Get directions", "EVA Kebab Pizza – nach oben": "EVA Kebab Pizza – back to top", "Hauptnavigation": "Main navigation", "EVA Kebab Pizza Luzern": "EVA Kebab Pizza Lucerne", "Kategorien": "Categories", "Vorheriges Bild": "Previous photo", "Nächstes Bild": "Next photo", "Sitzplätze vor der Steinwand mit braunem Sofa": "Seating in front of the stone wall with a brown sofa", "Theke mit den Menütafeln": "Counter with the menu boards", "Gerollter Dürüm": "Rolled dürüm", "Kebab mit Cheddar": "Kebab with cheddar", "Pizza aus dem Ofen": "Pizza fresh from the oven", "Vorherige Bewertung": "Previous review", "Nächste Bewertung": "Next review", "Bewertung 1": "Review 1", "Bewertung 2": "Review 2", "Bewertung 3": "Review 3", "Bewertung 4": "Review 4", "Bewertung 5": "Review 5", "Karte: EVA Kebab Pizza, Pilatusstrasse 46A, Luzern": "Map: EVA Kebab Pizza, Pilatusstrasse 46A, Lucerne", "Schliessen": "Close", "Sprache": "Language", "Kebab im Taschenbrot mit Karotten und Salat, dahinter Pommes": "Kebab in pitta with carrots and salad, chips behind"};
+const META={de:{title:document.title,desc:document.querySelector('meta[name=description]').content},
+ en:{title:'EVA Kebab · Pizza – Pilatusstrasse 46A, Lucerne',desc:'EVA Kebab · Pizza on Pilatusstrasse 46A in Lucerne. Doner, dürüm, pide, pizza and burgers. Open until 5 am on Fridays and Saturdays.'}};
+const tnodes=[], anodes=[];
+(function collect(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement; if(!p||p.closest('script,style,blockquote,.price,.stars'))return 2; return EN[n.nodeValue.trim()]!==undefined?1:2;}});
+  let n; while(n=w.nextNode()) tnodes.push([n,n.nodeValue]);
+  $$('[alt],[aria-label],[title]').forEach(e=>['alt','aria-label','title'].forEach(a=>{const v=e.getAttribute(a); if(v&&EN[v]!==undefined) anodes.push([e,a,v]);}));})();
+function tr(de,l){const k=de.trim(); if(l!=='en'||EN[k]===undefined) return de; return de.replace(k,EN[k]);}
+function setLang(l,keep){
+  const hb=Math.max(0,top.getBoundingClientRect().bottom);
+  const anchor=keep&&scrollY>4?[...document.querySelectorAll('main h1,main h2,main h3,main .kicker,main p,main .tab,main .item,main .hrow,main figure,main .map,footer')].find(x=>{const r=x.getBoundingClientRect(); return r.height>0&&r.top>=hb-2;}):null, before=anchor?anchor.getBoundingClientRect().top:0;
+  document.documentElement.lang=l==='en'?'en-GB':'de-CH';
+  tnodes.forEach(([n,de])=>{n.nodeValue=tr(de,l);}); anodes.forEach(([e,a,de])=>e.setAttribute(a,tr(de,l)));
+  document.title=META[l].title; document.querySelector('meta[name=description]').content=META[l].desc;
+  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));
+  measure(); fixH(); railUI(); qUI();
+  if(anchor){const d=anchor.getBoundingClientRect().top-before; if(Math.abs(d)>1) window.scrollBy(0,d);}
+  try{localStorage.setItem('eva-lang',l);}catch(e){}
+}
+$$('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang,true)));
+let saved='de'; try{saved=localStorage.getItem('eva-lang')||'de';}catch(e){}
+if(saved==='en') setLang('en',false);
 })();
 </script>
 </body>
