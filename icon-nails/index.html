@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de" data-bg="2" translate="no" class="sv">
+<html lang="de" data-bg="2" data-tex="1" class="tex-on sv" translate="no">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -508,7 +508,7 @@ html.nb-off .top{top:0}
 /* 4 Fünf Akte: Vorhang zwischen den Akten */
 .akt-stage{position:relative;overflow:hidden;border-radius:24px}
 .akt-stage .vh{position:absolute;top:0;bottom:0;width:51%;z-index:6;pointer-events:none;
-  background:#1B3226 url(img/vorhang_gruen.webp) center/cover no-repeat;transition:transform .38s cubic-bezier(.6,0,.3,1)}
+  background:#1B3226 url(img/vorhang_gruen_v2.webp) center/cover no-repeat;transition:transform .38s cubic-bezier(.6,0,.3,1)}
 .akt-stage .vh.l{left:0;transform:translateX(-102%);background-position:left center}
 .akt-stage .vh.r{background-position:right center}.akt-stage .vh.r{right:0;transform:translateX(102%)}
 .akt-stage.zu .vh{transform:none}
@@ -650,7 +650,7 @@ html.sv .akt-stage .vh:after{content:"";position:absolute;inset:0;pointer-events
 html.sv .akt-stage .vh{background:none!important;transform:none!important;overflow:visible}
 html.sv .akt-stage .vh:after{display:none}
 html.sv .akt-stage .vh.r{transform:scaleX(-1)!important;transform-origin:center center!important}
-html.sv .akt-stage .vh .st{position:absolute;top:0;bottom:0;left:0;background:#1B3226 url(img/vorhang_gruen.webp) repeat-x;
+html.sv .akt-stage .vh .st{position:absolute;top:0;bottom:0;left:0;background:#1B3226 url(img/vorhang_gruen_v2.webp) repeat-x;
   transform-origin:left top;will-change:transform,clip-path;backface-visibility:hidden}
 html.sv .akt-stage .vh .st:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:var(--s,0);
   background:linear-gradient(90deg,rgba(8,18,13,.62) 0,rgba(8,18,13,.18) 22%,rgba(220,240,225,.16) 48%,rgba(8,18,13,.22) 74%,rgba(8,18,13,.66) 100%)}
@@ -696,7 +696,7 @@ header.top{z-index:90!important}
 @media (hover:hover){#atelier .seg button[data-p].on:hover span::after,#atelier #segEx button.on:hover span::after{background:rgba(255,255,255,.4)}}
 
 /* v6 P2: Tropfen hängen direkt an der dunklen Kante, Lackband deckend */
-.drips{top:-2px!important}
+.drips{top:0!important}
 .drips .band{fill:url(#lackG)!important}
 /* v6 P1: Lackfarben-Varianten */
 html[data-drip="c"] .drips .dr,html[data-drip="c"] .drips .band{fill:url(#lackGlit)!important}
@@ -721,7 +721,8 @@ html[data-drip="c"] .drips .dr,html[data-drip="c"] .drips .band{fill:url(#lackGl
 .finale{background:linear-gradient(180deg,var(--papier-2),var(--puder) 70%)!important}
 /* Textur nur auf Wunsch (Umschalter), Standard aus */
 html:not(.tex-on) .grain:before{display:none}
-html.tex-on .grain:before{opacity:1;background-image:url(img/tex_noise_f.png);background-size:256px 256px}
+html.tex-on .grain:before{opacity:1;background-image:url(img/tex_mittel.png);background-size:320px 320px}
+html.tex-on[data-tex="2"] .grain:before{background-image:url(img/tex_stark.png)}
 /* v6 P4: Bewertungen passen */
 @media (min-width:901px){.krit{grid-template-columns:.9fr 1.18fr 1.18fr!important}}
 .kq.kq-long blockquote{font-size:16.5px!important;line-height:1.5}
@@ -1014,7 +1015,7 @@ html{scroll-padding-top:calc(var(--hdr) + var(--ob,0px) + 8px)}
   .opt-top .opt-g button{min-height:28px;padding:0 9px;font-size:10.5px;letter-spacing:.06em;gap:5px}
   .hero{padding-top:calc(var(--hdr) + var(--nb) + var(--ob,0px) + 10px)!important}
   .mini,#mini{top:calc(var(--hdr) + var(--nb) + var(--ob,0px))!important}
-  .opt-top .opt-g[aria-label=Lackfarbe]{display:grid;grid-template-columns:repeat(3,1fr);width:100%}
+  .opt-top .opt-g[aria-label=Lackfarbe]{display:grid;grid-template-columns:repeat(2,1fr);width:100%}
   .opt-top .opt-g[aria-label=Lackfarbe]>span{display:none}
   .opt-top .opt-g[aria-label=Lackfarbe] button{white-space:nowrap;padding:0 6px;gap:5px;letter-spacing:.02em;font-size:10.5px}
   .opt-top .opt-g[aria-label=Lackfarbe] button i{width:12px;height:12px;flex:none}
@@ -1025,8 +1026,6 @@ html[data-drip="c"] .drips .dr,html[data-drip="c"] .drips .band{fill:url(#lackGl
 html[data-drip="d"] .drips .dr,html[data-drip="d"] .drips .band{fill:url(#lackGlR)!important}
 html[data-drip="e"] .drips .dr,html[data-drip="e"] .drips .band{fill:url(#lackGlG)!important}
 .opt-g i.gl-g{background:url(img/glitter_gruen.webp) center/36px}
-.opt-g i.gl-w{background:conic-gradient(#C23A3A,#E7A6B4,#B99BD6,#2B3F8C,#2E8C83,#E2C44A,#D98A4E,#C23A3A)}
-html[data-drip="f"] .drips .dr{fill:var(--df,var(--pick))!important}
 html.nb-off .opt-bar.opt-top{top:var(--hdr)}
 /* v9 (Julia): Instagram ein Block, flach */
 .logen.logen-one{grid-template-columns:minmax(0,1fr)}
@@ -1075,8 +1074,8 @@ html[data-drip="e"] .drips svg.shim .dr{fill:url(#lackGlG2)!important}
   </div>
 </header>
 <div class="opt-bar opt-top" id="optBar">
-      <div class="opt-g" role="group" aria-label="Lackfarbe"><span data-en="Draft option · drip colour:">Entwurf-Option · Lackfarbe:</span><button type="button" data-drip="a" class="on"><i style="background:#0B4B33"></i><span data-en="Green">Grün</span></button><button type="button" data-drip="b"><i style="background:#D9A0A8"></i>Rosé</button><button type="button" data-drip="c"><i class="gl-s"></i><span data-en="Silver glitter">Silber-Glitzer</span></button><button type="button" data-drip="d"><i class="gl-r"></i><span data-en="Rosé glitter">Rosé-Glitzer</span></button><button type="button" data-drip="e"><i class="gl-g"></i><span data-en="Green glitter">Grün-Glitzer</span></button><button type="button" data-drip="f"><i class="gl-w"></i><span data-en="Polish wall">Lackwand</span></button></div>
-      <div class="opt-g" role="group" aria-label="Textur"><span data-en="Texture:">Textur:</span><button type="button" data-tex="0" class="on" data-en="off">aus</button><button type="button" data-tex="1" data-en="on">an</button></div>
+      <div class="opt-g" role="group" aria-label="Lackfarbe"><span data-en="Draft option · drip colour:">Entwurf-Option · Lackfarbe:</span><button type="button" data-drip="b" class="on"><i style="background:#D9A0A8"></i>Rosé</button><button type="button" data-drip="c"><i class="gl-s"></i><span data-en="Silver glitter">Silber-Glitzer</span></button><button type="button" data-drip="d"><i class="gl-r"></i><span data-en="Rosé glitter">Rosé-Glitzer</span></button><button type="button" data-drip="e"><i class="gl-g"></i><span data-en="Green glitter">Grün-Glitzer</span></button></div>
+      <div class="opt-g" role="group" aria-label="Textur"><span data-en="Texture:">Textur:</span><button type="button" data-tex="0" data-en="off">aus</button><button type="button" data-tex="1" class="on" data-en="medium">mittel</button><button type="button" data-tex="2" data-en="strong">stark</button></div>
     </div>
 
 <div class="sheet" id="sheet" aria-hidden="true">
@@ -1663,8 +1662,8 @@ if(H.classList.contains('sv')){(()=>{const stg=$('#aktStage');if(!stg)return;con
         d.style.setProperty('--s',(Math.min(1,e*1.25)).toFixed(3));x+=w}
       const c=st[N];const eo=Math.max(0,Math.min(1,(cur-.45)/.4));const cy=Hh*.56;
       c.style.opacity=eo.toFixed(3);c.style.top=cy+'px';c.style.width=(W*G*1.05)+'px';c.style.transform=`translateX(${EX.toFixed(2)}px) scaleX(${(.3+.7*eo).toFixed(3)})`})}
-  addEventListener('resize',()=>{N=0;draw()});
-  let opened=false;function tick(){raf=0;const tg=rm?1:target();if(!opened&&tg>.12)opened=true;tgt=force!==null?force:(opened?1:tg);const k=force!==null?.2:.075;const d=tgt-cur;const lim=opened?.012:.022;const st=Math.max(-lim,Math.min(lim,d*k));cur=Math.abs(d)<.0008?tgt:cur+(force!==null?d*k:st);draw();if(cur!==tgt)raf=requestAnimationFrame(tick)}
+  addEventListener('resize',()=>{N=0;drawn=-1;draw()});
+  let opened=false,drawn=-1;function tick(){raf=0;const tg=rm?1:(opened&&force===null?1:target());if(!opened&&tg>.12)opened=true;tgt=force!==null?force:(opened?1:tg);const k=force!==null?.2:.075;const d=tgt-cur;const lim=opened?.012:.022;const st=Math.max(-lim,Math.min(lim,d*k));cur=Math.abs(d)<.0008?tgt:cur+(force!==null?d*k:st);if(cur!==drawn){drawn=cur;draw()}if(cur!==tgt)raf=requestAnimationFrame(tick)}
   const kick=()=>{if(!raf)raf=requestAnimationFrame(tick)};
   addEventListener('scroll',kick,{passive:true});addEventListener('resize',kick);draw();kick();
   /* Aktwechsel: kurz zu, dann wieder offen – weich, ohne Klassen-Sprung */
@@ -4565,16 +4564,14 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
  const vis=()=>{const r=d.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight};
  const replay=()=>{if(!d)return;if(io){io.disconnect();io=null}d.classList.add('reset');d.classList.remove('flow');void d.offsetWidth;
    if(vis())play();else{io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();io=null;play()}},{threshold:.2});io.observe(d)}};
- (()=>{try{const B=['DEAC90','D6AA92','CFA58C','D1A39C','E9C0B2','E0B3A3','C9A296','E5A695','DB9A92','C77F85','E9A69F','E58F9A','AD3F44','7B2126','6B1F27','862521','D12329','56252A','AF777C','B385A2','AC8AC1','CBB4D0','543652','181E4E','062B50','194558','06596D','68A29E','596043','897D31','B39A1A','F7D317','FCAC31','FE9836','1F201D','201E1C','EEECE8','EEECEA','B5B6BD','D3AC65','DED4CC','83667B','9B7E8C','B0BAC0','CFD1A7'];/* Flaschenfarben der Lackwand, links→rechts */
-   d.querySelectorAll('.dr').forEach(p=>{const bb=p.getBBox(),fx=Math.min(1,Math.max(0,(bb.x+bb.width/2)/1440));p.style.setProperty('--df','#'+B[Math.round(fx*(B.length-1))])})}catch(e){}})();
  (()=>{if(!d)return;const sv=d.querySelector('svg');const c=sv.cloneNode(true);c.classList.add('shim');c.querySelector('defs')&&c.querySelector('defs').remove();
    c.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));d.appendChild(c);
    new IntersectionObserver(es=>d.classList.toggle('vis',es[0].isIntersecting)).observe(d)})();
  let first=true;
  const set=k=>{H.dataset.drip=k;H.style.setProperty('--pick',V[k][0]);H.style.setProperty('--pick-hi',V[k][1]);document.querySelectorAll('#optBar [data-drip]').forEach(b=>b.classList.toggle('on',b.dataset.drip===k));
    if(first){first=false;return}replay()};
- document.querySelectorAll('#optBar [data-drip]').forEach(b=>b.addEventListener('click',()=>set(b.dataset.drip)));set('a');
- document.querySelectorAll('#optBar [data-tex]').forEach(b=>b.addEventListener('click',()=>{H.classList.toggle('tex-on',b.dataset.tex==='1');document.querySelectorAll('#optBar [data-tex]').forEach(x=>x.classList.toggle('on',x===b))}));
+ document.querySelectorAll('#optBar [data-drip]').forEach(b=>b.addEventListener('click',()=>set(b.dataset.drip)));set('b');
+ document.querySelectorAll('#optBar [data-tex]').forEach(b=>b.addEventListener('click',()=>{H.classList.toggle('tex-on',b.dataset.tex!=='0');H.dataset.tex=b.dataset.tex;document.querySelectorAll('#optBar [data-tex]').forEach(x=>x.classList.toggle('on',x===b))}));
 H.dataset.bg='2';
 })();</script>
 </body>
