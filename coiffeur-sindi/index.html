@@ -573,7 +573,7 @@ h1{font-size:clamp(42px,4.5vw,62px);line-height:1.02;letter-spacing:-.035em;font
 
 /* Abschnitt einzeilig, feste Höhe */
 .stub{flex-wrap:nowrap}
-.stub .pick-n{white-space:nowrap;overflow:hidden;min-width:0;flex:1 1 auto}
+.stub .pick-n{white-space:normal;overflow:visible;min-width:0;flex:1 1 auto}
 .stub .pick-p{flex:none}
 
 /* Runde 2 (20.11) */
@@ -822,7 +822,6 @@ html body .gx-team,html body .gx-info{padding-top:40px;padding-bottom:40px}
 </head>
 <body>
 <div class="mk-hinweis" id="mk-hinweis" role="note" lang="de" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
-<div class="draft" aria-hidden="true">Entwurf – nur zur Ansicht</div>
 
 <header class="top">
   <div class="wrap">
@@ -925,7 +924,7 @@ html body .gx-team,html body .gx-info{padding-top:40px;padding-bottom:40px}
         <div><span class="sc-of">von 5 auf Google</span><span class="sc-line"><span class="nw">231 Bewertungen</span> · <span class="nw">220 davon mit 5 Sternen</span></span></div>
       </div>
     </div>
-    <p class="topics"><b class="tp-l">Häufig gelobt:</b> <span>Freundlichkeit</span><span>Stammkunden seit Jahren</span><span>faire Preise</span></p>
+    <p class="topics"><b class="tp-l">Häufig gelobt:</b> <span>Freundlichkeit</span><span>Viele Stammkunden – seit Jahren</span><span>faire Preise</span></p>
     <ul class="vlist">
       <li><blockquote><p>«Sehr netter Coiffeur, habe rasch einen Termin bekommen. Freundlich, professionell und faire Preise – absolut empfehlenswert!»</p><footer>Zorana</footer></blockquote></li>
       <li><blockquote><p>«Bester Coiffeur weit herum! […] weiss genau was man will, da sitzt alles perfekt, dazu noch schnell und zu einem super Preis!»</p><footer>Daniel</footer></blockquote></li>
@@ -1013,7 +1012,7 @@ html body .gx-team,html body .gx-info{padding-top:40px;padding-bottom:40px}
   }
   /* Datum auf der Wartemarke */
   var wd=['So','Mo','Di','Mi','Do','Fr','Sa'];
-  document.getElementById('t-date').textContent=wd[day]+' '+('0'+now.getDate()).slice(-2)+'.'+('0'+(now.getMonth()+1)).slice(-2)+'.'+now.getFullYear()+' · '+hc(min);
+  document.getElementById('t-date').textContent=wd[day]+' '+('0'+now.getDate()).slice(-2)+'.'+('0'+(now.getMonth()+1)).slice(-2)+'.'+now.getFullYear()+' · '+hh(min);
 
 
   /* Tage: auswählen und Zeiten zeigen (Ticket + Besuchen Sie uns) */
@@ -1038,20 +1037,12 @@ html body .gx-team,html body .gx-info{padding-top:40px;padding-bottom:40px}
     io.observe(pr.querySelector('.housing'));}
 
   /* Abschnitt: immer eine Zeile (Schrift verkleinern, min. 13 px, sonst kürzen) */
-  function fitPick(){var n=document.getElementById('pick-n');if(!n)return;var full=n.getAttribute('data-full')||n.textContent;n.setAttribute('data-full',full);
-    n.textContent=full;n.style.fontSize='';var base=parseFloat(getComputedStyle(n).fontSize),fs=base;
-    while(n.scrollWidth>n.clientWidth+1&&fs>13){fs-=0.5;n.style.fontSize=fs+'px';}
-    if(n.scrollWidth>n.clientWidth+1){n.textContent=full.replace('Augenbrauen','Brauen');}}
-  function fitList(){[].forEach.call(document.querySelectorAll('.plist li .n'),function(n){var full=n.getAttribute('data-full')||n.textContent;n.setAttribute('data-full',full);n.textContent=full;
-      var li=n.parentNode,lh=parseFloat(getComputedStyle(li).lineHeight)||22;if(li.getBoundingClientRect().height>lh*1.4)n.textContent=full.replace('Augenbrauen','Brauen');
-      if(li.getBoundingClientRect().height>lh*1.4&&/\+.*\+/.test(full))n.textContent=full.replace('Augenbrauen zupfen','Brauen');});}
-  fitList();window.addEventListener('resize',function(){fitList();fitPick();});setTimeout(function(){fitList();fitPick();},50);
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){fitList();fitPick();});
+  /* Keine Kürzungen: Leistungen immer in den Worten des Salons, lange Zeilen brechen um (Julia 28.11) */
   /* Preiszeile <-> Foto: gemeinsam hervorheben, Auswahl auf den Abschnitt */
   var ks=[].slice.call(document.querySelectorAll('[data-k]')),pickN=document.getElementById('pick-n'),pickP=document.getElementById('pick-p'),stub=document.querySelector('.stub');
   function mark(k,on){ks.forEach(function(e){if(e.getAttribute('data-k')===k)e.classList.toggle('on',on);});}
   function choose(k){var r=document.querySelector('.plist li[data-k="'+k+'"]');if(!r)return;
-    pickN.removeAttribute('data-full');pickN.textContent=r.querySelector('.n').getAttribute('data-full')||r.querySelector('.n').textContent;pickP.textContent=r.querySelector('.p').textContent;fitPick();stub.classList.add('picked');}
+    pickN.removeAttribute('data-full');pickN.textContent=r.querySelector('.n').getAttribute('data-full')||r.querySelector('.n').textContent;pickP.textContent=r.querySelector('.p').textContent;stub.classList.add('picked');}
   var canHover=!!(window.matchMedia&&matchMedia('(hover:hover)').matches),tapped=null;
   ks.forEach(function(e){var k=e.getAttribute('data-k');
     e.addEventListener('mouseenter',function(){if(canHover){mark(k,true);choose(k);}});
