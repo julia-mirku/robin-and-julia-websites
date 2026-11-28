@@ -440,6 +440,23 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 
 /* ---------- Responsive ---------- */
 @media (max-width:1180px){.nav{gap:18px}.hdr-tel{display:none}}
+
+/* Fusszeile 28.11 (Julia): Logo + Links hoch in den freien Platz neben dem Foto, unten gekürzt */
+.ft-k{margin-top:0;padding-top:22px;border-top:1px solid var(--line)}
+.ft-k{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:24px}
+.ft-k>div{display:contents}
+.ft-k img{grid-column:1;grid-row:1}
+.ft-k nav{grid-column:2;grid-row:1;justify-content:flex-end}
+.ft-k p{grid-column:1/-1;grid-row:2;max-width:none}
+footer{padding:18px 0 30px}
+.credit{margin-top:0}
+@media (min-width:901px){
+  .kon{grid-template-rows:auto 1fr;grid-template-areas:"a c" "b c"}
+  .kon>div:first-child{grid-area:a}
+  .kon>.mapcard{grid-area:c}
+  .kon>.ft-k{grid-area:b;align-self:end}
+}
+@media (max-width:640px){footer{padding:16px 0 96px}.ft-k{grid-template-columns:1fr;row-gap:14px}.ft-k nav{grid-column:1;grid-row:2;justify-content:flex-start;gap:10px 16px}.ft-k p{grid-row:3;margin-top:0}}
 @media (max-width:1024px){
   .idx{grid-template-columns:1fr 340px;gap:36px}
   .team{grid-template-columns:320px 1fr;gap:36px}
@@ -888,18 +905,18 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
       <img src="img/kontakt_empfang_1200.webp" srcset="img/kontakt_empfang_700.webp 700w, img/kontakt_empfang_1200.webp 1200w" sizes="(max-width:900px) 100vw, 420px" alt="Empfang im Studio Laser Kosmetik an der Ullmannstrasse" width="1200" height="1800" loading="lazy" decoding="async" style="object-position:50% 30%">
       <div class="over"><div><b>Ullmannstrasse 18a</b><span>9014 St. Gallen · Besucherparkplätze</span></div><span class="btn btn-gold btn-sm"><i></i>Route</span></div>
     </a>
+    <div class="ft ft-k">
+      <div>
+        <img src="img/logo_900.png" alt="Laser-Kosmetik Professional">
+        <p>Laser Kosmetik GmbH &amp; SHR Haarentfernung GmbH – ein Studio, eine Adresse, ein Team. Ullmannstrasse 18a, 9014 St. Gallen.</p>
+      </div>
+      <nav aria-label="Fusszeile"><a href="#behandlungen">Behandlungen</a><a href="#preise">Preise</a><a href="#gutschein">Gutscheine</a><a href="#kontakt">Kontakt</a><a href="#top">Impressum</a><a href="#top">Datenschutz</a></nav>
+    </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap ft">
-    <div>
-      <img src="img/logo_900.png" alt="Laser-Kosmetik Professional">
-      <p>Laser Kosmetik GmbH &amp; SHR Haarentfernung GmbH – ein Studio, eine Adresse, ein Team. Ullmannstrasse 18a, 9014 St. Gallen.</p>
-    </div>
-    <nav aria-label="Fusszeile"><a href="#behandlungen">Behandlungen</a><a href="#preise">Preise</a><a href="#gutschein">Gutscheine</a><a href="#kontakt">Kontakt</a><a href="#top">Impressum</a><a href="#top">Datenschutz</a></nav>
-  </div>
   <div class="wrap credit">Website-Entwurf: Julia &amp; Robin Mirku · Fotos: Laser Kosmetik GmbH</div>
 </footer>
 
