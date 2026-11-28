@@ -376,7 +376,7 @@ h2.mit-umlaut{padding-top:.36em}
 .dazu-minus{width:44px;height:44px;border-radius:50%;border:2px solid var(--grill);background:var(--weiss);font:800 20px/1 Figtree,sans-serif;color:var(--grill);cursor:pointer;transition:background-color .2s ease,box-shadow .2s ease}
 .dazu-minus:not([hidden]){animation:korbErscheint .3s cubic-bezier(.3,1.6,.5,1) both}
 @media (hover:hover){.dazu-minus:hover{background:var(--senf-blass);box-shadow:0 0 0 5px rgba(var(--senf-hell-rgb),.4)}}
-.dazu-btn[data-n]{background:var(--senf-blass)}
+.dazu-btn:not([data-n="0"])[data-n]{background:var(--senf-blass)}
 .bau-raus{min-height:44px;padding:0 16px;border-radius:999px;border:2px dashed var(--grill);background:transparent;font:800 15px/1 Figtree,sans-serif;color:var(--grill);cursor:pointer;transition:background-color .2s ease}
 @media (hover:hover){.bau-raus:hover{background:var(--senf-blass)}}
 .tuete-knopf.weg{opacity:0;transform:scale(.6);pointer-events:none}
@@ -734,7 +734,7 @@ html body .abschnitt{padding:44px 0}
         Poststrasse 15 · Wattwil
       </div>
       <h1>Burger<span>House</span></h1>
-      <p class="lead">Burger, Rösti-Burger und knusprige Pommes – mitten in Wattwil.</p>
+      <p class="lead">Burger, Rösti-Burger und knusprige Pommes – mitten in&nbsp;Wattwil.</p>
       <div class="status" id="status" aria-live="polite"><i></i><span>Öffnungszeiten unten</span></div>
       <div class="held-knoepfe">
         <a class="btn btn-call" id="heldAnruf" href="tel:+41719900428">
@@ -768,7 +768,7 @@ html body .abschnitt{padding:44px 0}
     <div class="lob">
 <!-- IDEE 4: Gästestimmen als Servietten (echte Zitate, wörtlich: Google Maps / Restaurant Guru, 21.11.2026) — zum Entfernen diesen Block löschen -->
       <div class="servietten-rahmen rv">
-        <div class="servietten" id="servietten" tabindex="0" aria-label="Gästestimmen, zum Blättern wischen"><figure class="serviette" style="--dreh:1.6deg"><blockquote>«Wow, die Burger sind sehr gut! Frisch zubereitet, auf individuelle Wünsche wird eingegangen.»</blockquote><figcaption>Martin B. · Google</figcaption></figure><figure class="serviette" style="--dreh:-1.2deg"><blockquote>«Sehr fein, hausgemachte Saucen und Fleisch von der Umgebung. Gerne wieder!»</blockquote><figcaption>Ilker A. · Google</figcaption></figure><figure class="serviette" style="--dreh:2deg"><blockquote>«Absolut bester Burger weit und breit!»</blockquote><figcaption>Gast · Restaurant Guru</figcaption></figure><figure class="serviette" style="--dreh:-1.6deg"><blockquote>«Wer einen sehr feinen Burger mit frischen Zutaten essen möchte, dann ist das der richtige Ort.»</blockquote><figcaption>Marie B. · Google</figcaption></figure><figure class="serviette" style="--dreh:1.2deg"><blockquote>«Bester Burger, sehr nettes Personal und Preis - Leistung top. Gerne wieder :)»</blockquote><figcaption>Nicole · Restaurant Guru</figcaption></figure></div>
+        <div class="servietten" id="servietten" tabindex="0" aria-label="Gästestimmen, zum Blättern wischen"><figure class="serviette" style="--dreh:1.6deg"><blockquote>«Wow, die Burger sind sehr gut! Frisch zubereitet, auf individuelle Wünsche wird eingegangen.»</blockquote><figcaption>Martin B. · Google</figcaption></figure><figure class="serviette" style="--dreh:-1.2deg"><blockquote>«Sehr fein, hausgemachte Saucen und Fleisch von der Umgebung. Gerne&nbsp;wieder!»</blockquote><figcaption>Ilker A. · Google</figcaption></figure><figure class="serviette" style="--dreh:2deg"><blockquote>«Absolut bester Burger weit und breit!»</blockquote><figcaption>Gast · Restaurant Guru</figcaption></figure><figure class="serviette" style="--dreh:-1.6deg"><blockquote>«Wer einen sehr feinen Burger mit frischen Zutaten essen möchte, dann ist das der richtige&nbsp;Ort.»</blockquote><figcaption>Marie B. · Google</figcaption></figure><figure class="serviette" style="--dreh:1.2deg"><blockquote>«Bester Burger, sehr nettes Personal und Preis - Leistung top. Gerne wieder&nbsp;:)»</blockquote><figcaption>Nicole · Restaurant Guru</figcaption></figure></div>
         <div class="sv-pfeile"><button type="button" class="sv-pfeil" data-r="-1" aria-label="Zurück">‹</button><button type="button" class="sv-pfeil" data-r="1" aria-label="Weiter">›</button></div>
       </div>
 <!-- /IDEE 4 -->
@@ -804,7 +804,7 @@ html body .abschnitt{padding:44px 0}
     <div class="rv">
       <div class="kicker" style="color:var(--ketchup)">Zum Ausprobieren</div>
       <h2 id="bauTitel">Bau deinen Burger</h2>
-      <p style="margin:14px 0 0;font-weight:500;color:var(--grau);max-width:28em">Tippe auf eine Zutat: Sie kommt auf den Burger. Nochmals tippen: Sie kommt weg. Gefällt er dir? Leg ihn in die Bestellung.</p>
+      <p style="margin:14px 0 0;font-weight:500;color:var(--grau);max-width:28em">Tippe auf eine Zutat: Sie kommt auf den Burger. Nochmals tippen: Sie kommt weg. Gefällt er dir? Leg ihn in die&nbsp;Bestellung.</p>
       <div class="zutaten" id="zutaten"></div>
       <div class="bau-zeile">
         <span class="bau-liste" id="bauListe">Dein Burger: Brot · Käse · Rösti · Fleisch · Brot</span>
@@ -813,10 +813,6 @@ html body .abschnitt{padding:44px 0}
       <div class="bau-knoepfe">
         <button class="btn btn-call" type="button" id="bauRein"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 11h18l-1.6 16.2a2 2 0 0 1-2 1.8H10.6a2 2 0 0 1-2-1.8z" fill="currentColor"/><path d="M11.5 13V9.5a4.5 4.5 0 0 1 9 0V13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>In die Bestellung</button>
         <button class="bau-raus" type="button" id="bauRaus" hidden>− Wieder raus</button>
-        <a class="btn btn-ghost" href="tel:+41719900428">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
-          071 990 04 28
-        </a>
       </div>
     </div>
   </div>
@@ -840,7 +836,7 @@ html body .abschnitt{padding:44px 0}
     <div class="rv">
       <div class="kicker" style="color:var(--ketchup)">Das sagen die Gäste</div>
       <h2 id="pommesTitel">Knusprige Pommes</h2>
-      <p>In den Google-Bewertungen steht es immer wieder: Die Pommes sind knusprig. Dazu ein Burger: Zmittag oder Znacht – erledigt.</p>
+      <p>In den Google-Bewertungen steht es immer wieder: Die Pommes sind knusprig. Dazu ein Burger: Zmittag oder <span style="white-space:nowrap">Znacht – erledigt.</span></p>
       <div class="dazu">
         <span class="dazu-gruppe"><button class="dazu-btn" type="button" data-art="pommes">+ Pommes</button><button class="dazu-minus" type="button" hidden data-art="pommes" aria-label="Pommes: eins weniger">−</button></span>
         <span class="dazu-gruppe"><button class="dazu-btn" type="button" data-art="ketchup">+ Ketchup</button><button class="dazu-minus" type="button" hidden data-art="ketchup" aria-label="Ketchup: eins weniger">−</button></span>
@@ -1022,7 +1018,7 @@ html body .abschnitt{padding:44px 0}
     <p class="korb-intro">Deine Liste fürs Telefon. Ruf an, lies sie vor – und hol alles frisch ab.</p>
     <ul class="korb-liste" id="korbListe"></ul>
     <p class="korb-leer" id="korbLeer">Noch nichts drin. Tipp in der Karte auf <b>+</b>.</p>
-    <p class="korb-preis">Preise und Abholzeit sagt dir das Team am Telefon.</p>
+    <p class="korb-preis">Preise und Abholzeit sagt dir das Team am&nbsp;Telefon.</p>
   </div>
   <div class="korb-fuss">
     <a class="btn btn-call korb-anruf" href="tel:+41719900428"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span>Anrufen und bestellen<small>071 990 04 28</small></span></a>
@@ -1524,13 +1520,13 @@ function bauSchichten(){var mitte=[].slice.call(bb.children).slice(1,-1).filter(
 function abgleichen(){
   [].forEach.call(document.querySelectorAll(".gericht .plus"),function(b){
     var n=menge(schluessel(b.dataset.name,b.dataset.schichten.split(","))),mi=b.parentNode.querySelector(".minus"),g=b.closest(".gericht");
-    if(n>0)b.setAttribute("data-n",n);else b.removeAttribute("data-n");
+    b.setAttribute("data-n",n);
     if(mi)mi.hidden=n<1;if(g)g.classList.toggle("hat-minus",n>0);
     b.setAttribute("aria-label",b.dataset.name+(n?" – "+n+" auf der Liste, noch eins dazu":" auf die Abholliste"));
   });
   [].forEach.call(document.querySelectorAll(".dazu-btn"),function(b){
     var n=menge(schluessel(DAZU[b.dataset.art])),mi=b.parentNode.querySelector(".dazu-minus");
-    if(n>0)b.setAttribute("data-n",n);else b.removeAttribute("data-n");
+    b.setAttribute("data-n",n);
     if(mi)mi.hidden=n<1;
   });
   var br=document.getElementById("bauRaus");if(br&&typeof bb!=="undefined"){var n2=menge(schluessel("Dein Burger",bauSchichten()));br.hidden=n2<1;}
@@ -1797,6 +1793,17 @@ korbZeigen();
   karten.forEach(function(){pk.appendChild(document.createElement("i"));});sv.parentNode.appendChild(pk);
   function punkte(){var n=0,bd=1e9,l=sv.getBoundingClientRect().left;karten.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-l);if(d<bd){bd=d;n=i;}});if(sv.scrollLeft+sv.clientWidth>=sv.scrollWidth-4)n=karten.length-1;[].forEach.call(pk.children,function(p,i){p.classList.toggle("an",i===n);});}
   sv.addEventListener("scroll",punkte,{passive:true});window.addEventListener("resize",punkte);punkte();
+  /* 28.11 Rad/Touchpad: senkrecht oder schräg = die Seite scrollt (Karussell hält nie fest); seitwärts = genau eine Karte */
+  var radSumme=0,radLetzt=0,radFertig=false;
+  sv.addEventListener("wheel",function(e){
+    var f=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1,dx=e.deltaX*f,dy=e.deltaY*f;
+    if(e.ctrlKey)return;
+    e.preventDefault();
+    if(Math.abs(dy)>=Math.abs(dx)){window.scrollBy(0,dy);return;}
+    var jetzt=Date.now();if(jetzt-radLetzt>400){radSumme=0;radFertig=false;}radLetzt=jetzt;
+    if(radFertig)return;radSumme+=dx;if(Math.abs(radSumme)<24)return;
+    sv.scrollBy({left:(radSumme>0?1:-1)*schritt(),behavior:ruhig?"auto":"smooth"});radFertig=true;
+  },{passive:false});
   sv.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){sv.scrollBy({left:schritt(),behavior:"smooth"});e.preventDefault();}if(e.key==="ArrowLeft"){sv.scrollBy({left:-schritt(),behavior:"smooth"});e.preventDefault();}});
 })();
 })();
