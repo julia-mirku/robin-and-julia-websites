@@ -10,7 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/haus-abend.webp">
 <style>
 :root{
   --cream:#EEE3C8; --cream-2:#D9CBA9; --stone:#6E5140; --stone-2:#4A372C; --esp:#1E1713; --esp-2:#2A201A;
@@ -92,6 +91,16 @@ section{padding:clamp(72px,9vw,110px) clamp(18px,5vw,72px) 0;max-width:1320px;ma
 .hero-img.in img{transform:scale(1)}
 .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 18%,color-mix(in srgb,var(--bg) 15%,transparent) 34%,transparent 52%),linear-gradient(0deg,var(--bg) 0%,transparent 24%);transition:background .6s}
 
+/* Erster Bildschirm ohne Foto (Julia 28.11) */
+.hero{grid-template-columns:1fr;min-height:min(100svh,860px);text-align:center}
+.hero-txt{align-items:center;padding:calc(var(--top-h,120px) + 40px) clamp(22px,5vw,80px) 64px;background:radial-gradient(60% 62% at 50% 50%,rgba(243,234,218,.92),rgba(243,234,218,.6) 60%,transparent 85%)}
+.hero h1{font-size:clamp(84px,min(15vw,22vh),210px);letter-spacing:.34em;margin-left:.34em}
+.hero h1 span{letter-spacing:.46em;margin-top:min(24px,2.8vh)}
+.hero .claim{max-width:none}
+.status{align-self:center}
+.hero .cta{justify-content:center}
+.facts{justify-content:center;width:min(640px,100%)}
+@media (max-width:640px){.hero{min-height:0}.hero-txt{padding-top:calc(var(--top-h,110px) + 44px);padding-bottom:40px}.hero h1{font-size:78px;letter-spacing:.26em;margin-left:.26em}.hero h1 span{letter-spacing:.28em}}
 /* ---------- Speisekarte ---------- */
 .menu-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}
@@ -169,8 +178,8 @@ section{padding:clamp(72px,9vw,110px) clamp(18px,5vw,72px) 0;max-width:1320px;ma
 .addr strong{font-weight:600}
 .addr .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
 
-footer{padding:90px clamp(18px,5vw,72px) 40px;max-width:1320px;margin:0 auto;color:var(--ink-2);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-footer .logo{font-size:20px;margin:0;color:var(--ink)}
+footer{padding:18px clamp(18px,4vw,40px);max-width:1320px;margin:48px auto 24px;width:calc(100% - 2*clamp(18px,5vw,72px));color:var(--ink);font-size:15px;font-weight:500;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:rgba(251,247,240,.94);border:1px solid var(--line);border-radius:14px}
+footer .logo{font-size:22px;margin:0;color:var(--ink);font-weight:700}
 
 /* ---------- Lightbox ---------- */
 .lb{position:fixed;inset:0;z-index:80;background:rgba(12,9,7,.94);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s}
@@ -226,6 +235,9 @@ footer .logo{font-size:20px;margin:0;color:var(--ink)}
   .welcome .word{margin-top:4px}
   .quotes{margin-top:10px}
 }
+/* Erster Bildschirm ohne Foto – gilt auch für Tablet/Telefon */
+@media (max-width:980px){.hero-txt{margin-top:0;padding-top:calc(var(--top-h,110px) + 48px)}}
+@media (max-width:640px){.hero-txt{padding-top:calc(var(--top-h,110px) + 40px);padding-bottom:40px}.hero h1{font-size:76px}}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -263,7 +275,6 @@ footer .logo{font-size:20px;margin:0;color:var(--ink)}
       <span><span class="stars">★★★★★</span> 4,7 · 1'202 Google-Bewertungen</span>
     </div>
   </div>
-  <div class="hero-img" id="heroImg"><img src="img/haus-abend.webp" srcset="img/haus-abend-760.webp 760w, img/haus-abend.webp 1420w" sizes="(max-width:980px) 100vw, 50vw" alt="Das Häuschen von EVA an der Pilatusstrasse am frühen Abend, mit Terrasse und leuchtenden Schildern" width="1420" height="1368" fetchpriority="high"></div>
 </section>
 
 <!-- 2 · Speisekarte -->
@@ -351,7 +362,6 @@ footer .logo{font-size:20px;margin:0;color:var(--ink)}
   <div class="rail-wrap rv">
     <button class="arrow l" type="button" aria-label="Vorheriges Bild" data-dir="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
     <div class="rail" id="rail">
-      <figure class="shot"><div class="f"><img src="img/eingang-700.webp" data-full="img/eingang.webp" alt="Eingang von EVA mit den Buchstaben EVA und der Leuchtschrift Pizza" loading="lazy"></div><figcaption><b>Der Eingang</b> – unter den Buchstaben EVA</figcaption></figure>
       <figure class="shot"><div class="f"><img src="img/steinwand-700.webp" data-full="img/steinwand.webp" alt="Sitzplätze vor der Steinwand mit braunem Sofa" loading="lazy"></div><figcaption><b>Gemütlich drinnen</b> – Steinwand und Sofa</figcaption></figure>
       <figure class="shot"><div class="f"><img src="img/theke-700.webp" data-full="img/theke.webp" alt="Theke mit den Menütafeln" loading="lazy"></div><figcaption><b>Die Theke</b> – Fleisch frisch vom Spiess</figcaption></figure>
       <figure class="shot"><div class="f"><img src="img/dueruem-700.webp" data-full="img/dueruem.webp" alt="Gerollter Dürüm" loading="lazy"></div><figcaption><b>Gerollt</b> – im Fladenbrot</figcaption></figure>
@@ -439,7 +449,6 @@ $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttri
 /* ---------- Einblenden ---------- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});
 $$('.rv').forEach(el=>io.observe(el));
-requestAnimationFrame(()=>$('#heroImg').classList.add('in'));
 // Sicherheitsnetz: nichts bleibt unsichtbar, auch bei sehr schnellem Scrollen
 addEventListener('scroll',()=>{$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});},{passive:true});
 
