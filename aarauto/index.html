@@ -785,7 +785,7 @@ html body #bewertungen .haken{row-gap:22px}
     </div>
   </div>
  </div>
- <div class="vorhang" id="vorhang" aria-hidden="true"><span class="tor-tipp"><i>↓</i><span class="t-text">Scrollen – das Tor geht auf</span></span><b></b></div>
+ <div class="vorhang" id="vorhang" aria-hidden="true"><b></b></div>
 </section>
 <div class="lauf-weg" id="lauf-weg" aria-hidden="true"></div>
 </div>
@@ -1496,8 +1496,7 @@ setInterval(zeigen,30000);
   function setz(){ if(!mq.matches){ hu.style.top=''; return; } hu.style.top=Math.min(96, innerHeight-ins.offsetHeight-16)+'px'; }
   setz(); window.addEventListener('resize',setz); window.addEventListener('load',setz); })();
 /* Tor: kurzer Hinweis beim ersten Anblick (hebt sich zweimal leicht an) */
-(function(){ var v=D.getElementById('vorhang'), t=v.querySelector('.t-text');
-  if(window.matchMedia('(pointer:coarse)').matches){ t.textContent='Nach oben wischen – das Tor geht auf'; v.querySelector('.tor-tipp i').textContent='↑'; }
+(function(){ var v=D.getElementById('vorhang');
   if(!reduce) setTimeout(function(){ if(!v.classList.contains('beruehrt')) v.classList.add('lupft'); }, 700); })();
 /* Kopfzeile: beim Runterscrollen gleitet sie weich nach oben weg, beim Hochscrollen kommt sie zurück */
 (function(){ var k=D.querySelector('.kopf'), mq=window.matchMedia('(min-width:1021px)'), y0=scrollY;
