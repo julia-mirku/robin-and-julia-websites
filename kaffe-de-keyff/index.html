@@ -1979,6 +1979,19 @@ span.bk-endx{cursor:default}
 .bk-sf > i{will-change:background}
 .bk-leaf{contain:layout style}
 </style>
+<style id="blatt-28-11">
+/* 28.11 Umblättern wie Momo: ein Blatt, eine Falte, nur transform/opacity */
+.bk-curl{position:absolute;inset:0;pointer-events:none}
+.bk-c-halb{position:absolute;left:0;top:0;overflow:hidden;transform-origin:0 0;will-change:transform}
+.bk-c-front,.bk-c-flap,.bk-c-flapsch{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform,opacity}
+.bk-c-front,.bk-c-flap{overflow:hidden}
+.bk-c-flapsch{box-shadow:0 0 22px 2px rgba(40,20,6,.34)}
+.bk-c-flach{position:absolute;left:0;top:0;width:100%;height:46px;background:linear-gradient(to bottom,rgba(40,20,6,.16),rgba(40,20,6,0));will-change:opacity}
+.bk-c-glanz{position:absolute;left:0;top:0;height:100px;z-index:6;transform-origin:0 0;will-change:transform,opacity;background:linear-gradient(to bottom,rgba(40,20,6,.24) 0,rgba(255,251,242,.5) 13%,rgba(255,251,242,.12) 38%,rgba(40,20,6,.05) 72%,rgba(40,20,6,.15) 100%)}
+.bk-c-unterw{position:absolute;top:0;overflow:hidden}
+.bk-c-unter{position:absolute;left:0;top:0;height:100px;transform-origin:0 0;will-change:transform,opacity;background:linear-gradient(to bottom,rgba(40,20,6,.34),rgba(40,20,6,.10) 40%,rgba(40,20,6,0))}
+.bk-curl .bk-page{position:absolute!important;left:0!important;top:0!important;margin:0!important;overflow:hidden!important;box-shadow:none!important;animation:none!important}
+</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
@@ -2982,89 +2995,55 @@ span.bk-endx{cursor:default}
         peek (Ecke hebt sich nur), hint (Ecke hebt sich zweimal, einmaliger Hinweis), drag (Blatt folgt Finger/Maus) */
   function sbg(e, v){ if(e.__bg !== v){ e.__bg = v; e.style.background = v; } }
   function startFlip(o, after){
-    var n = o.n, w = o.W / n, g = o.g, i, st, f, b, pg, lt, strips = [], lf = [], lb = [];
-    var ang = [], edge = [], pv, sheet, shA, shB, sp, csh = null;
+    /* 28.11: ein Blatt mit einer Falte (wie Momo) statt Streifen – nur transform und opacity pro Bild */
+    var g = o.g, fwd = o.phone ? true : g > 0, W = o.W, sx = o.hx, csh = null, pv;
     leaf.textContent = '';
     if(o.under){ o.under.className = 'bk-page r bk-under'; leaf.appendChild(o.under); }
-    shA = div('bk-sh', leaf); shA.style.left = (g > 0 ? o.hx : o.hx - o.W) + 'px'; shA.style.width = o.W + 'px'; shA.style.right = 'auto';
-    if(!o.phone){ shB = div('bk-sh', leaf); shB.style.left = (g > 0 ? o.hx - o.W : o.hx) + 'px'; shB.style.width = o.W + 'px'; shB.style.right = 'auto'; }
-    sp = div('bk-sh sp', leaf); sp.style.left = (o.hx - (o.phone ? 0 : 20)) + 'px'; sp.style.width = (o.phone ? 20 : 40) + 'px'; sp.style.right = 'auto';
-    if(o.phone) sp.style.background = 'linear-gradient(90deg,rgba(34,16,4,.4),rgba(34,16,4,0))';
-    sp.style.opacity = '0';
-    pv = div('bk-pv', leaf);
-    /* eine Seite (Telefon, Tablet): links vom Bund ist kein Buch, das Blatt verschwindet dort hinter dem Bund */
+    /* eine Seite (Telefon): links vom Bund ist kein Buch, das Blatt verschwindet dort */
     leaf.style.clipPath = leaf.style.webkitClipPath = o.phone ? 'inset(-600px -600px -600px 0)' : '';
-    if(o.origin) pv.style.perspectiveOrigin = o.origin;
-    if(o.persp) pv.style.perspective = o.persp;
-    sheet = div('bk-sheet', pv);
-    for(i = 0; i < n; i++){
-      st = div('bk-st', sheet);
-      st.style.width = w + 'px';
-      st.style.left = (g > 0 ? o.hx : o.hx - w) + 'px';
-      st.style.transformOrigin = (g > 0 ? '0' : '100%') + ' 50%';
-      f = div('bk-sf', st);
-      pg = o.front.cloneNode(true); pg.style.width = o.W + 'px';
-      pg.style.left = (.6 - (g > 0 ? i * w : o.W - (i + 1) * w)) + 'px';
-      f.appendChild(pg);
-      lt = document.createElement('i'); f.appendChild(lt); lf.push(lt);
-      b = div('bk-sf b', st);
-      if(o.back){
-        pg = o.back.cloneNode(true); pg.style.width = o.W + 'px';
-        pg.style.left = (.6 - (g > 0 ? o.W - (i + 1) * w : i * w)) + 'px';
-        b.appendChild(pg);
-      }
-      lt = document.createElement('i'); b.appendChild(lt); lb.push(lt);
-      strips.push(st);
-    }
-    /* Ecke unter der Maus: ein weicher Schatten an der gehobenen Ecke */
+    leaf.hidden = false;
+    var H = leaf.offsetHeight || R.offsetHeight, SW = leaf.offsetWidth || (o.phone ? W : 2 * W);
+    var px0 = fwd ? sx : sx - W, landL = fwd ? sx - W : sx, k = 2 * sx - landL, C = [fwd ? sx + W : sx - W, H], sg = fwd ? 1 : -1, lift = H * .09, Big = Math.ceil(Math.hypot(SW, H)) + 24;
+    /* Telefon: die Seite ist länger als der Bildschirm – die Ecke greift am unteren Rand des SICHTBAREN Teils, sonst biegt sich das Blatt unsichtbar unten */
+    if(o.phone){ var lt = leaf.getBoundingClientRect().top; C[1] = Math.max(160, Math.min(H, (window.innerHeight || 700) - lt - 76)); lift = C[1] * .09; }
+    var probe = div('bk-sf', leaf), paper = getComputedStyle(probe); var pBg = paper.backgroundImage, pCol = paper.backgroundColor; leaf.removeChild(probe);
+    pv = div('bk-curl', leaf);
+    pv.innerHTML = '<div class="bk-c-unterw"><i class="bk-c-unter"></i></div><div class="bk-c-halb"><div class="bk-c-front"></div><i class="bk-c-flach"></i><div class="bk-c-flapsch"></div><div class="bk-c-flap"><i class="bk-c-glanz"></i></div></div>';
+    var uw = pv.children[0], un = uw.firstElementChild, hb = pv.children[1], fr = hb.children[0], fl = hb.children[1], fs = hb.children[2], fp = hb.children[3], gl = fp.firstElementChild;
+    uw.style.cssText = 'left:' + px0 + 'px;width:' + W + 'px;height:' + H + 'px'; un.style.width = gl.style.width = (2 * Big) + 'px';
+    hb.style.cssText = 'width:' + (2 * Big) + 'px;height:' + Big + 'px';
+    fr.style.cssText = fp.style.cssText = fs.style.cssText = 'width:' + W + 'px;height:' + H + 'px';
+    fr.style.backgroundImage = fp.style.backgroundImage = pBg; fr.style.backgroundColor = fp.style.backgroundColor = pCol;
+    function put(box, node){ if(!node) return; node.style.width = W + 'px'; node.style.height = H + 'px'; box.insertBefore(node, box.firstChild); }
+    put(fr, o.front);
+    if(o.back) put(fp, o.back);
     if((o.peek || o.drag) && !o.phone){
       csh = div('bk-csh' + (g < 0 ? ' l' : ''), leaf);
       csh.style.left = (g > 0 ? o.hx + o.W - 150 : o.hx - o.W) + 'px';
       csh.style.opacity = '0';
     }
-    function draw(t, fadeTo){
-      var x = 0, z = 0, xmin = 0, xmax = 0, zmax = 0, a, r, i, e0, e1, l0, l1, lift, soft, al, down = false;
-      for(i = 0; i < n; i++) ang[i] = bendAt(t, (i + .5) / n);
-      for(i = 0; i < n; i++){
-        a = ang[i]; r = a * Math.PI / 180;
-        /* aufsetzen: was unter die Seite tauchen würde, liegt flach auf ihr */
-        if(down || (a > 180 && z + w * Math.sin(r) < 0)){
-          a = down ? 180 : 180 + Math.asin(Math.min(1, z / w)) * 180 / Math.PI;
-          r = a * Math.PI / 180; ang[i] = a; down = true;
-        }
-        strips[i].style.transform = 'translate3d(' + (g * x).toFixed(2) + 'px,0,' + (z + 1).toFixed(2) + 'px) rotateY(' + (-g * a).toFixed(2) + 'deg)';
-        x += w * Math.cos(r); z += w * Math.sin(r);
-        if(z < 0) z = 0;
-        if(x < xmin) xmin = x; if(x > xmax) xmax = x; if(z > zmax) zmax = z;
-      }
-      edge[0] = ang[0]; edge[n] = ang[n - 1];
-      for(i = 1; i < n; i++) edge[i] = (ang[i - 1] + ang[i]) / 2;
-      for(i = 0; i < n; i++){
-        a = ang[i];
-        lf[i].parentNode.style.visibility = a <= 90 ? '' : 'hidden'; lb[i].parentNode.style.visibility = a > 90 ? '' : 'hidden';
-        /* Licht kommt von vorn, leicht von links: jede Fläche so hell, wie sie zum Licht steht */
-        e0 = edge[i] * Math.PI / 180; e1 = edge[i + 1] * Math.PI / 180;
-        l0 = .34 * g * Math.sin(e0) + .94 * Math.cos(e0); l1 = .34 * g * Math.sin(e1) + .94 * Math.cos(e1);
-        if(a < 100) sbg(lf[i], 'linear-gradient(90deg,' + (g > 0 ? tone(l0) + ',' + tone(l1) : tone(l1) + ',' + tone(l0)) + ')');
-        if(a > 80) sbg(lb[i], 'linear-gradient(90deg,' + (g > 0 ? tone(-l1) + ',' + tone(-l0) : tone(-l0) + ',' + tone(-l1)) + ')');
-      }
-      /* Schatten auf den Seiten darunter: wandert mit dem Blatt, wird weicher, je höher es steht */
-      lift = c01(zmax / (o.W * .22)); al = (fadeTo === undefined ? 1 : fadeTo);
-      soft = 16 + zmax * .3;
-      shA.style.background = xmax > 1 ?
-        'linear-gradient(' + (g > 0 ? 90 : 270) + 'deg,rgba(40,20,6,' + (.34 * lift * al).toFixed(3) + ') 0,rgba(40,20,6,' + (.2 * lift * al).toFixed(3) + ') ' + xmax.toFixed(1) + 'px,rgba(40,20,6,0) ' + (xmax + soft).toFixed(1) + 'px)' : 'none';
-      if(shB) shB.style.background = xmin < -1 ?
-        'linear-gradient(' + (g > 0 ? 270 : 90) + 'deg,rgba(40,20,6,' + (.36 * lift).toFixed(3) + ') 0,rgba(40,20,6,' + (.24 * lift).toFixed(3) + ') ' + (-xmin + z * .22).toFixed(1) + 'px,rgba(40,20,6,0) ' + (-xmin + z * .22 + soft).toFixed(1) + 'px)' : 'none';
-      sp.style.opacity = (lift * al).toFixed(3);
+    function r1(v){ return Math.round(v * 10) / 10; } function r4(v){ return Math.round(v * 1e5) / 1e5; }
+    var last = {};
+    function st(el, key, v){ if(last[key] !== v){ last[key] = v; if(key.charAt(0) === 'o') el.style.opacity = v; else el.style.transform = v; } }
+    function setE(e){
+      e = e < 0 ? 0 : e > 1 ? 1 : e;
+      if(o.phone){ var lt2 = leaf.getBoundingClientRect().top; C[1] = Math.max(160, Math.min(H, (window.innerHeight || 700) - lt2 - 76)); lift = C[1] * .09; }   /* Telefon: Ecke am unteren Rand des sichtbaren Teils, auch wenn die Seite noch rollt */
+      var Px = C[0] - sg * 2 * W * e, Py = C[1] - lift * Math.sin(Math.PI * e), dx = C[0] - Px, dy = C[1] - Py, len = Math.hypot(dx, dy), nx, ny, Fx, Fy;
+      if(len < .5){ len = 0; nx = sg; ny = 0; Fx = C[0]; Fy = C[1]; } else { nx = dx / len; ny = dy / len; Fx = (C[0] + Px) / 2; Fy = (C[1] + Py) / 2; }
+      var deg = r4(Math.atan2(nx, -ny) * 180 / Math.PI), s = Math.sin(Math.PI * e);
+      var inv = 'translate(' + Big + 'px,0px) rotate(' + (-deg) + 'deg) translate(' + r1(-Fx) + 'px,' + r1(-Fy) + 'px)';
+      st(hb, 'th', 'translate(' + r1(Fx) + 'px,' + r1(Fy) + 'px) rotate(' + deg + 'deg) translate(' + (-Big) + 'px,0px)');
+      st(fr, 'tf', inv + ' translate(' + px0 + 'px,0px)');
+      var q = 2 * ((k - Fx) * nx + (0 - Fy) * ny), ox = k - q * nx, oy = -q * ny;
+      var m = inv + ' matrix(' + r4(2 * nx * nx - 1) + ',' + r4(2 * nx * ny) + ',' + r4(-2 * nx * ny) + ',' + r4(1 - 2 * ny * ny) + ',' + r1(ox) + ',' + r1(oy) + ')';
+      st(fp, 'tp', m); st(fs, 'ts', m);
+      st(gl, 'tg', 'translate(' + r1(k - Fx) + 'px,' + r1(Fy) + 'px) rotate(' + r4(Math.atan2(nx, ny) * 180 / Math.PI) + 'deg) translate(' + (-Big) + 'px,0px) scale(1,' + r4(Math.max(.01, len / 200)) + ')');
+      st(un, 'tu', 'translate(' + r1(Fx - px0) + 'px,' + r1(Fy) + 'px) rotate(' + deg + 'deg) translate(' + (-Big) + 'px,0px) scale(1,' + r4(-W * .45 / 100) + ')');
+      st(un, 'ou', String(len ? r4(.35 + .65 * s) : 0)); st(fl, 'ol', String(r4(s))); st(gl, 'og', String(len ? r4(.55 + .45 * s) : 0)); st(fs, 'os', String(len ? r4(.35 + .65 * s) : 0));
     }
     var raf = 0, timer = 0, ended = false, uNow = 0, an = null, dropping = false;
     function frame(u){
-      if(o.phone){
-        /* Telefon: das Blatt rollt nach links weg (oder kommt von dort zurück) und blendet dabei aus */
-        var op = o.back2 ? sm(u / .3) : 1 - sm((u - .62) / .3);
-        pv.style.opacity = op.toFixed(3);
-        draw(.66 * Math.pow(o.back2 ? 1 - u : u, 1.15), op);
-      } else draw(u);
+      setE(o.phone && o.back2 ? 1 - u : u);
       if(csh) csh.style.opacity = (c01(u / .04) * (1 - c01((u - .06) / .2))).toFixed(3);
     }
     /* unter null (Rückfedern beim Zurücklegen): die Kante hebt sich ein klein wenig, statt unter die Seite zu tauchen */
