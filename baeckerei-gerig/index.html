@@ -553,6 +553,9 @@ main>section[id],body>section[id]{scroll-margin-top:84px}
 header.top{background:var(--mehl);backdrop-filter:none;-webkit-backdrop-filter:none}
 /* Ganze Seite 1–2 Stufen weniger hell (Julia 25.11): eine gemeinsame Schicht über allem = brightness(.96), Klicks gehen durch */
 body::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.04);pointer-events:none;z-index:2147483647}
+/* Startbild oben: weicher Übergang von der hellen Kopfzeile ins Brotfoto (Julia 28.11) */
+.heroA .bg::before{content:"";position:absolute;left:0;right:0;top:0;height:64px;z-index:1;pointer-events:none;background:linear-gradient(180deg,var(--mehl) 0%,rgba(255,252,245,.62) 28%,rgba(255,252,245,.22) 62%,rgba(255,252,245,0) 100%)}
+@media (max-width:767px){.heroA .bg::before{height:44px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .fade{opacity:1;transform:none}.mini{opacity:1;transform:none}}
 </style>
 <style id="pruefung-26-11">
