@@ -626,6 +626,11 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 @media (hover:none) and (pointer:coarse) and (max-width:1100px){.arr{display:none!important}.rail-wrap{padding:0!important}.dots{display:flex!important}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.h-line{opacity:1;transform:none}}
 .famimg{position:relative}.famimg .fcap{position:absolute;left:12px;bottom:10px;font-size:11.5px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+/* Юля 28.11: Kellerfoto im Kopf grösser, weniger beschnitten; erster Bildschirm ganz dunkel – kein heller Rand des nächsten Blocks */
+.hero .ph img{transform:none!important;object-position:50% 55%!important}
+.hero .hero-bar{display:none!important}
+.hero{min-height:100vh!important;min-height:100svh!important}
+@media (max-aspect-ratio:3/4){.hero .ph img{object-position:50% 70%!important}}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><style>/* Юля 26.11: «я про полосу с адресом и телефоном над блоком сыров» – Leiste weg; Höhe bleibt, Foto geht weich in den Hintergrund über (nichts verschiebt sich) */
 .hero-bar>.wrap{visibility:hidden}.hero-bar:before{display:none!important}.hero-bar .ftex{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 92%);mask-image:linear-gradient(180deg,transparent 0,#000 92%)}
@@ -647,7 +652,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 <main id="top">
 <!-- HERO: Käsekeller (Юля 28.11: Foto aus dem 2. Block nach oben) -->
 <section class="hero" id="hero">
-  <div class="ph"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_laib_m.webp"><img src="img/keller_laib_l.webp" alt="Käsekeller mit Appenzeller-Laiben"></picture></div>
+  <div class="ph"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_laib_hero_m.webp"><img src="img/keller_laib_hero_l.webp" alt="Käsekeller mit Appenzeller-Laiben"></picture></div>
   <div class="shade"></div>
   <div class="hero-in"><div class="wrap">
     <span class="kick h-line">Appenzeller-Käserei seit 1994 · Steinach SG</span>
