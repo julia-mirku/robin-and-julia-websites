@@ -502,7 +502,23 @@ h2.mit-umlaut{padding-top:.36em}
 .tal-finale{position:absolute;left:0;right:0;top:0;pointer-events:none}
 .tal-karte{pointer-events:auto;display:inline-block;margin-top:clamp(18px,2.4vw,34px);padding:18px 22px 22px;border-radius:18px;background:rgba(33,26,20,.82);border:2px solid rgba(255,253,248,.16);color:var(--weiss);box-shadow:0 12px 30px rgba(0,0,0,.25);max-width:440px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .tal-karte .kicker{color:var(--senf)}
-.tal-titel{margin:4px 0 6px;font:400 clamp(26px,3vw,36px)/1 "Bowlby One SC",sans-serif;color:var(--weiss)}
+.tal-titel{margin:4px 0 6px;font:400 clamp(22px,2.1vw,28px)/1 "Bowlby One SC",sans-serif;color:var(--weiss)}
+/* 28.11 Öffnungszeiten-Karte im Tal: rechts über dem Himmel (ab 1180 px), darunter unter dem Bild */
+.tal-zeiten{position:absolute;left:0;right:0;top:0;pointer-events:none}
+.tal-zeiten .wrap{display:flex;justify-content:flex-end}
+.zeiten-karte{pointer-events:auto;width:min(470px,100%);margin-top:clamp(18px,2.4vw,34px);padding:16px 22px 18px;border-radius:18px;background:rgba(33,26,20,.82);border:2px solid rgba(255,253,248,.16);color:var(--weiss);box-shadow:0 12px 30px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.zk-titel{margin:0 0 8px;font:400 clamp(22px,2.1vw,28px)/1 "Bowlby One SC",sans-serif;color:var(--weiss)}
+.zk-titel.mit-umlaut{padding-top:.36em}
+.zeiten-karte .zeiten li{padding:5px 10px}
+.zeiten-karte .zeiten .zz span{white-space:nowrap}
+@media (min-width:1180px){.zeiten-karte .zeiten .zz{flex-wrap:nowrap}}
+.zeiten-karte .zeiten-kasten{display:block}
+.zeiten-karte .zeiten-kasten .tag-wahl{flex-direction:row;align-items:baseline;border-right:0;border-bottom:1.5px solid rgba(255,253,248,.14);margin:0 0 8px;padding:2px 10px 10px;min-height:0;gap:4px 14px}
+.zeiten-karte .zeiten-kasten .tag-wahl .tw-tag{font-size:24px}
+.zeiten-karte .zeiten-kasten .tw-zeit{flex-direction:row;gap:6px;font-size:20px}
+.zeiten-karte .zeiten-kasten .tw-z{margin-left:-8px}.zeiten-karte .zeiten-kasten .tw-z+.tw-z{margin-left:0}
+@media (min-width:1180px){.tal-svg{height:clamp(650px,44vw,760px)}}
+@media (max-width:1179px){.tal-zeiten{position:static;pointer-events:auto}.tal-zeiten .wrap{display:block}.zeiten-karte{width:auto;margin:16px 0 4px}}
 .tal-weg{margin:0 0 16px;font-weight:700;color:rgba(255,253,248,.85)}
 .tal-knoepfe{display:flex;flex-wrap:wrap;gap:12px}
 .tal-knoepfe .btn{white-space:nowrap;min-height:50px;padding:0 20px;font-size:16px;box-shadow:0 4px 0 #000;border-color:#000}
@@ -905,20 +921,6 @@ html body .abschnitt{padding:44px 0}
   </div>
 </section>
 
-<section class="abschnitt info" id="besuch" aria-labelledby="besuchTitel">
-  <div class="wrap">
-    <div class="kopfzeile rv">
-      <div><div class="kicker" style="color:var(--senf)">Vorbeikommen</div><h2 id="besuchTitel" class="mit-umlaut">Öffnungszeiten</h2></div>
-      <p>Mittags und abends offen, am Samstag den ganzen Tag.</p>
-    </div>
-    <div class="info-raster">
-      <div class="kasten rv zeiten-kasten">
-        <div class="tag-wahl" id="tagWahl" aria-live="polite"></div>
-        <ul class="zeiten" id="zeiten"></ul>
-      </div>
-    </div>
-  </div>
-</section>
 <!-- IDEE 1: Toggenburg im Tageslauf (Himmel nach Uhrzeit, Schild nach Öffnungszeiten) — zum Entfernen diese Section und den JS-Block «IDEE 1» löschen -->
 <section class="tal" id="tal" data-zeit="tag" aria-labelledby="talTitel">
   <svg class="tal-svg" id="talSvg" viewBox="0 -300 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
@@ -985,6 +987,18 @@ html body .abschnitt{padding:44px 0}
         <div class="tal-knoepfe">
           <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Burger+House+Poststrasse+15+9630+Wattwil" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>Route planen</a>
           <a class="btn btn-call" href="tel:+41719900428"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="currentColor"/></svg>071 990 04 28</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 28.11 Öffnungszeiten im letzten Block (rechts neben «Mitten in Wattwil», statt eigenem dunklem Block) -->
+  <div class="tal-zeiten">
+    <div class="wrap">
+      <div class="zeiten-karte rv" id="besuch" aria-labelledby="besuchTitel">
+        <h2 id="besuchTitel" class="zk-titel mit-umlaut">Öffnungszeiten</h2>
+        <div class="zeiten-kasten">
+          <div class="tag-wahl" id="tagWahl" aria-live="polite"></div>
+          <ul class="zeiten" id="zeiten"></ul>
         </div>
       </div>
     </div>
@@ -1382,28 +1396,30 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
   var raus=null,getaucht=null;
   function deckel(x1,x2,ohne){var a=Math.min(x1,x2)-12,b=Math.max(x1,x2)+12,d=1e9;
     for(var n in POT){if(n===ohne)continue;var P=POT[n],m=P.cx+VX;if(b>=m-P.rimRx&&a<=m+P.rimRx)d=Math.min(d,P.rimY-6);}return d;}
-  function zwang(tx,ty){
-    var P,m,w,c,i,n,d;
+  function zwang(tx,ty,rx){
+    var P,m,w,c,i,n,d;if(rx===undefined)rx=tx;
+    /* 28.11 seitlich zur anderen Sauce gezogen (echte Zeigerposition, ohne verrutschten Griff): selbst heraus heben, nicht an der Wand festhängen */
     if(drin){P=POT[drin];m=P.cx+VX;w=Math.max(3,P.rx-14);
-      if(ty<P.sy-4){raus=drin;drin=null;}
+      if(ty<P.sy-4||Math.abs(rx-m)>w+12){if(Math.abs(rx-m)>w+12&&drag){drag.ox=drag.ox0;drag.oy=drag.oy0;}raus=drin;drin=null;}
       else{c={x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
-        if(Math.abs(st.x-m)>w+1){d=Math.min(P.rimY-6,deckel(st.x,c.x,drin));if(st.y>d+1)return {x:st.x,y:d,heben:1};c.y=Math.min(c.y,d);}
+        if(Math.abs(st.x-m)>w+1){d=Math.min(P.rimY-6,deckel(st.x,c.x,drin));if(st.y>d+1)return {x:st.x,y:d,heben:1};c.y=Math.min(c.y,d);if(c.y<ty)c.heben=1;}
         return c;}
     }
     if(raus){P=POT[raus];m=P.cx+VX;w=Math.max(3,P.rx-14);
-      if(st.y>P.rimY-8)return {x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
+      if(st.y>P.rimY-8){if(Math.abs(rx-m)>w+12&&drag){drag.ox=drag.ox0;drag.oy=drag.oy0;}if(Math.abs(rx-m)>w+12)return {x:Math.max(m-w,Math.min(m+w,st.x)),y:P.rimY-10,heben:1};
+        return {x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};}
       raus=null;}
     for(i=0;i<REIHE.length;i++){n=REIHE[i];P=POT[n];m=P.cx+VX;
       if(Math.abs(tx-m)<=P.rx*.82&&ty>=P.sy-1&&(P.vorn||ty<=P.sy+33||st.y<P.sy)){drin=n;w=Math.max(3,P.rx-14);
         c={x:Math.max(m-w,Math.min(m+w,tx)),y:Math.min(ty,P.sy+P.tief)};
-        if(Math.abs(st.x-m)>w+1){d=Math.min(P.rimY-6,deckel(st.x,c.x,n));if(st.y>d+1)return {x:st.x,y:d,heben:1};c.y=Math.min(c.y,d);}
+        if(Math.abs(st.x-m)>w+1){d=Math.min(P.rimY-6,deckel(st.x,c.x,n));if(st.y>d+1)return {x:st.x,y:d,heben:1};c.y=Math.min(c.y,d);if(c.y<ty)c.heben=1;}
         return c;}
     }
     /* frei: ueber dem Rand der naechsten Schale und aller Schalen auf dem Weg */
     var nah=null,bd=1e9;for(n in POT){P=POT[n];var e=Math.abs(tx-(P.cx+VX));if(e<bd){bd=e;nah=P;}}
     d=Math.min(nah.rimY-6,deckel(st.x,tx));
     if(st.y>d+1)return {x:st.x,y:d,heben:1};
-    return {x:tx,y:Math.min(ty,d)};
+    return {x:tx,y:Math.min(ty,d),heben:ty>d?1:0};/* 28.11 über dem Rand gehalten: Griff nicht verschieben, sonst kommt sie nicht mehr hinunter */
   }
   var vx=0,lx=0,lt=0,zielR=0,tilt=0,px=0,py=0;
   /* 28.11 Finger: Pommes erst nach kurzem Halten (0,2 s) greifen; schneller Wisch scrollt die Seite (Scroll nie festhalten) */
@@ -1430,7 +1446,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     var lastT=performance.now();(function loop(t){if(!drag)return;var dt=Math.min(32,Math.max(1,t-lastT));lastT=t;
       var r2=feld.getBoundingClientRect();
       var tx=Math.max(-30,Math.min(280,(px-r2.left)/k-drag.ox)),ty=Math.max(10,Math.min(240,(py-r2.top)/k-drag.oy));
-      drag.tx=(px-r2.left)/k-drag.ox0;drag.ty=(py-r2.top)/k-drag.oy0;var c=zwang(tx,ty),a=ruhig?1:1-Math.exp(-dt/26);
+      drag.tx=(px-r2.left)/k-drag.ox0;drag.ty=(py-r2.top)/k-drag.oy0;var c=zwang(tx,ty,drag.tx),a=ruhig?1:1-Math.exp(-dt/26);
       if(!c.heben&&(c.x!==tx||c.y!==ty)){drag.ox=Math.max(-30,Math.min(30,drag.ox+(tx-c.x)));drag.oy=Math.max(-108,Math.min(10,drag.oy+(ty-c.y)));}
       else{var rb=1-Math.exp(-dt/240);drag.ox+=(drag.ox0-drag.ox)*rb;drag.oy+=(drag.oy0-drag.oy)*rb;}st.x+=(c.x-st.x)*a;st.y+=(c.y-st.y)*a;
       vx*=Math.exp(-dt/120);
