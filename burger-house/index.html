@@ -210,7 +210,7 @@ h2{font-size:clamp(34px,6vw,60px)}
 .fry{position:absolute;left:0;top:0;z-index:1;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:grab;padding:10px;margin:-10px}
 .fry svg{display:block;width:100%;height:100%;overflow:visible}
 .fry.zieht{cursor:grabbing}
-.pommes.fertig .fry{touch-action:none}
+.pommes.fertig .fry{touch-action:pan-y}
 html{overflow-x:clip}
 html.fry-zieht,html.fry-zieht *{cursor:grabbing!important}
 .fry-schatten{position:absolute;left:0;top:0;width:34px;height:10px;border-radius:50%;background:rgba(33,26,20,.18);pointer-events:none;opacity:0;z-index:0}
@@ -269,8 +269,6 @@ h2.mit-umlaut{padding-top:.36em}
 .tw-z{border:2px solid transparent;border-radius:9px;padding:1px 8px;margin-left:-8px;transition:border-color .2s ease,box-shadow .2s ease}
 .tw-z+.tw-z{margin-left:0}
 .tw-z.an{border-color:var(--senf);box-shadow:0 0 0 3px rgba(var(--senf-rgb),.22)}
-.zeiten li.heute:not(.gewaehlt) .zz::after{background:var(--senf)!important;color:var(--grill)!important}
-.zeiten li.heute .zz::after{content:"heute";align-self:center;font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;background:var(--grill);color:var(--senf);border-radius:999px;padding:3px 9px}
 .adresse{font-size:24px;font-weight:800;line-height:1.3;margin:6px 0 4px}
 .weg-text{color:rgba(255,253,248,.75);margin:0 0 20px;font-weight:500}
 .weg-knoepfe{display:flex;flex-direction:column;gap:12px}
@@ -507,7 +505,7 @@ h2.mit-umlaut{padding-top:.36em}
 .tal-titel{margin:4px 0 6px;font:400 clamp(26px,3vw,36px)/1 "Bowlby One SC",sans-serif;color:var(--weiss)}
 .tal-weg{margin:0 0 16px;font-weight:700;color:rgba(255,253,248,.85)}
 .tal-knoepfe{display:flex;flex-wrap:wrap;gap:12px}
-.tal-knoepfe .btn{min-height:50px;padding:0 20px;font-size:16px;box-shadow:0 4px 0 #000;border-color:#000}
+.tal-knoepfe .btn{white-space:nowrap;min-height:50px;padding:0 20px;font-size:16px;box-shadow:0 4px 0 #000;border-color:#000}
 @media (max-width:360px){.tal-titel{font-size:23px}.tal-weg{font-size:14px;margin-bottom:12px}.tal-knoepfe{gap:8px}.tal-knoepfe .btn{min-height:46px}}
 @media (max-width:700px){.tal-svg{height:146vw;max-height:900px}.tal-karte{display:block;margin-top:14px;padding:14px 16px 16px}.tal-knoepfe .btn{flex:1 1 140px}}
 .tal-svg *{transition:fill 1.6s ease,opacity 1.6s ease}
@@ -781,15 +779,15 @@ html body .abschnitt{padding:44px 0}
   <div class="wrap">
     <div class="kopfzeile rv">
       <div><div class="kicker" style="color:var(--ketchup)">Aus der Küche</div><h2 id="karteTitel">Die Burger</h2></div>
-      <p>Eine Auswahl aus der Karte. Mit <b>+</b> auf deine Abhol-Liste – dann anrufen und bestellen.</p>
+      <p>Eine Auswahl aus der Karte. Mit <b>+</b> auf deine Abholliste – dann anrufen und bestellen.</p>
     </div>
     <div class="karte">
-      <article class="gericht star rv"><div class="mini" data-schichten="deckel,salat,kaese,roesti,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">01</span><h3>Rösti-Burger</h3><p>Mit knuspriger Rösti.</p><span class="marke-tag tag-liebling">Liebling</span><button class="minus" type="button" hidden aria-label="Ein Rösti-Burger weniger">−</button><button class="plus" type="button" data-name="Rösti-Burger" data-schichten="deckel,salat,kaese,roesti,fleisch,boden" aria-label="Rösti-Burger in die Bestellung">+</button></div></article>
-      <article class="gericht rv"><div class="mini" data-schichten="deckel,salat,curry,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">02</span><h3>Curry-Burger</h3><p>Mit Currysauce.</p><button class="minus" type="button" hidden aria-label="Ein Curry-Burger weniger">−</button><button class="plus" type="button" data-name="Curry-Burger" data-schichten="deckel,salat,curry,fleisch,boden" aria-label="Curry-Burger in die Bestellung">+</button></div></article>
-      <article class="gericht rv"><div class="mini" data-schichten="deckel,zwiebel,teriyaki,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">03</span><h3>Teriyaki-Burger</h3><p>Mit Teriyaki-Sauce.</p><button class="minus" type="button" hidden aria-label="Ein Teriyaki-Burger weniger">−</button><button class="plus" type="button" data-name="Teriyaki-Burger" data-schichten="deckel,zwiebel,teriyaki,fleisch,boden" aria-label="Teriyaki-Burger in die Bestellung">+</button></div></article>
-      <article class="gericht rv"><div class="mini" data-schichten="deckel,salat,blau,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">04</span><h3>Blue-Cheese-Burger</h3><p>Mit Blauschimmelkäse.</p><button class="minus" type="button" hidden aria-label="Ein Blue-Cheese-Burger weniger">−</button><button class="plus" type="button" data-name="Blue-Cheese-Burger" data-schichten="deckel,salat,blau,fleisch,boden" aria-label="Blue-Cheese-Burger in die Bestellung">+</button></div></article>
-      <article class="gericht rv"><div class="mini" data-schichten="deckel,tomate,zucchini,salat,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">05</span><h3>Zucchini-Burger</h3><p>Mit Zucchini.</p><span class="marke-tag tag-vegi">Vegi</span><button class="minus" type="button" hidden aria-label="Ein Zucchini-Burger weniger">−</button><button class="plus" type="button" data-name="Zucchini-Burger" data-schichten="deckel,tomate,zucchini,salat,boden" aria-label="Zucchini-Burger in die Bestellung">+</button></div></article>
-      <article class="gericht rv"><div class="mini" data-schichten="deckel,salat,falafel,tomate,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">06</span><h3>Falafel-Burger</h3><p>Mit Falafel.</p><span class="marke-tag tag-vegi">Vegi</span><button class="minus" type="button" hidden aria-label="Ein Falafel-Burger weniger">−</button><button class="plus" type="button" data-name="Falafel-Burger" data-schichten="deckel,salat,falafel,tomate,boden" aria-label="Falafel-Burger in die Bestellung">+</button></div></article>
+      <article class="gericht star rv"><div class="mini" data-schichten="deckel,salat,kaese,roesti,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">01</span><h3>Rösti-Burger</h3><span class="marke-tag tag-liebling">Liebling</span><button class="minus" type="button" hidden aria-label="Ein Rösti-Burger weniger">−</button><button class="plus" type="button" data-name="Rösti-Burger" data-schichten="deckel,salat,kaese,roesti,fleisch,boden" aria-label="Rösti-Burger auf die Abholliste">+</button></div></article>
+      <article class="gericht rv"><div class="mini" data-schichten="deckel,salat,curry,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">02</span><h3>Curry-Burger</h3><button class="minus" type="button" hidden aria-label="Ein Curry-Burger weniger">−</button><button class="plus" type="button" data-name="Curry-Burger" data-schichten="deckel,salat,curry,fleisch,boden" aria-label="Curry-Burger auf die Abholliste">+</button></div></article>
+      <article class="gericht rv"><div class="mini" data-schichten="deckel,zwiebel,teriyaki,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">03</span><h3>Teriyaki-Burger</h3><button class="minus" type="button" hidden aria-label="Ein Teriyaki-Burger weniger">−</button><button class="plus" type="button" data-name="Teriyaki-Burger" data-schichten="deckel,zwiebel,teriyaki,fleisch,boden" aria-label="Teriyaki-Burger auf die Abholliste">+</button></div></article>
+      <article class="gericht rv"><div class="mini" data-schichten="deckel,salat,blau,fleisch,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">04</span><h3>Blue-Cheese-Burger</h3><button class="minus" type="button" hidden aria-label="Ein Blue-Cheese-Burger weniger">−</button><button class="plus" type="button" data-name="Blue-Cheese-Burger" data-schichten="deckel,salat,blau,fleisch,boden" aria-label="Blue-Cheese-Burger auf die Abholliste">+</button></div></article>
+      <article class="gericht rv"><div class="mini" data-schichten="deckel,tomate,zucchini,salat,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">05</span><h3>Zucchini-Burger</h3><span class="marke-tag tag-vegi">Vegi</span><button class="minus" type="button" hidden aria-label="Ein Zucchini-Burger weniger">−</button><button class="plus" type="button" data-name="Zucchini-Burger" data-schichten="deckel,tomate,zucchini,salat,boden" aria-label="Zucchini-Burger auf die Abholliste">+</button></div></article>
+      <article class="gericht rv"><div class="mini" data-schichten="deckel,salat,falafel,tomate,boden" aria-hidden="true"></div><div class="g-text"><span class="nr">06</span><h3>Falafel-Burger</h3><span class="marke-tag tag-vegi">Vegi</span><button class="minus" type="button" hidden aria-label="Ein Falafel-Burger weniger">−</button><button class="plus" type="button" data-name="Falafel-Burger" data-schichten="deckel,salat,falafel,tomate,boden" aria-label="Falafel-Burger auf die Abholliste">+</button></div></article>
     </div>
     <p class="karte-fuss rv">Aktuelle Preise am Telefon: <a href="tel:+41719900428"><b>071 990 04 28</b></a></p>
   </div>
@@ -804,14 +802,14 @@ html body .abschnitt{padding:44px 0}
     <div class="rv">
       <div class="kicker" style="color:var(--ketchup)">Zum Ausprobieren</div>
       <h2 id="bauTitel">Bau deinen Burger</h2>
-      <p style="margin:14px 0 0;font-weight:500;color:var(--grau);max-width:28em">Tippe auf eine Zutat: Sie kommt auf den Burger. Nochmals tippen: Sie kommt weg. Gefällt er dir? Leg ihn in die&nbsp;Bestellung.</p>
+      <p style="margin:14px 0 0;font-weight:500;color:var(--grau);max-width:28em">Tippe auf eine Zutat: sie kommt auf den Burger. Nochmals tippen: sie kommt weg. Gefällt er dir? Leg ihn auf die&nbsp;Abholliste.</p>
       <div class="zutaten" id="zutaten"></div>
       <div class="bau-zeile">
         <span class="bau-liste" id="bauListe">Dein Burger: Brot · Käse · Rösti · Fleisch · Brot</span>
         <button class="leer" id="bauLeer" type="button">Neu anfangen</button>
       </div>
       <div class="bau-knoepfe">
-        <button class="btn btn-call" type="button" id="bauRein"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 11h18l-1.6 16.2a2 2 0 0 1-2 1.8H10.6a2 2 0 0 1-2-1.8z" fill="currentColor"/><path d="M11.5 13V9.5a4.5 4.5 0 0 1 9 0V13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>In die Bestellung</button>
+        <button class="btn btn-call" type="button" id="bauRein"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 11h18l-1.6 16.2a2 2 0 0 1-2 1.8H10.6a2 2 0 0 1-2-1.8z" fill="currentColor"/><path d="M11.5 13V9.5a4.5 4.5 0 0 1 9 0V13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Auf die Abholliste</button>
         <button class="bau-raus" type="button" id="bauRaus" hidden>− Wieder raus</button>
       </div>
     </div>
@@ -834,7 +832,6 @@ html body .abschnitt{padding:44px 0}
       <path d="M74 184q9-7 18 0t18 0 18 0 18 0" fill="none" stroke="#FFD36B" stroke-width="3" stroke-linecap="round"/>
     </svg>
     <div class="rv">
-      <div class="kicker" style="color:var(--ketchup)">Das sagen die Gäste</div>
       <h2 id="pommesTitel">Knusprige Pommes</h2>
       <p>In den Google-Bewertungen steht es immer wieder: Die Pommes sind knusprig. Dazu ein Burger: Zmittag oder <span style="white-space:nowrap">Znacht – erledigt.</span></p>
       <div class="dazu">
@@ -1006,7 +1003,7 @@ html body .abschnitt{padding:44px 0}
 <!-- /IDEE 1 -->
 </main>
 
-<button class="tuete-knopf" id="korbKnopf" type="button" aria-label="Bestellung öffnen" hidden><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 11h18l-1.6 16.2a2 2 0 0 1-2 1.8H10.6a2 2 0 0 1-2-1.8z" fill="currentColor"/><path d="M11.5 13V9.5a4.5 4.5 0 0 1 9 0V13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="zahl" id="korbZahl">0</span></button>
+<button class="tuete-knopf" id="korbKnopf" type="button" aria-label="Abholliste öffnen" hidden><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 11h18l-1.6 16.2a2 2 0 0 1-2 1.8H10.6a2 2 0 0 1-2-1.8z" fill="currentColor"/><path d="M11.5 13V9.5a4.5 4.5 0 0 1 9 0V13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="zahl" id="korbZahl">0</span></button>
 
 <div class="korb-hintergrund" id="korbHg" hidden></div>
 <aside class="korb" id="korb" role="dialog" aria-modal="true" aria-labelledby="korbTitel" hidden>
@@ -1409,9 +1406,23 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     return {x:tx,y:Math.min(ty,d)};
   }
   var vx=0,lx=0,lt=0,zielR=0,tilt=0,px=0,py=0;
+  /* 28.11 Finger: Pommes erst nach kurzem Halten (0,2 s) greifen; schneller Wisch scrollt die Seite (Scroll nie festhalten) */
+  var halten=null;
   fry.addEventListener("pointerdown",function(e){
-    if(busy||drag||e.button!==0||!e.isPrimary||!pm.classList.contains("fertig"))return;
-    e.preventDefault();messen();fry.setPointerCapture(e.pointerId);
+    if(busy||drag||halten||e.button!==0||!e.isPrimary||!pm.classList.contains("fertig"))return;
+    if(e.pointerType==="touch"){
+      halten={pointerId:e.pointerId,clientX:e.clientX,clientY:e.clientY,x0:e.clientX,y0:e.clientY};
+      halten.t=setTimeout(function(){var h=halten;halten=null;if(h&&!busy&&!drag)greifen(h);},200);
+      return;
+    }
+    e.preventDefault();greifen(e);
+  });
+  function halteEnde(){if(halten){clearTimeout(halten.t);halten=null;}}
+  fry.addEventListener("pointermove",function(e){if(halten&&e.pointerId===halten.pointerId){halten.clientX=e.clientX;halten.clientY=e.clientY;if(Math.abs(e.clientX-halten.x0)>8||Math.abs(e.clientY-halten.y0)>8)halteEnde();}});
+  fry.addEventListener("pointerup",halteEnde);fry.addEventListener("pointercancel",halteEnde);
+  fry.addEventListener("touchmove",function(e){if(drag||halten)e.preventDefault();},{passive:false});
+  function greifen(e){
+    messen();try{fry.setPointerCapture(e.pointerId);}catch(x){}
     var r=feld.getBoundingClientRect();
     drag={id:e.pointerId,ox:(e.clientX-r.left)/k-st.x,oy:(e.clientY-r.top)/k-st.y,r:r};drag.ox0=drag.ox;drag.oy0=drag.oy;
     drin=home;raus=null;
@@ -1432,7 +1443,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     cancelAnimationFrame(raf);
     var t0=null,sc0=st.sc;function lift(t){if(!t0)t0=t;var q=Math.min(1,(t-t0)/140);st.sc=sc0+(1.05-sc0)*eOut(q);zeichnen();if(q<1&&drag)requestAnimationFrame(lift);}requestAnimationFrame(lift);
     dip.classList.add("weg");
-  });
+  }
   fry.addEventListener("pointermove",function(e){
     if(!drag||e.pointerId!==drag.id)return;
     var now=performance.now(),dt=Math.min(32,Math.max(1,now-lt));vx=vx*.8+((e.clientX-lx)/dt)*.2;lx=e.clientX;lt=now;px=e.clientX;py=e.clientY;
@@ -1520,7 +1531,7 @@ function bauSchichten(){var mitte=[].slice.call(bb.children).slice(1,-1).filter(
 function abgleichen(){
   [].forEach.call(document.querySelectorAll(".gericht .plus"),function(b){
     var n=menge(schluessel(b.dataset.name,b.dataset.schichten.split(","))),mi=b.parentNode.querySelector(".minus"),g=b.closest(".gericht");
-    b.setAttribute("data-n",n);
+    b.setAttribute("data-n",Math.max(1,n));/* Gericht: Zähler mindestens 1 (Regel Julia), Beilagen ab 0 */
     if(mi)mi.hidden=n<1;if(g)g.classList.toggle("hat-minus",n>0);
     b.setAttribute("aria-label",b.dataset.name+(n?" – "+n+" auf der Liste, noch eins dazu":" auf die Abholliste"));
   });
@@ -1700,7 +1711,7 @@ korbZeigen();
     var st=document.querySelector("#status span");
     txt.textContent="Wattwil, jetzt "+("0"+Math.floor(h)).slice(-2)+":"+("0"+j.m%60).slice(-2)+" · "+(st?st.textContent:"");
   }
-  var VOR={morgen:["morgen",false,"Morgens: noch zu. Mittags ab 11:00 offen, sonntags ab 17:00."],tag:["tag",true,"Mittags: offen von 11:00 bis 13:30 (Montag bis Samstag)."],abend:["abend",true,"Abends: offen ab 17:00, montags abends zu."],nacht:["nacht",false,"Nachts: geschlossen."]};
+  var VOR={morgen:["morgen",false,"Morgens: noch zu. Mittags ab 11:00 offen, sonntags ab 17:00."],tag:["tag",true,"Mittags: offen von 11:00 bis 13:30 (Montag bis Freitag)."],abend:["abend",true,"Abends: offen ab 17:00, montags abends zu."],nacht:["nacht",false,"Nachts: geschlossen."]};
   var modus="jetzt";
   function zeigeModus(m){if(m==="jetzt")jetzt();else{var v=VOR[m];tal.dataset.zeit=v[0];tal.classList.toggle("offen",v[1]);txt.textContent=v[2];}}
   var mausTal=window.matchMedia&&window.matchMedia("(hover: hover)"),vorTimer=null,vorschau=false;
@@ -1794,15 +1805,15 @@ korbZeigen();
   function punkte(){var n=0,bd=1e9,l=sv.getBoundingClientRect().left;karten.forEach(function(c,i){var d=Math.abs(c.getBoundingClientRect().left-l);if(d<bd){bd=d;n=i;}});if(sv.scrollLeft+sv.clientWidth>=sv.scrollWidth-4)n=karten.length-1;[].forEach.call(pk.children,function(p,i){p.classList.toggle("an",i===n);});}
   sv.addEventListener("scroll",punkte,{passive:true});window.addEventListener("resize",punkte);punkte();
   /* 28.11 Rad/Touchpad: senkrecht oder schräg = die Seite scrollt (Karussell hält nie fest); seitwärts = genau eine Karte */
-  var radSumme=0,radLetzt=0,radFertig=false;
+  var radSumme=0,radLetzt=0,radFertig=false,radBis=0;
   sv.addEventListener("wheel",function(e){
     var f=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1,dx=e.deltaX*f,dy=e.deltaY*f;
     if(e.ctrlKey)return;
     e.preventDefault();
     if(Math.abs(dy)>=Math.abs(dx)){window.scrollBy(0,dy);return;}
-    var jetzt=Date.now();if(jetzt-radLetzt>400){radSumme=0;radFertig=false;}radLetzt=jetzt;
+    var jetzt=Date.now();if(jetzt<radBis){radLetzt=jetzt;return;}if(jetzt-radLetzt>400){radSumme=0;radFertig=false;}radLetzt=jetzt;
     if(radFertig)return;radSumme+=dx;if(Math.abs(radSumme)<24)return;
-    sv.scrollBy({left:(radSumme>0?1:-1)*schritt(),behavior:ruhig?"auto":"smooth"});radFertig=true;
+    sv.scrollBy({left:(radSumme>0?1:-1)*schritt(),behavior:ruhig?"auto":"smooth"});radFertig=true;radBis=jetzt+650;
   },{passive:false});
   sv.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){sv.scrollBy({left:schritt(),behavior:"smooth"});e.preventDefault();}if(e.key==="ArrowLeft"){sv.scrollBy({left:-schritt(),behavior:"smooth"});e.preventDefault();}});
 })();
