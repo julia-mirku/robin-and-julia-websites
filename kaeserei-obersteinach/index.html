@@ -67,7 +67,7 @@ p{margin:0 0 1em}
 /* Hero */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;color:#fff;overflow:hidden;background:#2a3135}
 .hero .ph{position:absolute;inset:0}
-.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
 .hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,23,26,.86) 0%,rgba(18,23,26,.62) 38%,rgba(18,23,26,.12) 70%,rgba(18,23,26,.05) 100%),linear-gradient(0deg,rgba(18,23,26,.55),rgba(18,23,26,0) 35%)}
 .hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--hdr) + var(--bar) + 30px) 0 40px}
 .hero-in .wrap>*{max-width:540px}
@@ -159,9 +159,9 @@ p{margin:0 0 1em}
 @media (max-width:860px){.fgrid{grid-template-columns:1fr}.pot{max-width:300px}}
 
 /* Käserei / Zeitleiste */
-.famgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,70px);align-items:start}
-.famimg{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:9/13;box-shadow:0 20px 44px rgba(30,37,40,.18)}
-.famimg img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.famgrid{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(24px,5vw,70px);align-items:start}
+.famimg{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:1200/746;max-width:440px;width:100%;box-shadow:0 16px 36px rgba(30,37,40,.16)}
+.famimg img{width:100%;height:100%;object-fit:cover}
 .famimg figcaption,.cap{position:absolute;left:12px;bottom:10px;font-size:11.5px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .intro{font-size:18px;color:var(--mute);margin:14px 0 26px}
 .line{position:relative;padding-left:30px}
@@ -173,7 +173,7 @@ p{margin:0 0 1em}
 .secret{margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px;display:flex;gap:14px;align-items:center}
 .secret svg{width:30px;height:30px;flex:none;color:var(--terra)}
 .secret p{margin:0}
-@media (max-width:860px){.famgrid{grid-template-columns:1fr}.famimg{max-width:420px;aspect-ratio:4/5}}
+@media (max-width:860px){.famgrid{grid-template-columns:1fr}}
 
 /* Stimmen */
 .sthead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
@@ -260,7 +260,7 @@ footer a{text-decoration:none;font-weight:700;color:var(--ink)}
 
 <main id="top">
 <section class="hero" id="hero">
-  <div class="ph"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/kaeserei_formen_m.webp"><img src="img/kaeserei_formen_l.webp" alt="In der Käserei Obersteinach: Käsebruch wird in die Formen gefüllt"></picture></div>
+  <div class="ph"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/keller_cover_m.webp"><img src="img/keller_cover_l.webp" alt="Käsekeller mit einem angeschnittenen Laib"></picture></div>
   <div class="shade"></div>
   <div class="hero-in"><div class="wrap">
     <span class="kick">Appenzeller-Käserei · Steinach SG</span>
@@ -268,7 +268,6 @@ footer a{text-decoration:none;font-weight:700;color:var(--ink)}
     <p class="lead">Seit 1994 käst Norbert Eberle-Kälin hier Appenzeller – aus der Milch von Bauern aus der Umgebung. Im kleinen Laden gibt es Hauskäse und viele weitere Sorten.</p>
     <div class="ctas"><a class="btn btn-terra" href="#kaese">Unser Käse</a><a class="btn btn-line" href="#laden">Öffnungszeiten &amp; Weg</a></div>
   </div></div>
-  <span class="credit">Foto: Google-Profil</span>
   <div class="hero-bar"><div class="wrap">
     <span class="status js-status"><span class="dot"></span><span>…</span></span>
     <a href="https://www.google.com/maps/dir/?api=1&amp;destination=47.4921771,9.4351034" target="_blank" rel="noopener">Rorschacherstrasse 11, 9323 Steinach</a>
@@ -330,7 +329,7 @@ footer a{text-decoration:none;font-weight:700;color:var(--ink)}
 
 <section class="sec" id="kaeserei">
   <div class="wrap famgrid">
-    <figure class="famimg rv" style="margin:0"><img src="img/kaeser_arbeit.webp" alt="Norbert Eberle-Kälin an den Käseformen" loading="lazy"><figcaption>Foto: Google-Profil</figcaption></figure>
+    <figure class="famimg rv" style="margin:0"><img src="img/kaeserei_formen_klein.webp" alt="In der Käserei Obersteinach: Käsebruch wird in die Formen gefüllt" loading="lazy"><figcaption>Foto: Google-Profil</figcaption></figure>
     <div class="rv">
       <span class="kick">Die Käserei</span>
       <h2>Jeden Tag frische Milch, jeden Tag Käse</h2>
