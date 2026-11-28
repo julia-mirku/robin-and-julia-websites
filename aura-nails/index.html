@@ -506,6 +506,10 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
 /* Julia 22.11 21:46: Logo im untersten Block etwas schneller */
 .oval .ring{transition-duration:.9s}.oval .ring2{transition-delay:.08s}.oval .word{transition:opacity .5s .3s}
 @media (max-width:900px){.fw-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'wall' 'chips' 'set';gap:14px}.fw-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-inline:-16px;padding-inline:16px}.fw-chips::-webkit-scrollbar{display:none}.fw-chip{flex:0 0 auto}.fw-set{aspect-ratio:4/5;width:min(100%,460px);justify-self:center}}
+
+/* Julia 28.11: Wisch = genau ein Element */
+.track{scroll-snap-type:x mandatory}
+.track>*{scroll-snap-stop:always}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -539,18 +543,13 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
   <div class="wrap">
     <div class="hero-text">
       <h1>Nägel mit <em class="holo">Ausstrahlung.</em></h1>
-      <p class="lead">Manicure, Pedicure und Nagelmodellage im Herzen von Wil – vier Gehminuten vom Bahnhof.</p>
+      <p class="lead">Manicure, Pedicure und Nagelmodellage im Herzen von Wil.</p>
       <div class="hero-cta">
         <a class="btn btn-gold" href="https://buchung.treatwell.ch/ort/500506/menue/" target="_blank" rel="noopener">Termin buchen</a>
         <a class="btn btn-soft" href="#farbwand">Unsere Farbwand</a>
       </div>
       <div class="facts">
-        <div class="fact"><span class="stars">★★★★★</span><span><strong>5,0</strong> · 198 Google-Bewertungen</span></div>
         <div class="fact"><span>Treatwell <strong>Top Rated 2026</strong></span></div>
-      </div>
-      <div class="addr">
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Aura+Nail+Salon,+Untere+Bahnhofstrasse+12,+9500+Wil" target="_blank" rel="noopener">Untere Bahnhofstrasse 12, 9500 Wil SG</a>
-        <a href="tel:+41793528888">079 352 88 88</a>
       </div>
     </div>
     <figure class="hero-photo" data-lb="3">
@@ -566,7 +565,7 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
   <div class="wrap">
     <div class="sec-head reveal">
       <h2>Hunderte Farben. <em>Welche ist Ihre?</em></h2>
-      <p class="lead"><span class="fw-hint-m">Fahren Sie über ein Regal – rechts erscheint ein echtes Set aus dem Studio.</span><span class="fw-hint-t">Tippen Sie auf ein Regal – darunter erscheint ein echtes Set aus dem Studio.</span></p>
+      <p class="lead"><span class="fw-hint-m">Fahren Sie über ein Regal – rechts erscheint ein echtes Set aus dem Studio.</span><span class="fw-hint-t">Tippen Sie auf ein Regal – darunter erscheint ein echtes Set aus dem Studio.</span></p>
     </div>
     <div class="fw-grid reveal">
       <div class="fw-wall" id="fwWall">
@@ -736,7 +735,7 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
   <div class="wrap">
     <div class="sec-head reveal">
       <h2>Was Kundinnen <em class="sheen">sagen</em></h2>
-      <p class="lead">5,0 bei 198 Google-Bewertungen – hier einige davon, wörtlich.</p>
+      <p class="lead">Einige Bewertungen – wörtlich.</p>
     </div>
     <div class="scores reveal" id="scores">
       <div class="score"><b>5,0</b><span>Google · 198 Bewertungen</span></div>
@@ -777,7 +776,7 @@ main>section::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0,
   <div class="wrap">
     <div class="sec-head reveal">
       <h2>Das <em>Studio</em></h2>
-      <p class="lead">Modern und stilvoll – mit Farbwand, Pflanzenwand und bequemen Pedicure-Sesseln.</p>
+      <p class="lead">Modern und stilvoll – mit Farbwand, Pflanzenwand und bequemen Pedicure-Sesseln.</p>
     </div>
     <div class="studio-pics reveal">
       <figure><img loading="lazy" src="https://julia-mirku.github.io/aura-nails-muster/img/aussen_logo.webp" alt="Das Studio von aussen mit goldenem Logo"><figcaption>Von aussen</figcaption></figure>
@@ -908,31 +907,18 @@ function carousel(root){const tr=root.querySelector('.track'),qs=[...tr.children
   function sync(){const i=idx();[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));prev.disabled=false;next.disabled=false}
   prev.addEventListener('click',()=>go(idx()-1));next.addEventListener('click',()=>go(idx()+1));
   /* Trackpad/Maus quer: Einrasten während des Wischens aus, danach sanft aufs nächste Bild (auch kleine Wischer) */
-  let wt=0,wsum=0;root.addEventListener('wheel',e=>{const dx=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:(e.shiftKey?e.deltaY:0);if(!dx)return;e.preventDefault();
-    if(!wt){tr.style.scrollSnapType='none';tr.style.scrollBehavior='auto';wsum=0}wsum+=dx;tr.scrollLeft+=dx;clearTimeout(wt);
-    wt=setTimeout(()=>{wt=0;const st=step(),raw=tr.scrollLeft/st,base=Math.round(raw);let i=base;if(Math.abs(wsum)>24&&i===Math.round((tr.scrollLeft-wsum)/st))i+=wsum>0?1:-1;
-      i=Math.max(0,Math.min(pages()-1,i));tr.scrollTo({left:i*st,behavior:'smooth'});setTimeout(()=>{tr.style.scrollSnapType='';tr.style.scrollBehavior=''},500)},140)},{passive:false});
+  /* Julia 28.11: senkrecht scrollt immer die Seite (auch mit kleinem Querschub); quer = genau ein Element pro Geste */
+  let wt=0,wsum=0,w0=0,done=false;root.addEventListener('wheel',e=>{
+    if(e.deltaX&&!e.shiftKey&&Math.abs(e.deltaY)>=Math.abs(e.deltaX)){e.preventDefault();scrollBy(0,e.deltaY*(e.deltaMode===1?40:e.deltaMode===2?innerHeight:1));return}
+    const dx=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:(e.shiftKey?e.deltaY:0);if(!dx)return;e.preventDefault();
+    /* eine Geste (auch mit Nachlauf) = ein Schritt; frei erst nach 0,7 s Ruhe */
+    if(!wt){wsum=0;w0=idx();done=false}wsum+=dx;clearTimeout(wt);wt=setTimeout(()=>{wt=0},700);
+    if(!done&&Math.abs(wsum)>24){done=true;go(Math.max(0,Math.min(pages()-1,w0+(wsum>0?1:-1))))}},{passive:false});
   let t;tr.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(sync,60)},{passive:true});
   addEventListener('resize',build);build();
   return {go,idx,root,tr,prev,next}}
 const revCar=carousel($('#carousel'));carousel($('#galCar'));
-/* Bewertungen blättern langsam von selbst – Pause bei Maus, Finger, Pfeil */
-(()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  const {go,idx,root,tr}=revCar,D=5600;let timer=0,paused=false,vis=false,resume=0;
-  const dots=root.querySelector('.dots');
-  function arm(){clearTimeout(timer);root.classList.remove('ticking');if(paused||!vis||document.hidden)return;void root.offsetWidth;root.classList.add('ticking');timer=setTimeout(()=>{go(idx()+1);arm()},D)}
-  function pause(){paused=true;clearTimeout(timer);clearTimeout(resume);root.classList.remove('ticking')}
-  function later(ms){clearTimeout(resume);resume=setTimeout(()=>{paused=false;arm()},ms)}
-  root.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')pause()});
-  root.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')later(3000)});
-  root.addEventListener('touchstart',()=>pause(),{passive:true});
-  root.addEventListener('touchend',()=>later(4000),{passive:true});
-  root.addEventListener('wheel',()=>{pause();later(4000)},{passive:true});
-  root.addEventListener('click',e=>{if(e.target.closest('button')){pause();later(6000)}});
-  root.addEventListener('focusin',()=>pause());root.addEventListener('focusout',()=>later(3000));
-  new IntersectionObserver(es=>es.forEach(en=>{vis=en.isIntersecting;vis?arm():(clearTimeout(timer),root.classList.remove('ticking'))}),{threshold:.35}).observe(root);
-  document.addEventListener('visibilitychange',arm);
-})();
+/* Julia 28.11: Karussells blättern nie von selbst */
 
 /* ---------- Preise: Schublade ---------- */
 const drawer=$('#preise'),dbg=$('#drawerBg');
