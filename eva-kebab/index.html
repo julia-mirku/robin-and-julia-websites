@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="de-CH" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="google" content="notranslate">
+<meta name="robots" content="noindex">
+<title>EVA Kebab · Pizza – Pilatusstrasse 46A, Luzern</title>
+<meta name="description" content="EVA Kebab · Pizza an der Pilatusstrasse 46A in Luzern. Döner, Dürüm, Pide, Pizza und Burger. Freitag und Samstag bis 5 Uhr früh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/eingang.webp">
+<style>
+:root{
+  --cream:#EEE3C8; --cream-2:#D9CBA9; --stone:#6E5140; --stone-2:#4A372C; --esp:#1E1713; --esp-2:#2A201A;
+  --red:#D8322A; --red-soft:rgba(216,50,42,.16);
+  --bg:var(--esp); --bg-2:var(--esp-2); --ink:var(--cream); --ink-2:rgba(238,227,200,.72); --line:rgba(238,227,200,.14);
+  --card:rgba(238,227,200,.045); --card-h:rgba(238,227,200,.085);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --bar-h:0px;
+}
+html.tag{
+  --bg:#EEE3C8; --bg-2:#E4D6B5; --ink:#1E1713; --ink-2:rgba(30,23,19,.72); --line:rgba(30,23,19,.14);
+  --card:rgba(110,81,64,.07); --card-h:rgba(110,81,64,.13);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Spline Sans",system-ui,sans-serif;
+  transition:background-color .6s var(--ease),color .6s var(--ease);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+/* Steinfaktur (fein, ohne Naht – liegt auf dem ganzen Body) */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .43 0 0 0 0 .32 0 0 0 0 .25 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(1200px 700px at 85% -10%,rgba(110,81,64,.35),transparent 60%),radial-gradient(900px 600px at -10% 110%,rgba(110,81,64,.28),transparent 60%);transition:opacity .6s}
+html.tag body::after{opacity:.55}
+main,footer,.top{position:relative;z-index:1}
+img{max-width:100%;display:block}
+p,blockquote,figcaption,.lead{text-wrap:pretty}
+a{color:inherit}
+h1,h2,h3{font-family:Cinzel,serif;font-weight:600;letter-spacing:.06em;line-height:1.15;margin:0}
+button{font:inherit;color:inherit}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+
+/* ---------- Kopf: Entwurfs-Leiste + Kopfzeile, gleiten sanft ---------- */
+.top{position:fixed;left:0;right:0;top:0;z-index:50;transform:translateY(0);transition:transform .5s var(--ease)}
+.bar{background:#120d0a;color:#E6D9BC;font-size:13px;line-height:1.45;text-align:center;padding:7px 16px;border-bottom:1px solid rgba(238,227,200,.12)}
+.bar b{font-weight:600}
+.head{display:flex;align-items:center;gap:18px;padding:14px clamp(18px,4vw,56px);
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);transition:background-color .6s var(--ease)}
+.logo{font-family:Cinzel,serif;font-weight:700;font-size:26px;letter-spacing:.34em;text-decoration:none;margin-right:auto;padding-left:.1em}
+.logo small{display:block;font:500 10.5px/1 "Spline Sans",sans-serif;letter-spacing:.32em;color:var(--ink-2);margin-top:3px}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:15px;padding:8px 12px;border-radius:999px;transition:background-color .2s,color .2s}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:15.5px;letter-spacing:.02em;
+  padding:12px 20px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:background-color .2s,box-shadow .2s,border-color .2s,color .2s,transform .2s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-red{background:var(--red);color:#fff8ec}
+.btn-line{border-color:color-mix(in srgb,var(--ink) 40%,transparent);background:transparent}
+.toggle{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 13px;font-size:14px;cursor:pointer;transition:background-color .2s,border-color .2s}
+.toggle .ic{font-size:15px;line-height:1}
+@media (hover:hover){
+  .nav a:hover{background:var(--card-h)}
+  .btn-red:hover{background:#E4463D;box-shadow:0 0 0 6px var(--red-soft),0 10px 30px -10px rgba(216,50,42,.7)}
+  .btn-line:hover{border-color:var(--red);background:var(--red-soft)}
+  .toggle:hover{border-color:var(--red);background:var(--red-soft)}
+}
+.btn:active,.toggle:active{transform:scale(.97)}
+
+/* ---------- Abschnitte ---------- */
+section{padding:clamp(72px,9vw,110px) clamp(18px,5vw,72px) 0;max-width:1320px;margin:0 auto}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin:0 0 14px}
+.h2{font-size:clamp(30px,4.2vw,50px)}
+.lead{color:var(--ink-2);max-width:56ch;margin:16px 0 0;font-size:18px}
+.lead b{color:var(--ink);font-weight:600}
+
+/* ---------- Hero ---------- */
+.hero{max-width:none;padding:0;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-height:min(100svh,920px)}
+.hero-txt{display:flex;flex-direction:column;justify-content:center;padding:calc(var(--top-h,120px) + min(34px,3vh)) clamp(22px,5vw,80px) 40px}
+.hero h1{font-size:clamp(60px,min(9.5vw,15.5vh),138px);letter-spacing:.3em;font-weight:700;line-height:.95;margin-left:-.04em}
+.hero h1 span{display:block;font:600 clamp(15px,1.5vw,19px)/1.3 "Spline Sans",sans-serif;letter-spacing:.42em;text-transform:uppercase;color:var(--ink-2);margin-top:min(20px,2.4vh)}
+.hero .claim{font-family:Cinzel,serif;font-size:clamp(20px,min(2.2vw,3.6vh),28px);letter-spacing:.04em;margin:min(30px,3.2vh) 0 0;max-width:22ch;line-height:1.3}
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:min(22px,2.6vh);font-weight:600;font-size:16px;padding:8px 16px 8px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);align-self:flex-start;cursor:default;transition:background-color .2s,border-color .2s}
+.status i{width:10px;height:10px;border-radius:50%;background:#8a7b6c;flex:none}
+.status.on i{background:var(--red);box-shadow:0 0 0 5px var(--red-soft)}
+@media (hover:hover){.status:hover{background:var(--card-h);border-color:color-mix(in srgb,var(--ink) 30%,transparent)}}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:min(30px,3.2vh)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:min(30px,3.4vh);padding-top:min(22px,2.6vh);border-top:1px solid var(--line);font-size:15.5px;color:var(--ink-2)}
+.facts a{text-decoration:none;transition:color .2s}
+.facts strong{color:var(--ink);font-weight:600}
+@media (hover:hover){.facts a:hover{color:var(--red)}}
+.stars{color:var(--red);letter-spacing:.08em}
+.hero-img{position:relative;overflow:hidden}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 8%;transform:scale(1.04);transition:transform 1.4s var(--ease)}
+.hero-img.in img{transform:scale(1)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 18%,color-mix(in srgb,var(--bg) 15%,transparent) 34%,transparent 52%),linear-gradient(0deg,var(--bg) 0%,transparent 24%);transition:background .6s}
+
+/* ---------- Speisekarte ---------- */
+.menu-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}
+.tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 18px;font-size:15.5px;font-weight:500;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+@media (hover:hover){.tab:not([aria-selected="true"]):hover{border-color:var(--red);background:var(--red-soft)}}
+.panels{position:relative;margin-top:26px}
+.panel{display:none;grid-template-columns:1fr 1fr;gap:0 46px;animation:fade .35s var(--ease)}
+.panel.on{display:grid}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.note{grid-column:1/-1;color:var(--ink-2);font-size:15px;margin:0 0 8px}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 18px;padding:14px 12px;margin:0 -12px;border-bottom:1px solid var(--line);border-radius:10px;transition:background-color .2s}
+.item h3{font:600 17.5px/1.35 "Spline Sans",sans-serif;letter-spacing:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.item p{grid-column:1;margin:0;color:var(--ink-2);font-size:15px;line-height:1.45}
+.price{grid-row:1/span 2;grid-column:2;align-self:center;font-weight:700;font-size:17.5px;font-variant-numeric:tabular-nums;padding:4px 10px;border-radius:8px;transition:background-color .2s,color .2s}
+.praise{font:600 11px/1 "Spline Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--red);border:1px solid color-mix(in srgb,var(--red) 55%,transparent);border-radius:999px;padding:5px 8px 4px}
+@media (hover:hover){
+  .item:hover{background:var(--card-h)}
+  .item:hover .price{background:var(--red);color:#fff8ec}
+}
+.item:active{background:var(--card-h)}
+
+/* ---------- Döner im Schnitt ---------- */
+.cut{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:40px}
+.photo{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.photo img{width:100%;height:auto}
+.pin{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;border:0;padding:0;cursor:pointer;background:transparent}
+.pin::before{content:"";position:absolute;inset:8px;border-radius:50%;background:#fff8ec;box-shadow:0 0 0 2px rgba(30,23,19,.55);transition:background-color .2s,box-shadow .2s,inset .2s}
+.pin::after{content:attr(data-name);position:absolute;left:50%;bottom:calc(100% + 4px);transform:translate(-50%,4px);white-space:nowrap;font:600 13px/1 "Spline Sans",sans-serif;
+  background:rgba(30,23,19,.86);color:#F3E9D2;padding:7px 10px;border-radius:999px;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.pin.on::before{background:var(--red);box-shadow:0 0 0 6px rgba(216,50,42,.3);inset:6px}
+.pin.on::after{opacity:1;transform:translate(-50%,0)}
+@media (hover:hover){.pin:hover::before{background:var(--red);box-shadow:0 0 0 6px rgba(216,50,42,.3)}.pin:hover::after{opacity:1;transform:translate(-50%,0)}}
+.cut-cap{margin-top:16px;min-height:3.2em;color:var(--ink-2);font-size:16px}
+.cut-cap b{color:var(--ink)}
+.sizes h3{font-size:24px}
+.size-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.size-btn{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;font-weight:600;font-size:15px;line-height:1.25;transition:background-color .2s,border-color .2s,color .2s}
+.size-btn small{display:block;font-weight:500;color:var(--ink-2);margin-top:3px;font-variant-numeric:tabular-nums}
+.size-btn[aria-pressed="true"]{border-color:var(--red);background:var(--red-soft)}
+@media (hover:hover){.size-btn:hover{border-color:var(--red)}}
+.stage{height:178px;display:flex;align-items:flex-end;justify-content:center;margin-top:18px;border-bottom:1px dashed var(--line)}
+.stage svg{width:250px;height:auto;transform-origin:50% 100%;transition:transform .55s var(--ease)}
+.size-info{margin-top:18px;min-height:110px}
+.size-info .n{font-family:Cinzel,serif;font-size:22px;letter-spacing:.04em}
+.size-info .p{font-weight:700;font-size:22px;color:var(--red);margin-left:10px;font-variant-numeric:tabular-nums}
+.size-info p{margin:6px 0 16px;color:var(--ink-2);font-size:15.5px}
+
+/* ---------- Galerie ---------- */
+.rail-wrap{position:relative;margin-top:36px}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;overscroll-behavior-x:contain}
+.rail::-webkit-scrollbar{display:none}
+.shot{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;margin:0;cursor:zoom-in}
+.shot .f{border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:var(--card)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.shot figcaption{margin-top:12px;font-size:15.5px;color:var(--ink-2)}
+.shot figcaption b{color:var(--ink);font-weight:600}
+@media (hover:hover){.shot:hover img{transform:scale(1.035)}}
+.arrow{position:absolute;top:calc(50% - 22px);transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(6px);cursor:pointer;display:grid;place-items:center;z-index:2;transition:background-color .2s,border-color .2s,opacity .2s}
+.arrow svg{width:20px;height:20px}
+.arrow.l{left:-25px}.arrow.r{right:-25px}
+.arrow[disabled]{opacity:.3;cursor:default}
+@media (hover:hover){.arrow:not([disabled]):hover{border-color:var(--red);background:var(--red-soft)}}
+.dots{display:none;justify-content:center;gap:8px;margin-top:16px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background-color .2s,transform .2s}
+.dots i.on{background:var(--red);transform:scale(1.25)}
+
+/* ---------- Willkommen (Bewertungen) ---------- */
+.welcome{text-align:center}
+.welcome .word{font-family:Cinzel,serif;font-weight:700;font-size:clamp(32px,8.6vw,140px);letter-spacing:.1em;line-height:1;
+  color:transparent;-webkit-text-stroke:1.2px color-mix(in srgb,var(--ink) 55%,transparent);margin:6px 0 0;user-select:none}
+.quotes{position:relative;max-width:860px;margin:-0.2em auto 0}
+.qtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.qtrack::-webkit-scrollbar{display:none}
+.q{flex:0 0 100%;scroll-snap-align:center;padding:10px 64px;margin:0}
+.q blockquote{margin:0;font-family:Cinzel,serif;font-size:clamp(21px,2.5vw,30px);line-height:1.4;letter-spacing:.01em}
+.q figcaption{margin-top:16px;color:var(--ink-2);font-size:15px}
+.quotes .arrow{top:50%}
+.quotes .arrow.l{left:-10px}.quotes .arrow.r{right:-10px}
+.qdots{display:flex;justify-content:center;gap:8px;margin-top:20px}
+.qdots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:var(--line);cursor:pointer;transition:background-color .2s,transform .2s}
+.qdots button.on{background:var(--red);transform:scale(1.2)}
+.total{margin-top:22px;font-size:15.5px;color:var(--ink-2)}
+.total a{text-decoration:none;border-bottom:1px solid var(--line);transition:color .2s,border-color .2s}
+@media (hover:hover){.total a:hover{color:var(--red);border-color:var(--red)}}
+
+/* ---------- Nachtuhr ---------- */
+.clock{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center;margin-top:40px}
+.dial{position:relative;max-width:440px;width:100%;margin:0 auto}
+.dial svg{width:100%;height:auto;display:block;overflow:visible}
+.dial .ring{fill:none;stroke:var(--line);stroke-width:16}
+.dial .arc{fill:none;stroke:var(--red);stroke-width:16;stroke-linecap:round;transition:stroke-dashoffset 1s var(--ease)}
+.dial .tick{stroke:color-mix(in srgb,var(--ink) 40%,transparent);stroke-width:2}
+.dial .tick.b{stroke-width:3;stroke:var(--ink)}
+.dial text{fill:var(--ink-2);font:600 13px "Spline Sans",sans-serif;letter-spacing:.08em}
+.dial .now{fill:var(--ink);stroke:var(--bg);stroke-width:4;transition:opacity .3s}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.center .big{font-family:Cinzel,serif;font-size:clamp(26px,3vw,36px);letter-spacing:.06em}
+.center .small{color:var(--ink-2);font-size:15.5px;margin-top:6px;max-width:15ch;line-height:1.35}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:26px}
+.day{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 0 9px;text-align:center;cursor:pointer;font-weight:600;font-size:15px;transition:background-color .2s,border-color .2s,color .2s,box-shadow .2s}
+.day small{display:block;font-weight:500;font-size:11.5px;color:var(--ink-2);margin-top:2px}
+.day[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.day[aria-pressed="true"] small{color:color-mix(in srgb,var(--bg) 75%,transparent)}
+@media (hover:hover){.day:not([aria-pressed="true"]):hover{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}}
+.dayline{margin-top:20px;font-size:19px}
+.dayline b{font-family:Cinzel,serif;font-weight:600;letter-spacing:.04em}
+.late{color:var(--red);font-weight:600}
+.where{margin-top:30px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-2)}
+.where .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+
+footer{padding:90px clamp(18px,5vw,72px) 40px;max-width:1320px;margin:0 auto;color:var(--ink-2);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer .logo{font-size:20px;margin:0;color:var(--ink)}
+
+/* ---------- Lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:80;background:rgba(12,9,7,.94);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.on{opacity:1;pointer-events:auto}
+.lb img{max-width:94vw;max-height:88vh;border-radius:10px;object-fit:contain}
+.lb button{position:absolute;top:18px;right:18px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(238,227,200,.3);background:transparent;color:#EEE3C8;font-size:24px;cursor:pointer;transition:background-color .2s}
+@media (hover:hover){.lb button:hover{background:rgba(216,50,42,.35)}}
+
+/* ---------- Einblenden ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- Tablet ---------- */
+@media (max-width:1100px){
+  .nav{display:none}
+}
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-img{order:-1;height:min(62svh,620px)}
+  .hero-img::after{background:linear-gradient(0deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 30%,transparent) 30%,transparent 60%)}
+  .hero-txt{padding-top:0;margin-top:-170px;position:relative;z-index:2}
+  .cut,.clock{grid-template-columns:1fr}
+  .shot{flex-basis:calc((100% - 18px)/2)}
+  .arrow.l{left:-12px}.arrow.r{right:-12px}
+}
+/* ---------- Telefon ---------- */
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .bar{font-size:12px;padding:6px 12px}
+  .head{gap:10px;padding:10px 16px}
+  .logo{font-size:22px}
+  .logo small{font-size:9.5px}
+  .head .btn{padding:10px 14px;font-size:14.5px}
+  .head .btn span{display:none}
+  .toggle{padding:8px 11px}
+  .toggle .t{display:none}
+  .hero-img{height:56svh}
+  .hero-txt{margin-top:-120px;padding-bottom:30px}
+  .hero h1{font-size:64px}
+  .hero h1 span{margin-top:14px;letter-spacing:.3em}
+  .hero .claim{margin-top:22px}
+  .hero .cta .btn{flex:1 1 auto;justify-content:center}
+  .panel{grid-template-columns:1fr}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:-18px;margin-right:-18px;padding:0 18px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none}
+  .shot{flex-basis:84%}
+  .arrow{display:none}
+  .dots{display:flex}
+  .q{padding:6px 4px}
+  .stage{height:150px}
+  .stage svg{width:210px}
+  .welcome .word{margin-top:4px}
+  .quotes{margin-top:10px}
+  .days{gap:4px}
+  .day{font-size:14px;border-radius:10px}
+  .day small{font-size:10.5px}
+}
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
+</head>
+<body>
+
+<div class="top" id="top">
+  <div class="bar" id="bar"><b>Website-Entwurf von Julia &amp; Robin Mirku</b> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
+  <header class="head">
+    <a class="logo" href="#start" aria-label="EVA Kebab Pizza – nach oben">EVA<small>KEBAB · PIZZA</small></a>
+    <nav class="nav" aria-label="Seiten-Navigation">
+      <a href="#karte">Speisekarte</a>
+      <a href="#doener">Döner</a>
+      <a href="#bilder">Bilder</a>
+      <a href="#zeiten">Öffnungszeiten</a>
+    </nav>
+    <button class="toggle" id="mode" type="button" aria-label="Tag- oder Nachtansicht"><span class="ic" aria-hidden="true">☾</span><span class="t">Nacht</span></button>
+    <a class="btn btn-red" href="tel:+41412401447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Anrufen</span></a>
+  </header>
+</div>
+
+<main id="start">
+
+<!-- 1 · Erster Eindruck -->
+<section class="hero" aria-label="EVA Kebab Pizza Luzern">
+  <div class="hero-txt">
+    <h1>EVA<span>Kebab · Pizza · Luzern</span></h1>
+    <p class="claim">Tag und Nacht an der Pilatusstrasse.</p>
+    <div class="status" id="status"><i></i><span>Öffnungszeiten werden geladen</span></div>
+    <div class="cta">
+      <a class="btn btn-red" href="tel:+41412401447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a>
+      <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Eva+Kebab+Pizza+Pilatusstrasse+46A+6003+Luzern" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Route</a>
+    </div>
+    <div class="facts">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Pilatusstrasse+46A+6003+Luzern" target="_blank" rel="noopener"><strong>Pilatusstrasse&nbsp;46A</strong>, 6003&nbsp;Luzern</a>
+      <a href="tel:+41412401447"><strong>041&nbsp;240&nbsp;14&nbsp;47</strong></a>
+      <span><span class="stars">★★★★★</span> 4,7 · 1'202 Google-Bewertungen</span>
+    </div>
+  </div>
+  <div class="hero-img" id="heroImg"><img src="img/eingang.webp" alt="Eingang von EVA an der Pilatusstrasse mit den Buchstaben EVA und der roten Leuchtschrift Pizza" width="1200" height="1600" fetchpriority="high"></div>
+</section>
+
+<!-- 2 · Speisekarte -->
+<section id="karte" aria-labelledby="karte-h">
+  <div class="menu-head rv">
+    <div>
+      <p class="kicker">Speisekarte</p>
+      <h2 class="h2" id="karte-h">Was auf den Tafeln steht</h2>
+      <p class="lead">Kurz erklärt, was drin ist. Mit Kalb- oder Pouletfleisch vom Spiess. <b>Rot markiert:</b> was Gäste in ihren Bewertungen besonders loben.</p>
+    </div>
+  </div>
+  <div class="tabs rv" role="tablist" aria-label="Kategorien">
+    <button class="tab" role="tab" aria-selected="true" aria-controls="p1" id="t1">Kebab</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2">Kebab Spezial</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3">Pide</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4">Pizza</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="p5" id="t5">Burger</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="p6" id="t6">Box &amp; Pommes</button>
+  </div>
+  <div class="panels rv" id="panels">
+    <div class="panel on" role="tabpanel" id="p1" aria-labelledby="t1">
+      <div class="item"><h3>Kebab Taschenbrot</h3><p>Im Taschenbrot, Kalb- oder Pouletfleisch</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Fladenbrot</h3><p>Gerollt im Fladenbrot, Kalb- oder Pouletfleisch</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Kleiner Kebab</h3><p>Die kleine Portion, Kalb- oder Pouletfleisch</p><span class="price">12.00</span></div>
+      <div class="item"><h3>Jumbo Kebab <span class="praise">Von Gästen gelobt</span></h3><p>Die grosse Portion, Kalb- oder Pouletfleisch</p><span class="price">18.00</span></div>
+      <div class="item"><h3>Vegi Falafel</h3><p>Falafel mit Salat</p><span class="price">12.00</span></div>
+      <div class="item"><h3>Sucuk Taschenbrot</h3><p>Mit Sucuk, der türkischen Wurst</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Schnitzelbrot</h3><p>Schnitzel im Brot, mit Salat</p><span class="price">12.00</span></div>
+      <div class="item"><h3>Lahmacun gerollt</h3><p>Mit Salat · mit Kebabfleisch +&nbsp;3.00</p><span class="price">11.00</span></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2">
+      <div class="item"><h3>Gyros Kebab <span class="praise">Von Gästen gelobt</span></h3><p>Mit Gyros-Fleisch</p><span class="price">14.50</span></div>
+      <div class="item"><h3>Mexican Kebab <span class="praise">Von Gästen gelobt</span></h3><p>Mit Jalapeños und Mais</p><span class="price">14.50</span></div>
+      <div class="item"><h3>Luzerner Kebab</h3><p>Mit Mozzarella und Pommes frites</p><span class="price">15.00</span></div>
+      <div class="item"><h3>Schweizer Kebab</h3><p>Mit Raclettekäse und Speck</p><span class="price">15.50</span></div>
+      <div class="item"><h3>Texas Kebab</h3><p>Mit Ei und Raclettekäse</p><span class="price">15.50</span></div>
+      <div class="item"><h3>Cheddar Kebab</h3><p>Mit Cheddar-Käse</p><span class="price">14.50</span></div>
+      <div class="item"><h3>Griechischer Kebab</h3><p>Mit Fetakäse</p><span class="price">14.50</span></div>
+      <div class="item"><h3>Hawaii Kebab</h3><p>Mit Ananas</p><span class="price">14.50</span></div>
+      <div class="item"><h3>Vegi Kebab</h3><p>Falafel und Käse mit Salat</p><span class="price">12.00</span></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3">
+      <p class="note">Pide – das türkische Schiffchen aus dem Ofen.</p>
+      <div class="item"><h3>Pide Mozzarella</h3><p>Mit Mozzarella</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Pide Feta &amp; Spinat</h3><p>Mit Fetakäse und Spinat</p><span class="price">14.00</span></div>
+      <div class="item"><h3>Pide Hackfleisch</h3><p>Mit Hackfleisch und Mozzarella</p><span class="price">14.00</span></div>
+      <div class="item"><h3>Pide Kalbfleisch</h3><p>Mit Kalbfleisch und Mozzarella</p><span class="price">16.00</span></div>
+      <div class="item"><h3>Pide Poulet</h3><p>Mit Pouletfleisch, Spinat und Fetakäse</p><span class="price">16.00</span></div>
+      <div class="item"><h3>Pide Sucuk</h3><p>Mit Sucuk, Fetakäse und Ei</p><span class="price">16.00</span></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4">
+      <p class="note">Pizza-Combo: Pizza und ein Getränk (0,33&nbsp;l) zusammen.</p>
+      <div class="item"><h3>Diavolo</h3><p>Die scharfe Pizza · mit Getränk</p><span class="price">19.00</span></div>
+      <div class="item"><h3>Salami</h3><p>Mit Salami · mit Getränk</p><span class="price">18.00</span></div>
+      <div class="item"><h3>Rind-Salami</h3><p>Mit Rindssalami · mit Getränk</p><span class="price">18.00</span></div>
+      <div class="item"><h3>Hawaii</h3><p>Mit Ananas · mit Getränk</p><span class="price">19.00</span></div>
+      <div class="item"><h3>Prosciutto e Funghi</h3><p>Mit Schinken und Champignons · mit Getränk</p><span class="price">19.00</span></div>
+      <div class="item"><h3>Chicken</h3><p>Mit Pouletfleisch · mit Getränk</p><span class="price">19.00</span></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5">
+      <div class="item"><h3>Hamburger <span class="praise">Von Gästen gelobt</span></h3><p>120&nbsp;g, mit Salat, Zwiebeln, Tomaten, Haussauce</p><span class="price">11.00</span></div>
+      <div class="item"><h3>Cheeseburger</h3><p>120&nbsp;g, mit Salat, Zwiebeln, Tomaten, Käse, Haussauce</p><span class="price">11.50</span></div>
+      <div class="item"><h3>Chicken Burger</h3><p>120&nbsp;g, mit grilliertem Poulet, Salat, Tomaten, Haussauce</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Pilatus Burger</h3><p>120&nbsp;g, mit Salat, Zwiebeln, Tomaten, Raclettekäse, Speck, Haussauce</p><span class="price">16.00</span></div>
+      <div class="item"><h3>Haus Burger</h3><p>2&nbsp;×&nbsp;120&nbsp;g, Doppelburger mit Speck, Salat, Zwiebeln, Tomaten, Raclettekäse, Ei, Haussauce</p><span class="price">18.00</span></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p6" aria-labelledby="t6">
+      <div class="item"><h3>Kebab-Box</h3><p>Mit Pommes frites, Kalb- oder Pouletfleisch</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Vegi-Box Käse</h3><p>Mit Salat und Pommes frites</p><span class="price">12.00</span></div>
+      <div class="item"><h3>Vegi-Box Falafel</h3><p>Mit Salat und Pommes frites</p><span class="price">12.00</span></div>
+      <div class="item"><h3>Chicken-Nuggets</h3><p>6 Stück mit Pommes frites</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Fischknusperli</h3><p>Mit Pommes frites</p><span class="price">13.00</span></div>
+      <div class="item"><h3>Portion Pommes klein</h3><p>Pommes frites</p><span class="price">8.00</span></div>
+      <div class="item"><h3>Portion Pommes gross</h3><p>Pommes frites</p><span class="price">9.00</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Döner im Schnitt + Grössen -->
+<section id="doener" aria-labelledby="doener-h">
+  <div class="rv">
+    <p class="kicker">Döner im Schnitt</p>
+    <h2 class="h2" id="doener-h">Was in einem EVA-Döner steckt</h2>
+  </div>
+  <div class="cut">
+    <div class="rv">
+      <div class="photo" id="cutPhoto">
+        <img src="img/doener-schnitt.webp" alt="Döner im Brot vor der Salatbar mit Rotkohl, Karotten und Eisbergsalat" width="801" height="534" loading="lazy">
+        <button class="pin" style="left:38%;top:12%" data-name="Fladenbrot" data-t="Das Brot, das alles zusammenhält." aria-label="Fladenbrot"></button>
+        <button class="pin" style="left:60%;top:78%" data-name="Fleisch vom Spiess" data-t="Kalb- oder Pouletfleisch, frisch vom Drehspiess geschnitten." aria-label="Fleisch vom Spiess"></button>
+        <button class="pin" style="left:46%;top:27%" data-name="Rotkohl" data-t="Fein geschnittener Rotkohl aus der Salatbar." aria-label="Rotkohl"></button>
+        <button class="pin" style="left:53%;top:56%" data-name="Karotten" data-t="Geraffelte Karotten – frisch und leicht süss." aria-label="Karotten"></button>
+        <button class="pin" style="left:36%;top:44%" data-name="Sauce" data-t="Die weisse Sauce obendrauf. Scharf? Einfach an der Theke sagen." aria-label="Sauce"></button>
+        <button class="pin" style="left:8%;top:44%" data-name="Zwiebeln" data-t="Rote Zwiebeln aus der Salatbar." aria-label="Zwiebeln"></button>
+        <button class="pin" style="left:10%;top:84%" data-name="Eisbergsalat" data-t="Knackiger Eisbergsalat aus der Salatbar." aria-label="Eisbergsalat"></button>
+      </div>
+      <p class="cut-cap" id="cutCap">Tippen Sie auf einen Punkt im Bild: <b>Brot, Fleisch, Salat und Sauce</b> – alles, was Sie auf dem Foto sehen.</p>
+    </div>
+    <div class="sizes rv">
+      <h3>Wie gross darf es sein?</h3>
+      <p class="lead" style="margin-top:10px;font-size:16.5px">Gäste schreiben: «Endlich sind die grossen Döner zurück!»</p>
+      <div class="size-btns" role="group" aria-label="Grösse wählen">
+        <button class="size-btn" type="button" data-s=".72" data-n="Kleiner Kebab" data-p="12.00" data-t="Die kleine Portion für den kleinen Hunger. Kalb- oder Pouletfleisch.">Klein<small>12.00</small></button>
+        <button class="size-btn" type="button" aria-pressed="true" data-s=".88" data-n="Kebab Taschenbrot" data-p="13.00" data-t="Der Klassiker im Taschenbrot. Kalb- oder Pouletfleisch, Salat und Sauce.">Kebab<small>13.00</small></button>
+        <button class="size-btn" type="button" data-s="1.12" data-n="Jumbo Kebab" data-p="18.00" data-t="Für den grossen Hunger – «only one filled me up», schreibt ein Gast.">Jumbo<small>18.00</small></button>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <svg id="bread" viewBox="0 0 260 150" style="transform:scale(.88)">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9C48B"/><stop offset="1" stop-color="#B9844A"/></linearGradient></defs>
+          <path d="M12 140 C 30 40, 110 6, 248 14 C 246 70, 200 128, 12 140 Z" fill="url(#g1)"/>
+          <path d="M40 126 C 70 70, 140 40, 226 34 C 214 74, 170 112, 40 126 Z" fill="#8C5A35"/>
+          <path d="M60 116 C 92 82, 150 58, 214 50" stroke="#6E2B44" stroke-width="7" fill="none" stroke-linecap="round" opacity=".85"/>
+          <path d="M70 108 C 104 80, 156 64, 206 60" stroke="#E07A2F" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="10 9"/>
+          <path d="M84 100 C 116 80, 160 70, 196 68" stroke="#F4EEDF" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="3 10"/>
+        </svg>
+      </div>
+      <div class="size-info" id="sizeInfo" aria-live="polite">
+        <div><span class="n">Kebab Taschenbrot</span><span class="p">13.00</span></div>
+        <p>Der Klassiker im Taschenbrot. Kalb- oder Pouletfleisch, Salat und Sauce.</p>
+        <a class="btn btn-red" href="tel:+41412401447"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Vorbestellen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Bilder -->
+<section id="bilder" aria-labelledby="bilder-h">
+  <div class="rv">
+    <p class="kicker">Bei EVA</p>
+    <h2 class="h2" id="bilder-h">Drinnen, draussen, auf dem Teller</h2>
+  </div>
+  <div class="rail-wrap rv">
+    <button class="arrow l" type="button" aria-label="Vorheriges Bild" data-dir="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="rail" id="rail">
+      <figure class="shot"><div class="f"><img src="img/haus-700.webp" data-full="img/haus.webp" alt="Das Haus von EVA mit Terrasse" loading="lazy"></div><figcaption><b>Draussen sitzen</b> – Terrasse direkt vor dem Haus</figcaption></figure>
+      <figure class="shot"><div class="f"><img src="img/steinwand-700.webp" data-full="img/steinwand.webp" alt="Sitzplätze vor der Steinwand mit braunem Sofa" loading="lazy"></div><figcaption><b>Gemütlich drinnen</b> – Steinwand und Sofa</figcaption></figure>
+      <figure class="shot"><div class="f"><img src="img/theke-700.webp" data-full="img/theke.webp" alt="Theke mit den Menütafeln" loading="lazy"></div><figcaption><b>Die Theke</b> – frisch vom Spiess</figcaption></figure>
+      <figure class="shot"><div class="f"><img src="img/dueruem-700.webp" data-full="img/dueruem.webp" alt="Dürüm im Fladenbrot" loading="lazy"></div><figcaption><b>Gerollt</b> – im Fladenbrot</figcaption></figure>
+      <figure class="shot"><div class="f"><img src="img/teller-700.webp" data-full="img/teller.webp" alt="Kebab-Teller mit Karotten, Salat und Pommes" loading="lazy"></div><figcaption><b>Auf dem Teller</b> – mit Salat und Pommes</figcaption></figure>
+      <figure class="shot"><div class="f"><img src="img/cheddar-700.webp" data-full="img/cheddar.webp" alt="Kebab mit Cheddar-Sauce" loading="lazy"></div><figcaption><b>Mit Cheddar</b> – für alle, die es käsig mögen</figcaption></figure>
+      <figure class="shot"><div class="f"><img src="img/pizza-700.webp" data-full="img/pizza.webp" alt="Pizza mit Kebabfleisch" loading="lazy"></div><figcaption><b>Pizza</b> – aus dem Ofen</figcaption></figure>
+    </div>
+    <button class="arrow r" type="button" aria-label="Nächstes Bild" data-dir="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="dots" id="railDots"></div>
+  </div>
+</section>
+
+<!-- 5 · Willkommen -->
+<section class="welcome" id="gaeste" aria-labelledby="gaeste-h">
+  <p class="kicker rv" id="gaeste-h">Was Gäste sagen</p>
+  <p class="word rv" aria-hidden="true">Willkommen</p>
+  <div class="quotes rv">
+    <button class="arrow l" type="button" aria-label="Vorherige Bewertung" data-q="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="qtrack" id="qtrack">
+      <figure class="q"><blockquote>«Sehr leckerer Döner und super Service; die Mitarbeiter sind freundlich und man fühlt sich direkt willkommen.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
+      <figure class="q"><blockquote>«Super freundliches Personal und wahrscheinlich der beste Döner in Luzern! Endlich sind die grossen Döner zurück!!»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
+      <figure class="q"><blockquote>«Die Mitarbeiter sind sehr freundlich und schnell. Wochenende bis am 5 Uhr offen.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
+      <figure class="q"><blockquote>«Sehr gepflegter Laden, Essen Auswahl ist top und schmeckt super.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
+      <figure class="q"><blockquote>«Sehr gutes und leckeres, qualitativ hochwertiges Essen; sehr faire Preise.»</blockquote><figcaption><span class="stars">★★★★★</span> Google-Bewertung</figcaption></figure>
+    </div>
+    <button class="arrow r" type="button" aria-label="Nächste Bewertung" data-q="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="qdots" id="qdots"></div>
+  </div>
+  <p class="total rv"><span class="stars">★</span> 4,7 aus über 1'200 Bewertungen auf <a href="https://www.google.com/maps/search/?api=1&amp;query=Eva+Kebab+Pizza+Pilatusstrasse+46A+Luzern" target="_blank" rel="noopener">Google</a></p>
+</section>
+
+<!-- 6 · Nachtuhr -->
+<section id="zeiten" aria-labelledby="zeiten-h">
+  <div class="rv">
+    <p class="kicker">Öffnungszeiten</p>
+    <h2 class="h2" id="zeiten-h">Die EVA-Uhr</h2>
+  </div>
+  <div class="clock">
+    <div class="dial rv" id="dial">
+      <svg viewBox="-178 -178 356 356" role="img" aria-label="24-Stunden-Uhr mit den Öffnungszeiten">
+        <circle class="ring" r="128"/>
+        <g id="ticks"></g>
+        <path class="arc" id="arc" d=""/>
+        <circle class="now" id="now" r="9" cx="0" cy="-128"/>
+        <text x="0" y="-161" text-anchor="middle">24</text>
+        <text x="167" y="5" text-anchor="middle">6</text>
+        <text x="0" y="172" text-anchor="middle">12</text>
+        <text x="-167" y="5" text-anchor="middle">18</text>
+      </svg>
+      <div class="center"><div class="big" id="cBig">EVA</div><div class="small" id="cSmall"></div></div>
+    </div>
+    <div class="rv">
+      <p class="lead" style="margin-top:0">Der rote Bogen zeigt, wann EVA offen hat. <b>Freitag und Samstag</b> reicht er bis 5&nbsp;Uhr&nbsp;früh.</p>
+      <div class="days" role="group" aria-label="Tag wählen" id="days"></div>
+      <p class="dayline" id="dayline"></p>
+      <div class="where">
+        Terrasse mit Sitzplätzen draussen, drinnen gemütlich vor der Steinwand. Zum Mitnehmen oder zum Hiersitzen.
+        <div class="cta">
+          <a class="btn btn-red" href="https://www.google.com/maps/dir/?api=1&amp;destination=Eva+Kebab+Pizza+Pilatusstrasse+46A+6003+Luzern" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Route planen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span class="logo">EVA</span>
+  <span>Eva GmbH · Luzern</span>
+</footer>
+
+<div class="lb" id="lb" aria-hidden="true"><img alt=""><button type="button" aria-label="Schliessen">×</button></div>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+/* ---------- Kopf gleitet sanft ---------- */
+const top=$('#top'), bar=$('#bar');
+let barH=0, topH=0, lastY=scrollY, hst='full';
+function measure(){barH=bar.offsetHeight; topH=top.offsetHeight; document.documentElement.style.setProperty('--top-h',topH+'px');}
+measure(); addEventListener('resize',measure);
+function setTop(s){ if(s===hst) return; hst=s;
+  top.style.transform = s==='full' ? 'translateY(0)' : s==='nobar' ? `translateY(${-barH}px)` : `translateY(${-topH-4}px)`; }
+addEventListener('scroll',()=>{ const y=scrollY;
+  if(y<12) setTop('full');
+  else if(y>lastY+4 && y>topH*2) setTop('hidden');
+  else if(y<lastY-4) setTop('nobar');
+  else if(hst==='full') setTop('nobar');
+  lastY=y; },{passive:true});
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href'); const t=id==='#start'?document.body:$(id); if(!t)return; e.preventDefault();
+  const y=id==='#start'?0:t.getBoundingClientRect().top+scrollY-70; window.scrollTo({top:y,behavior:'smooth'});}));
+
+/* ---------- Tag / Nacht ---------- */
+const mode=$('#mode');
+function paintMode(){const tag=document.documentElement.classList.contains('tag'); mode.querySelector('.ic').textContent=tag?'☀':'☾'; mode.querySelector('.t').textContent=tag?'Tag':'Nacht';}
+mode.addEventListener('click',()=>{document.documentElement.classList.toggle('tag'); paintMode();}); paintMode();
+
+/* ---------- Einblenden ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});
+$$('.rv').forEach(el=>io.observe(el));
+requestAnimationFrame(()=>$('#heroImg').classList.add('in'));
+// Sicherheitsnetz: nichts bleibt unsichtbar, auch bei sehr schnellem Scrollen
+addEventListener('scroll',()=>{$$('.rv:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');});},{passive:true});
+
+/* ---------- Speisekarte: Tabs ---------- */
+const tabs=$$('.tab'), panels=$('#panels');
+function fixH(){ panels.style.minHeight=''; if(innerWidth<=640) return; let m=0; $$('.panel',panels).forEach(p=>{const was=p.classList.contains('on'); p.classList.add('on'); m=Math.max(m,p.offsetHeight); if(!was)p.classList.remove('on');}); panels.style.minHeight=m+'px'; }
+fixH(); addEventListener('resize',fixH); document.fonts&&document.fonts.ready.then(fixH);
+tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-selected',x===t)); $$('.panel').forEach(p=>p.classList.toggle('on',p.id===t.getAttribute('aria-controls')));
+  t.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});}));
+
+/* ---------- Döner im Schnitt ---------- */
+const pins=$$('.pin'), cap=$('#cutCap');
+pins.forEach(p=>{const show=()=>{pins.forEach(x=>x.classList.toggle('on',x===p)); cap.innerHTML='<b>'+p.dataset.name+'.</b> '+p.dataset.t;};
+  p.addEventListener('click',show); p.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover)').matches)show();});});
+const sizeBtns=$$('.size-btn'), bread=$('#bread'), info=$('#sizeInfo');
+sizeBtns.forEach(b=>b.addEventListener('click',()=>{sizeBtns.forEach(x=>x.setAttribute('aria-pressed',x===b)); bread.style.transform=`scale(${b.dataset.s})`;
+  $('.n',info).textContent=b.dataset.n; $('.p',info).textContent=b.dataset.p; $('p',info).textContent=b.dataset.t;}));
+
+/* ---------- Galerie: je ein Bild weiter ---------- */
+const rail=$('#rail'), shots=$$('.shot',rail), dots=$('#railDots');
+shots.forEach(()=>dots.appendChild(document.createElement('i')));
+function step(){return shots[1].offsetLeft-shots[0].offsetLeft;}
+function idx(){return Math.round(rail.scrollLeft/step());}
+function railUI(){const i=idx(); $$('i',dots).forEach((d,k)=>d.classList.toggle('on',k===i));
+  $('.arrow.l',rail.parentNode).disabled=rail.scrollLeft<4; $('.arrow.r',rail.parentNode).disabled=rail.scrollLeft>rail.scrollWidth-rail.clientWidth-4;}
+rail.addEventListener('scroll',()=>requestAnimationFrame(railUI),{passive:true}); railUI();
+$$('.rail-wrap .arrow').forEach(a=>a.addEventListener('click',()=>rail.scrollTo({left:(idx()+ +a.dataset.dir)*step(),behavior:'smooth'})));
+
+/* ---------- Lightbox (schliesst beim Scrollen, hält die Seite nie fest) ---------- */
+const lb=$('#lb'), lbImg=$('img',lb);
+function closeLb(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');}
+shots.forEach(s=>s.addEventListener('click',()=>{const im=$('img',s); lbImg.src=im.dataset.full; lbImg.alt=im.alt; lb.classList.add('on'); lb.setAttribute('aria-hidden','false');}));
+lb.addEventListener('click',closeLb); addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+lb.addEventListener('wheel',closeLb,{passive:true}); lb.addEventListener('touchmove',closeLb,{passive:true});
+
+/* ---------- Bewertungen: je eine ---------- */
+const qt=$('#qtrack'), qs=$$('.q',qt), qd=$('#qdots');
+qs.forEach((_,i)=>{const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Bewertung '+(i+1)); b.addEventListener('click',()=>qt.scrollTo({left:i*qt.clientWidth,behavior:'smooth'})); qd.appendChild(b);});
+function qi(){return Math.round(qt.scrollLeft/qt.clientWidth);}
+function qUI(){const i=qi(); $$('button',qd).forEach((b,k)=>b.classList.toggle('on',k===i)); $('[data-q="-1"]').disabled=i===0; $('[data-q="1"]').disabled=i===qs.length-1;}
+qt.addEventListener('scroll',()=>requestAnimationFrame(qUI),{passive:true}); qUI();
+$$('[data-q]').forEach(a=>a.addEventListener('click',()=>qt.scrollTo({left:(qi()+ +a.dataset.q)*qt.clientWidth,behavior:'smooth'})));
+
+/* ---------- Öffnungszeiten & EVA-Uhr ---------- */
+// 0=So … 6=Sa; Öffnung 10 Uhr, Schluss in Stunden (29 = 5 Uhr am Folgetag)
+const CLOSE=[24,24,24,24,24,29,29];
+const NAMES=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+const SHORT=['So','Mo','Di','Mi','Do','Fr','Sa'];
+function zurich(){const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Zurich',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value; const wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday'));
+  return {d:wd,t:(+g('hour')%24)+(+g('minute'))/60};}
+function fmtClose(c){return c===24?'24 Uhr':(c-24)+' Uhr früh';}
+function state(){const z=zurich(); const prev=(z.d+6)%7;
+  if(z.t<CLOSE[prev]-24) return {open:true,until:CLOSE[prev]-24-z.t,close:CLOSE[prev],day:prev,z};
+  if(z.t>=10 && z.t<CLOSE[z.d]) return {open:true,until:CLOSE[z.d]-z.t,close:CLOSE[z.d],day:z.d,z};
+  return {open:false,z};}
+function dur(h){const m=Math.round(h*60), H=Math.floor(m/60), M=m%60; return [H?H+' Std.':'',M?M+' Min.':''].filter(Boolean).join(' ')||'1 Min.';}
+const st=state(), stEl=$('#status');
+if(st.open){stEl.classList.add('on'); $('span',stEl).textContent='Jetzt offen · bis '+fmtClose(st.close);}
+else {$('span',stEl).textContent='Jetzt geschlossen · ab 10 Uhr wieder offen';}
+
+// Zifferblatt
+const R=128, ticks=$('#ticks'), ns='http://www.w3.org/2000/svg';
+for(let h=0;h<24;h++){const a=h/24*2*Math.PI, l=document.createElementNS(ns,'line'); const r1=R+14, r2=R+(h%6?20:24);
+  l.setAttribute('x1',Math.sin(a)*r1); l.setAttribute('y1',-Math.cos(a)*r1); l.setAttribute('x2',Math.sin(a)*r2); l.setAttribute('y2',-Math.cos(a)*r2);
+  l.setAttribute('class','tick'+(h%6?'':' b')); ticks.appendChild(l);}
+const arc=$('#arc'), now=$('#now');
+function pt(h){const a=h/24*2*Math.PI; return [Math.sin(a)*R,-Math.cos(a)*R];}
+function drawArc(day,animate){const a=10, b=CLOSE[day]; const [x1,y1]=pt(a),[x2,y2]=pt(b); const large=(b-a)>12?1:0;
+  arc.setAttribute('d',`M${x1} ${y1} A${R} ${R} 0 ${large} 1 ${x2} ${y2}`);
+  const len=arc.getTotalLength(); arc.style.transition='none'; arc.style.strokeDasharray=len; arc.style.strokeDashoffset=animate?len:0;
+  if(animate){arc.getBoundingClientRect(); arc.style.transition=''; arc.style.strokeDashoffset=0;}}
+const days=$('#days'); let sel=st.open?st.day:st.z.d;
+[1,2,3,4,5,6,0].forEach(d=>{const b=document.createElement('button'); b.type='button'; b.className='day'; b.dataset.d=d;
+  b.innerHTML=SHORT[d]+'<small>'+(CLOSE[d]>24?'bis 5':'bis 24')+'</small>'; b.setAttribute('aria-pressed',d===sel);
+  b.addEventListener('click',()=>pick(d,true)); days.appendChild(b);});
+function pick(d,anim){sel=d; $$('.day',days).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.d===d)); drawArc(d,anim);
+  const late=CLOSE[d]>24; $('#dayline').innerHTML='<b>'+NAMES[d]+'</b> · 10–'+(late?'5 Uhr früh <span class="late">· lange Nacht</span>':'24 Uhr');
+  const isToday = st.open ? d===st.day : d===st.z.d;
+  if(isToday){ const t=st.z.t + (st.open && st.day!==st.z.d ? 24 : 0); const [x,y]=pt(t); now.setAttribute('cx',x); now.setAttribute('cy',y); now.style.opacity=1;
+    $('#cBig').textContent=st.open?'Offen':'Zu'; $('#cSmall').textContent=st.open?'noch '+dur(st.until):'ab 10 Uhr wieder da';}
+  else { now.style.opacity=0; $('#cBig').textContent=SHORT[d]; $('#cSmall').textContent='10 bis '+fmtClose(CLOSE[d]);}}
+let drawn=false; pick(sel,false); arc.style.strokeDashoffset=arc.getTotalLength();
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting&&!drawn){drawn=true; pick(sel,true); o.disconnect();}}),{threshold:.35}).observe($('#dial'));
+})();
+</script>
+</body>
+</html>
