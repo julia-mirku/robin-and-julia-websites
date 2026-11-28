@@ -1383,12 +1383,12 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
           <span id="seitenNr" aria-live="polite">1–2 / 20</span>
           <button type="button" id="buchNext" aria-label="Weiterblättern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
         </div>
-        <p class="buch-ab">«ab» = kleinste Portion<span> · Preise in CHF laut Online-Karte</span></p>
+        <p class="buch-ab">«ab» = kleinste&nbsp;Portion<span> · Preise in CHF laut Online-Karte</span></p>
         <a class="btn red" href="https://www.bbqsushimomo-sg.ch/menue" target="_blank" rel="noopener">Bestellen</a>
       </div>
     </div>
     <div class="blatt" id="blatt" hidden></div>
-    <p class="herkunft">Herkunft: <b>Rind</b> Schweiz · <b>Lachs</b> Schottland · <b>Thunfisch</b> Philippinen / Vietnam · <b>Crevetten</b> Vietnam. Allergene sagen wir Ihnen gern am Telefon: 076 680 00 66.</p>
+    <p class="herkunft">Herkunft: <b>Rind</b> Schweiz · <b>Lachs</b> Schottland · <b>Thunfisch</b> Philippinen / Vietnam · <b>Crevetten</b> Vietnam. Allergene sagen wir Ihnen gern am&nbsp;Telefon.</p>
   </div>
 </section>
 
@@ -1442,7 +1442,7 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
     <div class="head reveal">
       <p class="kick">Von der Theke</p>
       <h2 class="sh">Kleiner Laden, grosses Herz</h2>
-      <p class="lead">«Der Laden ist klein und unscheinbar, aber ein Besuch lohnt sich auf jeden Fall.» So schreibt Rahel L. Drei Geschichten von der&nbsp;Theke.</p>
+      <p class="lead">«Der Laden ist klein und unscheinbar, aber ein Besuch lohnt sich auf jeden Fall.» So schreibt Rahel&nbsp;L. Drei Geschichten von der&nbsp;Theke.</p>
     </div>
     <div class="theke-grid">
       <div class="theke-l">
@@ -1450,7 +1450,7 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
       <div class="antwort reveal">
       <div class="zahl"><b>170</b><span>Bewertungen,<br>170 Antworten</span></div>
       <span class="bubble">Danke viel mal 💫🙏🏻</span>
-      <p>Auf jede einzelne Bewertung bei Google hat das Team geantwortet – meistens mit diesen drei Worten.</p>
+      <p>Auf jede einzelne Bewertung bei Google hat das Team geantwortet – meistens mit diesen drei&nbsp;Worten.</p>
     </div>
       </div>
       <ul class="storys">
@@ -1647,6 +1647,8 @@ const KARTE=[
   ["Oishi Grüntee Honig & Zitrone","5 dl","3.50",""],["Oishi Schwarztee Zitrone","5 dl","3.50",""],["Oishi Kombucha Gold","ohne Zucker, 5 dl","4.90",""],
   ["Coca-Cola / Zero","5 dl","3.50",""],["Mineral mit / ohne","5 dl","3.50",""],["Red Bull","2,5 dl","3.50",""]]}
 ];
+/* 28.11: letztes Wort der Zutaten nie allein in der Zeile */
+KARTE.forEach(c=>(c.items||[]).forEach(it=>{ if(it[1]&&/ \S+$/.test(it[1])) it[1]=it[1].replace(/ (\S+)$/,"\u00a0$1"); }));
 const TAGN={v:"vegan",vg:"vegi",s:"scharf",b:"BBQ"};
 const FOTO={};
 const BOXEN=[
@@ -1657,11 +1659,13 @@ const BOXEN=[
  {k:"E",p:120,n:["2 Lachs-Nigiri","2 Lachs-Avocado-Nigiri","2 BBQ-Lachs-Nigiri","2 Thunfisch-Avocado-Nigiri","2 Ebi-Nigiri","2 Thunfisch-Nigiri","4 Thunfisch-Maki","4 Gurken-Maki","4 Lachs-Avocado-Maki","4 Surimi-Rolls","4 Crunchy Rolls","4 BBQ Salmon Rainbow","4 Rainbow Salmon","4 Lachs-Futomaki","4 Lachs-Sashimi"]},
  {k:"F",p:130,n:["2 Lachs-Nigiri","2 BBQ-Lachs-Nigiri","2 Thunfisch-Nigiri","2 Thunfisch-Avocado-Nigiri","2 Ebi-Nigiri","2 Ebi-Avocado-Nigiri","2 Avocado-Nigiri","2 Inari-Nigiri","4 Gurken-Maki","6 Lachs-Avocado-Maki","6 Avocado-Maki","8 Crunchy Rolls","8 Rainbow Salmon Mango","4 Lachs-Sashimi","4 Lachs-Futomaki","4 Salmon Summer Rolls"]}
 ];
+/* 28.11: Box-Chips – letztes Wort nicht allein */
+BOXEN.forEach(b=>{ b.n=b.n.map(x=>((x.match(/ /g)||[]).length>=2)?x.replace(/ (\S+)$/,"\u00a0$1"):x); });
 const STIMMEN=[
  ["Ich bin ein grosser Sushi-Esser. Doch keines war so frisch und geschmacklich überzeugend wie bei BBQ-Sushi, ein absoluter Geheimtipp! Alles wird erst bei Bestellung frisch zubereitet.","Luke K.","vor einem Jahr"],
  ["Das beste Sushi und die besten Momos, die ich je gegessen habe!","Lisa K.","vor einem Jahr"],
  ["Die Rindfleisch-Momos waren einfach herausragend – vermutlich die besten in der Umgebung.","Andreas K.","vor einem Jahr"],
- ["Super handgemachte Momo’s zu fairen Preisen!","Joel H.","vor 10 Monaten"],
+ ["Super handgemachte Momo’s zu fairen\u00a0Preisen!","Joel H.","vor 10 Monaten"],
  ["Es ist super frisch und immer so schön angerichtet. Wir sind sehr begeistert und empfehlen es von Herzen weiter.","Sabrina S.","vor einem Jahr"],
  ["Die Momo’s haben eine wundervolle Grösse. Die Rindfleisch-Momo sind schön saftig und super gewürzt.","Amicia A.","vor einem Jahr"],
  ["TakeAway Sushi und Momo waren sehr lecker und liebevoll angerichtet. Koch und Köchin sind sehr freundlich.","Mona","vor einem Jahr"],
@@ -1808,38 +1812,62 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   reiter.innerHTML=F.map(c=>`<button type="button" data-id="${c.id}"${c.vegan?' class="vegan"':""}>${esc(c.n)}</button>`).join("");
   let pages=[], start={}, mode="", cur=0, s1, s2, pend=null, key="";
   const step=()=>mode==="spread"?2:1;
-  function build(){ const single=matchMedia("(max-width:899px)").matches; mode=single?"single":"spread";
+  /* 28.11 schneller Aufbau: alle Höhen in EINEM Durchgang messen, Seiten rechnerisch füllen (vorher ~100 erzwungene Layouts) */
+  let sig="";
+  function messen(){ const single=matchMedia("(max-width:899px)").matches;
+    stage.classList.toggle("single",single); stage.classList.toggle("spread",!single); /* erst die richtige Darstellung, dann messen */
+    const mess=document.createElement("div"); mess.className="slot mess"+(single?"":" als-r"); stage.appendChild(mess);
+    const ref=pageEl(); mess.appendChild(ref);
+    const probe=pageEl(); probe.style.height="auto"; probe.querySelector(".fotoleiste").remove(); mess.appendChild(probe);
+    const pin=probe.firstElementChild, erst={}, fort={};
+    const einzel={};
+    F.forEach(c=>{ const b=blockEl(c,true); b.querySelector("ul").innerHTML=c.items.map(it=>itemHTML(it,c)).join("")+itemHTML(c.items[0],c); pin.appendChild(b); erst[c.id]=b; /* + Dummy: jede echte Zeile ist «nicht letzte» */
+      const f=blockEl(c,false); pin.appendChild(f); fort[c.id]=f;
+      const e=document.createElement("div"); e.innerHTML=c.items.map(it=>'<ul class="bz-liste">'+itemHTML(it,c)+'</ul>').join(""); pin.appendChild(e); einzel[c.id]=e; /* jede Zeile als «letzte» */ });
+    /* ab hier nur lesen – ein einziges Layout */
+    const inn=ref.firstElementChild, fl=ref.querySelector(".fotoleiste");
+    const m={single, Hin:inn.clientHeight, LH:fl.getBoundingClientRect().height, stH:fl.clientHeight, stW:fl.clientWidth, gap:0, hE:{}, hF:{}, it:{}, itL:{}};
+    const kh=b=>{ const h=b.querySelector(".kap"), cs=getComputedStyle(h); return h.getBoundingClientRect().height+parseFloat(cs.marginTop)+parseFloat(cs.marginBottom); };
+    F.forEach(c=>{ m.hE[c.id]=kh(erst[c.id]); m.hF[c.id]=kh(fort[c.id]);
+      m.it[c.id]=[...erst[c.id].querySelectorAll("ul > li")].slice(0,c.items.length).map(li=>li.getBoundingClientRect().height);
+      m.itL[c.id]=[...einzel[c.id].querySelectorAll("ul > li")].map(li=>li.getBoundingClientRect().height); });
+    const bl=pin.querySelectorAll(".kapb"); if(bl.length>1) m.gap=parseFloat(getComputedStyle(bl[1]).marginTop)||0;
+    mess.remove();
+    m.sig=[m.single,m.Hin,m.LH.toFixed(1),m.stW,m.gap].join("|")+"|"+F.map(c=>m.hE[c.id].toFixed(1)+","+m.hF[c.id].toFixed(1)+","+m.it[c.id].map(x=>x.toFixed(1)).join(",")+"/"+m.itL[c.id].map(x=>x.toFixed(1)).join(",")).join(";");
+    return m; }
+  function build(m){ m=m||messen(); const single=m.single; mode=single?"single":"spread";
     stage.classList.toggle("single",single); stage.classList.toggle("spread",!single);
     [s1,s2]=stage.querySelectorAll(".slot:not(.mess)");
     s1.className="slot"+(single?"":" l als-l"); s2.className="slot"+(single?"":" r als-r"); s1.hidden=false; s2.hidden=single; s1.style.cssText=s2.style.cssText="";
-    const mess=document.createElement("div"); mess.className="slot mess"+(single?"":" als-r"); stage.appendChild(mess);
-    pages=[]; start={};
-    let pg=pageEl(); mess.appendChild(pg);
-    const over=()=>{ const inn=pg.firstElementChild; return inn.scrollHeight>inn.clientHeight+1; };
-    const neuS=()=>{ pages.push(pg); pg=pageEl(); mess.appendChild(pg); };
-    const addCat=(c,first)=>{ const b=blockEl(c,first); pg.firstElementChild.insertBefore(b,pg.querySelector(".fotoleiste")); pg.dataset.cats=(pg.dataset.cats+" "+c.id).trim(); return b.querySelector("ul"); };
-    F.forEach(c=>{ /* neues Kapitel auf derselben Seite nur, wenn Kopf + 2 Gerichte noch Platz haben */
-      let ul;
-      if(pg.querySelector(".kapb")){ ul=addCat(c,true); c.items.slice(0,2).forEach(it=>ul.insertAdjacentHTML("beforeend",itemHTML(it,c)));
-        const fit=!over(); ul.closest(".kapb").remove(); pg.dataset.cats=pg.dataset.cats.replace(new RegExp("\\s?"+c.id+"$"),""); if(!fit) neuS(); }
-      start[c.id]=pages.length; ul=addCat(c,true);
-      c.items.forEach(it=>{ ul.insertAdjacentHTML("beforeend",itemHTML(it,c)); const li=ul.lastElementChild;
-        if(over()&&ul.children.length>1){ const fl=pg.querySelector(".fotoleiste"); if(fl&&!pg.querySelector(".bz.hat-foto")){ fl.remove(); if(!over()) return; }
-          li.remove(); neuS(); ul=addCat(c,false); ul.appendChild(li); } }); });
-    pages.push(pg);
-    /* 28.11: unten auf jeder Seite so viele Fotos der Gerichte dieser Seite, wie Platz haben (max. 3), ganz gezeigt, mit Namen */
-    pages.forEach(pg=>{ const st=pg.querySelector(".fotoleiste"); if(!st) return; const li=[...pg.querySelectorAll(".bz.hat-foto")]; if(!li.length){ st.remove(); return; }
-      const t=Math.floor(Math.min(st.clientHeight-44,200)), w=st.clientWidth, k=Math.max(1,Math.min(li.length,3,Math.floor((w+14)/(t+14))));
-      const wahl=k===1?[li[0]]:Array.from({length:k},(_,i)=>li[Math.round(i*(li.length-1)/(k-1))]);
+    /* gleicher Ablauf wie früher, nur gerechnet statt gemessen */
+    const plan=[]; start={};
+    const neueSeite=()=>({bl:[],leiste:true});
+    const bh=b=>(b.first?m.hE[b.c.id]:m.hF[b.c.id])+b.idx.reduce((s,i,k)=>s+(k===b.idx.length-1?m.itL[b.c.id][i]:m.it[b.c.id][i]),0);
+    const used=p=>p.bl.reduce((s,b,k)=>s+bh(b)+(k?m.gap:0),0)+(p.leiste?m.LH:0);
+    const over=p=>Math.round(used(p))>m.Hin+1;
+    const foto=p=>p.bl.some(b=>b.idx.some(i=>GF[b.c.items[i][0]]));
+    let pg=neueSeite();
+    F.forEach(c=>{ let b;
+      if(pg.bl.length){ const probe={c,first:true,idx:c.items.slice(0,2).map((_,i)=>i)}; pg.bl.push(probe); const fit=!over(pg); pg.bl.pop(); if(!fit){ plan.push(pg); pg=neueSeite(); } }
+      start[c.id]=plan.length; b={c,first:true,idx:[]}; pg.bl.push(b);
+      c.items.forEach((it,i)=>{ b.idx.push(i);
+        if(over(pg)&&b.idx.length>1){ if(pg.leiste&&!foto(pg)){ pg.leiste=false; if(!over(pg)) return; }
+          b.idx.pop(); plan.push(pg); pg=neueSeite(); b={c,first:false,idx:[i]}; pg.bl.push(b); } }); });
+    plan.push(pg);
+    /* Seiten in einem Zug bauen; Fotoleiste unten: so viele Fotos der Gerichte dieser Seite, wie Platz haben (max. 3) */
+    const t=Math.floor(Math.min(m.stH-44,200)), kmax=Math.max(1,Math.floor((m.stW+14)/(t+14)));
+    pages=plan.map(p=>{ const a=pageEl(), inn=a.firstElementChild, st=inn.querySelector(".fotoleiste");
+      a.dataset.cats=p.bl.map(b=>b.c.id).join(" ");
+      p.bl.forEach(b=>{ const el=blockEl(b.c,b.first); el.querySelector("ul").innerHTML=b.idx.map(i=>itemHTML(b.c.items[i],b.c)).join(""); inn.insertBefore(el,st); });
+      const li=[]; p.bl.forEach(b=>b.idx.forEach(i=>{ const n=b.c.items[i][0]; if(GF[n]) li.push([n,b.c.id]); }));
+      if(!p.leiste||!li.length){ st.remove(); return a; }
+      const k=Math.min(li.length,3,kmax), wahl=k===1?[li[0]]:Array.from({length:k},(_,i)=>li[Math.round(i*(li.length-1)/(k-1))]);
       st.style.setProperty("--t",t+"px");
-      st.innerHTML=wahl.map(x=>{ const n=x.dataset.n; return `<button type="button" class="bft" data-n="${esc(n)}" data-c="${x.dataset.c}" aria-label="Foto: ${esc(n)}"><span class="ft-bild"><img src="${GF[n].replace("-x4.webp","-x4-m.webp")}" srcset="${GF[n].replace("-x4.webp","-x4-m.webp")} 360w, ${GF[n]} 600w" sizes="${t}px" width="600" height="600" alt="" loading="lazy" decoding="async"></span><span class="ft-cap">${esc(n)}</span></button>`; }).join(""); });
-    if(!single) mess.querySelectorAll(".kap-foto[data-n]").forEach(fig=>{ const n=fig.dataset.n, c=fig.dataset.c, sz=Math.floor(Math.min(fig.clientHeight,fig.clientWidth,600)); if(sz<40) return;
-      const w=fig.clientWidth, h=fig.clientHeight; let s=Math.floor(Math.min(600,h,w*.62)); const rand=(w-s)/2, capW=n.length*7.6+26, unten=capW>rand-12; if(unten) s=Math.floor(Math.min(s,h-36));
-      fig.style.setProperty("--s",s+"px"); fig.style.setProperty("--fh",h+"px"); fig.removeAttribute("data-n");
-      fig.innerHTML=`<span class="kf${unten?" unten":""}" data-n="${esc(n)}" data-c="${c}"><img src="${GF[n]}" width="600" height="600" alt="${esc(n)}" loading="lazy" decoding="async"><span class="kf-cap">${esc(n)}</span></span>`; });
+      st.innerHTML=wahl.map(([n,cid])=>`<button type="button" class="bft" data-n="${esc(n)}" data-c="${cid}" aria-label="Foto: ${esc(n)}"><span class="ft-bild"><img src="${GF[n].replace("-x4.webp","-x4-m.webp")}" srcset="${GF[n].replace("-x4.webp","-x4-m.webp")} 360w, ${GF[n]} 600w" sizes="${t}px" width="600" height="600" alt="" loading="lazy" decoding="async"></span><span class="ft-cap">${esc(n)}</span></button>`).join("");
+      return a; });
     if(!single&&pages.length%2) pages.push(endPage());
     pages.forEach((p,i)=>p.querySelector(".seite-nr").textContent=i+1);
-    mess.remove(); key=mode+"|"+stage.clientWidth+"|"+stage.clientHeight; }
+    sig=m.sig; key=mode+"|"+stage.clientWidth+"|"+stage.clientHeight; }
   function put(slot,i){ const p=pages[i]; if(p){ slot.replaceChildren(p); sync(p); } else slot.replaceChildren(); }
   function preload(){ for(let i=cur-2;i<cur+6;i++){ const p=pages[i]; if(p) p.querySelectorAll('img[loading="lazy"]').forEach(im=>im.loading="eager"); } }
   function nav(){ const n=pages.length, sp=mode==="spread";
@@ -1861,7 +1889,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
     sync(teller); teller.hidden=false; const box=teller.querySelector(".teller-bild"), im=box.firstElementChild, sz=Math.floor(Math.min(box.clientWidth,box.clientHeight,600)); im.style.width=im.style.height=sz+"px"; box.style.flex="none"; box.style.height=sz+"px"; box.classList.add("schwarz");
     tOpen=true; requestAnimationFrame(()=>requestAnimationFrame(()=>{ if(tOpen) teller.classList.add("auf"); })); }
   /* ---- Blättern ---- */
-  function go(t,anim){ const n=pages.length; t=Math.max(0,Math.min(t,n-1)); if(mode==="spread") t-=t%2; fertig(); if(t===cur) return; tellerZu();
+  function go(t,anim){ if(!pages.length) ersterAufbau(); const n=pages.length; t=Math.max(0,Math.min(t,n-1)); if(mode==="spread") t-=t%2; fertig(); if(t===cur) return; tellerZu();
     if(anim===false||reduce){ cur=t; place(); return; }
     wechsel(t); }
   /* Seitenwechsel «Blatt» (28.11): das Papier biegt sich wie in einem Magazin. Die untere Aussenecke wandert im flachen Bogen
@@ -1927,7 +1955,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   reiter.addEventListener("click",e=>{ const b=e.target.closest("button"); if(b) go(start[b.dataset.id]); });
   /* Wischen (Handy: Seite folgt dem Finger; Tablet-Doppelseite: Wisch blättert um) */
   let d=null, noClick=0;
-  stage.addEventListener("pointerdown",e=>{ if(e.pointerType==="mouse"||e.button>0||e.target.closest(".teller-zu,.ecke,.rand")) return; fertig(); d={x:e.clientX,y:e.clientY,t:performance.now(),on:false,id:e.pointerId,nb:null}; });
+  stage.addEventListener("pointerdown",e=>{ if(!pages.length) ersterAufbau(); if(e.pointerType==="mouse"||e.button>0||e.target.closest(".teller-zu,.ecke,.rand")) return; fertig(); d={x:e.clientX,y:e.clientY,t:performance.now(),on:false,id:e.pointerId,nb:null}; });
   stage.addEventListener("pointermove",e=>{ if(!d||e.pointerId!==d.id) return; const dx=e.clientX-d.x, dy=e.clientY-d.y;
     if(!d.on){ if(Math.abs(dx)<12||Math.abs(dx)<=Math.abs(dy)*2) return; d.on=true; tellerZu(); try{ stage.setPointerCapture(d.id); }catch(_){}
       if(mode==="single"){ const t=cur+(dx<0?1:-1); d.k=(t>=0&&t<pages.length)?zieheStart(t):null; } }
@@ -1958,10 +1986,16 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
     else { const on=li.classList.contains("an"); tellerZu(); stage.querySelectorAll(".bz.an").forEach(x=>x.classList.remove("an")); if(!on) li.classList.add("an"); } });
   stage.addEventListener("keydown",e=>{ if(e.key!=="Enter"&&e.key!==" ") return; const li=e.target.closest&&e.target.closest(".bz.hat-foto"); if(!li||e.target!==li) return; e.preventDefault(); tellerAuf(li); });
   /* Aufbau + bei Grössenwechsel neu umbrechen, gleiche Stelle behalten */
-  function neu(force){ hoehe(); const k=(matchMedia("(max-width:899px)").matches?"single":"spread")+"|"+stage.clientWidth+"|"+stage.clientHeight; if(!force&&k===key) return;
-    fertig(); tellerZu(); const p=pages[cur], cat=p&&p.dataset.cats.split(" ").pop(), off=cat?Math.max(0,cur-start[cat]):0; build(); cur=cat&&start[cat]!=null?Math.min(start[cat]+off,pages.length-1):0; if(mode==="spread") cur-=cur%2; place(); }
-  build(); place();
-  if(document.fonts&&document.fonts.status!=="loaded") document.fonts.ready.then(()=>neu(true));
+  function neu(force){ hoehe(); if(!pages.length) return; const k=(matchMedia("(max-width:899px)").matches?"single":"spread")+"|"+stage.clientWidth+"|"+stage.clientHeight; if(!force&&k===key) return; const mm=messen(); if(mm.sig===sig&&k===key) return;
+    fertig(); tellerZu(); const p=pages[cur], cat=p&&p.dataset.cats.split(" ").pop(), off=cat?Math.max(0,cur-start[cat]):0; build(mm); cur=cat&&start[cat]!=null?Math.min(start[cat]+off,pages.length-1):0; if(mode==="spread") cur-=cur%2; place(); }
+  function ersterAufbau(){ if(pages.length) return; build(); place(); }
+  if(/[?&](menu|karte)\b/.test(location.search)||location.hash==="#karte") ersterAufbau();
+  else {
+    const spaeter=()=>{ if(pages.length) return; (window.requestIdleCallback||(f=>setTimeout(f,1)))(ersterAufbau,{timeout:1500}); };
+    if(document.fonts&&document.fonts.status!=="loaded") document.fonts.ready.then(spaeter); else spaeter();
+    if("IntersectionObserver" in window){ const io=new IntersectionObserver(es=>{ if(es.some(x=>x.isIntersecting)){ io.disconnect(); ersterAufbau(); } },{rootMargin:"100% 0px"}); io.observe(stage); }
+  }
+  if(document.fonts&&document.fonts.status!=="loaded") document.fonts.ready.then(()=>{ if(pages.length) neu(true); });
   let rt; addEventListener("resize",()=>{ clearTimeout(rt); rt=setTimeout(()=>neu(false),180); });
 })();
 
@@ -2047,7 +2081,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   const paint=(n,cls)=>bs.forEach((b,i)=>b.classList.toggle(cls,i<n));
   row.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; sel=+b.dataset.n; paint(sel,"an");
     const box=byP.find(x=>pers(x)>=sel)||byP[byP.length-1]; const n=box.n.reduce((s,x)=>s+parseInt(x),0);
-    msg.textContent=`Box ${box.k} · ${n} Stück · reicht für ${sel===1?"1 Person":"ca. "+sel+" Personen"}`;
+    const pp=pers(box); msg.textContent=`Box ${box.k} · ${n} Stück · reicht für ${pp===1?"1 Person":"ca. "+pp+" Personen"}`;
     const k=st.querySelector(`.kiste[data-k="${box.k}"]`); if(k) k.click(); });
   row.addEventListener("mouseover",e=>{ const b=e.target.closest("button"); if(b) paint(+b.dataset.n,"vor"); });
   row.addEventListener("mouseleave",()=>paint(0,"vor"));
@@ -2213,9 +2247,12 @@ if(lang==="en"){ if(document.readyState==="loading") document.addEventListener("
   hdr.addEventListener("focusin",()=>set(false));
 })();</script>
 <script>/* 28.11 Baender halten die Seite nicht */
-addEventListener("wheel",e=>{ if(e.ctrlKey||e.defaultPrevented) return; const t=e.target.closest&&e.target.closest(".galerie,.gn-spur"); if(!t) return;
+/* 28.11 Lag-Pruefung: Handler nur an den Baendern, nicht am ganzen Fenster (Rad-Scroll wartet sonst ueberall auf den Hauptthread) */
+(function(){ const h=e=>{ if(e.ctrlKey||e.defaultPrevented) return; const t=e.currentTarget;
   const dx=Math.abs(e.deltaX), dy=Math.abs(e.deltaY); if(dy<=dx||dy===0) return;
-  e.preventDefault(); const k=e.deltaMode===1?16:(e.deltaMode===2?innerHeight:1); scrollBy(0,e.deltaY*k); if(dx>0) t.scrollLeft+=e.deltaX*k; },{passive:false});
+  e.preventDefault(); const k=e.deltaMode===1?16:(e.deltaMode===2?innerHeight:1); scrollBy(0,e.deltaY*k); if(dx>0) t.scrollLeft+=e.deltaX*k; };
+  const an=()=>document.querySelectorAll(".galerie,.gn-spur").forEach(t=>{ if(t.__rad) return; t.__rad=1; t.addEventListener("wheel",h,{passive:false}); });
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",an); else an(); addEventListener("load",an); })();
 </script>
 <script>/* 27.11 Variante: Gäste-Karten + Schalter alt/neu */
 (function(){
