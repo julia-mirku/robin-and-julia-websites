@@ -556,6 +556,8 @@ body::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.04);pointer
 /* Startbild oben: weicher Übergang von der hellen Kopfzeile ins Brotfoto (Julia 28.11) */
 .heroA .bg::before{content:"";position:absolute;left:0;right:0;top:0;height:64px;z-index:1;pointer-events:none;background:linear-gradient(180deg,var(--mehl) 0%,rgba(255,252,245,.62) 28%,rgba(255,252,245,.22) 62%,rgba(255,252,245,0) 100%)}
 @media (max-width:767px){.heroA .bg::before{height:44px}}
+/* Telefon wie Computer (Julia 28.11): Brotfoto läuft hinter dem Text weiter und geht weich ins Brot über, kein dunkler Block */
+@media (max-width:767px){.heroA{background:#2a1a10}.heroA .bg{position:absolute;inset:0;height:auto;min-height:0}.heroA .bg img{object-position:50% 0%}.heroA .bg:after{background:linear-gradient(180deg,rgba(30,17,10,0) 0%,rgba(30,17,10,.2) calc(33svh - 120px),rgba(30,17,10,.58) calc(33svh + 10px),rgba(30,17,10,.62) 100%)}.heroA::before{content:"";position:absolute;left:0;right:0;top:0;height:max(33svh,220px);z-index:1;pointer-events:none;background:linear-gradient(180deg,var(--mehl) 0,rgba(255,252,245,.62) 12px,rgba(255,252,245,.22) 27px,rgba(255,252,245,0) 44px),linear-gradient(180deg,rgba(30,17,10,0) 45%,rgba(30,17,10,.5) 80%,rgba(30,17,10,.62) 100%),url(img/hero_brot_m.webp) 50% 52%/cover no-repeat;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 100%)}.heroA .in{margin-top:0;padding-top:calc(max(33svh,220px) - 44px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .fade{opacity:1;transform:none}.mini{opacity:1;transform:none}}
 </style>
 <style id="pruefung-26-11">
@@ -718,7 +720,7 @@ body.paketauf{overflow:hidden}
 <main id="top">
 <!-- HERO A -->
 <section class="heroA" id="heroA">
-  <div class="bg"><picture><source media="(max-width:767px)" srcset="img/hero_brot_m.webp"><img src="img/hero_brot_l.webp" alt="Glutenfreie Brote der Bäckerei Gerig, in Mehl geschrieben «Gerig»" fetchpriority="high"></picture></div>
+  <div class="bg"><picture><source media="(max-width:767px)" srcset="img/hero_brot_p.webp"><img src="img/hero_brot_l.webp" alt="Glutenfreie Brote der Bäckerei Gerig, in Mehl geschrieben «Gerig»" fetchpriority="high"></picture></div>
   <div class="in">
     <div>
       <span class="kick"><i></i><span class="nw">Familienbetrieb seit 1987 ·</span><span class="nw">Urnäsch seit 2014</span></span>
