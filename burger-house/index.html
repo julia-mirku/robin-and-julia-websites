@@ -782,7 +782,7 @@ html body .abschnitt{padding:44px 0}
     <div class="lob">
 <!-- IDEE 4: Gästestimmen als Servietten (echte Zitate, wörtlich: Google Maps / Restaurant Guru, 21.11.2026) — zum Entfernen diesen Block löschen -->
       <div class="servietten-rahmen rv">
-        <div class="servietten" id="servietten" tabindex="0" aria-label="Gästestimmen, zum Blättern wischen"><figure class="serviette" style="--dreh:1.6deg"><blockquote>«Wow, die Burger sind sehr gut! Frisch zubereitet, auf individuelle Wünsche wird eingegangen.»</blockquote><figcaption>Martin B. · Google</figcaption></figure><figure class="serviette" style="--dreh:-1.2deg"><blockquote>«Sehr fein, hausgemachte Saucen und Fleisch von der Umgebung. Gerne&nbsp;wieder!»</blockquote><figcaption>Ilker A. · Google</figcaption></figure><figure class="serviette" style="--dreh:2deg"><blockquote>«Absolut bester Burger weit und breit!»</blockquote><figcaption>Gast · Restaurant Guru</figcaption></figure><figure class="serviette" style="--dreh:-1.6deg"><blockquote>«Wer einen sehr feinen Burger mit frischen Zutaten essen möchte, dann ist das der richtige&nbsp;Ort.»</blockquote><figcaption>Marie B. · Google</figcaption></figure><figure class="serviette" style="--dreh:1.2deg"><blockquote>«Bester Burger, sehr nettes Personal und Preis - Leistung top. Gerne wieder&nbsp;:)»</blockquote><figcaption>Nicole · Restaurant Guru</figcaption></figure></div>
+        <div class="servietten" id="servietten" tabindex="0" aria-label="Gästestimmen, zum Blättern wischen"><figure class="serviette" style="--dreh:1.6deg"><blockquote>«Wow, die Burger sind sehr gut! Frisch zubereitet, auf individuelle Wünsche wird&nbsp;eingegangen.»</blockquote><figcaption>Martin B. · Google</figcaption></figure><figure class="serviette" style="--dreh:-1.2deg"><blockquote>«Sehr fein, hausgemachte Saucen und Fleisch von der Umgebung. Gerne&nbsp;wieder!»</blockquote><figcaption>Ilker A. · Google</figcaption></figure><figure class="serviette" style="--dreh:2deg"><blockquote>«Absolut bester Burger weit und breit!»</blockquote><figcaption>Gast · Restaurant Guru</figcaption></figure><figure class="serviette" style="--dreh:-1.6deg"><blockquote>«Wer einen sehr feinen Burger mit frischen Zutaten essen möchte, dann ist das der richtige&nbsp;Ort.»</blockquote><figcaption>Marie B. · Google</figcaption></figure><figure class="serviette" style="--dreh:1.2deg"><blockquote>«Bester Burger, sehr nettes Personal und Preis - Leistung top. Gerne wieder&nbsp;:)»</blockquote><figcaption>Nicole · Restaurant Guru</figcaption></figure></div>
         <div class="sv-pfeile"><button type="button" class="sv-pfeil" data-r="-1" aria-label="Zurück">‹</button><button type="button" class="sv-pfeil" data-r="1" aria-label="Weiter">›</button></div>
       </div>
 <!-- /IDEE 4 -->
@@ -1260,10 +1260,10 @@ function status(){
   heute.forEach(function(z){var a=min(z[0]),b=min(z[1]);if(j.m>=a&&j.m<b)offen=b;else if(j.m<a&&naechst===null)naechst=z[0];});
   if(offen!==null){
     var rest=offen-j.m,bis=heute.filter(function(z){return min(z[1])===offen;})[0][1];
-    if(rest<=45){cls="bald";txt="Jetzt offen · schliesst in "+rest+" Min.";}
-    else{cls="offen";txt="Jetzt offen · bis "+bis+" Uhr";}
-  }else if(naechst){txt="Geschlossen · öffnet heute um "+naechst+" Uhr";}
-  else{var m=(j.t+1)%7;txt="Geschlossen · öffnet "+(m===(j.t+1)%7?"morgen":TAGE[m])+" um "+ZEIT[m][0][0]+" Uhr";}
+    if(rest<=45){cls="bald";txt="Jetzt offen · schliesst in "+rest+"\u00a0Min.";}
+    else{cls="offen";txt="Jetzt offen · bis "+bis+"\u00a0Uhr";}
+  }else if(naechst){txt="Geschlossen · öffnet heute um "+naechst+"\u00a0Uhr";}
+  else{var m=(j.t+1)%7;txt="Geschlossen · öffnet "+(m===(j.t+1)%7?"morgen":TAGE[m])+" um "+ZEIT[m][0][0]+"\u00a0Uhr";}
   el.className="status "+cls;el.querySelector("span").textContent=txt;
 }
 try{status();setInterval(status,60000);}catch(e){}
@@ -1725,9 +1725,9 @@ korbZeigen();
     ZEIT[j.t].forEach(function(z){if(j.m>=min(z[0])&&j.m<min(z[1]))auf=true;});
     tal.dataset.zeit=himmel(h);tal.classList.toggle("offen",auf);
     var st=document.querySelector("#status span");
-    txt.textContent="Wattwil, jetzt "+("0"+Math.floor(h)).slice(-2)+":"+("0"+j.m%60).slice(-2)+" · "+(st?st.textContent:"");
+    txt.textContent="Wattwil, jetzt "+("0"+Math.floor(h)).slice(-2)+":"+("0"+j.m%60).slice(-2)+" · "+(st?st.textContent.replace(/^Jetzt /,""):"");/* 28.11 «jetzt» nicht zweimal */
   }
-  var VOR={morgen:["morgen",false,"Morgens: noch zu. Mittags ab 11:00 offen, sonntags ab 17:00."],tag:["tag",true,"Mittags: offen von 11:00 bis 13:30 (Montag bis Freitag)."],abend:["abend",true,"Abends: offen ab 17:00, montags abends zu."],nacht:["nacht",false,"Nachts: geschlossen."]};
+  var VOR={morgen:["morgen",false,"Morgens: noch zu. Mittags ab 11:00 offen, sonntags ab 17:00."],tag:["tag",true,"Mittags: offen von 11:00 bis 13:30 (Montag bis Freitag), samstags ab 11:00."],abend:["abend",true,"Abends: offen ab 17:00, montags abends zu."],nacht:["nacht",false,"Nachts: geschlossen."]};
   var modus="jetzt";
   function zeigeModus(m){if(m==="jetzt")jetzt();else{var v=VOR[m];tal.dataset.zeit=v[0];tal.classList.toggle("offen",v[1]);txt.textContent=v[2];}}
   var mausTal=window.matchMedia&&window.matchMedia("(hover: hover)"),vorTimer=null,vorschau=false;
@@ -1824,9 +1824,9 @@ korbZeigen();
   var radSumme=0,radLetzt=0,radFertig=false,radBis=0;
   sv.addEventListener("wheel",function(e){
     var f=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1,dx=e.deltaX*f,dy=e.deltaY*f;
-    if(e.ctrlKey)return;
+    if(e.ctrlKey||dx===0)return;/* 28.11 abends: rein senkrecht scrollt der Browser selbst (kein Ruckeln, nichts doppelt) */
     e.preventDefault();
-    if(Math.abs(dy)>=Math.abs(dx)){window.scrollBy(0,dy);return;}
+    if(Math.abs(dy)>=Math.abs(dx)){window.scrollBy({top:dy,left:0,behavior:"instant"});return;}
     var jetzt=Date.now();if(jetzt<radBis){radLetzt=jetzt;return;}if(jetzt-radLetzt>400){radSumme=0;radFertig=false;}radLetzt=jetzt;
     if(radFertig)return;radSumme+=dx;if(Math.abs(radSumme)<24)return;
     sv.scrollBy({left:(radSumme>0?1:-1)*schritt(),behavior:ruhig?"auto":"smooth"});radFertig=true;radBis=jetzt+650;
