@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Käserei Obersteinach · Appenzeller aus Steinach SG</title>
+<meta name="description" content="Käserei Obersteinach in Steinach SG: Appenzeller und Hauskäse von Norbert Eberle-Kälin, seit 1994. Laden an der Rorschacherstrasse 11, Montag bis Samstag 7–11 Uhr.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Käserei Obersteinach · Steinach SG">
+<meta property="og:description" content="Appenzeller und Hauskäse aus Obersteinach – Laden Montag bis Samstag 7–11 Uhr.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F2EC; --bg2:#ECEDE8; --card:#FFFFFF; --ink:#1E2528; --mute:#56636A; --line:rgba(30,37,40,.12);
+  --steel:#8C979C; --steel2:#C7CED1; --steel3:#E3E7E8;
+  --terra:#A5452A; --terra2:#C8613D; --terra3:#F3DCD1;
+  --bronze:#B07A4C; --silver:#AEB6BA;
+  --f-head:"Fraunces",Georgia,serif; --f-body:"Manrope",system-ui,sans-serif;
+  --hdr:70px; --bar:0px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-variant-numeric:lining-nums;font-family:var(--f-body);color:var(--ink);font-size:17px;line-height:1.55;background:var(--bg);
+  background-image:linear-gradient(rgba(30,37,40,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(30,37,40,.035) 1px,transparent 1px);background-size:44px 44px}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-head);font-weight:650;line-height:1.08;margin:0;letter-spacing:-.01em;font-variation-settings:"opsz" 96}
+h2{font-size:clamp(32px,4vw,52px)}
+h3{font-size:clamp(22px,2.2vw,28px)}
+p{margin:0 0 1em}
+.wrap{width:min(1240px,100% - 2*clamp(18px,5vw,72px));margin:0 auto}
+.kick{display:block;font-family:var(--f-head);font-style:italic;font-weight:500;font-size:20px;color:var(--terra);margin-bottom:8px}
+.sec{padding:clamp(64px,8vw,110px) 0}
+.btn{display:inline-flex;align-items:center;gap:9px;height:50px;padding:0 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,box-shadow .2s,transform .2s;font-family:var(--f-body)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-terra{background:var(--terra);color:#fff}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
+@media (hover:hover){.btn-terra:hover{background:var(--terra2)}.btn-dark:hover{background:#344047}.btn-line:hover{background:rgba(255,255,255,.14)}.btn:hover{transform:translateY(-2px)}}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--terra2);outline-offset:3px}
+
+/* Entwurf-Leiste */
+.entwurf{position:fixed;left:0;right:0;top:0;z-index:70;background:#1E2528;color:#E3E7E8;font-size:13px;text-align:center;padding:7px 12px;cursor:pointer}
+.entwurf a{color:#fff;text-decoration:none}
+
+/* Kopf: gleitet beim Runterscrollen weich nach oben weg, beim Hochscrollen zurück */
+.hdr{position:fixed;left:0;right:0;top:var(--bar);z-index:60;height:var(--hdr);color:#fff;transition:transform .5s var(--ease),background-color .35s,color .35s,box-shadow .35s}
+.hdr.solid{background:rgba(244,242,236,.97);color:var(--ink);box-shadow:0 8px 26px rgba(30,37,40,.1)}
+.hdr:not(.solid):before{content:"";position:absolute;inset:0 0 -40px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(18,23,26,.62),rgba(18,23,26,.25) 65%,rgba(18,23,26,0))}
+.nav a,.brand{text-shadow:0 1px 3px rgba(0,0,0,.35)}.hdr.solid .nav a,.hdr.solid .brand{text-shadow:none}
+.hdr.weg{transform:translateY(calc(-100% - var(--bar)))}
+.hdr .wrap{height:100%;display:flex;align-items:center;gap:20px}
+.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1;margin-right:auto}
+.brand b{font-family:var(--f-head);font-weight:650;font-size:23px;letter-spacing:-.01em}
+.brand span{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-top:5px;opacity:.8}
+.nav{display:flex;gap:2px}
+.nav a{position:relative;text-decoration:none;font-weight:600;font-size:15px;padding:8px 11px}
+.nav a:after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;background:var(--terra2);transform:scaleX(0);transition:transform .25s var(--ease)}
+@media (hover:hover){.nav a:hover:after{transform:scaleX(1)}}
+.hdr .btn{height:42px;padding:0 16px;font-size:15px}
+@media (max-width:1060px){.nav{display:none}}
+@media (max-width:560px){.hdr .btn .t{display:none}.hdr .btn{width:46px;padding:0;justify-content:center}.brand b{font-size:20px}}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;color:#fff;overflow:hidden;background:#2a3135}
+.hero .ph{position:absolute;inset:0}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,23,26,.86) 0%,rgba(18,23,26,.62) 38%,rgba(18,23,26,.12) 70%,rgba(18,23,26,.05) 100%),linear-gradient(0deg,rgba(18,23,26,.55),rgba(18,23,26,0) 35%)}
+.hero-in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--hdr) + var(--bar) + 30px) 0 40px}
+.hero-in .wrap>*{max-width:540px}
+.hero .kick{color:#F0B79F}
+.hero h1{font-size:clamp(42px,5.6vw,78px);margin-bottom:18px}
+.hero h1 em{font-style:italic;font-weight:500;color:#F0B79F}
+.hero .lead{font-size:clamp(17px,1.4vw,20px);color:rgba(255,255,255,.9);margin-bottom:26px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.credit{position:absolute;right:14px;bottom:78px;z-index:2;font-size:11.5px;color:rgba(255,255,255,.75);letter-spacing:.02em}
+.hero-bar{position:relative;z-index:3;background:rgba(244,242,236,.96);color:var(--ink)}
+.hero-bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;min-height:62px;padding:10px 0;font-size:15px}
+.hero-bar a{text-decoration:none;font-weight:700}
+@media (hover:hover){.hero-bar a:hover{color:var(--terra)}}
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:700}
+.status small{font-weight:500;color:var(--mute);font-size:14px}
+.dot{width:10px;height:10px;border-radius:50%;background:#c0392b;box-shadow:0 0 0 4px rgba(192,57,43,.18)}
+.dot.on{background:#3f8f4e;box-shadow:0 0 0 4px rgba(63,143,78,.2)}
+@media (max-aspect-ratio:3/4){.hero .ph img{object-position:50% 50%}.hero .shade{background:linear-gradient(180deg,rgba(18,23,26,.85) 0%,rgba(18,23,26,.6) 45%,rgba(18,23,26,.15) 75%,rgba(18,23,26,.45) 100%)}.hero-in{justify-content:flex-start}.credit{bottom:auto;top:calc(var(--hdr) + var(--bar) + 6px)}}
+
+/* Auszeichnungen */
+.preise .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px 40px;margin-bottom:40px}
+.preise .head p{max-width:30em;color:var(--mute);margin:0}
+.medals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.medal{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 20px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform .25s var(--ease),box-shadow .25s}
+@media (hover:hover){.medal:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(30,37,40,.12)}}
+.disc{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;position:relative;color:#2a1c10}
+.disc.b{background:radial-gradient(circle at 35% 30%,#ecc49c,#c48a58 55%,#8f5a2f)}
+.disc.s{background:radial-gradient(circle at 35% 30%,#ffffff,#c9d0d3 55%,#8c979c);color:#253035}
+.disc:before{content:"";position:absolute;inset:8px;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55),inset 0 0 0 5px rgba(0,0,0,.08)}
+.disc .in{display:flex;flex-direction:column;align-items:center;line-height:1}
+.disc small{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.disc b{font-family:var(--f-head);font-size:34px;font-weight:650;margin:4px 0}
+.medal h3{font-size:19px;line-height:1.2}
+.medal p{margin:0;color:var(--mute);font-size:15px}
+@media (max-width:980px){.medals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.medal{padding:20px 12px}.disc{width:96px;height:96px}.disc b{font-size:28px}.medal h3{font-size:16.5px}.medal p{font-size:13.5px}}
+
+/* Käse im Laden (Harfe ohne Foto) */
+.kaese{background:var(--ink);color:#EEF0EF;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px}
+.kaese .kick{color:#F0B79F}
+.kaese .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px 40px;margin-bottom:34px}
+.kaese .head p{max-width:30em;color:rgba(238,240,239,.72);margin:0}
+.stage{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:stretch}
+.kcard{position:relative;border-radius:24px;min-height:320px;padding:clamp(24px,3vw,40px);background:linear-gradient(145deg,#2C363A,#1A2124);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.kcard .big{white-space:nowrap;display:block;font-family:var(--f-head);font-size:clamp(86px,11vw,150px);font-weight:650;line-height:.9;color:rgba(240,183,159,.9);letter-spacing:-.03em}
+.kcard .of{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(238,240,239,.6)}
+.kcard .src{font-size:13px;color:rgba(238,240,239,.55);margin:0}
+.kcard:after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(240,183,159,.18);box-shadow:0 0 0 26px rgba(240,183,159,.05),0 0 0 54px rgba(240,183,159,.03)}
+.ktxt{display:flex;flex-direction:column;justify-content:center}
+.ktxt h3{font-size:clamp(30px,3.6vw,46px);margin-bottom:12px}
+.ktxt .sub{font-family:var(--f-head);font-style:italic;font-size:20px;color:#F0B79F;margin-bottom:14px}
+.ktxt p{color:rgba(238,240,239,.86)}
+.tag{align-self:flex-start;background:rgba(240,183,159,.14);color:#F6CDBB;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700}
+.scale{margin-top:36px;position:relative;user-select:none;-webkit-user-select:none}
+.ends{display:flex;justify-content:space-between;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(238,240,239,.6);margin-bottom:14px}
+.track{position:relative;height:64px;touch-action:pan-y}
+.bar{position:absolute;left:0;right:0;top:20px;height:6px;border-radius:6px;background:linear-gradient(90deg,#8C979C,#C8613D)}
+.stops{position:absolute;inset:0}
+.stop{position:absolute;top:13px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:#1E2528;border:3px solid #C7CED1;cursor:pointer;padding:0}
+.stop span{position:absolute;top:34px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:14px;font-weight:600;color:rgba(238,240,239,.7)}
+.stop.on span{color:#fff;font-weight:800}
+.stop:first-child span{left:0;transform:none}.stop:last-child span{left:auto;right:0;transform:none}
+.harp{position:absolute;top:-2px;width:50px;height:50px;margin-left:-25px;border-radius:50%;background:var(--terra2);box-shadow:0 8px 20px rgba(0,0,0,.35);display:grid;place-items:center;cursor:grab;touch-action:none;transition:left .35s var(--ease)}
+.harp.drag{transition:none;cursor:grabbing}
+.harp svg{width:26px;height:26px}
+@media (max-width:860px){.stage{grid-template-columns:1fr}.kcard{min-height:220px}.stop span{font-size:12px}.track{margin-top:30px}}
+
+/* Fondue */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);align-items:center}
+.pot{position:relative;aspect-ratio:1;max-width:440px;width:100%;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 50% 50%,#fff 0 46%,var(--steel3) 46.5% 60%,#fff 60.5%);border:1px solid var(--line);display:grid;place-items:center}
+.pot .n{font-family:var(--f-head);font-size:clamp(72px,9vw,120px);font-weight:650;line-height:1;color:var(--terra)}
+.pot .u{display:block;text-align:center;font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+.fork{position:absolute;left:50%;top:50%;width:10px;height:46%;margin-left:-5px;transform-origin:50% 0;pointer-events:none}
+.fork i{position:absolute;left:0;bottom:0;width:10px;height:44%;border-radius:6px;background:var(--steel2);opacity:.25;transition:opacity .3s,background-color .3s}
+.fork.on i{opacity:1;background:var(--fc)}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,3vw,40px)}
+.mode{display:inline-flex;background:var(--bg2);border-radius:999px;padding:4px;margin:18px 0 22px}
+.mode button{border:0;background:transparent;font:700 15px var(--f-body);padding:10px 20px;border-radius:999px;cursor:pointer;color:var(--mute)}
+.mode button.on{background:var(--ink);color:#fff}
+.guests{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.guests button{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font:700 24px var(--f-body);cursor:pointer;color:var(--ink)}
+@media (hover:hover){.guests button:hover{border-color:var(--terra);color:var(--terra)}}
+.gnum{font-family:var(--f-head);font-size:40px;font-weight:650;min-width:1.4em;text-align:center}
+.gl{font-size:14px;line-height:1.25;color:var(--mute);font-weight:600}
+.result{border-top:1px solid var(--line);padding-top:18px}
+.result .g{font-family:var(--f-head);font-size:44px;font-weight:650;color:var(--terra)}
+.result .g small{font-size:22px}
+.result p{color:var(--mute);margin:6px 0 0}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr}.pot{max-width:300px}}
+
+/* Käserei / Zeitleiste */
+.famgrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,70px);align-items:start}
+.famimg{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:9/13;box-shadow:0 20px 44px rgba(30,37,40,.18)}
+.famimg img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.famimg figcaption,.cap{position:absolute;left:12px;bottom:10px;font-size:11.5px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.intro{font-size:18px;color:var(--mute);margin:14px 0 26px}
+.line{position:relative;padding-left:30px}
+.line:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--steel2)}
+.step{position:relative;padding:0 0 22px}
+.step:before{content:"";position:absolute;left:-29px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--terra)}
+.step .yr{font-family:var(--f-head);font-size:26px;font-weight:650;color:var(--terra);line-height:1}
+.step p{margin:6px 0 0}
+.secret{margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px;display:flex;gap:14px;align-items:center}
+.secret svg{width:30px;height:30px;flex:none;color:var(--terra)}
+.secret p{margin:0}
+@media (max-width:860px){.famgrid{grid-template-columns:1fr}.famimg{max-width:420px;aspect-ratio:4/5}}
+
+/* Stimmen */
+.sthead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+.score{display:flex;align-items:center;gap:14px}
+.score b{font-family:var(--f-head);font-size:56px;font-weight:650;line-height:1}
+.stars{color:#D08A2E;letter-spacing:2px;font-size:20px}
+.score small{display:block;color:var(--mute);font-weight:600}
+.stgrid{display:grid;grid-template-columns:300px 1fr;gap:clamp(20px,3vw,40px);align-items:stretch}
+.stimg{position:relative;border-radius:24px;overflow:hidden;min-height:340px}
+.stimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.rail-wrap{position:relative;min-width:0}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:none;overscroll-behavior-x:contain}
+.rail::-webkit-scrollbar{display:none}
+.card{flex:0 0 calc((100% - 18px)/2);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;transition:box-shadow .25s,transform .25s}
+@media (hover:hover){.card:hover{box-shadow:0 14px 30px rgba(30,37,40,.1);transform:translateY(-3px)}}
+.card q{font-family:var(--f-head);font-size:20px;line-height:1.35;quotes:"«" "»"}
+.who{display:flex;justify-content:space-between;align-items:center;font-size:15px}
+.who .st{color:#D08A2E;letter-spacing:1px}
+.rnav{display:flex;gap:10px;align-items:center;margin-top:8px}
+.arr{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.arr svg{width:20px;height:20px}
+@media (hover:hover){.arr:hover{border-color:var(--terra);color:var(--terra)}}
+.arr:disabled{opacity:.35;cursor:default}
+.dots{display:flex;gap:7px;margin-left:8px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--steel2)}
+.dots i.on{background:var(--terra);width:22px;border-radius:6px}
+@media (hover:hover) and (pointer:fine){.rail-wrap{overflow:hidden;padding:4px 2px 0;margin:-4px -2px 0}.rail{overflow:visible;scroll-snap-type:none;transition:transform .5s var(--ease)}}
+@media (max-width:860px){.stgrid{grid-template-columns:1fr}.stimg{min-height:0;aspect-ratio:16/10}.card{flex-basis:88%}}
+
+/* Laden */
+.laden-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);align-items:start}
+.laden .status{margin:14px 0 6px;font-size:17px}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:22px 0 14px}
+.day{position:relative;min-height:84px;border-radius:16px;border:1.5px solid var(--line);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:11px 2px 8px;gap:3px;cursor:pointer;font:700 16px var(--f-body);color:var(--ink);transition:border-color .2s,background-color .2s}
+.day small{font-size:11px;font-weight:600;color:var(--mute);text-align:center;line-height:1.25}
+.day .today{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);line-height:1;margin:-3px 0 1px}
+.day.istoday{border:2px solid var(--terra)}
+.day.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.day.sel small{color:#F6CDBB}.day.sel .today{color:#F6CDBB}
+@media (hover:hover){.day:not(.sel):hover{border-color:var(--terra2)}}
+.dayinfo{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-bottom:18px}
+.dayinfo h3{font-size:22px;margin-bottom:6px}
+.dayinfo p{margin:0;color:var(--mute)}
+.mapbox{position:relative}
+.karte{display:block;position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;border:1.5px solid var(--steel2);box-shadow:0 18px 40px rgba(30,37,40,.12)}
+.karte img{width:100%;height:100%;object-fit:cover}
+.pin{position:absolute;left:50%;top:50%;width:40px;height:54px;transform:translate(-50%,-100%);filter:drop-shadow(0 6px 6px rgba(30,37,40,.35));transition:transform .3s var(--ease)}
+@media (hover:hover){.karte:hover .pin{transform:translate(-50%,-110%)}}
+.mapcard{position:absolute;left:16px;bottom:16px;right:16px;max-width:360px;background:var(--bg);border-radius:18px;padding:16px 18px;box-shadow:0 12px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.mapcard b{font-family:var(--f-head);font-size:21px;font-weight:650}
+.mapcard span{color:var(--mute);font-size:15px}
+.mapcard .btn{height:42px;padding:0 16px;font-size:15px;margin-top:10px}
+.mapcard .btn svg{width:16px;height:16px}
+@media (max-width:860px){.mapcard{position:static;max-width:none;margin-top:12px;box-shadow:none;border:1px solid var(--line)}.laden-grid{grid-template-columns:1fr}.days{gap:5px}.day{min-height:62px;border-radius:12px;font-size:14px;padding-top:9px}.day small{font-size:9.5px}.day .today{font-size:8px}}
+
+/* Schluss */
+.cta{padding:clamp(64px,8vw,100px) 0;text-align:center}
+.cta .box{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(34px,5vw,60px) clamp(20px,4vw,50px)}
+.cta .kick{color:#F0B79F}
+.cta p{color:rgba(255,255,255,.82);max-width:34em;margin:14px auto 24px}
+.cta .ctas{justify-content:center}
+footer{padding:26px 0 40px;font-size:14px;color:var(--mute)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between}
+footer a{text-decoration:none;font-weight:700;color:var(--ink)}
+
+/* sanftes Einblenden, ohne Scroll zu bremsen */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.hdr{transition:none}}
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
+</head>
+<body>
+<div class="entwurf" id="entwurf" onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><b>Website-Entwurf von <a href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a></b> · nur zur Ansicht.</div>
+<script>(function(){var b=document.getElementById('entwurf');if(b)document.documentElement.style.setProperty('--bar',b.offsetHeight+'px')})();</script>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>Käserei Obersteinach</b><span>Steinach SG · seit 1994</span></a>
+    <nav class="nav"><a href="#kaese">Unser Käse</a><a href="#preise">Auszeichnungen</a><a href="#fondue">Fondue</a><a href="#kaeserei">Käserei</a><a href="#stimmen">Stimmen</a><a href="#laden">Laden</a></nav>
+    <a class="btn btn-terra" href="tel:+41714461037" aria-label="Anrufen 071 446 10 37"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="t">071 446 10 37</span></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="ph"><picture><source media="(max-aspect-ratio:3/4)" srcset="img/kaeserei_formen_m.webp"><img src="img/kaeserei_formen_l.webp" alt="In der Käserei Obersteinach: Käsebruch wird in die Formen gefüllt"></picture></div>
+  <div class="shade"></div>
+  <div class="hero-in"><div class="wrap">
+    <span class="kick">Appenzeller-Käserei · Steinach SG</span>
+    <h1>Käse aus <em>Obersteinach</em></h1>
+    <p class="lead">Seit 1994 käst Norbert Eberle-Kälin hier Appenzeller – aus der Milch von Bauern aus der Umgebung. Im kleinen Laden gibt es Hauskäse und viele weitere Sorten.</p>
+    <div class="ctas"><a class="btn btn-terra" href="#kaese">Unser Käse</a><a class="btn btn-line" href="#laden">Öffnungszeiten &amp; Weg</a></div>
+  </div></div>
+  <span class="credit">Foto: Google-Profil</span>
+  <div class="hero-bar"><div class="wrap">
+    <span class="status js-status"><span class="dot"></span><span>…</span></span>
+    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=47.4921771,9.4351034" target="_blank" rel="noopener">Rorschacherstrasse 11, 9323 Steinach</a>
+    <a href="tel:+41714461037">071 446 10 37</a>
+  </div></div>
+</section>
+
+<section class="kaese sec" id="kaese">
+  <div class="wrap">
+    <div class="head rv">
+      <div><span class="kick">Unser Käse</span><h2>Was gibt’s im Laden?</h2></div>
+      <p>Ziehen Sie den Regler – vom Appenzeller aus dem Kessi bis zur Fondue-Mischung für den Tisch.</p>
+    </div>
+    <div class="stage rv">
+      <div class="kcard"><span class="of" id="kof"></span><span class="big" id="kbig"></span><p class="src" id="ksrc"></p></div>
+      <div class="ktxt">
+        <h3 id="kname"></h3>
+        <p class="sub" id="ksub"></p>
+        <p id="ktext"></p>
+        <span class="tag" id="ktag"></span>
+      </div>
+    </div>
+    <div class="scale rv">
+      <div class="ends"><span>aus dem Kessi</span><span>auf den Tisch</span></div>
+      <div class="track" id="track"><div class="bar"></div><div class="stops" id="stops"></div>
+        <div class="harp" id="harp" role="slider" tabindex="0" aria-label="Käse wählen" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M10 9l-5 7 5 7M22 9l5 7-5 7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="preise sec" id="preise">
+  <div class="wrap">
+    <div class="head rv">
+      <div><span class="kick">Auszeichnungen</span><h2>Medaillen für den Appenzeller</h2></div>
+      <p>Von der Weltmeisterschaft in Madison bis zu den World Cheese Awards in Bern – der Appenzeller aus Obersteinach überzeugt die Jury.</p>
+    </div>
+    <div class="medals">
+      <div class="medal rv"><div class="disc b"><div class="in"><small>Bronze</small><b>2025</b><small>Bern</small></div></div><h3>World Cheese Awards</h3><p>Appenzeller® Mild-Würzig</p></div>
+      <div class="medal rv"><div class="disc b"><div class="in"><small>Bronze</small><b>2025</b><small>Tirol</small></div></div><h3>Käsiade</h3><p>Appenzeller® Käse, Hopfgarten</p></div>
+      <div class="medal rv"><div class="disc s"><div class="in"><small>Silber</small><b>2023</b><small>Tirol</small></div></div><h3>Käsiade</h3><p>Appenzeller® Käse vollfett</p></div>
+      <div class="medal rv"><div class="disc b"><div class="in"><small>Bronze</small><b>2012</b><small>Madison</small></div></div><h3>Käse-Weltmeisterschaft</h3><p>3. Platz von 22 – Kategorie Appenzeller</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="fondue sec" id="fondue">
+  <div class="wrap fgrid">
+    <div class="pot rv" id="pot" aria-hidden="true"><div><span class="n" id="pnum">4</span><span class="u">Personen</span></div></div>
+    <div class="calc rv">
+      <span class="kick">Fondue &amp; Raclette</span>
+      <h2>Wie viel Käse für Ihre Runde?</h2>
+      <div class="mode" role="tablist"><button class="on" data-m="f" role="tab">Fondue</button><button data-m="r" role="tab">Raclette</button></div>
+      <div class="guests"><button id="minus" aria-label="Eine Person weniger">−</button><span class="gnum" id="gnum">4</span><button id="plus" aria-label="Eine Person mehr">+</button><span class="gl">Personen<br>am Tisch</span></div>
+      <div class="result"><div class="g" id="gres">800 <small>g</small></div><p id="gtxt"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="kaeserei">
+  <div class="wrap famgrid">
+    <figure class="famimg rv" style="margin:0"><img src="img/kaeser_arbeit.webp" alt="Norbert Eberle-Kälin an den Käseformen" loading="lazy"><figcaption>Foto: Google-Profil</figcaption></figure>
+    <div class="rv">
+      <span class="kick">Die Käserei</span>
+      <h2>Jeden Tag frische Milch, jeden Tag Käse</h2>
+      <p class="intro">Norbert Eberle-Kälin führt die Käserei Obersteinach als Familienbetrieb. Die Bauern aus der Umgebung liefern jeden Tag ihre Milch – gekäst wird an sieben Tagen die Woche.</p>
+      <div class="line">
+        <div class="step"><span class="yr">1994</span><p>Norbert Eberle beginnt, in Obersteinach Appenzeller zu käsen.</p></div>
+        <div class="step"><span class="yr">2012</span><p><b>Bronze</b> an der Käse-Weltmeisterschaft in Madison (USA): 3. Platz von 22 in der Kategorie Appenzeller.</p></div>
+        <div class="step"><span class="yr">2023</span><p><b>Silber</b> an der Käsiade in Hopfgarten (Tirol).</p></div>
+        <div class="step"><span class="yr">2025</span><p><b>Bronze</b> an der Käsiade und an den World Cheese Awards in Bern.</p></div>
+      </div>
+      <div class="secret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><p>Gepflegt wird der Käse mit Kräutersulz. Das Rezept? Bleibt ein Geheimnis.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stimmen sec" id="stimmen">
+  <div class="wrap">
+    <div class="sthead rv">
+      <div><span class="kick">Das sagen die Kunden</span><h2>Wie zu Grossmutters Zeiten</h2></div>
+      <div class="score"><b>4,8</b><div><span class="stars">★★★★★</span><small>30 Bewertungen auf Google</small></div></div>
+    </div>
+    <div class="stgrid">
+      <figure class="stimg rv" style="margin:0"><img src="img/kaeserei_kessi.webp" alt="Käseformen in der Käserei Obersteinach" loading="lazy"><figcaption class="cap">Foto: Google-Profil</figcaption></figure>
+      <div class="rail-wrap rv">
+        <div class="rail" id="rail">
+          <article class="card"><q>Ein kleines, hübsches Geschäft wie zu Grossmutterszeiten. Feiner Käse und sehr freundliche Bedienung. Einfach toll!</q><div class="who"><b>Anita S.</b><span class="st">★★★★★</span></div></article>
+          <article class="card"><q>Kleine Chäsi mit wunderbarem Hauskäse und vielen anderen Sorten. Die Fonduemischung und Raclettescheiben sind auch zu empfehlen.</q><div class="who"><b>Judith W.</b><span class="st">★★★★★</span></div></article>
+          <article class="card"><q>Toller kleiner Käseladen. Super nette Bedienung und eine Top-Qualität, was den Käse betrifft. Ich komme auf jeden Fall wieder.</q><div class="who"><b>Jens K.</b><span class="st">★★★★★</span></div></article>
+          <article class="card"><q>Super Angebot, Preise absolut top und nette Bedienung. Leider wohnen wir 800 km weg – aber wenn wir in der Schweiz sind, fahren wir immer hin.</q><div class="who"><b>Ralf M.</b><span class="st">★★★★★</span></div></article>
+          <article class="card"><q>Sehr feiner Käse und eine sehr freundliche Bedienung. Ich komme immer wieder gerne in diesen Laden.</q><div class="who"><b>Roger H.</b><span class="st">★★★★★</span></div></article>
+          <article class="card"><q>Super, allerbester Käse. Frau Eberle – sehr freundliche Bedienung. Weiter so!</q><div class="who"><b>Roland F.</b><span class="st">★★★★</span></div></article>
+          <article class="card"><q>Super Hauskäse, sehr freundlich. Jederzeit wieder. Vielen Dank!</q><div class="who"><b>Markus B.</b><span class="st">★★★★★</span></div></article>
+        </div>
+        <div class="rnav"><button class="arr" id="al" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="arr" id="ar" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="dots" id="dots"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="laden sec" id="laden">
+  <div class="wrap laden-grid">
+    <div class="rv">
+      <span class="kick">Öffnungszeiten</span>
+      <h2>Heute offen?</h2>
+      <div class="status js-status2"><span class="dot"></span><span>…</span></div>
+      <div class="days" id="days"></div>
+      <div class="dayinfo" id="dayinfo"></div>
+      <a class="btn btn-dark" href="tel:+41714461037"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>071 446 10 37</a>
+    </div>
+    <div class="mapbox rv">
+      <a class="karte" href="https://www.google.com/maps/dir/?api=1&amp;destination=47.4921771,9.4351034" target="_blank" rel="noopener" aria-label="Route zur Käserei Obersteinach planen"><img src="img/karte.svg" alt="Karte: Käserei Obersteinach, Rorschacherstrasse 11, Steinach" loading="lazy">
+        <span class="pin" aria-hidden="true"><svg viewBox="0 0 40 54"><path d="M20 52C20 52 3.5 32 3.5 19.5A16.5 16.5 0 1 1 36.5 19.5C36.5 32 20 52 20 52Z" fill="#A5452A" stroke="#6E2A17" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="19.5" r="10.5" fill="#F4F2EC"/><path d="M13.2 23.6h13.6v-5.2L20 13.4l-6.8 5Z" fill="#1E2528"/><rect x="18.2" y="19.6" width="3.6" height="4" rx=".6" fill="#F4F2EC"/></svg></span></a>
+      <div class="mapcard"><b>Käserei Obersteinach</b><span>Rorschacherstrasse 11 · 9323&nbsp;Steinach</span><a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=47.4921771,9.4351034" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>Route planen</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap"><div class="box rv">
+    <span class="kick">Rorschacherstrasse 11 · Steinach</span>
+    <h2>Kommen Sie vorbei</h2>
+    <p>Der kleine Käseladen hat Montag bis Samstag von 7 bis 11 Uhr offen. Für grössere Bestellungen am besten vorher anrufen.</p>
+    <div class="ctas"><a class="btn btn-terra" href="tel:+41714461037">071 446 10 37</a><a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=47.4921771,9.4351034" target="_blank" rel="noopener">Route planen</a></div>
+  </div></div>
+</section>
+</main>
+<footer><div class="wrap"><span>Käserei Obersteinach · Norbert Eberle-Kälin · Rorschacherstrasse 11 · 9323 Steinach</span><a href="tel:+41714461037">071 446 10 37</a><span>Website-Entwurf · nur zur Ansicht · Fotos: Google-Profil</span></div></footer>
+
+<script>
+const Q=s=>document.querySelector(s), QA=s=>[...document.querySelectorAll(s)];
+
+/* Kopf: solide beim Scrollen, gleitet beim Runterscrollen weich weg, beim Hochscrollen zurück */
+{ const h=Q('#hdr'); let last=scrollY, t=0;
+  const f=()=>{ t=0; const y=scrollY; h.classList.toggle('solid',y>40); if(y>innerHeight*.6&&y>last+4) h.classList.add('weg'); else if(y<last-4||y<innerHeight*.6) h.classList.remove('weg'); last=y; };
+  addEventListener('scroll',()=>{ if(!t) t=requestAnimationFrame(f); },{passive:true}); f();
+  h.addEventListener('focusin',()=>h.classList.remove('weg'));
+}
+
+/* Öffnungszeiten (Google-Profil): Mo–Sa 7–11, So zu */
+const HOURS={0:[],1:[[420,660]],2:[[420,660]],3:[[420,660]],4:[[420,660]],5:[[420,660]],6:[[420,660]]};
+const NAMES=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'], SH=['So','Mo','Di','Mi','Do','Fr','Sa'];
+const fmt=m=>Math.floor(m/60)+(m%60?'.'+String(m%60).padStart(2,'0'):'');
+const zh=()=>{ const p=new Intl.DateTimeFormat('de-CH',{timeZone:'Europe/Zurich',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()); const g=k=>p.find(x=>x.type===k).value; const wd={'So':0,'Mo':1,'Di':2,'Mi':3,'Do':4,'Fr':5,'Sa':6}[g('weekday').slice(0,2)]; return {d:wd,m:(+g('hour')%24)*60+ +g('minute')}; };
+function status(){ const {d,m}=zh(), sl=HOURS[d];
+  for(const [a,b] of sl){ if(m>=a&&m<b) return {open:true,txt:'Jetzt offen',sub:'bis '+fmt(b)+' Uhr'}; }
+  for(const [a] of sl){ if(m<a) return {open:false,txt:'Jetzt geschlossen',sub:'heute ab '+fmt(a)+' Uhr'}; }
+  for(let i=1;i<=7;i++){ const dd=(d+i)%7; if(HOURS[dd].length) return {open:false,txt:'Jetzt geschlossen',sub:(i===1?'morgen':NAMES[dd])+' ab '+fmt(HOURS[dd][0][0])+' Uhr'}; } }
+function paintStatus(){ const s=status(); QA('.js-status,.js-status2').forEach(e=>{ e.innerHTML='<span class="dot'+(s.open?' on':'')+'"></span><span>'+s.txt+'</span><small>'+s.sub+'</small>'; }); }
+const today=zh().d, daysEl=Q('#days'), info=Q('#dayinfo');
+[1,2,3,4,5,6,0].forEach(d=>{ const b=document.createElement('button'); b.className='day'; b.dataset.d=d; const zu=!HOURS[d].length;
+  b.classList.toggle('istoday',d===today);
+  b.innerHTML=(d===today?'<span class="today">heute</span>':'')+'<span class="dn">'+SH[d]+'</span><small>'+(zu?'zu':HOURS[d].map(([x,y])=>fmt(x)+'–'+fmt(y)).join('<br>'))+'</small>';
+  b.addEventListener('click',()=>sel(d)); daysEl.appendChild(b); });
+function sel(d){ QA('.day').forEach(x=>x.classList.toggle('sel',+x.dataset.d===d)); const sl=HOURS[d];
+  info.innerHTML='<h3>'+NAMES[d]+(d===today?' · heute':'')+'</h3>'+(sl.length?'<p>Laden offen von '+sl.map(([a,b])=>fmt(a)+' bis '+fmt(b)+' Uhr').join(' und ')+'.</p>':'<p>Am Sonntag ist der Laden geschlossen. Nächster Verkauf: Montag ab 7 Uhr.</p>'); }
+sel(today); paintStatus(); setInterval(paintStatus,30000);
+
+/* Käse-Regler (nur belegte Angaben: Google-Bewertungen, appenzeller.ch, chaes-chaeller.ch, Tagblatt 2012) */
+const K=[
+ {n:'Appenzeller® Mild-Würzig',k:'Appenzeller',s:'Der Medaillen-Käse',t:'Seit 1994 käst Norbert Eberle in Obersteinach Appenzeller. Der Mild-Würzige holte 2025 Bronze an den World Cheese Awards in Bern.',tag:'Appenzeller-Käserei',src:'Quelle: appenzeller.ch'},
+ {n:'Hauskäse',k:'Hauskäse',s:'Der Liebling der Kundschaft',t:'Den Hauskäse loben die Kundinnen und Kunden in ihren Bewertungen immer wieder – «wunderbar», «super», «allerbester Käse».',tag:'aus der eigenen Käserei',src:'Quelle: Google-Bewertungen'},
+ {n:'Rohmilchkäse',k:'Rohmilch',s:'Halbhart, mit Rotschmiere',t:'Aus der Rohmilch der Bauern aus der Umgebung. Halbharte Käse mit Rotschmiere, gereift drei bis sechs Monate.',tag:'3–6 Monate gereift',src:'Quelle: chaes-chaeller.ch'},
+ {n:'Raclette in Scheiben',k:'Raclette',s:'Fertig für den Ofen',t:'Raclettekäse gibt es im Laden auch schon in Scheiben – praktisch für den nächsten Raclette-Abend.',tag:'aus dem Laden',src:'Quelle: Google-Bewertungen'},
+ {n:'Fondue-Mischung',k:'Fondue',s:'Für den Caquelon',t:'Die Fondue-Mischung aus dem Laden empfehlen auch die Kundinnen und Kunden. Wie viel es braucht, rechnet der Fondue-Rechner weiter unten.',tag:'aus dem Laden',src:'Quelle: Google-Bewertungen'}
+];
+const stops=Q('#stops'), harp=Q('#harp'), track=Q('#track'); let cur=-1;
+K.forEach((k,i)=>{ const s=document.createElement('button'); s.className='stop'; s.style.left=(i/(K.length-1)*100)+'%'; s.setAttribute('aria-label',k.n); s.innerHTML='<span>'+k.k+'</span>'; s.addEventListener('click',()=>go(i)); stops.appendChild(s); });
+function go(i){ i=Math.max(0,Math.min(K.length-1,i)); if(i===cur) return; cur=i; const k=K[i];
+  harp.style.left=(i/(K.length-1)*100)+'%'; harp.setAttribute('aria-valuenow',i+1); harp.setAttribute('aria-valuetext',k.n);
+  QA('.stop').forEach((s,j)=>s.classList.toggle('on',j===i));
+  Q('#kof').textContent=String(i+1).padStart(2,'0')+' / 05'; Q('#kbig').textContent=k.k; Q('#ksrc').textContent=k.src;
+  fitBig(); Q('#kname').textContent=k.n; Q('#ksub').textContent=k.s; Q('#ktext').textContent=k.t; Q('#ktag').textContent=k.tag; }
+function fitBig(){ const e=Q('#kbig'), box=e.parentElement; e.style.fontSize=''; const max=box.clientWidth-2*parseFloat(getComputedStyle(box).paddingLeft); let fs=parseFloat(getComputedStyle(e).fontSize); while(e.scrollWidth>max&&fs>30){ fs-=4; e.style.fontSize=fs+'px'; } }
+addEventListener('resize',fitBig); if(document.fonts) document.fonts.ready.then(fitBig);
+go(0);
+let drag=false;
+harp.addEventListener('pointerdown',e=>{ drag=true; harp.classList.add('drag'); harp.setPointerCapture(e.pointerId); });
+harp.addEventListener('pointermove',e=>{ if(!drag) return; const r=track.getBoundingClientRect(); const p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)); harp.style.left=(p*100)+'%'; const i=Math.round(p*(K.length-1)); if(i!==cur){ const l=harp.style.left; go(i); harp.style.left=l; } });
+const end=()=>{ if(!drag) return; drag=false; harp.classList.remove('drag'); harp.style.left=(cur/(K.length-1)*100)+'%'; };
+harp.addEventListener('pointerup',end); harp.addEventListener('pointercancel',end);
+harp.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'){go(cur+1);e.preventDefault();} if(e.key==='ArrowLeft'){go(cur-1);e.preventDefault();} });
+
+/* Fondue-Rechner */
+{ const pot=Q('#pot'); const FC=['#A5452A','#56636A','#C8613D','#8C979C','#1E2528','#B07A4C','#6F8C7A','#C9A227','#3D6B8C','#8E4F6E','#5E7F3A','#D08A2E'];
+  for(let i=0;i<12;i++){ const f=document.createElement('div'); f.className='fork'; f.style.transform='rotate('+(i*30+15)+'deg)'; f.style.setProperty('--fc',FC[i]); f.innerHTML='<i></i>'; pot.appendChild(f); }
+  let n=4, mode='f';
+  const calc=()=>{ Q('#gnum').textContent=n; Q('#pnum').textContent=n; QA('.fork').forEach((f,i)=>f.classList.toggle('on',i<n));
+    const w=g=>g>=1000?(g/1000).toLocaleString('de-CH'):g, u=g=>g>=1000?'kg':'g';
+    if(mode==='f'){ const g=n*200; Q('#gres').innerHTML=w(g)+' <small>'+u(g)+'</small>'; Q('#gtxt').textContent='Pro Person rechnet man mit rund 200 g Käse. Die Fondue-Mischung gibt es im Laden.'; }
+    else { const a=n*200,b=n*250; Q('#gres').innerHTML=w(a)+(u(a)===u(b)?'':' <small>'+u(a)+'</small>')+'–'+w(b)+' <small>'+u(b)+'</small>'; Q('#gtxt').textContent='Für Raclette rechnet man mit 200 bis 250 g Käse pro Person – im Laden gibt es ihn auch in Scheiben.'; } };
+  Q('#plus').addEventListener('click',()=>{n=Math.min(12,n+1);calc();}); Q('#minus').addEventListener('click',()=>{n=Math.max(1,n-1);calc();});
+  QA('.mode button').forEach(b=>b.addEventListener('click',()=>{ mode=b.dataset.m; QA('.mode button').forEach(x=>x.classList.toggle('on',x===b)); calc(); }));
+  calc(); }
+
+/* Stimmen: immer genau eine Karte pro Schritt, kein Autolauf; am Computer ohne Scroll-Container (Mausrad/Trackpad bleibt bei der Seite) */
+{ const rail=Q('#rail'), cards=QA('#rail .card'), dots=Q('#dots'), fine=matchMedia('(hover:hover) and (pointer:fine)');
+  cards.forEach(()=>dots.appendChild(document.createElement('i')));
+  const step=()=>cards[1].offsetLeft-cards[0].offsetLeft;
+  const vis=()=>Math.max(1,Math.round((rail.parentElement.clientWidth+18)/step()));
+  const maxI=()=>Math.max(0,cards.length-vis());
+  let i=0;
+  const idx=()=>fine.matches?i:Math.round(rail.scrollLeft/step());
+  const paint=()=>{ const k=idx(), m=fine.matches?maxI():Math.round((rail.scrollWidth-rail.clientWidth)/step()); QA('#dots i').forEach((d,j)=>{ d.classList.toggle('on',j===k); d.style.display=j>m?'none':''; }); Q('#al').disabled=k<=0; Q('#ar').disabled=k>=m; };
+  const go=k=>{ if(fine.matches){ i=Math.max(0,Math.min(maxI(),k)); rail.style.transform='translateX('+(-i*step())+'px)'; paint(); } else rail.scrollTo({left:k*step()}); };
+  Q('#al').addEventListener('click',()=>go(idx()-1)); Q('#ar').addEventListener('click',()=>go(idx()+1));
+  rail.addEventListener('scroll',()=>requestAnimationFrame(paint),{passive:true});
+  addEventListener('resize',()=>{ if(fine.matches) go(i); else { rail.style.transform=''; paint(); } }); paint(); }
+
+/* Einblenden */
+{ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+  QA('.rv').forEach(e=>io.observe(e)); }
+</script>
+</body>
+</html>
