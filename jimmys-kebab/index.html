@@ -411,6 +411,26 @@ html[data-bg="d"] body::after{background-image:linear-gradient(rgba(10,10,11,.66
 @media (hover:hover){.bgwahl button:not([aria-pressed="true"]):hover{border-color:var(--eiche);background:rgba(184,137,90,.14)}}
 @media (max-width:760px){.bgwahl{right:10px;bottom:10px;padding:4px 4px 4px 10px}.bgwahl span{display:none}.bgwahl button{min-width:32px;height:30px}}
 
+
+/* ===== FUSS2 (28.11): kurzer Fuss links, lesbar ===== */
+#zeiten{padding-bottom:40px}
+.fuss2{position:relative;z-index:1;background:rgba(10,10,11,.92);border-top:1px solid #2c2e32}
+.fuss2 .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;padding:18px 0}
+.fuss-name{font:600 15px/1.3 var(--ff);color:var(--licht)}
+.fuss-links{display:flex;gap:20px}
+.fuss-links a{font:500 15px/1.3 var(--ff);color:#d9d4ca;text-decoration:underline;text-decoration-color:rgba(184,137,90,.6);text-underline-offset:4px;transition:color .2s,text-decoration-color .2s}
+@media (hover:hover){.fuss-links a:hover{color:#fff;text-decoration-color:var(--eiche)}}
+dialog.recht{max-width:min(560px,92vw);width:100%;border:1px solid #3a3c40;border-radius:6px;background:#151617;color:var(--text);padding:30px 32px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+dialog.recht::backdrop{background:rgba(8,8,9,.75)}
+dialog.recht h3{font:italic 500 30px/1.1 var(--serif);color:var(--eiche);margin:0 0 16px}
+dialog.recht p{margin:0 0 12px;line-height:1.55}
+dialog.recht p.klein{color:var(--leise);font-size:14px}
+dialog.recht a{color:var(--licht)}
+dialog.recht .zu{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid #55585d;background:#1d1e20;color:var(--licht);cursor:pointer;display:flex;align-items:center;justify-content:center}
+dialog.recht .zu svg{width:18px;height:18px}
+@media (hover:hover){dialog.recht .zu:hover{border-color:var(--eiche)}}
+@media (max-width:760px){.fuss2 .wrap{padding:16px 0 70px}#zeiten{padding-bottom:32px}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
@@ -572,10 +592,28 @@ html[data-bg="d"] body::after{background-image:linear-gradient(rgba(10,10,11,.66
 </section>
 </main>
 
-<footer>
-  
-  <div class="fuss"><div class="wrap"><span>© JIMMYS Kebab &amp; Co, Winterthur</span><span>Website-Entwurf: Julia &amp; Robin Mirku</span></div></div>
+<footer class="fuss2">
+  <div class="wrap">
+    <span class="fuss-name">© JIMMYS Kebab &amp; Co, Winterthur</span>
+    <nav class="fuss-links" aria-label="Rechtliches"><a href="#impressum" data-dlg="dlg-impressum">Impressum</a><a href="#datenschutz" data-dlg="dlg-datenschutz">Datenschutz</a></nav>
+  </div>
 </footer>
+
+<dialog class="recht" id="dlg-impressum" aria-labelledby="t-impressum">
+  <button class="zu" type="button" aria-label="Schliessen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <h3 id="t-impressum">Impressum</h3>
+  <p><b>JIMMYS Kebab &amp; Co</b><br>Technikumstrasse 12<br>8400 Winterthur<br>Schweiz</p>
+  <p>Telefon: <a href="tel:+41522142323">052 214 23 23</a></p>
+  <p class="klein">Website-Entwurf von Julia &amp; Robin Mirku, Flawil.</p>
+</dialog>
+
+<dialog class="recht" id="dlg-datenschutz" aria-labelledby="t-datenschutz">
+  <button class="zu" type="button" aria-label="Schliessen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <h3 id="t-datenschutz">Datenschutz</h3>
+  <p>Diese Website setzt keine Cookies und hat kein Kontaktformular. Wir speichern keine persönlichen Daten.</p>
+  <p>Beim Aufruf speichert der Webhoster technisch notwendige Zugriffsdaten (z. B. IP-Adresse, Zeitpunkt) für kurze Zeit. Schriften werden von Google Fonts geladen. Die Links «Route» öffnen Google Maps, dort gelten die Datenschutzbestimmungen von Google.</p>
+  <p>Fragen zum Datenschutz: <a href="tel:+41522142323">052 214 23 23</a></p>
+</dialog>
 
 <div class="bgwahl" role="group" aria-label="Hintergrund wählen"><span>Hintergrund</span><button type="button" data-v="c" title="C · Lavash auf Stein">C</button><button type="button" data-v="d" title="D · Stein mit Essen am Rand">D</button></div>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto gross">
@@ -739,6 +777,11 @@ $('#heute').textContent='Heute 11:00 – '+bis(TAGE[jetzt.w][2]);
 (function(){var h=document.documentElement;var bs=$$('.bgwahl button');
 function mal(){var v=h.getAttribute('data-bg')||'a';bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===v?'true':'false')})}
 bs.forEach(function(b){b.addEventListener('click',function(){h.setAttribute('data-bg',b.dataset.v);try{localStorage.setItem('jimmys-bg',b.dataset.v)}catch(e){};mal()})});mal();})();
+
+
+/* Impressum / Datenschutz */
+$$('[data-dlg]').forEach(function(a){a.addEventListener('click',function(e){var d=document.getElementById(a.dataset.dlg);if(d&&d.showModal){e.preventDefault();d.showModal()}})});
+$$('dialog.recht').forEach(function(d){$('.zu',d).addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()})});
 
 /* Auftritt einmal, unabhängig vom Tempo */
 var au=$$('.auftritt');
