@@ -633,6 +633,8 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 @media (max-aspect-ratio:3/4){.hero .ph img{object-position:50% 70%!important}}
 /* Юля 28.11: 2. Block ohne Kellerfoto – dort beginnt der Käsehintergrund */
 #preise .kbg{display:none!important}
+/* Юля 28.11: zwei Käser-Fotos, klein, untereinander; ohne Kreuzstrasse-Schärfefilter */
+.famcol{display:grid;gap:14px;max-width:470px;width:100%;justify-self:center}.famcol .famimg{aspect-ratio:1400/930!important;max-height:none!important}.famcol .famimg+.famimg{aspect-ratio:1000/1066!important;max-width:78%;justify-self:end}.famimg img{filter:none!important}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><style>/* Юля 26.11: «я про полосу с адресом и телефоном над блоком сыров» – Leiste weg; Höhe bleibt, Foto geht weich in den Hintergrund über (nichts verschiebt sich) */
 .hero-bar>.wrap{visibility:hidden}.hero-bar:before{display:none!important}.hero-bar .ftex{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 92%);mask-image:linear-gradient(180deg,transparent 0,#000 92%)}
@@ -739,7 +741,7 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
 <!-- FAMILIE -->
 <section class="familie sec fade-top" id="familie">
   <div class="wrap famgrid">
-    <div class="famimg"><img src="img/kaeser_formen_v2.webp" alt="In der Käserei Obersteinach: Käsebruch wird in die Formen gefüllt"><small class="fcap">Foto: Google-Profil</small></div>
+    <div class="famcol"><div class="famimg"><img src="img/kaeser_formen_v3.webp" alt="In der Käserei Obersteinach: Käsebruch wird in die Formen gefüllt"><small class="fcap">Foto: Google-Profil</small></div><div class="famimg"><img src="img/kaeser_formen2_v3.webp" alt="Norbert Eberle-Kälin an den Käseformen"><small class="fcap">Foto: Google-Profil</small></div></div>
     <div class="rv">
       <span class="kick">Käserei Obersteinach</span>
       <h2>Seit&nbsp;1994 Appenzeller aus&nbsp;Obersteinach</h2>
@@ -764,12 +766,12 @@ body:before{position:absolute!important;inset:0!important;z-index:-1;background:
     <div class="rail-wrap rv">
       <button class="arr l" id="al" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
       <div class="rail" id="rail">
-        <article class="card"><q>Ein kleines, hübsches Geschäft wie zu Grossmutterszeiten. Feiner Käse und sehr freundliche Bedienung. Einfach toll!</q><div class="who"><b>Anita S.</b><span class="st">★★★★★</span></div></article>
-        <article class="card"><q>Kleine Chäsi mit wunderbarem Hauskäse und vielen anderen Sorten. Die Fonduemischung und Raclettescheiben sind auch zu empfehlen.</q><div class="who"><b>Judith W.</b><span class="st">★★★★★</span></div></article>
-        <article class="card"><q>Toller kleiner Käseladen. Super nette Bedienung und eine Top-Qualität, was den Käse betrifft. Ich komme auf jeden Fall wieder.</q><div class="who"><b>Jens K.</b><span class="st">★★★★★</span></div></article>
-        <article class="card"><q>Super Angebot, Preise absolut top und nette Bedienung. Leider wohnen wir 800 km weg – aber wenn wir in der Schweiz sind, fahren wir immer hin.</q><div class="who"><b>Ralf M.</b><span class="st">★★★★★</span></div></article>
-        <article class="card"><q>Super, allerbester Käse. Frau Eberle – sehr freundliche Bedienung. Weiter so!</q><div class="who"><b>Roland F.</b><span class="st">★★★★</span></div></article>
-        <article class="card"><q>Super Hauskäse, sehr freundlich. Jederzeit wieder. Vielen Dank!</q><div class="who"><b>Markus B.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Feiner Käse und sehr freundliche Bedienung. Ein kleines, hübsches Geschäft wie zu Grossmutterszeiten. Einfach toll!</q><div class="who"><b>Anita S.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>kleine Chäsi mit wunderbarem Hauskäse und vielen anderen Sorten. Die Fonduemischung und Raclettescheiben sind auch zu empfehlen.</q><div class="who"><b>Judith W.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Toller kleiner Käseladen. Super nette Bedienung und eine Top Qualität was den Käse betrifft. Ich war hier das erste Mal und komme auf jeden Fall wieder.</q><div class="who"><b>Jens K.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Sehr feinen Käse und eine sehr freundliche Bedienung. Komme immer wieder gerne in diesen Laden Käse kaufen. 😀</q><div class="who"><b>Roger H.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Immer super bedient wünsche werden erfüllt und günstig! Sehr zu empfehlen!!!</q><div class="who"><b>Séverine B.</b><span class="st">★★★★★</span></div></article>
+        <article class="card"><q>Super Hauskäse, sehr freundlich. Jeder Zeit wieder. Vielen Dank</q><div class="who"><b>Markus B.</b><span class="st">★★★★★</span></div></article>
       </div>
       <button class="arr r" id="ar" aria-label="Weiter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
       <div class="dots" id="dots"></div>
