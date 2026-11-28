@@ -7,6 +7,7 @@
 <meta name="robots" content="noindex">
 <title>Laser Kosmetik · St. Gallen</title>
 <meta name="description" content="Laser Kosmetik GmbH, St. Gallen – dauerhafte Haarentfernung, Tattooentfernung und Hautbehandlungen mit Cynosure-Lasersystemen. Seit 2011.">
+<link rel="preload" as="image" href="img/g23_1400.webp" imagesrcset="img/g23_700.webp 700w, img/g23_1400.webp 1400w" imagesizes="(max-width:900px) 100vw, 56vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -115,7 +116,7 @@ section{position:relative}
 .row .thumb{display:none}
 
 /* ---------- Technologie: Lichtskala ---------- */
-.tech{background:linear-gradient(180deg,var(--cream),var(--sand) 18%,var(--sand) 82%,var(--cream));padding:56px 0 64px}
+.tech{background:linear-gradient(180deg,var(--cream),var(--sand) 18%,var(--sand) 82%,var(--cream));padding:56px 0 30px}
 
 
 
@@ -148,7 +149,8 @@ section{position:relative}
 .dev li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1px;background:var(--gold2)}
 .dev-body{transition:opacity .35s}
 .dev-body.sw{opacity:0}
-.tech-note{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.tech-note{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:14px 28px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+@media (min-width:1200px){.tech-note{flex-wrap:nowrap;justify-content:space-between;gap:16px;white-space:nowrap}}
 .tech-note b{color:var(--ink);font-weight:500}
 
 /* ---------- Rhythmus ---------- */
@@ -192,6 +194,32 @@ section{position:relative}
 .pnote{margin-top:20px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
 .free{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink2);background:rgba(230,213,181,.5);border-radius:99px;padding:8px 16px}
 .free::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* Preise: gleitender Reiter, Rahmen, Kombi-Ersparnis (28.11) */
+.tabs{position:relative;display:inline-flex;gap:4px;padding:5px;border:1px solid var(--line);border-radius:99px;background:var(--paper);box-shadow:0 10px 30px -22px rgba(74,56,38,.5)}
+.tabs .tab{position:relative;z-index:1;border-color:transparent;background:transparent}
+.tabs .tab[aria-selected="true"]{background:transparent;border-color:transparent;color:#FBF6EC}
+.tab-ind{position:absolute;z-index:0;left:0;top:0;border-radius:99px;background:var(--ink);box-shadow:0 8px 20px -10px rgba(42,36,32,.7);transition:transform .45s var(--ease),width .45s var(--ease),height .45s var(--ease)}
+@media (hover:hover){.tabs .tab:not([aria-selected="true"]):hover{box-shadow:none;background:rgba(230,213,181,.45);border-color:transparent}}
+.panels{position:relative;border:1px solid var(--gold-soft);border-radius:26px;padding:30px 34px 26px;background:linear-gradient(180deg,rgba(251,248,243,.9),rgba(247,242,235,.9));box-shadow:0 30px 70px -50px rgba(74,56,38,.5)}
+.panels::before{content:"";position:absolute;inset:7px;border:1px solid rgba(200,169,113,.35);border-radius:20px;pointer-events:none}
+.panels::after{content:"";position:absolute;inset:-1px;border-radius:26px;pointer-events:none;background:
+  linear-gradient(var(--gold2),var(--gold2)) left 22px top -1px/26px 2px no-repeat,
+  linear-gradient(var(--gold2),var(--gold2)) right 22px bottom -1px/26px 2px no-repeat}
+.pi.combo{background:linear-gradient(90deg,rgba(230,213,181,.45),rgba(230,213,181,.12));border-bottom-color:transparent;margin-bottom:6px}
+.pi .save{font:500 11px/1 var(--mono);letter-spacing:.04em;color:var(--gold);border:1px solid var(--gold2);border-radius:99px;padding:5px 8px;white-space:nowrap;background:var(--paper)}
+.pi .was{font:400 12.5px/1 var(--mono);color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(169,132,78,.6)}
+@media (hover:hover){.pi:hover i{border-bottom-color:var(--gold2)}}
+.tat-box{position:relative;border:1px solid var(--gold-soft);box-shadow:0 0 0 6px var(--paper),0 0 0 7px rgba(200,169,113,.4),0 30px 60px -40px rgba(74,56,38,.55)}
+.tat-vis{-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+@media (max-width:640px){
+  .tabs{display:grid;grid-template-columns:1fr 1fr;border-radius:22px;width:100%}
+  .tabs .tab{padding:12px 8px;text-align:center;font-size:14px}
+  .tab-ind{border-radius:18px}
+  .panels{padding:18px 12px 14px;border-radius:20px}
+  .panels::before{inset:5px;border-radius:16px}
+  .pi .save,.pi .was{display:none}
+}
 /* Tattoo-Rechner */
 .tat{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .tat-box{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:30px}
@@ -270,6 +298,17 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .qbox figcaption{margin-top:10px;font:400 12.5px var(--mono);color:var(--muted);transition:opacity .3s}
 .qbox.sw blockquote,.qbox.sw figcaption{opacity:0}
 
+
+/* Über uns 28.11: Foto fährt mit, warmes Licht von hinten, ganzes Querformat */
+#team{overflow-x:clip}
+.team{position:relative;isolation:isolate}
+.team::before{content:"";position:absolute;z-index:-1;left:-6%;top:4%;width:52%;height:92%;background:radial-gradient(closest-side,rgba(232,206,150,.55),rgba(232,206,150,.18) 55%,transparent);filter:blur(10px);pointer-events:none}
+.team::after{content:"";position:absolute;z-index:-1;right:-4%;bottom:0;width:60%;height:55%;background:radial-gradient(closest-side,rgba(255,244,224,.9),transparent);pointer-events:none}
+@media (min-width:901px){.team{align-items:start}.ol{position:sticky;top:110px}}
+.laugh{margin:18px 0 0;position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1400/788;box-shadow:0 0 0 6px rgba(251,248,243,.7),0 30px 60px -34px rgba(74,56,38,.55)}
+.laugh img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+@media (hover:hover){.laugh:hover img{transform:scale(1.03)}}
+.laugh figcaption{position:absolute;left:12px;bottom:12px;background:rgba(251,248,243,.94);border-radius:99px;padding:7px 12px;font:400 12px var(--mono);color:var(--ink2)}
 /* ---------- Gut zu wissen ---------- */
 .know{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .acc{border-top:1px solid var(--line)}
@@ -287,6 +326,27 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .care li::before{content:"";position:absolute;left:10px;top:17px;width:9px;height:1.5px;background:var(--gold)}
 @media (hover:hover){.care li:hover{background:rgba(230,213,181,.35)}}
 
+
+/* Gut zu wissen 28.11: minimalistisch, zweite Akzentfarbe Rosé */
+:root{--rose:#B7776A;--blush:#F6E8E2;--blush2:#EFD9D0}
+.acc{counter-reset:q;border-top:0}
+.acc details{border:1px solid transparent;border-bottom-color:var(--line);border-radius:14px;transition:background .3s,border-color .3s,box-shadow .3s;margin-bottom:4px}
+.acc summary{counter-increment:q;padding:18px 16px;gap:18px;justify-content:flex-start}
+.acc summary::before{content:counter(q,decimal-leading-zero);flex:none;font:500 12px/1 var(--mono);letter-spacing:.08em;color:var(--gold);width:24px;transition:color .25s}
+.acc summary::after{margin-left:auto}
+.acc details p{padding:0 16px 20px 58px}
+.acc details[open]{background:var(--paper);border-color:var(--blush2);box-shadow:inset 3px 0 0 var(--rose),0 18px 40px -32px rgba(74,56,38,.45)}
+.acc details[open] summary::before{color:var(--rose)}
+@media (hover:hover){.acc summary:hover{background:var(--blush);color:var(--ink)}.acc summary:hover::before{color:var(--rose)}.acc summary:hover::after{border-color:var(--rose)}}
+.care{background:linear-gradient(160deg,var(--blush),#FBF3EF 60%,var(--paper));border-color:var(--blush2);position:relative;box-shadow:0 30px 70px -50px rgba(150,90,75,.45)}
+.care .ct{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.care .ct svg{flex:none;width:34px;height:34px;padding:7px;border-radius:50%;background:#fff;border:1px solid var(--blush2);color:var(--rose)}
+.care .ct h3{margin:0}
+.care .ct small{margin-left:auto;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+.care li::before{background:var(--rose)}
+.care li{background:rgba(255,255,255,.55);border:1px solid transparent;transition:background .25s,border-color .25s,transform .25s}
+@media (hover:hover){.care li:hover{background:#fff;border-color:var(--blush2);transform:translateX(4px)}}
+@media (max-width:640px){.care .ct small{display:none}.acc details p{padding-left:16px}}
 /* ---------- Gutschein ---------- */
 .gift{display:grid;grid-template-columns:1.1fr .9fr;border-radius:26px;overflow:hidden;background:var(--paper);border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(74,56,38,.5)}
 .gift .t{padding:52px}
@@ -302,10 +362,28 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .voucher b{display:block;font:400 24px/1.1 var(--serif);margin-top:6px}
 .voucher small{display:block}
 .voucher small{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase}
-@media (hover:hover){.gift:hover .voucher{transform:rotate(0) scale(1.03)}}
+.gift{cursor:default}
+.voucher{position:relative;overflow:hidden;will-change:transform;transition:transform .5s var(--ease)}
+.voucher::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,250,236,.65) 48%,transparent 62%);transform:translateX(var(--sx,-60%));transition:transform .5s var(--ease);pointer-events:none}
+.gcard{perspective:900px}
 
+
+/* ---------- Instagram & Einblicke ---------- */
+.ig-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.ig-card{display:flex;align-items:center;gap:14px;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:8px 8px 8px 10px;box-shadow:0 18px 40px -30px rgba(74,56,38,.5);transition:border-color .25s,box-shadow .25s,transform .25s}
+.ig-av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#fff;padding:3px;box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--gold2);overflow:hidden}
+.ig-av{color:var(--gold);background:radial-gradient(circle at 35% 30%,#fff,var(--sand))}.ig-av svg{width:26px;height:26px}
+.ig-id b{display:block;font:500 15px/1.2 var(--sans)}
+.ig-id small{font-size:12.5px;color:var(--muted)}
+@media (hover:hover){.ig-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 24px 50px -30px rgba(74,56,38,.6)}}
+.ig-grid{columns:4 240px;column-gap:14px}
+.ig-t{display:block;position:relative;margin:0 0 14px;border-radius:16px;overflow:hidden;break-inside:avoid;background:var(--sand);cursor:zoom-in;box-shadow:0 20px 40px -34px rgba(74,56,38,.6)}
+.ig-t img{width:100%;height:auto;transition:transform 1s var(--ease),filter .4s}
+.ig-t::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 100%,rgba(42,36,32,.28),transparent 60%);opacity:0;transition:opacity .35s}
+@media (hover:hover){.ig-t:hover img{transform:scale(1.04)}.ig-t:hover::after{opacity:1}}
+@media (max-width:640px){.ig-grid{columns:2;column-gap:10px}.ig-t{margin-bottom:10px;border-radius:12px}.ig-card{width:100%}.ig-card .btn{margin-left:auto}}
 /* ---------- Kontakt ---------- */
-.kon{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.kon{display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:start}
 .days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:22px 0 14px}
 .day{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:12px 0;text-align:center;cursor:pointer;font:500 13px/1 var(--mono);color:var(--ink2);transition:border-color .2s,background .2s,box-shadow .2s,color .2s}
 .day.today::after{content:"";display:block;width:4px;height:4px;border-radius:50%;background:var(--gold);margin:6px auto 0}
@@ -318,7 +396,7 @@ blockquote::before{content:"“";display:block;font:400 80px/0.6 var(--serif);co
 .kl a span{font-size:13px;color:var(--muted);font-family:var(--mono)}
 .kl a b{font-weight:400;font-size:16px}
 @media (hover:hover){.kl a:hover{background:rgba(230,213,181,.4);padding-left:16px}}
-.mapcard{position:relative;border-radius:22px;overflow:hidden;min-height:420px;background:var(--sand);box-shadow:0 30px 70px -40px rgba(74,56,38,.55)}
+.mapcard{position:relative;display:block;border-radius:22px;overflow:hidden;aspect-ratio:3/4;min-height:420px;background:var(--sand);box-shadow:0 30px 70px -40px rgba(74,56,38,.55)}
 .mapcard img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform 1.2s var(--ease)}
 @media (hover:hover){.mapcard:hover img{transform:scale(1.03)}}
 .mapcard .over{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(251,248,243,.97);border-radius:16px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}
@@ -409,7 +487,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
   .gift .t{padding:34px 24px}
   .days{gap:4px}
   .day{padding:11px 0;font-size:12px}
-  .mapcard{min-height:300px}
+  .mapcard{min-height:300px;aspect-ratio:4/5}
   .mcta{display:flex;position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:55;gap:8px;animation:fadeUp .7s 1.2s var(--ease) backwards}
   .mcta .btn{flex:1;min-height:52px;box-shadow:0 14px 30px -14px rgba(42,36,32,.7)}
   .mcta .btn-line{background:rgba(251,248,243,.96);flex:0 0 auto;padding:0 18px}
@@ -424,6 +502,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 .lb button{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer;transition:background .2s}
 @media (hover:hover){.lb button:hover{background:rgba(255,255,255,.25)}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}}
+
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -482,32 +561,32 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
           <span class="no">01</span>
           <div><h3>Dauerhafte Haarentfernung</h3><p>Diodenlaser Palomar Vectus mit Skintel-Melaninmessung. Behandlungen nur alle 2–4 Monate.</p></div>
           <span class="pr">z. B. Achseln<b>CHF 66</b></span>
-          <div class="thumb"><img src="img/vectus_arm_900.webp" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/vectus_arm_900.webp" alt="" loading="lazy" decoding="async"></div>
         </a>
         <a class="row" href="#preise" data-img="1" data-tab="tattoo">
           <span class="no">02</span>
           <div><h3>Tattooentfernung</h3><p>Pikosekundenlaser Cynosure PicoSure – auch für Permanent Make-up und schwierige Farben wie Blau und Grün.</p></div>
           <span class="pr">ab<b>CHF 80</b></span>
-          <div class="thumb"><img src="img/sq_tattoo_600.webp" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/sq_tattoo_600.webp" alt="" loading="lazy" decoding="async"></div>
         </a>
         <a class="row" href="#preise" data-img="2" data-tab="haut">
           <span class="no">03</span>
           <div><h3>Haut &amp; Gesicht</h3><p>Falten, Poren, Narben, Pigmentflecken, Couperose – mit Palomar Icon 1540, PicoSure und IPL. Dazu Peelings und Tiefenreinigung.</p></div>
           <span class="pr">ab<b>CHF 60</b></span>
-          <div class="thumb"><img src="img/pico_gesicht_1400.webp" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/pico_gesicht_1400.webp" alt="" loading="lazy" decoding="async"></div>
         </a>
         <a class="row" href="#preise" data-img="3" data-tab="kryo">
           <span class="no">04</span>
           <div><h3>Kryolipolyse</h3><p>Lokale Fettpölsterchen sanft durch Kälte reduzieren – ohne Nadeln, ohne Einschnitte.</p></div>
           <span class="pr">ab<b>CHF 120</b></span>
-          <div class="thumb"><img src="img/sq_kryo_600.webp" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/sq_kryo_600.webp" alt="" loading="lazy" decoding="async"></div>
         </a>
       </div>
       <div class="stage inview" aria-hidden="true">
-        <img class="on" src="img/vectus_arm_900.webp" alt="" loading="lazy">
-        <img src="img/sq_tattoo_600.webp" alt="" loading="lazy">
-        <img src="img/pico_gesicht_1400.webp" alt="" loading="lazy">
-        <img src="img/sq_kryo_600.webp" alt="" loading="lazy">
+        <img class="on" src="img/vectus_arm_900.webp" alt="" loading="lazy" decoding="async">
+        <img src="img/sq_tattoo_600.webp" alt="" loading="lazy" decoding="async">
+        <img src="img/pico_gesicht_1400.webp" alt="" loading="lazy" decoding="async">
+        <img src="img/sq_kryo_600.webp" alt="" loading="lazy" decoding="async">
         <div class="tag"><span id="stageTxt">Haarentfernung · Vectus</span><a href="#preise">Preise ansehen</a></div>
       </div>
     </div>
@@ -580,7 +659,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
       <div><div class="eyebrow">Preise</div><h2>Klar. <em>Pro</em> Behandlung.</h2></div>
       <p class="lead">Kein Abo, keine Pakete, die man abarbeiten muss. Sie bezahlen jede Behandlung einzeln.</p>
     </div>
-    <div class="tabs inview" role="tablist" aria-label="Preiskategorien">
+    <div class="tabs inview" role="tablist" aria-label="Preiskategorien"><span class="tab-ind" aria-hidden="true"></span>
       <button class="tab" role="tab" aria-selected="true" data-p="haar">Haarentfernung</button>
       <button class="tab" role="tab" aria-selected="false" data-p="tattoo">Tattooentfernung</button>
       <button class="tab" role="tab" aria-selected="false" data-p="haut">Haut &amp; Gesicht</button>
@@ -604,7 +683,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
           <div class="pi"><span>Rücken &amp; Schultern ohne Nacken</span><i></i><b>CHF 216</b></div>
           <div class="pi"><span>Bartkontur Wangen</span><i></i><b>CHF 60</b></div>
           <div class="pgrp">Kombinationen</div>
-          <div class="pi"><span>Beine ganz, Bikini &amp; Achseln</span><i></i><b>CHF 282</b></div>
+          <div class="pi combo"><span>Beine ganz, Bikini &amp; Achseln</span><i></i><span class="save">spart CHF 90</span><span class="was">CHF 372</span><b>CHF 282</b></div>
           <div class="pi"><span>Ganzkörper Frau oder Mann</span><i></i><b>CHF 540</b></div>
         </div>
       </div>
@@ -665,7 +744,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 <section class="sec fade-sand" id="team">
   <div class="wrap team">
     <div class="ol inview">
-      <img src="img/olivera_sofa_800.webp" alt="Olivera Ivkovic, Inhaberin von Laser Kosmetik, im Studio" width="800" height="1066" loading="lazy">
+      <img src="img/olivera_sofa_800.webp" alt="Olivera Ivkovic, Inhaberin von Laser Kosmetik, im Studio" width="800" height="1066" loading="lazy" decoding="async">
       <span class="ol-cap"><b>Olivera Ivkovic</b>Inhaberin · seit 2011</span>
     </div>
     <div class="ol-col inview">
@@ -680,7 +759,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
         <div class="mate"><div class="mono">C</div><b>Camilla</b><span>Kosmetikerin · ästhetische Laserbehandlungen</span></div>
       </div>
       <div class="dots" id="crewDots"><i class="on"></i><i></i><i></i></div>
-      <figure class="studio"><img src="img/g13_1400.webp" srcset="img/g13_700.webp 700w, img/g13_1400.webp 1400w" sizes="(max-width:900px) 100vw, 640px" alt="Empfang von Laser Kosmetik mit Zertifikaten und Klimt-Bild" width="1400" height="2100" loading="lazy"><figcaption>Unser Studio an der Ullmannstrasse 18a</figcaption></figure>
+      <figure class="laugh"><img src="img/olivera_kundin_1400.webp" srcset="img/olivera_kundin_800.webp 800w, img/olivera_kundin_1400.webp 1400w" sizes="(max-width:900px) 100vw, 760px" alt="Olivera Ivkovic im Gespräch mit einer Kundin im Studio" width="1400" height="788" loading="lazy" decoding="async"><figcaption>Olivera im Gespräch mit einer Kundin</figcaption></figure>
     </div>
   </div>
 </section>
@@ -726,7 +805,7 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
       </div>
     </div>
     <div class="care inview">
-      <h3>Vor Ihrem Termin</h3>
+      <div class="ct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><h3>Vor Ihrem Termin</h3><small>Bitte vorher sagen</small></div>
       <p style="color:var(--ink2);font-size:15px">Zu Ihrer Sicherheit behandeln wir nicht, wenn eines davon zutrifft – bitte sagen Sie es uns vorher:</p>
       <ul>
         <li>Schwangerschaft oder Stillzeit</li>
@@ -753,6 +832,35 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
   </div>
 </section>
 
+<!-- Instagram & Einblicke (28.11) -->
+<section class="sec" id="einblicke">
+  <div class="wrap">
+    <div class="ig-head inview">
+      <div><div class="eyebrow">Instagram · @laser.kosmetik</div><h2>Einblicke ins <em>Studio</em>.</h2></div>
+      <a class="ig-card" href="https://www.instagram.com/laser.kosmetik/" target="_blank" rel="noopener">
+        <span class="ig-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>
+        <span class="ig-id"><b>@laser.kosmetik</b><small>Behandlungen, Team &amp; Neuigkeiten</small></span>
+        <span class="btn btn-gold btn-sm"><i></i>Folgen</span>
+      </a>
+    </div>
+    <div class="ig-grid inview">
+      <a class="ig-t" href="img/gal_salon_1400.webp" data-big="img/gal_salon_1400.webp"><img src="img/gal_salon_600.webp" alt="Empfang mit Zertifikaten und Klimt-Bild" width="600" height="900" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_vectus_haut_1400.webp" data-big="img/gal_vectus_haut_1400.webp"><img src="img/gal_vectus_haut_600.webp" alt="Haarentfernung mit dem Vectus-Diodenlaser" width="600" height="337" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/g16_1400.webp" data-big="img/g16_1400.webp"><img src="img/g16_700.webp" alt="Zertifikate und Laserschutzbrillen am Empfang" width="700" height="1050" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_brille_600.webp" data-big="img/gal_brille_600.webp"><img src="img/gal_brille_600.webp" alt="Kundin mit Schutzbrille bei der Laserbehandlung" width="600" height="600" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_pflege_1400.webp" data-big="img/gal_pflege_1400.webp"><img src="img/gal_pflege_600.webp" alt="Pflegeprodukte im Behandlungsraum" width="600" height="400" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/g07_1400.webp" data-big="img/g07_1400.webp"><img src="img/g07_700.webp" alt="Palomar Icon 1540 im Behandlungsraum" width="700" height="1050" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_augenschutz_600.webp" data-big="img/gal_augenschutz_600.webp"><img src="img/gal_augenschutz_600.webp" alt="Augenschutz während der Gesichtsbehandlung" width="600" height="600" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_massage_1400.webp" data-big="img/gal_massage_1400.webp"><img src="img/gal_massage_600.webp" alt="Behandlung am Körper" width="600" height="338" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_flur_1400.webp" data-big="img/gal_flur_1400.webp"><img src="img/gal_flur_600.webp" alt="Im Studio an der Ullmannstrasse" width="600" height="900" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_gesicht_haende_900.webp" data-big="img/gal_gesicht_haende_900.webp"><img src="img/gal_gesicht_haende_600.webp" alt="Gesichtsbehandlung mit sanften Händen" width="600" height="337" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/g11_1400.webp" data-big="img/g11_1400.webp"><img src="img/g11_700.webp" alt="Laserschutzbrillen im Glas" width="700" height="1050" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/gal_vectus_licht_600.webp" data-big="img/gal_vectus_licht_600.webp"><img src="img/gal_vectus_licht_600.webp" alt="Vectus-Handstück bei der Haarentfernung" width="600" height="600" loading="lazy" decoding="async"></a>
+      <a class="ig-t" href="img/beine_1920.webp" data-big="img/beine_1920.webp"><img src="img/beine_960.webp" alt="Glatte Beine nach der Haarentfernung" width="960" height="400" loading="lazy" decoding="async"></a>
+    </div>
+  </div>
+</section>
+
 <!-- Kontakt -->
 <section class="sec fade-sand" id="kontakt">
   <div class="wrap kon">
@@ -765,11 +873,10 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
         <a href="https://connect.shore.com/bookings/laser-kosmetik-gmbh/services?locale=de-CH" target="_blank" rel="noopener"><b>Online-Termin buchen</b><span>Shore · rund um die Uhr</span></a>
         <a href="tel:+41793415244"><b>+41 79 341 52 44</b><span>Anrufen</span></a>
         <a href="mailto:info@laser-kosmetik.ch"><b>info@laser-kosmetik.ch</b><span>E-Mail</span></a>
-        <a href="https://www.instagram.com/laser.kosmetik/" target="_blank" rel="noopener"><b>@laser.kosmetik</b><span>Instagram</span></a>
       </div>
     </div>
     <a class="mapcard inview" href="https://www.google.com/maps/search/?api=1&amp;query=Laser+Kosmetik+GmbH+Ullmannstrasse+18a+9014+St.+Gallen" target="_blank" rel="noopener" style="text-decoration:none">
-      <img src="img/olivera_kundin_1400.webp" alt="Olivera Ivkovic im Gespräch mit einer Kundin im Studio" width="1400" height="788" loading="lazy" style="object-position:50% 35%">
+      <img src="img/kontakt_empfang_1200.webp" srcset="img/kontakt_empfang_700.webp 700w, img/kontakt_empfang_1200.webp 1200w" sizes="(max-width:900px) 100vw, 420px" alt="Empfang im Studio Laser Kosmetik an der Ullmannstrasse" width="1200" height="1800" loading="lazy" decoding="async" style="object-position:50% 30%">
       <div class="over"><div><b>Ullmannstrasse 18a</b><span>9014 St. Gallen · Besucherparkplätze</span></div><span class="btn btn-gold btn-sm"><i></i>Route</span></div>
     </a>
   </div>
@@ -854,7 +961,9 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
 
   // Preise Tabs
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
-  function openTab(k){tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.p==k?'true':'false')});[].forEach.call(document.querySelectorAll('.panel'),function(p){p.classList.toggle('on',p.id=='p-'+k)})}
+  var ind=document.querySelector('.tab-ind');function moveInd(){var t=document.querySelector('.tab[aria-selected="true"]');if(!t||!ind)return;ind.style.width=t.offsetWidth+'px';ind.style.height=t.offsetHeight+'px';ind.style.transform='translate('+t.offsetLeft+'px,'+t.offsetTop+'px)'}
+  addEventListener('resize',moveInd);addEventListener('load',moveInd);if(document.fonts)document.fonts.ready.then(moveInd);setTimeout(moveInd,0);
+  function openTab(k){tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.p==k?'true':'false')});moveInd();[].forEach.call(document.querySelectorAll('.panel'),function(p){p.classList.toggle('on',p.id=='p-'+k)})}
   tabs.forEach(function(t){t.addEventListener('click',function(){openTab(t.dataset.p)})});
   [].forEach.call(document.querySelectorAll('.pi'),function(p){p.addEventListener('touchstart',function(){p.classList.add('tap');setTimeout(function(){p.classList.remove('tap')},600)},{passive:true})});
 
@@ -892,9 +1001,27 @@ footer{padding:50px 0 110px;background:linear-gradient(180deg,var(--cream),var(-
     if(first){f();return}qb.classList.add('sw');setTimeout(f,220);}
   cl.forEach(function(c,i){c.addEventListener('click',function(){q(i)})});q(0,true);
 
+
+  // Gutschein: Karte folgt Maus/Finger im ganzen Block (auch links über dem Text)
+  var gift=document.querySelector('.gift'),vch=document.querySelector('.voucher');
+  if(gift&&vch){
+    var gr=null;
+    function tilt(x,y){var r=gift.getBoundingClientRect(),c=vch.getBoundingClientRect();
+      var dx=(x-(c.left+c.width/2))/r.width,dy=(y-(c.top+c.height/2))/r.height;
+      dx=Math.max(-1,Math.min(1,dx));dy=Math.max(-1,Math.min(1,dy));
+      vch.style.transition='transform .25s ease-out';
+      vch.style.transform='rotate('+(-5+5*(1-Math.abs(dx)))+'deg) rotateY('+(dx*18)+'deg) rotateX('+(-dy*14)+'deg) scale(1.03)';
+      vch.style.setProperty('--sx',(dx*80)+'%')}
+    function rest(){vch.style.transition='';vch.style.transform='';vch.style.removeProperty('--sx')}
+    gift.addEventListener('mousemove',function(e){if(gr)return;gr=requestAnimationFrame(function(){gr=null;tilt(e.clientX,e.clientY)})});
+    gift.addEventListener('mouseleave',rest);
+    gift.addEventListener('touchmove',function(e){var t=e.touches[0];tilt(t.clientX,t.clientY)},{passive:true});
+    gift.addEventListener('touchend',rest,{passive:true});
+  }
   // Fotos gross
   var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
-  [].forEach.call(document.querySelectorAll('.ol img,.studio img,.dev .ph img,.stage img'),function(im){
+  [].forEach.call(document.querySelectorAll('.ig-t'),function(a){a.addEventListener('click',function(e){e.preventDefault();lbi.src=a.dataset.big;lbi.alt=a.querySelector('img').alt;lb.classList.add('on')})});
+  [].forEach.call(document.querySelectorAll('.ol img,.laugh img,.dev .ph img,.stage img'),function(im){
     var t=im.closest('.stage')||im;t.classList.add('zoomable');
     t.addEventListener('click',function(e){if(e.target.closest('a'))return;var src=im.closest('.stage')?document.querySelector('.stage img.on').src:im.src;lbi.src=src;lbi.alt=im.alt;lb.classList.add('on')});
   });
