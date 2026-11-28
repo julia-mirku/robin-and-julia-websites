@@ -798,7 +798,7 @@ html body #bewertungen .haken{row-gap:22px}
 </head>
 <body>
 <div class="mk-hinweis" id="mk-hinweis" role="note" lang="de" data-jr onclick="if(!event.target.closest('a'))window.open('https://webstudio-mirku.ch/','_blank','noopener')"><i aria-hidden="true"></i>Website-Entwurf von <a class="jr-link" href="https://webstudio-mirku.ch/" target="_blank" rel="noopener">Julia &amp; Robin Mirku</a> · nur zur Ansicht – einige Links und Funktionen sind noch nicht aktiv.</div>
-<script>document.documentElement.classList.replace('no-js','js');(function(){var a=new URLSearchParams(location.search).get('erster')==='alt';document.documentElement.classList.add(a?'erst-alt':'erst-neu');})()</script>
+<script>document.documentElement.classList.replace('no-js','js');document.documentElement.classList.add('erst-neu');</script>
 
 <header class="kopf">
   <div class="wrap">
@@ -833,7 +833,6 @@ html body #bewertungen .haken{row-gap:22px}
         <a href="#bewertungen"><b>5,0</b> <span class="sterne">★★★★★</span> 271 Google-Bewertungen</a>
         <a href="#zeiten"><span class="status" id="status-start"><i></i><span>Öffnungszeiten</span></span></a>
       </div>
-      <span class="start-tor" aria-hidden="true"></span>
     </div>
   </div>
 </section>
@@ -1122,7 +1121,6 @@ html body #bewertungen .haken{row-gap:22px}
   </div>
 </section>
 </main>
-<div class="erst-schalter" role="group" aria-label="Erster Block"><span>Erster Block</span><a href="?" class="s-neu">Neu</a><a href="?erster=alt" class="s-alt">Mit Tor</a></div>
 
 <footer class="fuss">
   <div class="wrap">
