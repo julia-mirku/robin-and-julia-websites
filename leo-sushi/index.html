@@ -755,6 +755,14 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
 @media (max-width:420px){ footer .wrap.fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)} .fgrid h4{letter-spacing:.1em} .fgrid a{max-width:100%;white-space:normal} }
 @media (max-width:1100px){ .sheet .rt{white-space:normal;overflow:visible} }
 @media (min-width:761px) and (max-width:1100px) and (min-height:821px){ .sheet{height:auto;min-height:calc(5 * 92px + 34px)} .sheet .half{grid-auto-rows:minmax(92px,auto)} }
+/* 28.11 dringend: nichts faengt das Scrollen */
+/* «Ihre Platte»-Liste ohne eigene Bildlaufleiste: ganze Liste sichtbar, das Rad/der Finger bewegt immer die Seite */
+.board ol{max-height:none!important;overflow:visible!important}
+/* Lieblinge: kein Vergroessern, keine Bewegung beim Ueberfahren – nur warmes Leuchten (wie die Cocktails, ohne Rahmen) */
+.dish img{transition:filter .3s}
+@media (hover:hover){ .dish.ready:hover{transform:none!important;box-shadow:0 0 44px rgba(255,200,97,.22),0 20px 40px -20px rgba(0,0,0,.7)!important} .dish.ready:hover img{transform:none!important;filter:brightness(1.1)} }
+/* Reiter der Karte: senkrechtes Wischen mit dem Finger bewegt die Seite (pan-x pan-y hat es in Chrome blockiert) */
+.noren{overflow:clip!important;touch-action:pan-y}.noren>.nren{transform:translateX(var(--tx,0px));transition:transform .3s cubic-bezier(.2,.7,.2,1)}.noren.drag>.nren{transition:none}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -1101,11 +1109,39 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
     /* kraeftiges Weiterdrehen nach vollem Licht: sofort fertig, der Rest der Bewegung scrollt die Seite weiter */
     if(!done && extra>.15){ pass=true; const rest=extra*700; finish(); requestAnimationFrame(()=>scrollBy(0,rest)); } },{passive:false});
   let ty=null;
-  on("touchstart",e=>{ ty=e.touches[0].clientY; },{passive:true});
+  on("touchstart",e=>{ ty=e.touches[0].clientY; if(!done){ pass=true; finish(); } },{passive:true});
   on("touchmove",e=>{ if(swallow(e)||ty==null) return; const y=e.touches[0].clientY; push((ty-y)/420); ty=y; },{passive:false});
   on("keydown",e=>{ if(done) return; if(["ArrowDown","PageDown"," ","End","Enter"].includes(e.key)){ e.preventDefault(); push(.34); } if(["ArrowUp","PageUp"].includes(e.key)){ e.preventDefault(); push(-.34); } });
   cord.addEventListener("click",()=>{ cord.classList.add("pull"); setTimeout(()=>cord.classList.remove("pull"),300); push(1); });
   $$('a[href^="#"]').forEach(a=>a.addEventListener("click",()=>{ if(!done){ target=1; finish(); doneAt=0; } }));
+})();
+
+
+/* ================= Rad/Trackpad: die Seite scrollt immer ================= */
+(function(){
+  const H=document.documentElement;
+  const hscroll=el=>{ for(let n=el;n&&n!==document.body;n=n.parentElement){ if(n.nodeType!==1) continue; const cs=getComputedStyle(n);
+      if((cs.overflowX==="auto"||cs.overflowX==="scroll")&&n.scrollWidth>n.clientWidth+1) return n; } return null; };
+  addEventListener("wheel",e=>{ if(e.ctrlKey||H.classList.contains("locked")) return;
+    const ax=Math.abs(e.deltaX), ay=Math.abs(e.deltaY); if(ay===0||ax>ay*1.5) return;
+    if(!hscroll(e.target)) return;
+    e.preventDefault(); const k=e.deltaMode===1?32:e.deltaMode===2?innerHeight:1;
+    window.scrollBy({top:e.deltaY*k,left:0,behavior:"instant"}); },{passive:false,capture:true});
+})();
+
+
+/* ================= Karten-Reiter: kein eigener Bildlauf (sonst faengt der Reiterstreifen den Finger), seitlich per transform ================= */
+(function(){ const tw=$("#tabs"); if(!tw) return; let tx=0;
+  const maxS=()=>{ const l=tw.lastElementChild; return l?Math.max(0,l.offsetLeft+l.offsetWidth-tw.clientWidth):0; };
+  const set=v=>{ tx=Math.max(-maxS(),Math.min(0,v)); tw.style.setProperty("--tx",tx+"px"); };
+  window.__tabTo=b=>set(-(b.offsetLeft-(tw.clientWidth-b.offsetWidth)/2));
+  let x0=null,y0=0,t0=0,hor=false;
+  tw.addEventListener("touchstart",e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; t0=tx; hor=false; },{passive:true});
+  tw.addEventListener("touchmove",e=>{ if(x0==null) return; const t=e.touches[0], dx=t.clientX-x0, dy=t.clientY-y0;
+    if(!hor && Math.abs(dx)>10 && Math.abs(dx)>Math.abs(dy)*1.5){ hor=true; tw.classList.add("drag"); } if(hor) set(t0+dx); },{passive:true});
+  tw.addEventListener("touchend",()=>{ x0=null; tw.classList.remove("drag"); },{passive:true});
+  tw.addEventListener("wheel",e=>{ if(Math.abs(e.deltaX)>Math.abs(e.deltaY)*1.5){ e.preventDefault(); tw.classList.add("drag"); set(tx-e.deltaX); clearTimeout(tw._w); tw._w=setTimeout(()=>tw.classList.remove("drag"),120); } },{passive:false});
+  addEventListener("resize",()=>set(tx));
 })();
 
 /* ================= Header / Dock ================= */
@@ -1177,25 +1213,31 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
       else { await run("one",newH[0],-92,0,760,"cubic-bezier(.45,.05,.4,1)","one",0,0); }
     }catch(e){ return; }
     if(cur===me){ cur=null; leaf.remove(); cast.remove(); sw.classList.remove("turning"); sheet.innerHTML=html; } }
+  let pend=null;
+  function glide(d,html){ endTurn(); if(pend!=null){ sheet.innerHTML=pend; pend=null; } sheet.getAnimations().forEach(a=>a.cancel());
+    if(!sheet.animate){ sheet.innerHTML=html; return; } pend=html;
+    const out=sheet.animate([{opacity:1,transform:"none"},{opacity:0,transform:`translateX(${-d*14}px)`}],{duration:150,easing:"ease-in",fill:"forwards"});
+    out.onfinish=()=>{ if(pend!==html) return; sheet.innerHTML=html; pend=null; out.cancel();
+      sheet.animate([{opacity:0,transform:`translateX(${d*14}px)`},{opacity:1,transform:"none"}],{duration:280,easing:"cubic-bezier(.2,.7,.2,1)"}); }; }
   function paint(dir){ const L=book[at], lc=L&&L.c; board.style.setProperty("--acc",lc?lc.acc:"#e8cf8f");
     const real=book.filter(p=>p.kind!=="blank").length;
     $("#pg").textContent="";
     $("#dots").textContent=book.length>step?(step===2?`Seiten ${at+1}–${Math.min(at+2,real)} / ${real}`:`Seite ${at+1} / ${book.length}`):"";
     const html=spreadHTML();
-    if((dir==="in-r"||dir==="in-l")&&!reduce) turn(dir==="in-r"?1:-1,html);
+    if((dir==="in-r"||dir==="in-l")&&!reduce) glide(dir==="in-r"?1:-1,html);
     else { endTurn(); sheet.innerHTML=html; sheet.classList.remove("in-r","in-l","drop"); void sheet.offsetWidth; if(dir) sheet.classList.add(dir); }
     const one=book.length<=step; $("#prev").disabled=one; $("#next").disabled=one;
     const nx=book[(at+step)%book.length]; $("#nxl").textContent=(mode==="cat"&&nx&&nx.kind==="cat"&&nx.k===0)?"Weiter: "+nx.c.t:"Weiter";
     if(mode==="cat"){ const inSpread=[book[at],book[at+step-1]].some(p=>p&&p.c===focus); const c=inSpread?focus:lc; const ix=KARTE.indexOf(c);
       const tb=$$(".nren"); tb.forEach(t=>t.setAttribute("aria-selected",+t.dataset.i===ix));
-      const b=tb[ix], tw=$("#tabs"); if(b&&tw.scrollWidth>tw.clientWidth) tw.scrollTo({left:b.offsetLeft-(tw.clientWidth-b.offsetWidth)/2,behavior:"smooth"}); } }
+      const b=tb[ix], tw=$("#tabs"); if(b&&window.__tabTo) window.__tabTo(b); } }
   const go=d=>{ if(book.length<=step) return; focus=null; at=(at+d*step+book.length)%book.length; at-=at%step; paint(d>0?"in-r":"in-l"); };
   $("#prev").onclick=()=>go(-1); $("#next").onclick=()=>go(1); $("#kPrev").onclick=()=>go(-1); $("#kNext").onclick=()=>go(1);
   /* Wischen: nur waagrecht blaettert, senkrecht scrollt die Seite */
   let sx=null,sy=0; sw.addEventListener("pointerdown",e=>{ sx=e.clientX; sy=e.clientY; },{passive:true});
   sw.addEventListener("pointerup",e=>{ if(sx==null) return; const dx=e.clientX-sx, dy=e.clientY-sy; sx=null; if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4) go(dx<0?1:-1); },{passive:true});
   sw.addEventListener("pointercancel",()=>sx=null);
-  let wx=0,wt=0,wl=false; board.addEventListener("wheel",e=>{ if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)) return; e.preventDefault();
+  let wx=0,wt=0,wl=false; board.addEventListener("wheel",e=>{ if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)*2.5) return; e.preventDefault();
     clearTimeout(wt); wt=setTimeout(()=>{ wl=false; wx=0; },220); if(wl) return; wx+=e.deltaX; if(Math.abs(wx)>36){ wl=true; go(wx>0?1:-1); wx=0; } },{passive:false});
   board.tabIndex=0; board.addEventListener("keydown",e=>{ if(e.key==="ArrowRight"){e.preventDefault();go(1);} if(e.key==="ArrowLeft"){e.preventDefault();go(-1);} });
   const refresh=dir=>{ at=0; build(); paint(dir); };
