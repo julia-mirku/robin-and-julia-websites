@@ -787,17 +787,17 @@ footer.foot{background:url(img/leinen.png) 0 0/256px 256px,linear-gradient(180de
   .wallwrap>.arrow{display:grid!important}
   .wdots{display:none!important}
 }
-/* Goldrahmen ruhiger (Juli 28.11 «не такую колхозную»): duenner, mattes Gold, ohne Glanzverlauf. html.frame-alt = alter Rahmen */
-html:not(.frame-alt) .frame{padding:7px;background:#a88a52;background-image:none;border-radius:2px;box-shadow:0 14px 30px -18px rgba(0,0,0,.75)}
-html:not(.frame-alt) .frame::before{inset:3px;border:1px solid rgba(255,236,190,.28)}
-html:not(.frame-alt) .frame .mat{padding:2px;background:#0b0f0c}
-.rahmenwahl{position:fixed;left:12px;bottom:12px;z-index:60;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(8,18,13,.88);border:1px solid rgba(201,164,92,.4);font:700 12px/1 var(--sans);color:#d9cfb8}
-.rahmenwahl span{padding:7px 8px 7px 10px;opacity:.75}
-.rahmenwahl button{padding:7px 11px;border-radius:999px;color:#d9cfb8}
-.rahmenwahl button[aria-pressed="true"]{background:var(--lamp);color:#1d1406}
-@media (max-width:760px){.rahmenwahl{bottom:74px}}
+/* Goldrahmen ruhig (Juli 28.11: «По-любому новые»): duenn, mattes Gold, ohne Glanzverlauf */
+.frame{padding:7px;background:#a88a52;background-image:none;border-radius:2px;box-shadow:0 14px 30px -18px rgba(0,0,0,.75)}
+.frame::before{inset:3px;border:1px solid rgba(255,236,190,.28)}
+.frame .mat{padding:2px;background:#0b0f0c}
 /* Platte: Preisspalte gleich breit in DE («Fr. 32») und EN («CHF 32») – Sprachwechsel verschiebt nichts */
 .board ol li .pp{min-width:4.4em;text-align:right;flex:none}
+/* Platten (Juli 28.11): kurze Liste, eine Zeile pro Rolle; rechte Spalte endet mit dem Foto */
+.board li{padding:7px 8px}
+.board li .n small{display:inline;margin-left:8px;font-size:.82em;opacity:.7;white-space:nowrap}
+.lcol .muster{margin-top:4px}
+@media (max-width:760px){.board li .n small{display:block;margin-left:0}}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -896,6 +896,8 @@ html:not(.frame-alt) .frame .mat{padding:2px;background:#0b0f0c}
         <img src="img/s/platte_4_personen.jpg" srcset="img/s/platte_4_personen_m.jpg 760w, img/s/platte_4_personen.jpg 1100w" sizes="(max-width:900px) 100vw, 50vw" width="1100" height="821" alt="Grosse Sushi-Platte auf Schiefer, von oben" loading="lazy" decoding="async">
         <div class="tot" id="pTot"><span class="pill"><b id="tStk">0</b> Stück</span><span class="pill">Fr. <b id="tFr">0</b></span><span class="pill">≈ Fr. <b id="tPP">0</b> pro Person</span></div>
       </div>
+      <!-- MUSTER-HINWEIS fuer den Inhaber: zum Entfernen diesen <aside> loeschen -->
+        <aside class="muster" data-muster><span>Musterentwurf · Hinweis für Leo</span>Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.</aside>
       </div>
       <div class="ctrl reveal">
         <div><span class="lb"><b class="no">2</b>Hunger</span>
@@ -918,8 +920,7 @@ html:not(.frame-alt) .frame .mat{padding:2px;background:#0b0f0c}
           <a class="btn btn-lamp" id="pOrder" href="tel:+41767661747"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Diese Platte telefonisch bestellen</a>
           <button class="btn btn-line" type="button" id="copy">Liste kopieren</button>
         </div>
-        <!-- MUSTER-HINWEIS fuer den Inhaber: zum Entfernen diesen <aside> loeschen -->
-        <aside class="muster" data-muster><span>Musterentwurf · Hinweis für Leo</span>Gäste stellen ihre Platte selbst zusammen und rufen mit fertiger Bestellung an – weniger Rückfragen am Telefon.</aside>
+
 
       </div>
     </div>
@@ -1192,13 +1193,7 @@ const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 })();
 
 
-/* ================= Nur auf github.io: Vergleich alter/neuer Goldrahmen ================= */
-(function(){ if(!/github\.io$/.test(location.hostname)) return; const H=document.documentElement;
-  const box=document.createElement("div"); box.className="rahmenwahl"; box.setAttribute("aria-label","Goldrahmen vergleichen");
-  box.innerHTML='<span>Rahmen</span><button type="button" data-v="alt">alt</button><button type="button" data-v="neu">neu</button>';
-  const set=v=>{ H.classList.toggle("frame-alt",v==="alt"); box.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v)); };
-  box.addEventListener("click",e=>{ const b=e.target.closest("button"); if(b) set(b.dataset.v); }); set("neu"); document.body.appendChild(box);
-})();
+
 
 /* ================= Header / Dock ================= */
 (function(){ const h=$("#hdr"), dock=$("#dock");
@@ -1336,7 +1331,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.ta
     vegi:[63,54,25,31,45,80,15,14,17,76,16,79],
     cooked:[69,72,71,62,55,46,50,8,57,29,63,24]
   };
-  let pers=4,hung=14,stil="mix",lines=[],started=false;
+  let pers=4,hung=10,stil="mix",lines=[],started=false;
   const out=$("#pers"), ol=$("#boardList"), board=$("#pBoard"), touched=new Set();
   const mark=n=>{ touched.add(n); $$("#pSteps li").forEach(li=>li.classList.toggle("done", touched.has(+li.dataset.s) || (li.dataset.s==="4"&&started))); };
   const start=()=>{ if(started) return; started=true; board.classList.remove("empty"); $("#pTot").classList.remove("off"); $("#pOrder").classList.remove("idle");
@@ -1462,7 +1457,7 @@ $$(".reveal,#moved").forEach(el=>io.observe(el));
 "Allergien? Bitte beim Bestellen sagen.":"Allergies? Please tell us when you order.",
 "Suchergebnis":"Search results","Gut zu wissen":"Good to know","Nichts gefunden – versuchen Sie «Lachs», «Avocado» oder eine Nummer.":"Nothing found – try “salmon”, “avocado” or a number.",
 "Crunchy Rollen":"Crunchy Rolls","Vorspeisen & Bao":"Starters & Bao","Ramen & Suppen":"Ramen & Soups",
-"Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
+"Sushi-Platte für":"A sushi platter for","Ihre Gruppe":"your group","in 10 Sekunden zusammengestellt":"put together in 10 seconds",
 "Wählen Sie Personen, Hunger und Stil – wir zeigen sofort, was auf die Platte kommt und was es kostet. Dann einfach anrufen und bestellen.":"Choose how many people, your appetite and style – we show you straight away what goes on the platter and what it costs. Then simply ring us and order.",
 "So funktioniert es":"How it works","Personen":"People","Hunger":"Appetite","Stil":"Style","Ihre Platte":"Your platter","Ihre Platte":"Your platter",
 "Grosse Sushi-Platte auf Schiefer, von oben":"Large sushi platter on slate, seen from above",
