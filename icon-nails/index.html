@@ -77,7 +77,7 @@ html.nb-off .top{top:0}
 /* ---------- Hero A: Première ---------- */
 .hero{position:relative;min-height:100svh;padding:calc(var(--hdr) + var(--nb) + 18px) 0 40px;color:var(--papier);overflow:hidden;
   background:radial-gradient(120% 80% at 50% 8%,#24402F 0,#17291F 52%,#0F1C16 100%)}
-.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(180deg,rgba(15,28,22,0),var(--papier));pointer-events:none;z-index:8}
+.hero:after{content:none}
 .spot{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(520px 520px at var(--sx,50%) var(--sy,40%),rgba(236,221,185,.13),transparent 70%);transition:background .2s}
 .velvet{position:absolute;top:0;bottom:0;width:52%;z-index:6;pointer-events:none;
   background:
@@ -457,7 +457,7 @@ html.nb-off .top{top:0}
  .mini{bottom:84px!important}}
 
 /* ===== 24.11 Bewegungen ===== */
-:root{--pick:#B08A3E;--pick-hi:#E6CD92}
+:root{--pick:#0B4B33;--pick-hi:#2E8C63}
 /* 1 Lackwand-Regal */
 .hero.b{padding-bottom:150px}
 .hero.b .hero-grid{min-height:calc(100svh - var(--hdr) - var(--nb) - 200px)}
@@ -694,6 +694,74 @@ header.top{z-index:90!important}
   width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 15px/1 system-ui,-apple-system,sans-serif;
   background:rgba(255,255,255,.24);color:#fff}
 @media (hover:hover){#atelier .seg button[data-p].on:hover span::after,#atelier #segEx button.on:hover span::after{background:rgba(255,255,255,.4)}}
+
+/* v6 P2: Tropfen hängen direkt an der dunklen Kante, Lackband deckend */
+.drips{top:-2px!important}
+.drips .band{fill:url(#lackG)!important}
+/* v6 P1: Lackfarben-Varianten */
+html[data-drip="c"] .drips .dr,html[data-drip="c"] .drips .band{fill:url(#lackGlit)!important}
+.opt-bar{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:8px 18px;margin:-8px 0 18px;font:400 11px "Josefin Sans";letter-spacing:.14em;text-transform:uppercase;color:var(--tinte-2)}
+.opt-g{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.opt-g>span{margin-right:2px}
+.opt-g button{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:0 12px;border-radius:99px;border:1px solid var(--linie);background:rgba(255,255,255,.75);font:400 11.5px "Josefin Sans";letter-spacing:.1em;text-transform:uppercase;color:var(--tinte);transition:border-color .2s,background .2s,box-shadow .2s}
+.opt-g button i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 -2px 3px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.8)}
+.opt-g button.on{border-color:var(--tinte);background:#fff;box-shadow:0 0 0 1px var(--tinte)}
+@media (hover:hover){.opt-g button:not(.on):hover{border-color:var(--gold-2);box-shadow:0 0 0 4px rgba(236,221,185,.55)}}
+@media (max-width:900px){.opt-bar{justify-content:flex-start;margin:0 0 16px;gap:10px}.opt-g>span{flex-basis:100%;margin:0 0 2px}}
+/* v6 P3: kein dunkler Streifen unter der Hand */
+#atelier .frame{box-shadow:0 0 0 1px rgba(169,133,68,.7),0 0 0 8px var(--papier),0 0 0 9px rgba(169,133,68,.35)!important}
+/* v6 P8: weiche Übergänge zwischen hellen Blöcken */
+#salons{background:linear-gradient(180deg,var(--papier) 0,var(--papier-2) 100%)!important}
+#atelier{background:linear-gradient(180deg,var(--papier-2) 0,var(--papier) 220px,var(--papier) 100%)!important}
+#programm{background:var(--papier)!important}
+#galerie{background:var(--papier)!important}
+#kritiken{background:linear-gradient(180deg,var(--papier),var(--papier-2))!important}
+#team{background:linear-gradient(180deg,var(--papier-2),var(--papier))!important}
+#gutschein{background:linear-gradient(180deg,var(--papier),var(--papier-2))!important}
+.finale{background:linear-gradient(180deg,var(--papier-2),var(--puder) 70%)!important}
+/* Textur nur auf Wunsch (Umschalter), Standard aus */
+html:not(.tex-on) .grain:before{display:none}
+html.tex-on .grain:before{opacity:.55}
+/* v6 P4: Bewertungen passen */
+@media (min-width:901px){.krit{grid-template-columns:1.18fr 1.18fr .9fr!important}}
+.kq.kq-long blockquote{font-size:16.5px!important;line-height:1.5}
+.kq.big blockquote{font-size:clamp(21px,1.9vw,27px)!important;line-height:1.35}
+.kq .nw{white-space:nowrap}
+/* v6 P5 */
+.tm-ph{flex-direction:column;gap:10px}
+.tm .tm-ph .tm-cap{font:400 9.5px/1.3 "Josefin Sans";letter-spacing:.22em;text-transform:uppercase;color:rgba(236,221,185,.62);margin:0;padding:4px 10px;border:1px dashed rgba(205,174,110,.4);border-radius:99px;text-align:center}
+.tm .tm-ph .tm-ini{font:inherit;color:inherit;line-height:1;min-height:0}
+/* v6 P6: Geschenkkarte */
+.gs-ticket{grid-template-columns:minmax(0,1fr) 330px!important}
+.gs-ticket:before,.gs-ticket:after{right:318px!important}
+.gs-r{padding:26px 28px!important;background:radial-gradient(90% 80% at 60% 40%,rgba(205,174,110,.14),transparent 70%)!important}
+.gcard{position:relative;width:100%;max-width:280px;aspect-ratio:1.586;border-radius:16px;overflow:hidden;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;
+  background:radial-gradient(120% 90% at 0% 0%,#F3E3B6 0,rgba(243,227,182,0) 55%),linear-gradient(135deg,#E4CB8E 0%,#C6A15A 38%,#9C7838 62%,#D8BC7E 100%);color:#13251C;
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 0 0 1px rgba(255,240,200,.55) inset,0 22px 40px -18px rgba(0,0,0,.85),0 6px 14px -8px rgba(0,0,0,.6);transform:rotate(-4deg);transition:transform .45s var(--ease)}
+.gcard:after{content:"";position:absolute;inset:7px;border:1px solid rgba(19,37,28,.28);border-radius:11px;pointer-events:none}
+.gc-shine{position:absolute;top:-30%;bottom:-30%;width:42%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);pointer-events:none}
+.gcard.flash .gc-shine{animation:gcShine .9s var(--ease)}
+@keyframes gcShine{from{left:-60%}to{left:130%}}
+.gc-top{display:flex;justify-content:space-between;align-items:flex-start}
+.gc-brand{display:flex;flex-direction:column;font:300 13px/1 "Josefin Sans";letter-spacing:.34em}
+.gc-brand small{font-size:8.5px;letter-spacing:.42em;margin-top:5px;opacity:.8}
+.gc-chip{width:34px;height:26px;border-radius:5px;background:linear-gradient(135deg,#F6E7BE,#B8924F 60%,#E8D29B);box-shadow:inset 0 0 0 1px rgba(19,37,28,.3)}
+.gc-mid{display:flex;flex-direction:column;gap:2px}
+.gcard .gs-adm{font:600 9.5px "Josefin Sans";letter-spacing:.32em;text-transform:uppercase;color:rgba(19,37,28,.75)}
+.gcard .gs-val{font:400 34px/1.05 "Playfair Display";color:#13251C;white-space:nowrap}
+.gcard .gs-val.long{font-size:25px}
+.gc-foot{display:flex;justify-content:space-between;font:400 9.5px "Josefin Sans";letter-spacing:.24em;text-transform:uppercase;color:rgba(19,37,28,.72)}
+@media (hover:hover){.live .gs-ticket:hover .gcard{transform:rotate(-1deg) translateY(-4px)}}
+@media (max-width:760px){.gs-ticket{grid-template-columns:1fr!important}.gs-r{flex-direction:column!important;padding:24px 18px 28px!important}.gcard{max-width:300px}.gcard .gs-val{font-size:32px}}
+/* v6 P7: kleine Arbeiten statt Salonfotos */
+.lg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:520px}
+.lg-grid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;box-shadow:0 0 0 1px rgba(205,174,110,.35);transition:transform .5s var(--ease)}
+.loge:hover .lg-grid img:nth-child(odd){transform:translateY(-3px)}.loge:hover .lg-grid img:nth-child(even){transform:translateY(-6px)}
+/* v6 P9: scharfes Hero-Bild, links dunkel für Text, rechts Salon sichtbar */
+html .hero.b .bgwall img{filter:none!important;opacity:1!important;object-position:50% 50%}
+html .hero.b .bgwall:after{background:linear-gradient(90deg,rgba(15,28,22,.93) 0,rgba(15,28,22,.82) 30%,rgba(15,28,22,.45) 55%,rgba(15,28,22,.12) 100%)!important}
+@media (max-width:900px){html .hero.b .bgwall{bottom:auto;height:400px}html .hero.b .bgwall img{object-position:68% 60%}html[data-bg="2"] .hero.b .bgwall img{object-position:74% 62%}
+ html .hero.b .bgwall:after{background:linear-gradient(180deg,rgba(15,28,22,.55) 0,rgba(15,28,22,.38) 45%,rgba(15,28,22,.6) 70%,#0F1C16 100%)!important}}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style>
 <style id="runde-25-11">
@@ -921,11 +989,6 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
 @media (max-width:900px){.regal-in{touch-action:pan-x pan-y!important}}
 @media (max-width:700px){footer{padding-bottom:calc(84px + env(safe-area-inset-bottom))!important}}
 
-/* 28.11 icon v4 hero-bg: Hintergrund leicht weich + etwas dunkler (Julia: nichts Mutiges gross; auf Dunkel sieht man die Weichheit nicht) */
-.bgwall{overflow:hidden}
-.bgwall img{filter:blur(2px) brightness(.9) saturate(1.05)!important;transform:scale(1.03)!important;opacity:.66!important}
-.bgwall:after{background:linear-gradient(90deg,rgba(15,28,22,.92) 0,rgba(15,28,22,.66) 44%,rgba(15,28,22,.30) 100%)!important}
-@media (max-width:900px){.bgwall:after{background:linear-gradient(180deg,rgba(15,28,22,.50),rgba(15,28,22,.92) 52%)!important}}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 </head>
@@ -957,7 +1020,7 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
 
 <main>
 <section class="hero b" id="hero">
-  <div class="bgwall" aria-hidden="true"><img src="img/icon_lounge_wand.webp" alt=""></div>
+  <div class="bgwall" aria-hidden="true"><img id="heroBg" src="img/hero_b1.webp" alt=""></div>
   <div class="spot" aria-hidden="true"></div>
   <div class="lackstrich" aria-hidden="true"></div>
   <div class="hero-grid">
@@ -1013,8 +1076,14 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
 
 <!-- SPIELSTÄTTEN -->
 <section class="sec grain" id="salons">
-  <div class="drips" id="drips" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><defs><linearGradient id="lackG" x1="0" x2="1"><stop offset="0" style="stop-color:var(--pick)"/><stop offset=".42" style="stop-color:var(--pick-hi)"/><stop offset="1" style="stop-color:var(--pick)"/></linearGradient></defs><linearGradient id="lackV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--pick);stop-opacity:0"/><stop offset="1" style="stop-color:var(--pick);stop-opacity:.75"/></linearGradient><rect class="band" x="0" y="0" width="1440" height="5" style="fill:url(#lackV)"/><path class="dr" style="--d:0.24s" d="M-3.1,0 C3.5,10 4.5,11.2 4.5,19.4 A9.5,9.5 0 0 0 23.5,19.4 C23.5,11.2 24.5,10 31.1,0 Z"/><path class="dr" style="--d:0.32s" d="M48.1,0 C52.0,10 52.5,28.5 52.5,71.4 A5.5,5.5 0 0 0 63.5,71.4 C63.5,28.5 64.0,10 67.9,0 Z"/><path class="dr" style="--d:0.13s" d="M133.0,0 C136.5,10 137.0,19.9 137.0,47.1 A5.0,5.0 0 0 0 147.0,47.1 C147.0,19.9 147.5,10 151.0,0 Z"/><path class="dr" style="--d:0.04s" d="M171.2,0 C178.9,10 180.0,16.7 180.0,34.0 A11.0,11.0 0 0 0 202.0,34.0 C202.0,16.7 203.1,10 210.8,0 Z"/><path class="dr" style="--d:0.50s" d="M220.2,0 C227.9,10 229.0,9.1 229.0,13.2 A11.0,11.0 0 0 0 251.0,13.2 C251.0,9.1 252.1,10 259.8,0 Z"/><path class="dr" style="--d:0.38s" d="M278.6,0 C284.2,10 285.0,24.0 285.0,56.8 A8.0,8.0 0 0 0 301.0,56.8 C301.0,24.0 301.8,10 307.4,0 Z"/><path class="dr" style="--d:0.59s" d="M319.1,0 C326.4,10 327.5,9.1 327.5,13.6 A10.5,10.5 0 0 0 348.5,13.6 C348.5,9.1 349.6,10 356.9,0 Z"/><path class="dr" style="--d:0.25s" d="M369.3,0 C373.9,10 374.5,13.5 374.5,27.9 A6.5,6.5 0 0 0 387.5,27.9 C387.5,13.5 388.1,10 392.7,0 Z"/><path class="dr" style="--d:0.19s" d="M477.2,0 C481.4,10 482.0,19.9 482.0,46.4 A6.0,6.0 0 0 0 494.0,46.4 C494.0,19.9 494.6,10 498.8,0 Z"/><path class="dr" style="--d:0.34s" d="M538.2,0 C542.4,10 543.0,19.9 543.0,46.4 A6.0,6.0 0 0 0 555.0,46.4 C555.0,19.9 555.6,10 559.8,0 Z"/><path class="dr" style="--d:0.33s" d="M593.0,0 C600.0,10 601.0,9.1 601.0,13.9 A10.0,10.0 0 0 0 621.0,13.9 C621.0,9.1 622.0,10 629.0,0 Z"/><path class="dr" style="--d:0.12s" d="M648.0,0 C651.5,10 652.0,19.9 652.0,47.1 A5.0,5.0 0 0 0 662.0,47.1 C662.0,19.9 662.5,10 666.0,0 Z"/><path class="dr" style="--d:0.19s" d="M743.2,0 C750.9,10 752.0,28.5 752.0,67.8 A11.0,11.0 0 0 0 774.0,67.8 C774.0,28.5 775.1,10 782.8,0 Z"/><path class="dr" style="--d:0.18s" d="M854.3,0 C862.4,10 863.5,13.5 863.5,24.6 A11.5,11.5 0 0 0 886.5,24.6 C886.5,13.5 887.6,10 895.7,0 Z"/><path class="dr" style="--d:0.34s" d="M921.6,0 C927.2,10 928.0,9.1 928.0,15.2 A8.0,8.0 0 0 0 944.0,15.2 C944.0,9.1 944.8,10 950.4,0 Z"/><path class="dr" style="--d:0.44s" d="M1019.4,0 C1027.8,10 1029.0,13.5 1029.0,24.3 A12.0,12.0 0 0 0 1053.0,24.3 C1053.0,13.5 1054.2,10 1062.6,0 Z"/><path class="dr" style="--d:0.31s" d="M1105.1,0 C1109.0,10 1109.5,9.1 1109.5,16.8 A5.5,5.5 0 0 0 1120.5,16.8 C1120.5,9.1 1121.0,10 1124.9,0 Z"/><path class="dr" style="--d:0.56s" d="M1156.9,0 C1163.5,10 1164.5,11.2 1164.5,19.4 A9.5,9.5 0 0 0 1183.5,19.4 C1183.5,11.2 1184.5,10 1191.1,0 Z"/><path class="dr" style="--d:0.05s" d="M1256.0,0 C1259.5,10 1260.0,24.0 1260.0,58.8 A5.0,5.0 0 0 0 1270.0,58.8 C1270.0,24.0 1270.5,10 1274.0,0 Z"/><path class="dr" style="--d:0.42s" d="M1356.9,0 C1363.5,10 1364.5,13.5 1364.5,25.9 A9.5,9.5 0 0 0 1383.5,25.9 C1383.5,13.5 1384.5,10 1391.1,0 Z"/></svg></div>
+  <div class="drips" id="drips" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><defs><linearGradient id="lackG" x1="0" x2="1"><stop offset="0" style="stop-color:var(--pick)"/><stop offset=".42" style="stop-color:var(--pick-hi)"/><stop offset="1" style="stop-color:var(--pick)"/></linearGradient><pattern id="lackGlit" patternUnits="userSpaceOnUse" width="26" height="22"><rect width="26" height="22" style="fill:var(--pick)"/><rect width="26" height="22" fill="url(#lackGl2)"/><circle cx="3" cy="4" r=".9" fill="#F3E2B0"/><circle cx="14" cy="2.5" r=".6" fill="#fff" opacity=".9"/><circle cx="21" cy="9" r="1" fill="#E2C47E"/><circle cx="8" cy="12" r=".55" fill="#fff" opacity=".8"/><circle cx="17" cy="16" r=".8" fill="#F3E2B0"/><circle cx="4" cy="19" r=".6" fill="#E2C47E"/><circle cx="24" cy="20" r=".5" fill="#fff" opacity=".85"/><circle cx="11" cy="7" r=".45" fill="#F7EBC8"/></pattern><linearGradient id="lackGl2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--pick-hi);stop-opacity:.0"/><stop offset=".5" style="stop-color:var(--pick-hi);stop-opacity:.35"/><stop offset="1" style="stop-color:var(--pick-hi);stop-opacity:0"/></linearGradient></defs><linearGradient id="lackV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--pick);stop-opacity:0"/><stop offset="1" style="stop-color:var(--pick);stop-opacity:.75"/></linearGradient><rect class="band" x="0" y="0" width="1440" height="7" style="fill:url(#lackG)"/><path class="dr" style="--d:0.24s" d="M-3.1,0 C3.5,10 4.5,11.2 4.5,19.4 A9.5,9.5 0 0 0 23.5,19.4 C23.5,11.2 24.5,10 31.1,0 Z"/><path class="dr" style="--d:0.32s" d="M48.1,0 C52.0,10 52.5,28.5 52.5,71.4 A5.5,5.5 0 0 0 63.5,71.4 C63.5,28.5 64.0,10 67.9,0 Z"/><path class="dr" style="--d:0.13s" d="M133.0,0 C136.5,10 137.0,19.9 137.0,47.1 A5.0,5.0 0 0 0 147.0,47.1 C147.0,19.9 147.5,10 151.0,0 Z"/><path class="dr" style="--d:0.04s" d="M171.2,0 C178.9,10 180.0,16.7 180.0,34.0 A11.0,11.0 0 0 0 202.0,34.0 C202.0,16.7 203.1,10 210.8,0 Z"/><path class="dr" style="--d:0.50s" d="M220.2,0 C227.9,10 229.0,9.1 229.0,13.2 A11.0,11.0 0 0 0 251.0,13.2 C251.0,9.1 252.1,10 259.8,0 Z"/><path class="dr" style="--d:0.38s" d="M278.6,0 C284.2,10 285.0,24.0 285.0,56.8 A8.0,8.0 0 0 0 301.0,56.8 C301.0,24.0 301.8,10 307.4,0 Z"/><path class="dr" style="--d:0.59s" d="M319.1,0 C326.4,10 327.5,9.1 327.5,13.6 A10.5,10.5 0 0 0 348.5,13.6 C348.5,9.1 349.6,10 356.9,0 Z"/><path class="dr" style="--d:0.25s" d="M369.3,0 C373.9,10 374.5,13.5 374.5,27.9 A6.5,6.5 0 0 0 387.5,27.9 C387.5,13.5 388.1,10 392.7,0 Z"/><path class="dr" style="--d:0.19s" d="M477.2,0 C481.4,10 482.0,19.9 482.0,46.4 A6.0,6.0 0 0 0 494.0,46.4 C494.0,19.9 494.6,10 498.8,0 Z"/><path class="dr" style="--d:0.34s" d="M538.2,0 C542.4,10 543.0,19.9 543.0,46.4 A6.0,6.0 0 0 0 555.0,46.4 C555.0,19.9 555.6,10 559.8,0 Z"/><path class="dr" style="--d:0.33s" d="M593.0,0 C600.0,10 601.0,9.1 601.0,13.9 A10.0,10.0 0 0 0 621.0,13.9 C621.0,9.1 622.0,10 629.0,0 Z"/><path class="dr" style="--d:0.12s" d="M648.0,0 C651.5,10 652.0,19.9 652.0,47.1 A5.0,5.0 0 0 0 662.0,47.1 C662.0,19.9 662.5,10 666.0,0 Z"/><path class="dr" style="--d:0.19s" d="M743.2,0 C750.9,10 752.0,28.5 752.0,67.8 A11.0,11.0 0 0 0 774.0,67.8 C774.0,28.5 775.1,10 782.8,0 Z"/><path class="dr" style="--d:0.18s" d="M854.3,0 C862.4,10 863.5,13.5 863.5,24.6 A11.5,11.5 0 0 0 886.5,24.6 C886.5,13.5 887.6,10 895.7,0 Z"/><path class="dr" style="--d:0.34s" d="M921.6,0 C927.2,10 928.0,9.1 928.0,15.2 A8.0,8.0 0 0 0 944.0,15.2 C944.0,9.1 944.8,10 950.4,0 Z"/><path class="dr" style="--d:0.44s" d="M1019.4,0 C1027.8,10 1029.0,13.5 1029.0,24.3 A12.0,12.0 0 0 0 1053.0,24.3 C1053.0,13.5 1054.2,10 1062.6,0 Z"/><path class="dr" style="--d:0.31s" d="M1105.1,0 C1109.0,10 1109.5,9.1 1109.5,16.8 A5.5,5.5 0 0 0 1120.5,16.8 C1120.5,9.1 1121.0,10 1124.9,0 Z"/><path class="dr" style="--d:0.56s" d="M1156.9,0 C1163.5,10 1164.5,11.2 1164.5,19.4 A9.5,9.5 0 0 0 1183.5,19.4 C1183.5,11.2 1184.5,10 1191.1,0 Z"/><path class="dr" style="--d:0.05s" d="M1256.0,0 C1259.5,10 1260.0,24.0 1260.0,58.8 A5.0,5.0 0 0 0 1270.0,58.8 C1270.0,24.0 1270.5,10 1274.0,0 Z"/><path class="dr" style="--d:0.42s" d="M1356.9,0 C1363.5,10 1364.5,13.5 1364.5,25.9 A9.5,9.5 0 0 0 1383.5,25.9 C1383.5,13.5 1384.5,10 1391.1,0 Z"/></svg></div>
   <div class="wrap">
+    <div class="opt-bar" id="optBar">
+      <div class="opt-g" role="group" aria-label="Lackfarbe"><span data-en="Draft option · drip colour:">Entwurf-Option · Lackfarbe:</span><button type="button" data-drip="a" class="on"><i style="background:#0B4B33"></i><span data-en="Green">Grün</span></button><button type="button" data-drip="b"><i style="background:#D9A0A8"></i>Rosé</button><button type="button" data-drip="c"><i style="background:radial-gradient(circle at 30% 30%,#F3E2B0 0 12%,transparent 14%),radial-gradient(circle at 70% 60%,#fff 0 9%,transparent 11%),#155A3F"></i><span data-en="Glitter">Glitzer</span></button></div>
+      <div class="opt-g" role="group" aria-label="Textur"><span data-en="Texture:">Textur:</span><button type="button" data-tex="0" class="on" data-en="off">aus</button><button type="button" data-tex="1" data-en="on">an</button></div>
+      <div class="opt-g" role="group" aria-label="Hintergrund"><span data-en="Background:">Hintergrund:</span><button type="button" data-bg="1" class="on">Salon 1</button><button type="button" data-bg="2">Salon 2</button></div>
+    </div>
+
     <div class="sec-head reveal">
       <div><span class="kicker" data-en="One salon · since 2019">Ein Salon · seit 2019</span>
       <h2 class="t" data-en="Welcome to <em>Kreuzplatz.</em>">Willkommen am <em>Kreuzplatz.</em></h2></div>
@@ -1242,11 +1311,11 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
         <span class="lg-thumbs"><img loading="lazy" src="img/icon_ig_schleife.webp" alt=""><img loading="lazy" src="img/icon_ig_herzen.webp" alt=""><img loading="lazy" src="img/icon_ig_dots.webp" alt=""></span>
         <span class="lg-go" data-en="To the profile →">Zum Profil →</span>
       </a>
-      <a class="loge" href="https://www.instagram.com/iconailsbeauty/reels/" target="_blank" rel="noopener" aria-label="Icon Nails &amp; Beauty: Reels auf Instagram">
-        <span class="lg-k">Instagram Reels</span>
-        <span class="lg-h" data-en="In the salon, <em>in motion</em>">Im Salon, <em>in Bewegung</em></span>
-        <span class="lg-reels"><span class="lg-reel"><img loading="lazy" src="img/icon_reel_lounge.webp" alt="Reel: die Lounge am Kreuzplatz"><i></i></span><span class="lg-reel"><img loading="lazy" src="img/icon_karte_tische.webp" alt="Reel: die Manicure-Tische"><i></i></span></span>
-        <span class="lg-go" data-en="Reels on Instagram →">Reels auf Instagram →</span>
+      <a class="loge" href="https://www.instagram.com/iconailsbeauty/" target="_blank" rel="noopener" aria-label="Icon Nails &amp; Beauty: mehr auf Instagram">
+        <span class="lg-k">Instagram</span>
+        <span class="lg-h" data-en="More from <em>the feed</em>">Mehr aus <em>dem Feed</em></span>
+        <span class="lg-grid"><img loading="lazy" src="img/icon_ig_milky.webp" alt="Milky-Nägel mit Gold-Akzenten"><img loading="lazy" src="img/icon_ig_gold.webp" alt="Nude-Nägel mit Goldlinien"><img loading="lazy" src="img/icon_ig_mond.webp" alt="Nägel mit Mond-Design"><img loading="lazy" src="img/icon_ig_lashes.webp" alt="Wimpernverlängerung"></span>
+        <span class="lg-go" data-en="@iconailsbeauty on Instagram →">@iconailsbeauty auf Instagram →</span>
       </a>
     </div>
   </div>
@@ -1261,14 +1330,14 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
       <div class="score"><div><b>4,8</b>Fresha</div><div><b>743</b><span data-en="reviews">Bewertungen</span></div></div>
     </div>
     <div class="krit reveal">
-      <figure class="kq big"><span class="st">★★★★★</span>
-        <blockquote>«Wundervoller Service – danke Lucy! Lucy war unglaublich nett und aufmerksam. Ihre Hand war so fein und angenehm – man hat sofort gemerkt, wie viel Erfahrung und Feingefühl sie hat. Sie ist auf all meine Wünsche eingegangen und hat <b class="kern">alles genau so umgesetzt, wie ich es mir vorgestellt habe.</b> Ihre professionelle Art hat mich absolut überzeugt. Ich bin mehr als zufrieden und komme sehr gerne wieder!»</blockquote>
+      <figure class="kq kq-long"><span class="st">★★★★★</span>
+        <blockquote>«Wundervoller Service – danke Lucy! Lucy war unglaublich nett und aufmerksam. Ihre Hand war so fein und angenehm – man hat sofort gemerkt, wie viel Erfahrung und Feingefühl sie hat. Sie ist auf all meine Wünsche eingegangen und hat <b class="kern">alles genau so umgesetzt, wie ich es mir vorgestellt habe.</b> Ihre professionelle Art hat mich absolut überzeugt. Ich bin mehr als zufrieden und komme sehr gerne <span class="nw">wieder!»</span></blockquote>
         <cite><b>Dilara Y.</b> · Fresha</cite></figure>
-      <figure class="kq"><span class="st">★★★★★</span>
-        <blockquote>«I am so delighted to come back after my last appointment! <b class="kern">The nails lasted a month</b> with a beautiful growth and the hand painted design was still as beautiful as the first time 🥰 I am so happy to have found a salon that takes really good care of the nails and pamper their clients. I am recommending this salon to everyone who wants anything from nails to pedi to lashes ☺️ keep up the fantastic work ✨»</blockquote>
+      <figure class="kq kq-long"><span class="st">★★★★★</span>
+        <blockquote>«I am so delighted to come back after my last appointment! <b class="kern">The nails lasted a month</b> with a beautiful growth and the hand painted design was still as beautiful as the first time 🥰 I am so happy to have found a salon that takes really good care of the nails and pamper their clients. I am recommending this salon to everyone who wants anything from nails to pedi to lashes ☺️ keep up the fantastic <span class="nw">work ✨»</span></blockquote>
         <cite><b>Monika Patricija G.</b> · Fresha</cite></figure>
-      <figure class="kq"><span class="st">★★★★★</span>
-        <blockquote>«Ein grosses DANKESCHÖN! Ich war bereits zum zweiten Mal bei Lya Ngyuen und <b class="kern">beides Mal hat sie es perfekt gemacht.</b> Mein Wunsch hat sie exakt umgesetzt. Vielen Dank!!»</blockquote>
+      <figure class="kq big"><span class="st">★★★★★</span>
+        <blockquote>«Ein grosses DANKESCHÖN! Ich war bereits zum zweiten Mal bei Lya Ngyuen und <b class="kern">beides Mal hat sie es perfekt gemacht.</b> Mein Wunsch hat sie exakt umgesetzt. Vielen <span class="nw">Dank!!»</span></blockquote>
         <cite><b>Natascha Z.</b> · Fresha</cite></figure>
     </div>
   </div>
@@ -1283,12 +1352,12 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
       <p class="lead" data-en="Six artists, each with a speciality – from Shellac to manga lashes.">Sechs Artists, alle mit eigener Spezialität – von Shellac bis Manga Lashes.</p>
     </div>
     <div class="tm-grid reveal">
-      <figure class="tm"><div class="tm-ph" aria-hidden="true">L</div><figcaption><b>Leo</b><span>Nail Artist</span></figcaption></figure>
-      <figure class="tm"><div class="tm-ph" aria-hidden="true">A</div><figcaption><b>Amanda</b><span>Manicure · Shellac</span></figcaption></figure>
-      <figure class="tm"><div class="tm-ph" aria-hidden="true">E</div><figcaption><b>Erik</b><span data-en="Nail tech">Nailtech</span></figcaption></figure>
-      <figure class="tm"><div class="tm-ph" aria-hidden="true">E</div><figcaption><b>Emily</b><span data-en="Manicure, brows &amp; waxing">Manicure, Brauen &amp; Waxing</span></figcaption></figure>
-      <figure class="tm"><div class="tm-ph" aria-hidden="true">T</div><figcaption><b>Tina</b><span>Nail Artist</span></figcaption></figure>
-      <figure class="tm"><div class="tm-ph" aria-hidden="true">C</div><figcaption><b>Chang</b><span data-en="Lashes, brows &amp; nails">Wimpern, Brauen &amp; Nägel</span></figcaption></figure>
+      <figure class="tm"><div class="tm-ph"><span class="tm-ini" aria-hidden="true">L</span><small class="tm-cap" data-en="Space for a photo">Platz für ein Foto</small></div><figcaption><b>Leo</b><span>Nail Artist</span></figcaption></figure>
+      <figure class="tm"><div class="tm-ph"><span class="tm-ini" aria-hidden="true">A</span><small class="tm-cap" data-en="Space for a photo">Platz für ein Foto</small></div><figcaption><b>Amanda</b><span>Manicure · Shellac</span></figcaption></figure>
+      <figure class="tm"><div class="tm-ph"><span class="tm-ini" aria-hidden="true">E</span><small class="tm-cap" data-en="Space for a photo">Platz für ein Foto</small></div><figcaption><b>Erik</b><span data-en="Nail tech">Nailtech</span></figcaption></figure>
+      <figure class="tm"><div class="tm-ph"><span class="tm-ini" aria-hidden="true">E</span><small class="tm-cap" data-en="Space for a photo">Platz für ein Foto</small></div><figcaption><b>Emily</b><span data-en="Manicure, brows &amp; waxing">Manicure, Brauen &amp; Waxing</span></figcaption></figure>
+      <figure class="tm"><div class="tm-ph"><span class="tm-ini" aria-hidden="true">T</span><small class="tm-cap" data-en="Space for a photo">Platz für ein Foto</small></div><figcaption><b>Tina</b><span>Nail Artist</span></figcaption></figure>
+      <figure class="tm"><div class="tm-ph"><span class="tm-ini" aria-hidden="true">C</span><small class="tm-cap" data-en="Space for a photo">Platz für ein Foto</small></div><figcaption><b>Chang</b><span data-en="Lashes, brows &amp; nails">Wimpern, Brauen &amp; Nägel</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -1304,9 +1373,11 @@ html.lb-lock,html.lb-lock body{overflow:hidden}
         <div class="gs-cta"><a class="btn btn-gold" href="https://www.fresha.com/de/a/icon-nails-beauty-zurich-forchstrasse-2-n0vazkd8/gift-cards" target="_blank" rel="noopener" data-en="Buy a voucher">Gutschein kaufen</a><a class="gs-tel" href="tel:+41763648485">076 364 84 85</a></div>
       </div>
       <div class="gs-r" aria-hidden="true">
-        <span class="gs-adm" data-en="For you">Für Sie</span>
-        <b class="gs-val" id="gsVal">CHF 50</b>
-        <span class="gs-sal">Icon Nails &amp; Beauty · Zürich</span>
+        <div class="gcard"><span class="gc-shine"></span>
+          <span class="gc-top"><span class="gc-brand">ICON NAILS<small>&amp; BEAUTY</small></span><span class="gc-chip"></span></span>
+          <span class="gc-mid"><span class="gs-adm" data-en="Gift card">Geschenkkarte</span><b class="gs-val" id="gsVal">CHF 50</b></span>
+          <span class="gc-foot"><span data-en="For you">Für Sie</span><span>Kreuzplatz · Zürich</span></span>
+        </div>
       </div>
     </div>
   </div>
@@ -4376,7 +4447,7 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
       const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='IconNails_Set.png';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
       note(en()?'Image saved.':'Bild gespeichert.')},'image/png')});
   /* Gutschein: Betrag wählen */
-  document.querySelectorAll('.gs-amt button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.gs-amt button').forEach(x=>x.classList.toggle('on',x===b));const v=$('#gsVal');v.textContent=b.dataset.a==='CHF ?'?(en()?'Any':'Wunsch'):b.dataset.a;v.animate&&v.animate([{transform:'scale(.85)'},{transform:'scale(1)'}],{duration:260,easing:'ease-out'})}));
+  document.querySelectorAll('.gs-amt button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.gs-amt button').forEach(x=>x.classList.toggle('on',x===b));const v=$('#gsVal');v.textContent=b.dataset.a==='CHF ?'?(en()?'Any amount':'Wunschbetrag'):b.dataset.a;v.classList.toggle('long',v.textContent.length>8);const gc=document.querySelector('.gcard');if(gc){gc.classList.remove('flash');void gc.offsetWidth;gc.classList.add('flash')}v.animate&&v.animate([{transform:'scale(.85)'},{transform:'scale(1)'}],{duration:260,easing:'ease-out'})}));
 })();
 </script>
 <script id="runde-25-11-e-js">
@@ -4425,5 +4496,13 @@ if(document.documentElement.lang==='en')window.__konfLang('en');
 (()=>{const f=()=>{const h=document.querySelector('#layPreis .lp-h');if(!h)return;if(!h.dataset.de)h.dataset.de=h.innerHTML;h.innerHTML=document.documentElement.lang==='en'?h.dataset.en:h.dataset.de};
  new MutationObserver(f).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});f()})();
 </script>
+<script>/* v6 P1/P8: Entwurf-Optionen (Lackfarbe, Textur) */
+(()=>{const H=document.documentElement,V={a:['#0B4B33','#2E8C63'],b:['#D9A0A8','#F4D3D6'],c:['#155A3F','#4FA27C']};
+ const set=k=>{H.dataset.drip=k;H.style.setProperty('--pick',V[k][0]);H.style.setProperty('--pick-hi',V[k][1]);document.querySelectorAll('#optBar [data-drip]').forEach(b=>b.classList.toggle('on',b.dataset.drip===k));
+   const d=document.getElementById('drips');if(d&&d.classList.contains('flow')){d.classList.remove('flow');void d.offsetWidth;requestAnimationFrame(()=>d.classList.add('flow'))}};
+ document.querySelectorAll('#optBar [data-drip]').forEach(b=>b.addEventListener('click',()=>set(b.dataset.drip)));set('a');
+ document.querySelectorAll('#optBar [data-tex]').forEach(b=>b.addEventListener('click',()=>{H.classList.toggle('tex-on',b.dataset.tex==='1');document.querySelectorAll('#optBar [data-tex]').forEach(x=>x.classList.toggle('on',x===b))}));
+document.querySelectorAll('#optBar [data-bg]').forEach(b=>b.addEventListener('click',()=>{H.dataset.bg=b.dataset.bg;document.getElementById('heroBg').src='img/hero_b'+b.dataset.bg+'.webp';document.querySelectorAll('#optBar [data-bg]').forEach(x=>x.classList.toggle('on',x===b))}));H.dataset.bg='1';
+})();</script>
 </body>
 </html>
