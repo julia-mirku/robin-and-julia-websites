@@ -1299,6 +1299,10 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
 .hdr .logo{position:relative;isolation:isolate}
 .hdr .logo::before{content:"";position:absolute;z-index:-1;left:-14px;right:-10px;top:-10px;bottom:-10px;border-radius:999px;background:radial-gradient(closest-side,rgba(28,17,22,.92),rgba(28,17,22,.75) 62%,rgba(28,17,22,0));pointer-events:none}
 .hdr .logo i.lg img{filter:drop-shadow(0 0 .6px rgba(246,240,229,.8)) drop-shadow(0 0 1.6px rgba(246,240,229,.16))}
+
+/* ===== 28.11 Computer: «Klicken», Handy: «Tippen» ===== */
+.t-maus{display:none}
+@media (hover:hover) and (pointer:fine){.t-touch{display:none}.t-maus{display:inline}}
 </style>
 <style id="jr-link-css">[data-jr]{cursor:pointer;pointer-events:auto!important}.jr-link{color:inherit;font:inherit;text-decoration:none;cursor:pointer}.jr-link:hover,.jr-link:focus-visible{text-decoration:underline;text-underline-offset:2px}</style><script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
 <script>/* Bloecke: feste Fassung (27.11 Julia) */(function(){var h=document.documentElement;h.setAttribute("data-theke","fotos");h.setAttribute("data-stuehle","an");h.setAttribute("data-sterne","ast");h.setAttribute("data-schild","schild")})();</script>
@@ -1339,7 +1343,7 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
       <div class="score" aria-label="5,0 Sterne aus 170 Google-Bewertungen">
         <span class="stars" aria-hidden="true">★★★★★<span>★★★★★</span></span>
         <b id="cnt" data-n="170" aria-hidden="true">170</b>
-        <small>von 170 Gästen<br>5,0 Sterne auf&nbsp;Google</small>
+        <small>Bewertungen<br>5,0 Sterne auf&nbsp;Google</small>
       </div>
       <div class="hcta">
         <a class="btn red" href="https://www.bbqsushimomo-sg.ch/menue" target="_blank" rel="noopener">Online bestellen</a>
@@ -1359,7 +1363,7 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
     <div class="head reveal">
       <p class="kick">Die ganze Karte</p>
       <h2 class="sh">Die Karte zum&nbsp;Blättern</h2>
-      <p class="lead">Blättern Sie mit den Pfeilen oder per Wischen. Tippen Sie auf ein Gericht, um das Foto gross zu&nbsp;sehen.</p>
+      <p class="lead">Blättern Sie mit den Pfeilen oder per Wischen. <span class="t-touch">Tippen</span><span class="t-maus">Klicken</span> Sie auf ein Gericht, um das Foto gross zu&nbsp;sehen.</p>
     </div>
     <div class="buch-kopf">
       <p class="buch-ab-k">«ab» = kleinste Portion · Preise in CHF<span> laut Online-Karte</span></p>
@@ -1442,7 +1446,7 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
     <div class="head reveal">
       <p class="kick">Von der Theke</p>
       <h2 class="sh">Kleiner Laden, grosses Herz</h2>
-      <p class="lead">«Der Laden ist klein und unscheinbar, aber ein Besuch lohnt sich auf jeden Fall.» So schreibt Rahel&nbsp;L. Drei Geschichten von der&nbsp;Theke.</p>
+      <p class="lead">Drei Geschichten von der&nbsp;Theke.</p>
     </div>
     <div class="theke-grid">
       <div class="theke-l">
@@ -1541,7 +1545,7 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
         <span class="status" id="status"><i></i><span>…</span></span>
         <div class="days" id="days" role="group" aria-label="Wochentag wählen"></div>
         <div class="dayinfo" id="dayinfo"></div>
-        <div class="schild-wrap"><div class="schild" id="schild" role="button" tabindex="0" aria-label="Öffnungszeiten der Woche zeigen"><div class="vorn"><span class="tafel" id="tafel">Geschlossen</span><b><i></i>Jetzt offen</b><small id="tafelzeit"></small><em>Antippen für die ganze Woche</em></div><div class="hinten"><ul id="woche"></ul></div></div></div>
+        <div class="schild-wrap"><div class="schild" id="schild" role="button" tabindex="0" aria-label="Öffnungszeiten der Woche zeigen"><div class="vorn"><span class="tafel" id="tafel">Geschlossen</span><b><i></i>Jetzt offen</b><small id="tafelzeit"></small><em><span class="t-touch">Antippen</span><span class="t-maus">Anklicken</span> für die ganze Woche</em></div><div class="hinten"><ul id="woche"></ul></div></div></div>
       </div>
       <div class="card">
         <h3>So erreichen Sie uns</h3>
@@ -1583,12 +1587,12 @@ html:not(.t-alt) .tw-logo2{display:block;order:2;height:26px;width:auto;border-r
     <div class="korb-summe"><span id="korbSumLabel">Summe</span><b id="korbSum">CHF 0.00</b></div>
     <p class="korb-ab" id="korbAb" hidden>«ab» = kleinste Portion; der Endpreis steht im Bestellsystem.</p>
     <a class="btn red korb-go" href="https://www.foodbooking.com/ordering/restaurant/menu?company_uid=f8cef581-e37b-4b52-9f46-2af8a4245929&amp;restaurant_uid=5fe33367-5948-44d8-b8ee-4dd2f5f318d1&amp;facebook=false" target="_blank" rel="noopener">Bestellung abschliessen</a>
-    <p class="korb-hinweis">Entwurf: Die Bestellung schliessen Sie im Online-Bestellsystem von BBQ Sushi Momo ab (Abholung oder Lieferung).</p>
+    <p class="korb-hinweis">Entwurf: Die Bestellung schliessen Sie im Online-Bestellsystem von BBQ Sushi Momo ab (zum&nbsp;Abholen).</p>
     <button type="button" class="korb-leer" id="korbLeer">Korb leeren</button>
   </div>
 </aside>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto gross"><img alt=""><button class="x" type="button" aria-label="Schliessen">×</button><p>Tippen zum Zoomen · ausserhalb tippen zum Schliessen</p></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto gross"><img alt=""><button class="x" type="button" aria-label="Schliessen">×</button><p><span class="t-touch">Tippen</span><span class="t-maus">Klicken</span> zum Zoomen · ausserhalb <span class="t-touch">tippen</span><span class="t-maus">klicken</span> zum Schliessen</p></div>
 
 <footer class="ft"><div class="wrap"><span>BBQ Sushi Momo · St. Gallerstrasse 66 · 9200 Gossau SG</span><span>Entwurf · nur zur Ansicht</span></div></footer>
 
