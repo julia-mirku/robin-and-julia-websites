@@ -2216,6 +2216,16 @@ body{background:transparent!important}
 span.bk-endx{cursor:default}
 @media (max-width:899px){.bk-endx{min-height:44px;display:flex;align-items:flex-end;margin-bottom:-16px}}</style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
+<style id="leicht-28-11">
+/* 28.11 leichter: Kopf ohne Weichzeichner dahinter (wurde bei jedem Bild neu gerechnet) */
+.top{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+
+/* Blättern: jeder Streifen eine eigene Ebene, Seitenkopien abgeschlossen (kein Neuberechnen der ganzen Seite pro Bild) */
+.bk-st{will-change:transform;contain:layout style paint}
+.bk-sf{contain:layout style paint}
+.bk-sf > i{will-change:background}
+.bk-leaf{contain:layout style}
+</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
@@ -3234,6 +3244,7 @@ span.bk-endx{cursor:default}
   /* o: g (1 = Blatt liegt rechts vom Bund, -1 = links), hx (Bund), W (Seitenbreite), n (Streifen), dur,
         front/back (Seiten als Vorlage; back fehlt = blankes Papier), under (Seite darunter), away/back2 (Telefon),
         peek (Ecke hebt sich nur), hint (Ecke hebt sich zweimal, einmaliger Hinweis), drag (Blatt folgt Finger/Maus) */
+  function sbg(e, v){ if(e.__bg !== v){ e.__bg = v; e.style.background = v; } }
   function startFlip(o, after){
     var n = o.n, w = o.W / n, g = o.g, i, st, f, b, pg, lt, strips = [], lf = [], lb = [];
     var ang = [], edge = [], pv, sheet, shA, shB, sp, csh = null;
@@ -3298,8 +3309,8 @@ span.bk-endx{cursor:default}
         /* Licht kommt von vorn, leicht von links: jede Fläche so hell, wie sie zum Licht steht */
         e0 = edge[i] * Math.PI / 180; e1 = edge[i + 1] * Math.PI / 180;
         l0 = .34 * g * Math.sin(e0) + .94 * Math.cos(e0); l1 = .34 * g * Math.sin(e1) + .94 * Math.cos(e1);
-        if(a < 100) lf[i].style.background = 'linear-gradient(90deg,' + (g > 0 ? tone(l0) + ',' + tone(l1) : tone(l1) + ',' + tone(l0)) + ')';
-        if(a > 80) lb[i].style.background = 'linear-gradient(90deg,' + (g > 0 ? tone(-l1) + ',' + tone(-l0) : tone(-l0) + ',' + tone(-l1)) + ')';
+        if(a < 100) sbg(lf[i], 'linear-gradient(90deg,' + (g > 0 ? tone(l0) + ',' + tone(l1) : tone(l1) + ',' + tone(l0)) + ')');
+        if(a > 80) sbg(lb[i], 'linear-gradient(90deg,' + (g > 0 ? tone(-l1) + ',' + tone(-l0) : tone(-l0) + ',' + tone(-l1)) + ')');
       }
       /* Schatten auf den Seiten darunter: wandert mit dem Blatt, wird weicher, je höher es steht */
       lift = c01(zmax / (o.W * .22)); al = (fadeTo === undefined ? 1 : fadeTo);

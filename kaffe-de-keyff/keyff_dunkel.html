@@ -1969,6 +1969,16 @@ body.ix2 #karte .auszug li .ld{border-bottom:0!important}  /* Julia 25.11: «т�
 span.bk-endx{cursor:default}
 @media (max-width:899px){.bk-endx{min-height:44px;display:flex;align-items:flex-end;margin-bottom:-16px}}</style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="8057e608-4b9d-40e3-acbd-c367a3ee7251" data-domains="webstudio-mirku.ch"></script>
+<style id="leicht-28-11">
+/* 28.11 leichter: Kopf ohne Weichzeichner dahinter (wurde bei jedem Bild neu gerechnet) */
+.top{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.top{background:rgba(20,14,10,.95)!important}
+/* Blättern: jeder Streifen eine eigene Ebene, Seitenkopien abgeschlossen (kein Neuberechnen der ganzen Seite pro Bild) */
+.bk-st{will-change:transform;contain:layout style paint}
+.bk-sf{contain:layout style paint}
+.bk-sf > i{will-change:background}
+.bk-leaf{contain:layout style}
+</style>
 </head>
 <body>
 <div class="vw-bar" role="region" aria-label="Variante wählen, nur im Entwurf sichtbar" lang="de">
@@ -2970,6 +2980,7 @@ span.bk-endx{cursor:default}
   /* o: g (1 = Blatt liegt rechts vom Bund, -1 = links), hx (Bund), W (Seitenbreite), n (Streifen), dur,
         front/back (Seiten als Vorlage; back fehlt = blankes Papier), under (Seite darunter), away/back2 (Telefon),
         peek (Ecke hebt sich nur), hint (Ecke hebt sich zweimal, einmaliger Hinweis), drag (Blatt folgt Finger/Maus) */
+  function sbg(e, v){ if(e.__bg !== v){ e.__bg = v; e.style.background = v; } }
   function startFlip(o, after){
     var n = o.n, w = o.W / n, g = o.g, i, st, f, b, pg, lt, strips = [], lf = [], lb = [];
     var ang = [], edge = [], pv, sheet, shA, shB, sp, csh = null;
@@ -3034,8 +3045,8 @@ span.bk-endx{cursor:default}
         /* Licht kommt von vorn, leicht von links: jede Fläche so hell, wie sie zum Licht steht */
         e0 = edge[i] * Math.PI / 180; e1 = edge[i + 1] * Math.PI / 180;
         l0 = .34 * g * Math.sin(e0) + .94 * Math.cos(e0); l1 = .34 * g * Math.sin(e1) + .94 * Math.cos(e1);
-        if(a < 100) lf[i].style.background = 'linear-gradient(90deg,' + (g > 0 ? tone(l0) + ',' + tone(l1) : tone(l1) + ',' + tone(l0)) + ')';
-        if(a > 80) lb[i].style.background = 'linear-gradient(90deg,' + (g > 0 ? tone(-l1) + ',' + tone(-l0) : tone(-l0) + ',' + tone(-l1)) + ')';
+        if(a < 100) sbg(lf[i], 'linear-gradient(90deg,' + (g > 0 ? tone(l0) + ',' + tone(l1) : tone(l1) + ',' + tone(l0)) + ')');
+        if(a > 80) sbg(lb[i], 'linear-gradient(90deg,' + (g > 0 ? tone(-l1) + ',' + tone(-l0) : tone(-l0) + ',' + tone(-l1)) + ')');
       }
       /* Schatten auf den Seiten darunter: wandert mit dem Blatt, wird weicher, je höher es steht */
       lift = c01(zmax / (o.W * .22)); al = (fadeTo === undefined ? 1 : fadeTo);
@@ -4215,13 +4226,13 @@ lay.style.cssText='position:fixed;left:0;top:0;width:100%;height:100vh;z-index:-
 var band=document.createElement('div'), rel=document.createElement('div'), sun=document.createElement('div');
 [band,rel].forEach(function(e){e.style.cssText='position:absolute;left:0;top:0;width:100%;background-image:'+IMG+';background-repeat:repeat-y;background-position:center top;background-size:max(100%,1100px) auto;will-change:transform';});
 /* Relief: Kopie des Fotos, leicht verschoben, als Licht/Schatten darüber – Grate wirken plastisch und ihre Schatten wandern */
-rel.style.mixBlendMode=DARK?'soft-light':'multiply'; rel.style.opacity=DARK?'.55':'.22'; rel.style.filter=DARK?'contrast(1.6) brightness(1.1)':'contrast(1.5) saturate(.9)';
+rel.style.display='none'; if(DARK){band.style.backgroundImage='url(fon_sand_dunkel_sonne.jpg)';}  /* 28.11: Relief (soft-light .55, contrast 1.6, brightness 1.1) fest ins Sandbild gemischt – eine Ebene statt zwei */
 sun.style.cssText='position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:'+(DARK?'screen':'soft-light')+';will-change:transform';
 sun.style.background=DARK?'radial-gradient(42% 48% at 50% 50%,rgba(255,200,130,.22),rgba(255,176,100,.08) 55%,rgba(0,0,0,0) 78%)':'radial-gradient(30% 36% at 50% 50%,rgba(255,226,170,.85),rgba(255,214,150,.30) 55%,rgba(255,255,255,0) 75%)';
 lay.appendChild(band);lay.appendChild(rel);lay.appendChild(sun);document.body.insertBefore(lay,document.body.firstChild);
 H.backgroundImage='none'; /* Hintergrund liegt jetzt in der fixen Ebene */
 var BH=1, PAR=RM?1:.82;  /* Parallaxe: Sand läuft mit 82 % der Scrollgeschwindigkeit */
-function rs(){var W=Math.max(R.clientWidth,1100);BH=W*CR.h/CR.w;band.style.height=rel.style.height=(innerHeight+BH*2)+'px';upd();}
+function rs(){var W=Math.max(R.clientWidth,1100);BH=W*CR.h/CR.w;band.style.height=rel.style.height=(innerHeight+BH+2)+'px';upd();}
 var tk=false;function upd(){tk=false;var sy=scrollY,o=-((sy*PAR)%BH);
   band.style.transform='translate3d(0,'+o+'px,0)';
   if(RM){rel.style.display='none';sun.style.display='none';return;}
@@ -4229,7 +4240,11 @@ var tk=false;function upd(){tk=false;var sy=scrollY,o=-((sy*PAR)%BH);
   var ang=-0.6+u*1.8, dx=Math.cos(ang)*2.4, dy=Math.sin(ang)*2.4;           /* Sonnenrichtung wandert → Schatten wandern */
   rel.style.transform='translate3d('+dx.toFixed(2)+'px,'+(o+dy).toFixed(2)+'px,0)';}
 addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd);}},{passive:true});
-if(!RM){var SP=60000,t0=performance.now();(function sl(t){var k=.5-.5*Math.cos(2*Math.PI*((t-t0)%SP)/SP);sun.style.transform='translate3d('+((-.35+1.4*k)*innerWidth).toFixed(1)+'px,0,0)';requestAnimationFrame(sl);})(t0);}
+if(!RM){var sunAn=null;function sunGo(){ /* 28.11: dieselbe Bahn (60 s hin und zurück, Kosinus), aber vom Compositor gefahren */
+  var A=(-.35*innerWidth).toFixed(1), B=(1.05*innerWidth).toFixed(1), t=sunAn?sunAn.currentTime:0; if(sunAn) sunAn.cancel();
+  sunAn=sun.animate([{transform:'translate3d('+A+'px,0,0)'},{transform:'translate3d('+B+'px,0,0)'}],{duration:30000,iterations:Infinity,direction:'alternate',easing:'cubic-bezier(.37,0,.63,1)'});
+  if(t) sunAn.currentTime=t;}
+  sunGo(); addEventListener('resize',sunGo);}
 addEventListener('resize',rs);rs();
 })();}
 })();</script>
