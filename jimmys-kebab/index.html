@@ -8,7 +8,7 @@
 <title>JIMMYS Kebab &amp; Co · Winterthur</title>
 <meta name="description" content="Knusprig gebacken, mit Sorgfalt gefüllt: Jimmys Kebab &amp; Co an der Technikumstrasse 12 in Winterthur. Holz, Leder, warmes Licht – Freitag und Samstag bis 01:00.">
 <meta name="theme-color" content="#25272a">
-<script>(function(){var v="a";try{var q=new URLSearchParams(location.search).get("bg");if(q&&/^[abcd]$/.test(q)){v=q;localStorage.setItem("jimmys-bg",q)}else{var l=localStorage.getItem("jimmys-bg");if(l&&/^[abcd]$/.test(l))v=l}}catch(e){}document.documentElement.setAttribute("data-bg",v)})();</script>
+<script>(function(){var v="c";try{var q=new URLSearchParams(location.search).get("bg");if(q&&/^[cd]$/.test(q)){v=q;localStorage.setItem("jimmys-bg",q)}else{var l=localStorage.getItem("jimmys-bg");if(l&&/^[cd]$/.test(l))v=l}}catch(e){}document.documentElement.setAttribute("data-bg",v)})();</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2325272a'/%3E%3Cpath d='M38 14v24c0 8-5 12-12 12-4 0-7-1-9-3' fill='none' stroke='%23F4F1EA' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -395,16 +395,15 @@ h2 em,.slogan em{font-family:var(--serif);font-style:italic;font-weight:500;colo
 }
 
 
+/* BG_CD 28.11: nur C|D, D dunkler, Waben-Band entfernt */
 /* ===== BGWAHL (28.11): 4 Hintergründe zum Vergleichen ===== */
 .leder,.metall,.karte,#zeiten,.wahl.abschnitt{background:transparent!important;background-image:none!important}
 .band{background:rgba(10,10,11,.85)}
-html[data-bg="a"] body{background:linear-gradient(rgba(16,14,12,.78),rgba(16,14,12,.78)),url(img/tex-a.webp) 0 0/900px repeat #141210}
-html[data-bg="b"] body{background:linear-gradient(rgba(16,12,9,.88),rgba(16,12,9,.88)),url(img/tex-b.webp) 0 0/760px repeat #120e0b}
 html[data-bg="c"] body,html[data-bg="d"] body{background:#161718}
 html[data-bg="c"] body::after,html[data-bg="d"] body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-repeat:no-repeat;background-position:center;background-size:cover}
 html[data-bg="c"] body::after{background-image:linear-gradient(rgba(12,12,13,.35),rgba(12,12,13,.35)),url(img/tex-c.webp)}
-html[data-bg="d"] body::after{background-image:linear-gradient(rgba(12,12,13,.18),rgba(12,12,13,.18)),url(img/tex-d.webp)}
-@media (max-width:860px){html[data-bg="d"] body::after{background-image:linear-gradient(rgba(12,12,13,.18),rgba(12,12,13,.18)),url(img/tex-d-hoch.webp)}}
+html[data-bg="d"] body::after{background-image:linear-gradient(rgba(10,10,11,.66),rgba(10,10,11,.66)),url(img/tex-d.webp)}
+@media (max-width:860px){html[data-bg="d"] body::after{background-image:linear-gradient(rgba(10,10,11,.70),rgba(10,10,11,.70)),url(img/tex-d-hoch.webp)}}
 .bgwahl{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:4px;padding:5px 6px 5px 12px;border-radius:999px;background:rgba(14,14,15,.92);border:1px solid #3d3f43;box-shadow:0 10px 26px -12px rgba(0,0,0,.8);font:600 12.5px/1 var(--ff);color:#cfc9bd}
 .bgwahl span{margin-right:4px;letter-spacing:.04em}
 .bgwahl button{min-width:34px;height:30px;padding:0 9px;border-radius:999px;border:1px solid transparent;background:transparent;color:#e9e5dc;font:700 12.5px/1 var(--ff);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
@@ -458,7 +457,6 @@ html[data-bg="d"] body::after{background-image:linear-gradient(rgba(12,12,13,.18
   </div>
 </section>
 
-<div class="band band-metall" aria-hidden="true"><svg viewBox="0 0 1200 90" preserveAspectRatio="none"><polygon class="m" points="145,0 237,0 233,19 183,51 146,22" /><polygon class="m" points="696,0 745,0 766,49 753,90 694,90" /><polygon class="m" points="183,51 233,19 259,90 183,90" /><polygon class="m" points="61,0 145,0 146,22 120,53 72,37" /><polygon class="m" points="1131,45 1200,46 1200,90 1115,90" /><polygon class="m" points="410,28 410,0 484,0 480,90 460,90" /><polygon class="m" points="745,0 834,0 823,40 766,49" /><polygon class="m" points="120,53 146,22 183,51 183,90 124,90" /><polygon class="m" points="766,49 823,40 842,90 753,90" /><polygon class="m" points="905,0 986,0 986,90 903,90" /><polygon class="m" points="1117,0 1200,0 1200,46 1131,45" /><polygon class="m" points="622,0 696,0 694,90 622,90" /><polygon class="m" points="410,28 460,90 372,90" /><polygon class="m" points="233,19 237,0 324,0 320,90 259,90" /><polygon class="m" points="986,0 1059,0 1060,90 986,90" /><polygon class="m" points="549,0 622,0 622,90 549,90" /><polygon class="m" points="72,37 120,53 124,90 49,90" /><polygon class="m" points="484,0 549,0 549,90 480,90" /><polygon class="m" points="823,40 834,0 905,0 903,90 842,90" /><polygon class="m" points="1059,0 1117,0 1131,45 1115,90 1060,90" /><polygon class="m" points="0,0 61,0 72,37 49,90 0,90" /><polygon class="m" points="324,0 410,0 410,28 372,90 320,90" /></svg></div>
 
 <section class="karte abschnitt" id="karte">
   <div class="wrap">
@@ -575,11 +573,11 @@ html[data-bg="d"] body::after{background-image:linear-gradient(rgba(12,12,13,.18
 </main>
 
 <footer>
-  <div class="band" aria-hidden="true"><svg viewBox="0 0 1200 90" preserveAspectRatio="none"><polygon class="m" points="145,0 237,0 233,19 183,51 146,22" /><polygon class="m" points="696,0 745,0 766,49 753,90 694,90" /><polygon class="m" points="183,51 233,19 259,90 183,90" /><polygon class="m" points="61,0 145,0 146,22 120,53 72,37" /><polygon class="m" points="1131,45 1200,46 1200,90 1115,90" /><polygon class="m" points="410,28 410,0 484,0 480,90 460,90" /><polygon class="m" points="745,0 834,0 823,40 766,49" /><polygon class="m" points="120,53 146,22 183,51 183,90 124,90" /><polygon class="m" points="766,49 823,40 842,90 753,90" /><polygon class="m" points="905,0 986,0 986,90 903,90" /><polygon class="m" points="1117,0 1200,0 1200,46 1131,45" /><polygon class="m" points="622,0 696,0 694,90 622,90" /><polygon class="m" points="410,28 460,90 372,90" /><polygon class="m" points="233,19 237,0 324,0 320,90 259,90" /><polygon class="m" points="986,0 1059,0 1060,90 986,90" /><polygon class="m" points="549,0 622,0 622,90 549,90" /><polygon class="m" points="72,37 120,53 124,90 49,90" /><polygon class="m" points="484,0 549,0 549,90 480,90" /><polygon class="m" points="823,40 834,0 905,0 903,90 842,90" /><polygon class="m" points="1059,0 1117,0 1131,45 1115,90 1060,90" /><polygon class="m" points="0,0 61,0 72,37 49,90 0,90" /><polygon class="m" points="324,0 410,0 410,28 372,90 320,90" /></svg></div>
+  
   <div class="fuss"><div class="wrap"><span>© JIMMYS Kebab &amp; Co, Winterthur</span><span>Website-Entwurf: Julia &amp; Robin Mirku</span></div></div>
 </footer>
 
-<div class="bgwahl" role="group" aria-label="Hintergrund wählen"><span>Hintergrund</span><button type="button" data-v="a" title="A · Lavash">A</button><button type="button" data-v="b" title="B · Pide-Kruste">B</button><button type="button" data-v="c" title="C · Lavash auf Stein">C</button><button type="button" data-v="d" title="D · Stein mit Essen am Rand">D</button></div>
+<div class="bgwahl" role="group" aria-label="Hintergrund wählen"><span>Hintergrund</span><button type="button" data-v="c" title="C · Lavash auf Stein">C</button><button type="button" data-v="d" title="D · Stein mit Essen am Rand">D</button></div>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto gross">
   <button class="zu" type="button" aria-label="Schliessen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <button class="pfeil l" type="button" aria-label="Vorheriges Foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
