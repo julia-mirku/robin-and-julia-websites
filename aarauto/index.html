@@ -1197,13 +1197,23 @@ schieber.max=MAX; schieber.min=MINP; svg.setAttribute('aria-valuemax',MAX); svg.
     if(gross){ var pl=pol(a,R-50); h+='<text class="zahl" x="'+pl[0].toFixed(1)+'" y="'+(pl[1]+8).toFixed(1)+'" text-anchor="middle">'+(v?(v/1000)+'k':'0')+'</text>'; } }
   skala.innerHTML=h; })();
 var trefferZahl=AUTOS.length;
+/* freier Platz im Tacho: zwischen 10k und 40k max. 150, unten zwischen 0 und 50k max. 100 Einheiten */
+function passend(el,max){ var w=el.getComputedTextLength(); if(w>max){ var fs=parseFloat(getComputedStyle(el).fontSize)||20; el.style.fontSize=(fs*max/w).toFixed(1)+'px'; } }
+function kZeile(t,modell){ wertK.textContent=t; wertK.style.fontSize=''; wertK.style.letterSpacing='';
+  if(wertK.getComputedTextLength()<=150) return;
+  if(!modell){ passend(wertK,150); return; }
+  var w=t.split(' '), b=1, bd=1e9; for(var i=1;i<w.length;i++){ var d=Math.abs(w.slice(0,i).join(' ').length-w.slice(i).join(' ').length); if(d<bd){bd=d;b=i;} }
+  wertK.textContent=''; wertK.style.fontSize='16px'; wertK.style.letterSpacing='.03em';
+  [w.slice(0,b).join(' '),w.slice(b).join(' ')].forEach(function(z,i){ var ts=D.createElementNS('http://www.w3.org/2000/svg','tspan'); ts.setAttribute('x','200'); ts.setAttribute('y',i?'157':'138'); ts.textContent=z; wertK.appendChild(ts); });
+  var m=0; [].forEach.call(wertK.childNodes,function(ts){ m=Math.max(m,ts.getComputedTextLength()); }); if(m>150) wertK.style.fontSize=(16*150/m).toFixed(1)+'px';
+}
 function zeige(v,info){
   anzeigeWert=v; nadel.setAttribute('transform','rotate('+(winkel(v)+90)+' '+CX+' '+CY+')');
   D.getElementById('bogen-aktiv').setAttribute('d', v>0? bogen(A0,winkel(v),R) : '');
-  if(info){ wertK.textContent=info.k; wertT.textContent=info.w; wertU.textContent=info.u; wertT.style.fontSize=info.w.length>7?'34px':''; return; }
+  if(info){ kZeile(info.k,true); wertT.textContent=info.w; wertU.textContent=info.u; wertT.style.fontSize=info.w.length>7?'34px':''; passend(wertT,100); return; }
   var r=Math.round(v/STEP)*STEP;
-  wertK.textContent = r>=MAX ? 'PREIS: ALLE' : 'BIS CHF '+chf(r);
-  wertT.textContent = String(trefferZahl); wertT.style.fontSize='';
+  kZeile(r>=MAX ? 'PREIS: ALLE' : 'BIS CHF '+chf(r),false);
+  wertT.textContent = String(trefferZahl); wertT.style.fontSize=''; passend(wertT,100);
   wertU.textContent = trefferZahl===1?'Auto passt':'Autos passen';
 }
 function passt(a,ohne){
@@ -1324,7 +1334,7 @@ svg.addEventListener('pointermove',function(e){ if(zieht) ausZeiger(e); });
 if(window.matchMedia('(hover:hover)').matches){
   AUTOS.forEach(function(a){ var k=karten[a.id];
     k.addEventListener('mouseenter',function(){ if(zieht) return; k.classList.add('zeigt');
-      fahre(Math.min(a.p,MAX),420,function(){ zeige(Math.min(a.p,MAX),{k:((a.m+' '+a.t).length>24?(a.m+' '+a.t).slice(0,23).trim()+'…':(a.m+' '+a.t)).toUpperCase(), w:chf(a.p), u:'CHF Kaufpreis'}); }); });
+      fahre(Math.min(a.p,MAX),420,function(){ zeige(Math.min(a.p,MAX),{k:(a.m+' '+a.t).toUpperCase(), w:chf(a.p), u:'CHF Kaufpreis'}); }); });
     k.addEventListener('mouseleave',function(){ k.classList.remove('zeigt'); if(zieht) return; fahre(F.preis,420); });
   });
 }
