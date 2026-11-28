@@ -23,8 +23,10 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;font-variant-numeric:lining-nums;font-family:var(--f-body);color:var(--ink);font-size:17px;line-height:1.55;background:var(--bg);
-  background-image:linear-gradient(rgba(30,37,40,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(30,37,40,.035) 1px,transparent 1px);background-size:44px 44px}
+body{margin:0;font-variant-numeric:lining-nums;font-family:var(--f-body);color:var(--ink);font-size:17px;line-height:1.55;background:var(--bg);position:relative}
+/* Юля 28.11: «делаем вот этот вот сырный фон» – Käserinde an den Seiten, Mitte cremig, scrollt mit der Seite */
+body:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(244,242,236,.12) 0%,rgba(244,242,236,.35) 8%,#F4F2EC 22%,#F4F2EC 78%,rgba(244,242,236,.35) 92%,rgba(244,242,236,.12) 100%),url(img/fon_a_band_l.webp) center top/100% auto repeat-y}
+@media (max-aspect-ratio:3/4){body:before{background:linear-gradient(rgba(244,242,236,.55),rgba(244,242,236,.55)),url(img/fon_a_band_m.webp) center top/100% auto repeat-y}}
 img{display:block;max-width:100%}
 a{color:inherit}
 h1,h2,h3{font-family:var(--f-head);font-weight:650;line-height:1.08;margin:0;letter-spacing:-.01em;font-variation-settings:"opsz" 96}
