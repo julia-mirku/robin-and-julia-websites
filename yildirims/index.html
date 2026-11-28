@@ -189,7 +189,7 @@ h2{font-family:var(--f-d);font-weight:400;font-size:clamp(31px,3.7vw,46px);line-
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
 .card{background:var(--paper);border:2px solid var(--soot);border-radius:var(--r);padding:22px 22px 20px;box-shadow:4px 4px 0 var(--soot);transition:transform .3s ease, box-shadow .3s ease}
 .card{padding:0;display:flex;flex-direction:column;overflow:hidden}
-.card .art{padding:20px 14px 6px;background:#fff}
+.card .art{padding:20px 14px 6px;background:radial-gradient(90% 80% at 50% 62%,#FDF7EA 0%,#fff 72%)}
 .card .ill{width:min(88%,310px);height:auto;margin:0 auto}
 .card .txt{padding:8px 24px 22px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
 .card .txt .men{margin-top:auto}
@@ -432,9 +432,9 @@ button.rb{cursor:pointer}
 .tueten.settled .tuete{transition:transform .28s ease}
 @media (hover:hover){.tueten.settled .tuete:hover{transform:translateY(-7px) rotate(0deg)}}
 .tp{position:relative;flex:1;display:flex;flex-direction:column;padding:14px 20px 14px;color:var(--soot);
-  background:repeating-linear-gradient(91deg,rgba(110,70,30,.055) 0 1px,rgba(110,70,30,0) 1px 6px),#E2C799;
+  background:linear-gradient(90deg,rgba(96,58,22,.17),rgba(96,58,22,0) 7%,rgba(96,58,22,0) 93%,rgba(96,58,22,.17)),repeating-linear-gradient(91deg,rgba(110,70,30,.055) 0 1px,rgba(110,70,30,0) 1px 6px),linear-gradient(178deg,#ECD6AE,#E1C596 55%,#D8B884);
   -webkit-mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 100%;mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50% 0/14px 100%}
-.tp::before{content:"";position:absolute;left:0;right:0;top:0;height:40px;background:rgba(96,58,22,.12);border-bottom:1px solid rgba(96,58,22,.4);box-shadow:0 4px 5px -3px rgba(60,35,10,.5)}
+.tp::before{content:"";position:absolute;left:0;right:0;top:0;height:40px;background:linear-gradient(180deg,rgba(96,58,22,.08),rgba(96,58,22,.17));border-bottom:1px solid rgba(96,58,22,.4);box-shadow:0 4px 5px -3px rgba(60,35,10,.5)}
 .tp figcaption{position:relative;order:-1;display:flex;flex-direction:column;justify-content:flex-end;gap:1px;min-height:96px;padding:46px 0 0 106px;font-size:13.5px;font-weight:500;color:#5A4636;line-height:1.3}
 .tp figcaption b{font-size:16.5px;font-weight:700;color:var(--soot)}
 .stempel{position:absolute;left:14px;top:10px;width:96px;height:96px;color:var(--terra-dk);transform:rotate(var(--sr));mix-blend-mode:multiply;opacity:.88}
@@ -463,7 +463,7 @@ button.rb{cursor:pointer}
 }
 .tdlg{border:0;padding:0;background:transparent;max-width:min(92vw,440px);width:100%}
 .tdlg::backdrop{background:rgba(31,22,18,.55)}
-.tdlg .tp{min-height:0;padding:16px 20px 18px;border-radius:2px;max-height:82vh;overflow:auto;-webkit-mask:none;mask:none;background:#E2C799}
+.tdlg .tp{min-height:0;padding:16px 20px 18px;border-radius:2px;max-height:82vh;overflow:auto;-webkit-mask:none;mask:none;background:linear-gradient(178deg,#ECD6AE,#E1C596 55%,#D8B884)}
 .tdlg .tp::before{display:none}
 .tdlg blockquote{display:block!important;-webkit-line-clamp:unset!important;margin:10px 0 4px;font-size:16px;line-height:1.55;white-space:pre-line}
 .tdlg .tdx:focus{outline:none}
@@ -755,7 +755,7 @@ In europe . The hot sauce is perfect , excellent service and worth every penny .
       <div class="addr">
         <div class="l1">Yildirim’s SnackHouse</div>
         <div class="l2">Spitalgasse 1, 4900 Langenthal</div>
-        <div class="l3" data-i18n="walk">Sitzplätze draussen, direkt am Bach.</div>
+        <div class="l3" data-i18n="walk">Sitzplätze draussen.</div>
         <ul class="facts2">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><span><b class="dual-i" id="addrToday">Heute</b><span class="st3 dual-i" id="addrStat"></span></span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4.5" r="2"/><path d="M13 8l-3 4 3 3v6M10 12l-3 1M13 10l4 2M10 21l1.5-4"/></svg><span data-i18n="walkmin">Ca. 12 Minuten zu Fuss vom Bahnhof Langenthal</span></li>
@@ -807,7 +807,7 @@ In europe . The hot sauce is perfect , excellent service and worth every penny .
       gloss:"Das loben Gäste am häufigsten:",
       cnt:"Bewertungen auf Google",glink:"Alle Bewertungen ansehen",p1:"Döner",p2:"Dürüm",p3:"freundlich",p4:"Team",
       src:"So oft nennen Gäste diese Stichworte in Google-Bewertungen (Stand November 2026).",
-      e5:"So finden Sie uns",h2d:"Mitten in Langenthal, direkt am Bach",walk:"Sitzplätze draussen, direkt am Bach.",
+      e5:"So finden Sie uns",h2d:"Mitten in Langenthal, direkt am Bach",walk:"Sitzplätze draussen.",
       kBar:"Zum Abholen",kTitle:"Bestellung zum Abholen",kTotal:"Total",kNote:"Bestellt wird am Telefon – die Liste bleibt hier stehen, zum Vorlesen.",kCall:"Anrufen und bestellen",kCopy:"Liste kopieren",kCopied:"Liste kopiert ✓",kClear:"Liste leeren",copy:"Adresse kopieren",copied:"Adresse kopiert ✓",walkmin:"Ca. 12 Minuten zu Fuss vom Bahnhof Langenthal",todayIs:"Heute ",karteAria:"Karte von Langenthal – Route öffnen",
       bye:"Bis zum nächsten Mal in Langenthal.",draft:"Musterseite – Entwurf zur Ansicht",
       days:["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"],daysS:["Mo","Di","Mi","Do","Fr","Sa","So"],
@@ -829,7 +829,7 @@ In europe . The hot sauce is perfect , excellent service and worth every penny .
       gloss:"What guests praise most often:",
       cnt:"reviews on Google",glink:"See all reviews",p1:"döner",p2:"dürüm",p3:"friendly",p4:"team",
       src:"How often guests mention these words in Google reviews (as of November 2026).",
-      e5:"How to find us",h2d:"In the heart of Langenthal, right by the stream",walk:"Outdoor seating right by the stream.",
+      e5:"How to find us",h2d:"In the heart of Langenthal, right by the stream",walk:"Outdoor seating.",
       kBar:"For pick-up",kTitle:"Order for pick-up",kTotal:"Total",kNote:"You order by phone – the list stays here for you to read out.",kCall:"Call and order",kCopy:"Copy list",kCopied:"List copied ✓",kClear:"Clear list",copy:"Copy address",copied:"Address copied ✓",walkmin:"About 12 minutes on foot from Langenthal station",todayIs:"Today ",karteAria:"Map of Langenthal – open directions",
       bye:"See you next time in Langenthal.",draft:"Sample page – draft for review",
       days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],daysS:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
