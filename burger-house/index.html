@@ -1474,7 +1474,7 @@ wacks.forEach(function(w){w.addEventListener("animationend",function(){w.classLi
     /* seitlich zu einer anderen Sauce gezogen: hinueber heben und dort tunken (nie durch die Schale) */
     var andere=null;if(!abbruch&&zx!==undefined){var bd=1e9;Object.keys(POT).forEach(function(n){var P=POT[n],dx=Math.abs(zx-(P.cx+VX));if(dx<P.rimRx&&zy>P.rimY-40&&zy<P.rimY+90&&dx<bd){bd=dx;andere=n;}});if(andere===schon)andere=null;}
     if(andere){eintunken(andere);}
-    else if(!abbruch&&schon&&st.y>POT[schon].sy-2){abschliessen(schon);}
+    else if(!abbruch&&schon&&getaucht===schon&&st.y>POT[schon].sy-2){abschliessen(schon);}/* 28.11 nur wenn die Spitze die Sauce schon berührt hat, sonst richtig eintunken */
     else{var t=abbruch?null:treffer();
       if(t)eintunken(t);else{busy=true;reise(heimPos(home),function(){busy=false;fry.style.willChange="";},true);}}
     zeichnen();
